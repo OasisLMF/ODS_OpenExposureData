@@ -43,11 +43,12 @@ ODS is governed by a steering committee that meets every quarter and is chaired 
 
 ### **Brokers:**
 
-src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/bms_logo.jpeg" width ="100"/>
+<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/GuyCarp_logo.png" width ="180"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/bms_logo.jpeg" width ="100"/>
 
 
 ### **Market:**
- width ="140"/>
+ 
+<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/Lloyds_logo.png" width ="140"/>
 
 
 ## Attributions
