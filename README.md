@@ -34,7 +34,7 @@ ODS is governed by a steering committee that meets every quarter and is chaired 
 
 <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/zurich_logo.png" width ="130"/>
 
-<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/swissRe_logo.png" width ="130"/>
+<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/swissRe_logo.png" width ="150"/>
 
 <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/Lloyds_logo.png" width ="140"/>
 
@@ -44,7 +44,13 @@ ODS is governed by a steering committee that meets every quarter and is chaired 
 
 <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/NASDAQ_logo.png" width ="140"/>
 
-<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/bms_logo.jpeg" width ="140"/>
+<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/bms_logo.jpeg" width ="100"/>
+
+<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/corelogic_logo.png" width ="180"/>
+
+<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/renaissance-reinsurance_logo.jpeg width ="180"/>
+
+
 
 ## Attributions
 OED was developed by a working group of industry practitioners in close collaboration with AIR Worldwide who generously made their CEDE schema available to the industry. 
