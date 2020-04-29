@@ -48,7 +48,6 @@ ODS is governed by a steering committee that meets every quarter and is chaired 
 
 <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/corelogic_logo.png" width ="180"/>
 
-<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/renre_logo.jpeg" width ="180"/>
 
 
 ## Attributions
