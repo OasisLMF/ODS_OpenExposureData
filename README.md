@@ -39,7 +39,7 @@ ODS is governed by a steering committee that meets every quarter and is chaired 
 
 ### **Reinsurers:**
 
-<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/renre_logo.png" width ="180"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/swissRe_logo.png" width ="150"/> 
+<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/renre_logo.png" width ="180"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/renre_logo.png" width ="180"/> 
 
 
 ### **Brokers:**
