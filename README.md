@@ -26,6 +26,14 @@ ODS is governed by a steering committee that meets every quarter and is chaired 
 
 <img src="https://oasislmf.org/packages/oasis_theme_package/themes/oasis_theme/assets/src/oasis-lmf-colour.png" alt="Oasis LMF logo" width="150"/>
 
+<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/AIR_Worldwide's_logo.jpeg" width ="100"/>
+
+<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/GC_logo.jpeg" width ="250"/>
+
+<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/JBA_logo.jpeg" width ="80"/>
+
+
+
 
 
 
