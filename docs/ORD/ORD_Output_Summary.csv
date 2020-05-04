@@ -1,0 +1,36 @@
+﻿ORD - Output Summary,,,,,,,
+,,,,,,,
+"Results can be output at a variety of summary levels, including single-way summaries and multi-way summaries.",,,,,,,
+,,,,,,,
+The way such complexity is represented in ORD is shown in the following example:,,,,,,,
+,,,,,,,
+Consider an analysis run where the following output summaries are selected:,,,,,,,
+,,,,,,,
+Summary 1:,Single way summary of results by OccupancyCode,,,,,,
+Summary 2:,Single way summary of result by ConstructionCode,,,,,,
+Summary 3:,Multi-way summary of results by CountryCode x AreaCode x LOB,,,,,,
+,,,,,,,
+This will be represented is as follows (using mean and SD as a proxy for any kind of results),,,,,,,
+,,,,,,,
+,,,,,,,
+Link file for Summary 1:,,,,,Results files for Summary 1:,,
+,,,,,,,
+SummaryId,OccupancyCode,,,,SummaryId,MeanLoss,SDLoss
+1,1050,,,,1,23,34.5
+2,1150,,,,2,353,529.5
+,,,,,,,
+,,,,,,,
+Link file for Summary 2:,,,,,Results files for Summary 2:,,
+,,,,,,,
+SummaryId,ConstructionCode,,,,SummaryId,MeanLoss,SDLoss
+1,5050,,,,1,234,351
+2,5100,,,,2,467,700.5
+3,5150,,,,3,346,519
+,,,,,,,
+,,,,,,,
+Link file for Summary 3:,,,,,Results files for Summary 3:,,
+,,,,,,,
+SummaryId,CountryCode,AreaCode,LOB,,SummaryId,MeanLoss,SDLoss
+1,US,FL,A,,1,942,1413
+2,US,TX,A,,2,256,384
+3,US,FL,B,,3,390,585
