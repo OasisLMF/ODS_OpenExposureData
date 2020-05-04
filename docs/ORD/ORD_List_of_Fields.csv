@@ -1,0 +1,120 @@
+﻿ORD - List of Fields,,,,,,,
+,,,,,,,
+Category,Table/File,File Format,Proposed Field Name,Current Field Name,Field Name Description,Comment,Additional Field (compared to Oasis)
+Results,"PALT,EPT,PSEPT,MELT,MPLT,SELT,SPLT,QELT,QPLT",csv,SummaryId,summary_id,Summary ID,,
+Results,"PALT,MELT",csv,SampleType,type,Indicator whether mean loss is analytical (SampleType=1) or sampled (SampleType=2),changed from 'type' to be a little less generic,
+Results,"PALT,MELT,MPLT",csv,MeanLoss,mean,Mean loss,,
+Results,"PALT,MELT,MPLT",csv,SDLoss,standard_deviation,Standard Deviation,,
+Results,PALT,csv,SourceExposure,exposure_value,Exposure Value,,
+Results,"MELT,MPLT",csv,FootprintExposure,,Exposure in the event footprint,,Yes
+Results,"SELT,SPLT",csv,ImpactedExposure,,Exposure impacted by the event (where loss > 0),,Yes
+Results,"PSEPT,SELT,SPLT",csv,SampleId,sidx,Sample number,For sample analyses only,
+Results,"EPT, PSEPT",csv,ReturnPeriod,return_period,Return period,,
+Results,"EPT,PSEPT,SELT,SPLT,QELT,QPLT",csv,Loss,loss,Loss,,
+Results,MPLT,csv,SampleType,,Indicator whether mean loss is analytical (SampleType=1) or sampled (SampleType=2),changed from 'type' to be a little less generic,Yes
+Results,"MELT,MPLT,SELT,SPLT,QELT,QPLT",csv,EventId,event_id,Event ID,,
+Results,"MPLT,QPLT,SPLT",csv,Period,period_no,Period No,,
+Results,"MPLT,QPLT,SPLT",csv,Year,occ_year,Occurrence Year,,
+Results,"MPLT,QPLT,SPLT",csv,Month,occ_month,Occurrence Month,,
+Results,"MPLT,QPLT,SPLT",csv,Day,occ_day,Occurrence Day,,
+Results,"MPLT,QPLT,SPLT",csv,Hour,,Occurrence Hour,,Yes
+Results,"MPLT,QPLT,SPLT",csv,Minute,,Occurrence Minute,,Yes
+Results,MELT,csv,EventRate,,Rate representing the summary of the occurrence table event frequency,Need to have some info that defines what it is in how to resample it. To make sure that model results are not misused. Need to say what version it is (could be different views). Could there be a different rate in the model category Events table (e.g. pre-boiling down or pre-simulation rate)?,Yes
+Model,ExtraModelMetaData,json,FrequencyDistribution,,Frequency,"added after discussion in the meeting; extra info for resampling, so that results are not misused. E.g. Negative Binomial, Poisson, Occurrence File",Yes
+Model,ExtraModelMetaData,json,LossUncertaintyDistribution,,Loss Uncertainty,"added after discussion in the meeting; extra info for resampling, so that results are not misused. E.g. Beta, Gamma, Sample table, Quantile table",Yes
+Model,ExtraModelMetaData,json,SeasonalityDistribution,,Seasonality,"added after discussion in the meeting; extra info for resampling, so that results are not misused. E.g. Uniform, Occurrence File",Yes
+Results,"MELT,MPLT",csv,SDLossCor,,Correlated Standard Deviation,,Yes
+Results,"MELT,MPLT",csv,SDLossInd,,Independent Standard Deviation,,Yes
+Results,"QELT,QPLT",csv,Quantile,,Loss Quantile,,Yes
+Results,"SELT,SPLT",csv,ImpactedNumLocs,,Number of locations that have been affected by the event. ,TIVs are defined in various ways in 'ExposureDefinition' tab,Yes
+Results,"MELT,MPLT",csv,MeanImpactedNumLocs,,Mean number of locations that have been affected by the event (across all samples),,Yes
+Results,"MELT,MPLT",csv,MaxImpacted NumLocs,,Max number of locations that have been affected by the event (across all samples). ,,Yes
+Results,"PALT,EPT,PSEPT,MELT,MPLT,SELT,SPLT,QELT,QPLT",csv,PerilCode,,Peril / subperil for which losses are produced,Should this be included in all result files?,Yes
+Results,"PALT,EPT,PSEPT,MELT,MPLT,SELT,SPLT,QELT,QPLT",csv,Coverage,,"Coverage (building, contents, BI or other)",Should this be included in all result files? Should we allow Combined / PD as an output option?,Yes
+Results,"MPLT,QPLT,SPLT",csv,PeriodWeight,,Period Weight: used to give a weighting to periods when simulating.,It is used by one vendor to adjust frequency for some periods which contain rare events.,Yes
+Analysis,AnalysisSettings?,json,AuditTrail?,,,"Catalogue, model version, software version, oasis fm version, time/date of analysis, analyst, analysis settings, output settings, hash / checksums?",Yes
+Analysis,ResultsTableNames,json,ResultsTableNames,,A list of the results table names for this analysis,Neeed a consistent way of linking output files to an analysis,Yes
+Analysis,ExtraModelMetaData,json,ExtraModelMetaDataFiles,,"A list of other files included in the results package (e.g. Model, Occurrence, etc).",,Yes
+Analysis,AnalysisSettings,json,AnalysisID,Analysis_tag,Analysis tag / ID,,
+Analysis,AnalysisSettings,json,AnalysisName,,Analysis name,,Yes
+Analysis,AnalysisSettings,json,ClientName,,Client name,To distinguish multiple RI submissions,Yes
+Analysis,AnalysisSettings,json,ExposureLocation,Exposure_location,Exposure location,,
+Analysis,AnalysisSettings,json,ExposureDBName,,Exposure database name,,Yes
+Analysis,AnalysisSettings,json,SourceExposureFiles,,List of input files (can be different numbers and kinds of files for different models),For Oasis will either be 2 or 4 OED files (no RI or RI). Will vary for other systems.,Yes
+Analysis,AnalysisSettings,json,AggregatedExposureFiles,,List of aggregated exposure files present,,Yes
+Analysis,AnalysisSettings,json,OasisVersion,,,List all version of Oasis components (there will be 6-7 sub-fields),Yes
+Analysis,AnalysisSettings,json,SystemName,,System name,e.g. ModEx,Yes
+Analysis,AnalysisSettings,json,SystemVersion,,System version,,Yes
+Analysis,AnalysisSettings,json,PortfolioSetID,Prog_id,Portfolio set ID,,
+Analysis,AnalysisSettings,json,SourceTag,Source_tag,Source tag,,
+Analysis,AnalysisSettings,json,LossThreshold,LossThreshold,Loss Threshold,For Oasis runs,
+Analysis,AnalysisSettings,json,NumberOfSamples,NumberOfSamples,Number of Samples,For Oasis runs,
+Analysis,AnalysisSettings,json,PerilsRun,PerilsRun,Perils run (including sub-perils),"This can be split and separated with multiple sub-fields. Existing field in analysis_settings.json part of model_settings {""peril_wind"": true}. Field for each sub peril available",
+Analysis,AnalysisSettings,json,NumberOfPeriods,,Number of periods,The total number of periods in an occurrence set,Yes
+Analysis,AnalysisSettings,json,PeriodLength,,Length of each period in years,The length of each period. Will typically be one year (and should defalt to 1 year).,Yes
+Analysis,AnalysisSettings,json,TransformQueued,TransformQueued,Transform queued,Should be separate part of json structure in case do not want to distribute externally.,
+Analysis,AnalysisSettings,json,TransformStart,TransformStart,Transform start,Should be separate part of json structure in case do not want to distribute externally.,
+Analysis,AnalysisSettings,json,TransformFinish,TransformFinish,Transform finish,Should be separate part of json structure in case do not want to distribute externally.,
+Analysis,AnalysisSettings,json,RunQueued,RunQueued,Run time queued,Should be separate part of json structure in case do not want to distribute externally.,
+Analysis,AnalysisSettings,json,RunStart,RunStart,Run time start,Should be separate part of json structure in case do not want to distribute externally.,
+Analysis,AnalysisSettings,json,RunFinish,RunFinish,Run time finish,Should be separate part of json structure in case do not want to distribute externally.,
+Analysis,AnalysisSettings,json,AnalysisCurrency,,Currency of analysis in OED permitted values.,,Yes
+Analysis,AnalysisSettings,json,User,,User who ran the analsysis,Should be separate part of json structure in case do not want to distribute externally.,Yes
+Analysis,AnalysisSettings,json,ScaleFactor,,In case you want to scale results,"Complexity of possibe scale factors means a json structure rather than a single field. Should include factors per coverage, by region, peril, Also subregions, e.g. if we want to discard vulnerability regions in a given model). Question also arises re application to different fin persps, not just GU",Yes
+Analysis,ModelSettings,json,ModelSettings,,"e.g. demand surge, storm leakage, event set (e.g. historic, long term, etc), correlation, etc)","Not a field name, encompases many aspects and is model specific. This should also capture any details needed about the run from any model vendor. E.g. see json file for some fields and structure.",Some
+Analysis,AnalysisSettings,json,Perspective,,"Perspective of loss (e.g. ground-up, gross, net, etc)","These are currently represented in Oasis by highest hierarchical category of ""gul_summaries"", ""il_sumaries"", ""ri_summaries"". existing fields in analysis_settings.json gul_output: true, il_output: true, ri_output: true with corresponding field groups gul_summaries, il_summaries, ri_summaries.",Some
+Analysis,Perspective,json,OutputLevel,OutputLevel,"Indicator what level outut has been run (e.g. AccNumber, PolNumber, PortNumber, LocNumber, AreaCode, LOB, etc)","For Oasis runs; e.g. called ""oed_fields"" in json example. It's a comma separated list of fields to which results are aggregated. existing fields in analysis_settings.json within perspective eg gul_summaries{oed_fields:[""peril_id""] and id:1}",
+Analysis,Perspective,json,AAL,AAL,"Indicator, whether AAL has been run",existing fields in analysis_settings.json within perspective and output level. aalcalc:true,
+Analysis,Perspective,json,AEP,AEP,"Indicator, whether AEP has been run","existing fields in analysis_settings.json within perspective, output level and lec_output. full_uncertainty_aep:true",
+Analysis,Perspective,json,OEP,OEP,"Indicator, whether OEP has been run","existing fields in analysis_settings.json within perspective, output level and lec_output. full_uncertainty_oep:true",
+Analysis,Perspective,json,PerSampleAEP,PerSampleAEP,"Indicator, whether per sample AEP has been run","existing fields in analysis_settings.json within perspective, output level and lec_output. wheatsheaf_aep:true",
+Analysis,Perspective,json,PerSampleOEP,PerSampleOEP,"Indicator, whether per sample OEP has been run","existing fields in analysis_settings.json within perspective, output level and lec_output. wheatsheaf_oep:true",
+Analysis,Perspective,json,ELT,ELT,"Indicator, whether ELT has been run","existing fields in analysis_settings.json within perspective, output level. eltcalc:true",
+Analysis,Perspective,json,PLT,PLT,"Indicator, whether PLT has been run","existing fields in analysis_settings.json within perspective, output level. pltcalc:true",
+Analysis,Perspective,json,Samples,Samples,"Indicator, whether Samples have been run","existing fields in analysis_settings.json within perspective, output level. samples:true",
+Analysis,Perspective,json,SampleMeanAEP,SampleMeanAEP,,"existing fields in analysis_settings.json within perspective, output level and lec_output. sample_mean_aep:true",
+Analysis,Perspective,json,SampleMeanOEP,SampleMeanOEP,,"existing fields in analysis_settings.json within perspective, output level and lec_output. sample_mean_oep:true",
+Analysis,Perspective,json,PerSampleMeanAEP,PerSampleMeanAEP,Keep to future proof in case clients want this,"existing fields in analysis_settings.json within perspective, output level and lec_output. wheatsheaf_mean_aep:true",
+Analysis,Perspective,json,PerSampleMeanOEP,PerSampleMeanOEP,Keep to future proof in case clients want this,"existing fields in analysis_settings.json within perspective, output level and lec_output. wheatsheaf_mean_oep:true",
+Model,Events,csv,EventId,,Event ID,,Yes
+Model,Events,csv,EventDescription,,Event description,,Yes
+Model,Events,csv,EventRate,,Rate representing the underlying fundamental model developer rate?,,Yes
+Model,Events,csv,EventMetaData,,a list of event meta data (e.g. wind speed or PGA). It will be peril (and possibly vendor) specific.,,Yes
+Model,"ExtraModelMetaData, AnalysisSettings",json,ModelName,,Model Name,,Yes
+Model,"ExtraModelMetaData, AnalysisSettings",json,ModelVersion,,Model Version,,Yes
+Model,ExtraModelMetaData,json,ReleasedOn,,Model released on (date),,Yes
+Model,ExtraModelMetaData,json,Vendor,,Vendor,Vendor specified,Yes
+Model,ExtraModelMetaData,json,Region,,ModeL region where losses are produced,Vendor specified,Yes
+Model,ExtraModelMetaData,json,Peril,,"Wide category of peril, e.g. Wind, flood, quake, etc that model produces losses",Vendor specified,Yes
+Model,Occurrence,csv,Year,,Occurrence Year,,Yes
+Model,Occurrence,csv,Month,,Occurrence Month,,Yes
+Model,Occurrence,csv,Day,,Occurrence Day,,Yes
+Model,Occurrence,csv,Hour,,Occurrence Hour,,Yes
+Model,Occurrence,csv,Minute,,Occurrence Minute,,Yes
+Model,Occurrence,csv,OccID,,Occurrence ID,,Yes
+Model,"Occurrence, Periods",csv,Period,,Period No,,Yes
+Model,Periods,csv,PeriodWeight,,Period Weight,"It is used by some model vendors, which is used to adjust some very rare events.",Yes
+Exposure,Exposure,csv,SummaryId,,Summary ID,By peril?,Yes
+Exposure,Exposure,csv,Coverage,,"Coverage (building, contents, BI or other)",By peril?,Yes
+Exposure,Exposure,csv,SourceExposure,,Source Exposure,By peril?,Yes
+Exposure,Exposure,csv,SourceNumLocs,,Source number of locations,By peril?,Yes
+Results,"DOMEXP,REJEXP",csv,SummaryId,,Summary ID,,Yes
+Results,"DOMEXP,REJEXP",csv,SourceExposure,,Source exposure,"This will include exposures split by error (e.g. ValidAreaPerilInvalidVuln, InvalidAreaPerilValidVuln, InvalidAreaPerilInvalidVuln)",Yes
+Results,"DOMEXP,REJEXP,PALT",csv,SourceNumLocs,,Source number of locations,,Yes
+Results,DOMEXP,csv,DomainExposure,,Domain exposure,,Yes
+Results,DOMEXP,csv,DomainNumLocs,,Domain number of locations,,Yes
+Results,DOMEXP,csv,SecModExposure,,Exposure with at least one secondary modifier,,Yes
+Results,DOMEXP,csv,SecModNumLocs,,Number of locations with at least one secondary modifier,,Yes
+Results,ELOG,csv,PortNumber,,Portfolio number,For exposure,Yes
+Results,ELOG,csv,AccNumber,,Account number,For exposure,Yes
+Results,ELOG,csv,LocNumber,,Location number,For exposure,Yes
+Results,ELOG,csv,Coverage,,Coverage,For exposure,Yes
+Results,ELOG,csv,PerilCode,,Peril code,For exposure,Yes
+Results,"ELOG,REJEXP",csv,ErrorMessage,,Error message,For exposure,Yes
+Results,"MELT, MPLT",csv,ChanceOfLoss,,Probability of non-zero loss,Could be defined analytically and from sample data.,Yes
+Results,"MELT, MPLT",csv,MaxLoss,,Highest point of event loss on probability distribution ,Not applicable for mean DR (SampleType = 1),Yes
+Results,"MELT,MPLT",csv,MeanImpactedExposure,,Mean exposure that has been affected by the event (across all samples),,Yes
+Results,"MELT,MPLT",csv,MaxImpacted Exposure,,Max exposure that has been affected by the event (across all samples). ,,Yes
+Results,"MELT,MPLT",csv,FootprintNumLocs,,Number of locations in the event footprint,,Yes
+Results,"EPT, PSEPT",csv,EPType,,"Describes type of EP curve: 1 = OEP, 2 = AEP, 3 = OEP TVAR, 4 = AEP TVAR",,
+Results,EPT,csv,EPCalc,,"Describes calculation method for EP curve: 1=Full, 2=PerSampleMean, 3=MeanDR, 4=MeanSample",,
