@@ -45,9 +45,12 @@ ODS is governed by a steering committee that meets every quarter and is chaired 
 <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/bms_logo.jpeg" width ="100"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/GuyCarp_logo.png" width ="280"/>
 
 
-### *Market:*
+### *Market & Data:*
  
-<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/Lloyds_logo.png" width ="140"/>
+<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/Lloyds_logo.png" width="150"/>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img
+src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/perils_ag_logo.png" width="230"/>
+
 
 
 ## Attributions
