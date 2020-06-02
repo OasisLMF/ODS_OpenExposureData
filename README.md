@@ -1,4 +1,4 @@
-<img src="https://oasislmf.org/packages/oasis_theme_package/themes/oasis_theme/assets/src/oasis-lmf-colour.png" alt="Oasis LMF logo" width="210"/> 
+<img src="images/Oasis_LOGO.png" width="210"/> 
 
 # Open Data Standards (ODS)
 ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Committee (SC) which consists of attendees from (re)insurers, brokers and cat model vendors. 
@@ -23,7 +23,7 @@ ORD will be implemented by the Oasis Loss Modelling Framework during 2020 and al
 
 ODS is governed by a steering committee that meets every quarter and is chaired by Oasis LMF. The committee is made up of representatives from the following companies:
 
-<img src="https://oasislmf.org/packages/oasis_theme_package/themes/oasis_theme/assets/src/oasis-lmf-colour.png" alt="Oasis LMF logo" width="210"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/NASDAQ_logo.png" width ="160" />
+<img src="images/Oasis_LOGO.png" width="210"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/NASDAQ_logo.png" width ="160" />
 
 
 ### *Cat Model Vendors:*
