@@ -1,4 +1,5 @@
-<img src="https://oasislmf.org/packages/oasis_theme_package/themes/oasis_theme/assets/src/oasis-lmf-colour.png" alt="Oasis LMF logo" width="250"/>
+<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/OASIS_LMF_COLOUR.png" 
+width="80" />
 
 # Open Data Standards (ODS)
 ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Committee (SC) which consists of attendees from (re)insurers, brokers and cat model vendors. 
@@ -50,7 +51,8 @@ ODS is governed by a steering committee that meets every quarter and is chaired 
  
 <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/Lloyds_logo.png" width="150"/>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img
-src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/perils_ag_logo.png" width="230"/>
+src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/perils_ag_logo.png" width="250"/>
+
 
 
 ## Attributions
