@@ -23,34 +23,34 @@ ORD will be implemented by the Oasis Loss Modelling Framework during 2020 and al
 
 ODS is governed by a steering committee that meets every quarter and is chaired by Oasis LMF. The committee is made up of representatives from the following companies:
 
-<img src="https://oasislmf.org/packages/oasis_theme_package/themes/oasis_theme/assets/src/oasis-lmf-colour.png" alt="Oasis LMF logo" width="210"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/NASDAQ_logo.png" width ="160" />
+<img src="https://oasislmf.org/packages/oasis_theme_package/themes/oasis_theme/assets/src/oasis-lmf-colour.png" alt="Oasis LMF logo" width="210"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/NASDAQ_logo.png" width ="160" />
 
 
 ### *Cat Model Vendors:*
 
-<img src="images/corelogic_logo.png" width ="200"/>&nbsp; &nbsp; &nbsp; <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/AIR_Worldwide's_logo.jpeg" width ="100"/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/JBA_logo.jpeg" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/IF_Logo.png" width ="150"/>
+<img src="images/corelogic_logo.png" width ="200"/>&nbsp; &nbsp; &nbsp; <img src="images/AIR_Worldwide's_logo.jpeg" width ="100"/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/JBA_logo.jpeg" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/IF_Logo.png" width ="150"/>
 
 
 ### *Insurers:*
 
-<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/zurich_logo.png" width ="130"/>    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/ascot_logo.png" width ="90"/>
+<img src="images/zurich_logo.png" width ="130"/>    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/ascot_logo.png" width ="90"/>
 
 
 ### *Reinsurers:*
 
-<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/renre_logo.png" width ="180"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/SwissRe_logo.jpg" width ="180"/>
+<img src="images/renre_logo.png" width ="180"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/SwissRe_logo.jpg" width ="180"/>
 
 
 ### *Brokers:*
 
-<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/bms_logo.jpeg" width ="100"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/GuyCarp_logo.png" width ="280"/>
+<img src="images/bms_logo.jpeg" width ="100"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/GuyCarp_logo.png" width ="280"/>
 
 
 ### *Market & Data:*
  
-<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/Lloyds_logo.png" width="150"/>
+<img src="images/Lloyds_logo.png" width="150"/>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img
-src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/perils_ag_logo.png" width="250"/>
+src="images/perils_ag_logo.png" width="250"/>
 
 
 
