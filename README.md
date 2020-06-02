@@ -23,7 +23,7 @@ ORD will be implemented by the Oasis Loss Modelling Framework during 2020 and al
 
 ODS is governed by a steering committee that meets every quarter and is chaired by Oasis LMF. The committee is made up of representatives from the following companies:
 
-<img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/OASIS_LMF_COLOUR.png" width ="100"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/NASDAQ_logo.png" width ="160" />
+<img src="https://oasislmf.org/packages/oasis_theme_package/themes/oasis_theme/assets/src/oasis-lmf-colour.png" alt="Oasis LMF logo" width="250"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/MattDonovan82/OpenDataStandards/blob/feature/doc_upgrade/images/NASDAQ_logo.png" width ="160" />
 
 
 ### *Cat Model Vendors:*
