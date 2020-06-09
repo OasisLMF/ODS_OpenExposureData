@@ -45,9 +45,12 @@ ODS is governed by a steering committee that meets every quarter and is chaired 
 <img src="images/bms_logo.jpeg" width="100" /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/GuyCarp_logo.png" width="280" />
 
 
-### *Market:*
+### *Market & Data:*
+
+<img src="images/Lloyds_logo.png" width="150"/>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img
+src="images/perils_ag_logo.png" width="250"/>
  
-<img src="images/Lloyds_logo.png" width="140" />
 
 
 ## Attributions
