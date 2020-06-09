@@ -1,0 +1,44 @@
+﻿DB table PerilCode,Peril Description,Input format abbreviation,Grouped PerilCode,,For filtering:
+1,Earthquake - Shake only,QEQ,No,,b = fire
+2,Fire Following,QFF,No,,o = flood
+4,Tsunami,QTS,No,,q = quake
+8,Sprinkler Leakage,QSL,No,,"x = convective storm (e.g. hail, tornado, etc.)"
+16,Landslide,QLS,No,,z = winterstorm
+32,Liquefaction,QLF,No,,"w = wind (e.g. tropical cyclone, etc.)"
+64,Tropical Cyclone,WTC,No,,m = terrorism
+128,Extra Tropical Cyclone,WEC,No,,
+256,Storm Surge,WSS,No,,
+512,River / Fluvial Flood,ORF,No,,
+1024,Flash / Surface / Pluvial Flood,OSF,No,,
+2048,Straight-line wind,XSL,No,,
+4096,Tornado,XTD,No,,
+8192,Hail,XHL,No,,
+16384,Snow,ZSN,No,,
+32768,Ice,ZIC,No,,
+65536,Freeze,ZFZ,No,,
+131072,NonCat,BFR,No,,
+262144,Wildfire / Bushfire,BBF,No,,
+524288,NBCR Terrorism,MNT,No,,
+1048576,Conventional Terrorism,MTR,No,,
+2097152,Lightning,XLT,No,,
+4194304,Winterstorm Wind,ZST,No,,
+8388608,Smoke,BSK,No,,
+63,All EQ perils,QQ1,Yes,,
+192,Windstorm w/o storm surge,WW2,Yes,,
+448,Windstorm with storm surge,WW1,Yes,,
+1536,Flood w/o storm surge,OO1,Yes,,
+1572864,Terrorism,MM1,Yes,,
+2111488,Convective Storm,XX1,Yes,,
+4308992,Winter storm,ZZ1,Yes,,
+6420480,Convective storm (incl winter storm),XZ1,Yes,,
+8650752,Wildfire with smoke,BB1,Yes,,
+16777215,All perils,AA1,Yes,,
+,,,,,
+,,,,,
+Examples of combining peril codes:,,,,,
+,,,,,
+DB table PerilCode,Peril description,Input format abbreviation,,,
+15,EQ with Fire Following and tsunami with Sprinkler Leakage,QEQ;QFF;QTS;QSL,,,
+7,EQ with Fire Following and tsunami without Sprinkler Leakage,QEQ;QFF;QTS,,,
+448,Windstorm (ETC + TC) with Storm Surge,WTC;WEC; WSS,,,
+16777215,All perils covered,AA1,,,
