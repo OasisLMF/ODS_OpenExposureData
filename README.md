@@ -15,11 +15,11 @@ OED is directly supported by the Oasis Loss Modelling Framework.
 ## Open Results Data (ORD)
 
 ORD was initially developed during the Lloyd's Lab innovation project in November 2019 by a working group focussed on constructing model agnostic results formats and approriate data formats. 
-These model outputs will cover an extensive suite of results that can be isoloated by asepcts of the exposure data, financial and statistical perspectives. Working documents can be found in the docs folder.
+These model outputs will cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. Working documents can be found in the docs folder.
 
 ORD will be implemented by the Oasis Loss Modelling Framework during 2020 and all updates and progress will be located in this repo. 
 
-## Governence
+## Governance
 
 ODS is governed by a steering committee that meets every quarter and is chaired by Oasis LMF. The committee is made up of representatives from the following companies:
 
