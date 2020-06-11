@@ -43,7 +43,7 @@ ODS is governed by a steering committee that meets every quarter and is chaired 
 
 ### *Brokers:*
 
-<img src="images/Willis_logo.jpeg" width ="200"/> &nbsp; &nbsp; <img src="images/Aon_logo.jpeg" width ="200" /> &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; <img src="images/bms_logo.jpeg" width ="130"/> &nbsp; &nbsp; &nbsp; <img src="images/GuyCarp_logo.png" width ="280"/>
+<img src="images/Willis_logo.jpeg" width ="200"/> &nbsp; <img src="images/Aon_logo.jpeg" width ="200" /> &nbsp;  &nbsp; &nbsp; &nbsp; <img src="images/bms_logo.jpeg" width ="130"/> &nbsp; &nbsp; <img src="images/GuyCarp_logo.png" width ="280"/>
 
 
 ### *Market & Data:*
