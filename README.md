@@ -82,6 +82,7 @@ All new work will be captured as issues in this repository. Any GitHub user can 
 
 **Minor Features:** These are minor work items that will not cause breaking changes. An example of a minor feature would be the inclusion of a new location attribute with a default value.  Minor features must be approved, by email, by two members of the steering committee before being addressed by the maintenance team. If approval is not given, or an objection is raised by a member of the steering committee, then the feature will be reviewed at the next a steering committee meeting.
 
+&nbsp;
 
 ### *Documentation Updates:* 
 
