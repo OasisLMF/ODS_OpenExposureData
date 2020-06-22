@@ -67,7 +67,7 @@ All the assets that define ODS will be managed in this GitHub repository. Minor 
     
    * **MINOR** version when you add functionality in a backwards compatible manner e.g. adding a new column with a default     value, adding a new allowed value for an existing field.
     
-   * **PATCH** version when you make backwards compatible bug fixes e.g. correctly a typo in a column label.
+   * **PATCH** version when you make backwards compatible bug fixes e.g. correcting a typo in a column label.
    
    
 All new work will be done in **feature** branches, following the GitFlow model (https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master** branch and the current development work will be in develop or specific feature branches.
