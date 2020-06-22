@@ -19,7 +19,7 @@ These model outputs will cover an extensive suite of results that can be isolate
 
 ORD will be implemented by the Oasis Loss Modelling Framework during 2020 and all updates and progress will be located in this repo. 
 
-## Governance
+## Governance Structure
 
 ODS is governed by a steering committee that meets every quarter and is chaired by Oasis LMF. The committee is made up of representatives from the following companies:
 
@@ -52,6 +52,46 @@ ODS is governed by a steering committee that meets every quarter and is chaired 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img
 src="images/perils_ag_logo.png" width="250"/>
 
+
+The main functions of this steering committee are to own the design of the data standards, make decisions about the technical implementation and prioritise work. Working groups may be formed from time to time to manage the design of a new major feature.
+
+The ***maintenance group*** will maintain and update the assets that define the data standards. In the first instance, Oasis LMF will provide the maintainers, though this could be extended to include members of the user community.
+
+&nbsp;
+
+### *Releases*
+
+All the assets that define ODS will be managed in this GitHub repository. Minor releases will occur on a quarterly basis and will be backward compatible, and major releases will occur on an annual basis and require a change management process. The releases will follow the SemVer convention ( https://semver.org/), so given a version number MAJOR.MINOR.PATCH, increment the:
+
+   * **MAJOR** version when you make incompatible changes e.g. changing column names, changing the structure of the data.
+    
+   * **MINOR** version when you add functionality in a backwards compatible manner e.g. adding a new column with a default     value, adding a new allowed value for an existing field.
+    
+   * **PATCH** version when you make backwards compatible bug fixes e.g. correctly a typo in a column label.
+   
+   
+All new work will be done in **feature** branches, following the GitFlow model (https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master** branch and the current development work will be in develop or specific feature branches.
+
+&nbsp;
+
+### *Tracking*
+
+All new work will be captured as issues in this repository. Any GitHub user can raise an issue and the maintenance group will classify as:
+
+**Major Features:** These are major work items that will require significant work and may cause breaking changes. An example of a major feature would be extension to a new class of business.  All major features will be reviewed during a steering committee meeting.
+
+**Minor Features:** These are minor work items that will not cause breaking changes. An example of a minor feature would be the inclusion of a new location attribute with a default value.  Minor features must be approved, by email, by two members of the steering committee before being addressed by the maintenance team. If approval is not given, or an objection is raised by a member of the steering committee, then the feature will be reviewed at the next a steering committee meeting.
+
+
+### *Documentation Updates:* 
+
+These can be actioned directly by the maintenance group.
+
+### *Bugs:* 
+
+These can be actioned directly by the maintenance group, assuming they do not cause a breaking change.
+
+&nbsp; &nbsp; 
 
 
 ## Attributions
