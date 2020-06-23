@@ -1,3 +1,5 @@
+Steering Committee Members:
+
 <img src="images/Oasis_LOGO.png" width="180"/> <img src="images/NASDAQ_logo.png" width ="120" /> &nbsp; 
 <img src="images/corelogic_logo.png" width ="160"/>&nbsp; &nbsp; &nbsp; &nbsp; 
 <img src="images/AIR_Worldwide's_logo.jpeg" width ="80"/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
@@ -57,9 +59,6 @@ The main functions of this steering committee are to own the design of the data 
 
 The ***maintenance group*** will maintain and update the assets that define the data standards. In the first instance, Oasis LMF will provide the maintainers, though this could be extended to include members of the user community.
 
-&nbsp;
-
-
 
 ### *Releases*
 
@@ -74,7 +73,6 @@ All the assets that define ODS will be managed in this GitHub repository. Minor 
    
 All new work will be done in **feature** branches, following the GitFlow model (https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master** branch and the current development work will be in develop or specific feature branches.
 
-&nbsp;
 
 ### *Tracking*
 
@@ -84,7 +82,6 @@ All new work will be captured as issues in this repository. Any GitHub user can 
 
 **Minor Features:** These are minor work items that will not cause breaking changes. An example of a minor feature would be the inclusion of a new location attribute with a default value.  Minor features must be approved, by email, by two members of the steering committee before being addressed by the maintenance team. If approval is not given, or an objection is raised by a member of the steering committee, then the feature will be reviewed at the next a steering committee meeting.
 
-&nbsp;
 
 ### *Documentation Updates:* 
 
