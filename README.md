@@ -91,8 +91,6 @@ These can be actioned directly by the maintenance group.
 
 These can be actioned directly by the maintenance group, assuming they do not cause a breaking change.
 
-&nbsp; 
-
 
 ## Attributions
 OED was developed by a working group of industry practitioners in close collaboration with AIR Worldwide who generously made their CEDE schema available to the industry. 
