@@ -26,14 +26,21 @@ The two main aspects of ODS are the Open Exposure Data and the Open Results Data
     
 The aim of OED is to provide the industry with a robust, open and transparent data format. 
 This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors.
-OED is a model agnostic data format that comprises of four input files (Acc, Loc, RI Scope, RI Info).
-A SQL Server schema is also available.
+OED is a model agnostic data format that comprises of four input files (Acc, Loc, RI Scope, RI Info). Detailed descriptions of each data field are covered in the **'Open Exposure Data Spec.xlsx'** while the **'Open Exposure Data'** (.pdf) is a detailed document outlining the multiple sections of the OED. There are also multiple examples of how to code financial structures in the input files. Both documents are located:
+
+https://github.com/OasisLMF/OpenDataStandards/tree/feature/doc_upgrade/OpenExposureData/Docs
+
+A SQL Server schema and supporting scripts are available at the location below:
+
+https://github.com/OasisLMF/OpenDataStandards/tree/feature/doc_upgrade/OpenExposureData/SQL%20Scripts
+
+
 OED is directly supported by the Oasis Loss Modelling Framework.
 
 ## Open Results Data (ORD)
 
 ORD was initially developed during the Lloyd's Lab innovation project (cohort 3) in November 2019 by a working group focussed on constructing model agnostic results formats and approriate data formats. 
-These model outputs will cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. Working documents can be found in the docs folder.
+These model outputs will cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. Working documents can be found in the schema and docs folder.
 
 ORD will be implemented by the Oasis Loss Modelling Framework during 2020 and all updates and progress will be located in this repo. 
 
