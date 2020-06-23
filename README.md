@@ -1,9 +1,9 @@
 Steering Committee Members:
 
-<img src="images/Oasis_LOGO.png" width="180"/> <img src="images/NASDAQ_logo.png" width ="120" /> &nbsp; 
+<img src="images/Oasis_LOGO.png" width="150"/> <img src="images/NASDAQ_logo.png" width ="120" /> &nbsp; 
 <img src="images/corelogic_logo.png" width ="160"/>&nbsp; &nbsp; &nbsp; 
 <img src="images/AIR_Worldwide's_logo.jpeg" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-<img src="images/JBA_logo.jpeg" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<img src="images/JBA_logo.jpeg" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 <img src="images/IF_Logo.png" width ="130"/> &nbsp; 
 <img src="images/zurich_logo.png" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; 
 <img src="images/ascot_logo.png" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp; 
@@ -37,7 +37,7 @@ These model outputs will cover an extensive suite of results that can be isolate
 
 ORD will be implemented by the Oasis Loss Modelling Framework during 2020 and all updates and progress will be located in this repo. 
 
-## Governance: Steering Committee
+## Governance
 
 ODS is governed by a steering committee that meets every quarter and is chaired by Oasis LMF. The committee is made up of representatives from the following companies:
 
