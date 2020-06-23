@@ -1,4 +1,20 @@
-<img src="images/Oasis_LOGO.png" width="250"/> 
+<img src="images/Oasis_LOGO.png" width="180"/> <img src="images/NASDAQ_logo.png" width ="120" /> &nbsp; 
+<img src="images/corelogic_logo.png" width ="160"/>&nbsp; &nbsp; &nbsp; &nbsp; 
+<img src="images/AIR_Worldwide's_logo.jpeg" width ="80"/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<img src="images/JBA_logo.jpeg" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<img src="images/IF_Logo.png" width ="130"/>
+<img src="images/zurich_logo.png" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; 
+<img src="images/ascot_logo.png" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp; 
+<img src="images/renre_logo.png" width ="120"/> &nbsp; &nbsp; &nbsp; &nbsp; 
+<img src="images/SwissRe_logo.jpg" width ="120"/> 
+<img src="images/Willis_logo.jpeg" width ="110"/> 
+<img src="images/Aon_logo.jpeg" width ="120" /> &nbsp; &nbsp; 
+<img src="images/bms_logo.jpeg" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp;
+<img src="images/GuyCarp_logo.png" width ="200"/> &nbsp; &nbsp; &nbsp;
+<img src="images/Lloyds_logo.png" width="100"/> &nbsp; &nbsp; &nbsp; &nbsp;
+<img src="images/perils_ag_logo.png" width="160"/>
+
+&nbsp; 
 
 # Open Data Standards (ODS)
 ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Committee (SC) which consists of attendees from (re)insurers, brokers and cat model vendors. 
@@ -19,45 +35,31 @@ These model outputs will cover an extensive suite of results that can be isolate
 
 ORD will be implemented by the Oasis Loss Modelling Framework during 2020 and all updates and progress will be located in this repo. 
 
-## Governance Structure
+## Governance: Steering Committee
 
 ODS is governed by a steering committee that meets every quarter and is chaired by Oasis LMF. The committee is made up of representatives from the following companies:
 
-<img src="images/Oasis_LOGO.png" width="250"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/NASDAQ_logo.png" width ="160" />
+**Technology:** Nasdaq
 
+**Cat Model Vendors:** Corelogic, AIR Worldwide, JBA Risk Management, Impact Forecasting
 
-### *Cat Model Vendors:*
+**Insurers:** Zurich, Ascot
 
-<img src="images/corelogic_logo.png" width ="200"/>&nbsp; &nbsp; &nbsp; <img src="images/AIR_Worldwide's_logo.jpeg" width ="100"/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/JBA_logo.jpeg" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/IF_Logo.png" width ="150"/>
+**Reinsurers:** Renaissance Re, Swiss Re 
 
+**Brokers:** Aon, Willis Towers Watson, Guy Carpenter, BMS
 
-### *Insurers:*
+**Market & Data:** Lloyd's of London, Perils AG
 
-<img src="images/zurich_logo.png" width ="130"/>    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/ascot_logo.png" width ="90"/>
-
-
-### *Reinsurers:*
-
-<img src="images/renre_logo.png" width ="180"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/SwissRe_logo.jpg" width ="180"/>
-
-
-### *Brokers:*
-
-<img src="images/Willis_logo.jpeg" width ="200"/> <img src="images/Aon_logo.jpeg" width ="200" /> &nbsp; &nbsp; <img src="images/bms_logo.jpeg" width ="130"/> &nbsp; &nbsp; &nbsp; &nbsp;<img src="images/GuyCarp_logo.png" width ="280"/>
-
-
-### *Market & Data:*
+&nbsp;
  
-<img src="images/Lloyds_logo.png" width="150"/>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img
-src="images/perils_ag_logo.png" width="250"/>
-
-
 The main functions of this steering committee are to own the design of the data standards, make decisions about the technical implementation and prioritise work. Working groups may be formed from time to time to manage the design of a new major feature.
 
 The ***maintenance group*** will maintain and update the assets that define the data standards. In the first instance, Oasis LMF will provide the maintainers, though this could be extended to include members of the user community.
 
 &nbsp;
+
+
 
 ### *Releases*
 
