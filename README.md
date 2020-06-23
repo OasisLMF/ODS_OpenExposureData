@@ -49,7 +49,7 @@ ODS is governed by a steering committee that meets every quarter and is chaired 
 
 **Reinsurers:** Renaissance Re, Swiss Re 
 
-**Brokers:** Aon, Willis Towers Watson, Guy Carpenter, BMS
+**Brokers:** Willis Towers Watson, Aon, BMS, Guy Carpenter
 
 **Market & Data:** Lloyd's of London, Perils AG
 
