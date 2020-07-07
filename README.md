@@ -1,3 +1,5 @@
+Latest version of OED is 1.1.2
+
 Steering Committee Members:
 
 <img src="images/Oasis_LOGO.png" width="150"/> <img src="images/NASDAQ_logo.png" width ="120" /> &nbsp; 
