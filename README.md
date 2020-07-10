@@ -34,10 +34,6 @@ Detailed descriptions of each data field are covered in the **'Open Exposure Dat
 
 https://github.com/OasisLMF/OpenDataStandards/tree/feature/doc_upgrade/OpenExposureData/Docs
 
-A SQL Server schema and supporting scripts are available at the location below:
-
-https://github.com/OasisLMF/OpenDataStandards/tree/feature/doc_upgrade/OpenExposureData/SQL%20Scripts
-
 
 OED is directly supported by the Oasis Loss Modelling Framework.
 
