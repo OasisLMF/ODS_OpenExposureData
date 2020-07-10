@@ -35,6 +35,8 @@ Detailed descriptions of each data field are covered in the **'Open Exposure Dat
 https://github.com/OasisLMF/OpenDataStandards/tree/feature/doc_upgrade/OpenExposureData/Docs
 
 
+**MS SQL:** An MS SQL schema was originally developed with OED. However, it is not considered the most appropriate technology to use with ODS and although it can continue to be used, it will longer be supported or maintained. A more extenisble and flexible technology for ODS is being considered.
+
 OED is directly supported by the Oasis Loss Modelling Framework.
 
 ## Open Results Data (ORD)
