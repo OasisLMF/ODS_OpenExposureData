@@ -1,4 +1,5 @@
-Latest version of OED is 1.1.2
+***Latest version of OED is 1.1.2*** 
+&nbsp;
 
 Steering Committee Members:
 
@@ -18,7 +19,6 @@ Steering Committee Members:
 <img src="images/Lloyds_logo.png" width="100"/> &nbsp; &nbsp; 
 <img src="images/perils_ag_logo.png" width="160"/>
 
-&nbsp; 
 
 # Open Data Standards (ODS)
 ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Committee (SC) which consists of attendees from (re)insurers, brokers and cat model vendors. 
