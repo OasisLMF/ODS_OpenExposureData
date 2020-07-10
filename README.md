@@ -54,7 +54,7 @@ ODS is governed by a steering committee that meets every quarter and is chaired 
 
 **Cat Model Vendors:** Corelogic, AIR Worldwide, JBA Risk Management, Impact Forecasting
 
-**Insurers:** Zurich, Ascot
+**Insurers:** Zurich, Ascot Underwriting
 
 **Reinsurers:** Renaissance Re, Swiss Re 
 
