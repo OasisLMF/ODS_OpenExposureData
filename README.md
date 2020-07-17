@@ -24,6 +24,8 @@ Steering Committee Members:
 ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Committee (SC) which consists of attendees from (re)insurers, brokers and cat model vendors. 
 The two main aspects of ODS are the Open Exposure Data and the Open Results Data. 
 
+**ODS Implementation into Oasis:** Oasis LMF are continuously expanding the ODS functionality they support on their platform, especially in their financial module (FM). The tracking of this work can be found here: https://github.com/orgs/OasisLMF/projects/5.
+
 ## Open Exposure Data (OED)
     
 The aim of OED is to provide the industry with a robust, open and transparent data format. 
@@ -87,8 +89,6 @@ All new work will be captured as issues in this repository. Any GitHub user can 
 **Major Features:** These are major work items that will require significant work and may cause breaking changes. An example of a major feature would be extension to a new class of business.  All major features will be reviewed during a steering committee meeting.
 
 **Minor Features:** These are minor work items that will not cause breaking changes. An example of a minor feature would be the inclusion of a new location attribute with a default value.  Minor features must be approved, by email, by two members of the steering committee before being addressed by the maintenance team. If approval is not given, or an objection is raised by a member of the steering committee, then the feature will be reviewed at the next a steering committee meeting.
-
-**Project Board:** There is a project board called 'ODS into the Oasis FM' which tracks the progress of the ODS functionas still to be implemented into the Oasis financial model (FM).
 
 
 ### *Documentation Updates:* 
