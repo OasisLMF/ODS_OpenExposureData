@@ -34,10 +34,7 @@ Detailed descriptions of each data field are covered in the **'Open Exposure Dat
 
 https://github.com/OasisLMF/OpenDataStandards/tree/feature/doc_upgrade/OpenExposureData/Docs
 
-
-**MS SQL:** An MS SQL schema was originally developed with OED. However, it is not considered to be the most appropriate technology to use with ODS and although it can continue to be used, it will no longer be supported or maintained. A more extensible and flexible technology for ODS is being considered.
-
-OED is directly supported by the Oasis Loss Modelling Framework.
+OED is the exposure dats input supported by the Oasis Loss Modelling Framework and by all models deployed in Oasis.
 
 ## Open Results Data (ORD)
 
@@ -50,7 +47,7 @@ ORD will be implemented by the Oasis Loss Modelling Framework during 2020 and al
 
 ODS is governed by a steering committee that meets every quarter and is chaired by Oasis LMF. The committee is made up of representatives from the following companies:
 
-**Technology:** Nasdaq
+**Technology Providers:** Nasdaq
 
 **Cat Model Vendors:** Corelogic, AIR Worldwide, JBA Risk Management, Impact Forecasting
 
