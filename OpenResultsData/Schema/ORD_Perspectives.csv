@@ -1,0 +1,16 @@
+﻿ORD - Perspective Options,
+,
+Perspective,ResultsPerspective
+0,Ground-up
+1,Gross
+2,Net of all reinsurance
+3,FAC reinsurance
+4,QS reinsurance
+5,SS reinsurance
+6,PR reinsurance
+7,CAT XL reinsurance
+8,Client loss
+9,Overlimit loss
+10,Reinsurance Loss
+11,Net of all Fac
+12,"Net of Fac, PR, QS and SS?"
