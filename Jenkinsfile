@@ -8,6 +8,7 @@ node {
         [$class: 'StringParameterDefinition',  name: 'ODS_BRANCH', defaultValue: BRANCH_NAME],
         [$class: 'StringParameterDefinition',  name: 'PUBLISH_VERSION', defaultValue: ''],
         [$class: 'BooleanParameterDefinition', name: 'PUBLISH', defaultValue: Boolean.valueOf(false)],
+        [$class: 'BooleanParameterDefinition', name: 'AUTO_MERGE', defaultValue: Boolean.valueOf(true)],
         [$class: 'BooleanParameterDefinition', name: 'SLACK_MESSAGE', defaultValue: Boolean.valueOf(false)]
       ])
     ])
@@ -42,7 +43,25 @@ node {
         if(params.PUBLISH){
             stage('Publish: OpenDataStandards') {
                 dir(ods_dir) {
-                    // Code here 
+                    sshagent (credentials: [git_creds]) {
+                        sh "git tag ${env.TAG_RELEASE}"
+                        sh "git push origin ${env.TAG_RELEASE}"
+                    }
+
+                    // Create Release
+                    withCredentials([string(credentialsId: 'github-api-token', variable: 'gh_token')]) {
+                        String repo = "OasisLMF/OpenDataStandards"
+
+                        def json_request = readJSON text: '{}'
+                        json_request['tag_name'] = env.TAG_RELEASE
+                        json_request['target_commitish'] = 'master'
+                        json_request['name'] = RELEASE_TAG
+                        json_request['body'] = ""
+                        json_request['draft'] = false
+                        json_request['prerelease'] = false 
+                        writeJSON file: 'gh_request.json', json: json_request
+                        sh 'curl -XPOST -H "Authorization:token ' + gh_token + "\" --data @gh_request.json https://api.github.com/repos/$repo/releases > gh_res
+                    }
                 }
             }
         }
@@ -56,6 +75,19 @@ node {
             SLACK_MSG += "\nMode: " + (params.PUBLISH ? 'Publish' : 'Build Test')
             SLACK_CHAN = (params.PUBLISH ? "#builds-release":"#builds-dev")
             slackSend(channel: SLACK_CHAN, message: SLACK_MSG, color: slackColor)
+        }
+
+        // Run merge back if publish
+        if (params.PUBLISH && params.AUTO_MERGE){
+            dir(ods_dir) {
+                sshagent (credentials: [git_creds]) {
+                    sh "git stash"
+                    sh "git checkout master && git pull"
+                    sh "git merge ${ods_branch} && git push"
+                    sh "git checkout develop && git pull"
+                    sh "git merge master && git push"
+                }
+            }
         }
     }
 }
