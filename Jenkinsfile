@@ -55,7 +55,7 @@ node {
                         def json_request = readJSON text: '{}'
                         json_request['tag_name'] = env.TAG_RELEASE
                         json_request['target_commitish'] = 'master'
-                        json_request['name'] = RELEASE_TAG
+                        json_request['name'] = env.TAG_RELEASE
                         json_request['body'] = ""
                         json_request['draft'] = false
                         json_request['prerelease'] = false 
