@@ -1,6 +1,7 @@
 ***Latest version of OED*** [![OED version](https://img.shields.io/github/tag/Oasislmf/OpenDataStandards?label=OED)](https://github.com/OasisLMF/OpenDataStandards/releases)
 &nbsp;
 
+
 Steering Committee Members:
 
 <img src="images/Oasis_LOGO.png" width="150"/> <img src="images/NASDAQ_logo.png" width ="120" /> &nbsp; 
