@@ -37,7 +37,7 @@ Detailed descriptions of each data field are covered in the [Open Exposure Data 
 
 https://github.com/OasisLMF/OpenDataStandards/tree/feature/doc_upgrade/OpenExposureData/Docs
 
-OED is the exposure dats input supported by the Oasis Loss Modelling Framework and by all models deployed in Oasis.
+OED is the exposure data input supported by the Oasis Loss Modelling Framework and by all models deployed in Oasis.
 
 ## Open Results Data (ORD)
 
