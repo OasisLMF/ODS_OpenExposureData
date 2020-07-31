@@ -71,7 +71,7 @@ The ***maintenance group*** will maintain and update the assets that define the 
 
 ### *Releases*
 
-All the assets that define ODS will be managed in this GitHub repository. Minor releases will occur on a quarterly basis and will be backward compatible, and major releases will occur on an annual basis and require a change management process. The releases will follow the SemVer convention ( https://semver.org/), so given a version number MAJOR.MINOR.PATCH, increment the:
+All the assets that define ODS will be managed in this GitHub repository. Minor releases will occur on a quarterly basis and will be backward compatible, and major releases will occur on an annual basis and require a change management process. The releases will follow the SemVer convention (https://semver.org/), so given a version number MAJOR.MINOR.PATCH, increment the:
 
    * **MAJOR** version when you make incompatible changes e.g. changing column names, changing the structure of the data.
     
