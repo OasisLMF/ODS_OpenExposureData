@@ -35,7 +35,7 @@ OED is a model agnostic data format that comprises of four input files (Acc, Loc
 
 Detailed descriptions of each data field are covered in the [Open Exposure Data Spec.xlsx](https://github.com/OasisLMF/OpenDataStandards/blob/master/OpenExposureData/Docs/OpenExposureData_Spec.docx?raw=true) and each tab is split out into .csv format and located in the 'schema' folder.  The **'Open Exposure Data.pdf'** is a detailed document outlining the multiple sections of the OED and includes multiple examples of how to code financial structures in the input files. Both documents are located:
 
-https://github.com/OasisLMF/OpenDataStandards/tree/feature/doc_upgrade/OpenExposureData/Docs
+https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs
 
 OED is the exposure data input supported by the Oasis Loss Modelling Framework and by all models deployed in Oasis.
 
