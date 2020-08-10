@@ -33,7 +33,7 @@ The aim of OED is to provide the industry with a robust, open and transparent da
 This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors.
 OED is a model agnostic data format that comprises of four input files (Acc, Loc, RI Scope, RI Info). 
 
-Detailed descriptions of each data field are covered in the [Open Exposure Data Spec.xlsx](https://github.com/OasisLMF/OpenDataStandards/blob/master/OpenExposureData/Docs/OpenExposureData_Spec.docx?raw=true) and each tab is split out into .csv format and located in the 'schema' folder.  The **'Open Exposure Data.pdf'** is a detailed document outlining the multiple sections of the OED and includes multiple examples of how to code financial structures in the input files. Both documents are located:
+Detailed descriptions of each data field are covered in the **'Open Exposure Data Spec.xlsx'** and each tab is split out into .csv format and located in the 'schema' folder.  The **'Open Exposure Data.pdf'** is a detailed document outlining the multiple sections of the OED and includes multiple examples of how to code financial structures in the input files. Both documents are located:
 
 https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs
 
