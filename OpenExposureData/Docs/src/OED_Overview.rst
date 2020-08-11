@@ -53,18 +53,22 @@ Portfolio
 
 A **portfolio** comprises a number of accounts. Primary financial structures cannot apply at portfolio level, however reinsurance structures can.
  
-The table below shows the different hierarchical levels in OED:
+The table below shows the different hierarchical levels in OED and what financail terms are applicable:
 
 .. csv-table::
     :header: "Heirarchy", "Description", "Primary Financial Terms?", "Reinsurance Financial Terms?"
 
-    "Location coverage",	"Building, contents, business interruption (BI), other",	"Yes",	"No"
-    "Location",	"Defined through the **LocNumber** field; location level financial field names start with ‘Loc’",	"Yes", "Yes"
-    "Location group",	"Defined through the **LocGroup** field",	"No",	"Yes"
-    "Policy",	"Defined through the **PolNumber** field; within the policy level there is a hierarchy of financial terms:
-    Special conditions apply first; field names start with *‘Cond’*. Standard policy conditions apply after special conditions; field start with *‘Pol’*.
-    Layers apply after special conditions; field names start with *‘Layer’*."	"Yes",	"Yes"
+    "Location coverage", "Building, contents, business interruption (BI), other", "Yes", "No"
+    "Location",	"Defined through the **LocNumber** field; location level financial field names start with ‘Loc’", "Yes", "Yes"
+    "Location group", "Defined through the **LocGroup** field", "No", "Yes"
+    "Policy", "Defined through the **PolNumber** field; within the policy level there is a hierarchy of financial terms:
+    
+    Special conditions apply first; field names start with *‘Cond’*.   
+    
+    Standard policy conditions apply after special conditions; field start with *‘Pol’*.
+    
+    Layers apply after special conditions; field names start with *‘Layer’*.", "Yes", "Yes"
     "Account",	"Defined through the **AccNumber** field; account level financial term field names all start with *‘Acc’*",	"Yes", "Yes"
-    "Account group",	"Defined through the **AccGroup** field",	"No",	"No"
-    "Portfolio",	"Defined by the **PortNumber** field",	"No",	"Yes"
+    "Account group",	"Defined through the **AccGroup** field", "No",	"No"
+    "Portfolio",	"Defined by the **PortNumber** field", "No", "Yes"
 
