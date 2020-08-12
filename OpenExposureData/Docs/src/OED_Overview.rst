@@ -1,4 +1,4 @@
-OVERVIEW OF OED
+Overview of OED
 ===============
 
 The OED comprises of four input files which are designed to allow the user to enter data in a manageable way without needing to populate and understand the relationship between a large number of tables. This does mean that there are areas of inefficiency and duplication in the input tables: this is inevitable when trying to balance between practicality and efficiency. 
