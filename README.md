@@ -25,12 +25,13 @@ Steering Committee Members:
 
 # Open Data Standards (ODS)
 
-ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Committee (SC), comprised of industry experts representing (re)insurers, brokers, service providers and catastrophe model vendors. The SC will evolved over time and include Subject Matter Experts to assist with areas requiring specific domain experience, including data validation and support for enhancing and automating the interoperability of these standards. 
+ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Committee (SC), comprised of industry experts representing (re)insurers, brokers, service providers and catastrophe model vendors. The SC will evolve over time and include Subject Matter Experts to assist with areas requiring specific domain experience, including data validation and support for enhancing and automating the interoperability of these standards. 
 
-The components of ODS are the **Open Exposure Data (OED)** format and the **Open Results Data (ORD)** format. Both OED and ORD are designed to assist with solving interoperability problems current in the insurance market, where implementing a model-developer-independent exposure data and results repositories will assist in creating choice in the use of Catastrophe Models and analytical tools.
+The components of ODS are the **Open Exposure Data (OED)** format and the **Open Results Data (ORD)** format. Both OED and ORD are designed to assist with solving interoperability problems current in the insurance market, where implementing a model-developer-independent exposure data and results repositories will assist in creating choice in the use of catastrophe models and analytical tools.
 
 **ODS Implementation into Oasis:** Oasis LMF are continuously expanding the ODS functionality they support on their platform, especially in their financial module (FM). The tracking of this work can be found here: https://github.com/orgs/OasisLMF/projects/5.
 
+|
 
 ## Open Exposure Data (OED)
 
@@ -42,10 +43,11 @@ Detailed reference and background OED information can be found the 'docs’ fold
 
 OED is the exposure data input format supported by the Oasis Loss Modelling Framework and by all models deployed on the Oasis platform.
 
+|
 
 ## Open Results Data (ORD)
 
-ORD was initially developed during the Lloyd's Lab innovation project (Cohort 3) in 2019, by a working group led by Oasis, focussed on constructing model agnostic results formats and appropriate data formats. These model outputs will cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. The ORD Standard encompasses:
+ORD was initially developed during the Lloyd's Lab innovation project (Cohort 3) in 2019, by a working group led by Oasis, that focussed on constructing model agnostic results formats and appropriate data formats. These model outputs will cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. The ORD Standard encompasses:
 
 •	Exposure data 
 
@@ -63,6 +65,7 @@ Working documents can be found in the 'schema' and 'docs' folder (https://github
 
 ORD will be implemented by the Oasis Loss Modelling Framework during 2020/21 and all updates and progress will be located in this repo.
 
+|
 
 ## Governance
 
@@ -93,11 +96,10 @@ The committee is made up of representatives from the following organisations:
 **Brokers:**  Aon, BMS, Guy Carpenter, Willis Towers Watson
 
 **Market & Data:** Insurance Development Forum (IDF), Lloyd's of London, Perils AG
-
-&nbsp;
  
 A **maintenance group** will maintain and update the assets that define the data standards. In the first instance, Oasis LMF will provide the maintainers, though this could be extended to include members of the user community.
 
+|
 
 ### *Releases*
 
@@ -112,6 +114,7 @@ All the assets that define ODS will be managed in this GitHub repository. Minor 
    
 All new work will be done in **feature** branches, following the [GitFlow model](https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master** branch and the current development work will be in develop or specific feature branches.
 
+|
 
 ### *Tracking*
 
@@ -121,6 +124,7 @@ All new work will be captured as issues in this repository. Any GitHub user can 
 
 **Minor Features:** These are minor work items that will not cause breaking changes. An example of a minor feature would be the inclusion of a new location attribute with a default value.  Minor features must be approved, by email, by two members of the steering committee before being addressed by the maintenance team. If approval is not given, or an objection is raised by a member of the steering committee, then the feature will be reviewed at the next a steering committee meeting.
 
+|
 
 ### *Documentation Updates:* 
 
@@ -130,11 +134,14 @@ These can be actioned directly by the maintenance group.
 
 These can be actioned directly by the maintenance group, assuming they do not cause a breaking change.
 
+|
 
 ## Attributions
 OED was developed by a working group of industry practitioners in close collaboration with AIR Worldwide who generously made their CEDE schema available to the industry. 
 The working group was chaired by Matthew Jones with technical work led by Aiste Kalinauskaite both of NASDAQ (formerly Simplitium). 
 The initial OED assets were ported from https://github.com/simplitium/oed on 28 April 2020 with permission from NASDAQ.
+
+|
 
 ## License
 The content of the Open Exposure Data (OED) format itself is licensed under the CC0 1.0 Universal license.
