@@ -31,7 +31,7 @@ The components of ODS are the **Open Exposure Data (OED)** format and the **Open
 
 **ODS Implementation into Oasis:** Oasis LMF are continuously expanding the ODS functionality they support on their platform, especially in their financial module (FM). The tracking of this work can be found here: https://github.com/orgs/OasisLMF/projects/5.
 
-
+&nbsp; 
 
 ## Open Exposure Data (OED)
 
@@ -43,7 +43,7 @@ Detailed reference and background OED information can be found the 'docs’ fold
 
 OED is the exposure data input format supported by the Oasis Loss Modelling Framework and by all models deployed on the Oasis platform.
 
-
+&nbsp; 
 
 ## Open Results Data (ORD)
 
@@ -65,7 +65,7 @@ Working documents can be found in the 'schema' and 'docs' folder (https://github
 
 ORD will be implemented by the Oasis Loss Modelling Framework during 2020/21 and all updates and progress will be located in this repo.
 
-
+&nbsp; 
 
 ## Governance
 
@@ -99,7 +99,7 @@ The committee is made up of representatives from the following organisations:
  
 A **maintenance group** will maintain and update the assets that define the data standards. In the first instance, Oasis LMF will provide the maintainers, though this could be extended to include members of the user community.
 
-
+&nbsp; 
 
 ### *Releases*
 
@@ -114,7 +114,7 @@ All the assets that define ODS will be managed in this GitHub repository. Minor 
    
 All new work will be done in **feature** branches, following the [GitFlow model](https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master** branch and the current development work will be in develop or specific feature branches.
 
-
+&nbsp; 
 
 ### *Tracking*
 
@@ -124,24 +124,26 @@ All new work will be captured as issues in this repository. Any GitHub user can 
 
 **Minor Features:** These are minor work items that will not cause breaking changes. An example of a minor feature would be the inclusion of a new location attribute with a default value.  Minor features must be approved, by email, by two members of the steering committee before being addressed by the maintenance team. If approval is not given, or an objection is raised by a member of the steering committee, then the feature will be reviewed at the next a steering committee meeting.
 
-
+&nbsp; 
 
 ### *Documentation Updates:* 
 
 These can be actioned directly by the maintenance group.
 
+&nbsp; 
+
 ### *Bugs:* 
 
 These can be actioned directly by the maintenance group, assuming they do not cause a breaking change.
 
-
+&nbsp; 
 
 ## Attributions
 OED was developed by a working group of industry practitioners in close collaboration with AIR Worldwide who generously made their CEDE schema available to the industry. 
 The working group was chaired by Matthew Jones with technical work led by Aiste Kalinauskaite both of NASDAQ (formerly Simplitium). 
 The initial OED assets were ported from https://github.com/simplitium/oed on 28 April 2020 with permission from NASDAQ.
 
-
+&nbsp; 
 
 ## License
 The content of the Open Exposure Data (OED) format itself is licensed under the CC0 1.0 Universal license.
