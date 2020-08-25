@@ -35,11 +35,13 @@ Occupancy codes are stored in the **OccupancyCode** field. The occupancy type li
     "1300 – 1349",	"Utilities"
     "1350 – 1399",	"Miscellaneous"
     "2000 – 2799",	"Industrial Facility" 
-    "3000 – 3999",	"Offshore"
+    "3000 – 3999",	"Offshore"  
 
 Although the code ranges above infer an extremely long list of codes there are less than 200 distinct occupancy codes in total. Yachts and automobiles are included under construction type codes rather than occupancy codes.
 Some users may have translated from a different (original) occupancy code to the OED occupancy code but would like to store the original occupancy code information. This can be done using the **OrgOccupancyScheme** and **OrgOccupancyCode** fields.
  
+ |
+ 
 Construction Type
 ##################
 
@@ -75,8 +77,12 @@ Construction codes are stored in the **ConstructionCode** field. The constructio
     "6150 – 6199",	"Marine Cargo Non-Combustible"
     "7000 - 7999",	"Offshore"
 
+|
+
 Although the code ranges above infer a very long list of codes there are less than 200 construction codes in total.
 Some users may have translated from a different (original) construction code scheme to the OED construction code scheme but would like to store the original construction code information. This can be done using the **OrgConstructionScheme** and **OrgConstructionCode** fields.
+
+|
 
 Other Common Modifiers
 ######################
@@ -93,6 +99,7 @@ While different catastrophe models will use different modifiers to adjust the vu
 
 Other modifiers, either peril specific or less commonly used by models, are available and are listed in the specification spreadsheet. They can be identified by filtering on the SecMod column in the ‘OED Input Fields’ sheet in the specification spreadsheet.
  
+|
 
 Flexi-tables
 ############
