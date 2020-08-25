@@ -10,7 +10,7 @@ Hierarchy
 
 OED follows an organisational and financial structure hierarchy that most users of catastrophe models will be familiar with. Specifically:
 
-|
+
 
 Coverage
 ########
@@ -24,7 +24,7 @@ A **coverage** type represents the lowest structure within the OED hierarchy and
 
 Primary financial structures such as limits and deductibles can be attached at coverage level as well as across property damage (PD = Buildings +Other Buildings + Contents) and across all coverages. 
 
-|
+
 
 Location
 ########
@@ -33,7 +33,7 @@ A **location**, or site, comprises a group of coverages at one particular locati
 
 Sometimes an individual location record will actually represent a number of buildings (but perhaps because of poor data quality only the main location is known). This can be represented using the **NumberOfBuildings** field. Occasionally an insurer will have details about a number of individual locations that they wish to link in some way, for example a number of buildings on a university campus or on an industrial site. This can be achieved using the **LocGroup** field.
 
-|
+
 
 Policy
 ########
@@ -45,9 +45,10 @@ Within a policy there is a hierarchy of financial terms as follows:
 •	A **special condition** is a type of policy level financial structure where financial conditions (such as sub-limits and sub-deductibles) apply to a subset of locations.
 •	**Standard policy level** financial structures apply after special conditions but before layers.
 •	**Layers** apply after special conditions and standard policy level financial structures.
+
 Since multiple policies can apply to the same set of locations care must be taken when summing exposure or ground-up loss at policy level to avoid overcounting these metrics.
 
-|
+
 
 Account
 ########
@@ -56,17 +57,18 @@ An **account** comprises a group of policies and locations (both are needed: you
 
 An **account group** can also be specified (using the AccGroup field) which provides a means of grouping accounts together for reporting purposes. Financial structures cannot apply at account group level.
 
-|
+
 
 Portfolio
-########
+##########
 
 A **portfolio** comprises a number of accounts. Primary financial structures cannot apply at portfolio level, however reinsurance structures can.
  
-The table below shows the different hierarchical levels in OED and what financail terms are applicable:
+The table below shows the different hierarchical levels in OED and what financial terms are applicable:
 
 .. csv-table::
-    :header: "Heirarchy", "Description", "Primary Financial Terms?", "Reinsurance Financial Terms?"
+    :widths: 25,50,20,20 
+    :header: "Hierarchy", "Description", "Primary Financial Terms?", "Reinsurance Financial Terms?"
 
     "Location coverage", "Building, contents, business interruption (BI), other", "Yes", "No"
     "Location",	"Defined through the **LocNumber** field; location level financial field names start with ‘Loc’", "Yes", "Yes"
