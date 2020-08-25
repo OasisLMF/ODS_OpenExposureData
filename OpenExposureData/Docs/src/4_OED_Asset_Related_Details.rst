@@ -40,7 +40,7 @@ Occupancy codes are stored in the **OccupancyCode** field. The occupancy type li
 Although the code ranges above infer an extremely long list of codes there are less than 200 distinct occupancy codes in total. Yachts and automobiles are included under construction type codes rather than occupancy codes.
 Some users may have translated from a different (original) occupancy code to the OED occupancy code but would like to store the original occupancy code information. This can be done using the **OrgOccupancyScheme** and **OrgOccupancyCode** fields.
  
- |
+|
  
 Construction Type
 ##################
@@ -108,14 +108,4 @@ Despite the wide range of fields available in OED, there is always the possibili
 To enter additional field / values, a user can enter additional columns: **FlexiLocZZZ**, **FlexPolZZZ**, **FlexiAccZZZ**, where ‘ZZZ’ contains the name of the new field.
 For example, if a user wants to store information on house colour, they could add an additional column to the location input file with the fieldname *FlexiLocHouseColour*.
 
-The backend database location level flexi-table would then contain the following:
-
-.. csv-table::
-    :widths: 10,8,14,10
-    :header: "FlexiLocID", "LocID", "ModifierName", "ModiferValue"
-
-    "1",	"1", "HouseColour",	"Green"
-    "2", 	"2", "HouseColour",	"Blue"
-    "3", 	"3", "HouseColour",	"Red"
-    "4", 	"4", "HouseColour",	"Red"
 
