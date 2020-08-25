@@ -9,6 +9,7 @@ There are several aspects to geographical information in OED:
 
 •	Geocoding information
 
+|
 
 Country Codes
 #############
@@ -27,6 +28,7 @@ Country codes are stored in the **CountryCode** field and are based on the ISO31
 
 Full details of the permitted code values are in the OED specification spreadsheet.
 
+|
 
 Standardised Geographical Fields
 ################################
@@ -43,6 +45,7 @@ The following fields are available for capturing geographical information in OED
 
 •	**AreaName**: Description of the **AreaCode** (e.g. State name)
 
+|
 
 Flexible Geographical Fields
 ############################
@@ -57,6 +60,7 @@ GeogScheme codes are up to five characters (no special characters). The latest c
 
 Users can also specify their own schemes (e.g. for reporting purposes). The only requirement here is that any user defined scheme codes **must start with ‘X’** in order to avoid a potential code clash with future model developer schemes.
 
+|
 
 Geocoding
 #########
@@ -69,6 +73,7 @@ Geocoding
 
 **Geocoder** is a free text field that allows capture of the name and version of the geocoding engine used. 
 
+|
 
 Peril Codes
 ###########
@@ -105,6 +110,7 @@ The system for capturing which perils apply to different exposure elements and f
     "Winterstorm Wind",	                    "ZST"	
     "Smoke",	                            "BSK"	
 
+|
 
 The input format codes are designed to be easier to populate and recognize by an analyst. The reason for the slightly counterintuitive form of some of the abbreviations is that they are designed so that a predominant peril can quickly be identified by searching for one particular character in the abbreviations: ‘B’ for Fire, ‘O’ for Flood, ‘Q’ for Quake, ‘X’ for Convective storm, ‘Z’ for Winter storm, ‘W’ for Wind, ‘M’ for Terrorism. 
 
@@ -125,7 +131,8 @@ As well as the individual peril codes in the above table, there are also codes f
     "Wildfire with smoke",	                                "BB1"	
     "All perils",	                                        "AA1"	
 
- 
+|
+
 There are several fields in the OED input tables for storing the peril codes.
 
 Firstly, there are two fields that indicate whether or not a peril is covered for a particular location or policy: **LocPerilsCovered** and **PolPerilsCovered** respectively. These can be used to exclude a certain peril completely from a location or a particular policy.
