@@ -16,6 +16,8 @@ Total insurable value (TIV) for each property is captured in four location level
 
 Total insurable value is not peril dependent. The currency of the TIV is specified in the **LocCurrency** field. 
  
+| 
+ 
 Occupancy Type
 ##############
 
