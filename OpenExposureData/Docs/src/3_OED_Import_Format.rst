@@ -8,7 +8,10 @@ The import format for OED is defined by four .csv files:
 •	Reinsurance info (RIinfo)
 •	Reinsurance scope (RIscope)
 
-The fields in each file and their corresponding data type are described in the ‘OED Input Fields’ tab in the sheet in the OED Data Spec spreadsheet. (https://github.com/OasisLMF/OpenDataStandards/blob/develop/OpenExposureData/Docs/Open%20Exposure%20Data%20Spec_v1.1.2.xlsx)
+The fields in each file and their corresponding data type are described in the ‘OED Input Fields’ tab in the OED Data Spec spreadsheet found here: 
+
+https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs
+
 
 Location ('loc') Import File
 ############################
@@ -19,8 +22,9 @@ This file is the only mandatory file to run a model and to produce the ground-up
 
 For simple cases, one location is represented by one row in the file. However, for cases with location level financial structures that vary by peril, or where multiple special conditions associated with a particular location exist, one location can be represented by multiple rows. This is necessary to allow the full complexity of financial contracts to be represented in a limited number of input files.
  
-For example, a simple location covering wind ('WW1' – see the Perils **<here>** section) and flood ('OO1') with a 100 deductible for buildings (which applies to the combined loss from both perils if both perils happen in a single event) could be represented as follows:
+For example, a simple location covering wind ('WW1' – see the Perils section in document 5) and flood ('OO1') with a 100 deductible for buildings (which applies to the combined loss from both perils if both perils happen in a single event) could be represented as follows:
 
+|
 
 .. csv-table::
     :widths: 25,25,30,20,35,35
@@ -28,9 +32,11 @@ For example, a simple location covering wind ('WW1' – see the Perils **<here>*
     
     "1", "100,000", "OO1;WW1", "OO1;WW1", "0", "100"
 
+|
 
 If the same location had a 100 deductible for wind but a 1000 deductible for flood that applied to losses from each peril separately, this would be represented in the location input file as shown below:
 
+|
 
 .. csv-table::
     :widths: 25,25,30,20,35,35
@@ -39,8 +45,11 @@ If the same location had a 100 deductible for wind but a 1000 deductible for flo
     "1", "100,000", "OO1;WW1", "WW1", "0", "100"
     "1", "100,000", "OO1;WW1", "OO1", "0", "1000"
 
+|
 
-The field names in the examples above are described further in the assets, geography and perils and financial structures sections. **<insert links here>**
+The field names in the examples above are described further in documents 4, 5 and 6.
+
+https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs/src
 
 The minimum fields required in a location file are **LocNumber, AccNumber, PortNumber, CountryCode, LocPerilsCovered, LocCurrency, BuildingTIV, ContentsTIV, BITIV, OtherTIV**.
 
@@ -48,7 +57,7 @@ The full set of fields in a location import file can be found by filtering on �
 
 There are over 200 potential fields that could be used within the location file. However, it is not mandatory to use a field that contains no data and so, most OED location input files will contain far fewer than 200 columns. 
 
-
+|
 
 Account (acc) Import File
 #########################
@@ -65,9 +74,11 @@ The full set of fields in an account import file can be found by filtering on �
 
 Similarly to the loc file, there are over 200 potential fields that could be used within the account file, but it is not mandatory to use a field that contains no data and so, most OED account input files will contain far fewer than 200 columns. 
 
-For example, if account level financial terms are not required (i.e. financial terms that apply across groups of policies) then all the financial fields starting with ‘Acc’ can be omitted (removing the need for 48 fields). If special conditions are not required another 48 fields can be excluded. See the section on financial structures along with the examples for details of how the financial structure fields operate together. **<link here>**
+For example, if account level financial terms are not required (i.e. financial terms that apply across groups of policies) then all the financial fields starting with ‘Acc’ can be omitted (removing the need for 48 fields). If special conditions are not required another 48 fields can be excluded. See the section on financial structures along with the examples for details of how the financial structure fields operate together in document 6.
 
+https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs/src
 
+|
 
 Reinsurance Info (RIinfo) Import File
 #####################################
@@ -81,7 +92,7 @@ If there is no reinsurance, this import file is not required. If there is reinsu
 
 The full set of fields in a reinsurance info import file can be found by filtering on ‘ReinsInfo’ in the 'Input File' column of the *Open Exposure Data Spec* spreadsheet. There are over 20 potential fields that could be used within the reinsurance info file. However, it is not mandatory to use a field that contains no data. 
 
-
+|
 
 Reinsurance Scope (RIscope) Import File
 #########################################
@@ -98,12 +109,16 @@ The above three points are discussed in turn below.
 
 The scope of what a reinsurance contract applies to is defined by the ten ‘filter fields’ available in the reinsurance scope file: **PortNumber, AccNumber, PolNumber, LocGroup, LocNumber, CedantName, ProducerName, LOB, CountryCode, ReinsTag.**
 
+|
+
 **For example:**
 
 If a reinsurance contract applies to a particular portfolio ‘A’ then the value ‘A’ would be entered in the **PortNumber** field.
 
 If reinsurance applies only to account B in portfolio A, then ‘A’ would be entered in the **PortNumber** field and ‘B’ would be entered in the same row in the **AccNumber** field. In other words, entering criteria in the same row essentially applies an *AND* condition.
 Scope information relating to the same reinsurance contract can also be applied in separate rows: in this case each row would act like an *OR* condition for the filter. 
+
+|
 
 **For example:**
 
