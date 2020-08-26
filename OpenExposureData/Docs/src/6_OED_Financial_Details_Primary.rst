@@ -16,6 +16,8 @@ The OED hierarchy is described in the *overview* section. Primary financial stru
 The above abbreviations are used consistently throughout OED (for example in the field names).
 Limits, deductibles and minimum and maximum deductibles can be defined at each of these levels and can apply to different combinations of coverages at each of these levels as described in the next section.
  
+|
+
 Coverage Values
 ###############
 
@@ -35,6 +37,7 @@ Coverage values to describe which combination of coverage types a financial stru
 
 These coverage values (1 to 6) are embedded in the input field names (as shown in the examples). 
 
+|
 
 Deductible and Limit Types
 ##########################
@@ -50,16 +53,16 @@ The deductible and limit type fields describe whether the deductibles and limits
     "2",	"Deductible / limit is a percentage of TIV"
 
 There are multiple ‘Type’ fields containing the values in the table above, each representing a different combination of hierarchy, financial structure kind and coverage.
- 
+
+|
+
 Deductible and Limit Codes
 ##########################
 
-The deductible and limit code fields describe how the deductibles and limits operate.
-
-The options for deductible codes are as follows:
+The deductible and limit code fields describe how the deductibles and limits operate. The options for deductible codes are as follows:
 
 .. csv-table::
-    :widths: 5,20
+    :widths: 5,20 
     :header: "Deductible Code", "Description"
 
     "0",	"Regular: applies to an individual loss (or the sum of losses from an individual event depending on the hierarchy level of application)"
@@ -70,7 +73,9 @@ The options for deductible codes are as follows:
     "5",	"CEA Homeowners: A specific type of deductible applying in a California Earthquake Authority (CEA) Homeowners policy"
     "6",	"CEA Homeowners Choice: A specific type of deductible applying in a California Earthquake Authority (CEA) Homeowners Choice policy"
 
+ 
  The options for limit codes are as follows:
+
 
 .. csv-table::
     :widths: 5,30
@@ -79,7 +84,8 @@ The options for deductible codes are as follows:
     "0",	"Regular: applies to an individual loss (or the sum of losses from an individual event depending on the hierarchy level of application)"
     "1",	"Annual aggregate: applies to the sum of losses over a year"
 
- 
+|
+
 Structure of Financial Field Names
 ##################################
 
@@ -94,9 +100,9 @@ There are multiple financial fields to store the ‘Type’, ‘Code’ and actu
 
 This is illustrated below:
 
-**<INSERT DIAGRAM HERE>**
-
-
+.. image:: https://github.com/OasisLMF/OpenDataStandards/blob/develop/images/Hierarchy.png
+ 
+|
 
 For example:
 
@@ -112,6 +118,7 @@ For example:
 
 The reason for having both the coverage value (1 to 6) as well as spelling out the coverage kind in the input field names is so that the users of OED can easily associate the value numbers with the coverage types.
 
+|
 
 Policy Special Conditions
 #########################
@@ -126,6 +133,7 @@ The definition of the order in which special conditions apply is done through th
 
 See example 4 in the financial structures' examples section for an illustration of how special conditions are specified.
 
+|
 
 Participation Fields
 ####################
@@ -136,6 +144,7 @@ The following fields are available to reflect that an insurer may only have a sh
 
 **LocParticipation** represents the share that an insurer has in a particular location. Occasionally there are cases when this can vary within a policy (e.g. binders or offshore) and so this field is provided to allow flexibility in these circumstances.
  
+|
 
 Currencies
 ##########
@@ -150,6 +159,7 @@ Three currency fields are available:
 
 The currency code values are predominantly those contained within the ISO4217 standard although older (for example pre-euro) codes are also allowed.
 
+|
 
 Examples of Specifying Primary Financial Structures
 ####################################################
@@ -162,9 +172,11 @@ Personal lines data often has one location per policy / account, with financial 
 
 The tables below show 3 locations, all with the same 100,000 buildings TIV and deductibles that apply at the buildings coverage level. Location 1 has a monetary (**DedType = 0**) deductible of 200, location 2 has a 1% of TIV deductible (**DedType = 2**) and location 3 has a 5% of loss deductible (**DedType = 1**).
 
+|
+
 The OED Account and Location tables using the first approach are as follows:
 
-OED Account table:
+OED Account file:
 
 .. csv-table::
     :widths: 25,20
@@ -174,7 +186,9 @@ OED Account table:
     "PolRef2",	"PolRef2"
     "PolRef3",	"PolRef3"
 
-OED Location table:
+|
+
+OED Location file:
 
 .. csv-table::
     :widths: 15,15,15,20,20,15
@@ -184,21 +198,25 @@ OED Location table:
     "2",	"PolRef2",	"100,000",	"2",	"0",	"0.01"
     "3",	"PolRef3",	"100,000",	"1",	"0",	"0.05"
 
+|
 
 Note that **LocDedCode1Building = 0** which means the deductible is a standard type (not an annual aggregate or franchise etc.) This field is not actually required for standard deductibles – it would default to 0 if not provided.
 
 Not all required fields are shown in the tables above; specifically, **PortNumber, AccCurrency** and **PolPerilsCovered** are required in the account table, and **PortNumber, LocPerilsCovered, CountryCode, OtherTIV, ContentsTIV, BITIV** and **LocCurrency** are required in the location table.
 The second way of representing personal lines data is to group all locations under one ‘policy’ but provide the true policy reference in the **LocNumber** field, as shown below:
 
-OED Account table:
+|
+
+OED Account file:
 
 .. csv-table::
     :header: "AccNumber", "PolNumber"
 
     "1",	"1"
 
+|
 
-OED Location table:
+OED Location file:
 
 .. csv-table::
     :widths: 15,15,15,22,22,18
@@ -208,15 +226,18 @@ OED Location table:
     "PolRef2",	"1",	"100,000",	"2",	"0",	"0.01"
     "PolRef3",	"1",	"100,000",	"1",	"0",	"0.05"
 
+|
+
 This is a more efficient approach as the size of the account table is much smaller which is relevant since personal lines portfolios can easily contain several million locations.
 
- 
+|
+
 **Example 2 – Commercial lines – multiple locations per policy with location and policy deductibles and a policy limit**
 
 The tables below show an example of a commercial portfolio with 3 accounts, each with 2 locations. Each location has a coverage deductible and there is an overall policy deductible and an overall policy limit.
 
 
-OED Account table:
+OED Account file:
 
 .. csv-table::
     :widths: 15,15,20,18,22,15
@@ -226,8 +247,9 @@ OED Account table:
     "2",	"1",	"2",	"0.05",	    "0",	"1,500,000"
     "3",	"1",	"1",	"0.10",	    "2",	"0.80"
 
+|
 
-OED Location table:
+OED Location file:
 
 .. csv-table::
     :widths: 12,12,15,25,20  
@@ -244,12 +266,15 @@ In the account table above, there are two options for specifying the policy limi
 
 If there are underlying limits before a policy layer (e.g. perhaps a sublimit for storm surge that applies to all locations) then **PolLimit6All** must be used. If there is only one monetary policy limit, then the user has a choice of whether to use LayerLimit or **PolLimit6All**. Our recommendation in this case is to use **LayerLimit** rather than **PolLimit6All**, as this may prove more efficient downstream when reporting out on main policy limits.
 
- 
+|
+ 
 **Example 3 – Commercial lines – multiple locations per policy with different policy level deductibles and limits for different perils**
 
 The tables below show an example of a commercial portfolio with 3 accounts, each with 2 locations. Each account has one policy and each policy covers earthquake **(peril code = QQ1)**, wind **(WW1)** and flood **(OO1)**. Each location has a coverage deductible which applies to all perils. Each policy has deductibles and limits that apply across all coverages; however the policy flood deductibles are higher than those for wind and earthquake and the flood limits are lower than those for wind and earthquake.
 
-OED Account table:
+|
+
+OED Account file:
 
 .. csv-table::
     :widths: 18,18,18,25,20,25,20
@@ -262,8 +287,9 @@ OED Account table:
     "3",	"1",	"QQ1;WW1",	"1",	"0.10",	    "2",	"0.80"
     "3",	"1",	"OO1",	    "1",	"0.20",	    "2",	"0.60"
 
+|
 
-OED Location table:
+OED Location file:
 
 .. csv-table::
     :widths: 15,15,18,30,20  
@@ -278,12 +304,15 @@ OED Location table:
 
 The account table above shows one of the flexible features of the OED – the possibility of having multiple rows for the same policy in the account table. This allows different terms to be specified for different perils as indicated by the **PolPeril** field.
 
+|
+
 **Example 4 – Commercial lines – multiple locations per policy with location and policy deductibles but with a sublimit for tier 1 wind**
 
 The tables below show an example of a commercial portfolio with 1 account containing 6 locations. The policy covers earthquake and wind with the same overall policy limit for both perils. However, for certain locations two different sub-limits apply for wind. We show two examples of this below, firstly where the sub-limits are not nested (e.g. Florida wind sub-limit and Texas wind sub-limit), and secondly where the sub-limits are nested (e.g. Texas tier 1 wind sub-limit and Texas overall wind sub-limit).
 
+|
 
-OED Account table:
+OED Account file:
 
 .. csv-table::
     :widths: 20,30,30,30,30,30,30,30,25
@@ -292,8 +321,9 @@ OED Account table:
     "1",	"1",	"QQ1;WW1",	"1,500,000",	"1",	"1",    "WW1",	"0",	"250,000"
     "1",	"1",	"QQ1;WW1",	"1,500,000",	"2",	"1",	"WW1",	"0",	"500,000"
 
+|
 
-OED Location table:
+OED Location file:
 
 .. csv-table::
     :widths: 15,15,20,25,20,15
@@ -306,6 +336,8 @@ OED Location table:
     "5",	"1",	"2,000,000",	"0",	"10,000",	
     "6",	"1",	"2,000,000",	"2",	"0.10",	
 
+|
+
 In the tables above, special condition 1 (**CondNumber** = 1 in the account table) applies to locations 1 and 2 (**CondNumber** = 1 in the location table) whereas special condition 2 applies to locations 3 and 4.
 
 In the account table, note again the use of a second row for the same account and policy to specify a second special condition. This feature of OED means that essentially an unlimited number of special conditions are possible. The **CondPeril** field in the account table indicates the peril (or perils) to which the special condition financial terms apply. 
@@ -315,8 +347,9 @@ In the location table, **CondNumber** denotes the special condition (or conditio
 
 If two special conditions are nested or overlap – meaning that some locations have two applicable special conditions (e.g. Texas tier 1 wind sub-limit of 250,000 (**CondNumber** = 1) and Texas overall wind sub-limit of 500,000 (**CondNumber** = 2)), the tables would be specified as shown below. The example below assumes that locations 1 and 2 are in the Texas tier 1 region, locations 3 and 4 are within Texas but not in the Tier 1 wind region, and locations 5 and 6 are outside Texas.
 
+|
 
-OED Account table:
+OED Account file:
 
 .. csv-table::
     :widths: 20,20,30,30,20,20,25,25,25
@@ -326,8 +359,9 @@ OED Account table:
     "1",	"1",	"QQ1; WW1",	    "1,500,000",	"1",	"1",	"WW1",	"0",	"250,000"
     "1",	"1",	"QQ1; WW1",	    "1,500,000",	"2",	"2",	"WW1",	"0",	"500,000"
 
+|
 
-OED Location table:
+OED Location file:
 
 .. csv-table::
     :widths: 12,12,15,20,15,10 
@@ -347,11 +381,15 @@ The location table now has two extra rows for locations 1 and 2 to specify a sec
 Although not shown in the examples above, the field **CondName** can also be specified in the account table to provide a text description of each special condition.
 
 
+|
+
 **Example 5 – Policy layers**
 
 The tables below show an example of a commercial portfolio with 1 account containing 6 locations and two policy layers. Each location has a coverage deductible and each policy has an underlying deductible applying across all coverage types.
 
-OED Account table:
+|
+
+OED Account file:
 
 .. csv-table::
     :widths: 12,12,20,15,20,15,20 
@@ -360,8 +398,9 @@ OED Account table:
     "1",	"1",	"0",	"50,000",	"0",	        "1,500,000",	"0.1"
     "1",	"2",	"0",	"50,000",	"1,500,000",	"3,500,000",	"0.5"
 
+|
 
-OED Location table:
+OED Location file:
 
 .. csv-table::
     :widths: 10,12,12,20,15  
