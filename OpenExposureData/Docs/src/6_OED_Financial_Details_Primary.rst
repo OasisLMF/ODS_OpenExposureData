@@ -61,6 +61,7 @@ Deductible and Limit Codes
 
 The deductible and limit code fields describe how the deductibles and limits operate. The options for deductible codes are as follows:
 
+
 .. csv-table::
     :widths: 5,20 
     :header: "Deductible Code", "Description"
@@ -74,8 +75,9 @@ The deductible and limit code fields describe how the deductibles and limits ope
     "6",	"CEA Homeowners Choice: A specific type of deductible applying in a California Earthquake Authority (CEA) Homeowners Choice policy"
 
  
- The options for limit codes are as follows:
+The options for limit codes are as follows:
 
+|
 
 .. csv-table::
     :widths: 5,30
