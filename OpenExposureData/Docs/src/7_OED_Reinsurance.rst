@@ -201,23 +201,24 @@ OED Location file:
     "1",	"1",	"3",	"DE",	"2,000,000",	"0",	"10,000"
     "1",	"2",	"3",	"DE",	"2,000,000",	"2",	"0.10"
 
-|
+
 
 OED Reinsurance Info file:
 
 .. csv-table::
-    :widths: 8,8,8,8,8,8,8
     :header: "ReinsNumber",	"ReinsType",	"RiskLimit",	"OccLimit",	"PlacedPercent",	"InuringPriority"
 
     "1",	"QS",	"100,000",	"1,000,000",	"0.20",	"1"
 
 |
 
+
 OED Reinsurance Scope file:
 
 .. csv-table::
+
     :header: "ReinsNumber",	"PortNumber",	"AccNumber",	"PolNumber",	"LocNumber",	"CountryCode",	"RiskLevel"
-    "1",	"1",				                                                            "GB",	"LOC"
+    "1",	"1",		"","","",	                                                            "GB",	"LOC"
 
 |
 
@@ -346,8 +347,8 @@ OED Reinsurance Scope file:
 
     "1",	"1",	"", "", "",			"LOC"
     "1",	"2",	"", "", "",			"LOC"
-    "2",	"1",	"", "", "",			"", "",	
-    "2",	"2",	"", "", "",			"", "",	
+    "2",	"1",	"", "", "",			 
+    "2",	"2",	"", "", "",			 	
 
 |
 
