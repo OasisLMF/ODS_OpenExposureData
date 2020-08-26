@@ -1,12 +1,16 @@
-REINSURANCE
-=====================================
+Reinsurance
+============
 
 There are many different types of reinsurance available and many different combinations of financial terms that can apply within each type of reinsurance. The scope of each reinsurance contract, and the definition of risk level that applies within a contract (if there are per-risk terms), are also important considerations that are discussed in the following sections.
+
+|
 
 Reinsurance Types and Terms
 ###########################
 
 OED has been designed to allow capture of a broad range of reinsurance terms without the need to enter any information directly through a user interface. The range of reinsurance types that are currently considered within OED are as follows.
+
+|
 
 .. csv-table::
     :header: "Type of Reinsurance",	"Value in ReinsType Field",	"Notes"
@@ -24,6 +28,8 @@ OED has been designed to allow capture of a broad range of reinsurance terms wit
     "Aggregate Excess of Loss",	"AXL",	"An aggregate excess of loss contract applying per-period to a tranche of exposure defined using the reinsurance scope filter fields. **AggLimit, AggAttachment** and sometimes **PlacedPercent** are the fields typically used.
  
 The fields used to define reinsurance financial terms are given in the table below. These are all specified in the reinsurance info table, although for surplus treaties note that **CededPercent** must be specified in the reinsurance scope table.
+
+|
 
 .. csv-table::
     :widths: 18, 60
@@ -44,6 +50,7 @@ The fields used to define reinsurance financial terms are given in the table bel
     "PlacedPercent",	    "The percentage applied to the reinsurance loss after other reinsurance terms. Predominantly used for all contracts other than surplus treaties."
     "TreatyShare",	        "The treaty share which is applicable to the individual reinsurer."
 
+|
 
 Risk Level
 ##########
@@ -51,6 +58,8 @@ Risk Level
 The term ‘risk level’ in the table above refers to what is defined as a ‘risk’ in the context of the particular reinsurance treaty. The definition of what constitutes a risk is an involved subject, but the reinsured usually defines this. For example, a risk could be one building in a large spread-out site, a number of buildings defined by such a site, a combination of sites close together, or a policy layer or account.
 
 In the context of OED a risk-level is specified in the **RiskLevel** field in the reinsurance scope table and can be defined as either location (*LOC*), location-group (*LGR*), policy (*POL* - including individual layers) or account level (ACC). Risk level is only relevant for reinsurance contracts with risk-level terms. However, this can include facultative contracts, quota share and surplus treaties and catastrophe excess of loss contracts as well as per-risk treaties.
+
+|
 
 Reinsurance Percentages and Calculation Order
 #############################################
@@ -71,6 +80,7 @@ The order of application of reinsurance terms is then as follows:
 
 5.	**PlacedPercent** is applied. This applies after all other reinsurance terms. This is the percentage field that is normally used for treaty types other than surplus.
 
+|
 
 Examples of OED Tables Including Reinsurance
 ############################################
@@ -83,7 +93,9 @@ The tables below demonstrate two facultative reinsurance contracts, one at locat
 
 A 0.5m xs 1m location level facultative contract applies to location 2 in account 1, and a 1.2m xs 2.0m policy level facultative reinsurance contract applies to policy 1 in account 3.
 
-OED Account table:
+|
+
+OED Account file:
 
 .. csv-table::
     :widths: 10,10,10,12,12,15,10
@@ -93,8 +105,9 @@ OED Account table:
     "1",	"2",	"1",	"2",	"0.05",	    "0",	"1,500,000"
     "1",	"3",	"1",	"1",	"0.10",	    "2",	"0.80"
 
+|
 
-OED Location table:
+OED Location file:
 
 .. csv-table::
     :widths: 8,8,8,8,12,10  
@@ -107,8 +120,9 @@ OED Location table:
     "1",	"1",	"3",	"2,000,000",	"0",	"10,000"
     "1",	"2",	"3",	"2,000,000",	"2",	"0.10"
 
+|
 
-OED Reinsurance Info table:
+OED Reinsurance Info file:
 
 .. csv-table::
     :widths: 10,10,12,10,10,10
@@ -117,8 +131,9 @@ OED Reinsurance Info table:
     "1",	"FAC",	"1,000,000",	"500,000",	    "1.0",	"1"
     "2",	"FAC",	"2,000,000",	"1,200,000",	"1.0",	"1"
  
+|
 
-OED Reinsurance Scope table:
+OED Reinsurance Scope file:
 
 .. csv-table::
     :header: "ReinsNumber",	"PortNumber",	"AccNumber",	"PolNumber",	"LocNumber",	"RiskLevel"
@@ -126,6 +141,7 @@ OED Reinsurance Scope table:
     "1",	"1",	"1",	 "",       "2",	    "LOC"
     "2",	"1",	"3",	"1",	   "",      "POL"
 
+|
 
 The reinsurance info table must contain one row per **ReinsNumber**. **ReinsNumber** must be unique in this table. Although not shown, the reinsurance info table must always contain the **ReinsPeril** field, indicating which perils the reinsurance contract covers.
 
@@ -151,13 +167,14 @@ The **RiskLevel** is defined as *LOC* for **ReinsNumber** 1 and *POL* for **Rein
 
 The only filter fields that can be used for facultative (and surplus treaties) are **PortNumber, AccNumber, PolNumber, LocNumber** and **LocGroup** – i.e. portfolio plus the filter fields that correspond with the different risk levels: *ACC, POL, LOC* and *LGR*.
 
+|
 
 **Example 2 – Quota Share Reinsurance**
 
 The example shows the OED specification for a 20% quota share reinsurance contract, applying to locations within Great Britain in portfolio 1, with a risk limit of 100,000 and an event limit of 1,000,000. ‘Risk’ is defined as a location, and risk and event limits are specified in terms of gross amount (i.e. the loss before the application of the 20% quota share).
 
 
-OED Account table:
+OED Account file:
 
 .. csv-table::
     :widths: 8,8,8,8,8,8,8
@@ -168,8 +185,9 @@ OED Account table:
     "1",	"2",	"1",	"2",	"0.05",	    "0",	"1,500,000"
     "1",	"3",	"1",	"1",	"0.10",	    "2",	"0.80"
 
+|
 
-OED Location table:
+OED Location file:
 
 
 .. csv-table::
@@ -183,10 +201,9 @@ OED Location table:
     "1",	"1",	"3",	"DE",	"2,000,000",	"0",	"10,000"
     "1",	"2",	"3",	"DE",	"2,000,000",	"2",	"0.10"
 
-  
+|
 
-
-OED Reinsurance Info table:
+OED Reinsurance Info file:
 
 .. csv-table::
     :widths: 8,8,8,8,8,8,8
@@ -194,12 +211,15 @@ OED Reinsurance Info table:
 
     "1",	"QS",	"100,000",	"1,000,000",	"0.20",	"1"
 
+|
 
-OED Reinsurance Scope table:
+OED Reinsurance Scope file:
 
 .. csv-table::
     :header: "ReinsNumber",	"PortNumber",	"AccNumber",	"PolNumber",	"LocNumber",	"CountryCode",	"RiskLevel"
     "1",	"1",				                                                            "GB",	"LOC"
+
+|
 
 In the reinsurance info table in the example above, **PlacedPercent** is used to specify the 20% quota share. This means that the risk and occurrence limits will apply before the application of the 20%. In other words, the risk and occurrence terms apply to the gross figure. This is normally the way quota share treaties are worded (so that it is clear how the risk and occurrence limits relate to the attachments of other per-risk and per-occurrence contracts that the reinsured may have). 
 
@@ -207,12 +227,13 @@ However, some quota share treaties are worded with limits applying to the amount
 
 The logic in the reinsurance scope table means that only items with **PortNumber = 1** AND **CountryCode = GB** will be covered by the quota share contract. This means that losses from locations in account 3 will not be ceded to this treaty (as the locations in account 3 are in Germany).
 
+|
 
 **Example 3 - Surplus share reinsurance**
 
 The example shows how a 3-line surplus treaty with a retention of 500,000 is specified in OED. The surplus treaty has an event limit of 3,000,000 (applicable to the loss ceded to the treaty, not the gross amount), and ‘risk’ is defined as the location.
 
-OED Account table:
+OED Account file:
 
 .. csv-table::
     :widths: 10,10,10,12,12,12,10
@@ -222,8 +243,9 @@ OED Account table:
     "1",	"2",	"1",	"2",	"0.05",	    "0",	"1,500,000"
     "1",	"3",	"1",	"1",	"0.10",	    "2",	"0.80"
 
+|
 
-OED Location table:
+OED Location file:
 
 .. csv-table::
     :widths: 8,8,8,10,12,12 
@@ -236,8 +258,9 @@ OED Location table:
     "1",	"1",	"3",	"2,000,000",	"0",	"10,000"
     "1",	"2",	"3",	"2,000,000",	"2",	"0.10"
  
+|
 
-OED Reinsurance Info table:
+OED Reinsurance Info file:
 
 .. csv-table::
     :widths: 8,8,8,8,8,8
@@ -245,8 +268,9 @@ OED Reinsurance Info table:
 
     "1",	"SS",	"0",	"3,000,000",	"1.0",	"1"
 
+|
 
-OED Reinsurance Scope table:
+OED Reinsurance Scope file:
 
 .. csv-table::
     :header: "ReinsNumber",	"PortNumber",	"AccNumber",	"PolNumber",	"LocNumber",	"CededPercent",	    "RiskLevel"
@@ -258,6 +282,7 @@ OED Reinsurance Scope table:
     "1",	"1",	"3",	"",      "1",	"0.75",	    "LOC"
     "1",	"1",	"3",	"",      "2",	"0.75",	    "LOC"
 
+|
 
 For surplus treaties, **CededPercent** must be specified for each risk in the reinsurance scope table.
 
@@ -269,13 +294,14 @@ With surplus treaties, the following rules must be followed (they are the same a
 
 •	Only the filter fields **PortNumber, AccNumber, PolNumber, LocNumber** & **LocGroup** can be used with surplus treaties.
 
- 
+|
+
 **Example 4 - Per-risk and cat XL reinsurance**
 
 The example below shows the specification of two reinsurance treaties – both of which apply to portfolios 1 and 2, with the per-risk contract inuring to the benefit of the cat XL contract.
 
 
-OED Account table:
+OED Account file:
 
 .. csv-table::
     :widths: 8,8,8,8,8,8,8
@@ -286,7 +312,9 @@ OED Account table:
     "2",	"1",	"1",	"1",	"0.10",	    "2", 	"0.80"
 
 
-OED Location table:
+|
+
+OED Location file:
 
 .. csv-table::
     :widths: 5,5,5,5,8,6 
@@ -299,8 +327,9 @@ OED Location table:
     "2",	"1",	"1",	"2,000,000",	"0",	"10,000"
     "2",	"2",	"1",	"2,000,000",	"2",	"0.10"
 
+|
 
-OED Reinsurance Info table:
+OED Reinsurance Info file:
 
 .. csv-table::
     :header: "ReinsNumber",	"ReinsType",	"RiskAttachment",	"RiskLimit",	"OccAttachment",	"OccLimit",	"InuringPriority"
@@ -308,8 +337,9 @@ OED Reinsurance Info table:
     "1",	"PR",	"500,000",	    "1,500,000",	"0",	           "0",	           "1"
     "2",	"CXL",	"0",	        "0",            "3,000,000",	"3,000,000",	"2"
 
+|
 
-OED Reinsurance Scope table:
+OED Reinsurance Scope file:
 
 .. csv-table::
     :header: "ReinsNumber",	"PortNumber",	"AccNumber",	"PolNumber",	"LocNumber",	"RiskLevel"
@@ -319,6 +349,7 @@ OED Reinsurance Scope table:
     "2",	"1",	"", "", "",			"", "",	
     "2",	"2",	"", "", "",			"", "",	
 
+|
 
 Note that the account and location tables now contain exposures from two portfolios.
 
