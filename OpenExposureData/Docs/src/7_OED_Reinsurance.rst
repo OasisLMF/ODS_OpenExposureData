@@ -212,13 +212,13 @@ OED Reinsurance Info file:
 
 |
 
-
 OED Reinsurance Scope file:
 
 .. csv-table::
-
     :header: "ReinsNumber",	"PortNumber",	"AccNumber",	"PolNumber",	"LocNumber",	"CountryCode",	"RiskLevel"
+   
     "1",	"1",		"","","",	                                                            "GB",	"LOC"
+
 
 |
 
