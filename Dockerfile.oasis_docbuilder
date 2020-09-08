@@ -1,0 +1,20 @@
+FROM python:3
+
+RUN apt update && \
+    apt-get install -y --no-install-recommends texlive virtualenv jq curl libspatialindex-dev && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p /tmp/modules && \
+    mkdir /tmp/output         
+COPY ./src /tmp/src
+COPY ["./build.sh", \
+      "Makefile", \
+      "requirements.txt", \
+      "/tmp/"]
+
+WORKDIR /tmp/
+
+RUN virtualenv -p python3 venv
+RUN . venv/bin/activate && pip install -r requirements.txt
+
+ENTRYPOINT ["/bin/bash", "-c", "/tmp/build.sh \"$@\"", "--"]
