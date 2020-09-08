@@ -32,13 +32,12 @@ node {
             }
         }
 
-        //stage('Run: ODE Build') {
-        //      dir(ods_dir) {
-        //          // Code here
-        //          
-        //
-        //      }
-        //}
+        stage('Run: ODE Build') {
+              dir(ods_dir) {
+                  sh 'docker build -f docker/Dockerfile.oasis_docbuilder -t OED_doc_builder .'
+                  sh 'docker run -v $(pwd):/tmp/output OED_doc_builder:latest'
+              }
+        }
 
         if(params.PUBLISH){
             stage('Publish: OpenDataStandards') {
@@ -75,6 +74,12 @@ node {
             SLACK_MSG += "\nMode: " + (params.PUBLISH ? 'Publish' : 'Build Test')
             SLACK_CHAN = (params.PUBLISH ? "#builds-release":"#builds-dev")
             slackSend(channel: SLACK_CHAN, message: SLACK_MSG, color: slackColor)
+        }
+
+        // Store build output
+        dir(ods_dir) {
+            archiveArtifacts artifacts: '*.tar.gz'
+            archiveArtifacts artifacts: '*.pdf'
         }
 
         // Run merge back if publish
