@@ -1,7 +1,3 @@
-******************
-Open Exposure Data
-******************
-
 .. include:: OED_Contents.rst
 .. include:: 1_OED_Rationale_and_Abbreviations.rst
 .. include:: 2_OED_Overview.rst
