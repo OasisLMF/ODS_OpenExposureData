@@ -41,7 +41,7 @@ node {
               }
         }
 
-        if(params.GH_PAGES){
+        if (params.GH_PAGES){
             stage('Publish: GitHub Pages') {
                 dir(ods_pages) {
                     // Copy github pages branch
@@ -53,6 +53,7 @@ node {
                     sh "git status"                                                                                                                        
                     sh "git commit -m 'Update documenation - v${params.PUBLISH_VERSION}'"
                     sh "git push"
+                }    
             }
         }
 
