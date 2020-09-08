@@ -34,7 +34,7 @@ node {
 
         stage('Run: ODE Build') {
               dir(ods_dir) {
-                  sh 'docker build -f docker/Dockerfile.oasis_docbuilder -t oed_doc_builder .'
+                  sh 'docker build -f Dockerfile.oasis_docbuilder -t oed_doc_builder .'
                   sh 'docker run -v $(pwd):/tmp/output oed_doc_builder:latest'
               }
         }
