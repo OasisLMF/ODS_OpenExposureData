@@ -6,7 +6,7 @@ RUN apt update && \
 
 RUN mkdir /tmp/output         
 COPY ./OpenExposureData /tmp/OpenExposureData
-COPY [".docker/build.sh", \
+COPY ["docker/build.sh", \
       "Makefile", \
       "requirements.txt", \
       "/tmp/"]
