@@ -102,7 +102,7 @@ There are multiple financial fields to store the ‘Type’, ‘Code’ and actu
 
 This is illustrated below:
 
-.. image:: https://github.com/OasisLMF/OpenDataStandards/blob/develop/images/Hierarchy.png
+.. image:: images/Hierarchy.png
  
 |
 

@@ -1,0 +1,18 @@
+FROM python:3
+
+RUN apt update && \
+    apt-get install -y --no-install-recommends texlive texlive-latex-extra latexmk && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /tmp/output         
+COPY ./OpenExposureData /tmp/OpenExposureData
+COPY ["docker/build.sh", \
+      "Makefile", \
+      "requirements.txt", \
+      "/tmp/"]
+
+WORKDIR /tmp/
+
+RUN pip install -r requirements.txt
+
+ENTRYPOINT ["/bin/bash", "-c", "/tmp/build.sh \"$@\"", "--"]

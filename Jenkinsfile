@@ -8,6 +8,7 @@ node {
         [$class: 'StringParameterDefinition',  name: 'ODS_BRANCH', defaultValue: BRANCH_NAME],
         [$class: 'StringParameterDefinition',  name: 'PUBLISH_VERSION', defaultValue: ''],
         [$class: 'BooleanParameterDefinition', name: 'PUBLISH', defaultValue: Boolean.valueOf(false)],
+        [$class: 'BooleanParameterDefinition', name: 'GH_PAGES', defaultValue: Boolean.valueOf(false)],
         [$class: 'BooleanParameterDefinition', name: 'AUTO_MERGE', defaultValue: Boolean.valueOf(true)],
         [$class: 'BooleanParameterDefinition', name: 'SLACK_MESSAGE', defaultValue: Boolean.valueOf(false)]
       ])
@@ -19,6 +20,7 @@ node {
     String ods_git    = "git@github.com:OasisLMF/OpenDataStandards.git"
     String ods_branch = params.ODS_BRANCH
     String ods_dir    = "oasis_ods_build"
+    String ods_pages  = "oasis_ods_pages"
 
     //Env vars
     env.TAG_RELEASE = params.PUBLISH_VERSION
@@ -32,16 +34,33 @@ node {
             }
         }
 
-        //stage('Run: ODE Build') {
-        //      dir(ods_dir) {
-        //          // Code here
-        //          
-        //
-        //      }
-        //}
+        stage('Run: ODE Build') {
+              dir(ods_dir) {
+                  sh 'docker build -f docker/Dockerfile.oasis_docbuilder -t oed_doc_builder .'
+                  sh 'docker run -v $(pwd):/tmp/output oed_doc_builder:latest'
+              }
+        }
+
+        if (params.GH_PAGES){
+            stage('Publish: GitHub Pages') {
+                dir(ods_pages) {
+                    sshagent (credentials: [git_creds]) {
+                        // Copy github pages branch
+                        sh "git clone -b gh_pages ${ods_git} ."
+
+                        // Extract new html & push
+                        sh "tar -zxvf ${env.WORKSPACE}/${ods_dir}/oed_docs.tar.gz -C ."
+                        sh "git add *"
+                        sh "git status"                                                                                                                        
+                        sh "git commit -m 'Update documenation - v${params.PUBLISH_VERSION}'"
+                        sh "git push"
+                    }
+                }    
+            }
+        }
 
         if(params.PUBLISH){
-            stage('Publish: OpenDataStandards') {
+            stage('Publish: GitHub') {
                 dir(ods_dir) {
                     sshagent (credentials: [git_creds]) {
                         sh "git tag ${env.TAG_RELEASE}"
@@ -75,6 +94,12 @@ node {
             SLACK_MSG += "\nMode: " + (params.PUBLISH ? 'Publish' : 'Build Test')
             SLACK_CHAN = (params.PUBLISH ? "#builds-release":"#builds-dev")
             slackSend(channel: SLACK_CHAN, message: SLACK_MSG, color: slackColor)
+        }
+
+        // Store build output
+        dir(ods_dir) {
+            archiveArtifacts artifacts: '*.tar.gz'
+            archiveArtifacts artifacts: '*.pdf'
         }
 
         // Run merge back if publish
