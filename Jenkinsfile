@@ -49,7 +49,7 @@ node {
                         sh "git clone -b gh_pages ${ods_git} ."
 
                         // Extract new html & push
-                        sh "tar -zxvf ${ods_dir}/oasis_docs.tar.gz -C ."
+                        sh "tar -zxvf ${ods_dir}/oed_docs.tar.gz -C ."
                         sh "git add *"
                         sh "git status"                                                                                                                        
                         sh "git commit -m 'Update documenation - v${params.PUBLISH_VERSION}'"
