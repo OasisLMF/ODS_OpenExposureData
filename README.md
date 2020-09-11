@@ -29,6 +29,7 @@ ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Com
 
 The components of ODS are the **Open Exposure Data (OED)** format and the **Open Results Data (ORD)** format. Both OED and ORD are designed to assist with solving interoperability problems current in the insurance market, where implementing a model-developer-independent exposure data and results repositories will assist in creating choice in the use of catastrophe models and analytical tools.
 
+
 **ODS Implementation into Oasis:** Oasis LMF are continuously expanding the ODS functionality they support on their platform, especially in their financial module (FM). The tracking of this work can be found here: https://github.com/orgs/OasisLMF/projects/5.
 
 &nbsp; 
@@ -40,6 +41,10 @@ The aim of OED is to provide the industry with a robust, open and transparent da
 Detailed descriptions of each data field are covered in the Open Exposure Data Spec.xlsx and each tab is split out into .csv format and located in the 'schema' folder https://github.com/OasisLMF/OpenDataStandards/tree/develop/OpenExposureData/Schema
 
 Detailed reference and background OED information can be found the 'docs’ folder (https://github.com/OasisLMF/OpenDataStandards/tree/develop/OpenExposureData/Docs). Examples of how to code multiple financial structrures in the input files are covered within these documents.
+
+The web (HTML) version of the OED documentation can be viewed here:
+
+https://oasislmf.github.io/OpenDataStandards/index.html
 
 OED is the exposure data input format supported by the Oasis Loss Modelling Framework and by all models deployed on the Oasis platform.
 
