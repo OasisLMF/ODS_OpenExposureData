@@ -25,3 +25,8 @@ PayOutType,0,Amount,0 = unlimited
 PayOutType,1,% of loss,Values <= 1 only
 PayOutType,2,% of TIV,Values <= 1 only
 PayOutType,3,% of Limit,Values <= 1 only
+TriggerType,0,Amount,"For limits, 0 = unlimited"
+TriggerType,1,% of loss,Values <= 1 only
+TriggerType,2,% of TIV,Values <= 1 only
+CondClass,0,Class of Special condition,Pass through losses of ALL locations and apply terms to locations with CondNumber
+CondClass,1,Class of Special condition,Pass through losses of ONLY locations with a CondNumber to the policy
