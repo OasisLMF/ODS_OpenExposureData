@@ -29,6 +29,7 @@ ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Com
 
 The components of ODS are the **Open Exposure Data (OED)** format and the **Open Results Data (ORD)** format. Both OED and ORD are designed to assist with solving interoperability problems current in the insurance market, where implementing a model-developer-independent exposure data and results repositories will assist in creating choice in the use of catastrophe models and analytical tools.
 
+Short clips of what the community and market are saying about ODS can be found on the Oasis You Tube channel here: https://www.youtube.com/playlist?list=PLS9B14JFDHoRP6H33YjGHn2IxuwGE2fX9
 
 **ODS Implementation into Oasis:** Oasis LMF are continuously expanding the ODS functionality they support on their platform, especially in their financial module (FM). The tracking of this work can be found here: https://github.com/orgs/OasisLMF/projects/5.
 
