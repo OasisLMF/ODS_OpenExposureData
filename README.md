@@ -1,4 +1,6 @@
-***Latest version of OED*** [![OED version](https://img.shields.io/github/tag/Oasislmf/OpenDataStandards?label=OED)](https://github.com/OasisLMF/OpenDataStandards/releases)
+***Latest version of ODS*** [![ODS version](https://img.shields.io/github/v/tag/Oasislmf/OpenDataStandards.svg?label=OpenDataStandards)]
+
+
 &nbsp;
 
 
