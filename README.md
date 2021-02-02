@@ -12,9 +12,10 @@ Steering Committee Members:
 <img src="images/JBA_logo.jpeg" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 <img src="images/IF_Logo.png" width ="130"/> &nbsp; 
 <img src="images/zurich_logo.png" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; 
-<img src="images/ascot_logo.png" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp; 
+<img src="images/ascot_logo.png" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp;
+<img src="images/Munich-RE-logo.jpeg" width ="150"/> &nbsp; &nbsp; &nbsp; &nbsp;
 <img src="images/renre_logo.png" width ="120"/> &nbsp; &nbsp; &nbsp; &nbsp; 
-<img src="images/SwissRe_logo.jpg" width ="120"/> 
+<img src="images/SwissRe_logo.jpg" width ="120"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 <img src="images/Willis_logo.jpeg" width ="100"/> 
 <img src="images/Aon_logo.jpeg" width ="120" /> &nbsp; 
 <img src="images/bms_logo.jpeg" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp;
