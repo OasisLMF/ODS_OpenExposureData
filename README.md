@@ -1,5 +1,8 @@
 ***Latest version of ODS*** ![ODS version](https://img.shields.io/github/v/tag/Oasislmf/OpenDataStandards.svg?label=OpenDataStandards)
 
+## Mission Statement: 
+ODS should be the standard used for exposure data, result outputs and contract(s) terminology for the (Re)Insurance industry and other interested parties in catastrophe modelling and exposure management across all classes of business.
+
 
 &nbsp;
 
