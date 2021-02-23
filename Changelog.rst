@@ -1,17 +1,24 @@
-OED Changelog
+ODS Changelog
 ==================
+
+`v1.1.4`_
+---------
+.. start_latest_release
+* [#22](https://github.com/OasisLMF/OpenDataStandards/issues/22) - Updated ranges for FirstFloorHeight and FirstFloorHeightUnit fields
+* Made updates to the ODS ReadMe - added Munich Re and QOMPLX logos and mission statement
+* Added the 'ODS_2021_Planning_&_Strategy_v1.pdf Doc
+* Updated the ORD data spec for v1.1.3 fand associated .csv files from latest one supplied by NASDAQ following the Lloyd's Lab project
+* Added the ORD_Questions_&_Feedback.rst doc
+.. end_latest_release
+
 
 `v1.1.3`_
 ---------
-.. start_latest_release
-
 * [#2](https://github.com/OasisLMF/OpenDataStandards/issues/2) - Updated area code for Canada from 2 digit codes to two letter codes
 * [#4](https://github.com/OasisLMF/OpenDataStandards/issues/4) - Added a field in the loc file for 'StaticMotorVehicle' 
 * [#18](https://github.com/OasisLMF/OpenDataStandards/issues/18) - Made multiple updates to data ranges in the OED data spec spreadsheet ('OED Input Field' tab)
 * [#19](https://github.com/OasisLMF/OpenDataStandards/issues/19) - Update to 'ContentsFloodVuln' to include option 5 for no susceptibility
 * [#20](https://github.com/OasisLMF/OpenDataStandards/issues/20) - Added 'CondClass' to the loc file in the OED data spec 
-.. end_latest_release
 
-
-
-
+.. _`1.1.4`:  https://github.com/OasisLMF/OpenDataStandards/compare/1.1.3...1.1.4
+.. _`1.1.3`:  https://github.com/OasisLMF/OpenDataStandards/compare/1.1.2...1.1.3
