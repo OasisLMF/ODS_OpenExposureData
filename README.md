@@ -1,4 +1,9 @@
-***Latest version of OED*** [![OED version](https://img.shields.io/github/tag/Oasislmf/OpenDataStandards?label=OED)](https://github.com/OasisLMF/OpenDataStandards/releases)
+***Latest version of ODS*** ![ODS version](https://img.shields.io/github/v/tag/Oasislmf/OpenDataStandards.svg?label=OpenDataStandards)
+
+## Mission Statement: 
+***ODS should be the standard used for exposure data, result outputs and contract(s) terminology for the (Re)Insurance industry and other interested parties in catastrophe modelling and exposure management across all classes of business.***
+
+
 &nbsp;
 
 
@@ -10,38 +15,56 @@ Steering Committee Members:
 <img src="images/JBA_logo.jpeg" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 <img src="images/IF_Logo.png" width ="130"/> &nbsp; 
 <img src="images/zurich_logo.png" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; 
-<img src="images/ascot_logo.png" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp; 
+<img src="images/ascot_logo.png" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp;
+<img src="images/Munich-RE-logo.jpeg" width ="150"/> &nbsp; &nbsp; &nbsp; &nbsp;
 <img src="images/renre_logo.png" width ="120"/> &nbsp; &nbsp; &nbsp; &nbsp; 
-<img src="images/SwissRe_logo.jpg" width ="120"/> 
+<img src="images/SwissRe_logo.jpg" width ="120"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 <img src="images/Willis_logo.jpeg" width ="100"/> 
 <img src="images/Aon_logo.jpeg" width ="120" /> &nbsp; 
 <img src="images/bms_logo.jpeg" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp;
 <img src="images/GuyCarp_logo.png" width ="200"/> &nbsp; &nbsp; 
 <img src="images/Lloyds_logo.png" width="100"/> &nbsp; &nbsp; 
 <img src="images/perils_ag_logo.png" width="160"/> &nbsp; &nbsp; 
-<img src="images/idf_logo.jpg" width="120"/> &nbsp; 
+<img src="images/idf_logo.jpg" width="120"/> &nbsp; &nbsp; &nbsp; 
+<img src="images/qomplx-logo.png" width="140"/> &nbsp;
+
 
 &nbsp; 
 
+                                                                                                                     
 # Open Data Standards (ODS)
 
 ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Committee (SC), comprised of industry experts representing (re)insurers, brokers, service providers and catastrophe model vendors. The SC will evolve over time and include Subject Matter Experts to assist with areas requiring specific domain experience, including data validation and support for enhancing and automating the interoperability of these standards. 
 
 The components of ODS are the **Open Exposure Data (OED)** format and the **Open Results Data (ORD)** format. Both OED and ORD are designed to assist with solving interoperability problems current in the insurance market, where implementing a model-developer-independent exposure data and results repositories will assist in creating choice in the use of catastrophe models and analytical tools.
 
-Short clips of what the community and market are saying about ODS can be found on the Oasis You Tube channel here: https://www.youtube.com/playlist?list=PLS9B14JFDHoRP6H33YjGHn2IxuwGE2fX9
+Further information and community views of ODS can be found on the ODS website:
+https://oasislmf.org/open-data-standards
+
+&nbsp; 
+
+
+## Structure of ODS
+
+The diagram below highlights the proposed, long-term structure of ODS and all they key components. Interoperability is vital to ensure efficient interaction across multiple databases, systems and external exposure management and data storage facilities.
+
+<img src="images/ODS_Diagram.png" width="900"/> &nbsp;
+
+&nbsp; 
 
 **ODS Implementation into Oasis:** Oasis LMF are continuously expanding the ODS functionality they support on their platform, especially in their financial module (FM). The tracking of this work can be found here: https://github.com/orgs/OasisLMF/projects/5.
 
 &nbsp; 
 
+
+
 ## Open Exposure Data (OED)
 
 The aim of OED is to provide the industry with a robust, open and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format that comprises of four input files (Acc, Loc, RI Scope, RI Info).
 
-Detailed descriptions of each data field are covered in the Open Exposure Data Spec.xlsx and each tab is split out into .csv format and located in the 'schema' folder https://github.com/OasisLMF/OpenDataStandards/tree/develop/OpenExposureData/Schema
+Detailed descriptions of each data field are covered in the Open Exposure Data Spec.xlsx and each tab is split out into .csv format and located in the 'schema' folder. 
 
-Detailed reference and background OED information can be found the 'docs’ folder (https://github.com/OasisLMF/OpenDataStandards/tree/develop/OpenExposureData/Docs). Examples of how to code multiple financial structrures in the input files are covered within these documents.
+Detailed reference and background OED information can be found the 'docs’ folder. Examples of how to code multiple financial structrures in the input files are covered within these documents.
 
 The web (HTML) version of the OED documentation can be viewed here:
 
