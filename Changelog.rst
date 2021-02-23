@@ -9,6 +9,7 @@ ODS Changelog
 * Added the 'ODS_2021_Planning_&_Strategy_v1.pdf Doc
 * Updated the ORD data spec for v1.1.3 fand associated .csv files from latest one supplied by NASDAQ following the Lloyd's Lab project
 * Added the ORD_Questions_&_Feedback.rst doc
+* Added ODS diagram to the ReadMe file.
 .. end_latest_release
 
 
