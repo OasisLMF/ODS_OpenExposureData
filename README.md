@@ -31,6 +31,7 @@ Steering Committee Members:
 
 &nbsp; 
 
+                                                                                                                     
 # Open Data Standards (ODS)
 
 ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Committee (SC), comprised of industry experts representing (re)insurers, brokers, service providers and catastrophe model vendors. The SC will evolve over time and include Subject Matter Experts to assist with areas requiring specific domain experience, including data validation and support for enhancing and automating the interoperability of these standards. 
@@ -40,18 +41,30 @@ The components of ODS are the **Open Exposure Data (OED)** format and the **Open
 Further information and community views of ODS can be found on the ODS website:
 https://oasislmf.org/open-data-standards
 
+&nbsp; 
+
+
+## Structure of ODS
+
+The diagram below highlights the proposed, long-term structure of ODS and all they key components. Interoperability is vital to ensure efficient interaction across multiple databases, systems and external exposure management and data storage facilities.
+
+<img src="images/ODS_Diagram.png" width="900"/> &nbsp;
+
+&nbsp; 
 
 **ODS Implementation into Oasis:** Oasis LMF are continuously expanding the ODS functionality they support on their platform, especially in their financial module (FM). The tracking of this work can be found here: https://github.com/orgs/OasisLMF/projects/5.
 
 &nbsp; 
 
+
+
 ## Open Exposure Data (OED)
 
 The aim of OED is to provide the industry with a robust, open and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format that comprises of four input files (Acc, Loc, RI Scope, RI Info).
 
-Detailed descriptions of each data field are covered in the Open Exposure Data Spec.xlsx and each tab is split out into .csv format and located in the 'schema' folder https://github.com/OasisLMF/OpenDataStandards/tree/develop/OpenExposureData/Schema
+Detailed descriptions of each data field are covered in the Open Exposure Data Spec.xlsx and each tab is split out into .csv format and located in the 'schema' folder. 
 
-Detailed reference and background OED information can be found the 'docs’ folder (https://github.com/OasisLMF/OpenDataStandards/tree/develop/OpenExposureData/Docs). Examples of how to code multiple financial structrures in the input files are covered within these documents.
+Detailed reference and background OED information can be found the 'docs’ folder. Examples of how to code multiple financial structrures in the input files are covered within these documents.
 
 The web (HTML) version of the OED documentation can be viewed here:
 
