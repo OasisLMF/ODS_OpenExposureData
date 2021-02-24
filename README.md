@@ -46,7 +46,7 @@ https://oasislmf.org/open-data-standards
 
 ## Structure of ODS
 
-The diagram below highlights the proposed, long-term structure of ODS and all they key components. Interoperability is vital to ensure efficient interaction across multiple databases, systems and external exposure management and data storage facilities.
+The diagram below highlights the proposed, long-term structure of ODS and all the key components. Interoperability is vital to ensure efficient interaction across multiple databases, systems and external exposure management and data storage facilities.
 
 <img src="images/ODS_Diagram.png" width="900"/> &nbsp;
 
@@ -64,7 +64,7 @@ The aim of OED is to provide the industry with a robust, open and transparent da
 
 Detailed descriptions of each data field are covered in the Open Exposure Data Spec.xlsx and each tab is split out into .csv format and located in the 'schema' folder. 
 
-Detailed reference and background OED information can be found the 'docs’ folder. Examples of how to code multiple financial structrures in the input files are covered within these documents.
+Detailed reference and background OED information can be found the 'docs’ folder. Examples of how to code multiple financial structures in the input files are covered within these documents.
 
 The web (HTML) version of the OED documentation can be viewed here:
 
