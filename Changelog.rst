@@ -1,6 +1,16 @@
 ODS Changelog
 ==================
 
+`v1.1.5`_
+---------
+.. start_latest_release
+* [#23](https://github.com/OasisLMF/OpenDataStandards/issues/23) - Added IFM occupancy codes for specific oil, gas, electric and nuclear risks
+* [#27](https://github.com/OasisLMF/OpenDataStandards/issues/27) - Added a occupamcy code for commercial railway buildings
+* Updated OpenExposureData_Spec to include new IFM occ codes
+* Updated Occupancy Values.csv in schema folder with new IFM occ codes
+.. end_latest_release
+
+
 `v1.1.4`_
 ---------
 .. start_latest_release
