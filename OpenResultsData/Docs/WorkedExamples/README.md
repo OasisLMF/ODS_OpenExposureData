@@ -2,7 +2,7 @@
 
 The worked examples in this section demonstrate how the variants of loss reports are calculated for platforms which use a sampling approach in their financial engine.
                                                                                                                    
-## Reports overview
+### Reports overview
 
 The main report types can be summarized as follows;
 * **Event Loss Table** “ELT” with variants;
@@ -15,7 +15,7 @@ The main report types can be summarized as follows;
 	* Quantile PLT “QPLT”
 * **Average Loss Table** “ALT” – containing Average Annual losses (AAL’s)
 * **Exceedance Probability Table** “EPT” with variant;
-	* Per Sample Exceedance Probability Table
+	* Per Sample Exceedance Probability Table "PSEPT"
 
 ALT and EPT reports are derived from ELTs and PLTs and represent higher statistical summaries of the more detailed ELTs and PLTs.
 
@@ -25,6 +25,8 @@ The loss report formats have been designed to be agnostic to the loss modelling 
 The worked examples in this section demonstrate the derivation of ORD loss reports for the Oasis platform, which uses a Monte Carlo sampling approach to loss generation for a fixed set of event occurrences. 
 
 The diagram illustrates how the reports are derived from each other. Further reference data is needed for some calculations which is detailed as reference or input data in each worked example spreadsheet.
+
+### How reports are derived
 ![alt text](overview.jpg "Reports overview")
 
 The worked examples are;
