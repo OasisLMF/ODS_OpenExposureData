@@ -1,7 +1,12 @@
 # Open Results Data worked examples
 
 The worked examples in this section demonstrate how the variants of loss reports are calculated for platforms which use a sampling approach in their financial engine.
-                                                                                                                   
+        
+The worked examples are;
+
+* SELT_SPLT - illustrates how Sample PLT is derived from Sample ELT
+* SELT_MELT_QELT - illustrates how Moment ELT and Quantile ELT are derived from Sample ELT
+                                                                                                           
 ### Reports overview
 
 The main report types can be summarized as follows;
@@ -29,7 +34,4 @@ The diagram illustrates how the reports are derived from each other. Further ref
 ### How reports are derived
 ![alt text](overview.jpg "Reports overview")
 
-The worked examples are;
 
-* SELT_SPLT - illustrates how Sample PLT is derived from Sample ELT
-* SELT_MELT_QELT - illustrates how Moment ELT and Quantile ELT are derived from Sample ELT
