@@ -15,8 +15,8 @@ The main report types can be summarized as follows;
 	* Moment ELT “MELT”
 	* Quantile ELT “QELT”
 * **Period (Year) Loss Table** “PLT” with variants;
-	* Moment PLT “PELT”
 	* Sample PLT “SPLT”
+	* Moment PLT “MPLT”
 	* Quantile PLT “QPLT”
 * **Average Loss Table** “ALT” – containing Average Annual losses (AAL’s)
 * **Exceedance Probability Table** “EPT” with variant;
