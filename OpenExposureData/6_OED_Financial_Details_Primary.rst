@@ -318,11 +318,11 @@ The tables below show an example of a commercial portfolio with 1 account contai
 OED Account file:
 
 .. csv-table::
-    :widths: 20,30,30, 30,30,30,30,30,30,25
-    :header: "AccNumber",	"PolNumber",	"PolPeril",	"PolLimit6All",	"CondTag", CondNumber",	"CondPriority",	"CondPeril",	"CondLimitType6All",	"CondLimit6All"
+    :widths: 20,30,30, 30,30,30,30,30,25
+    :header: "AccNumber",	"PolNumber",	"PolPeril",	"PolLimit6All",	"CondTag", "CondNumber",	"CondPriority",	"CondPeril",	"CondLimit6All"
 
-    "1",	"1",	"QQ1;WW1",	"1,500,000", "1",	"1",	"1",    "WW1",	"0",	"250,000"
-    "1",	"1",	"QQ1;WW1",	"1,500,000", "2",	"2",	"1",	"WW1",	"0",	"500,000"
+    "1",	"1",	"QQ1;WW1",	"1,500,000", "1",	"1",	"1",    "WW1",	"250,000"
+    "1",	"1",	"QQ1;WW1",	"1,500,000", "2",	"2",	"1",	"WW1",	"500,000"
 
 |
 
@@ -355,12 +355,12 @@ If two special conditions are nested or overlap – meaning that some locations 
 OED Account file:
 
 .. csv-table::
-    :widths: 20,20,30,30,20,20,20,25,25,25
-    :header: "AccNumber",	"PolNumber",	"PolPeril",	    "PolLimit6All",	 "CondTag",   "CondNumber",	"CondPriority",	"CondPeril",	"CondLimitType6All",	"CondLimit6All"
+    :widths: 20,20,30,30,20,20,20,25,25
+    :header: "AccNumber",	"PolNumber",	"PolPeril",	    "PolLimit6All",	 "CondTag",   "CondNumber",	"CondPriority",	"CondPeril",	"CondLimit6All"
 
 
-    "1",	"1",	"QQ1; WW1",	    "1,500,000", "1",	"1",	"1",	"WW1",	"0",	"250,000"
-    "1",	"1",	"QQ1; WW1",	    "1,500,000", "2",	"2",	"2",	"WW1",	"0",	"500,000"
+    "1",	"1",	"QQ1; WW1",	    "1,500,000", "1",	"1",	"1",	"WW1",	"250,000"
+    "1",	"1",	"QQ1; WW1",	    "1,500,000", "2",	"2",	"2",	"WW1",	"500,000"
 
 |
 
