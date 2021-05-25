@@ -141,7 +141,7 @@ Acc,CondLimitType5PD,Special condition PD limit type,CR4-11,tinyint,YES,0
 Acc,CondLimit5PD,Special condition PD limit,CR4-11,float,YES,0
 Acc,CondLimitType6All,Special condition blanket limit type,CR4-12,tinyint,YES,0
 Acc,CondLimit6All,Special condition blanket limit,CR4-12,float,YES,0
-Loc,CondNumber,Condition Number to be able to link to relevant special condition (numbers only). Matches with CondNumber in Acc file.,CR4,int,YES,n/a
+Loc,CondTag,Condition Tag to be able to link to relevant special condition (numbers only). Matches with CondTag in Acc file.,CR4,int,YES,n/a
 Loc,LocDedType1Building,Location building deductible type,CR5-01-1,tinyint,YES,0
 Loc,LocDed1Building,Location building deductible,CR5-01-1,float,YES,0
 Loc,LocMinDed1Building,Location minimum building deductible,CR5-01-2,float,YES,0
@@ -189,4 +189,5 @@ ReinsScope,ProducerName,Producer name:  used for defining treaty scope in the re
 ReinsScope,LOB,Line of business:  used for defining treaty scope in the reinsurance scope file,CR6-05,varchar(20),YES,n/a
 ReinsScope,CountryCode,Country code: used for defining treaty scope in the reinsurance scope file,CR6-06,char(2),YES,n/a
 ReinsScope,ReinsTag,Reinsurance tag: user defined field to for defining treaty scope in the reinsurance scope file,CR6-07,varchar(20),YES,n/a
-ReinsScope,CededPercent,"Ceded percentage (for 12%, enter 0.12). Within the reinsurance scope file, CededPercent should only be entered for surplus share treaties.",CR7,float,YES,1.0
+ReinsScope,CededPercent,"Ceded percentage (for 12%, enter 0.12). Within the reinsurance scope file, CededPercent should only be entered for surplus share treaties.",CR7,float,YES,1
+Acc,CondTag,Condition Tag to be able to link to relevant special condition (numbers only). Matches with CondTag in Loc file.,CR4,int,YES,n/a
