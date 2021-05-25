@@ -128,10 +128,11 @@ Policy Special Conditions
 Policy special conditions are financial structures that apply to only a subset of locations within a policy. These require three aspects: (1) the specification of the financial conditions, (2) the specification of the locations to which these financial conditions apply and (3) the specification of the order in which the special conditions apply – i.e. does a special condition apply before or after other special conditions that apply to the same locations.
 Taking these three aspects in turn.
 
-The specification of the financial details of the special condition is done in the same way as any other financial structure within OED but using the field names starting with ‘Cond’. All of the coverage values deductible and limit types and codes can be used with special conditions to specify how the special condition financial structures work. Special conditions are defined in the OED account input file and must have a **CondNumber** in this input file. If multiple special conditions apply within the same policy, then multiple rows (with the same **AccNumber** and **PolNumber** but different **CondNumber**) must be used.
+The specification of the financial details of the special condition is done in the same way as any other financial structure within OED but using the field names starting with ‘Cond’. All of the coverage values deductible and limit types and codes can be used with special conditions to specify how the special condition financial structures work. Special conditions are defined in the OED account input file and must have a **CondNumber** and **CondTag** in this input file. If multiple special conditions apply within the same policy, then multiple rows (with the same **AccNumber** and **PolNumber** but different **CondNumber**) must be used.
 
-The definition of the locations that each special condition applies to is done by specifying a **CondNumber** on each location (in the location input file) that corresponds with the **CondNumber** in the account input file.
-The definition of the order in which special conditions apply is done through the **CondPriority** field in the location input file: if multiple special conditions apply to the same location then multiple rows must be used in the location input file. Each location row will be identical apart from **CondNumber** and **CondPriority** which denote the special conditions applying to the location and the order in which they apply.
+The definition of the locations that each special condition applies to is done by specifying a **CondTag** on each location (in the location input file) that corresponds with the **CondTag** in the account input file.
+If the special condition financial terms vary by policy, then a different CondNumber should be used for each unique set of terms. However, the **CondTag** should not vary for each **CondNumber**, and the locations should be tagged with **CondTag** only once per location in the location file. 
+The definition of the order in which special conditions apply is done through the **CondPriority** field in the account input file: if multiple special conditions **at different priorities** apply to the same location then multiple rows must be used in the location input file. Each location row will be identical apart from **CondTag** and which denote the special conditions grouping applying to the location for each condition.
 
 See example 4 in the financial structures' examples section for an illustration of how special conditions are specified.
 
@@ -317,11 +318,11 @@ The tables below show an example of a commercial portfolio with 1 account contai
 OED Account file:
 
 .. csv-table::
-    :widths: 20,30,30,30,30,30,30,30,25
-    :header: "AccNumber",	"PolNumber",	"PolPeril",	"PolLimit6All",	"Cond Number",	"Cond Priority",	"CondPeril",	"CondLimitType6All",	"CondLimit6All"
+    :widths: 20,30,30, 30,30,30,30,30,30,25
+    :header: "AccNumber",	"PolNumber",	"PolPeril",	"PolLimit6All",	"CondTag", CondNumber",	"CondPriority",	"CondPeril",	"CondLimitType6All",	"CondLimit6All"
 
-    "1",	"1",	"QQ1;WW1",	"1,500,000",	"1",	"1",    "WW1",	"0",	"250,000"
-    "1",	"1",	"QQ1;WW1",	"1,500,000",	"2",	"1",	"WW1",	"0",	"500,000"
+    "1",	"1",	"QQ1;WW1",	"1,500,000", "1",	"1",	"1",    "WW1",	"0",	"250,000"
+    "1",	"1",	"QQ1;WW1",	"1,500,000", "2",	"2",	"1",	"WW1",	"0",	"500,000"
 
 |
 
@@ -329,7 +330,7 @@ OED Location file:
 
 .. csv-table::
     :widths: 15,15,20,25,20,15
-    :header: "LocNumber",	"AccNumber",	"BuildingTIV",	"LocDedType1Building",	"LocDed1Building",	"CondNumber"
+    :header: "LocNumber",	"AccNumber",	"BuildingTIV",	"LocDedType1Building",	"LocDed1Building",	"CondTag"
 
     "1",	"1",	"1,000,000",	"0",	"10,000",	"1"
     "2",	"1",	"1,000,000",	"2",	"0.01",	    "1"
@@ -340,12 +341,12 @@ OED Location file:
 
 |
 
-In the tables above, special condition 1 (**CondNumber** = 1 in the account table) applies to locations 1 and 2 (**CondNumber** = 1 in the location table) whereas special condition 2 applies to locations 3 and 4.
+In the tables above, special condition 1 (**CondNumber** = 1 in the account table) applies to **CondTag** = 1 which is the group of locations 1 and 2 (**CondTag** = 1 in the location table) whereas special condition 2 applies to locations 3 and 4.
 
 In the account table, note again the use of a second row for the same account and policy to specify a second special condition. This feature of OED means that essentially an unlimited number of special conditions are possible. The **CondPeril** field in the account table indicates the peril (or perils) to which the special condition financial terms apply. 
-In this example the special conditions are not nested – meaning that each location has no more than one special condition. In this situation the special conditions do not need an order and so the **CondPriority** can be the same for both conditions.
+In this example the special conditions are not nested – meaning that each location has no more than one special condition. In this situation the special conditions do not need an order and so the **CondPriority** should be the same for both conditions.
 
-In the location table, **CondNumber** denotes the special condition (or conditions) applicable to each location. **CondNumber** must match with **CondNumber** in the account table. 
+In the location table, **CondTag** denotes the scope of the special condition (or conditions) which is a group of locations. **CondTag** must match with **CondTag** in the account table. 
 
 If two special conditions are nested or overlap – meaning that some locations have two applicable special conditions (e.g. Texas tier 1 wind sub-limit of 250,000 (**CondNumber** = 1) and Texas overall wind sub-limit of 500,000 (**CondNumber** = 2)), the tables would be specified as shown below. The example below assumes that locations 1 and 2 are in the Texas tier 1 region, locations 3 and 4 are within Texas but not in the Tier 1 wind region, and locations 5 and 6 are outside Texas.
 
@@ -354,12 +355,12 @@ If two special conditions are nested or overlap – meaning that some locations 
 OED Account file:
 
 .. csv-table::
-    :widths: 20,20,30,30,20,20,25,25,25
-    :header: "AccNumber",	"PolNumber",	"PolPeril",	    "PolLimit6All",	    "Cond Number",	"Cond Priority",	"CondPeril",	"CondLimitType6All",	"CondLimit6All"
+    :widths: 20,20,30,30,20,20,20,25,25,25
+    :header: "AccNumber",	"PolNumber",	"PolPeril",	    "PolLimit6All",	 "CondTag",   "CondNumber",	"CondPriority",	"CondPeril",	"CondLimitType6All",	"CondLimit6All"
 
 
-    "1",	"1",	"QQ1; WW1",	    "1,500,000",	"1",	"1",	"WW1",	"0",	"250,000"
-    "1",	"1",	"QQ1; WW1",	    "1,500,000",	"2",	"2",	"WW1",	"0",	"500,000"
+    "1",	"1",	"QQ1; WW1",	    "1,500,000", "1",	"1",	"1",	"WW1",	"0",	"250,000"
+    "1",	"1",	"QQ1; WW1",	    "1,500,000", "2",	"2",	"2",	"WW1",	"0",	"500,000"
 
 |
 
@@ -367,7 +368,7 @@ OED Location file:
 
 .. csv-table::
     :widths: 12,12,15,20,15,10 
-    :header: "LocNumber",	"AccNumber",	"BuildingTIV",	"LocDedType1Building",	"LocDed1Building",	"CondNumber"
+    :header: "LocNumber",	"AccNumber",	"BuildingTIV",	"LocDedType1Building",	"LocDed1Building",	"CondTag"
 
     "1",	"1",	"1,000,000",	"0",	"10,000",   "1"
     "1",	"1",	"1,000,000",	"0",	"10,000",	"2"
@@ -378,7 +379,7 @@ OED Location file:
     "5",	"1",	"2,000,000",	"0",	"10,000"
     "6",	"1",	"2,000,000",	"2",	"0.10"
 
-The location table now has two extra rows for locations 1 and 2 to specify a second special condition applying to these locations. The **CondPriority** field is used to specify the order in which these special conditions apply. The method of adding an extra location row to specify an extra hierarchy of special condition means that the OED design can cope with an unlimited number of nested special conditions. Overlapping special conditions (e.g. Texas wind sublimit and multi-State tier 1 wind sublimit) can also be specified in this way. 
+The location table now has two extra rows for locations 1 and 2 to specify a second special condition applying to these locations, with two distinct values of **CondTag**. The **CondPriority** field in the account file is used to specify the order in which these special conditions apply. The method of adding an extra location row to specify an extra hierarchy of special condition means that the OED design can cope with an unlimited number of nested special conditions. Overlapping special conditions (e.g. Texas wind sublimit and multi-State tier 1 wind sublimit) can also be specified in this way. 
 
 Although not shown in the examples above, the field **CondName** can also be specified in the account table to provide a text description of each special condition.
 
