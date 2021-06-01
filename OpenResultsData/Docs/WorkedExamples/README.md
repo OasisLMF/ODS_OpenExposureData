@@ -6,6 +6,10 @@ The worked examples are;
 
 * SELT_SPLT - illustrates how Sample PLT is derived from Sample ELT
 * SELT_MELT_QELT - illustrates how Moment ELT and Quantile ELT are derived from Sample ELT
+* SPLT_MPLT_QPLT - illustrates how Moment PLT and Quantile PLT are derived from Sample PLT
+* PSEPT - illustrates how Per Sample EPT is derived from Sample PLT for Occurrence (EPType = 1) and Aggregate (EPType = 3) Loss
+* EPT_EPCalc_1_and_2 - illustrates how EPT Mean Damage (EPCalc = 1) and EPT Full Uncertainty (EPCalc = 2) is derived from Sample PLT, for Occurrence (EPType = 1) and Aggregate (EPType = 3) Loss
+ 
                                                                                                            
 ### Reports overview
 
