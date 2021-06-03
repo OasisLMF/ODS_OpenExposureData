@@ -7,9 +7,12 @@ The worked examples are;
 * SELT_SPLT - illustrates how Sample PLT is derived from Sample ELT
 * SELT_MELT_QELT - illustrates how Moment ELT and Quantile ELT are derived from Sample ELT
 * SPLT_MPLT_QPLT - illustrates how Moment PLT and Quantile PLT are derived from Sample PLT
-* PSEPT - illustrates how Per Sample EPT is derived from Sample PLT for Occurrence (EPType = 1) and Aggregate (EPType = 3) Loss
-* EPT_EPCalc_1_and_2 - illustrates how EPT Mean Damage (EPCalc = 1) and EPT Full Uncertainty (EPCalc = 2) is derived from Sample PLT, for Occurrence (EPType = 1) and Aggregate (EPType = 3) Loss
- 
+* PSEPT - illustrates how Per Sample EPT is derived from Sample PLT for OEP (EPType = 1) and AEP (EPType = 3) Loss
+* EPT_1_Mean_Damage - illustrates how EPT Mean Damage (EPCalc = 1) is derived from Sample PLT, for OEP (EPType = 1) and AEP (EPType = 3) Loss
+* EPT_2_Full_Uncertainty - illustrates how EPT Full Uncertainty (EPCalc = 2) is derived from Sample PLT, for OEP (EPType = 1) and AEP (EPType = 3) Loss
+* EPT_3_Per_Sample_Mean - illustrates how EPT Per Sample Mean (EPCalc = 3) is derived from PSEPT, for OEP (EPType = 1) and AEP (EPType = 3) Loss
+* EPT_4_Sample_Mean - illustrates how EPT Sample Mean (EPCalc = 4) is derived from Sample PLT, for OEP (EPType = 1) and AEP (EPType = 3) Loss
+* TVAR - applicable to all variants of return period losses in the EPT and PSEPT, illustrates how OEP TVAR (EPType = 2) and AEP TVAR (EPType = 4) is derived from return period losses.
                                                                                                            
 ### Reports overview
 
