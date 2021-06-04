@@ -68,7 +68,7 @@ There are multiple ELTs in ORD format that contain the losses by event at each s
 
 **•	Moment Event Loss Table (MELT):** Summary stats (mean and standard deviation) for each event at the appropriate summary level, along with the event’s annual rate of occurrence.
 
-**• Event Loss Table (QELT):** Distribution of losses at user specified quantiles for each 
+**• Quantile Event Loss Table (QELT):** Distribution of losses at user specified quantiles for each 
 event at the appropriate summary level.
 
 &nbsp;
