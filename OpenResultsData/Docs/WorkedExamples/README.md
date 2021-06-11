@@ -1,6 +1,6 @@
 # Open Results Data worked examples
 
-The worked examples in this section demonstrate how the variants of loss reports are calculated for platforms which use a sampling approach in their financial engine.
+The worked examples in this section demonstrate how the variants of loss reports are calculated for platforms which use a sampling approach in their financial engine. Note that the ORD output file format is csv, but for illustration purposes the outputs are shown here as tables or pivot tables within Excel worksheets along with their workings.
         
 The worked examples are;
 
