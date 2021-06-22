@@ -465,6 +465,6 @@ ReinsScope,ReinsTag,Reinsurance tag: user defined field to for defining treaty s
 ReinsScope,CededPercent,"Ceded percentage (for 12%, enter 0.12). Within the reinsurance scope file, CededPercent should only be entered for surplus share treaties.",CR,float,YES,1,"[0,1]",,ReinsAcc; ReinsPol; ReinsLoc; ReinsuranceScope,
 ReinsInfo,RiskLevel,Code to indicate the definition of 'risk' for the per-risk terms in this particular treaty (or portion of the treaty),R,char(3),YES,n/a,,,ReinsLoc; ReinsuranceScope,
 Loc,StaticMotorVehicle,Identifies whether a risk is static or dynamic (moves from location to location),O,0 or 1,YES,0,,,LocationDetails,
-Acc,CondClass,Flags whether a condition is a policy restriction,O,tinyint,YES,0,"[0,1)",,Conditions,
-Acc; Loc,CondTag,Identifies a group of locations which are subject to one or more conditions.,CR,int,YES,n/a,"[0,)",,Conditions,
+Acc,CondClass,Flags whether a condition is a policy restriction,O,tinyint,YES,0,"[0,1]",,Conditions,
+Acc; Loc,CondTag,Identifies a group of locations which are subject to one or more conditions.,CR,varchar(20),YES,n/a,,,Conditions,
 Acc; Loc; ReinsInfo; ReinsScope,OEDVersion,The OED schema version of the file,O,varchar(10),YES,latest version,,,,
