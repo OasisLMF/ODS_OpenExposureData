@@ -56,6 +56,7 @@ The diagram below highlights the proposed, long-term structure of ODS and all th
 
 **ODS Implementation into Oasis:** Oasis LMF are continuously expanding the ODS functionality they support on their platform, especially in their financial module (FM). The tracking of this work can be found here: https://github.com/orgs/OasisLMF/projects/5.
 
+Detailed documentation on which financial fields are supported in the Oasis kernel can be found here: https://github.com/OasisLMF/OasisLMF/blob/develop/docs/OED_financial_terms_supported.xlsx
 &nbsp; 
 
 
