@@ -167,7 +167,7 @@ Acc,PolUserDef3,Policy user defined field,O,varchar(20),YES,n/a,,,Policies,
 Acc,PolUserDef4,Policy user defined field,O,varchar(20),YES,n/a,,,Policies,
 Acc,PolUserDef5,Policy user defined field,O,varchar(20),YES,n/a,,,Policies,
 Acc,FlexiPolZZZ,Flexible field that is stored in FlexiPol table in ModifierName = ZZZ,O,varchar(40),YES,n/a,,,FlexiPol,ModifierName = ZZZ
-Acc,CondNumber,Condition number (must be the same if condition repeats on several policy layers),CR,int,YES,n/a,"[0,)",,Conditions,
+Acc,CondNumber,Condition number identifies a unique set of condition financial terms applicable to one or more CondTag's.,CR,varchar(20),YES,n/a,,,Conditions,
 Acc,CondName,Condition name (must be the same if condition repeats on several policy layers). Description that relates to CondNumber.,O,varchar(40),YES,n/a,,,Conditions,
 Acc,CondPriority,Condition priority: specifies the order in which special conditions apply if multiple conditions apply to one location.,CR,int,YES,n/a,"[1,)",,LocCond,Priority
 Acc,CondPeril,Perils for condition financial terms,CR,varchar(250),YES,n/a,,,ConditionFinancials,PerilCode

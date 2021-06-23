@@ -103,7 +103,7 @@ Acc,MinimumTIV,Minimum replacement value for which pay-outs to the corresponding
 Acc,ScaleFactor,"Percentage factor used to scale calculated losses. This value, entered as a decimal, should be the same for all steps for a policy contract and must be a value >0 and ≤1. For example, 0.12 for 12%.",CR3-07,float,YES,1
 Acc,IsLimitAtDamage,Indicates whether the pay-out is limited by the actual ground-up loss.,CR3-08,float,YES,0
 Acc,CondTag,Identifies a group of locations which are subject to one or more conditions.,CR4,varchar(20),YES,n/a
-Acc,CondNumber,Condition number identifies a unique set of condition financial terms applicable to one or more CondTag's (should be the same if condition repeats on several policy layers),CR4,varchar(20),YES,n/a
+Acc,CondNumber,Condition number identifies a unique set of condition financial terms applicable to one or more CondTags.,CR4,varchar(20),YES,n/a
 Acc,CondPriority,Condition priority: specifies the order in which special conditions apply if multiple conditions apply to a policy.,CR4,int,YES,n/a
 Acc,CondPeril,Perils for condition financial terms,CR4,varchar(250),YES,n/a
 Acc,CondDedType1Building,Special condition building deductible type,CR4-01-1,tinyint,YES,0
