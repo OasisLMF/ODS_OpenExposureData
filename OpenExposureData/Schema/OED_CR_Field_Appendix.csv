@@ -102,7 +102,8 @@ Acc,DebrisRemovalFactor,"A factor for a conditional coverage which tends to appl
 Acc,MinimumTIV,Minimum replacement value for which pay-outs to the corresponding damage range will be allowed.,CR3-06,float,YES,0
 Acc,ScaleFactor,"Percentage factor used to scale calculated losses. This value, entered as a decimal, should be the same for all steps for a policy contract and must be a value >0 and ≤1. For example, 0.12 for 12%.",CR3-07,float,YES,1
 Acc,IsLimitAtDamage,Indicates whether the pay-out is limited by the actual ground-up loss.,CR3-08,float,YES,0
-Acc,CondNumber,Condition number (must be the same if condition repeats on several policy layers),CR4,int,YES,n/a
+Acc,CondTag,Identifies a group of locations which are subject to one or more conditions.,CR4,varchar(20),YES,n/a
+Acc,CondNumber,Condition number identifies a unique set of condition financial terms applicable to one or more CondTags.,CR4,varchar(20),YES,n/a
 Acc,CondPriority,Condition priority: specifies the order in which special conditions apply if multiple conditions apply to a policy.,CR4,int,YES,n/a
 Acc,CondPeril,Perils for condition financial terms,CR4,varchar(250),YES,n/a
 Acc,CondDedType1Building,Special condition building deductible type,CR4-01-1,tinyint,YES,0
@@ -141,7 +142,7 @@ Acc,CondLimitType5PD,Special condition PD limit type,CR4-11,tinyint,YES,0
 Acc,CondLimit5PD,Special condition PD limit,CR4-11,float,YES,0
 Acc,CondLimitType6All,Special condition blanket limit type,CR4-12,tinyint,YES,0
 Acc,CondLimit6All,Special condition blanket limit,CR4-12,float,YES,0
-Loc,CondNumber,Condition Number to be able to link to relevant special condition (numbers only). Matches with CondNumber in Acc file.,CR4,int,YES,n/a
+Loc,CondTag,Identifies a group of locations which are subject to one or more conditions. Matches with CondTag in Acc file.,CR4,varchar(20),YES,n/a
 Loc,LocDedType1Building,Location building deductible type,CR5-01-1,tinyint,YES,0
 Loc,LocDed1Building,Location building deductible,CR5-01-1,float,YES,0
 Loc,LocMinDed1Building,Location minimum building deductible,CR5-01-2,float,YES,0
@@ -189,4 +190,4 @@ ReinsScope,ProducerName,Producer name:  used for defining treaty scope in the re
 ReinsScope,LOB,Line of business:  used for defining treaty scope in the reinsurance scope file,CR6-05,varchar(20),YES,n/a
 ReinsScope,CountryCode,Country code: used for defining treaty scope in the reinsurance scope file,CR6-06,char(2),YES,n/a
 ReinsScope,ReinsTag,Reinsurance tag: user defined field to for defining treaty scope in the reinsurance scope file,CR6-07,varchar(20),YES,n/a
-ReinsScope,CededPercent,"Ceded percentage (for 12%, enter 0.12). Within the reinsurance scope file, CededPercent should only be entered for surplus share treaties.",CR7,float,YES,1.0
+ReinsScope,CededPercent,"Ceded percentage (for 12%, enter 0.12). Within the reinsurance scope file, CededPercent should only be entered for surplus share treaties.",CR7,float,YES,1
