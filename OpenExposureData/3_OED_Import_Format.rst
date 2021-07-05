@@ -90,6 +90,8 @@ If there is no reinsurance, this import file is not required. If there is reinsu
 
 **ReinsNumber** must be unique, as this links with the reinsurance scope file.
 
+The **RiskLevel** of a reinsurance contract refers to the level at which ‘risk’ terms apply. A ‘risk’ can either be defined at Location ‘LOC’, Location Group ‘LGR’, Policy ‘POL’ or Account level ‘ACC’. If a reinsurance contract does not contain risk specific terms then the **RiskLevel** field should be left blank. Note that it is not only per-risk treaties that have risk level terms. A facultative contract, a quota share treaty or even a catastrophe XL may also have risk level terms and thus require a risk level to be defined. 
+
 The full set of fields in a reinsurance info import file can be found by filtering on ‘ReinsInfo’ in the 'Input File' column of the *Open Exposure Data Spec* spreadsheet. There are over 20 potential fields that could be used within the reinsurance info file. However, it is not mandatory to use a field that contains no data. 
 
 |
@@ -97,15 +99,13 @@ The full set of fields in a reinsurance info import file can be found by filteri
 Reinsurance Scope (RIscope) Import File
 #########################################
 
-The reinsurance scope file contains details of three different but related pieces of information:
+The reinsurance scope file contains details of two different but related pieces of information:
 
 •	The scope of the reinsurance contract: i.e. which portfolios, accounts, locations are covered by a particular reinsurance contract.
 
-•	The risk level of the reinsurance contract: i.e. for reinsurance contracts with financial structures relating to a ‘risk’, the definition of what risk means.
-
 •	The CededPercent for a surplus treaty: which can vary for each risk covered by the treaty.
 
-The above three points are discussed in turn below.
+The above two points are discussed in turn below.
 
 The scope of what a reinsurance contract applies to is defined by the ten ‘filter fields’ available in the reinsurance scope file: **PortNumber, AccNumber, PolNumber, LocGroup, LocNumber, CedantName, ProducerName, LOB, CountryCode, ReinsTag.**
 
@@ -127,15 +127,13 @@ If **PortNumber** = ‘A’ is entered in one row and **AccNumber** = ‘B’ is
 If **LocNumber** is used as a scope filter then **AccNumber** and **PortNumber** must be specified too (otherwise **LocNumber** does not uniquely identify a location).
 If **PolNumber** is used as a scope filter then **AccNumber** and **PortNumber** must be specified too (otherwise **PolNumber** does not uniquely identify a policy).
 
-The RiskLevel of a reinsurance contract refers to the level at which ‘risk’ terms apply. A ‘risk’ can either be defined at Location ‘LOC’, Location Group ‘LGR’, Policy ‘POL’ or Account level ‘ACC’. If a reinsurance contract does not contain risk specific terms then the **RiskLevel** field should be left blank. Note that it is not only per-risk treaties that have risk level terms. A facultative contract, a quota share treaty or even a catastrophe XL may also have risk level terms and thus require a risk level to be defined. 
+Surplus treaties require entry of **CededPercent** at the risk level. For example, if the risk level within a surplus treaty is location (LOC), then the user must list every location covered by the treaty in the **LocNumber** field (along with **AccNumber** and **PortNumber** to uniquely identify the location within the file) as well as the **CededPercent** for each location.
 
 Although the reinsurance scope and the risk level are two different concepts, for facultative contracts and surplus treaties, the OED format requires that the risk level for a particular contract should also be used to define the scope of the contract. This is because these contracts, by their nature, either apply to individual risks (facultative) or have a ceded percent that varies by risk (surplus), and so to have scope defined by fields different to the risk level would cause ambiguity and confusion.
 
-Surplus treaties require entry of **CededPercent** at the risk level. For example, if the risk level within a surplus treaty is location (LOC), then the user must list every location covered by the treaty in the **LocNumber** field (along with **AccNumber** and **PortNumber** to uniquely identify the location within the file) as well as the **CededPercent** for each location.
-
 If there is no reinsurance, the reinsurance scope import file is not required. If there is reinsurance, each reinsurance entry in the reinsurance info file must have at least one entry in the reinsurance scope file; some contracts will have multiple entries in the scope file. 
 
-The minimum fields required are: **ReinsNumber** and **RiskLevel**, at least one of the ten filter fields, and **CededPercent** for surplus treaties.
+The minimum fields required are: **ReinsNumber**, at least one of the ten filter fields, and **CededPercent** for surplus treaties.
 The full set of fields in a reinsurance scope import file can be found by filtering on ‘ReinsScope’ in the Input File column of the *Open Exposure Data Spec* spreadsheet. There are over 10 potential fields that could be used within the reinsurance scope file. However, it is not mandatory to use a field that contains no data. 
 
 For a list of the reinsurance financial terms available and examples about how to specify such terms see the reinsurance section and associated examples. **<insert links here>**
