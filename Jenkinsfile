@@ -7,6 +7,7 @@ node {
       parameters([
         [$class: 'StringParameterDefinition',  name: 'ODS_BRANCH', defaultValue: BRANCH_NAME],
         [$class: 'StringParameterDefinition',  name: 'PUBLISH_VERSION', defaultValue: ''],
+        [$class: 'BooleanParameterDefinition', description: "Mark as pre-released software",  name: 'PRE_RELEASE', defaultValue: Boolean.valueOf(true)],
         [$class: 'BooleanParameterDefinition', name: 'PUBLISH', defaultValue: Boolean.valueOf(false)],
         [$class: 'BooleanParameterDefinition', name: 'GH_PAGES', defaultValue: Boolean.valueOf(false)],
         [$class: 'BooleanParameterDefinition', name: 'AUTO_MERGE', defaultValue: Boolean.valueOf(true)],
@@ -21,6 +22,12 @@ node {
     String ods_branch = params.ODS_BRANCH
     String ods_dir    = "oasis_ods_build"
     String ods_pages  = "oasis_ods_pages"
+
+    //make sure release candidate versions are tagged correctly
+    if (params.PUBLISH && params.PRE_RELEASE && ! params.PUBLISH_VERSION.matches('^(\\d+\\.)(\\d+\\.)(\\*|\\d+)rc(\\d+)$')) {
+        sh "echo release candidates must be tagged {version}rc{N}, example: 1.0.0rc1"
+        sh "exit 1"
+    }
 
     //Env vars
     env.TAG_RELEASE = params.PUBLISH_VERSION
@@ -51,11 +58,11 @@ node {
                         // Extract new html & push
                         sh "tar -zxvf ${env.WORKSPACE}/${ods_dir}/oed_docs.tar.gz -C ."
                         sh "git add *"
-                        sh "git status"                                                                                                                        
+                        sh "git status"
                         sh "git commit -m 'Update documenation - v${params.PUBLISH_VERSION}'"
                         sh "git push"
                     }
-                }    
+                }
             }
         }
 
@@ -77,7 +84,7 @@ node {
                         json_request['name'] = env.TAG_RELEASE
                         json_request['body'] = ""
                         json_request['draft'] = false
-                        json_request['prerelease'] = false 
+                        json_request['prerelease'] = params.PRE_RELEASE
                         writeJSON file: 'gh_request.json', json: json_request
                         sh 'curl -XPOST -H "Authorization:token ' + gh_token + "\" --data @gh_request.json https://api.github.com/repos/$repo/releases >  gh_response.json"
                     }
