@@ -1,6 +1,82 @@
 ODS Changelog
 ==================
 
+`v2.0.0rc1`_
+---------
+.. start_latest_release
+
+**OED**
+
+* Version 2.0.0
+
+* Updated documentation (rst files, csv, excel and pdf)
+
+* Updated piwind oed files
+
+* Added 'w3w' as a geogscheme to data spec .xslx to support 'What3Words' - 
+[#39](https://github.com/OasisLMF/OpenDataStandards/issues/39)
+
+**Location file**
+
+* Added CondTag varchar(20) field
+
+* Removed CondNumber int field
+
+* Added OEDVersion varchar(10) field - [#33](https://github.com/OasisLMF/OpenDataStandards/issues/33)
+
+**Account file**
+
+* Added CondTag varchar(20) field - [#3](https://github.com/OasisLMF/OpenDataStandards/issues/30)
+
+* Changed data type of CondNumber from int to varchar(20)
+
+* Added OEDVersion varchar(10) field
+
+**ReinsInfo file**
+
+* Added RiskLevel char(3) field (from ReinsScope file) - [#21](https://github.com/OasisLMF/OpenDataStandards/issues/21)
+
+* Added OEDVersion varchar(10) field
+
+**ReinsScope file**
+
+* Removed RiskLevel char(3) field (moved to ReinsInfo file)
+
+* Added OEDVersion varchar(10) field
+
+**ORD**
+
+* Version 2.0.0
+
+* Report name changed from Period Average Loss Table (PALT) to Average Loss Table (ALT) - [#36](https://github.com/OasisLMF/OpenDataStandards/issues/36)
+
+* Reindexing of EPCalc and EPType as follows;
+
+**EPCalc:**
+
+1 = Mean Damage Ratio
+
+2 = Full Uncertainty
+
+3 = Per Sample Mean
+
+4 = Sample Mean
+
+**EPType:**
+
+1 = OEP
+
+2 = OEP TVaR
+
+3 = AEP
+
+4 = AEP TVaR
+
+* Dropped version from ORD spec filename
+.. end_latest_release
+
+
+
 `v1.1.5`_
 ---------
 .. start_latest_release
