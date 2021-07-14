@@ -5,7 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Asset Related Details &mdash; OpenDataStandards 1.0.0 documentation</title>
@@ -151,7 +152,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="asset-related-details">
+  <section id="asset-related-details">
 <h1>Asset Related Details<a class="headerlink" href="#asset-related-details" title="Permalink to this headline">¶</a></h1>
 <p>The following sections describe the OED specification for the asset value, usage, construction, and other modifiers that can influence the susceptibility of an asset to damage from a peril.
 Coverage total insurable value (TIV)</p>
@@ -166,7 +167,7 @@ Coverage total insurable value (TIV)</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="section" id="occupancy-type">
+<section id="occupancy-type">
 <h2>Occupancy Type<a class="headerlink" href="#occupancy-type" title="Permalink to this headline">¶</a></h2>
 <p>Occupancy codes are stored in the <strong>OccupancyCode</strong> field. The occupancy type list is predominantly a one to one mapping from the AIR CEDE occupancy codes, although some extra codes have been added. The broad categories of code and the number ranges are shown in the table below.</p>
 <table class="colwidths-given docutils align-default">
@@ -217,8 +218,8 @@ Some users may have translated from a different (original) occupancy code to the
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="construction-type">
+</section>
+<section id="construction-type">
 <h2>Construction Type<a class="headerlink" href="#construction-type" title="Permalink to this headline">¶</a></h2>
 <p>Construction codes are stored in the <strong>ConstructionCode</strong> field. The construction type list is predominantly a one to one mapping from the AIR CEDE construction codes, although some extra codes have been added. The broad categories of code and the number ranges are shown in table below.</p>
 <table class="colwidths-given docutils align-default">
@@ -314,8 +315,8 @@ Some users may have translated from a different (original) construction code sch
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="other-common-modifiers">
+</section>
+<section id="other-common-modifiers">
 <h2>Other Common Modifiers<a class="headerlink" href="#other-common-modifiers" title="Permalink to this headline">¶</a></h2>
 <p>While different catastrophe models will use different modifiers to adjust the vulnerability of an asset, the following are the most commonly used modifiers:</p>
 <ul class="simple">
@@ -328,14 +329,14 @@ Some users may have translated from a different (original) construction code sch
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="flexi-tables">
+</section>
+<section id="flexi-tables">
 <h2>Flexi-tables<a class="headerlink" href="#flexi-tables" title="Permalink to this headline">¶</a></h2>
 <p>Despite the wide range of fields available in OED, there is always the possibility that a user needs to enter or store information without a corresponding OED field. This can be achieved through the flexi-table functionality within OED, which essentially provides a key-value pair back end table at the main hierarchical levels.
 To enter additional field / values, a user can enter additional columns: <strong>FlexiLocZZZ</strong>, <strong>FlexPolZZZ</strong>, <strong>FlexiAccZZZ</strong>, where ‘ZZZ’ contains the name of the new field.
 For example, if a user wants to store information on house colour, they could add an additional column to the location input file with the fieldname <em>FlexiLocHouseColour</em>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

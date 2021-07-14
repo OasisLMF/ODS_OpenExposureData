@@ -5,7 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Financial Details - Primary Insurance &mdash; OpenDataStandards 1.0.0 documentation</title>
@@ -155,7 +156,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="financial-details-primary-insurance">
+  <section id="financial-details-primary-insurance">
 <h1>Financial Details - Primary Insurance<a class="headerlink" href="#financial-details-primary-insurance" title="Permalink to this headline">¶</a></h1>
 <p>OED is designed to allow a wide variety of complex financial structures – beyond that currently possible in Oasis or any other catastrophe modelling platform. To encompass such a variety of financial structures (e.g. different limits for different perils, or multiple policy special conditions) within a limited set of input files (two for primary insurance) it is necessary to allow multiple rows within each file for the same location or policy. The need for this will become clearer in the examples that follow.</p>
 <p>The OED hierarchy is described in the <em>overview</em> section. Primary financial structures in OED can apply at the following levels:</p>
@@ -170,7 +171,7 @@ Limits, deductibles and minimum and maximum deductibles can be defined at each o
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="section" id="coverage-values">
+<section id="coverage-values">
 <h2>Coverage Values<a class="headerlink" href="#coverage-values" title="Permalink to this headline">¶</a></h2>
 <p>Coverage values to describe which combination of coverage types a financial structure apply to are as follows:</p>
 <table class="colwidths-given docutils align-default">
@@ -211,8 +212,8 @@ Limits, deductibles and minimum and maximum deductibles can be defined at each o
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="deductible-and-limit-types">
+</section>
+<section id="deductible-and-limit-types">
 <h2>Deductible and Limit Types<a class="headerlink" href="#deductible-and-limit-types" title="Permalink to this headline">¶</a></h2>
 <p>The deductible and limit type fields describe whether the deductibles and limits are flat monetary amounts, or percentages of TIV, or percentages of loss:</p>
 <table class="colwidths-given docutils align-default">
@@ -241,8 +242,8 @@ Limits, deductibles and minimum and maximum deductibles can be defined at each o
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="deductible-and-limit-codes">
+</section>
+<section id="deductible-and-limit-codes">
 <h2>Deductible and Limit Codes<a class="headerlink" href="#deductible-and-limit-codes" title="Permalink to this headline">¶</a></h2>
 <p>The deductible and limit code fields describe how the deductibles and limits operate. The options for deductible codes are as follows:</p>
 <table class="colwidths-given docutils align-default">
@@ -305,8 +306,8 @@ Limits, deductibles and minimum and maximum deductibles can be defined at each o
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="structure-of-financial-field-names">
+</section>
+<section id="structure-of-financial-field-names">
 <h2>Structure of Financial Field Names<a class="headerlink" href="#structure-of-financial-field-names" title="Permalink to this headline">¶</a></h2>
 <p>There are multiple financial fields to store the ‘Type’, ‘Code’ and actual values for the different deductible and limits reflecting the different variations of:</p>
 <ul class="simple">
@@ -329,20 +330,21 @@ Limits, deductibles and minimum and maximum deductibles can be defined at each o
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="policy-special-conditions">
+</section>
+<section id="policy-special-conditions">
 <h2>Policy Special Conditions<a class="headerlink" href="#policy-special-conditions" title="Permalink to this headline">¶</a></h2>
 <p>Policy special conditions are financial structures that apply to only a subset of locations within a policy. These require three aspects: (1) the specification of the financial conditions, (2) the specification of the locations to which these financial conditions apply and (3) the specification of the order in which the special conditions apply – i.e. does a special condition apply before or after other special conditions that apply to the same locations.
 Taking these three aspects in turn.</p>
-<p>The specification of the financial details of the special condition is done in the same way as any other financial structure within OED but using the field names starting with ‘Cond’. All of the coverage values deductible and limit types and codes can be used with special conditions to specify how the special condition financial structures work. Special conditions are defined in the OED account input file and must have a <strong>CondNumber</strong> in this input file. If multiple special conditions apply within the same policy, then multiple rows (with the same <strong>AccNumber</strong> and <strong>PolNumber</strong> but different <strong>CondNumber</strong>) must be used.</p>
-<p>The definition of the locations that each special condition applies to is done by specifying a <strong>CondNumber</strong> on each location (in the location input file) that corresponds with the <strong>CondNumber</strong> in the account input file.
-The definition of the order in which special conditions apply is done through the <strong>CondPriority</strong> field in the location input file: if multiple special conditions apply to the same location then multiple rows must be used in the location input file. Each location row will be identical apart from <strong>CondNumber</strong> and <strong>CondPriority</strong> which denote the special conditions applying to the location and the order in which they apply.</p>
+<p>The specification of the financial details of the special condition is done in the same way as any other financial structure within OED but using the field names starting with ‘Cond’. All of the coverage values deductible and limit types and codes can be used with special conditions to specify how the special condition financial structures work. Special conditions are defined in the OED account input file and must have a <strong>CondNumber</strong> and <strong>CondTag</strong> in this input file. If multiple special conditions apply within the same policy, then multiple rows (with the same <strong>AccNumber</strong> and <strong>PolNumber</strong> but different <strong>CondNumber</strong>) must be used.</p>
+<p>The definition of the locations that each special condition applies to is done by specifying a <strong>CondTag</strong> on each location (in the location input file) that corresponds with the <strong>CondTag</strong> in the account input file.
+If the special condition financial terms vary by policy, then a different CondNumber should be used for each unique set of terms. However, the <strong>CondTag</strong> should not vary for each <strong>CondNumber</strong>, and the locations should be tagged with <strong>CondTag</strong> only once per location in the location file.
+The definition of the order in which special conditions apply is done through the <strong>CondPriority</strong> field in the account input file: if multiple special conditions <strong>at different priorities</strong> apply to the same location then multiple rows must be used in the location input file. Each location row will be identical apart from <strong>CondTag</strong> and which denote the special conditions grouping applying to the location for each condition.</p>
 <p>See example 4 in the financial structures’ examples section for an illustration of how special conditions are specified.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="participation-fields">
+</section>
+<section id="participation-fields">
 <h2>Participation Fields<a class="headerlink" href="#participation-fields" title="Permalink to this headline">¶</a></h2>
 <p>The following fields are available to reflect that an insurer may only have a share of a primary policy or location:</p>
 <p><strong>LayerParticipation</strong> represents the share that an insurer has in a policy.</p>
@@ -350,8 +352,8 @@ The definition of the order in which special conditions apply is done through th
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="currencies">
+</section>
+<section id="currencies">
 <h2>Currencies<a class="headerlink" href="#currencies" title="Permalink to this headline">¶</a></h2>
 <p>Three currency fields are available:</p>
 <ul class="simple">
@@ -363,8 +365,8 @@ The definition of the order in which special conditions apply is done through th
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="examples-of-specifying-primary-financial-structures">
+</section>
+<section id="examples-of-specifying-primary-financial-structures">
 <h2>Examples of Specifying Primary Financial Structures<a class="headerlink" href="#examples-of-specifying-primary-financial-structures" title="Permalink to this headline">¶</a></h2>
 <p>The following examples illustrate the principles discussed in the previous sections. Not all required fields are shown in the examples below – only those needed to illustrate the principles highlighted.</p>
 <p><strong>Example 1 – Personal lines with coverage deductibles</strong></p>
@@ -794,10 +796,10 @@ The second way of representing personal lines data is to group all locations und
 <th class="head"><p>PolNumber</p></th>
 <th class="head"><p>PolPeril</p></th>
 <th class="head"><p>PolLimit6All</p></th>
-<th class="head"><p>Cond Number</p></th>
-<th class="head"><p>Cond Priority</p></th>
+<th class="head"><p>CondTag</p></th>
+<th class="head"><p>CondNumber</p></th>
+<th class="head"><p>CondPriority</p></th>
 <th class="head"><p>CondPeril</p></th>
-<th class="head"><p>CondLimitType6All</p></th>
 <th class="head"><p>CondLimit6All</p></th>
 </tr>
 </thead>
@@ -808,8 +810,8 @@ The second way of representing personal lines data is to group all locations und
 <td><p>1,500,000</p></td>
 <td><p>1</p></td>
 <td><p>1</p></td>
+<td><p>1</p></td>
 <td><p>WW1</p></td>
-<td><p>0</p></td>
 <td><p>250,000</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
@@ -817,9 +819,9 @@ The second way of representing personal lines data is to group all locations und
 <td><p>QQ1;WW1</p></td>
 <td><p>1,500,000</p></td>
 <td><p>2</p></td>
+<td><p>2</p></td>
 <td><p>1</p></td>
 <td><p>WW1</p></td>
-<td><p>0</p></td>
 <td><p>500,000</p></td>
 </tr>
 </tbody>
@@ -843,7 +845,7 @@ The second way of representing personal lines data is to group all locations und
 <th class="head"><p>BuildingTIV</p></th>
 <th class="head"><p>LocDedType1Building</p></th>
 <th class="head"><p>LocDed1Building</p></th>
-<th class="head"><p>CondNumber</p></th>
+<th class="head"><p>CondTag</p></th>
 </tr>
 </thead>
 <tbody>
@@ -894,10 +896,10 @@ The second way of representing personal lines data is to group all locations und
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>In the tables above, special condition 1 (<strong>CondNumber</strong> = 1 in the account table) applies to locations 1 and 2 (<strong>CondNumber</strong> = 1 in the location table) whereas special condition 2 applies to locations 3 and 4.</p>
+<p>In the tables above, special condition 1 (<strong>CondNumber</strong> = 1 in the account table) applies to <strong>CondTag</strong> = 1 which is the group of locations 1 and 2 (<strong>CondTag</strong> = 1 in the location table) whereas special condition 2 applies to locations 3 and 4.</p>
 <p>In the account table, note again the use of a second row for the same account and policy to specify a second special condition. This feature of OED means that essentially an unlimited number of special conditions are possible. The <strong>CondPeril</strong> field in the account table indicates the peril (or perils) to which the special condition financial terms apply.
-In this example the special conditions are not nested – meaning that each location has no more than one special condition. In this situation the special conditions do not need an order and so the <strong>CondPriority</strong> can be the same for both conditions.</p>
-<p>In the location table, <strong>CondNumber</strong> denotes the special condition (or conditions) applicable to each location. <strong>CondNumber</strong> must match with <strong>CondNumber</strong> in the account table.</p>
+In this example the special conditions are not nested – meaning that each location has no more than one special condition. In this situation the special conditions do not need an order and so the <strong>CondPriority</strong> should be the same for both conditions.</p>
+<p>In the location table, <strong>CondTag</strong> denotes the scope of the special condition (or conditions) which is a group of locations. <strong>CondTag</strong> must match with <strong>CondTag</strong> in the account table.</p>
 <p>If two special conditions are nested or overlap – meaning that some locations have two applicable special conditions (e.g. Texas tier 1 wind sub-limit of 250,000 (<strong>CondNumber</strong> = 1) and Texas overall wind sub-limit of 500,000 (<strong>CondNumber</strong> = 2)), the tables would be specified as shown below. The example below assumes that locations 1 and 2 are in the Texas tier 1 region, locations 3 and 4 are within Texas but not in the Tier 1 wind region, and locations 5 and 6 are outside Texas.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -905,13 +907,13 @@ In this example the special conditions are not nested – meaning that each loca
 <p>OED Account file:</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
-<col style="width: 9%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
 <col style="width: 14%" />
 <col style="width: 14%" />
-<col style="width: 9%" />
-<col style="width: 9%" />
-<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
 <col style="width: 12%" />
 <col style="width: 12%" />
 </colgroup>
@@ -920,10 +922,10 @@ In this example the special conditions are not nested – meaning that each loca
 <th class="head"><p>PolNumber</p></th>
 <th class="head"><p>PolPeril</p></th>
 <th class="head"><p>PolLimit6All</p></th>
-<th class="head"><p>Cond Number</p></th>
-<th class="head"><p>Cond Priority</p></th>
+<th class="head"><p>CondTag</p></th>
+<th class="head"><p>CondNumber</p></th>
+<th class="head"><p>CondPriority</p></th>
 <th class="head"><p>CondPeril</p></th>
-<th class="head"><p>CondLimitType6All</p></th>
 <th class="head"><p>CondLimit6All</p></th>
 </tr>
 </thead>
@@ -934,8 +936,8 @@ In this example the special conditions are not nested – meaning that each loca
 <td><p>1,500,000</p></td>
 <td><p>1</p></td>
 <td><p>1</p></td>
+<td><p>1</p></td>
 <td><p>WW1</p></td>
-<td><p>0</p></td>
 <td><p>250,000</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
@@ -944,8 +946,8 @@ In this example the special conditions are not nested – meaning that each loca
 <td><p>1,500,000</p></td>
 <td><p>2</p></td>
 <td><p>2</p></td>
+<td><p>2</p></td>
 <td><p>WW1</p></td>
-<td><p>0</p></td>
 <td><p>500,000</p></td>
 </tr>
 </tbody>
@@ -969,7 +971,7 @@ In this example the special conditions are not nested – meaning that each loca
 <th class="head"><p>BuildingTIV</p></th>
 <th class="head"><p>LocDedType1Building</p></th>
 <th class="head"><p>LocDed1Building</p></th>
-<th class="head"><p>CondNumber</p></th>
+<th class="head"><p>CondTag</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1031,7 +1033,7 @@ In this example the special conditions are not nested – meaning that each loca
 </tr>
 </tbody>
 </table>
-<p>The location table now has two extra rows for locations 1 and 2 to specify a second special condition applying to these locations. The <strong>CondPriority</strong> field is used to specify the order in which these special conditions apply. The method of adding an extra location row to specify an extra hierarchy of special condition means that the OED design can cope with an unlimited number of nested special conditions. Overlapping special conditions (e.g. Texas wind sublimit and multi-State tier 1 wind sublimit) can also be specified in this way.</p>
+<p>The location table now has two extra rows for locations 1 and 2 to specify a second special condition applying to these locations, with two distinct values of <strong>CondTag</strong>. The <strong>CondPriority</strong> field in the account file is used to specify the order in which these special conditions apply. The method of adding an extra location row to specify an extra hierarchy of special condition means that the OED design can cope with an unlimited number of nested special conditions. Overlapping special conditions (e.g. Texas wind sublimit and multi-State tier 1 wind sublimit) can also be specified in this way.</p>
 <p>Although not shown in the examples above, the field <strong>CondName</strong> can also be specified in the account table to provide a text description of each special condition.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1143,8 +1145,8 @@ In this example the special conditions are not nested – meaning that each loca
 <p>The two different layers in the example above have different policy numbers within the same account. The insurer has a 10% share of the first layer and a 50% share of the second layer specified within <strong>LayerParticipation</strong>. The policy level deductible specified in <strong>PolDedType6All</strong> and <strong>PolDed6All</strong> applies to losses before the layer terms apply.</p>
 <p>Although not shown in the example above, it is possible to specify a layer number for each layer using the <strong>LayerNumber</strong> field.</p>
 <p>If a policy has a limit that covers all perils and coverage types, then either <strong>PolLimit6All</strong> or <strong>LayerLimit</strong> can be used to represent this limit. In this case the recommendation is to use <strong>LayerLimit</strong> rather than <strong>PolLimit6All</strong>, as this then results in a consistent field containing the ultimate policy limit that can ease subsequent reporting.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

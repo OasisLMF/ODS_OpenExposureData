@@ -5,7 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Reinsurance &mdash; OpenDataStandards 1.0.0 documentation</title>
@@ -151,13 +152,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="reinsurance">
+  <section id="reinsurance">
 <h1>Reinsurance<a class="headerlink" href="#reinsurance" title="Permalink to this headline">¶</a></h1>
 <p>There are many different types of reinsurance available and many different combinations of financial terms that can apply within each type of reinsurance. The scope of each reinsurance contract, and the definition of risk level that applies within a contract (if there are per-risk terms), are also important considerations that are discussed in the following sections.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="section" id="reinsurance-types-and-terms">
+<section id="reinsurance-types-and-terms">
 <h2>Reinsurance Types and Terms<a class="headerlink" href="#reinsurance-types-and-terms" title="Permalink to this headline">¶</a></h2>
 <p>OED has been designed to allow capture of a broad range of reinsurance terms without the need to enter any information directly through a user interface. The range of reinsurance types that are currently considered within OED are as follows.</p>
 <div class="line-block">
@@ -178,46 +179,49 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>RiskLimit</p></td>
+<tr class="row-even"><td><p>RiskLevel</p></td>
+<td><p>The definition of risk. See below for more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RiskLimit</p></td>
 <td><p>Limit applicable to the losses from an event at the defined <strong>RiskLevel.</strong></p></td>
 </tr>
-<tr class="row-odd"><td><p>RiskAttachment</p></td>
+<tr class="row-even"><td><p>RiskAttachment</p></td>
 <td><p>Attachment applicable to the losses from an event at the defined <strong>RiskLevel.</strong></p></td>
 </tr>
-<tr class="row-even"><td><p>OccLimit</p></td>
+<tr class="row-odd"><td><p>OccLimit</p></td>
 <td><p>Limit applicable to the sum of losses from an event.</p></td>
 </tr>
-<tr class="row-odd"><td><p>OccAttachment</p></td>
+<tr class="row-even"><td><p>OccAttachment</p></td>
 <td><p>Attachment applicable to the sum of losses from an event.</p></td>
 </tr>
-<tr class="row-even"><td><p>OccFranchiseDed</p></td>
+<tr class="row-odd"><td><p>OccFranchiseDed</p></td>
 <td><p>A per-occurrence deductible that vanishes when it is exceeded.</p></td>
 </tr>
-<tr class="row-odd"><td><p>OccReverseFranchise</p></td>
+<tr class="row-even"><td><p>OccReverseFranchise</p></td>
 <td><p>The total event loss is excluded from the treaty if the reverse franchise threshold is exceeded.</p></td>
 </tr>
-<tr class="row-even"><td><p>AggLimit</p></td>
+<tr class="row-odd"><td><p>AggLimit</p></td>
 <td><p>Limit applicable to the sum of losses within an <strong>AggPeriod.</strong></p></td>
 </tr>
-<tr class="row-odd"><td><p>AggAttachment</p></td>
+<tr class="row-even"><td><p>AggAttachment</p></td>
 <td><p>Attachment applicable to the sum of losses within an <strong>AggPeriod.</strong></p></td>
 </tr>
-<tr class="row-even"><td><p>AggPeriod</p></td>
+<tr class="row-odd"><td><p>AggPeriod</p></td>
 <td><p>The period within which to sum losses (in days).</p></td>
 </tr>
-<tr class="row-odd"><td><p>InuringPriority</p></td>
+<tr class="row-even"><td><p>InuringPriority</p></td>
 <td><p>Indicates the order in which reinsurance applies. 1 denotes the contract that applies first.</p></td>
 </tr>
-<tr class="row-even"><td><p>Reinstatement</p></td>
+<tr class="row-odd"><td><p>Reinstatement</p></td>
 <td><p>The number of reinstatements.</p></td>
 </tr>
-<tr class="row-odd"><td><p>CededPercent</p></td>
+<tr class="row-even"><td><p>CededPercent</p></td>
 <td><p>The percentage applied to the gross loss entering the reinsurance contracts before other reinsurance terms. Predominantly used for surplus treaties. Unlike all the other terms in this table, <strong>CededPercent</strong> is specified in the reinsurance scope table for surplus treaties and in the reinsurance info table for all other treaty types.</p></td>
 </tr>
-<tr class="row-even"><td><p>PlacedPercent</p></td>
+<tr class="row-odd"><td><p>PlacedPercent</p></td>
 <td><p>The percentage applied to the reinsurance loss after other reinsurance terms. Predominantly used for all contracts other than surplus treaties.</p></td>
 </tr>
-<tr class="row-odd"><td><p>TreatyShare</p></td>
+<tr class="row-even"><td><p>TreatyShare</p></td>
 <td><p>The treaty share which is applicable to the individual reinsurer.</p></td>
 </tr>
 </tbody>
@@ -225,16 +229,16 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="risk-level">
+</section>
+<section id="risk-level">
 <h2>Risk Level<a class="headerlink" href="#risk-level" title="Permalink to this headline">¶</a></h2>
 <p>The term ‘risk level’ in the table above refers to what is defined as a ‘risk’ in the context of the particular reinsurance treaty. The definition of what constitutes a risk is an involved subject, but the reinsured usually defines this. For example, a risk could be one building in a large spread-out site, a number of buildings defined by such a site, a combination of sites close together, or a policy layer or account.</p>
-<p>In the context of OED a risk-level is specified in the <strong>RiskLevel</strong> field in the reinsurance scope table and can be defined as either location (<em>LOC</em>), location-group (<em>LGR</em>), policy (<em>POL</em> - including individual layers) or account level (ACC). Risk level is only relevant for reinsurance contracts with risk-level terms. However, this can include facultative contracts, quota share and surplus treaties and catastrophe excess of loss contracts as well as per-risk treaties.</p>
+<p>In the context of OED a risk-level is specified in the <strong>RiskLevel</strong> field in the reinsurance info table and can be defined as either location (<em>LOC</em>), location-group (<em>LGR</em>), policy (<em>POL</em> - including individual layers) or account level (ACC). Risk level is only relevant for reinsurance contracts with risk-level terms. However, this can include facultative contracts, quota share and surplus treaties and catastrophe excess of loss contracts as well as per-risk treaties.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="reinsurance-percentages-and-calculation-order">
+</section>
+<section id="reinsurance-percentages-and-calculation-order">
 <h2>Reinsurance Percentages and Calculation Order<a class="headerlink" href="#reinsurance-percentages-and-calculation-order" title="Permalink to this headline">¶</a></h2>
 <p>There are various percentages defined in OED that are applicable to reinsurance, and several kinds of limits and attachments so it is important to be clear about the order in which they work. The main principles are outlined below.</p>
 <p>The loss applicable to a reinsurance contract is the gross loss (assuming no inuring reinsurance contracts). In other words the loss to which reinsurance terms are applied is the ground-up loss net of all primary insurance limits, deductibles and shares.</p>
@@ -249,8 +253,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="examples-of-oed-tables-including-reinsurance">
+</section>
+<section id="examples-of-oed-tables-including-reinsurance">
 <h2>Examples of OED Tables Including Reinsurance<a class="headerlink" href="#examples-of-oed-tables-including-reinsurance" title="Permalink to this headline">¶</a></h2>
 <p>The examples below demonstrate how the reinsurance info and reinsurance scope tables work and interact with the account and location tables. As with the other examples in this document, not all the required fields are shown in the tables.</p>
 <p><strong>Example 1 - Facultative Reinsurance</strong></p>
@@ -380,12 +384,13 @@
 <p>OED Reinsurance Info file:</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 19%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -394,6 +399,7 @@
 <th class="head"><p>RiskLimit</p></th>
 <th class="head"><p>PlacedPercent</p></th>
 <th class="head"><p>InuringPriority</p></th>
+<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -403,6 +409,7 @@
 <td><p>500,000</p></td>
 <td><p>1.0</p></td>
 <td><p>1</p></td>
+<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
 <td><p>FAC</p></td>
@@ -410,6 +417,7 @@
 <td><p>1,200,000</p></td>
 <td><p>1.0</p></td>
 <td><p>1</p></td>
+<td><p>POL</p></td>
 </tr>
 </tbody>
 </table>
@@ -419,12 +427,11 @@
 <p>OED Reinsurance Scope file:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -432,7 +439,6 @@
 <th class="head"><p>AccNumber</p></th>
 <th class="head"><p>PolNumber</p></th>
 <th class="head"><p>LocNumber</p></th>
-<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -441,14 +447,12 @@
 <td><p>1</p></td>
 <td></td>
 <td><p>2</p></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
 <td><p>1</p></td>
 <td><p>3</p></td>
 <td><p>1</p></td>
 <td></td>
-<td><p>POL</p></td>
 </tr>
 </tbody>
 </table>
@@ -465,7 +469,7 @@
 <p>For <strong>ReinsNumber</strong> 2 the facultative contract will apply to the records where the following logical statement is true:</p>
 <p><strong>PortNumber = 1</strong> AND <strong>AccNumber = 3</strong> AND <strong>PolNumber = 1</strong></p>
 <p>i.e. to policy 1 in account 3 in portfolio 1.</p>
-<p>The <strong>RiskLevel</strong> is defined as <em>LOC</em> for <strong>ReinsNumber</strong> 1 and <em>POL</em> for <strong>ReinsNumber</strong> 2. For facultative contracts (and also for surplus treaties) the RiskLevel must match the highest resolution filter field used (i.e. <strong>LocNumber</strong> for <strong>ReinsNumber</strong> 1 and <strong>PolNumber</strong> for <strong>ReinsNumber</strong> 2).</p>
+<p>The <strong>RiskLevel</strong> is defined as <em>LOC</em> for <strong>ReinsNumber</strong> 1 and <em>POL</em> for <strong>ReinsNumber</strong> 2.</p>
 <p>The only filter fields that can be used for facultative (and surplus treaties) are <strong>PortNumber, AccNumber, PolNumber, LocNumber</strong> and <strong>LocGroup</strong> – i.e. portfolio plus the filter fields that correspond with the different risk levels: <em>ACC, POL, LOC</em> and <em>LGR</em>.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -598,12 +602,13 @@
 <p>OED Reinsurance Info file:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -612,6 +617,7 @@
 <th class="head"><p>OccLimit</p></th>
 <th class="head"><p>PlacedPercent</p></th>
 <th class="head"><p>InuringPriority</p></th>
+<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -621,6 +627,7 @@
 <td><p>1,000,000</p></td>
 <td><p>0.20</p></td>
 <td><p>1</p></td>
+<td><p>LOC</p></td>
 </tr>
 </tbody>
 </table>
@@ -630,13 +637,12 @@
 <p>OED Reinsurance Scope file:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -645,7 +651,6 @@
 <th class="head"><p>PolNumber</p></th>
 <th class="head"><p>LocNumber</p></th>
 <th class="head"><p>CountryCode</p></th>
-<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -655,7 +660,6 @@
 <td></td>
 <td></td>
 <td><p>GB</p></td>
-<td><p>LOC</p></td>
 </tr>
 </tbody>
 </table>
@@ -791,12 +795,13 @@
 <p>OED Reinsurance Info file:</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -805,6 +810,7 @@
 <th class="head"><p>OccLimit</p></th>
 <th class="head"><p>PlacedPercent</p></th>
 <th class="head"><p>InuringPriority</p></th>
+<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -814,6 +820,7 @@
 <td><p>3,000,000</p></td>
 <td><p>1.0</p></td>
 <td><p>1</p></td>
+<td><p>LOC</p></td>
 </tr>
 </tbody>
 </table>
@@ -823,13 +830,12 @@
 <p>OED Reinsurance Scope file:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -838,7 +844,6 @@
 <th class="head"><p>PolNumber</p></th>
 <th class="head"><p>LocNumber</p></th>
 <th class="head"><p>CededPercent</p></th>
-<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -848,7 +853,6 @@
 <td></td>
 <td><p>1</p></td>
 <td><p>0.50</p></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>1</p></td>
@@ -856,7 +860,6 @@
 <td></td>
 <td><p>2</p></td>
 <td><p>0.50</p></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-even"><td><p>1</p></td>
 <td><p>1</p></td>
@@ -864,7 +867,6 @@
 <td></td>
 <td><p>1</p></td>
 <td><p>0.50</p></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>1</p></td>
@@ -872,7 +874,6 @@
 <td></td>
 <td><p>2</p></td>
 <td><p>0.75</p></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-even"><td><p>1</p></td>
 <td><p>1</p></td>
@@ -880,7 +881,6 @@
 <td></td>
 <td><p>1</p></td>
 <td><p>0.75</p></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>1</p></td>
@@ -888,7 +888,6 @@
 <td></td>
 <td><p>2</p></td>
 <td><p>0.75</p></td>
-<td><p>LOC</p></td>
 </tr>
 </tbody>
 </table>
@@ -897,9 +896,8 @@
 </div>
 <p>For surplus treaties, <strong>CededPercent</strong> must be specified for each risk in the reinsurance scope table.</p>
 <p>Unlike in the previous quota share example, the 3,000,000 event limit specified in the reinsurance info table applies to losses after the application of the surplus percentage. This is because <strong>CededPercent</strong> is always used for surplus treaties, and <strong>CededPercent</strong> applies before any other terms.</p>
-<p>With surplus treaties, the following rules must be followed (they are the same as for facultative treaties):</p>
+<p>With surplus treaties, the following rule must be followed (they are the same as for facultative treaties):</p>
 <ul class="simple">
-<li><p>The <strong>RiskLevel</strong> must match the most detailed level of filter field (<strong>LocNumber</strong> in this case to match with <strong>RiskLevel</strong> = <em>LOC</em>).</p></li>
 <li><p>Only the filter fields <strong>PortNumber, AccNumber, PolNumber, LocNumber</strong> &amp; <strong>LocGroup</strong> can be used with surplus treaties.</p></li>
 </ul>
 <div class="line-block">
@@ -1028,13 +1026,14 @@
 <p>OED Reinsurance Info file:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -1044,6 +1043,7 @@
 <th class="head"><p>OccAttachment</p></th>
 <th class="head"><p>OccLimit</p></th>
 <th class="head"><p>InuringPriority</p></th>
+<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1054,6 +1054,7 @@
 <td><p>0</p></td>
 <td><p>0</p></td>
 <td><p>1</p></td>
+<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
 <td><p>CXL</p></td>
@@ -1062,6 +1063,7 @@
 <td><p>3,000,000</p></td>
 <td><p>3,000,000</p></td>
 <td><p>2</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1071,12 +1073,11 @@
 <p>OED Reinsurance Scope file:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -1084,7 +1085,6 @@
 <th class="head"><p>AccNumber</p></th>
 <th class="head"><p>PolNumber</p></th>
 <th class="head"><p>LocNumber</p></th>
-<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1093,25 +1093,21 @@
 <td></td>
 <td></td>
 <td></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>2</p></td>
 <td></td>
 <td></td>
 <td></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
 <td><p>1</p></td>
 <td></td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
 <td><p>2</p></td>
-<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1125,9 +1121,9 @@
 <p>The <strong>InuringPriority</strong> field specifies the order in which treaties apply. Here the per-risk contract applies before (i.e. inures to the benefit of) the Cat XL. This means that the losses that enter the Cat XL treaty are net of any recoveries from the Per-risk treaty. The <strong>InuringPriority</strong> values do not need to be consecutive – the treaty with the lowest number will always be applied before the treaty with the higher number.</p>
 <p>The reinsurance scope table contains two rows per treaty. This is to indicate that the treaties apply to both portfolio 1 and portfolio 2. The scope of each reinsurance treaty is defined by those records that satisfy the logical statement: <strong>PortNumber</strong> = <em>1</em> OR <strong>PortNumber</strong> = <em>2</em>. i.e. records either in portfolio 1 or 2.</p>
 <p>Essentially, within each <strong>ReinsNumber</strong>, each row of the reinsurance scope table acts as an OR operator and each filtering column acts as an AND operator. Although only four reinsurance scope fields are shown in the table above, all 10 reinsurance scope filtering fields could be used to define the scope of quota share, per-risk, cat XL or aggregate XL treaties.</p>
-<p>The <strong>RiskLevel</strong> of the per-risk treaty is defined at location level (<em>LOC</em>). OED allows the risk level to vary within a treaty if needed – as defined by the <strong>RiskLevel</strong> field in the reinsurance scope table. For the Cat XL treaty in this example there are no risk terms and so the <strong>RiskLevel</strong> is left blank.</p>
-</div>
-</div>
+<p>The <strong>RiskLevel</strong> of the per-risk treaty is defined at location level (<em>LOC</em>). For the Cat XL treaty in this example there are no risk terms and so the <strong>RiskLevel</strong> is left blank.</p>
+</section>
+</section>
 
 
            </div>

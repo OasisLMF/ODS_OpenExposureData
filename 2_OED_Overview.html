@@ -5,7 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Overview of OED &mdash; OpenDataStandards 1.0.0 documentation</title>
@@ -155,14 +156,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="overview-of-oed">
+  <section id="overview-of-oed">
 <h1>Overview of OED<a class="headerlink" href="#overview-of-oed" title="Permalink to this headline">¶</a></h1>
 <p>The OED comprises of four input files which are designed to allow the user to enter data in a manageable way without needing to populate and understand the relationship between a large number of tables. This does mean that there are areas of inefficiency and duplication in the input tables: this is inevitable when trying to balance between practicality and efficiency.</p>
 <p>The four input files are described in the Input Format {enter link to that .rst here}</p>
-<div class="section" id="hierarchy">
+<section id="hierarchy">
 <h2>Hierarchy<a class="headerlink" href="#hierarchy" title="Permalink to this headline">¶</a></h2>
 <p>OED follows an organisational and financial structure hierarchy that most users of catastrophe models will be familiar with. Specifically:</p>
-<div class="section" id="coverage">
+<section id="coverage">
 <h3>Coverage<a class="headerlink" href="#coverage" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>coverage</strong> type represents the lowest structure within the OED hierarchy and constitutes the specific type of coverage within an insurance policy. Within OED this is defined as:</p>
 <ul class="simple">
@@ -172,13 +173,13 @@
 <li><p>Business Interruption (BI) or time element coverage</p></li>
 </ul>
 <p>Primary financial structures such as limits and deductibles can be attached at coverage level as well as across property damage (PD = Buildings +Other Buildings + Contents) and across all coverages.</p>
-</div>
-<div class="section" id="location">
+</section>
+<section id="location">
 <h3>Location<a class="headerlink" href="#location" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>location</strong>, or site, comprises a group of coverages at one particular location. Primary financial structures, such as limits or deductibles can be applied at location level. Reinsurance financial structures, such as facultative reinsurance, can also be attached at location level.</p>
 <p>Sometimes an individual location record will actually represent a number of buildings (but perhaps because of poor data quality only the main location is known). This can be represented using the <strong>NumberOfBuildings</strong> field. Occasionally an insurer will have details about a number of individual locations that they wish to link in some way, for example a number of buildings on a university campus or on an industrial site. This can be achieved using the <strong>LocGroup</strong> field.</p>
-</div>
-<div class="section" id="policy">
+</section>
+<section id="policy">
 <h3>Policy<a class="headerlink" href="#policy" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>policy</strong> is a specific type of financial structure that applies to a set of locations. The unique aspect of a policy is that multiple policies can exist under the same account and can apply to the same set of locations. An example of this is an insurance layer, where several layers can apply to the same underlying set of locations. Reinsurance can also apply at policy level.</p>
 <p>Within a policy there is a hierarchy of financial terms as follows:</p>
@@ -188,13 +189,13 @@
 <li><p><strong>Layers</strong> apply after special conditions and standard policy level financial structures.</p></li>
 </ul>
 <p>Since multiple policies can apply to the same set of locations care must be taken when summing exposure or ground-up loss at policy level to avoid overcounting these metrics.</p>
-</div>
-<div class="section" id="account">
+</section>
+<section id="account">
 <h3>Account<a class="headerlink" href="#account" title="Permalink to this headline">¶</a></h3>
 <p>An <strong>account</strong> comprises a group of policies and locations (both are needed: you cannot have a policy without a location or a location without a policy). Primary and reinsurance financial structures can apply at account level.</p>
 <p>An <strong>account group</strong> can also be specified (using the AccGroup field) which provides a means of grouping accounts together for reporting purposes. Financial structures cannot apply at account group level.</p>
-</div>
-<div class="section" id="portfolio">
+</section>
+<section id="portfolio">
 <h3>Portfolio<a class="headerlink" href="#portfolio" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>portfolio</strong> comprises a number of accounts. Primary financial structures cannot apply at portfolio level, however reinsurance structures can.</p>
 <p>The table below shows the different hierarchical levels in OED and what financial terms are applicable:</p>
@@ -254,9 +255,9 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

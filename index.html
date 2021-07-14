@@ -5,7 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Open Exposure Data (OED) &mdash; OpenDataStandards 1.0.0 documentation</title>
@@ -165,19 +166,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="open-exposure-data-oed">
+  <section id="open-exposure-data-oed">
 <h1>Open Exposure Data (OED)<a class="headerlink" href="#open-exposure-data-oed" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="rationale">
+</section>
+<section id="rationale">
 <h1>Rationale<a class="headerlink" href="#rationale" title="Permalink to this headline">¶</a></h1>
 <p>The need for a new (re)insurance industry exposure data standard arose from the lack of such an existing standard for Oasis based models. Exposure data is the starting point for catastrophe risk analysis, and without such a standard in place it is impossible to give users guidance and documentation on how to prepare their input data and enable appropriate validation within Oasis based modelling platforms.</p>
 <p>The Oasis financial model (FM) enables a wide variety of model developers to use one consistent financial model: it is a key part of the utility of the Oasis framework. However, it is important that financial fields in the exposure data correspond well with the financial model to enable the full scope of the financial model to be used. The OED has been designed from the outset to work well with, and enable the full functionality of, the Oasis FM.</p>
 <p>The OED also provides companies with a starting point for implementing a model-developer-independent exposure data repository, which is strategically beneficial as it prevents firms being locked in to any one particular model developer.</p>
 <p>Although OED is designed to work well with Oasis based models, the scope of OED is wider than Oasis. For example, financial fields exist in OED which are not yet implemented in Oasis and secondary modifiers that exist in OED which are not currently used by any Oasis based model. However, Oasis LMF continue to expand the scope of their FM with the aim to support as much of the OED functionality as possible.</p>
 <p>In the meantime, users should consult their platform / model specific documentation to understand which elements within OED are being used by a certain model at a particular time.</p>
-<div class="section" id="oed-abbreviations">
+<section id="oed-abbreviations">
 <h2>OED Abbreviations<a class="headerlink" href="#oed-abbreviations" title="Permalink to this headline">¶</a></h2>
 <p>The following abbreviations are used in OED field names:</p>
 <table class="colwidths-given docutils align-default">
@@ -256,16 +257,16 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="overview-of-oed">
+</section>
+</section>
+<section id="overview-of-oed">
 <h1>Overview of OED<a class="headerlink" href="#overview-of-oed" title="Permalink to this headline">¶</a></h1>
 <p>The OED comprises of four input files which are designed to allow the user to enter data in a manageable way without needing to populate and understand the relationship between a large number of tables. This does mean that there are areas of inefficiency and duplication in the input tables: this is inevitable when trying to balance between practicality and efficiency.</p>
 <p>The four input files are described in the Input Format {enter link to that .rst here}</p>
-<div class="section" id="hierarchy">
+<section id="hierarchy">
 <h2>Hierarchy<a class="headerlink" href="#hierarchy" title="Permalink to this headline">¶</a></h2>
 <p>OED follows an organisational and financial structure hierarchy that most users of catastrophe models will be familiar with. Specifically:</p>
-<div class="section" id="coverage">
+<section id="coverage">
 <h3>Coverage<a class="headerlink" href="#coverage" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>coverage</strong> type represents the lowest structure within the OED hierarchy and constitutes the specific type of coverage within an insurance policy. Within OED this is defined as:</p>
 <ul class="simple">
@@ -275,13 +276,13 @@
 <li><p>Business Interruption (BI) or time element coverage</p></li>
 </ul>
 <p>Primary financial structures such as limits and deductibles can be attached at coverage level as well as across property damage (PD = Buildings +Other Buildings + Contents) and across all coverages.</p>
-</div>
-<div class="section" id="location">
+</section>
+<section id="location">
 <h3>Location<a class="headerlink" href="#location" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>location</strong>, or site, comprises a group of coverages at one particular location. Primary financial structures, such as limits or deductibles can be applied at location level. Reinsurance financial structures, such as facultative reinsurance, can also be attached at location level.</p>
 <p>Sometimes an individual location record will actually represent a number of buildings (but perhaps because of poor data quality only the main location is known). This can be represented using the <strong>NumberOfBuildings</strong> field. Occasionally an insurer will have details about a number of individual locations that they wish to link in some way, for example a number of buildings on a university campus or on an industrial site. This can be achieved using the <strong>LocGroup</strong> field.</p>
-</div>
-<div class="section" id="policy">
+</section>
+<section id="policy">
 <h3>Policy<a class="headerlink" href="#policy" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>policy</strong> is a specific type of financial structure that applies to a set of locations. The unique aspect of a policy is that multiple policies can exist under the same account and can apply to the same set of locations. An example of this is an insurance layer, where several layers can apply to the same underlying set of locations. Reinsurance can also apply at policy level.</p>
 <p>Within a policy there is a hierarchy of financial terms as follows:</p>
@@ -291,13 +292,13 @@
 <li><p><strong>Layers</strong> apply after special conditions and standard policy level financial structures.</p></li>
 </ul>
 <p>Since multiple policies can apply to the same set of locations care must be taken when summing exposure or ground-up loss at policy level to avoid overcounting these metrics.</p>
-</div>
-<div class="section" id="account">
+</section>
+<section id="account">
 <h3>Account<a class="headerlink" href="#account" title="Permalink to this headline">¶</a></h3>
 <p>An <strong>account</strong> comprises a group of policies and locations (both are needed: you cannot have a policy without a location or a location without a policy). Primary and reinsurance financial structures can apply at account level.</p>
 <p>An <strong>account group</strong> can also be specified (using the AccGroup field) which provides a means of grouping accounts together for reporting purposes. Financial structures cannot apply at account group level.</p>
-</div>
-<div class="section" id="portfolio">
+</section>
+<section id="portfolio">
 <h3>Portfolio<a class="headerlink" href="#portfolio" title="Permalink to this headline">¶</a></h3>
 <p>A <strong>portfolio</strong> comprises a number of accounts. Primary financial structures cannot apply at portfolio level, however reinsurance structures can.</p>
 <p>The table below shows the different hierarchical levels in OED and what financial terms are applicable:</p>
@@ -357,10 +358,10 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-<div class="section" id="oed-import-format">
+</section>
+</section>
+</section>
+<section id="oed-import-format">
 <h1>OED Import Format<a class="headerlink" href="#oed-import-format" title="Permalink to this headline">¶</a></h1>
 <p>The import format for OED is defined by four .csv files:</p>
 <ul class="simple">
@@ -474,17 +475,17 @@
 <p>For a list of the reinsurance financial terms available and examples about how to specify such terms see the reinsurance section and associated examples.
 If there is no reinsurance, this import file is not required. If there is reinsurance, the minimum fields required are <strong>ReinsNumber, ReinsPeril, ReinsCurrency, InuringPriority, ReinsType, PlacedPercent</strong>.</p>
 <p><strong>ReinsNumber</strong> must be unique, as this links with the reinsurance scope file.</p>
+<p>The <strong>RiskLevel</strong> of a reinsurance contract refers to the level at which ‘risk’ terms apply. A ‘risk’ can either be defined at Location ‘LOC’, Location Group ‘LGR’, Policy ‘POL’ or Account level ‘ACC’. If a reinsurance contract does not contain risk specific terms then the <strong>RiskLevel</strong> field should be left blank. Note that it is not only per-risk treaties that have risk level terms. A facultative contract, a quota share treaty or even a catastrophe XL may also have risk level terms and thus require a risk level to be defined.</p>
 <p>The full set of fields in a reinsurance info import file can be found by filtering on ‘ReinsInfo’ in the ‘Input File’ column of the <em>Open Exposure Data Spec</em> spreadsheet. There are over 20 potential fields that could be used within the reinsurance info file. However, it is not mandatory to use a field that contains no data.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>The reinsurance scope file contains details of three different but related pieces of information:</p>
+<p>The reinsurance scope file contains details of two different but related pieces of information:</p>
 <ul class="simple">
 <li><p>The scope of the reinsurance contract: i.e. which portfolios, accounts, locations are covered by a particular reinsurance contract.</p></li>
-<li><p>The risk level of the reinsurance contract: i.e. for reinsurance contracts with financial structures relating to a ‘risk’, the definition of what risk means.</p></li>
 <li><p>The CededPercent for a surplus treaty: which can vary for each risk covered by the treaty.</p></li>
 </ul>
-<p>The above three points are discussed in turn below.</p>
+<p>The above two points are discussed in turn below.</p>
 <p>The scope of what a reinsurance contract applies to is defined by the ten ‘filter fields’ available in the reinsurance scope file: <strong>PortNumber, AccNumber, PolNumber, LocGroup, LocNumber, CedantName, ProducerName, LOB, CountryCode, ReinsTag.</strong></p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -500,15 +501,14 @@ Scope information relating to the same reinsurance contract can also be applied 
 <p>If <strong>PortNumber</strong> = ‘A’ is entered in one row and <strong>AccNumber</strong> = ‘B’ is entered in a separate row, then the scope of the reinsurance policy would apply to all records that match the condition: all records in portfolio ‘A’ <em>OR</em> any records in account number ‘B’.</p>
 <p>If <strong>LocNumber</strong> is used as a scope filter then <strong>AccNumber</strong> and <strong>PortNumber</strong> must be specified too (otherwise <strong>LocNumber</strong> does not uniquely identify a location).
 If <strong>PolNumber</strong> is used as a scope filter then <strong>AccNumber</strong> and <strong>PortNumber</strong> must be specified too (otherwise <strong>PolNumber</strong> does not uniquely identify a policy).</p>
-<p>The RiskLevel of a reinsurance contract refers to the level at which ‘risk’ terms apply. A ‘risk’ can either be defined at Location ‘LOC’, Location Group ‘LGR’, Policy ‘POL’ or Account level ‘ACC’. If a reinsurance contract does not contain risk specific terms then the <strong>RiskLevel</strong> field should be left blank. Note that it is not only per-risk treaties that have risk level terms. A facultative contract, a quota share treaty or even a catastrophe XL may also have risk level terms and thus require a risk level to be defined.</p>
-<p>Although the reinsurance scope and the risk level are two different concepts, for facultative contracts and surplus treaties, the OED format requires that the risk level for a particular contract should also be used to define the scope of the contract. This is because these contracts, by their nature, either apply to individual risks (facultative) or have a ceded percent that varies by risk (surplus), and so to have scope defined by fields different to the risk level would cause ambiguity and confusion.</p>
 <p>Surplus treaties require entry of <strong>CededPercent</strong> at the risk level. For example, if the risk level within a surplus treaty is location (LOC), then the user must list every location covered by the treaty in the <strong>LocNumber</strong> field (along with <strong>AccNumber</strong> and <strong>PortNumber</strong> to uniquely identify the location within the file) as well as the <strong>CededPercent</strong> for each location.</p>
+<p>Although the reinsurance scope and the risk level are two different concepts, for facultative contracts and surplus treaties, the OED format requires that the risk level for a particular contract should also be used to define the scope of the contract. This is because these contracts, by their nature, either apply to individual risks (facultative) or have a ceded percent that varies by risk (surplus), and so to have scope defined by fields different to the risk level would cause ambiguity and confusion.</p>
 <p>If there is no reinsurance, the reinsurance scope import file is not required. If there is reinsurance, each reinsurance entry in the reinsurance info file must have at least one entry in the reinsurance scope file; some contracts will have multiple entries in the scope file.</p>
-<p>The minimum fields required are: <strong>ReinsNumber</strong> and <strong>RiskLevel</strong>, at least one of the ten filter fields, and <strong>CededPercent</strong> for surplus treaties.
+<p>The minimum fields required are: <strong>ReinsNumber</strong>, at least one of the ten filter fields, and <strong>CededPercent</strong> for surplus treaties.
 The full set of fields in a reinsurance scope import file can be found by filtering on ‘ReinsScope’ in the Input File column of the <em>Open Exposure Data Spec</em> spreadsheet. There are over 10 potential fields that could be used within the reinsurance scope file. However, it is not mandatory to use a field that contains no data.</p>
 <p>For a list of the reinsurance financial terms available and examples about how to specify such terms see the reinsurance section and associated examples. <strong>&lt;insert links here&gt;</strong></p>
-</div>
-<div class="section" id="asset-related-details">
+</section>
+<section id="asset-related-details">
 <h1>Asset Related Details<a class="headerlink" href="#asset-related-details" title="Permalink to this headline">¶</a></h1>
 <p>The following sections describe the OED specification for the asset value, usage, construction, and other modifiers that can influence the susceptibility of an asset to damage from a peril.
 Coverage total insurable value (TIV)</p>
@@ -680,8 +680,8 @@ Some users may have translated from a different (original) construction code sch
 <p>Despite the wide range of fields available in OED, there is always the possibility that a user needs to enter or store information without a corresponding OED field. This can be achieved through the flexi-table functionality within OED, which essentially provides a key-value pair back end table at the main hierarchical levels.
 To enter additional field / values, a user can enter additional columns: <strong>FlexiLocZZZ</strong>, <strong>FlexPolZZZ</strong>, <strong>FlexiAccZZZ</strong>, where ‘ZZZ’ contains the name of the new field.
 For example, if a user wants to store information on house colour, they could add an additional column to the location input file with the fieldname <em>FlexiLocHouseColour</em>.</p>
-</div>
-<div class="section" id="geography-and-perils">
+</section>
+<section id="geography-and-perils">
 <h1>Geography and Perils<a class="headerlink" href="#geography-and-perils" title="Permalink to this headline">¶</a></h1>
 <p>There are several aspects to geographical information in OED:</p>
 <ul class="simple">
@@ -874,8 +874,8 @@ GeogScheme codes are up to five characters (no special characters). The latest c
 <p>Note that this means there are two peril code fields at location and policy level (<strong>LocPerilsCovered / LocPeril and PolPerilsCovered / PolPeril</strong>). The <strong>LocPerilsCovered</strong> and <strong>PolPerilsCovered</strong> fields define the overall coverage for a location or policy irrespective of financial fields. This makes it much easier for the analyst to filter locations or policies that cover specific perils.</p>
 <p>For all of these peril fields, the peril codes (either individual or peril-group codes) are entered separated by semi-colons. So for example, if a location covered wind (including all wind sub-perils) and earthquake (including all EQ sub-perils) then the users would enter <em>‘QQ1;WW1’</em> in the <strong>LocPerilsCovered</strong> field. If there is a policy level limit that only applies to wind, then the user would enter <em>‘WW1’</em> in the <strong>PolPerils</strong> field.</p>
 <p>The way these peril codes have been designed means there is great flexibility in indicating the coverage or exclusion of perils and allowing different limits and deductibles to apply to different perils. Some examples of this are shown in the examples part of the <strong>Financial Details</strong> section.</p>
-</div>
-<div class="section" id="financial-details-primary-insurance">
+</section>
+<section id="financial-details-primary-insurance">
 <h1>Financial Details - Primary Insurance<a class="headerlink" href="#financial-details-primary-insurance" title="Permalink to this headline">¶</a></h1>
 <p>OED is designed to allow a wide variety of complex financial structures – beyond that currently possible in Oasis or any other catastrophe modelling platform. To encompass such a variety of financial structures (e.g. different limits for different perils, or multiple policy special conditions) within a limited set of input files (two for primary insurance) it is necessary to allow multiple rows within each file for the same location or policy. The need for this will become clearer in the examples that follow.</p>
 <p>The OED hierarchy is described in the <em>overview</em> section. Primary financial structures in OED can apply at the following levels:</p>
@@ -1040,9 +1040,10 @@ Limits, deductibles and minimum and maximum deductibles can be defined at each o
 </div>
 <p>Policy special conditions are financial structures that apply to only a subset of locations within a policy. These require three aspects: (1) the specification of the financial conditions, (2) the specification of the locations to which these financial conditions apply and (3) the specification of the order in which the special conditions apply – i.e. does a special condition apply before or after other special conditions that apply to the same locations.
 Taking these three aspects in turn.</p>
-<p>The specification of the financial details of the special condition is done in the same way as any other financial structure within OED but using the field names starting with ‘Cond’. All of the coverage values deductible and limit types and codes can be used with special conditions to specify how the special condition financial structures work. Special conditions are defined in the OED account input file and must have a <strong>CondNumber</strong> in this input file. If multiple special conditions apply within the same policy, then multiple rows (with the same <strong>AccNumber</strong> and <strong>PolNumber</strong> but different <strong>CondNumber</strong>) must be used.</p>
-<p>The definition of the locations that each special condition applies to is done by specifying a <strong>CondNumber</strong> on each location (in the location input file) that corresponds with the <strong>CondNumber</strong> in the account input file.
-The definition of the order in which special conditions apply is done through the <strong>CondPriority</strong> field in the location input file: if multiple special conditions apply to the same location then multiple rows must be used in the location input file. Each location row will be identical apart from <strong>CondNumber</strong> and <strong>CondPriority</strong> which denote the special conditions applying to the location and the order in which they apply.</p>
+<p>The specification of the financial details of the special condition is done in the same way as any other financial structure within OED but using the field names starting with ‘Cond’. All of the coverage values deductible and limit types and codes can be used with special conditions to specify how the special condition financial structures work. Special conditions are defined in the OED account input file and must have a <strong>CondNumber</strong> and <strong>CondTag</strong> in this input file. If multiple special conditions apply within the same policy, then multiple rows (with the same <strong>AccNumber</strong> and <strong>PolNumber</strong> but different <strong>CondNumber</strong>) must be used.</p>
+<p>The definition of the locations that each special condition applies to is done by specifying a <strong>CondTag</strong> on each location (in the location input file) that corresponds with the <strong>CondTag</strong> in the account input file.
+If the special condition financial terms vary by policy, then a different CondNumber should be used for each unique set of terms. However, the <strong>CondTag</strong> should not vary for each <strong>CondNumber</strong>, and the locations should be tagged with <strong>CondTag</strong> only once per location in the location file.
+The definition of the order in which special conditions apply is done through the <strong>CondPriority</strong> field in the account input file: if multiple special conditions <strong>at different priorities</strong> apply to the same location then multiple rows must be used in the location input file. Each location row will be identical apart from <strong>CondTag</strong> and which denote the special conditions grouping applying to the location for each condition.</p>
 <p>See example 4 in the financial structures’ examples section for an illustration of how special conditions are specified.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1491,10 +1492,10 @@ The second way of representing personal lines data is to group all locations und
 <th class="head"><p>PolNumber</p></th>
 <th class="head"><p>PolPeril</p></th>
 <th class="head"><p>PolLimit6All</p></th>
-<th class="head"><p>Cond Number</p></th>
-<th class="head"><p>Cond Priority</p></th>
+<th class="head"><p>CondTag</p></th>
+<th class="head"><p>CondNumber</p></th>
+<th class="head"><p>CondPriority</p></th>
 <th class="head"><p>CondPeril</p></th>
-<th class="head"><p>CondLimitType6All</p></th>
 <th class="head"><p>CondLimit6All</p></th>
 </tr>
 </thead>
@@ -1505,8 +1506,8 @@ The second way of representing personal lines data is to group all locations und
 <td><p>1,500,000</p></td>
 <td><p>1</p></td>
 <td><p>1</p></td>
+<td><p>1</p></td>
 <td><p>WW1</p></td>
-<td><p>0</p></td>
 <td><p>250,000</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
@@ -1514,9 +1515,9 @@ The second way of representing personal lines data is to group all locations und
 <td><p>QQ1;WW1</p></td>
 <td><p>1,500,000</p></td>
 <td><p>2</p></td>
+<td><p>2</p></td>
 <td><p>1</p></td>
 <td><p>WW1</p></td>
-<td><p>0</p></td>
 <td><p>500,000</p></td>
 </tr>
 </tbody>
@@ -1540,7 +1541,7 @@ The second way of representing personal lines data is to group all locations und
 <th class="head"><p>BuildingTIV</p></th>
 <th class="head"><p>LocDedType1Building</p></th>
 <th class="head"><p>LocDed1Building</p></th>
-<th class="head"><p>CondNumber</p></th>
+<th class="head"><p>CondTag</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1591,10 +1592,10 @@ The second way of representing personal lines data is to group all locations und
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>In the tables above, special condition 1 (<strong>CondNumber</strong> = 1 in the account table) applies to locations 1 and 2 (<strong>CondNumber</strong> = 1 in the location table) whereas special condition 2 applies to locations 3 and 4.</p>
+<p>In the tables above, special condition 1 (<strong>CondNumber</strong> = 1 in the account table) applies to <strong>CondTag</strong> = 1 which is the group of locations 1 and 2 (<strong>CondTag</strong> = 1 in the location table) whereas special condition 2 applies to locations 3 and 4.</p>
 <p>In the account table, note again the use of a second row for the same account and policy to specify a second special condition. This feature of OED means that essentially an unlimited number of special conditions are possible. The <strong>CondPeril</strong> field in the account table indicates the peril (or perils) to which the special condition financial terms apply.
-In this example the special conditions are not nested – meaning that each location has no more than one special condition. In this situation the special conditions do not need an order and so the <strong>CondPriority</strong> can be the same for both conditions.</p>
-<p>In the location table, <strong>CondNumber</strong> denotes the special condition (or conditions) applicable to each location. <strong>CondNumber</strong> must match with <strong>CondNumber</strong> in the account table.</p>
+In this example the special conditions are not nested – meaning that each location has no more than one special condition. In this situation the special conditions do not need an order and so the <strong>CondPriority</strong> should be the same for both conditions.</p>
+<p>In the location table, <strong>CondTag</strong> denotes the scope of the special condition (or conditions) which is a group of locations. <strong>CondTag</strong> must match with <strong>CondTag</strong> in the account table.</p>
 <p>If two special conditions are nested or overlap – meaning that some locations have two applicable special conditions (e.g. Texas tier 1 wind sub-limit of 250,000 (<strong>CondNumber</strong> = 1) and Texas overall wind sub-limit of 500,000 (<strong>CondNumber</strong> = 2)), the tables would be specified as shown below. The example below assumes that locations 1 and 2 are in the Texas tier 1 region, locations 3 and 4 are within Texas but not in the Tier 1 wind region, and locations 5 and 6 are outside Texas.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1602,13 +1603,13 @@ In this example the special conditions are not nested – meaning that each loca
 <p>OED Account file:</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
-<col style="width: 9%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
 <col style="width: 14%" />
 <col style="width: 14%" />
-<col style="width: 9%" />
-<col style="width: 9%" />
-<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
 <col style="width: 12%" />
 <col style="width: 12%" />
 </colgroup>
@@ -1617,10 +1618,10 @@ In this example the special conditions are not nested – meaning that each loca
 <th class="head"><p>PolNumber</p></th>
 <th class="head"><p>PolPeril</p></th>
 <th class="head"><p>PolLimit6All</p></th>
-<th class="head"><p>Cond Number</p></th>
-<th class="head"><p>Cond Priority</p></th>
+<th class="head"><p>CondTag</p></th>
+<th class="head"><p>CondNumber</p></th>
+<th class="head"><p>CondPriority</p></th>
 <th class="head"><p>CondPeril</p></th>
-<th class="head"><p>CondLimitType6All</p></th>
 <th class="head"><p>CondLimit6All</p></th>
 </tr>
 </thead>
@@ -1631,8 +1632,8 @@ In this example the special conditions are not nested – meaning that each loca
 <td><p>1,500,000</p></td>
 <td><p>1</p></td>
 <td><p>1</p></td>
+<td><p>1</p></td>
 <td><p>WW1</p></td>
-<td><p>0</p></td>
 <td><p>250,000</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
@@ -1641,8 +1642,8 @@ In this example the special conditions are not nested – meaning that each loca
 <td><p>1,500,000</p></td>
 <td><p>2</p></td>
 <td><p>2</p></td>
+<td><p>2</p></td>
 <td><p>WW1</p></td>
-<td><p>0</p></td>
 <td><p>500,000</p></td>
 </tr>
 </tbody>
@@ -1666,7 +1667,7 @@ In this example the special conditions are not nested – meaning that each loca
 <th class="head"><p>BuildingTIV</p></th>
 <th class="head"><p>LocDedType1Building</p></th>
 <th class="head"><p>LocDed1Building</p></th>
-<th class="head"><p>CondNumber</p></th>
+<th class="head"><p>CondTag</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1728,7 +1729,7 @@ In this example the special conditions are not nested – meaning that each loca
 </tr>
 </tbody>
 </table>
-<p>The location table now has two extra rows for locations 1 and 2 to specify a second special condition applying to these locations. The <strong>CondPriority</strong> field is used to specify the order in which these special conditions apply. The method of adding an extra location row to specify an extra hierarchy of special condition means that the OED design can cope with an unlimited number of nested special conditions. Overlapping special conditions (e.g. Texas wind sublimit and multi-State tier 1 wind sublimit) can also be specified in this way.</p>
+<p>The location table now has two extra rows for locations 1 and 2 to specify a second special condition applying to these locations, with two distinct values of <strong>CondTag</strong>. The <strong>CondPriority</strong> field in the account file is used to specify the order in which these special conditions apply. The method of adding an extra location row to specify an extra hierarchy of special condition means that the OED design can cope with an unlimited number of nested special conditions. Overlapping special conditions (e.g. Texas wind sublimit and multi-State tier 1 wind sublimit) can also be specified in this way.</p>
 <p>Although not shown in the examples above, the field <strong>CondName</strong> can also be specified in the account table to provide a text description of each special condition.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1840,8 +1841,8 @@ In this example the special conditions are not nested – meaning that each loca
 <p>The two different layers in the example above have different policy numbers within the same account. The insurer has a 10% share of the first layer and a 50% share of the second layer specified within <strong>LayerParticipation</strong>. The policy level deductible specified in <strong>PolDedType6All</strong> and <strong>PolDed6All</strong> applies to losses before the layer terms apply.</p>
 <p>Although not shown in the example above, it is possible to specify a layer number for each layer using the <strong>LayerNumber</strong> field.</p>
 <p>If a policy has a limit that covers all perils and coverage types, then either <strong>PolLimit6All</strong> or <strong>LayerLimit</strong> can be used to represent this limit. In this case the recommendation is to use <strong>LayerLimit</strong> rather than <strong>PolLimit6All</strong>, as this then results in a consistent field containing the ultimate policy limit that can ease subsequent reporting.</p>
-</div>
-<div class="section" id="reinsurance">
+</section>
+<section id="reinsurance">
 <h1>Reinsurance<a class="headerlink" href="#reinsurance" title="Permalink to this headline">¶</a></h1>
 <p>There are many different types of reinsurance available and many different combinations of financial terms that can apply within each type of reinsurance. The scope of each reinsurance contract, and the definition of risk level that applies within a contract (if there are per-risk terms), are also important considerations that are discussed in the following sections.</p>
 <div class="line-block">
@@ -1866,46 +1867,49 @@ In this example the special conditions are not nested – meaning that each loca
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>RiskLimit</p></td>
+<tr class="row-even"><td><p>RiskLevel</p></td>
+<td><p>The definition of risk. See below for more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RiskLimit</p></td>
 <td><p>Limit applicable to the losses from an event at the defined <strong>RiskLevel.</strong></p></td>
 </tr>
-<tr class="row-odd"><td><p>RiskAttachment</p></td>
+<tr class="row-even"><td><p>RiskAttachment</p></td>
 <td><p>Attachment applicable to the losses from an event at the defined <strong>RiskLevel.</strong></p></td>
 </tr>
-<tr class="row-even"><td><p>OccLimit</p></td>
+<tr class="row-odd"><td><p>OccLimit</p></td>
 <td><p>Limit applicable to the sum of losses from an event.</p></td>
 </tr>
-<tr class="row-odd"><td><p>OccAttachment</p></td>
+<tr class="row-even"><td><p>OccAttachment</p></td>
 <td><p>Attachment applicable to the sum of losses from an event.</p></td>
 </tr>
-<tr class="row-even"><td><p>OccFranchiseDed</p></td>
+<tr class="row-odd"><td><p>OccFranchiseDed</p></td>
 <td><p>A per-occurrence deductible that vanishes when it is exceeded.</p></td>
 </tr>
-<tr class="row-odd"><td><p>OccReverseFranchise</p></td>
+<tr class="row-even"><td><p>OccReverseFranchise</p></td>
 <td><p>The total event loss is excluded from the treaty if the reverse franchise threshold is exceeded.</p></td>
 </tr>
-<tr class="row-even"><td><p>AggLimit</p></td>
+<tr class="row-odd"><td><p>AggLimit</p></td>
 <td><p>Limit applicable to the sum of losses within an <strong>AggPeriod.</strong></p></td>
 </tr>
-<tr class="row-odd"><td><p>AggAttachment</p></td>
+<tr class="row-even"><td><p>AggAttachment</p></td>
 <td><p>Attachment applicable to the sum of losses within an <strong>AggPeriod.</strong></p></td>
 </tr>
-<tr class="row-even"><td><p>AggPeriod</p></td>
+<tr class="row-odd"><td><p>AggPeriod</p></td>
 <td><p>The period within which to sum losses (in days).</p></td>
 </tr>
-<tr class="row-odd"><td><p>InuringPriority</p></td>
+<tr class="row-even"><td><p>InuringPriority</p></td>
 <td><p>Indicates the order in which reinsurance applies. 1 denotes the contract that applies first.</p></td>
 </tr>
-<tr class="row-even"><td><p>Reinstatement</p></td>
+<tr class="row-odd"><td><p>Reinstatement</p></td>
 <td><p>The number of reinstatements.</p></td>
 </tr>
-<tr class="row-odd"><td><p>CededPercent</p></td>
+<tr class="row-even"><td><p>CededPercent</p></td>
 <td><p>The percentage applied to the gross loss entering the reinsurance contracts before other reinsurance terms. Predominantly used for surplus treaties. Unlike all the other terms in this table, <strong>CededPercent</strong> is specified in the reinsurance scope table for surplus treaties and in the reinsurance info table for all other treaty types.</p></td>
 </tr>
-<tr class="row-even"><td><p>PlacedPercent</p></td>
+<tr class="row-odd"><td><p>PlacedPercent</p></td>
 <td><p>The percentage applied to the reinsurance loss after other reinsurance terms. Predominantly used for all contracts other than surplus treaties.</p></td>
 </tr>
-<tr class="row-odd"><td><p>TreatyShare</p></td>
+<tr class="row-even"><td><p>TreatyShare</p></td>
 <td><p>The treaty share which is applicable to the individual reinsurer.</p></td>
 </tr>
 </tbody>
@@ -1914,7 +1918,7 @@ In this example the special conditions are not nested – meaning that each loca
 <div class="line"><br /></div>
 </div>
 <p>The term ‘risk level’ in the table above refers to what is defined as a ‘risk’ in the context of the particular reinsurance treaty. The definition of what constitutes a risk is an involved subject, but the reinsured usually defines this. For example, a risk could be one building in a large spread-out site, a number of buildings defined by such a site, a combination of sites close together, or a policy layer or account.</p>
-<p>In the context of OED a risk-level is specified in the <strong>RiskLevel</strong> field in the reinsurance scope table and can be defined as either location (<em>LOC</em>), location-group (<em>LGR</em>), policy (<em>POL</em> - including individual layers) or account level (ACC). Risk level is only relevant for reinsurance contracts with risk-level terms. However, this can include facultative contracts, quota share and surplus treaties and catastrophe excess of loss contracts as well as per-risk treaties.</p>
+<p>In the context of OED a risk-level is specified in the <strong>RiskLevel</strong> field in the reinsurance info table and can be defined as either location (<em>LOC</em>), location-group (<em>LGR</em>), policy (<em>POL</em> - including individual layers) or account level (ACC). Risk level is only relevant for reinsurance contracts with risk-level terms. However, this can include facultative contracts, quota share and surplus treaties and catastrophe excess of loss contracts as well as per-risk treaties.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -2059,12 +2063,13 @@ In this example the special conditions are not nested – meaning that each loca
 <p>OED Reinsurance Info file:</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 19%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -2073,6 +2078,7 @@ In this example the special conditions are not nested – meaning that each loca
 <th class="head"><p>RiskLimit</p></th>
 <th class="head"><p>PlacedPercent</p></th>
 <th class="head"><p>InuringPriority</p></th>
+<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -2082,6 +2088,7 @@ In this example the special conditions are not nested – meaning that each loca
 <td><p>500,000</p></td>
 <td><p>1.0</p></td>
 <td><p>1</p></td>
+<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
 <td><p>FAC</p></td>
@@ -2089,6 +2096,7 @@ In this example the special conditions are not nested – meaning that each loca
 <td><p>1,200,000</p></td>
 <td><p>1.0</p></td>
 <td><p>1</p></td>
+<td><p>POL</p></td>
 </tr>
 </tbody>
 </table>
@@ -2098,12 +2106,11 @@ In this example the special conditions are not nested – meaning that each loca
 <p>OED Reinsurance Scope file:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -2111,7 +2118,6 @@ In this example the special conditions are not nested – meaning that each loca
 <th class="head"><p>AccNumber</p></th>
 <th class="head"><p>PolNumber</p></th>
 <th class="head"><p>LocNumber</p></th>
-<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -2120,14 +2126,12 @@ In this example the special conditions are not nested – meaning that each loca
 <td><p>1</p></td>
 <td></td>
 <td><p>2</p></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
 <td><p>1</p></td>
 <td><p>3</p></td>
 <td><p>1</p></td>
 <td></td>
-<td><p>POL</p></td>
 </tr>
 </tbody>
 </table>
@@ -2144,7 +2148,7 @@ In this example the special conditions are not nested – meaning that each loca
 <p>For <strong>ReinsNumber</strong> 2 the facultative contract will apply to the records where the following logical statement is true:</p>
 <p><strong>PortNumber = 1</strong> AND <strong>AccNumber = 3</strong> AND <strong>PolNumber = 1</strong></p>
 <p>i.e. to policy 1 in account 3 in portfolio 1.</p>
-<p>The <strong>RiskLevel</strong> is defined as <em>LOC</em> for <strong>ReinsNumber</strong> 1 and <em>POL</em> for <strong>ReinsNumber</strong> 2. For facultative contracts (and also for surplus treaties) the RiskLevel must match the highest resolution filter field used (i.e. <strong>LocNumber</strong> for <strong>ReinsNumber</strong> 1 and <strong>PolNumber</strong> for <strong>ReinsNumber</strong> 2).</p>
+<p>The <strong>RiskLevel</strong> is defined as <em>LOC</em> for <strong>ReinsNumber</strong> 1 and <em>POL</em> for <strong>ReinsNumber</strong> 2.</p>
 <p>The only filter fields that can be used for facultative (and surplus treaties) are <strong>PortNumber, AccNumber, PolNumber, LocNumber</strong> and <strong>LocGroup</strong> – i.e. portfolio plus the filter fields that correspond with the different risk levels: <em>ACC, POL, LOC</em> and <em>LGR</em>.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -2277,12 +2281,13 @@ In this example the special conditions are not nested – meaning that each loca
 <p>OED Reinsurance Info file:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -2291,6 +2296,7 @@ In this example the special conditions are not nested – meaning that each loca
 <th class="head"><p>OccLimit</p></th>
 <th class="head"><p>PlacedPercent</p></th>
 <th class="head"><p>InuringPriority</p></th>
+<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -2300,6 +2306,7 @@ In this example the special conditions are not nested – meaning that each loca
 <td><p>1,000,000</p></td>
 <td><p>0.20</p></td>
 <td><p>1</p></td>
+<td><p>LOC</p></td>
 </tr>
 </tbody>
 </table>
@@ -2309,13 +2316,12 @@ In this example the special conditions are not nested – meaning that each loca
 <p>OED Reinsurance Scope file:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -2324,7 +2330,6 @@ In this example the special conditions are not nested – meaning that each loca
 <th class="head"><p>PolNumber</p></th>
 <th class="head"><p>LocNumber</p></th>
 <th class="head"><p>CountryCode</p></th>
-<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -2334,7 +2339,6 @@ In this example the special conditions are not nested – meaning that each loca
 <td></td>
 <td></td>
 <td><p>GB</p></td>
-<td><p>LOC</p></td>
 </tr>
 </tbody>
 </table>
@@ -2470,12 +2474,13 @@ In this example the special conditions are not nested – meaning that each loca
 <p>OED Reinsurance Info file:</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -2484,6 +2489,7 @@ In this example the special conditions are not nested – meaning that each loca
 <th class="head"><p>OccLimit</p></th>
 <th class="head"><p>PlacedPercent</p></th>
 <th class="head"><p>InuringPriority</p></th>
+<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -2493,6 +2499,7 @@ In this example the special conditions are not nested – meaning that each loca
 <td><p>3,000,000</p></td>
 <td><p>1.0</p></td>
 <td><p>1</p></td>
+<td><p>LOC</p></td>
 </tr>
 </tbody>
 </table>
@@ -2502,13 +2509,12 @@ In this example the special conditions are not nested – meaning that each loca
 <p>OED Reinsurance Scope file:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -2517,7 +2523,6 @@ In this example the special conditions are not nested – meaning that each loca
 <th class="head"><p>PolNumber</p></th>
 <th class="head"><p>LocNumber</p></th>
 <th class="head"><p>CededPercent</p></th>
-<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -2527,7 +2532,6 @@ In this example the special conditions are not nested – meaning that each loca
 <td></td>
 <td><p>1</p></td>
 <td><p>0.50</p></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>1</p></td>
@@ -2535,7 +2539,6 @@ In this example the special conditions are not nested – meaning that each loca
 <td></td>
 <td><p>2</p></td>
 <td><p>0.50</p></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-even"><td><p>1</p></td>
 <td><p>1</p></td>
@@ -2543,7 +2546,6 @@ In this example the special conditions are not nested – meaning that each loca
 <td></td>
 <td><p>1</p></td>
 <td><p>0.50</p></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>1</p></td>
@@ -2551,7 +2553,6 @@ In this example the special conditions are not nested – meaning that each loca
 <td></td>
 <td><p>2</p></td>
 <td><p>0.75</p></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-even"><td><p>1</p></td>
 <td><p>1</p></td>
@@ -2559,7 +2560,6 @@ In this example the special conditions are not nested – meaning that each loca
 <td></td>
 <td><p>1</p></td>
 <td><p>0.75</p></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>1</p></td>
@@ -2567,7 +2567,6 @@ In this example the special conditions are not nested – meaning that each loca
 <td></td>
 <td><p>2</p></td>
 <td><p>0.75</p></td>
-<td><p>LOC</p></td>
 </tr>
 </tbody>
 </table>
@@ -2576,9 +2575,8 @@ In this example the special conditions are not nested – meaning that each loca
 </div>
 <p>For surplus treaties, <strong>CededPercent</strong> must be specified for each risk in the reinsurance scope table.</p>
 <p>Unlike in the previous quota share example, the 3,000,000 event limit specified in the reinsurance info table applies to losses after the application of the surplus percentage. This is because <strong>CededPercent</strong> is always used for surplus treaties, and <strong>CededPercent</strong> applies before any other terms.</p>
-<p>With surplus treaties, the following rules must be followed (they are the same as for facultative treaties):</p>
+<p>With surplus treaties, the following rule must be followed (they are the same as for facultative treaties):</p>
 <ul class="simple">
-<li><p>The <strong>RiskLevel</strong> must match the most detailed level of filter field (<strong>LocNumber</strong> in this case to match with <strong>RiskLevel</strong> = <em>LOC</em>).</p></li>
 <li><p>Only the filter fields <strong>PortNumber, AccNumber, PolNumber, LocNumber</strong> &amp; <strong>LocGroup</strong> can be used with surplus treaties.</p></li>
 </ul>
 <div class="line-block">
@@ -2707,13 +2705,14 @@ In this example the special conditions are not nested – meaning that each loca
 <p>OED Reinsurance Info file:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -2723,6 +2722,7 @@ In this example the special conditions are not nested – meaning that each loca
 <th class="head"><p>OccAttachment</p></th>
 <th class="head"><p>OccLimit</p></th>
 <th class="head"><p>InuringPriority</p></th>
+<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -2733,6 +2733,7 @@ In this example the special conditions are not nested – meaning that each loca
 <td><p>0</p></td>
 <td><p>0</p></td>
 <td><p>1</p></td>
+<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
 <td><p>CXL</p></td>
@@ -2741,6 +2742,7 @@ In this example the special conditions are not nested – meaning that each loca
 <td><p>3,000,000</p></td>
 <td><p>3,000,000</p></td>
 <td><p>2</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -2750,12 +2752,11 @@ In this example the special conditions are not nested – meaning that each loca
 <p>OED Reinsurance Scope file:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>ReinsNumber</p></th>
@@ -2763,7 +2764,6 @@ In this example the special conditions are not nested – meaning that each loca
 <th class="head"><p>AccNumber</p></th>
 <th class="head"><p>PolNumber</p></th>
 <th class="head"><p>LocNumber</p></th>
-<th class="head"><p>RiskLevel</p></th>
 </tr>
 </thead>
 <tbody>
@@ -2772,25 +2772,21 @@ In this example the special conditions are not nested – meaning that each loca
 <td></td>
 <td></td>
 <td></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>2</p></td>
 <td></td>
 <td></td>
 <td></td>
-<td><p>LOC</p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
 <td><p>1</p></td>
 <td></td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
 <td><p>2</p></td>
-<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2804,8 +2800,8 @@ In this example the special conditions are not nested – meaning that each loca
 <p>The <strong>InuringPriority</strong> field specifies the order in which treaties apply. Here the per-risk contract applies before (i.e. inures to the benefit of) the Cat XL. This means that the losses that enter the Cat XL treaty are net of any recoveries from the Per-risk treaty. The <strong>InuringPriority</strong> values do not need to be consecutive – the treaty with the lowest number will always be applied before the treaty with the higher number.</p>
 <p>The reinsurance scope table contains two rows per treaty. This is to indicate that the treaties apply to both portfolio 1 and portfolio 2. The scope of each reinsurance treaty is defined by those records that satisfy the logical statement: <strong>PortNumber</strong> = <em>1</em> OR <strong>PortNumber</strong> = <em>2</em>. i.e. records either in portfolio 1 or 2.</p>
 <p>Essentially, within each <strong>ReinsNumber</strong>, each row of the reinsurance scope table acts as an OR operator and each filtering column acts as an AND operator. Although only four reinsurance scope fields are shown in the table above, all 10 reinsurance scope filtering fields could be used to define the scope of quota share, per-risk, cat XL or aggregate XL treaties.</p>
-<p>The <strong>RiskLevel</strong> of the per-risk treaty is defined at location level (<em>LOC</em>). OED allows the risk level to vary within a treaty if needed – as defined by the <strong>RiskLevel</strong> field in the reinsurance scope table. For the Cat XL treaty in this example there are no risk terms and so the <strong>RiskLevel</strong> is left blank.</p>
-</div>
+<p>The <strong>RiskLevel</strong> of the per-risk treaty is defined at location level (<em>LOC</em>). For the Cat XL treaty in this example there are no risk terms and so the <strong>RiskLevel</strong> is left blank.</p>
+</section>
 
 
            </div>

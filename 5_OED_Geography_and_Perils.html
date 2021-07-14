@@ -5,7 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Geography and Perils &mdash; OpenDataStandards 1.0.0 documentation</title>
@@ -152,7 +153,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="geography-and-perils">
+  <section id="geography-and-perils">
 <h1>Geography and Perils<a class="headerlink" href="#geography-and-perils" title="Permalink to this headline">¶</a></h1>
 <p>There are several aspects to geographical information in OED:</p>
 <ul class="simple">
@@ -163,7 +164,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="section" id="country-codes">
+<section id="country-codes">
 <h2>Country Codes<a class="headerlink" href="#country-codes" title="Permalink to this headline">¶</a></h2>
 <p>Country codes are stored in the <strong>CountryCode</strong> field and are based on the ISO3166 alpha-2 codes with the following additions:</p>
 <ul class="simple">
@@ -177,8 +178,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="standardised-geographical-fields">
+</section>
+<section id="standardised-geographical-fields">
 <h2>Standardised Geographical Fields<a class="headerlink" href="#standardised-geographical-fields" title="Permalink to this headline">¶</a></h2>
 <p>The following fields are available for capturing geographical information in OED:</p>
 <ul class="simple">
@@ -191,8 +192,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="flexible-geographical-fields">
+</section>
+<section id="flexible-geographical-fields">
 <h2>Flexible Geographical Fields<a class="headerlink" href="#flexible-geographical-fields" title="Permalink to this headline">¶</a></h2>
 <p>The OED format caters for a wide variety of models from different model developers. In order to allow sufficient flexibility to cope with different user and model developer requirements we have included five pairs of flexible geographical fields: <strong>GeogScheme1 / GeogName1</strong> to <strong>GeogScheme5 / GeogName5</strong>.
 This allows model developers and users to define their own geographical schemes (defined by an appropriate GeogScheme code) each with a corresponding set of GeogName values.</p>
@@ -203,8 +204,8 @@ GeogScheme codes are up to five characters (no special characters). The latest c
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="geocoding">
+</section>
+<section id="geocoding">
 <h2>Geocoding<a class="headerlink" href="#geocoding" title="Permalink to this headline">¶</a></h2>
 <p><strong>Latitude</strong> and <strong>Longitude</strong> fields are available within OED. However, a latitude and longitude pair in isolation gives no indication as to the resolution of the geocode, the confidence in the geocode or the geocoder used to derive the latitude and longitude.</p>
 <p><strong>AddressMatch</strong> allows information about the resolution of the geocode to be captured. For example, whether the latitude / longitude pair represents the centroid of a large area (e.g. a State) or the centre of an individual building.</p>
@@ -213,8 +214,8 @@ GeogScheme codes are up to five characters (no special characters). The latest c
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="peril-codes">
+</section>
+<section id="peril-codes">
 <h2>Peril Codes<a class="headerlink" href="#peril-codes" title="Permalink to this headline">¶</a></h2>
 <p>The system for capturing which perils apply to different exposure elements and financial structures is designed to be flexible and extensible. Each peril is assigned a code and shown in the table below:</p>
 <table class="colwidths-given docutils align-default">
@@ -359,8 +360,8 @@ GeogScheme codes are up to five characters (no special characters). The latest c
 <p>Note that this means there are two peril code fields at location and policy level (<strong>LocPerilsCovered / LocPeril and PolPerilsCovered / PolPeril</strong>). The <strong>LocPerilsCovered</strong> and <strong>PolPerilsCovered</strong> fields define the overall coverage for a location or policy irrespective of financial fields. This makes it much easier for the analyst to filter locations or policies that cover specific perils.</p>
 <p>For all of these peril fields, the peril codes (either individual or peril-group codes) are entered separated by semi-colons. So for example, if a location covered wind (including all wind sub-perils) and earthquake (including all EQ sub-perils) then the users would enter <em>‘QQ1;WW1’</em> in the <strong>LocPerilsCovered</strong> field. If there is a policy level limit that only applies to wind, then the user would enter <em>‘WW1’</em> in the <strong>PolPerils</strong> field.</p>
 <p>The way these peril codes have been designed means there is great flexibility in indicating the coverage or exclusion of perils and allowing different limits and deductibles to apply to different perils. Some examples of this are shown in the examples part of the <strong>Financial Details</strong> section.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

@@ -5,7 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>OED Import Format &mdash; OpenDataStandards 1.0.0 documentation</title>
@@ -151,7 +152,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="oed-import-format">
+  <section id="oed-import-format">
 <h1>OED Import Format<a class="headerlink" href="#oed-import-format" title="Permalink to this headline">¶</a></h1>
 <p>The import format for OED is defined by four .csv files:</p>
 <ul class="simple">
@@ -162,7 +163,7 @@
 </ul>
 <p>The fields in each file and their corresponding data type are described in the ‘OED Input Fields’ tab in the OED Data Spec spreadsheet found here:</p>
 <p><a class="reference external" href="https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs">https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs</a></p>
-<div class="section" id="location-loc-import-file">
+<section id="location-loc-import-file">
 <h2>Location (‘loc’) Import File<a class="headerlink" href="#location-loc-import-file" title="Permalink to this headline">¶</a></h2>
 <p>This file contains details relating to each location such as the value and type of asset (including primary and secondary modifiers), geographical information, the perils covered and the financial structures within the insurance contract relating to the location.</p>
 <p>This file is the only mandatory file to run a model and to produce the ground-up losses.</p>
@@ -252,8 +253,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="account-acc-import-file">
+</section>
+<section id="account-acc-import-file">
 <h2>Account (acc) Import File<a class="headerlink" href="#account-acc-import-file" title="Permalink to this headline">¶</a></h2>
 <p>The account file contains details of the policies and accounts that exist within the import portfolios. Most of the fields in this file relate to financial structures, including special conditions.</p>
 <p>This file is always required when modelling for insured (or gross) losses.</p>
@@ -266,27 +267,27 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="reinsurance-info-riinfo-import-file">
+</section>
+<section id="reinsurance-info-riinfo-import-file">
 <h2>Reinsurance Info (RIinfo) Import File<a class="headerlink" href="#reinsurance-info-riinfo-import-file" title="Permalink to this headline">¶</a></h2>
 <p>The reinsurance info file contains details of the reinsurance contracts that relate to the underlying portfolios, accounts and locations. There must be exactly one entry per reinsurance contract in this file. Any financial terms relating to reinsurance contracts should be entered in this file with the exception of the <strong>CededPercent</strong> for a surplus treaty (which should be entered in the reinsurance scope file).</p>
 <p>For a list of the reinsurance financial terms available and examples about how to specify such terms see the reinsurance section and associated examples.
 If there is no reinsurance, this import file is not required. If there is reinsurance, the minimum fields required are <strong>ReinsNumber, ReinsPeril, ReinsCurrency, InuringPriority, ReinsType, PlacedPercent</strong>.</p>
 <p><strong>ReinsNumber</strong> must be unique, as this links with the reinsurance scope file.</p>
+<p>The <strong>RiskLevel</strong> of a reinsurance contract refers to the level at which ‘risk’ terms apply. A ‘risk’ can either be defined at Location ‘LOC’, Location Group ‘LGR’, Policy ‘POL’ or Account level ‘ACC’. If a reinsurance contract does not contain risk specific terms then the <strong>RiskLevel</strong> field should be left blank. Note that it is not only per-risk treaties that have risk level terms. A facultative contract, a quota share treaty or even a catastrophe XL may also have risk level terms and thus require a risk level to be defined.</p>
 <p>The full set of fields in a reinsurance info import file can be found by filtering on ‘ReinsInfo’ in the ‘Input File’ column of the <em>Open Exposure Data Spec</em> spreadsheet. There are over 20 potential fields that could be used within the reinsurance info file. However, it is not mandatory to use a field that contains no data.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-<div class="section" id="reinsurance-scope-riscope-import-file">
+</section>
+<section id="reinsurance-scope-riscope-import-file">
 <h2>Reinsurance Scope (RIscope) Import File<a class="headerlink" href="#reinsurance-scope-riscope-import-file" title="Permalink to this headline">¶</a></h2>
-<p>The reinsurance scope file contains details of three different but related pieces of information:</p>
+<p>The reinsurance scope file contains details of two different but related pieces of information:</p>
 <ul class="simple">
 <li><p>The scope of the reinsurance contract: i.e. which portfolios, accounts, locations are covered by a particular reinsurance contract.</p></li>
-<li><p>The risk level of the reinsurance contract: i.e. for reinsurance contracts with financial structures relating to a ‘risk’, the definition of what risk means.</p></li>
 <li><p>The CededPercent for a surplus treaty: which can vary for each risk covered by the treaty.</p></li>
 </ul>
-<p>The above three points are discussed in turn below.</p>
+<p>The above two points are discussed in turn below.</p>
 <p>The scope of what a reinsurance contract applies to is defined by the ten ‘filter fields’ available in the reinsurance scope file: <strong>PortNumber, AccNumber, PolNumber, LocGroup, LocNumber, CedantName, ProducerName, LOB, CountryCode, ReinsTag.</strong></p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -302,15 +303,14 @@ Scope information relating to the same reinsurance contract can also be applied 
 <p>If <strong>PortNumber</strong> = ‘A’ is entered in one row and <strong>AccNumber</strong> = ‘B’ is entered in a separate row, then the scope of the reinsurance policy would apply to all records that match the condition: all records in portfolio ‘A’ <em>OR</em> any records in account number ‘B’.</p>
 <p>If <strong>LocNumber</strong> is used as a scope filter then <strong>AccNumber</strong> and <strong>PortNumber</strong> must be specified too (otherwise <strong>LocNumber</strong> does not uniquely identify a location).
 If <strong>PolNumber</strong> is used as a scope filter then <strong>AccNumber</strong> and <strong>PortNumber</strong> must be specified too (otherwise <strong>PolNumber</strong> does not uniquely identify a policy).</p>
-<p>The RiskLevel of a reinsurance contract refers to the level at which ‘risk’ terms apply. A ‘risk’ can either be defined at Location ‘LOC’, Location Group ‘LGR’, Policy ‘POL’ or Account level ‘ACC’. If a reinsurance contract does not contain risk specific terms then the <strong>RiskLevel</strong> field should be left blank. Note that it is not only per-risk treaties that have risk level terms. A facultative contract, a quota share treaty or even a catastrophe XL may also have risk level terms and thus require a risk level to be defined.</p>
-<p>Although the reinsurance scope and the risk level are two different concepts, for facultative contracts and surplus treaties, the OED format requires that the risk level for a particular contract should also be used to define the scope of the contract. This is because these contracts, by their nature, either apply to individual risks (facultative) or have a ceded percent that varies by risk (surplus), and so to have scope defined by fields different to the risk level would cause ambiguity and confusion.</p>
 <p>Surplus treaties require entry of <strong>CededPercent</strong> at the risk level. For example, if the risk level within a surplus treaty is location (LOC), then the user must list every location covered by the treaty in the <strong>LocNumber</strong> field (along with <strong>AccNumber</strong> and <strong>PortNumber</strong> to uniquely identify the location within the file) as well as the <strong>CededPercent</strong> for each location.</p>
+<p>Although the reinsurance scope and the risk level are two different concepts, for facultative contracts and surplus treaties, the OED format requires that the risk level for a particular contract should also be used to define the scope of the contract. This is because these contracts, by their nature, either apply to individual risks (facultative) or have a ceded percent that varies by risk (surplus), and so to have scope defined by fields different to the risk level would cause ambiguity and confusion.</p>
 <p>If there is no reinsurance, the reinsurance scope import file is not required. If there is reinsurance, each reinsurance entry in the reinsurance info file must have at least one entry in the reinsurance scope file; some contracts will have multiple entries in the scope file.</p>
-<p>The minimum fields required are: <strong>ReinsNumber</strong> and <strong>RiskLevel</strong>, at least one of the ten filter fields, and <strong>CededPercent</strong> for surplus treaties.
+<p>The minimum fields required are: <strong>ReinsNumber</strong>, at least one of the ten filter fields, and <strong>CededPercent</strong> for surplus treaties.
 The full set of fields in a reinsurance scope import file can be found by filtering on ‘ReinsScope’ in the Input File column of the <em>Open Exposure Data Spec</em> spreadsheet. There are over 10 potential fields that could be used within the reinsurance scope file. However, it is not mandatory to use a field that contains no data.</p>
 <p>For a list of the reinsurance financial terms available and examples about how to specify such terms see the reinsurance section and associated examples. <strong>&lt;insert links here&gt;</strong></p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
