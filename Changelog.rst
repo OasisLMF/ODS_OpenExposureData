@@ -26,7 +26,7 @@ ODS Changelog
 
 **Account file**
 
-* Added CondTag varchar(20) field - [#3](https://github.com/OasisLMF/OpenDataStandards/issues/30)
+* Added CondTag varchar(20) field - [#30](https://github.com/OasisLMF/OpenDataStandards/issues/30)
 
 * Changed data type of CondNumber from int to varchar(20)
 
