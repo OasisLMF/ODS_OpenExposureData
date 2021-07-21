@@ -1,0 +1,2 @@
+License 1: Data, Metadata  and schema of OED and ORD:   (CCO-License.md)
+License 2: All code scripts and technical documentation (BSD-License.md)
