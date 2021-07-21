@@ -178,5 +178,5 @@ The initial OED assets were ported from https://github.com/simplitium/oed on 28 
 &nbsp; 
 
 ## License
-The content of the Open Exposure Data (OED) format itself is licensed under the CC0 1.0 Universal license.
-The MSSQL scripts to generate the relational database structure are licensed under BSD 3-clause license.
+The content of ODS which covers the Open Exposure Data (OED) and Open Results Data (ORD) are licensed under the CC0 1.0 Universal license.
+Any code or MS SQL scripts to generate conversions or databases are licensed under BSD 3-clause license.
