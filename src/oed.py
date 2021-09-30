@@ -121,19 +121,46 @@ def read_csv(filepath_or_buffer, df_engine=pd, file_type=None, dtype=None, defau
         raise Exception(f"df_engine parameter not specified, you must install pandas"
                         " or pass your DataFrame engine (modin, dask,...)")
 
-    if 'memory_map' not in kwargs:
-        kwargs['memory_map'] = True
-
     all_ods_fields = get_ods_fields(df_engine)
     try:
         ods_fields = all_ods_fields[file_type]
     except KeyError as e:
         raise KeyError(f"Unknown file_type {file_type}. Must be in {list(all_ods_fields)}", e)
 
-    pd_dtype = {input_field_name: info['pd_dtype'] for input_field_name, info in ods_fields.items()}
-    if dtype:
-        pd_dtype = {**pd_dtype, **dtype}
-    df = df_engine.read_csv(filepath_or_buffer, dtype=pd_dtype, **kwargs)
+    if hasattr(filepath_or_buffer, 'read'):
+        # no case insensitivity support for buffer
+        pd_dtype = {input_field_name: info['pd_dtype'] for input_field_name, info in ods_fields.items()}
+        if dtype:
+            pd_dtype = {**pd_dtype, **dtype}
+        df = df_engine.read_csv(filepath_or_buffer, dtype=pd_dtype, **kwargs)
+    else:
+        # manage case insensitive dtype mapping
+        pd_dtype = {input_field_name.lower(): info['pd_dtype'] for input_field_name, info in ods_fields.items()}
+        if dtype:
+            for key, value in dtype.items():
+                pd_dtype[key.lower()] = value
+
+        if filepath_or_buffer.endswith('.gzip') or kwargs.get('compression')== 'gzip':
+            # support for gzip  https://stackoverflow.com/questions/60460814/pandas-read-csv-failing-on-gzipped-file-with-unicodedecodeerror-utf-8-codec-c
+            with open(filepath_or_buffer, 'rb') as f:
+                header = df_engine.read_csv(f, compression='gzip', nrows=0, index_col=False).columns
+            kwargs['compression'] = 'gzip'
+        else:
+            header = df_engine.read_csv(filepath_or_buffer, nrows=0, index_col=False).columns
+
+        # check if dtype is specified regardless of the case of the column name
+        _dtype = {}
+        for col in header:
+            if str(col).lower() in pd_dtype:
+                _dtype[col] = pd_dtype[str(col).lower()]
+        pd_dtype = _dtype
+
+        if kwargs.get('compression')== 'gzip':
+            with open(filepath_or_buffer, 'rb') as f:
+                df = df_engine.read_csv(f, dtype=pd_dtype, **kwargs)
+        else:
+            df = df_engine.read_csv(filepath_or_buffer, dtype=pd_dtype, **kwargs)
+
     for column, info in ods_fields.items():
         if column not in df.columns:
             if info.get('Required Field') == 'R':
@@ -248,6 +275,7 @@ to_parquet_parser.add_argument('-p', '--parquet-fp', help='path to the parquet f
 to_parquet_parser.add_argument('-c', '--csv-fp', help='path to the csv file or directory')
 to_parquet_parser.add_argument('-v', '--logging-level', help='logging level (debug:10, info:20, warning:30, error:40, critical:50)',
                     default=30, type=int)
+to_parquet_parser.add_argument('--memory-map', help='use memory map to read csv file', default=False)
 
 
 def main():
