@@ -2,7 +2,7 @@
 
 ## Overview
 ODS tools is a python package put in place to support generic use case regarding the reading and writing of ODS file
-in accordance with the ODS schemas.
+in accordance with the [ODS schemas](https://github.com/OasisLMF/OpenDataStandards/).
 
 ## command line interface
 ODS tools provide command line interface to quickly convert
