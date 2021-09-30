@@ -47,7 +47,5 @@ setuptools.setup(
     description='Tools to manage ODS files',
     long_description=get_readme(),
     long_description_content_type='text/markdown',
+    url='https://github.com/OasisLMF/OpenDataStandards',
 )
-
-
-
