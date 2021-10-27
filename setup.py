@@ -32,7 +32,7 @@ setuptools.setup(
     version=version,
     include_package_data=True,
     package_data={
-        'OpenExposureData/Schema': ['OED_Input_Fields.csv'],
+        'OpenExposureData/Docs': ['OpenExposureData_Spec.csv'],
     },
     entry_points={
         'console_scripts': [
@@ -41,8 +41,8 @@ setuptools.setup(
     },
     author='Oasis LMF',
     author_email="support@oasislmf.org",
-    packages=['ods_tools', 'OpenExposureData/Schema'],
-    package_dir={'ods_tools': 'src', 'OpenExposureData/Schema': 'OpenExposureData/Schema'},
+    packages=['ods_tools', 'OpenExposureData/Docs'],
+    package_dir={'ods_tools': 'src', 'OpenExposureData/Docs': 'OpenExposureData/Docs'},
     python_requires='>=3.7',
     description='Tools to manage ODS files',
     long_description=get_readme(),
