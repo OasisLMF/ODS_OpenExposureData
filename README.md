@@ -127,13 +127,20 @@ All new work will be captured as issues in this repository and contain all corre
 
 &nbsp; 
 
-### *Documentation Updates:* 
+### *CSV to Parquet Data Conversion* 
+Apache Parquet is an open-source columnar data format which has superior data compression and encoding schemes enabling more efficiency around the handling of large datasets. More info here (https://parquet.apache.org)
+
+All source code and info on converting csv to Parquet data format can be found here (https://github.com/OasisLMF/OpenDataStandards/tree/develop/src)
+
+&nbsp; 
+
+### *Documentation Updates* 
 
 These can be actioned directly by the TWG but are likely to be done by Oasis LMF.
 
 &nbsp; 
 
-### *Bugs:* 
+### *Bugs* 
 
 These can be actioned directly by the TWG, assuming they do not cause a breaking change. All communication around bugs should be submitted in an issue within this repo.
 
