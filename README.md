@@ -1,5 +1,4 @@
-***Latest version of ODS*** </br> 
-<a href="https://github.com/OasisLMF/OpenDataStandards/releases/latest" rel="Latest Release">![ODS version](https://img.shields.io/github/v/release/OasisLMF/OpenDataStandards?label=OpenDataStandards)</a> [![PyPI version](https://badge.fury.io/py/ods-tools.svg)](https://badge.fury.io/py/ods-tools)
+***Latest version of ODS*** ![ODS version](https://img.shields.io/github/v/tag/Oasislmf/OpenDataStandards.svg?label=OpenDataStandards)
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
@@ -64,7 +63,7 @@ Detailed documentation on which financial fields are supported in the Oasis kern
 
 ## Open Exposure Data (OED)
 
-The aim of OED is to provide the industry with a robust, open and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and although has been focussed on propeorty cat business since its inception, its now expanding to support other lines of business such as liabilty, cyber and marine which are in the pipline to be released during 2022. 
+The aim of OED is to provide the industry with a robust, open and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and although the focus has been on property cat business since its inception, ODS is now expanding to support other lines of business such as liability, cyber and marine which are in the pipeline to be released during 2022. 
 
 Detailed descriptions of each data field are covered in the Open Exposure Data Spec.xlsx and detailed reference and background OED information can be found in the 'docs’ folder. Examples of how to code multiple financial structures in the input files are covered within these documents.
 
@@ -84,7 +83,7 @@ OED is the exposure data input format supported by the Oasis Loss Modelling Fram
 
 ORD was initially developed during the Lloyd's Lab innovation project (Cohort 3) in 2019, by a working group led by Oasis, that focussed on constructing model agnostic results formats and appropriate data formats. These model outputs will cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. The ORD Standard encompasses:
 
-Working documents can be found in the 'schema' and 'docs' folder (https://github.com/OasisLMF/OpenDataStandards/tree/develop/OpenResultsData)
+Working documents can be found here (https://github.com/OasisLMF/OpenDataStandards/tree/develop/OpenResultsData)
 
 ORD will be implemented by the Oasis Loss Modelling Framework during 2021 and all updates and progress will be located in this repo.
 
@@ -97,9 +96,9 @@ ODS is governed by a steering committee that meets periodically and is chaired b
 The governance and process around releases and updates of ODS can be found here but a schematic of the overview is shown below:
 https://github.com/OasisLMF/OpenDataStandards/tree/develop/Docs
 
-
+<img src="images/ODS_Gov_Process_Schematic.png" width="1050"/> &nbsp;
  
-A **Technical Working Group (TWG)** will maintain and update the assets that define the data standards. The TWG is made up of members from Oasis, Nasdaq and the wider community who propose updates and changes.
+A **Technical Working Group (TWG)** will maintain and update the assets that define the data standards. Although the TWG has a few core members from Oasis and Nasdaq, its dynamic and will involve the users from the community who have proposed updates and changes.
 
 &nbsp; 
 
@@ -120,7 +119,7 @@ All new work will be done in **feature** branches, following the [GitFlow model]
 
 ### *Tracking*
 
-All new work will be captured as issues in this repository and contain all correspondance and associated documents or data. Any GitHub user can raise an issue and the TWG will classify as:
+All new work will be captured as issues in this repository and contain all correspondence and associated documents or data. Any GitHub user can raise an issue and the TWG will classify as:
 
 **Major Updates:** These are major work items that will require significant work and may cause breaking changes. An example of a major feature would be extension to a new class of business.  All major features will be reviewed during a steering committee meeting.
 
