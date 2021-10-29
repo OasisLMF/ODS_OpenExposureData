@@ -1,5 +1,74 @@
 ODS Changelog
 ==================
+`v2.0.0`_
+---------
+.. start_latest_release
+
+**OED Version 2.0.0**
+
+1. Updated documentation (rst files, csv, excel and pdf)
+
+2. Updated piwind OED (example) files
+
+3. Added a separate 'LocPopulation' file to OED - [#40] (https://github.com/OasisLMF/OpenDataStandards/issues/40)
+
+4. Added 'w3w' as a geogscheme to data spec .xslx to support 'What3Words' - [#39](https://github.com/OasisLMF/OpenDataStandards/issues/39)
+
+5. Added 'CondTag' varchar(20) field to loc and acc files [#30](https://github.com/OasisLMF/OpenDataStandards/issues/30)
+
+6. Removed 'CondNumber' int field from loc file
+
+7. Added 'OEDVersion' varchar(10) field to all four input files - [#33](https://github.com/OasisLMF/OpenDataStandards/issues/33)
+
+8. Change 'NumberOfEmployees' int field to 'NumberOfOccupants' int field ion loc file - [#40] (https://github.com/OasisLMF/OpenDataStandards/issues/40)
+
+9. Added 'OccupantPeriod' tiny int field to loc file - [#40] (https://github.com/OasisLMF/OpenDataStandards/issues/40)
+
+10. Added 'IsAggregate' field - [#45] https://github.com/OasisLMF/OpenDataStandards/issues/45
+
+11. Increased the amount of 'GeogScheme'/'GeogName' pairs supported in OED -[#51] (https://github.com/OasisLMF/OpenDataStandards/issues/51)
+
+12. Expanding the supported perils to include subsidence, pandemic, agriculture related perils and cyber - [#46] https://github.com/OasisLMF/OpenDataStandards/issues/46
+
+13. Changed data type of 'CondNumber' from int to varchar(20) in acc file
+
+14. Moved 'RiskLevel' char(3) field to ReinsInfo file (removed from ReinsScope file) - [#21](https://github.com/OasisLMF/OpenDataStandards/issues/21)
+
+15. Created a CSV to Parquet conversion tool in Python https://github.com/OasisLMF/OpenDataStandards/tree/develop/src 
+
+**ORD Version 2.0.0**
+
+1. Report name changed from Period Average Loss Table (PALT) to Average Loss Table (ALT) - [#36](https://github.com/OasisLMF/OpenDataStandards/issues/36)
+
+2. Removed standalone financial perspectives - [#37] https://github.com/OasisLMF/OpenDataStandards/issues/37
+
+3. Reindexing of EPCalc and EPType as follows;
+
+**EPCalc:**
+
+1 = Mean Damage Ratio
+
+2 = Full Uncertainty
+
+3 = Per Sample Mean
+
+4 = Sample Mean
+
+**EPType:**
+
+1 = OEP
+
+2 = OEP TVaR
+
+3 = AEP
+
+4 = AEP TVaR
+
+* Dropped version from ORD spec filename
+.. end_latest_release
+
+
+
 
 `v2.0.0rc1`_
 ---------
