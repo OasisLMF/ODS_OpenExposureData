@@ -1,0 +1,9 @@
+FROM python:3.8                                                                                                                              
+
+RUN  mkdir /tmp/output && \
+     mkdir /var/log/oasis
+
+WORKDIR /home
+COPY . .
+CMD ./docker/build_package.sh
+#ENTRYPOINT ["/bin/bash", "-c", "/tmp/build_docs.sh \"$@\"", "--"]

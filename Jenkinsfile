@@ -5,8 +5,12 @@ node {
 
     properties([
       parameters([
+        [$class: 'StringParameterDefinition',  description: "Oasis Build scripts branch",        name: 'BUILD_BRANCH', defaultValue: 'master'],
         [$class: 'StringParameterDefinition',  name: 'ODS_BRANCH', defaultValue: BRANCH_NAME],
         [$class: 'StringParameterDefinition',  name: 'PUBLISH_VERSION', defaultValue: ''],
+        [$class: 'StringParameterDefinition',  description: "Jenkins credential for GPG",        name: 'GPG_KEY', defaultValue: 'gpg-privatekey'],
+        [$class: 'StringParameterDefinition',  description: "Jenkins credential for passphrase", name: 'GPG_PASSPHRASE', defaultValue: 'gpg-passphrase'],
+        [$class: 'StringParameterDefinition',  description: "Jenkins credentials Twine",         name: 'TWINE_ACCOUNT', defaultValue: 'sams_twine_account'],
         [$class: 'BooleanParameterDefinition', description: "Mark as pre-released software",  name: 'PRE_RELEASE', defaultValue: Boolean.valueOf(true)],
         [$class: 'BooleanParameterDefinition', name: 'PUBLISH', defaultValue: Boolean.valueOf(false)],
         [$class: 'BooleanParameterDefinition', name: 'GH_PAGES', defaultValue: Boolean.valueOf(false)],
@@ -23,6 +27,20 @@ node {
     String ods_dir    = "oasis_ods_build"
     String ods_pages  = "oasis_ods_pages"
 
+    String twine_account = params.TWINE_ACCOUNT
+    String gpg_key       = params.GPG_KEY
+    String gpg_pass      = params.GPG_PASSPHRASE
+
+    // Build vars
+    String build_repo = 'git@github.com:OasisLMF/build.git'
+    String build_branch = params.BUILD_BRANCH
+    String build_workspace = 'oasis_build'
+    String script_dir = env.WORKSPACE + "/" + build_workspace
+    String utils_sh        = '/buildscript/utils.sh'
+    String PIPELINE = script_dir + "/buildscript/pipeline.sh"
+
+
+
     //make sure release candidate versions are tagged correctly
     if (params.PUBLISH && params.PRE_RELEASE && ! params.PUBLISH_VERSION.matches('^(\\d+\\.)(\\d+\\.)(\\*|\\d+)rc(\\d+)$')) {
         sh "echo release candidates must be tagged {version}rc{N}, example: 1.0.0rc1"
@@ -31,42 +49,102 @@ node {
 
     //Env vars
     env.TAG_RELEASE = params.PUBLISH_VERSION
+    env.PIPELINE_LOAD =  script_dir + utils_sh
 
     try {
-        stage('Clone: OpenDataStandards') {
-            sshagent (credentials: [git_creds]) {
-                dir(ods_dir) {
-                    sh "git clone -b ${ods_branch} ${ods_git} ."
-                }
-            }
-        }
-
-        stage('Run: ODE Build') {
-              dir(ods_dir) {
-                  sh 'docker build -f docker/Dockerfile.oasis_docbuilder -t oed_doc_builder .'
-                  sh 'docker run -v $(pwd):/tmp/output oed_doc_builder:latest'
-              }
-        }
-
-        if (params.GH_PAGES){
-            stage('Publish: GitHub Pages') {
-                dir(ods_pages) {
+        parallel(
+            clone_ods: {
+                stage('Clone: OpenDataStandards') {
                     sshagent (credentials: [git_creds]) {
-                        // Copy github pages branch
-                        sh "git clone -b gh_pages ${ods_git} ."
-
-                        // Extract new html & push
-                        sh "tar -zxvf ${env.WORKSPACE}/${ods_dir}/oed_docs.tar.gz -C ."
-                        sh "git add *"
-                        sh "git status"
-                        sh "git commit -m 'Update documenation - v${params.PUBLISH_VERSION}'"
-                        sh "git push"
+                        dir(ods_dir) {
+                            sh "git clone ${ods_git} ."
+                            if (ods_branch.matches("PR-[0-9]+")){
+                                // Checkout PR and merge into target branch, test on the result
+                                sh "git fetch origin pull/$CHANGE_ID/head:$BRANCH_NAME"
+                                sh "git checkout $CHANGE_TARGET"
+                                sh "git merge $BRANCH_NAME"
+                            } else {
+                                // Checkout branch
+                                sh "git checkout ${ods_branch}"
+                            }
+                        }
+                    }
+                }
+            },
+            clone_build: {
+                stage('Clone: ' + build_workspace) {
+                    dir(build_workspace) {
+                       git url: build_repo, credentialsId: git_creds, branch: build_branch
                     }
                 }
             }
+        )
+
+
+        if (params.PUBLISH) {
+            stage('Set package version'){
+                dir(ods_dir) {
+                    cmd_string =  "sed -i \'1c__version__ = \"" + params.PUBLISH_VERSION + "\"\' src/__init__.py"
+                    sh cmd_string
+                }
+            }
         }
 
+        stage('Run: ODS-tools Build') {
+              dir(ods_dir) {
+                  //sh 'docker build -f docker/Dockerfile.oasis_docbuilder -t oed_doc_builder .'
+                  //sh 'docker run -v $(pwd):/tmp/output oed_doc_builder:latest'
+                  sh 'docker build --no-cache -f docker/Dockerfile.build_package -t ods-builder .'
+                  sh 'docker run -v $(pwd)/dist:/home/dist  ods-builder'
+              }
+        }
+
+
+
+        //if (params.GH_PAGES){
+        //    stage('Publish: GitHub Pages') {
+        //        dir(ods_pages) {
+        //            sshagent (credentials: [git_creds]) {
+        //                // Copy github pages branch
+        //                sh "git clone -b gh_pages ${ods_git} ."
+
+        //                // Extract new html & push
+        //                sh "tar -zxvf ${env.WORKSPACE}/${ods_dir}/oed_docs.tar.gz -C ."
+        //                sh "git add *"
+        //                sh "git status"
+        //                sh "git commit -m 'Update documenation - v${params.PUBLISH_VERSION}'"
+        //                sh "git push"
+        //            }
+        //        }
+        //    }
+        //}
+
         if(params.PUBLISH){
+            stage('Sign Package: ods-tools') {
+                sh 'sudo /var/lib/jenkins/jenkins-chown'
+                String gpg_dir='/var/lib/jenkins/.gnupg/'
+                sh "if test -d ${gpg_dir}; then rm -r ${gpg_dir}; fi"
+                withCredentials([file(credentialsId: gpg_key, variable: 'FILE')]) {
+                    sh 'gpg --import $FILE'
+                    sh 'gpg --list-keys'
+                    withCredentials([string(credentialsId: gpg_pass, variable: 'PASSPHRASE')]) {
+                        dir(ods_dir) {
+                            sh PIPELINE + ' sign_ods_tools'
+                        }
+                    }
+                }
+                // delete GPG key from jenkins account
+                sh "rm -r ${gpg_dir}"
+            }
+            stage ('Publish: ods-tools') {
+                dir(ods_dir) {
+                    // Publish package
+                    withCredentials([usernamePassword(credentialsId: twine_account, usernameVariable: 'TWINE_USERNAME', passwordVariable: 'TWINE_PASSWORD')]) {
+                        sh PIPELINE + ' push_ods_tools'
+                    }
+                }
+            }
+
             stage('Publish: GitHub') {
                 dir(ods_dir) {
                     sshagent (credentials: [git_creds]) {
@@ -103,14 +181,14 @@ node {
             slackSend(channel: SLACK_CHAN, message: SLACK_MSG, color: slackColor)
         }
 
-        // Store build output
-        dir(ods_dir) {
-            archiveArtifacts artifacts: '*.tar.gz'
-            archiveArtifacts artifacts: '*.pdf'
-        }
+        //// Store build output
+        //dir(ods_dir) {
+        //    archiveArtifacts artifacts: 'dist/*.tar.gz'
+        //    archiveArtifacts artifacts: '*.pdf'
+        //}
 
         // Run merge back if publish
-        if (params.PUBLISH && params.AUTO_MERGE){
+        if (params.PUBLISH && params.AUTO_MERGE && ! hasFailed && ! params.PRE_RELEASE){
             dir(ods_dir) {
                 sshagent (credentials: [git_creds]) {
                     sh "git stash"
