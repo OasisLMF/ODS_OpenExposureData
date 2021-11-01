@@ -31,7 +31,7 @@ node {
     String gpg_key       = params.GPG_KEY
     String gpg_pass      = params.GPG_PASSPHRASE
 
-    // Build vars   
+    // Build vars
     String build_repo = 'git@github.com:OasisLMF/build.git'
     String build_branch = params.BUILD_BRANCH
     String build_workspace = 'oasis_build'
@@ -57,7 +57,16 @@ node {
                 stage('Clone: OpenDataStandards') {
                     sshagent (credentials: [git_creds]) {
                         dir(ods_dir) {
-                            sh "git clone -b ${ods_branch} ${ods_git} ."
+                            sh "git clone ${ods_git} ."
+                            if (source_branch.matches("PR-[0-9]+")){
+                                // Checkout PR and merge into target branch, test on the result
+                                sh "git fetch origin pull/$CHANGE_ID/head:$BRANCH_NAME"
+                                sh "git checkout $CHANGE_TARGET"
+                                sh "git merge $BRANCH_NAME"
+                            } else {
+                                // Checkout branch
+                                sh "git checkout ${ods_branch}"
+                            }
                         }
                     }
                 }
@@ -66,9 +75,9 @@ node {
                 stage('Clone: ' + build_workspace) {
                     dir(build_workspace) {
                        git url: build_repo, credentialsId: git_creds, branch: build_branch
-                    }   
-                }   
-            } 
+                    }
+                }
+            }
         )
 
 
