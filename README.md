@@ -1,5 +1,5 @@
 ***Latest version of ODS*** </br> 
-<a href="https://github.com/OasisLMF/OpenDataStandards/releases/latest" rel="Latest Release">![ODS version](https://img.shields.io/github/v/release/OasisLMF/OpenDataStandards?label=OpenDataStandards)</a> [![PyPI version](https://badge.fury.io/py/ods-tools.svg)](https://badge.fury.io/py/ods-tools)
+<a href="https://github.com/OasisLMF/OpenDataStandards/releases/latest" rel="Latest Release">![ODS version](https://img.shields.io/github/v/tag/Oasislmf/OpenDataStandards.svg?label=OpenDataStandards)</a> [![PyPI version](https://badge.fury.io/py/ods-tools.svg)](https://badge.fury.io/py/ods-tools)
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
