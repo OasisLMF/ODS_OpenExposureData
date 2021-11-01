@@ -39,10 +39,15 @@ Steering Committee Members:
 
 ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Committee (SC), comprised of industry experts representing (re)insurers, brokers, service providers and catastrophe model vendors. The SC will evolve over time and include Subject Matter Experts to assist with areas requiring specific domain experience, including data validation and support for enhancing and automating the interoperability of these standards. 
 
-The components of ODS are the **Open Exposure Data (OED)** format and the **Open Results Data (ORD)** format. Both OED and ORD are designed to assist with solving interoperability problems current in the insurance market, where implementing a model-developer-independent exposure data and results repositories will assist in creating choice in the use of catastrophe models and analytical tools.
+The components of ODS are (but not limited to) the **Open Exposure Data (OED)** format and the **Open Results Data (ORD)** format. Both OED and ORD are designed to assist with solving interoperability problems current in the cat modelling community, where implementing a model-developer-independent exposure data and results format will assist in creating choice in the use of catastrophe models and analytical tools.
+
+**The Insurance Development Forum (IDF)** are funding a data transform project to develop conversion tools from the CEDE format to OED. Further details can be found here (https://oasislmf.github.io/OpenDataTransform/)
 
 Further information and community views of ODS can be found on the ODS website:
 https://oasislmf.org/open-data-standards
+
+
+***It's important to know that ODS is NOT an Oasis standard, but an initiative developed by the market for the market.***
 
 &nbsp; 
 
@@ -57,18 +62,18 @@ The diagram below highlights the proposed, long-term structure of ODS and all th
 
 **ODS Implementation into Oasis:** Oasis LMF are continuously expanding the ODS functionality they support on their platform, especially in their financial module (FM). The tracking of this work can be found here: https://github.com/orgs/OasisLMF/projects/5.
 
-Detailed documentation on which financial fields are supported in the Oasis kernel can be found here: https://github.com/OasisLMF/OasisLMF/blob/develop/docs/OED_financial_terms_supported.xlsx
+Detailed documentation on which financial fields are supported in the Oasis kernel can be found here: https://github.com/OasisLMF/OasisLMF/blob/master/docs/OED_financial_terms_supported.xlsx
 &nbsp; 
 
 
 
 ## Open Exposure Data (OED)
 
-The aim of OED is to provide the industry with a robust, open and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and although the focus has been on property cat business since its inception, ODS is now expanding to support other lines of business such as liability, cyber and marine which are in the pipeline to be released during 2022. 
+The aim of OED is to provide the industry with a robust, open, and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and although the focus has been on property cat business since its inception, ODS is now expanding to support other lines of business such as liability, cyber and marine which are in the pipeline to be released during 2022. 
 
 Detailed descriptions of each data field are covered in the Open Exposure Data Spec.xlsx and detailed reference and background OED information can be found in the 'docs’ folder. Examples of how to code multiple financial structures in the input files are covered within these documents.
 
-An additional OED location file 'LocPopulation' is also available here (https://github.com/OasisLMF/OpenDataStandards/blob/develop/OpenExposureData/Example_inputs/pi_wind/OED_LocPopulation_v2.0.0.xlsx) for capturing demographic and socio-vulnerability data for more public sector/humanitarian use cases.
+An additional OED location file 'LocPopulation' is also available here (https://github.com/OasisLMF/OpenDataStandards/blob/master/OpenExposureData/Example_inputs/pi_wind/OED_LocPopulation_v2.0.0.xlsx) for capturing demographic and socio-vulnerability data for more public sector/humanitarian use cases.
 
 The web (HTML) version of the OED documentation can be viewed here:
 
@@ -84,9 +89,9 @@ OED is the exposure data input format supported by the Oasis Loss Modelling Fram
 
 ORD was initially developed during the Lloyd's Lab innovation project (Cohort 3) in 2019, by a working group led by Oasis, that focussed on constructing model agnostic results formats and appropriate data formats. These model outputs will cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. The ORD Standard encompasses:
 
-Working documents can be found here (https://github.com/OasisLMF/OpenDataStandards/tree/develop/OpenResultsData)
+Working documents can be found here (https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenResultsData)
 
-ORD will be implemented by the Oasis Loss Modelling Framework during 2021 and all updates and progress will be located in this repo.
+ORD will be implemented by the Oasis Loss Modelling Framework during 2021 and all updates and progress will be in this repo.
 
 &nbsp; 
 
@@ -95,11 +100,11 @@ ORD will be implemented by the Oasis Loss Modelling Framework during 2021 and al
 ODS is governed by a steering committee that meets periodically and is chaired by Oasis LMF. 
 
 The governance and process around releases and updates of ODS can be found here but a schematic of the overview is shown below:
-https://github.com/OasisLMF/OpenDataStandards/tree/develop/Docs
+https://github.com/OasisLMF/OpenDataStandards/tree/master/Docs
 
 <img src="images/ODS_Gov_Process_Schematic.png" width="1050"/> &nbsp;
  
-A **Technical Working Group (TWG)** will maintain and update the assets that define the data standards. Although the TWG has a few core members from Oasis and Nasdaq, its dynamic and will involve the users from the community who have proposed updates and changes.
+A **Technical Working Group (TWG)** will maintain and update the assets that define the data standards. Although the TWG has a few core members from Oasis LMF and Nasdaq, its dynamic and will involve the users from the community who have proposed the updates or changes.
 
 &nbsp; 
 
@@ -131,7 +136,7 @@ All new work will be captured as issues in this repository and contain all corre
 ### *CSV to Parquet Data Conversion* 
 Apache Parquet is an open-source columnar data format which has superior data compression and encoding schemes enabling more efficiency around the handling of large datasets. More info here (https://parquet.apache.org)
 
-All source code and info on converting csv to Parquet data format can be found here (https://github.com/OasisLMF/OpenDataStandards/tree/develop/src)
+All source code and info on converting csv to Parquet data format can be found here (https://github.com/OasisLMF/OpenDataStandards/tree/master/src)
 
 &nbsp; 
 
