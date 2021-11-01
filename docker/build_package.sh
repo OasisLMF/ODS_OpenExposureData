@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -e
 
 DIR_BASE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 if [[ ! -d "$DIR_BASE/output/" ]]; then
@@ -10,6 +9,7 @@ fi
 # Clear prev wheels & tars
     find ./dist/ -name "ods_tools-*" -exec rm -rf {} \;
 
+set -e
 # Build
     pip install pip-tools wheel 
     python setup.py sdist
