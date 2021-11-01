@@ -58,7 +58,7 @@ node {
                     sshagent (credentials: [git_creds]) {
                         dir(ods_dir) {
                             sh "git clone ${ods_git} ."
-                            if (source_branch.matches("PR-[0-9]+")){
+                            if (ods_branch.matches("PR-[0-9]+")){
                                 // Checkout PR and merge into target branch, test on the result
                                 sh "git fetch origin pull/$CHANGE_ID/head:$BRANCH_NAME"
                                 sh "git checkout $CHANGE_TARGET"
