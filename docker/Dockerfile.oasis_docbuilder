@@ -6,7 +6,7 @@ RUN apt update && \
 
 RUN mkdir /tmp/output         
 COPY ./OpenExposureData /tmp/OpenExposureData
-COPY ["docker/build.sh", \
+COPY ["docker/build_docs.sh", \
       "Makefile", \
       "requirements.txt", \
       "/tmp/"]
@@ -15,4 +15,4 @@ WORKDIR /tmp/
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["/bin/bash", "-c", "/tmp/build.sh \"$@\"", "--"]
+ENTRYPOINT ["/bin/bash", "-c", "/tmp/build_docs.sh \"$@\"", "--"]
