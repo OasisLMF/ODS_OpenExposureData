@@ -50,8 +50,7 @@ The following fields are available for capturing geographical information in OED
 Flexible Geographical Fields
 ############################
 
-The OED format caters for a wide variety of models from different model developers. In order to allow sufficient flexibility to cope with different user and model developer requirements we have included five pairs of flexible geographical fields: **GeogScheme1 / GeogName1** to **GeogScheme5 / GeogName5**.
-This allows model developers and users to define their own geographical schemes (defined by an appropriate GeogScheme code) each with a corresponding set of GeogName values.
+The OED format caters for a wide variety of models from different model developers. In order to allow sufficient flexibility to cope with different user and model developer requirements there are flexible geographical fields: **GeogSchemeXX / GeogNameXX**. The 'XX' needs to be replaced by an integer so the name pairs become **GeogScheme1/GeogName1** and OED can support up to ninety-nine pairs. It's worth noting that performance time (especially during the 'lookup' phase of analysis) may be affected the more pairs are used. These pairs allow model developers and users to define their own geographical schemes (defined by an appropriate GeogScheme code) each with a corresponding set of GeogName values.
 
 For example, a model developer may want to split each country up into four equal areas ‘A’, ‘B’, ‘C’, ‘D’. In this case they would define a new GeogScheme code e.g. ‘QUAD’. They would communicate to users of their model that they must specify GeogName values ‘A’, ‘B’, ‘C’ or ‘D’ for their new ‘QUAD’ GeogScheme. The model user would then populate one of the GeogScheme / GeogName pairs with ‘QUAD’ and ‘A’, ‘B’, ‘C’ or ‘D’ respectively.
 
@@ -82,7 +81,7 @@ The system for capturing which perils apply to different exposure elements and f
 
 
 .. csv-table::
-    :widths: 32,20
+    :widths: 130,30
     :header: "Peril", "Input Format Peril Code"
 
     "Earthquake - Shake only",	            "QEQ"	
@@ -108,9 +107,13 @@ The system for capturing which perils apply to different exposure elements and f
     "Conventional Terrorism",	            "MTR"	
     "Lightning",	                        "XLT"
     "Winterstorm Wind",	                    "ZST"	
-    "Smoke",	                            "BSK"	
+    "Smoke",	                            "BSK"
+    "Drought Induced Subsidence",           "SSD"
+    "Crop Hail (From Convective Storm)",     "XCH"
+    "Cyber Security Data and Privacy Breach","CSB"
+    "Cyber Security Property Damage",       "CPD"
+    "Pandemic Flu",                         "PNF"
 
-|
 
 The input format codes are designed to be easier to populate and recognize by an analyst. The reason for the slightly counterintuitive form of some of the abbreviations is that they are designed so that a predominant peril can quickly be identified by searching for one particular character in the abbreviations: ‘B’ for Fire, ‘O’ for Flood, ‘Q’ for Quake, ‘X’ for Convective storm, ‘Z’ for Winter storm, ‘W’ for Wind, ‘M’ for Terrorism. 
 
@@ -129,9 +132,11 @@ As well as the individual peril codes in the above table, there are also codes f
     "Convective storm incl. winter storm (for RMS users)",	"XZ1"	
     "Terrorism",	                                        "MM1"	
     "Wildfire with smoke",	                                "BB1"	
+    "Pandemic",                                             "PP1"
+    "Crop",                                                 "GG1"
+    "Cyber",                                                "CC1"
     "All perils",	                                        "AA1"	
 
-|
 
 There are several fields in the OED input tables for storing the peril codes.
 
