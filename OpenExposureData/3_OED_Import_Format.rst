@@ -49,7 +49,7 @@ If the same location had a 100 deductible for wind but a 1000 deductible for flo
 
 The field names in the examples above are described further in documents 4, 5 and 6.
 
-https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs/src
+https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData
 
 The minimum fields required in a location file are **LocNumber, AccNumber, PortNumber, CountryCode, LocPerilsCovered, LocCurrency, BuildingTIV, ContentsTIV, BITIV, OtherTIV**.
 
@@ -76,7 +76,7 @@ Similarly to the loc file, there are over 200 potential fields that could be use
 
 For example, if account level financial terms are not required (i.e. financial terms that apply across groups of policies) then all the financial fields starting with ‘Acc’ can be omitted (removing the need for 48 fields). If special conditions are not required another 48 fields can be excluded. See the section on financial structures along with the examples for details of how the financial structure fields operate together in document 6.
 
-https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs/src
+https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData
 
 |
 
