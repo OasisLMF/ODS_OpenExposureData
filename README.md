@@ -29,7 +29,6 @@ Steering Committee Members:
 <img src="images/Lloyds_logo.png" width="100"/> &nbsp; &nbsp; 
 <img src="images/perils_ag_logo.png" width="160"/> &nbsp; &nbsp; 
 <img src="images/idf_logo.jpg" width="120"/> &nbsp; &nbsp; &nbsp; 
-<img src="images/qomplx-logo.png" width="140"/> &nbsp;
 
 
 &nbsp; 
