@@ -137,8 +137,8 @@ The specification of the financial details of the condition is done in the same 
 
 Furthermore, there are two classifications of special conditions which are identified by the **CondClass** field in the account file. A value of 0 means 'Sublimit' and a value of 1 means 'Policy restriction'. The difference between them is what happens to losses for locations under the account that are not under the scope of the condition.
 
-* When the condition is a sublimit - the locations that are outside of scope of the condition **will** contribute loss to the policies on the account.
-* When the condition is a policy restriction - the locations outside of scope of the condition **will not** contribute loss to the policies on the account.
+* When the condition is a sublimit - the locations that are outside of scope of the condition **will** contribute loss to the policy on the account.
+* When the condition is a policy restriction - the locations outside of scope of the condition **will not** contribute loss to the policy on the account.
 
 Policy restrictions can be used to vary the locations that contribute loss to each policy under the same account, by having a different condition for each policy.
 
