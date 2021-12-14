@@ -125,14 +125,28 @@ The reason for having both the coverage value (1 to 6) as well as spelling out t
 Policy Special Conditions
 #########################
 
-Policy special conditions are financial structures that apply to only a subset of locations within a policy. These require three aspects: (1) the specification of the financial conditions, (2) the specification of the locations to which these financial conditions apply and (3) the specification of the order in which the special conditions apply – i.e. does a special condition apply before or after other special conditions that apply to the same locations.
-Taking these three aspects in turn.
+Policy special conditions are financial structures that apply to only a subset of locations within a policy. They apply after all location terms, but before any blanket policy terms or layer terms.
 
-The specification of the financial details of the special condition is done in the same way as any other financial structure within OED but using the field names starting with ‘Cond’. All of the coverage values deductible and limit types and codes can be used with special conditions to specify how the special condition financial structures work. Special conditions are defined in the OED account input file and must have a **CondNumber** and **CondTag** in this input file. If multiple special conditions apply within the same policy, then multiple rows (with the same **AccNumber** and **PolNumber** but different **CondNumber**) must be used.
+These require four types of information: (1) the scope of the condition telling us which locations are included, (2) the financial terms of the condition, (3) the classification of the condition and (4) the order in which the special conditions apply – i.e. does a special condition apply before or after other special conditions that apply to the same locations.
 
-The definition of the locations that each special condition applies to is done by specifying a **CondTag** on each location (in the location input file) that corresponds with the **CondTag** in the account input file.
+The scope of each special condition is specified using a **CondTag** on each location (in the location input file) that corresponds with the **CondTag** in the account input file.
+
+A unique set of financial terms and a classification is identified by the **CondNumber** field in the account file.
+
+The specification of the financial details of the condition is done in the same way as any other financial structure within OED but using the field names starting with ‘Cond’. All of the coverage values deductible and limit types and codes can be used for a special condition to specify how the special condition financial structures work. 
+
+Furthermore, there are two classifications of special conditions which are identified by the **CondClass** field in the account file. A value of 0 means 'Sublimit' and a value of 1 means 'Policy restriction'. The difference between them is what happens to losses for locations under the account that are not under the scope of the condition.
+
+* When the condition is a sublimit - the locations that are outside of scope of the condition **will** contribute loss to the policy on the account.
+* When the condition is a policy restriction - the locations outside of scope of the condition **will not** contribute loss to the policy on the account.
+
+Policy restrictions can be used to vary the locations that contribute loss to each policy under the same account, by having a different condition for each policy.
+
+Special conditions are defined in the OED account input file and must have a **CondNumber** and **CondTag** in this input file. If multiple special conditions apply within the same policy, then multiple rows (with the same **PortNumber**, **AccNumber** and **PolNumber** but different **CondNumber** and **CondTag**) must be used. The same **CondNumber** may be applied to more than one **CondTag**, if the financial terms are identical.
+
 If the special condition financial terms vary by policy, then a different CondNumber should be used for each unique set of terms. However, the **CondTag** should not vary for each **CondNumber**, and the locations should be tagged with **CondTag** only once per location in the location file. 
-The definition of the order in which special conditions apply is done through the **CondPriority** field in the account input file: if multiple special conditions **at different priorities** apply to the same location then multiple rows must be used in the location input file. Each location row will be identical apart from **CondTag** and which denote the special conditions grouping applying to the location for each condition.
+
+There is one exception to this rule where there are multiple heirarchal conditions on the same location.  The order in which special conditions apply is specified through the **CondPriority** field in the account input file: if multiple special conditions **at different priorities** apply to the same location then multiple rows must be used in the location input file. Each location row will be identical apart from **CondTag** and which denote the special conditions grouping applying to the location for each condition.
 
 See example 4 in the financial structures' examples section for an illustration of how special conditions are specified.
 
