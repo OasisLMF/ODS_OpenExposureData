@@ -12,11 +12,12 @@
 
 Steering Committee Members:
 
-<img src="images/Oasis_LOGO.png" width="150"/> <img src="images/NASDAQ_logo.png" width ="120" /> &nbsp; 
+<img src="images/Oasis_LOGO.png" width="150"/> <img src="images/NASDAQ_logo.png" width ="120" /> &nbsp; &nbsp;
 <img src="images/corelogic_logo.png" width ="160"/>&nbsp; &nbsp; &nbsp; 
 <img src="images/AIR_Worldwide's_logo.jpeg" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 <img src="images/JBA_logo.jpeg" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-<img src="images/IF_Logo.png" width ="130"/> &nbsp; 
+<img src="images/IF_Logo.png" width ="130"/>
+<img src="images/fathom-logo.jpeg" width="180"/>
 <img src="images/zurich_logo.png" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; 
 <img src="images/ascot_logo.png" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp;
 <img src="images/Munich-RE-logo.jpeg" width ="150"/> &nbsp; &nbsp; &nbsp; &nbsp;
@@ -25,10 +26,10 @@ Steering Committee Members:
 <img src="images/Willis_logo.jpeg" width ="100"/> 
 <img src="images/Aon_logo.jpeg" width ="120" /> &nbsp; 
 <img src="images/bms_logo.jpeg" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp;
-<img src="images/GuyCarp_logo.png" width ="200"/> &nbsp; &nbsp; 
+<img src="images/GuyCarp_logo.png" width ="200"/> &nbsp; &nbsp; &nbsp;
 <img src="images/Lloyds_logo.png" width="100"/> &nbsp; &nbsp; 
-<img src="images/perils_ag_logo.png" width="160"/> &nbsp; &nbsp; 
-<img src="images/idf_logo.jpg" width="120"/> &nbsp; &nbsp; &nbsp; 
+<img src="images/idf_logo.jpg" height= "130" width="120"/> 
+
 
 
 &nbsp; 
