@@ -1,5 +1,22 @@
 ODS Changelog
 ==================
+
+`v2.1.0`_
+---------
+.. start_latest_release
+
+* [#53]https://github.com/OasisLMF/OpenDataStandards/issues/53 - new payout type for step policies.
+* [#54]https://github.com/OasisLMF/OpenDataStandards/issues/54 - Addition peril codes for volcanic perils.
+* [#58]https://github.com/OasisLMF/OpenDataStandards/issues/58 - Additional occupancy and construction codes with descriptions.
+* Above issues updated in the data spec .xlsx, associated .rst files and the OED pdf doc.
+
+* Includes the new Pypi conversion tool for .csv to Parquet data formats in the 'feature' branch. 
+https://github.com/OasisLMF/OpenDataStandards/tree/feature/56-testing-and-excel-schema
+
+.. end_latest_release
+
+
+
 `v2.0.0`_
 ---------
 .. start_latest_release
