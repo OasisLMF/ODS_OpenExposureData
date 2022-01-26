@@ -10,8 +10,8 @@ ODS Changelog
 * [#58]https://github.com/OasisLMF/OpenDataStandards/issues/58 - Additional occupancy and construction codes with descriptions.
 * Above issues updated in the data spec .xlsx, associated .rst files and the OED pdf doc.
 
-* Includes the new Pypi conversion tool for .csv to Parquet data formats in the 'feature' branch. 
-https://github.com/OasisLMF/OpenDataStandards/tree/feature/56-testing-and-excel-schema
+* Includes the new Pypi conversion tool for .csv to Parquet data formats below:
+https://github.com/OasisLMF/OpenDataStandards/tree/develop/src
 
 .. end_latest_release
 
