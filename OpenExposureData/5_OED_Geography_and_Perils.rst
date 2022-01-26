@@ -113,6 +113,9 @@ The system for capturing which perils apply to different exposure elements and f
     "Cyber Security Data and Privacy Breach","CSB"
     "Cyber Security Property Damage",       "CPD"
     "Pandemic Flu",                         "PNF"
+    "Volcanic Ash Cloud",               	"VVA"
+    "Volcanic lava flow/eruption",	        "VVE"
+    "Volcanic landslide/mudslide",      	"VVL"
 
 
 The input format codes are designed to be easier to populate and recognize by an analyst. The reason for the slightly counterintuitive form of some of the abbreviations is that they are designed so that a predominant peril can quickly be identified by searching for one particular character in the abbreviations: ‘B’ for Fire, ‘O’ for Flood, ‘Q’ for Quake, ‘X’ for Convective storm, ‘Z’ for Winter storm, ‘W’ for Wind, ‘M’ for Terrorism. 
@@ -135,6 +138,7 @@ As well as the individual peril codes in the above table, there are also codes f
     "Pandemic",                                             "PP1"
     "Crop",                                                 "GG1"
     "Cyber",                                                "CC1"
+    "Volcanic",                                             "VV1"
     "All perils",	                                        "AA1"	
 
 
