@@ -32,7 +32,7 @@ setuptools.setup(
     version=version,
     include_package_data=True,
     package_data={
-        'OpenExposureData/Docs': ['OpenExposureData_Spec.csv'],
+        'src': ['OpenExposureData_Spec.csv'],
     },
     entry_points={
         'console_scripts': [
