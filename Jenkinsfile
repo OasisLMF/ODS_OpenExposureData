@@ -90,7 +90,7 @@ node {
             }
         }
 
-        stage('Run: ODS-tools Build') {
+        stage('Build: ods_tools package') {
               dir(ods_dir) {
                   //sh 'docker build -f docker/Dockerfile.oasis_docbuilder -t oed_doc_builder .'
                   //sh 'docker run -v $(pwd):/tmp/output oed_doc_builder:latest'
@@ -99,6 +99,11 @@ node {
               }
         }
 
+        stage('Test: ods_tools package') {
+              dir(ods_dir) {
+                  sh 'docker run --entrypoint tox ods-builder'
+              }
+        }
 
 
         //if (params.GH_PAGES){
