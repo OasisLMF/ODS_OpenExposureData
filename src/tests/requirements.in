@@ -1,0 +1,6 @@
+pandas
+pyarrow
+openpyxl
+click
+pytest
+requests
