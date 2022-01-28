@@ -21,18 +21,12 @@ def get_version():
 
 
 version = get_version()
-
-#
-# schema_files = [os.path.join(SCRIPT_DIR, 'OpenExposureData', 'Schema', 'OED_Input_Fields.csv')]
-# for schema_file in schema_files:
-#     copyfile(schema_file, os.path.join(SCRIPT_DIR, 'src', schema_file))
-
 setuptools.setup(
     name="ods_tools",
     version=version,
     include_package_data=True,
     package_data={
-        'OpenExposureData/Docs': ['OpenExposureData_Spec.csv'],
+        'src': ['OpenExposureData_Spec.csv'],
     },
     entry_points={
         'console_scripts': [
