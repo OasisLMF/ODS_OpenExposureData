@@ -8,8 +8,12 @@ SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 def get_readme():
-    with io.open(os.path.join(SCRIPT_DIR, 'src', 'README.md'), encoding='utf-8') as readme:
-        return readme.read()
+    try: 
+        with io.open(os.path.join(SCRIPT_DIR, 'src', 'README.md'), encoding='utf-8') as readme:
+            return readme.read()
+    except FileNotFoundError:
+        with io.open(os.path.join(SCRIPT_DIR, 'README.md'), encoding='utf-8') as readme:
+            return readme.read()
 
 
 def get_version():
@@ -27,9 +31,7 @@ setuptools.setup(
     name="ods_tools",
     version=version,
     include_package_data=True,
-    package_data={
-        'src': ['OpenExposureData_Spec.csv'],
-    },
+    package_data={"": ["*.csv", "*.md"]},
     entry_points={
         'console_scripts': [
             'ods_tools=ods_tools:main',
@@ -37,8 +39,8 @@ setuptools.setup(
     },
     author='Oasis LMF',
     author_email="support@oasislmf.org",
-    packages=['ods_tools', 'OpenExposureData/Docs'],
-    package_dir={'ods_tools': 'src', 'OpenExposureData/Docs': 'OpenExposureData/Docs'},
+    packages=['ods_tools'],
+    package_dir={'ods_tools': 'src'},
     python_requires='>=3.7',
     description='Tools to manage ODS files',
     long_description=readme,
