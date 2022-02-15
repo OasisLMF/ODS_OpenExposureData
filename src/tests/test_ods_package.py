@@ -4,7 +4,7 @@ import pyarrow
 import requests
 from unittest import TestCase
 
-from ods_tools import (
+from ..oed import (
     read_csv,
     read_parquet,
     get_ods_fields,
