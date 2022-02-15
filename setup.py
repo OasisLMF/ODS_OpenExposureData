@@ -21,6 +21,8 @@ def get_version():
 
 
 version = get_version()
+readme = get_readme()
+
 setuptools.setup(
     name="ods_tools",
     version=version,
@@ -39,7 +41,7 @@ setuptools.setup(
     package_dir={'ods_tools': 'src', 'OpenExposureData/Docs': 'OpenExposureData/Docs'},
     python_requires='>=3.7',
     description='Tools to manage ODS files',
-    long_description=get_readme(),
+    long_description=readme,
     long_description_content_type='text/markdown',
     url='https://github.com/OasisLMF/OpenDataStandards',
 )
