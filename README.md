@@ -11,26 +11,36 @@
 
 
 Steering Committee Members:
-
-<img src="images/Oasis_LOGO.png" width="180"/> &nbsp; &nbsp; 
-<img src="images/NASDAQ_logo.png" width ="120"/> &nbsp; &nbsp; &nbsp; 
-<img src="images/corelogic_logo.png" width ="160"/>&nbsp; &nbsp; &nbsp;
-<img src="images/AIR_Worldwide's_logo.jpeg" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-<img src="images/JBA_logo.jpeg" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-<img src="images/IF_Logo.png" width ="130"/> &nbsp; 
-<img src="images/fathom-logo.jpeg" width="180"/> 
-<img src="images/RMS_logo.png" width="140"/> &nbsp; &nbsp; &nbsp; &nbsp;
-<img src="images/zurich_logo.png" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-<img src="images/ascot_logo.png" width ="60"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-<img src="images/Munich-RE-logo.jpeg" width ="150"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-<img src="images/renre_logo.png" width ="120"/> &nbsp; &nbsp; &nbsp; &nbsp; 
-<img src="images/SwissRe_logo.jpg" width ="120"/> &nbsp; &nbsp; &nbsp; 
-<img src="images/Aon_v2_logo.png" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; 
-<img src="images/wtw_v2.png" width ="80"/> &nbsp; &nbsp; &nbsp; &nbsp; 
-<img src="images/GC_logo_v2.png" width ="180"/> &nbsp; &nbsp; &nbsp;
-<img src="images/Lloyds_logo.png" width="100"/> &nbsp; &nbsp; &nbsp; &nbsp; 
-<img src="images/idf_logo.jpg" height= "130" width="120"/>  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; 
-
+<table id="verticalalign">
+    <tbody>
+        <tr>
+            <td align="middle" valign="middle"><img src="images/Oasis_LOGO.png" width="180"/></td>
+            <td align="middle" valign="middle"><img src="images/NASDAQ_logo.png" width ="120"/></td>
+            <td align="middle" valign="middle"><img src="images/corelogic_logo.png" width ="160"/></td>
+            <td align="middle" valign="middle"><img src="images/AIR_Worldwide's_logo.jpeg" width ="80"/></td>
+            <td align="middle" valign="middle"><img src="images/JBA_logo.jpeg" width ="60"/></td>
+            <td align="middle" valign="middle"><img src="images/IF_Logo.png" width ="130"/></td>
+        </tr>
+        <tr></tr>  <!--  empty line to avoid table zebra striping  -->
+        <tr>
+            <td align="middle" valign="middle"><img src="images/fathom-logo.jpeg" width="180"/></td>
+            <td align="middle" valign="middle"><img src="images/RMS_logo.png" width ="140"/></td>
+            <td align="middle" valign="middle"><img src="images/zurich_logo.png" width ="80"/></td>
+            <td align="middle" valign="middle"><img src="images/ascot_logo.png" width ="60"/></td>
+            <td align="middle" valign="middle"><img src="images/Munich-RE-logo.jpeg" width ="150"/></td>
+            <td align="middle" valign="middle"><img src="images/renre_logo.png" width ="120"/></td>
+        </tr>
+        <tr></tr>  <!--  empty line to avoid table zebra striping  -->
+        <tr>
+            <td align="middle" valign="middle"><img src="images/SwissRe_logo.jpg" width="120"/></td>
+            <td align="middle" valign="middle"><img src="images/Aon_v2_logo.png" width ="80"/></td>
+            <td align="middle" valign="middle"><img src="images/wtw_v2.png" width ="80"/></td>
+            <td align="middle" valign="middle"><img src="images/GC_logo_v2.png" width ="180"/></td>
+            <td align="middle" valign="middle"><img src="images/Lloyds_logo.png" width ="100"/></td>
+            <td align="middle" valign="middle"><img src="images/idf_logo.jpg" height= "130" width="120"/></td>
+        </tr>
+    </tbody>
+</table>
 
 
 &nbsp; 
