@@ -4,7 +4,7 @@ ODS Changelog
 `v2.2.0`_
 ---------
 .. start_latest_release
-* (https://github.com/OasisLMF/OpenDataStandards/issues/65) - change the wording in the 'OED data spec' to explain that geogscheme is limited to '30'
+* (https://github.com/OasisLMF/OpenDataStandards/issues/65) - update the wording in the 'OED data spec' to limit the use of geogscheme/geogname to '30'
 
 * Inclusion of OED Liability data schema and docs (https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Liability)
 
@@ -14,14 +14,14 @@ ODS Changelog
 .. start_latest_release
 
 Fixed package issue 
-* missing spec csv in published package
+
+missing spec csv in published package
 
 `v2.1.1`_
 ---------
 .. start_latest_release
 
-Fix package installation issue
-Issue https://github.com/OasisLMF/OpenDataStandards/pull/61 - Patched to `2.1.1` to fix but spec remains the same as `2.1.0`
+Fix package installation issue https://github.com/OasisLMF/OpenDataStandards/pull/61 - Patched to `2.1.1` to fix but spec remains the same as `2.1.0`
 
 `v2.1.0`_
 ---------
