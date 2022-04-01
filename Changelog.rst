@@ -1,14 +1,36 @@
 ODS Changelog
 ==================
 
+`v2.2.0`_
+---------
+.. start_latest_release
+* (https://github.com/OasisLMF/OpenDataStandards/issues/65) - change the wording in the 'OED data spec' to explain that geogscheme is limited to '30'
+
+* Inclusion of OED Liability data schema and docs (https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Liability)
+
+
+`v2.1.2`_
+---------
+.. start_latest_release
+
+Fixed package issue 
+* missing spec csv in published package
+
+`v2.1.1`_
+---------
+.. start_latest_release
+
+Fix package installation issue
+Issue https://github.com/OasisLMF/OpenDataStandards/pull/61 - Patched to `2.1.1` to fix but spec remains the same as `2.1.0`
+
 `v2.1.0`_
 ---------
 .. start_latest_release
 
-* [#53](https://github.com/OasisLMF/OpenDataStandards/issues/53) - new payout type for step policies.
-* [#54](https://github.com/OasisLMF/OpenDataStandards/issues/54) - Addition peril codes for volcanic perils.
-* [#58](https://github.com/OasisLMF/OpenDataStandards/issues/58) - Additional occupancy and construction codes with descriptions.
-* [#56](https://github.com/OasisLMF/OpenDataStandards/issues/56) - Added testing to ods_tools package and generate csv spec from excel file.
+* (https://github.com/OasisLMF/OpenDataStandards/issues/53) - new payout type for step policies.
+* (https://github.com/OasisLMF/OpenDataStandards/issues/54) - Addition peril codes for volcanic perils.
+* (https://github.com/OasisLMF/OpenDataStandards/issues/58) - Additional occupancy and construction codes with descriptions.
+* (https://github.com/OasisLMF/OpenDataStandards/issues/56) - Added testing to ods_tools package and generate csv spec from excel file.
 * Above issues updated in the data spec .xlsx, associated .rst files and the OED pdf doc.
 
 * Includes the hotfix to the Pypi conversion tool for .csv <> Parquet data formats below:
@@ -28,37 +50,37 @@ https://github.com/OasisLMF/OpenDataStandards/tree/develop/src
 
 2. Updated piwind OED (example) files
 
-3. Added a separate 'LocPopulation' file to OED - [#40] (https://github.com/OasisLMF/OpenDataStandards/issues/40)
+3. Added a separate 'LocPopulation' file to OED - (https://github.com/OasisLMF/OpenDataStandards/issues/40)
 
-4. Added 'w3w' as a geogscheme to data spec .xslx to support 'What3Words' - [#39](https://github.com/OasisLMF/OpenDataStandards/issues/39)
+4. Added 'w3w' as a geogscheme to data spec .xslx to support 'What3Words' - (https://github.com/OasisLMF/OpenDataStandards/issues/39)
 
-5. Added 'CondTag' varchar(20) field to loc and acc files [#30](https://github.com/OasisLMF/OpenDataStandards/issues/30)
+5. Added 'CondTag' varchar(20) field to loc and acc files (https://github.com/OasisLMF/OpenDataStandards/issues/30)
 
 6. Removed 'CondNumber' int field from loc file
 
-7. Added 'OEDVersion' varchar(10) field to all four input files - [#33](https://github.com/OasisLMF/OpenDataStandards/issues/33)
+7. Added 'OEDVersion' varchar(10) field to all four input files - (https://github.com/OasisLMF/OpenDataStandards/issues/33)
 
-8. Change 'NumberOfEmployees' int field to 'NumberOfOccupants' int field ion loc file - [#40] (https://github.com/OasisLMF/OpenDataStandards/issues/40)
+8. Change 'NumberOfEmployees' int field to 'NumberOfOccupants' int field ion loc file  (https://github.com/OasisLMF/OpenDataStandards/issues/40)
 
-9. Added 'OccupantPeriod' tiny int field to loc file - [#40] (https://github.com/OasisLMF/OpenDataStandards/issues/40)
+9. Added 'OccupantPeriod' tiny int field to loc file - (https://github.com/OasisLMF/OpenDataStandards/issues/40)
 
-10. Added 'IsAggregate' field - [#45] https://github.com/OasisLMF/OpenDataStandards/issues/45
+10. Added 'IsAggregate' field - https://github.com/OasisLMF/OpenDataStandards/issues/45
 
-11. Increased the amount of 'GeogScheme'/'GeogName' pairs supported in OED -[#51] (https://github.com/OasisLMF/OpenDataStandards/issues/51)
+11. Increased the amount of 'GeogScheme'/'GeogName' pairs supported in OED - (https://github.com/OasisLMF/OpenDataStandards/issues/51)
 
-12. Expanding the supported perils to include subsidence, pandemic, agriculture related perils and cyber - [#46] https://github.com/OasisLMF/OpenDataStandards/issues/46
+12. Expanding the supported perils to include subsidence, pandemic, agriculture related perils and cyber - https://github.com/OasisLMF/OpenDataStandards/issues/46
 
 13. Changed data type of 'CondNumber' from int to varchar(20) in acc file
 
-14. Moved 'RiskLevel' char(3) field to ReinsInfo file (removed from ReinsScope file) - [#21](https://github.com/OasisLMF/OpenDataStandards/issues/21)
+14. Moved 'RiskLevel' char(3) field to ReinsInfo file (removed from ReinsScope file) - (https://github.com/OasisLMF/OpenDataStandards/issues/21)
 
 15. Created a CSV to Parquet conversion tool in Python https://github.com/OasisLMF/OpenDataStandards/tree/develop/src 
 
 **ORD Version 2.0.0**
 
-1. Report name changed from Period Average Loss Table (PALT) to Average Loss Table (ALT) - [#36](https://github.com/OasisLMF/OpenDataStandards/issues/36)
+1. Report name changed from Period Average Loss Table (PALT) to Average Loss Table (ALT) - (https://github.com/OasisLMF/OpenDataStandards/issues/36)
 
-2. Removed standalone financial perspectives - [#37] https://github.com/OasisLMF/OpenDataStandards/issues/37
+2. Removed standalone financial perspectives - https://github.com/OasisLMF/OpenDataStandards/issues/37
 
 3. Reindexing of EPCalc and EPType as follows;
 
@@ -101,7 +123,7 @@ https://github.com/OasisLMF/OpenDataStandards/tree/develop/src
 * Updated piwind oed files
 
 * Added 'w3w' as a geogscheme to data spec .xslx to support 'What3Words' - 
-[#39](https://github.com/OasisLMF/OpenDataStandards/issues/39)
+(https://github.com/OasisLMF/OpenDataStandards/issues/39)
 
 **Location file**
 
@@ -109,11 +131,11 @@ https://github.com/OasisLMF/OpenDataStandards/tree/develop/src
 
 * Removed CondNumber int field
 
-* Added OEDVersion varchar(10) field - [#33](https://github.com/OasisLMF/OpenDataStandards/issues/33)
+* Added OEDVersion varchar(10) field - (https://github.com/OasisLMF/OpenDataStandards/issues/33)
 
 **Account file**
 
-* Added CondTag varchar(20) field - [#30](https://github.com/OasisLMF/OpenDataStandards/issues/30)
+* Added CondTag varchar(20) field - (https://github.com/OasisLMF/OpenDataStandards/issues/30)
 
 * Changed data type of CondNumber from int to varchar(20)
 
@@ -121,7 +143,7 @@ https://github.com/OasisLMF/OpenDataStandards/tree/develop/src
 
 **ReinsInfo file**
 
-* Added RiskLevel char(3) field (from ReinsScope file) - [#21](https://github.com/OasisLMF/OpenDataStandards/issues/21)
+* Added RiskLevel char(3) field (from ReinsScope file) - (https://github.com/OasisLMF/OpenDataStandards/issues/21)
 
 * Added OEDVersion varchar(10) field
 
@@ -135,7 +157,7 @@ https://github.com/OasisLMF/OpenDataStandards/tree/develop/src
 
 * Version 2.0.0
 
-* Report name changed from Period Average Loss Table (PALT) to Average Loss Table (ALT) - [#36](https://github.com/OasisLMF/OpenDataStandards/issues/36)
+* Report name changed from Period Average Loss Table (PALT) to Average Loss Table (ALT) - (https://github.com/OasisLMF/OpenDataStandards/issues/36)
 
 * Reindexing of EPCalc and EPType as follows;
 
@@ -167,8 +189,8 @@ https://github.com/OasisLMF/OpenDataStandards/tree/develop/src
 `v1.1.5`_
 ---------
 .. start_latest_release
-* [#23](https://github.com/OasisLMF/OpenDataStandards/issues/23) - Added IFM occupancy codes for specific oil, gas, electric and nuclear risks
-* [#27](https://github.com/OasisLMF/OpenDataStandards/issues/27) - Added a occupamcy code for commercial railway buildings
+* (https://github.com/OasisLMF/OpenDataStandards/issues/23) - Added IFM occupancy codes for specific oil, gas, electric and nuclear risks
+* (https://github.com/OasisLMF/OpenDataStandards/issues/27) - Added a occupamcy code for commercial railway buildings
 * Updated OpenExposureData_Spec to include new IFM occ codes
 * Updated Occupancy Values.csv in schema folder with new IFM occ codes
 .. end_latest_release
@@ -177,7 +199,7 @@ https://github.com/OasisLMF/OpenDataStandards/tree/develop/src
 `v1.1.4`_
 ---------
 .. start_latest_release
-* [#22](https://github.com/OasisLMF/OpenDataStandards/issues/22) - Updated ranges for FirstFloorHeight and FirstFloorHeightUnit fields
+* (https://github.com/OasisLMF/OpenDataStandards/issues/22) - Updated ranges for FirstFloorHeight and FirstFloorHeightUnit fields
 * Made updates to the ODS ReadMe - added Munich Re and QOMPLX logos and mission statement
 * Added the 'ODS_2021_Planning_&_Strategy_v1.pdf Doc
 * Updated the ORD data spec for v1.1.3 and associated .csv files from latest one supplied by NASDAQ following the Lloyd's Lab project
@@ -188,11 +210,11 @@ https://github.com/OasisLMF/OpenDataStandards/tree/develop/src
 
 `v1.1.3`_
 ---------
-* [#2](https://github.com/OasisLMF/OpenDataStandards/issues/2) - Updated area code for Canada from 2 digit codes to two letter codes
-* [#4](https://github.com/OasisLMF/OpenDataStandards/issues/4) - Added a field in the loc file for 'StaticMotorVehicle' 
-* [#18](https://github.com/OasisLMF/OpenDataStandards/issues/18) - Made multiple updates to data ranges in the OED data spec spreadsheet ('OED Input Field' tab)
-* [#19](https://github.com/OasisLMF/OpenDataStandards/issues/19) - Update to 'ContentsFloodVuln' to include option 5 for no susceptibility
-* [#20](https://github.com/OasisLMF/OpenDataStandards/issues/20) - Added 'CondClass' to the loc file in the OED data spec 
+* (https://github.com/OasisLMF/OpenDataStandards/issues/2) - Updated area code for Canada from 2 digit codes to two letter codes
+* (https://github.com/OasisLMF/OpenDataStandards/issues/4) - Added a field in the loc file for 'StaticMotorVehicle' 
+* (https://github.com/OasisLMF/OpenDataStandards/issues/18) - Made multiple updates to data ranges in the OED data spec spreadsheet ('OED Input Field' tab)
+* (https://github.com/OasisLMF/OpenDataStandards/issues/19) - Update to 'ContentsFloodVuln' to include option 5 for no susceptibility
+* (https://github.com/OasisLMF/OpenDataStandards/issues/20) - Added 'CondClass' to the loc file in the OED data spec 
 
 .. _`1.1.4`:  https://github.com/OasisLMF/OpenDataStandards/compare/1.1.3...1.1.4
 .. _`1.1.3`:  https://github.com/OasisLMF/OpenDataStandards/compare/1.1.2...1.1.3
