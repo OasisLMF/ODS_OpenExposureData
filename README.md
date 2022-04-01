@@ -72,7 +72,7 @@ The diagram below highlights the proposed, long-term structure of ODS and all th
 
 &nbsp; 
 
-**ODS Implementation into Oasis:** Oasis LMF are continuously expanding the ODS functionality they support on their platform, especially in their financial module (FM). The tracking of this work can be found here: https://github.com/orgs/OasisLMF/projects/5.
+**ODS Implementation into Oasis:** Oasis LMF are continuously expanding the ODS functionality they support on their platform, especially in their financial module (FM). 
 
 Detailed documentation on which financial fields are supported in the Oasis kernel can be found here: https://github.com/OasisLMF/OasisLMF/blob/master/docs/OED_financial_terms_supported.xlsx
 &nbsp; 
@@ -81,15 +81,24 @@ Detailed documentation on which financial fields are supported in the Oasis kern
 
 ## Open Exposure Data (OED)
 
-The aim of OED is to provide the industry with a robust, open, and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and although the focus has been on property cat business since its inception, ODS is now expanding to support other lines of business such as liability, cyber and marine which are in the pipeline to be released during 2022. 
-
-Detailed descriptions of each data field are covered in the Open Exposure Data Spec.xlsx and detailed reference and background OED information can be found in the 'docs’ folder. Examples of how to code multiple financial structures in the input files are covered within these documents.
+The aim of OED is to provide the industry with a robust, open, and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and the detailed descriptions of each data field for property are covered in the 'Open Exposure Data Spec.xlsx' and reference and background OED information can be found in the 'docs’ folder (https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs). Examples of how to code multiple financial structures in the input files are also covered within these documents.
 
 An additional OED location file 'LocPopulation' is also available here (https://github.com/OasisLMF/OpenDataStandards/blob/master/OpenExposureData/Example_inputs/pi_wind/OED_LocPopulation_v2.0.0.xlsx) for capturing demographic and socio-vulnerability data for more public sector/humanitarian use cases.
 
-The web (HTML) version of the OED documentation can be viewed here:
+&nbsp; 
 
-https://oasislmf.github.io/OpenDataStandards/index.html
+**Liability** 
+
+The focus for OED has primarily been on property cat business since its inception but has now expanded to support other lines of business. The liability data schema was released in April 2022 - details and docs can be found here:
+
+https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Liability
+
+A cyber data standard is expected to be available in Q3/Q4 of 2022.
+
+
+The web (HTML) version of the OED documentation can be viewed here https://oasislmf.github.io/OpenDataStandards/index.html
+
+&nbsp; 
 
 OED is the exposure data input format supported by the Oasis Loss Modelling Framework and by all models deployed on the Oasis platform.
 
@@ -99,11 +108,9 @@ OED is the exposure data input format supported by the Oasis Loss Modelling Fram
 
 ## Open Results Data (ORD)
 
-ORD was initially developed during the Lloyd's Lab innovation project (Cohort 3) in 2019, by a working group led by Oasis, that focussed on constructing model agnostic results formats and appropriate data formats. These model outputs will cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. The ORD Standard encompasses:
+ORD was initially developed during the Lloyd's Lab innovation project (Cohort 3) in 2019, by a working group led by Oasis, that focussed on constructing model agnostic results formats and appropriate data formats. These model outputs cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. The ORD Standard encompasses:
 
-Working documents can be found here (https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenResultsData)
-
-ORD will be implemented by the Oasis Loss Modelling Framework during 2021 and all updates and progress will be in this repo.
+More details and documents can be found here (https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenResultsData)
 
 &nbsp; 
 
@@ -139,9 +146,9 @@ All new work will be done in **feature** branches, following the [GitFlow model]
 
 All new work will be captured as issues in this repository and contain all correspondence and associated documents or data. Any GitHub user can raise an issue and the TWG will classify as:
 
-**Major Updates:** These are major work items that will require significant work and may cause breaking changes. An example of a major feature would be extension to a new class of business.  All major features will be reviewed during a steering committee meeting.
+**Major Updates:** These are major work items that may require significant effort and may cause breaking changes. An example of a major feature would be  changes to the data schema with new or revised fields.  All major features will be reviewed during a steering committee meeting.
 
-**Minor Updates:** These are minor work items that will not cause breaking changes. An example of a minor feature would be the inclusion of a new location attribute with a default value.  Minor features must be approved, by email, by two members of the steering committee before being addressed by the maintenance team. If approval is not given, or an objection is raised by a member of the steering committee, then the feature will be reviewed at the next a steering committee meeting.
+**Minor Updates:** These are minor work items that will not cause breaking changes. An example of a minor feature would be the inclusion of a new location attribute with a default value.  Minor features must be approved, by email, by two members of the steering committee before being addressed by the maintenance team. If approval is not given, or an objection is raised by a member of the steering committee, then the feature will be reviewed at the next steering committee meeting.
 
 &nbsp; 
 
