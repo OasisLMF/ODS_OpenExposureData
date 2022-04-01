@@ -42,6 +42,8 @@ Below is the proposed class-based taxonomy, for the purpose of identifying the i
 
 As interest and adoption increases, the likely next steps for this standard will be to develop the schema to include more required data fields specific to each sub-class through collaboration of small working groups and on-going feedback. This work will also include expanding the scope of the taxonomy to those classes currently not supported and driven by demand, such as motor and aviation.
 
+Any feedback and suggestions for updates should be submitted via the 'issues' here (https://github.com/OasisLMF/OpenDataStandards/issues) which will then be reviewed by the Technical Working Group (TWG).
+
 &nbsp;
 
 ### Governance
