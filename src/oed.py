@@ -94,6 +94,7 @@ def get_ods_fields(df_engine):
         no_file_name_df = ods_fields_df[['Input Field Name', 'pd_dtype', 'Default']].drop_duplicates()
         no_file_name_df.set_index(['Input Field Name'], inplace=True)
         __ods_fields[None] = no_file_name_df.to_dict(orient='index')
+
     return __ods_fields
 
 
@@ -153,6 +154,9 @@ def read_csv(filepath_or_buffer, df_engine=pd, file_type=None, dtype=None, defau
         for col in header:
             if str(col).lower() in pd_dtype:
                 _dtype[col] = pd_dtype[str(col).lower()]
+            else:
+                _dtype[col] = 'category'
+
         pd_dtype = _dtype
 
         if kwargs.get('compression')== 'gzip':
