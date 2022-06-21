@@ -1,6 +1,16 @@
 ODS Changelog
 ==================
 
+`v2.3.0`_
+---------
+.. start_latest_release
+* (https://github.com/OasisLMF/OpenDataStandards/issues/66) - additing data tytpes to the ORD outputs, found here: https://github.com/OasisLMF/OpenDataStandards/blob/develop/OpenResultsData/Docs/ORD_Data_Spec.xlsx
+
+* (https://github.com/OasisLMF/OpenDataStandards/issues/67) - inclusion of soil types for earthquake perils in OED
+
+* (https://github.com/OasisLMF/OpenDataStandards/issues/68) - additonal geogschemes, roofcover types and OED occupancy codes
+
+
 `v2.2.0`_
 ---------
 .. start_latest_release
