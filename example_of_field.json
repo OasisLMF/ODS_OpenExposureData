@@ -1,0 +1,15 @@
+{
+    "PortNumber": {
+        "field_desc": "Portfolio number: used for defining treaty scope in the reinsurance scope file",
+        "file_names": [
+            "ReinsScope"
+        ],
+        "required": "CR",
+        "sql_data_type": "varchar(20)",
+        "python_data_type": "string",
+        "allow_blank": "YES",
+        "default": NaN,
+        "valid_value_range": "nan",
+        "sec_mod": NaN
+    },
+}
