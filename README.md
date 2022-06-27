@@ -78,12 +78,19 @@ Detailed documentation on which financial fields are supported in the Oasis kern
 &nbsp; 
 
 
-
 ## Open Exposure Data (OED)
 
 The aim of OED is to provide the industry with a robust, open, and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and the detailed descriptions of each data field for property are covered in the 'Open Exposure Data Spec.xlsx' and reference and background OED information can be found in the 'docs’ folder (https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs). Examples of how to code multiple financial structures in the input files are also covered within these documents.
 
 An additional OED location file 'LocPopulation' is also available here (https://github.com/OasisLMF/OpenDataStandards/blob/master/OpenExposureData/Example_inputs/pi_wind/OED_LocPopulation_v2.0.0.xlsx) for capturing demographic and socio-vulnerability data for more public sector/humanitarian use cases.
+
+&nbsp;
+
+## Open Data Transformation Framework (ODTF)
+
+The ODTF is an industry collaboration to develop a conversion tool that transforms exposure data to and from different formats including OED. More information can be found here:
+
+https://github.com/OasisLMF/OpenDataTransform
 
 &nbsp; 
 
@@ -103,7 +110,6 @@ The web (HTML) version of the OED documentation can be viewed here https://oasis
 OED is the exposure data input format supported by the Oasis Loss Modelling Framework and by all models deployed on the Oasis platform.
 
 
-
 &nbsp; 
 
 ## Open Results Data (ORD)
@@ -113,6 +119,7 @@ ORD was initially developed during the Lloyd's Lab innovation project (Cohort 3)
 More details and documents can be found here (https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenResultsData)
 
 &nbsp; 
+
 
 ## Governance
 
