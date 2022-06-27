@@ -1,7 +1,7 @@
 <img src="https://github.com/OasisLMF/OpenDataStandards/blob/master/images/ODS_LOGO.png" width = "300" />
 
 
-# ODS Liability
+# OED Liability
 
 ### Introduction
 
