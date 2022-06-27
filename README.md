@@ -105,11 +105,6 @@ The web (HTML) version of the OED documentation can be viewed here https://oasis
 
 &nbsp; 
 
-OED is the exposure data input format supported by the Oasis Loss Modelling Framework and by all models deployed on the Oasis platform.
-
-
-&nbsp; 
-
 ## Open Results Data (ORD)
 
 ORD was initially developed during the Lloyd's Lab innovation project (Cohort 3) in 2019, by a working group led by Oasis, that focussed on constructing model agnostic results formats and appropriate data formats. These model outputs cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. The ORD Standard encompasses:
