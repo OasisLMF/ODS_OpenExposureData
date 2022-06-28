@@ -53,8 +53,6 @@ ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Com
 
 The components of ODS are (but not limited to) the **Open Exposure Data (OED)** format and the **Open Results Data (ORD)** format. Both OED and ORD are designed to assist with solving interoperability problems current in the cat modelling community, where implementing a model-developer-independent exposure data and results format will assist in creating choice in the use of catastrophe models and analytical tools.
 
-**The Insurance Development Forum (IDF)** are funding a data transform project to develop conversion tools from the CEDE format to OED. Further details can be found here (https://oasislmf.github.io/OpenDataTransform/)
-
 Further information and community views of ODS can be found on the ODS website:
 https://oasislmf.org/open-data-standards
 
@@ -86,6 +84,15 @@ The aim of OED is to provide the industry with a robust, open, and transparent d
 An additional OED location file 'LocPopulation' is also available here (https://github.com/OasisLMF/OpenDataStandards/blob/master/OpenExposureData/Example_inputs/pi_wind/OED_LocPopulation_v2.0.0.xlsx) for capturing demographic and socio-vulnerability data for more public sector/humanitarian use cases.
 
 &nbsp; 
+
+## Open Data Transformation Framework (ODTF)
+
+The ODTF is funded by the **The Insurance Development Forum (IDF)** and is an industry collaboration to develop a conversion tool that transforms exposure data to and from different formats including OED. More information can be found here:
+
+https://github.com/OasisLMF/OpenDataTransform
+
+&nbsp; 
+
 
 **Liability** 
 
