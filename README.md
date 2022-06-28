@@ -92,14 +92,6 @@ https://github.com/OasisLMF/OpenDataTransform
 
 &nbsp; 
 
-## Open Data Transformation Framework (ODTF)
-
-The ODTF is funded by the **The Insurance Development Forum (IDF)** and is an industry collaboration to develop a conversion tool that transforms exposure data to and from different formats including OED. More information can be found here:
-
-https://github.com/OasisLMF/OpenDataTransform
-
-&nbsp; 
-
 
 **Liability** 
 
