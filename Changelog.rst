@@ -1,6 +1,11 @@
 ODS Changelog
 ==================
 
+`v2.3.1`_
+---------
+.. start_latest_release
+Added missing SoilValue field to OED spec from (https://github.com/OasisLMF/OpenDataStandards/issues/67)
+
 `v2.3.0`_
 ---------
 .. start_latest_release
