@@ -11,13 +11,5 @@ class RequiredFieldsCheck:
         self.file: File = file
         self.log_data: List[str] = []
 
-    def log(self) -> None:
-        pass
-
-    def check(self) -> bool:
-        pass
-
     def run(self) -> None:
-        outcome = self.check()
-        if outcome is False:
-            self.log()
+        pass
