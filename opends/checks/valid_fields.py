@@ -18,3 +18,4 @@ class ValidFieldCheck(Check):
 
         if len(self.log_data) == 0:
             self.passed = True
+            self.log_data.append(f"valid field check passed for {self.file.name} file")

@@ -1,7 +1,7 @@
 import os
 from unittest import main, TestCase
 
-from opends.components.template_loader import TemplateLoader
+from opends.components.template_loader import TemplateLoader, File
 from tests.unit.utils import DIR_PATH
 
 
@@ -16,11 +16,11 @@ class TestTemplateLoader(TestCase):
 
     def test_file_inspection(self):
         test = TemplateLoader(file_path=DIR_PATH)
-        file_one = test.files["ReinsScope"]
-        file_two = test.files["Acc"]
-        file_three = test.files["Loc"]
-        file_four = test.files["ReinsInfo"]
-        print("arghyeah")
+
+        self.assertEqual(File("ReinsScope"), test.files["ReinsScope"])
+        self.assertEqual(File("Acc"), test.files["Acc"])
+        self.assertEqual(File("Loc"), test.files["Loc"])
+        self.assertEqual(File("ReinsInfo"), test.files["ReinsInfo"])
 
 
 if __name__ == "__main__":

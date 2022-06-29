@@ -44,7 +44,7 @@ class TestValidFields(TestCase):
         check.run()
 
         self.assertEqual(True, check.passed)
-        self.assertEqual([], check.log_data)
+        self.assertEqual(["valid field check passed for Loc file"], check.log_data)
 
 
 if __name__ == "__main__":
