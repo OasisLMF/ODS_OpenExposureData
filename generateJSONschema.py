@@ -92,7 +92,7 @@ def main():
         file_name_list = getFileNameList(file_name)
         python_data_type = getPythonDataType(data_type)
 
-        dict[field_name] = {
+        dict[field_name + file_name] = {
             'field_desc': field_desc,
             'file_names': file_name_list,
             'required': required,
@@ -101,26 +101,29 @@ def main():
             'allow_blank': allow_blank,
             'default': default,
             'valid_value_range': valid_value_range,
-            'sec_mod': sec_mod
+            'sec_mod': sec_mod,
+            'name': field_name
         }
 
         if valid_value_range == 'nan':
             pass
         elif valid_value_range == '[-999,-999], [0,1]':
-            dict[field_name]['minval'] = 0.0
-            dict[field_name]['maxval'] = 1.0
-            dict[field_name]['otherval'] = -999.0
+            dict[field_name + file_name]['minval'] = 0.0
+            dict[field_name + file_name]['maxval'] = 1.0
+            dict[field_name + file_name]['otherval'] = -999.0
+
         elif valid_value_range[:1] == '[' and valid_value_range[-1:] == ']':
             lst = valid_value_range.replace('[', '').replace(']', '').replace(')', '').split(',')
-            dict[field_name]['minval'] = lst[0]
-            dict[field_name]['maxval'] = lst[1]
+            dict[field_name + file_name]['minval'] = lst[0]
+            dict[field_name + file_name]['maxval'] = lst[1]
+
         elif valid_value_range[:1] == '[' and valid_value_range[-1:] == ')':
             lst = valid_value_range.replace('[', '').replace(']', '').replace(')', '').split(',')
-            dict[field_name]['minval'] = lst[0]
+            dict[field_name + file_name]['minval'] = lst[0]
 
         if field_name in dict_valid_values.keys():
             valid_values = dict_valid_values[field_name]
-            dict[field_name]['valid_values'] = valid_values
+            dict[field_name + file_name]['valid_values'] = valid_values
 
     with open('oed_schema.json', 'w') as jsonout:
         json.dump(dict, jsonout)

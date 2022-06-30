@@ -1,5 +1,6 @@
 from unittest import main, TestCase
 from unittest.mock import patch
+
 from opends.adapters.single_file_command import main as adapter_main
 from tests.unit.utils import META_DATA_PATH
 
