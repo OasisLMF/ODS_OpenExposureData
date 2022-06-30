@@ -72,7 +72,8 @@ def main() -> None:
     file_path = str(os.getcwd()) + f"/{args.name}"
     file_name = args.type
 
-    log_data = SingleFileTestAdapter(file_path=file_path, file_name=file_name).run_checks()
+    adapter = SingleFileTestAdapter(file_path=file_path, file_name=file_name)
+    log_data = adapter.run_checks()
 
     with open(f'{os.getcwd()}/{file_name}_check_output.txt', mode='wt', encoding='utf-8') as file:
         file.write('\n'.join(log_data))

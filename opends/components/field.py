@@ -27,7 +27,7 @@ class DataField:
         Returns: (DataField) the loaded data field
         """
         return DataField(
-            name=input_data["name"],
+            name=input_data["name"].split(":")[0],
             field_desc=input_data["field_desc"],
             file_names=input_data["file_names"],
             required=Required(input_data["required"]),

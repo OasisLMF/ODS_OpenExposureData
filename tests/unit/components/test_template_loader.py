@@ -13,8 +13,8 @@ class TestTemplateLoader(TestCase):
         test = TemplateLoader(file_path=DIR_PATH)
 
         self.assertEqual(4, len(test.files))
-        self.assertEqual(448, len(test.data.keys()))
-        self.assertEqual(['ReinsScope', 'Acc', 'Loc', 'ReinsInfo'], list(test.files.keys()))
+        self.assertEqual(460, len(test.data.keys()))
+        self.assertEqual(['ReinsScope', 'Acc', 'Loc', 'ReinsInfo'].sort(), list(test.files.keys()).sort())
 
     def test_file_inspection(self):
         test = TemplateLoader(file_path=DIR_PATH)

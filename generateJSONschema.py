@@ -92,7 +92,9 @@ def main():
         file_name_list = getFileNameList(file_name)
         python_data_type = getPythonDataType(data_type)
 
-        dict[field_name + file_name] = {
+        key_str = field_name + ":" + str(file_name_list)
+
+        dict[key_str] = {
             'field_desc': field_desc,
             'file_names': file_name_list,
             'required': required,
@@ -108,22 +110,22 @@ def main():
         if valid_value_range == 'nan':
             pass
         elif valid_value_range == '[-999,-999], [0,1]':
-            dict[field_name + file_name]['minval'] = 0.0
-            dict[field_name + file_name]['maxval'] = 1.0
-            dict[field_name + file_name]['otherval'] = -999.0
+            dict[key_str]['minval'] = 0.0
+            dict[key_str]['maxval'] = 1.0
+            dict[key_str]['otherval'] = -999.0
 
         elif valid_value_range[:1] == '[' and valid_value_range[-1:] == ']':
             lst = valid_value_range.replace('[', '').replace(']', '').replace(')', '').split(',')
-            dict[field_name + file_name]['minval'] = lst[0]
-            dict[field_name + file_name]['maxval'] = lst[1]
+            dict[key_str]['minval'] = lst[0]
+            dict[key_str]['maxval'] = lst[1]
 
         elif valid_value_range[:1] == '[' and valid_value_range[-1:] == ')':
             lst = valid_value_range.replace('[', '').replace(']', '').replace(')', '').split(',')
-            dict[field_name + file_name]['minval'] = lst[0]
+            dict[key_str]['minval'] = lst[0]
 
         if field_name in dict_valid_values.keys():
             valid_values = dict_valid_values[field_name]
-            dict[field_name + file_name]['valid_values'] = valid_values
+            dict[key_str]['valid_values'] = valid_values
 
     with open('oed_schema.json', 'w') as jsonout:
         json.dump(dict, jsonout)
