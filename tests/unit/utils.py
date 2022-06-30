@@ -1,3 +1,6 @@
+"""
+This file is a utility file for defining test data paths and getting schema data for unit tests.
+"""
 import json
 import os
 

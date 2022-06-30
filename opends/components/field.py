@@ -1,3 +1,6 @@
+"""
+This file defines the class that holds the data around a data field in a file.
+"""
 from dataclasses import dataclass
 from typing import List
 
@@ -15,6 +18,14 @@ class DataField:
 
     @staticmethod
     def from_dict(input_data: dict) -> "DataField":
+        """
+        Loads the DataField class from a dictionary.
+
+        Args:
+            input_data: (dict) the data to be loaded from
+
+        Returns: (DataField) the loaded data field
+        """
         return DataField(
             name=input_data["name"],
             field_desc=input_data["field_desc"],

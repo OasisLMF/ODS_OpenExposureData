@@ -1,3 +1,6 @@
+"""
+This file defines the test around checking a file to see if all the fields in that file are valid.
+"""
 from unittest import main, TestCase
 
 import pandas as pd

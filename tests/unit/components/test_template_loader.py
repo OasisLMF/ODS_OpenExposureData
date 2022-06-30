@@ -1,4 +1,6 @@
-import os
+"""
+This file tests the class around loading the raw data standards JSON data.
+"""
 from unittest import main, TestCase
 
 from opends.components.template_loader import TemplateLoader, File

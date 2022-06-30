@@ -1,10 +1,15 @@
+"""
+This file defines the class for managing the metadata around a file.
+"""
 from typing import Dict, Optional, List
 
 from opends.components.field import DataField, Required
 
 
 class FileFlyweight(type):
-
+    """
+    This class implements the Flyweight pattern ensuring that there is only one instance of the File class per name.
+    """
     _instances = {}
 
     def __call__(cls, *args, **kwargs):
@@ -19,13 +24,33 @@ class FileFlyweight(type):
 
 
 class File(metaclass=FileFlyweight):
+    """
+    This class is responsible for managing the metadata around a file.
 
+    Attributes:
+        name (str): the name of the file
+        fields (Dict[str, DataField]): the data fields belowing to the file
+    """
     def __init__(self, name: str) -> None:
+        """
+        The constructor for the File class.
+
+        Args:
+            name: (str) the name of the file
+        """
         self.name: str = name
         self.fields: Dict[str, DataField] = dict()
         self._field_names: Optional[List[str]] = None
 
     def add_field(self, field_data: dict) -> None:
+        """
+        Adds a DataField to the self.fields.
+
+        Args:
+            field_data: (dict) data for the data field
+
+        Returns: None
+        """
         new_field = DataField.from_dict(input_data=field_data)
         self.fields[new_field.name] = new_field
 

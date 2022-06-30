@@ -1,3 +1,6 @@
+"""
+This file tests the implementation of the File class and how it is managed in memory using the Flyweight pattern.
+"""
 from unittest import main, TestCase
 
 from opends.components.file import File, DataField, FileFlyweight
