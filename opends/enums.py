@@ -12,6 +12,15 @@ class PythonValueTypes(Enum):
     FLOAT = "float"
     STRING = "string"
 
+    @property
+    def native_type(self):
+        if self == PythonValueTypes.INT:
+            return int
+        if self == PythonValueTypes.FLOAT:
+            return float
+        if self == PythonValueTypes.STRING:
+            return float
+
 
 class AllowBlank(Enum):
     """
