@@ -1,10 +1,13 @@
+"""
+This file defines the setup for the distribution of the package.
+"""
 import io
 import os
 import re
 from typing import List, Optional
 
 import setuptools
-from setuptools import dist
+from setuptools import dist, find_packages
 
 
 dist.Distribution().fetch_build_eggs(['Cython'])
@@ -48,17 +51,17 @@ setuptools.setup(
     package_data={"": ["*.csv", "*.md"]},
     entry_points={
         'console_scripts': [
-            'ods_tools=ods_tools:main',
+            'ods_tools=opends.conversions:main',
             'odsfilecheck=opends.adapters.single_file_test:main'
         ]
     },
     author='Oasis LMF',
     author_email="support@oasislmf.org",
-    packages=['ods_tools', 'opends'],
+    packages=find_packages(where="opends"),
     package_dir={
-        'ods_tools': 'src',
+    #     'ods_tools': 'src',
         'opends': 'opends',
-        'opends.adapters': 'opends.adapters'
+    #     'opends.adapters': 'opends.adapters'
     },
     python_requires='>=3.7',
     description='Tools to manage ODS files',
