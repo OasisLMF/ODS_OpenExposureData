@@ -57,12 +57,12 @@ setuptools.setup(
     },
     author='Oasis LMF',
     author_email="support@oasislmf.org",
-    # packages=find_packages(where="opends"),
-    # package_dir={
+    packages=find_packages(where="opends"),
+    package_dir={
     #     'ods_tools': 'src',
-    #     'opends': 'opends',
+        '': 'opends',
     #     'opends.adapters': 'opends.adapters'
-    # },
+    },
     python_requires='>=3.7',
     description='Tools to manage ODS files',
     long_description=readme,
