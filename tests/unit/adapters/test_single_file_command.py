@@ -76,7 +76,8 @@ class TestSingleCommandFileAdapter(TestCase):
 
     def adapter_main_pass_loc(self):
         expected_outcome = "valid field check passed for Loc file\n" \
-                           "required field check passed for Loc file"
+                           "required field check passed for Loc file\n" \
+                           "data type checking passed for file: Loc"
         self.compare_data(path=self.loc_outcome_path, expected_data=expected_outcome)
 
     def adapter_main_fail_loc(self):
@@ -84,29 +85,38 @@ class TestSingleCommandFileAdapter(TestCase):
                            "field name: LocNumbers for Loc file is not valid\n" \
                            "field name: Longitudes for Loc file is not valid\n" \
                            "field name: PortNumber for Loc file is missing\n" \
-                           "field name: LocNumber for Loc file is missing"
+                           "field name: LocNumber for Loc file is missing\n" \
+                           "column PortNumbers is not supported in file Loc and therefore cannot be type checked\n" \
+                           "column LocNumbers is not supported in file Loc and therefore cannot be type checked\n" \
+                           "column Longitudes is not supported in file Loc and therefore cannot be type checked"
         self.compare_data(path=self.loc_outcome_path, expected_data=expected_outcome)
 
     def adapter_main_pass_reinscope(self):
         expected_data = "valid field check passed for ReinsScope file\n" \
-                        "required field check passed for ReinsScope file"
+                        "required field check passed for ReinsScope file\n" \
+                        "data type checking passed for file: ReinsScope"
         self.compare_data(path=self.reinscope_outcome_path, expected_data=expected_data)
 
     def adapter_main_fail_reinscope(self):
         expected_data = "field name: ReinsNumbers for ReinsScope file is not valid\n" \
                         "field name: PolNumbers for ReinsScope file is not valid\n" \
-                        "field name: ReinsNumber for ReinsScope file is missing"
+                        "field name: ReinsNumber for ReinsScope file is missing\n" \
+                        "column ReinsNumbers is not supported in file ReinsScope and therefore cannot be type checked\n" \
+                        "column PolNumbers is not supported in file ReinsScope and therefore cannot be type checked"
         self.compare_data(path=self.reinscope_outcome_path, expected_data=expected_data)
 
     def adapter_main_pass_reinsinfo(self):
         expected_data = "valid field check passed for ReinsInfo file\n" \
-                        "required field check passed for ReinsInfo file"
+                        "required field check passed for ReinsInfo file\n" \
+                        "data type checking passed for file: ReinsInfo"
         self.compare_data(path=self.reinsinfo_outcome_path, expected_data=expected_data)
 
     def adapter_main_fail_reinsinfo(self):
         expected_data = "field name: ReinsNumbers for ReinsInfo file is not valid\n" \
                         "field name: ReinsNames for ReinsInfo file is not valid\n" \
-                        "field name: ReinsNumber for ReinsInfo file is missing"
+                        "field name: ReinsNumber for ReinsInfo file is missing\n" \
+                        "column ReinsNumbers is not supported in file ReinsInfo and therefore cannot be type checked\n" \
+                        "column ReinsNames is not supported in file ReinsInfo and therefore cannot be type checked"
         self.compare_data(path=self.reinsinfo_outcome_path, expected_data=expected_data)
 
 

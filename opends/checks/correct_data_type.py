@@ -31,14 +31,16 @@ class CorrectDataTypeCheck(Check):
         data_columns = list(self.data)
 
         for data_column in data_columns:
-            column = self.data[data_column].values
+            column = self.data[data_column].values.tolist()
             data_field = self.file.fields.get(data_column)
             counter = 1
 
             if data_field is not None:
                 needed_data_type = data_field.python_data_type.native_type
                 for i in column:
-                    if not isinstance(i, needed_data_type):
+                    try:
+                        needed_data_type(i)
+                    except ValueError:
                         self.log_data.append(
                             f"column: {data_column} row: {counter} is a {type(i)} instead of a {needed_data_type} "
                             f"in file {self.file.name}"

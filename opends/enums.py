@@ -13,13 +13,13 @@ class PythonValueTypes(Enum):
     STRING = "string"
 
     @property
-    def native_type(self):
+    def native_type(self) -> type:
         if self == PythonValueTypes.INT:
             return int
         if self == PythonValueTypes.FLOAT:
             return float
         if self == PythonValueTypes.STRING:
-            return float
+            return str
 
 
 class AllowBlank(Enum):

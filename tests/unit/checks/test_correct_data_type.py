@@ -47,8 +47,6 @@ class TestCorrectDataTypeCheck(TestCase):
         check = CorrectDataTypeCheck(data=data, file=self.file)
         check.run()
         expected_data = [
-            "column: PortNumber row: 2 is a <class 'str'> instead of a <class 'float'> in file Loc",
-            "column: LocNumber row: 2 is a <class 'str'> instead of a <class 'float'> in file Loc",
             "column: BuildingTIV row: 1 is a <class 'str'> instead of a <class 'float'> in file Loc",
             "column: ContentsTIV row: 1 is a <class 'str'> instead of a <class 'float'> in file Loc",
             "column: BITIV row: 1 is a <class 'str'> instead of a <class 'float'> in file Loc",
