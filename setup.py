@@ -52,16 +52,14 @@ setuptools.setup(
     entry_points={
         'console_scripts': [
             'ods_tools=opends.conversions:main',
-            # 'odsfilecheck=opends.adapters.single_file_test:main'
+            'odsfilecheck=opends.adapters.single_file_test:main'
         ]
     },
     author='Oasis LMF',
     author_email="support@oasislmf.org",
     packages=find_packages(where="src"),
     package_dir={
-    #     'ods_tools': 'src',
         '': 'src',
-    #     'opends.adapters': 'opends.adapters'
     },
     python_requires='>=3.7',
     description='Tools to manage ODS files',
