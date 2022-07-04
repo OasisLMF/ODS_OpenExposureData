@@ -52,7 +52,7 @@ setuptools.setup(
     entry_points={
         'console_scripts': [
             'ods_tools=opends.conversions:main',
-            'odsfilecheck=opends.adapters.single_file_test:main'
+            # 'odsfilecheck=opends.adapters.single_file_test:main'
         ]
     },
     author='Oasis LMF',
