@@ -1,1 +1,1 @@
-include src/opends/version_control/oed_schema/json
+include opends/version_control/oed_schema/json
