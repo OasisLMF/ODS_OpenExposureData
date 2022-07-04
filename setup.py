@@ -57,7 +57,7 @@ setuptools.setup(
     },
     author='Oasis LMF',
     author_email="support@oasislmf.org",
-    packages=find_packages(where="opends"),
+    packages=find_packages(where="src"),
     package_dir={
     #     'ods_tools': 'src',
         '': 'src',
