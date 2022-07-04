@@ -10,7 +10,7 @@ import pandas as pd
 
 from opends.checks import perform_checks
 from opends.components.template_loader import TemplateLoader
-from opends.version_control import DIR_PATH
+from opends.version_control import SchemaPath
 
 
 class SingleFileTestAdapter:
@@ -26,7 +26,7 @@ class SingleFileTestAdapter:
         templates (TemplateLoader): the loader that loads the data for field standards
         data (pd.DataFrame): the data of the file being loaded
     """
-    def __init__(self, file_path: str, file_name: str) -> None:
+    def __init__(self, file_path: str, file_name: str, version: str) -> None:
         """
         The constructor for the SingleFileTestAdapter class.
 
@@ -36,7 +36,8 @@ class SingleFileTestAdapter:
         """
         self.file_path: str = file_path
         self.file_name: str = file_name
-        self.templates: TemplateLoader = TemplateLoader(file_path=DIR_PATH)
+        self.schema_path: str = SchemaPath(version_string=version)
+        self.templates: TemplateLoader = TemplateLoader(file_path=self.schema_path)
         self.data: pd.DataFrame = self._load_csv()
 
     def _load_csv(self) -> pd.DataFrame:
@@ -67,12 +68,14 @@ def main() -> None:
                              help="the name of the file being checked")
     args_parser.add_argument('--type', action='store', type=str, required=True,
                              help="type of file being checked like: Loc, Acc, ReinsInfo, ReinsScope")
+    args_parser.add_argument('--version', action='store', type=str, required=True,
+                             help="the OED version to be run")
     args = args_parser.parse_args()
 
     file_path = str(os.getcwd()) + f"/{args.name}"
     file_name = args.type
 
-    adapter = SingleFileTestAdapter(file_path=file_path, file_name=file_name)
+    adapter = SingleFileTestAdapter(file_path=file_path, file_name=file_name, version=args.version)
     log_data = adapter.run_checks()
 
     with open(f'{os.getcwd()}/{file_name}_check_output.txt', mode='wt', encoding='utf-8') as file:

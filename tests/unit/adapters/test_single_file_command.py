@@ -48,6 +48,7 @@ class TestSingleCommandFileAdapter(TestCase):
     def run_test(mock_argparse, mock_os, function, file_name, file_type):
         mock_argparse.ArgumentParser.return_value.parse_args.return_value.name = file_name
         mock_argparse.ArgumentParser.return_value.parse_args.return_value.type = file_type
+        mock_argparse.ArgumentParser.return_value.parse_args.return_value.version = "2.3.1"
         mock_os.getcwd.return_value = META_DATA_PATH
         adapter_main()
         function()

@@ -1,13 +1,11 @@
 """
 This file defines the entrypoint for extracting data standards raw-data.
-
-Warnings:
-    - there is no version control at the moment this will be implemented in the future
 """
 import json
 import os
+from typing import Optional
 
-DIR_PATH = str(os.path.dirname(os.path.realpath(__file__))) + "/oed_schema.json"
+DIR_PATH = str(os.path.dirname(os.path.realpath(__file__)))
 
 
 def get_oed_schema() -> dict:
@@ -18,3 +16,9 @@ def get_oed_schema() -> dict:
     """
     with open(DIR_PATH, 'r') as json_file:
         return json.load(json_file)
+
+
+class SchemaPath(str):
+
+    def __new__(cls, version_string: Optional[str]) -> str:
+        return f"{DIR_PATH}/oed_schema_{version_string.replace('.', '_')}.json"

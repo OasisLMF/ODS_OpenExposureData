@@ -1,5 +1,7 @@
 import json
 import pandas as pd
+import argparse
+import os
 
 
 ### Notes
@@ -8,6 +10,8 @@ import pandas as pd
 # 3) Financial Codes/Types to implemented
 # 4) Conditional Requirements not implemented
 ###
+
+DIR_PATH = str(os.path.dirname(os.path.realpath(__file__)))
 
 def getFileNameList(file_name):
     file_name = str.replace(file_name, " ", "")
@@ -18,7 +22,7 @@ def getFileNameList(file_name):
 def getPythonDataType(data_type):
     if "char" in data_type:
         python_data_type = "string"
-    elif "int" in data_type:
+    elif "int" in data_type or "0 or 1" in data_type:
         python_data_type = "int"
     elif "date" in data_type:
         python_data_type = "string"
@@ -26,6 +30,8 @@ def getPythonDataType(data_type):
         python_data_type = "float"
     elif "decimal" in data_type:
         python_data_type = "float"
+    else:
+        raise ValueError(f"here is the value type: '{data_type}'")
 
     return (python_data_type)
 
@@ -67,9 +73,14 @@ def getValidValues(specification_file):
 
 
 def main():
+    args_parser = argparse.ArgumentParser()
+    args_parser.add_argument('--version', action='store', type=str, required=True,
+                             help="the name of the file being converted to")
+    args = args_parser.parse_args()
+    file_version = args.version.replace(".", "_")
     # get oed field list
-    specification_file = './OpenExposureData_Spec.xlsx'
-    df_fields = pd.read_excel(specification_file, sheet_name='OED Input Fields')
+    specification_file = f'{DIR_PATH}/schema_versions/exposure_data{file_version}.xlsx'
+    df_fields = pd.read_excel(specification_file, sheet_name='OED Input Fields', engine='openpyxl')
 
     # get valid values
     dict_valid_values = getValidValues(specification_file)
@@ -127,7 +138,7 @@ def main():
             valid_values = dict_valid_values[field_name]
             dict[key_str]['valid_values'] = valid_values
 
-    with open('oed_schema.json', 'w') as jsonout:
+    with open(f'{DIR_PATH}/src/opends/version_control/oed_schema_{file_version}.json', 'w') as jsonout:
         json.dump(dict, jsonout)
 
 
