@@ -1,1 +1,1 @@
-include opends/version_control/oed_schema/json
+recursive-include opends *
