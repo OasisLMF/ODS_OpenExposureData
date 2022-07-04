@@ -17,4 +17,5 @@ else
     source venv/bin/activate
 fi
 
+export PYTHONPATH="$PWD/src/"
 python -m unittest discover ./tests/

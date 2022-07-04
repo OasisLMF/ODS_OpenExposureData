@@ -60,7 +60,7 @@ setuptools.setup(
     packages=find_packages(where="opends"),
     package_dir={
     #     'ods_tools': 'src',
-        '': 'opends',
+        '': 'src',
     #     'opends.adapters': 'opends.adapters'
     },
     python_requires='>=3.7',
