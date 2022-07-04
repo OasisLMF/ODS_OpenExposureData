@@ -58,7 +58,7 @@ setuptools.setup(
     package_dir={
         'ods_tools': 'src',
         'opends': 'opends',
-        # 'opends.adapters': 'opends.adapters'
+        'opends.adapters': 'opends.adapters'
     },
     python_requires='>=3.7',
     description='Tools to manage ODS files',
