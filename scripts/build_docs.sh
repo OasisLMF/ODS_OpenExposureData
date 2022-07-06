@@ -5,7 +5,7 @@ SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 cd $SCRIPTPATH
 cd ..
 
-cd scripts
+cd code_docs
 make clean
 make html
 open ./_build/html/index.html
