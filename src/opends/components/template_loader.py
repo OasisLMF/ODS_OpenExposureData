@@ -7,7 +7,19 @@ from typing import Dict, Optional
 from opends.components.file import File
 
 
-class TemplateLoader:
+class TemplateLoaderSingleton(type):
+    """
+    This class implements the Singleton pattern
+    """
+    _instances = {}
+
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(TemplateLoaderSingleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+
+class TemplateLoader(metaclass=TemplateLoaderSingleton):
     """
     This class is responsible for loading the metadata around all the files and sorting them into File and DataField
     classes.

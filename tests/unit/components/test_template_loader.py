@@ -3,11 +3,14 @@ This file tests the class around loading the raw data standards JSON data.
 """
 from unittest import main, TestCase
 
-from opends.components.template_loader import TemplateLoader, File
+from opends.components.template_loader import TemplateLoader, File, TemplateLoaderSingleton
 from tests.unit.utils import DIR_PATH
 
 
 class TestTemplateLoader(TestCase):
+
+    def setUp(self) -> None:
+        TemplateLoaderSingleton._instances = {}
 
     def test___init__(self):
         test = TemplateLoader(file_path=DIR_PATH)
