@@ -32,6 +32,11 @@ def get_version():
 
 
 def get_requirements() -> List[str]:
+    """
+    Gets the requirements from the requirements.txt file.
+
+    Returns: (List[str]) a list of all requirements
+    """
     with open(f"{SCRIPT_DIR}/requirements.txt", "r") as file:
         data = file.read()
     return data.split("\n")
@@ -52,7 +57,8 @@ setuptools.setup(
     entry_points={
         'console_scripts': [
             'ods_tools=opends.conversions:main',
-            'odsfilecheck=opends.adapters.single_file_test:main'
+            'odsfilecheck=opends.adapters.single_file_test:main',
+            'odsfilescheck=opends.adapters.multiple_file_test:main'
         ]
     },
     author='Oasis LMF',
