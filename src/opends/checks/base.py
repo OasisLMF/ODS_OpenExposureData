@@ -5,6 +5,7 @@ from typing import List
 import pandas as pd
 
 from opends.components.file import File
+from opends.components.field import DataField
 
 
 class Check:
@@ -40,3 +41,23 @@ class Check:
         Returns: None
         """
         raise NotImplementedError(f"run function needs to be implemented for the {self.check_name}")
+
+    def check_if_flexi_field_name(self, name: str) -> bool:
+        """
+        Checks to see if the field name is a flexi field meaning that it can be allowed even if the name is not in the
+        schema.
+
+        Args:
+            name: (str) the data field name to be checked
+
+        Returns: (bool) True if the field is flexi, False if not
+        """
+        data_length = len(self.flexi_prefix)
+        field_prefix = name[0:data_length]
+        if field_prefix.lower() == self.flexi_prefix:
+            return True
+        return False
+
+    @property
+    def flexi_prefix(self) -> str:
+        return f"flexi{self.file.name}".lower()

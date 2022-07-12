@@ -10,6 +10,7 @@ import pandas as pd
 
 from opends.checks import perform_checks
 from opends.components.template_loader import TemplateLoader
+from opends.enums import FileNames
 from opends.version_control import SchemaPath
 
 
@@ -22,20 +23,21 @@ class SingleFileTestAdapter:
 
     Attributes:
         file_path (str): the path of the file being checked
-        file_name (str): the name of the file being checked
+        file_name (FileNames): the name of the file being checked
         templates (TemplateLoader): the loader that loads the data for field standards
         data (pd.DataFrame): the data of the file being loaded
     """
-    def __init__(self, file_path: str, file_name: str, version: str) -> None:
+    def __init__(self, file_path: str, file_name: FileNames, version: str) -> None:
         """
         The constructor for the SingleFileTestAdapter class.
 
         Args:
             file_path: (str) the path of the file being checked
-            file_name: (str) the name of the file being checked
+            file_name: (FileNames) the name of the file being checked
+            version: (str) the version of schema being loaded (current latest one is "2.3.1")
         """
         self.file_path: str = file_path
-        self.file_name: str = file_name
+        self.file_name: FileNames = file_name
         self.schema_path: str = SchemaPath(version_string=version)
         self.templates: TemplateLoader = TemplateLoader(file_path=self.schema_path)
         self.data: pd.DataFrame = self._load_csv()
@@ -54,7 +56,7 @@ class SingleFileTestAdapter:
 
         Returns: (List[str]) logs of all the test outcomes for the file
         """
-        return perform_checks(data=self.data, file=self.templates.files[self.file_name])
+        return perform_checks(data=self.data, file=self.templates.files[self.file_name.value])
 
 
 def main() -> None:
@@ -73,10 +75,10 @@ def main() -> None:
     args = args_parser.parse_args()
 
     file_path = str(os.getcwd()) + f"/{args.name}"
-    file_name = args.type
+    file_name = FileNames(args.type)
 
     adapter = SingleFileTestAdapter(file_path=file_path, file_name=file_name, version=args.version)
     log_data = adapter.run_checks()
 
-    with open(f'{os.getcwd()}/{file_name}_check_output.txt', mode='wt', encoding='utf-8') as file:
+    with open(f'{os.getcwd()}/{file_name.value}_check_output.txt', mode='wt', encoding='utf-8') as file:
         file.write('\n'.join(log_data))

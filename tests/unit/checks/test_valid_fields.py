@@ -22,13 +22,16 @@ class TestValidFields(TestCase):
     def test_fail(self):
         expected_log_data = [
             'field name: one for Loc file is not valid',
-            'field name: two for Loc file is not valid'
+            'field name: two for Loc file is not valid',
+            'field name: Flexi_Loctwo for Loc file is not valid'
         ]
         data = pd.DataFrame([
             {"LocName": "one", "City": "two", "AreaName": "three", "one": "four", "two": "five"},
             {"LocName": "one", "City": "two", "AreaName": "three", "one": "four", "two": "five"},
             {"LocName": "one", "City": "two", "AreaName": "three", "one": "four", "two": "five"},
-            {"LocName": "one", "City": "two", "AreaName": "three", "one": "four", "two": "five"}
+            {"LocName": "one", "City": "two", "AreaName": "three", "one": "four", "two": "five"},
+            {"LocName": "one", "City": "two", "AreaName": "three", "flexilocone": "four", "FlexiLoctwo": "five"},
+            {"LocName": "one", "City": "two", "AreaName": "three", "flexiloc_one": "four", "Flexi_Loctwo": "five"},
         ])
         check = ValidFieldCheck(data=data, file=self.file)
         check.run()
