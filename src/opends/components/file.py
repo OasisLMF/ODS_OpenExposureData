@@ -41,6 +41,7 @@ class File(metaclass=FileFlyweight):
         self.name: str = name
         self.fields: Dict[str, DataField] = dict()
         self._field_names: Optional[List[str]] = None
+        self._data_types: Optional[Dict[str, str]] = None
 
     def add_field(self, field_data: dict) -> None:
         """
@@ -53,6 +54,18 @@ class File(metaclass=FileFlyweight):
         """
         new_field = DataField.from_dict(input_data=field_data)
         self.fields[new_field.name] = new_field
+
+    @property
+    def data_types(self) -> Dict[str, str]:
+        if self._data_types is None:
+            type_dict: Dict[str, str] = dict()
+
+            for data_column in self.field_names:
+                data_field = self.fields.get(data_column)
+                if data_field is not None:
+                    type_dict[data_field.name] = data_field.pandas_value.pandas_value
+            self._data_types = type_dict
+        return self._data_types
 
     @property
     def field_names(self) -> List[str]:

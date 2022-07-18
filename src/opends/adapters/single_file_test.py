@@ -12,6 +12,7 @@ from opends.checks import perform_checks
 from opends.components.template_loader import TemplateLoader
 from opends.enums import FileNames
 from opends.version_control import SchemaPath
+from opends.components.csv_loader import CsvLoader
 
 
 class SingleFileTestAdapter:
@@ -48,6 +49,9 @@ class SingleFileTestAdapter:
 
         Returns: (pd.DataFrame) the data from the CSV
         """
+        # loader = CsvLoader(version="2.3.1", data_path=self.file_path, file_type=self.file_name)
+        # return loader.read()
+        # print(str(pd.read_csv(self.file_path)["Latitude"].dtypes))
         return pd.read_csv(self.file_path)
 
     def run_checks(self) -> List[str]:

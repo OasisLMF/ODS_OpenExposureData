@@ -23,6 +23,34 @@ class TestFile(TestCase):
             "valid_value_range": "nan",
             "sec_mod": None
         }
+        self.second_field_data = {
+            "name": "PortNumberTwo",
+            "field_desc": "Portfolio number: used for defining treaty scope in the reinsurance scope file",
+            "file_names": [
+                "ReinsScope"
+            ],
+            "required": "CR",
+            "sql_data_type": "tinyint",
+            "python_data_type": "int",
+            "allow_blank": "YES",
+            "default": None,
+            "valid_value_range": "nan",
+            "sec_mod": None
+        }
+        self.third_field_data = {
+            "name": "PortNumberThree",
+            "field_desc": "Portfolio number: used for defining treaty scope in the reinsurance scope file",
+            "file_names": [
+                "ReinsScope"
+            ],
+            "required": "CR",
+            "sql_data_type": "int",
+            "python_data_type": "int",
+            "allow_blank": "YES",
+            "default": None,
+            "valid_value_range": "nan",
+            "sec_mod": None
+        }
         self.data_field = DataField.from_dict(input_data=self.data_field_data)
         self.test = File(name="main test")
 
@@ -60,6 +88,17 @@ class TestFile(TestCase):
         self.assertEqual(None, self.test._field_names)
         self.assertEqual(["PortNumber"], self.test.field_names)
         self.assertEqual(self.test._field_names, self.test.field_names)
+
+    def test_data_types(self):
+        self.test.add_field(field_data=self.data_field_data)
+        self.test.add_field(field_data=self.second_field_data)
+        self.test.add_field(field_data=self.third_field_data)
+        expected_outcome = {
+            'PortNumber': 'category',
+            'PortNumberTwo': 'int32',
+            'PortNumberThree': 'int64'
+        }
+        self.assertEqual(expected_outcome, self.test.data_types)
 
 
 if __name__ == "__main__":

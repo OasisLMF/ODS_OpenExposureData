@@ -128,10 +128,10 @@ def read_csv(filepath_or_buffer, df_engine=pd, file_type=None, dtype=None, defau
     except KeyError as e:
         raise KeyError(f"Unknown file_type {file_type}. Must be in {list(all_ods_fields)}", e)
 
-    return all_ods_fields
-    import json
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'oeds_fields.json'), "w") as file:
-        file.write(json.dumps(ods_fields))
+    # return all_ods_fields
+    # import json
+    # with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'oeds_fields.json'), "w") as file:
+    #     file.write(json.dumps(ods_fields))
 
     if hasattr(filepath_or_buffer, 'read'):
         # no case insensitivity support for buffer

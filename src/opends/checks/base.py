@@ -5,7 +5,6 @@ from typing import List
 import pandas as pd
 
 from opends.components.file import File
-from opends.components.field import DataField
 
 
 class Check:

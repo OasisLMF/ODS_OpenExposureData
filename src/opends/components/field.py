@@ -4,7 +4,7 @@ This file defines the class that holds the data around a data field in a file.
 from dataclasses import dataclass
 from typing import List
 
-from opends.enums import AllowBlank, PythonValueTypes, Required
+from opends.enums import AllowBlank, PythonValueTypes, Required, PandasValue
 
 
 @dataclass
@@ -15,6 +15,7 @@ class DataField:
     required: Required
     python_data_type: PythonValueTypes
     allow_blank: AllowBlank
+    pandas_value: PandasValue
 
     @staticmethod
     def from_dict(input_data: dict) -> "DataField":
@@ -33,4 +34,5 @@ class DataField:
             required=Required(input_data["required"]),
             python_data_type=PythonValueTypes(input_data["python_data_type"]),
             allow_blank=AllowBlank(input_data["allow_blank"].upper()),
+            pandas_value=PandasValue.from_str(input_str=input_data["sql_data_type"])
         )
