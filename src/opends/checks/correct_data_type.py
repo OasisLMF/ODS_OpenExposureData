@@ -100,11 +100,7 @@ class CorrectDataTypeCheck(Check):
             else:
                 if self._pass_cast_column_d_type(d_type=expected_type, column_name=data_column) is False:
                     data_field = self.file.fields.get(data_column)
-
-                    if data_field is not None:
-                        self._locate_offending_rows(column_name=data_column, data_field=data_field)
-                    else:
-                        self._log_not_supported(column_name=data_column)
+                    self._locate_offending_rows(column_name=data_column, data_field=data_field)
 
         if len(self.log_data) == 0:
             self.passed = True
