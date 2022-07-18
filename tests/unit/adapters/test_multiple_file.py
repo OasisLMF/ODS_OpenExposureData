@@ -30,7 +30,7 @@ class MultipleFileTestAdapterTest(TestCase):
     def compare_data(self, path: str, expected_data: List[str]):
         with open(path, "r") as file:
             data = file.read()
-        # print(data)
+        # print(data.split("\n"))
         self.assertEqual(expected_data, data.split("\n"))
 
     @staticmethod
@@ -55,6 +55,7 @@ class MultipleFileTestAdapterTest(TestCase):
             'fail_reinscope.csv',
             'fail_loc.csv',
             'pass_reinsinfo.csv',
+            'spiked_loc.csv',
             'fail_acc.csv',
             'pass_loc.csv'
         ]
@@ -93,6 +94,9 @@ EXPECTED_OUTCOME = [
     'valid field check passed for ReinsInfo file',
     'required field check passed for ReinsInfo file',
     'data type checking passed for file: ReinsInfo',
+    'valid field check passed for Loc file',
+    'required field check passed for Loc file',
+    "column: IsTenant row: 5 is a <class 'str'> instead of a <class 'int'> in file Loc",
     'field name: PortNumbers for Acc file is not valid',
     'field name: PolInceptionDates for Acc file is not valid',
     'field name: PortNumber for Acc file is missing',
