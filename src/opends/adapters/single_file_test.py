@@ -12,7 +12,6 @@ from opends.checks import perform_checks
 from opends.components.template_loader import TemplateLoader
 from opends.enums import FileNames
 from opends.version_control import SchemaPath
-from opends.components.csv_loader import CsvLoader
 
 
 class SingleFileTestAdapter:
