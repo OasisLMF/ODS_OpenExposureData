@@ -11,7 +11,7 @@ from typing import Optional
 
 class CorrectDataTypeCheck(Check):
     """
-    This class is responsible for checking if a file if a file has the correct data type of each field.
+    This class is responsible for checking if a file has the correct data type of each field.
     """
     def __init__(self, data: pd.DataFrame, file: File) -> None:
         """
