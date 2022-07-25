@@ -49,15 +49,15 @@ class MultipleFileTestAdapterTest(TestCase):
 
     def test_csv_files(self):
         expected_outcome = [
-            'pass_acc.csv',
             'fail_reinsinfo.csv',
-            'pass_reinscope.csv',
-            'fail_reinscope.csv',
-            'fail_loc.csv',
+            'pass_loc.csv',
             'pass_reinsinfo.csv',
+            'pass_acc.csv',
+            'fail_loc.csv',
             'spiked_loc.csv',
+            'pass_reinscope.csv',
             'fail_acc.csv',
-            'pass_loc.csv'
+            'fail_reinscope.csv'
         ]
         self.assertEqual(expected_outcome, self.test.csv_files)
 
@@ -75,14 +75,20 @@ class MultipleFileTestAdapterTest(TestCase):
 
 
 EXPECTED_OUTCOME = [
-    'valid field check passed for Acc file',
-    'required field check passed for Acc file',
-    'data type checking passed for file: Acc',
     'field name: ReinsNumbers for ReinsInfo file is not valid',
     'field name: ReinsNames for ReinsInfo file is not valid',
     'field name: ReinsNumber for ReinsInfo file is missing',
     'column ReinsNumbers is not supported in file ReinsInfo and therefore cannot be type checked',
     'column ReinsNames is not supported in file ReinsInfo and therefore cannot be type checked',
+    'valid field check passed for Loc file',
+    'required field check passed for Loc file',
+    'data type checking passed for file: Loc',
+    'valid field check passed for ReinsInfo file',
+    'required field check passed for ReinsInfo file',
+    'data type checking passed for file: ReinsInfo',
+    'valid field check passed for Acc file',
+    'required field check passed for Acc file',
+    'data type checking passed for file: Acc',
     'field name: PortNumbers for Loc file is not valid',
     'field name: LocNumbers for Loc file is not valid',
     'field name: Longitudes for Loc file is not valid',
@@ -91,21 +97,15 @@ EXPECTED_OUTCOME = [
     'column PortNumbers is not supported in file Loc and therefore cannot be type checked',
     'column LocNumbers is not supported in file Loc and therefore cannot be type checked',
     'column Longitudes is not supported in file Loc and therefore cannot be type checked',
-    'valid field check passed for ReinsInfo file',
-    'required field check passed for ReinsInfo file',
-    'data type checking passed for file: ReinsInfo',
-    'valid field check passed for Loc file',
-    'required field check passed for Loc file',
+    'valid field check passed for Loc file', 'required field check passed for Loc file',
     "column: IsTenant row: 5 is a <class 'str'> instead of a <class 'int'> in file Loc",
     'field name: PortNumbers for Acc file is not valid',
     'field name: PolInceptionDates for Acc file is not valid',
     'field name: PortNumber for Acc file is missing',
     'column PortNumbers is not supported in file Acc and therefore cannot be type checked',
-    'column PolInceptionDates is not supported in file Acc and therefore cannot be type checked',
-    'valid field check passed for Loc file',
-    'required field check passed for Loc file',
-    'data type checking passed for file: Loc'
+    'column PolInceptionDates is not supported in file Acc and therefore cannot be type checked'
 ]
+
 
 
 if __name__ == "__main__":
