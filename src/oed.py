@@ -165,6 +165,7 @@ def read_csv(filepath_or_buffer, df_engine=pd, file_type=None, dtype=None, defau
         else:
             df = df_engine.read_csv(filepath_or_buffer, dtype=pd_dtype, **kwargs)
 
+    # here is where the checks are happening for the data
     for column, info in ods_fields.items():
         if column not in df.columns:
             if info.get('Required Field') == 'R':
