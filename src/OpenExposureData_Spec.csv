@@ -1,0 +1,463 @@
+,File Name,Input Field Name,Type & Description,Required Field,Data Type,Allow blanks?,Default,Valid value range,SecMod?,BackEndTableName,Back End DB Field Name
+0,Acc; Loc,PortNumber,Portfolio number,R,varchar(20),NO,,,,Portfolios,
+1,Acc,PortName,Portfolio name,O,varchar(40),YES,,,,Portfolios,
+2,Acc,PortNotes,"Portfolio notes, longer description than allowed in portfolio name",O,varchar(200),YES,,,,Portfolios,
+3,Acc; Loc,AccNumber,Account number,R,nvarchar(40),NO,,,,Accounts,
+4,Acc,AccName,Account name,O,nvarchar(100),YES,,,,Accounts,
+5,Acc,AccGroup,"Account group, could use to group multiple accounts (e.g. for binders)",O,varchar(40),YES,,,,Accounts,
+6,Acc,AccStatus,"Account status. Aside from predefined values, you can use other single character values for user specific purposes",O,char(1),YES,,,,Accounts,
+7,Acc,ExpiringAccNumber,Expiring account number,O,nvarchar(40),YES,,,,Accounts,
+8,Acc,CedantName,Cedant name (defined at account level),O,varchar(40),YES,,,,Cedants,
+9,Acc,AccCurrency,Account currency,R,char(3),NO,,,,Accounts; Policies; Conditions,Accounts.Currency; Policies.Currency; Conditions.Currency
+10,Acc,AccUserDef1,Account user defined field 1,O,varchar(20),YES,,,,Accounts,
+11,Acc,AccUserDef2,Account user defined field 2,O,varchar(20),YES,,,,Accounts,
+12,Acc,AccUserDef3,Account user defined field 3,O,varchar(20),YES,,,,Accounts,
+13,Acc,AccUserDef4,Account user defined field 4,O,varchar(20),YES,,,,Accounts,
+14,Acc,AccUserDef5,Account user defined field 5,O,varchar(20),YES,,,,Accounts,
+15,Acc,FlexiAccZZZ,Flexible field that is stored in FlexiAcc table in ModifierName = ZZZ,O,varchar(40),YES,,,,FlexiAcc,ModifierName = ZZZ
+16,Acc,AccPeril,Perils for account financial terms,CR,varchar(250),YES,,,,AccountFinancials,PerilCode
+17,Acc,AccDedCode1Building,Account building deductible code,O,tinyint,YES,0,,,AccountFinancials,DedCode
+18,Acc,AccDedType1Building,Account building deductible type,CR,tinyint,YES,0,,,AccountFinancials,DedType
+19,Acc,AccDed1Building,Account building deductible,CR,float,YES,0,"[0,)",,AccountFinancials,Ded
+20,Acc,AccMinDed1Building,Account minimum building deductible,CR,float,YES,0,"[0,)",,AccountFinancials,MinDed
+21,Acc,AccMaxDed1Building,Account maximum building deductible,CR,float,YES,0,"[0,)",,AccountFinancials,MaxDed
+22,Acc,AccDedCode2Other,Account other building deductible code,O,tinyint,YES,0,,,AccountFinancials,DedCode
+23,Acc,AccDedType2Other,Account other building deductible type,CR,tinyint,YES,0,,,AccountFinancials,DedType
+24,Acc,AccDed2Other,Account other building deductible,CR,float,YES,0,"[0,)",,AccountFinancials,Ded
+25,Acc,AccMinDed2Other,Account minimum other building deductible,CR,float,YES,0,"[0,)",,AccountFinancials,MinDed
+26,Acc,AccMaxDed2Other,Account maximum other building deductible,CR,float,YES,0,"[0,)",,AccountFinancials,MaxDed
+27,Acc,AccDedCode3Contents,Account contents deductible code,O,tinyint,YES,0,,,AccountFinancials,DedCode
+28,Acc,AccDedType3Contents,Account contents deductible type,CR,tinyint,YES,0,,,AccountFinancials,DedType
+29,Acc,AccDed3Contents,Account contents deductible,CR,float,YES,0,"[0,)",,AccountFinancials,Ded
+30,Acc,AccMinDed3Contents,Account minimum contents deductible,CR,float,YES,0,"[0,)",,AccountFinancials,MinDed
+31,Acc,AccMaxDed3Contents,Account maximum contents deductible,CR,float,YES,0,"[0,)",,AccountFinancials,MaxDed
+32,Acc,AccDedCode4BI,Account BI deductible code,O,tinyint,YES,0,,,AccountFinancials,DedCode
+33,Acc,AccDedType4BI,Account BI deductible type,CR,tinyint,YES,0,,,AccountFinancials,DedType
+34,Acc,AccDed4BI,Account BI deductible,CR,float,YES,0,"[0,)",,AccountFinancials,Ded
+35,Acc,AccMinDed4BI,Account minimum BI deductible,CR,float,YES,0,"[0,)",,AccountFinancials,MinDed
+36,Acc,AccMaxDed4BI,Account maximum BI deductible,CR,float,YES,0,"[0,)",,AccountFinancials,MaxDed
+37,Acc,AccDedCode5PD,Account PD deductible code,O,tinyint,YES,0,,,AccountFinancials,DedCode
+38,Acc,AccDedType5PD,Account PD deductible type,CR,tinyint,YES,0,,,AccountFinancials,DedType
+39,Acc,AccDed5PD,Account PD deductible,CR,float,YES,0,"[0,)",,AccountFinancials,Ded
+40,Acc,AccMinDed5PD,Account minimum PD deductible,CR,float,YES,0,"[0,)",,AccountFinancials,MinDed
+41,Acc,AccMaxDed5PD,Account maximum PD deductible,CR,float,YES,0,"[0,)",,AccountFinancials,MaxDed
+42,Acc,AccDedCode6All,Account blanket deductible code,O,tinyint,YES,0,,,AccountFinancials,DedCode
+43,Acc,AccDedType6All,Account blanket deductible type,CR,tinyint,YES,0,,,AccountFinancials,DedType
+44,Acc,AccDed6All,Account blanket deductible,CR,float,YES,0,"[0,)",,AccountFinancials,Ded
+45,Acc,AccMinDed6All,Account minimum blanket deductible,CR,float,YES,0,"[0,)",,AccountFinancials,MinDed
+46,Acc,AccMaxDed6All,Account maximum blanket deductible,CR,float,YES,0,"[0,)",,AccountFinancials,MaxDed
+47,Acc,AccLimitCode1Building,Account building limit code,O,tinyint,YES,0,,,AccountFinancials,LimitCode
+48,Acc,AccLimitType1Building,Account building limit type,CR,tinyint,YES,0,,,AccountFinancials,LimitType
+49,Acc,AccLimit1Building,Account building limit,CR,float,YES,0,"[0,)",,AccountFinancials,Limit
+50,Acc,AccLimitCode2Other,Account other building limit code,O,tinyint,YES,0,,,AccountFinancials,LimitCode
+51,Acc,AccLimitType2Other,Account other building limit type,CR,tinyint,YES,0,,,AccountFinancials,LimitType
+52,Acc,AccLimit2Other,Account other building limit,CR,float,YES,0,"[0,)",,AccountFinancials,Limit
+53,Acc,AccLimitCode3Contents,Account contents limit code,O,tinyint,YES,0,,,AccountFinancials,LimitCode
+54,Acc,AccLimitType3Contents,Account contents limit type,CR,tinyint,YES,0,,,AccountFinancials,LimitType
+55,Acc,AccLimit3Contents,Account contents limit,CR,float,YES,0,"[0,)",,AccountFinancials,Limit
+56,Acc,AccLimitCode4BI,Account BI limit code,O,tinyint,YES,0,,,AccountFinancials,LimitCode
+57,Acc,AccLimitType4BI,Account BI limit type,CR,tinyint,YES,0,,,AccountFinancials,LimitType
+58,Acc,AccLimit4BI,Account BI limit,CR,float,YES,0,"[0,)",,AccountFinancials,Limit
+59,Acc,AccLimitCode5PD,Account PD limit code,O,tinyint,YES,0,,,AccountFinancials,LimitCode
+60,Acc,AccLimitType5PD,Account PD limit type,CR,tinyint,YES,0,,,AccountFinancials,LimitType
+61,Acc,AccLimit5PD,Account PD limit,CR,float,YES,0,"[0,)",,AccountFinancials,Limit
+62,Acc,AccLimitCode6All,Account blanket limit code,O,tinyint,YES,0,,,AccountFinancials,LimitCode
+63,Acc,AccLimitType6All,Account blanket limit type,CR,tinyint,YES,0,,,AccountFinancials,LimitType
+64,Acc,AccLimit6All,Account blanket limit,CR,float,YES,0,"[0,)",,AccountFinancials,Limit
+65,Acc,PolNumber,Policy layer number,R,varchar(20),NO,,,,Policies,
+66,Acc,PolStatus,"Policy layer status. Aside from predefined values, other single character values for user specific purposes can be used.",O,char(1),YES,,,,Policies,
+67,Acc,PolInceptionDate,Policy inception date - in ISO 8601 format: YYYY-MM-DD,O,smalldatetime,YES,,,,Policies,InceptionDate
+68,Acc,PolExpiryDate,Policy expiry date - in ISO 8601 format: YYYY-MM-DD,O,smalldatetime,YES,,,,Policies,ExpiryDate
+69,Acc,ProducerName,Producer name (defined at policy level),O,varchar(40),YES,,,,Producers,
+70,Acc,Underwriter,Underwriter name,O,varchar(40),YES,,,,Policies,
+71,Acc,BranchName,Branch name,O,varchar(20),YES,,,,Policies,
+72,Acc,LOB,Line of business (defined at policy level),O,varchar(20),YES,,,,LOB,
+73,Acc,ExpiringPolNumber,Expiring policy number,O,varchar(20),YES,,,,Policies,
+74,Acc,PolPerilsCovered,Policy perils covered,R,varchar(250),NO,,,,Policies,PerilsCovered
+75,Acc,PolGrossPremium,Policy gross premium,O,float,YES,0,"[0,)",,Policies,GrossPremium
+76,Acc,PolTax,Policy insurance tax amount,O,float,YES,0,"[0,)",,Policies,Tax
+77,Acc,PolBrokerage,Policy brokerage amount,O,float,YES,0,"[0,)",,Policies,Brokerage
+78,Acc,PolNetPremium,Policy net premium,O,float,YES,0,"[0,)",,Policies,NetPremium
+79,Acc,LayerNumber,Layer number,O,int,YES,1,"[1,)",,Policies,
+80,Acc,LayerParticipation,Insurance company share of the policy layer. Values between 0 to 1 (e.g. 12% entered as 0.12),O,float,YES,1,"[0,1]",,Policies,
+81,Acc,LayerLimit,Policy layer limit (always treated as amount),O,float,YES,0,"[0,)",,Policies,
+82,Acc,LayerAttachment,Policy layer attachment point (always treated as amount),O,float,YES,0,"[0,)",,Policies,
+83,Acc,HoursClause,"For perils with an inherent event duration, the insurance contract may contain an hours clause that limits the time in which claims can be added up and assigned to one event",O,int,YES,,"[0,)",,Policies,
+84,Acc,PolPeril,Perils for policy financial terms,CR,varchar(250),YES,,,,PolicyFinancials; StepFunctions,PolicyFinancials = PerilCode; StepFunctions = PerilCode
+85,Acc,PolDedCode1Building,Policy building deductible code,O,tinyint,YES,0,,,PolicyFinancials,DedCode
+86,Acc,PolDedType1Building,Policy building deductible type,CR,tinyint,YES,0,,,PolicyFinancials,DedType
+87,Acc,PolDed1Building,Policy building deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,Ded
+88,Acc,PolMinDed1Building,Policy minimum building deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,MinDed
+89,Acc,PolMaxDed1Building,Policy maximum building deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,MaxDed
+90,Acc,PolDedCode2Other,Policy other building deductible code,O,tinyint,YES,0,,,PolicyFinancials,DedCode
+91,Acc,PolDedType2Other,Policy other building deductible type,CR,tinyint,YES,0,,,PolicyFinancials,DedType
+92,Acc,PolDed2Other,Policy other building deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,Ded
+93,Acc,PolMinDed2Other,Policy minimum other building deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,MinDed
+94,Acc,PolMaxDed2Other,Policy maximum other building deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,MaxDed
+95,Acc,PolDedCode3Contents,Policy contents deductible code,O,tinyint,YES,0,,,PolicyFinancials,DedCode
+96,Acc,PolDedType3Contents,Policy contents deductible type,CR,tinyint,YES,0,,,PolicyFinancials,DedType
+97,Acc,PolDed3Contents,Policy contents deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,Ded
+98,Acc,PolMinDed3Contents,Policy minimum contents deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,MinDed
+99,Acc,PolMaxDed3Contents,Policy maximum contents deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,MaxDed
+100,Acc,PolDedCode4BI,Policy BI deductible code,O,tinyint,YES,0,,,PolicyFinancials,DedCode
+101,Acc,PolDedType4BI,Policy BI deductible type,CR,tinyint,YES,0,,,PolicyFinancials,DedType
+102,Acc,PolDed4BI,Policy BI deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,Ded
+103,Acc,PolMinDed4BI,Policy minimum BI deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,MinDed
+104,Acc,PolMaxDed4BI,Policy maximum BI deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,MaxDed
+105,Acc,PolDedCode5PD,Policy PD deductible code,O,tinyint,YES,0,,,PolicyFinancials,DedCode
+106,Acc,PolDedType5PD,Policy PD deductible type,CR,tinyint,YES,0,,,PolicyFinancials,DedType
+107,Acc,PolDed5PD,Policy PD deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,Ded
+108,Acc,PolMinDed5PD,Policy minimum PD deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,MinDed
+109,Acc,PolMaxDed5PD,Policy maximum PD deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,MaxDed
+110,Acc,PolDedCode6All,Policy blanket deductible code,O,tinyint,YES,0,,,PolicyFinancials,DedCode
+111,Acc,PolDedType6All,Policy blanket deductible type,CR,tinyint,YES,0,,,PolicyFinancials,DedType
+112,Acc,PolDed6All,Policy blanket deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,Ded
+113,Acc,PolMinDed6All,Policy minimum blanket deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,MinDed
+114,Acc,PolMaxDed6All,Policy maximum blanket deductible,CR,float,YES,0,"[0,)",,PolicyFinancials,MaxDed
+115,Acc,PolLimitCode1Building,Policy building limit code,O,tinyint,YES,0,,,PolicyFinancials,LimitCode
+116,Acc,PolLimitType1Building,Policy building limit type,CR,tinyint,YES,0,,,PolicyFinancials,LimitType
+117,Acc,PolLimit1Building,Policy building limit,CR,float,YES,0,"[0,)",,PolicyFinancials,Limit
+118,Acc,PolLimitCode2Other,Policy other building limit code,O,tinyint,YES,0,,,PolicyFinancials,LimitCode
+119,Acc,PolLimitType2Other,Policy other building limit type,CR,tinyint,YES,0,,,PolicyFinancials,LimitType
+120,Acc,PolLimit2Other,Policy other building limit,CR,float,YES,0,"[0,)",,PolicyFinancials,Limit
+121,Acc,PolLimitCode3Contents,Policy contents limit code,O,tinyint,YES,0,,,PolicyFinancials,LimitCode
+122,Acc,PolLimitType3Contents,Policy contents limit type,CR,tinyint,YES,0,,,PolicyFinancials,LimitType
+123,Acc,PolLimit3Contents,Policy contents limit,CR,float,YES,0,"[0,)",,PolicyFinancials,Limit
+124,Acc,PolLimitCode4BI,Policy BI limit code,O,tinyint,YES,0,,,PolicyFinancials,LimitCode
+125,Acc,PolLimitType4BI,Policy BI limit type,CR,tinyint,YES,0,,,PolicyFinancials,LimitType
+126,Acc,PolLimit4BI,Policy BI limit,CR,float,YES,0,"[0,)",,PolicyFinancials,Limit
+127,Acc,PolLimitCode5PD,Policy PD limit code,O,tinyint,YES,0,,,PolicyFinancials,LimitCode
+128,Acc,PolLimitType5PD,Policy PD limit type,CR,tinyint,YES,0,,,PolicyFinancials,LimitType
+129,Acc,PolLimit5PD,Policy PD limit,CR,float,YES,0,"[0,)",,PolicyFinancials,Limit
+130,Acc,PolLimitCode6All,Policy blanket limit code (annual aggregate only),O,tinyint,YES,0,,,PolicyFinancials,LimitCode
+131,Acc,PolLimitType6All,Policy blanket limit type,CR,tinyint,YES,0,,,PolicyFinancials,LimitType
+132,Acc,PolLimit6All,Policy blanket limit,CR,float,YES,0,"[0,)",,PolicyFinancials,Limit
+133,Acc,StepFunctionName,Step function name,CR,varchar(30),YES,,,,StepFunctions,
+134,Acc,StepTriggerType,"Code that represents how, and for which coverages, pay-outs are triggered.",CR,tinyint,YES,,,,StepFunctions,
+135,Acc,StepNumber,Number between 1 and 10 that is used to sort the step function in the correct order.,CR,tinyint,YES,,"[1,10]",,Steps,
+136,Acc,PayOutType,"Refers to PayoutBuilding, PayoutContents, PayoutBuildingContents. Payout can be % TIV, % Loss, a monetary amount, or % Limit.",CR,tinyint,YES,,,,Steps,PayoutType
+137,Acc,TriggerType,"Refers to TriggerStart and TriggerEnd fields which could be specified as a % TIV, % Loss or a monetary amount.",CR,tinyint,YES,,,,Steps,TriggerType
+138,Acc,TriggerBuildingStart,Starting value of the building damage range over which the corresponding pay-out(s) should be made.,CR,float,YES,0,"[0,)",,Steps,TriggerStart
+139,Acc,TriggerBuildingEnd,Ending value of the building damage range over which the corresponding pay-out(s) should be made.,CR,float,YES,0,"[0,)",,Steps,TriggerEnd
+140,Acc,DeductibleBuilding,"Building deductible that can be used, for example, to account for fire policies before applying step functions.",CR,float,YES,0,"[0,)",,Steps,Deductible
+141,Acc,PayOutBuildingStart,Pay-out amount for the building losses for this step. If a ramp policy then it represents the start payout value.,CR,float,YES,0,"[0,)",,Steps,PayoutStart
+142,Acc,PayOutBuildingEnd,"Pay-out amount for the end-point building losses for this ramp. This field should only be used if you have a ramp policy to indicate the end of the building payout. Otherwise, it should be left blank.",CR,float,YES,0,"[0,)",,Steps,PayoutEnd
+143,Acc,PayOutLimitBuilding,Pay-out limit for building,CR,float,YES,0,"[0,)",,Steps,PayoutLimit
+144,Acc,TriggerContentsStart,Starting value of the content damage range over which the corresponding pay-out(s) should be made.,CR,float,YES,0,"[0,)",,Steps,TriggerStart
+145,Acc,TriggerContentsEnd,Ending value of the content damage range over which the corresponding pay-out(s) should be made.,CR,float,YES,0,"[0,)",,Steps,TriggerEnd
+146,Acc,DeductibleContents,"Content deductible that can be used, for example, to account for fire policies before applying step functions.",CR,float,YES,0,"[0,)",,Steps,Deductible
+147,Acc,PayOutContentsStart,Pay-out amount for the contents losses for this step. If a ramp policy then it represents the start payout value.,CR,float,YES,0,"[0,)",,Steps,PayoutStart
+148,Acc,PayOutContentsEnd,"Pay-out amount for the end-point contents losses for this ramp. This field should only be used if you have a ramp policy to indicate the end of the contents payout. Otherwise, it should be left blank.",CR,float,YES,0,"[0,)",,Steps,PayoutEnd
+149,Acc,PayOutLimitContents,Pay-out limit for contents,CR,float,YES,0,"[0,)",,Steps,PayoutLimit
+150,Acc,TriggerBuildingContentsStart,Starting value of the building and content damage range over which the corresponding pay-out(s) should be made.,CR,float,YES,0,"[0,)",,Steps,TriggerStart
+151,Acc,TriggerBuildingContentsEnd,Ending value of the building and content damage range over which the corresponding pay-out(s) should be made.,CR,float,YES,0,"[0,)",,Steps,TriggerEnd
+152,Acc,DeductibleBuildingContents,"Building and contents deductible that can be used, for example, to account for fire policies before applying step functions.",CR,float,YES,0,"[0,)",,Steps,Deductible
+153,Acc,PayOutBuildingContentsStart,Pay-out amount for the building and contents losses for this step. If a ramp policy then it represents the start payout value.,CR,float,YES,0,"[0,)",,Steps,PayoutStart
+154,Acc,PayOutBuildingContentsEnd,"Pay-out amount for the end-point building and contents losses for this ramp. This field should only be used if you have a ramp policy to indicate the end of the building and contents payout. Otherwise, it should be left blank.",CR,float,YES,0,"[0,)",,Steps,PayoutEnd
+155,Acc,PayOutLimitBuildingContents,Pay-out limit for building and contents,CR,float,YES,0,"[0,)",,Steps,PayoutLimit
+156,Acc,ExtraExpenseFactor,"A factor that is applied to main coverage loss for extra expenses. This value, entered as a decimal, should be the same for all steps for a policy contract and must be a value >0 and ≤1. For example, 0.12 for 12%.",CR,float,YES,1,"[0,1]",,Steps,ExtraExpenseFactor
+157,Acc,ExtraExpenseLimit,A limit that applies to the total extra expense loss,CR,float,YES,0,"[0,)",,Steps,ExtraExpenseLimit
+158,Acc,DebrisRemovalFactor,"A factor for a conditional coverage which tends to apply to all steps and is to cover Debris Removal. This value, entered as a decimal, should be the same for all steps for a policy contract and must be a value >0 and ≤1. For example, 0.12 for 12%.",CR,float,YES,1,"[0,1]",,Steps,DebrisRemovalFactor
+159,Acc,MinimumTIV,Minimum replacement value for which pay-outs to the corresponding damage range will be allowed.,CR,float,YES,0,"[0,)",,Steps,
+160,Acc,ScaleFactor,"Percentage factor used to scale calculated losses. This value, entered as a decimal, should be the same for all steps for a policy contract and must be a value >0 and ≤1. For example, 0.12 for 12%.",CR,float,YES,1,"[0,1]",,Steps,
+161,Acc,IsLimitAtDamage,Indicates whether the pay-out is limited by the actual ground-up loss.,CR,tinyint,YES,0,"[0,1]",,Steps,
+162,Acc,PolUserDef1,Policy user defined field,O,varchar(20),YES,,,,Policies,
+163,Acc,PolUserDef2,Policy user defined field,O,varchar(20),YES,,,,Policies,
+164,Acc,PolUserDef3,Policy user defined field,O,varchar(20),YES,,,,Policies,
+165,Acc,PolUserDef4,Policy user defined field,O,varchar(20),YES,,,,Policies,
+166,Acc,PolUserDef5,Policy user defined field,O,varchar(20),YES,,,,Policies,
+167,Acc,FlexiPolZZZ,Flexible field that is stored in FlexiPol table in ModifierName = ZZZ,O,varchar(40),YES,,,,FlexiPol,ModifierName = ZZZ
+168,Acc,CondNumber,Condition number identifies a unique set of condition financial terms applicable to one or more CondTag's.,CR,varchar(20),YES,,,,Conditions,
+169,Acc,CondName,Condition name.,O,varchar(40),YES,,,,Conditions,
+170,Acc,CondPriority,Condition priority: specifies the order in which special conditions apply if multiple conditions apply to one location.,CR,int,YES,,"[1,)",,LocCond,Priority
+171,Acc,CondPeril,Perils for condition financial terms,CR,varchar(250),YES,,,,ConditionFinancials,PerilCode
+172,Acc,CondDedCode1Building,Special condition building deductible code,O,tinyint,YES,0,,,ConditionFinancials,DedCode
+173,Acc,CondDedType1Building,Special condition building deductible type,CR,tinyint,YES,0,,,ConditionFinancials,DedType
+174,Acc,CondDed1Building,Special condition building deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,Ded
+175,Acc,CondMinDed1Building,Special condition minimum building deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,MinDed
+176,Acc,CondMaxDed1Building,Special condition maximum building deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,MaxDed
+177,Acc,CondDedCode2Other,Special condition other building deductible code,O,tinyint,YES,0,,,ConditionFinancials,DedCode
+178,Acc,CondDedType2Other,Special condition other building deductible type,CR,tinyint,YES,0,,,ConditionFinancials,DedType
+179,Acc,CondDed2Other,Special condition other building deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,Ded
+180,Acc,CondMinDed2Other,Special condition minimum other building deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,MinDed
+181,Acc,CondMaxDed2Other,Special condition maximum other building deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,MaxDed
+182,Acc,CondDedCode3Contents,Special condition contents deductible code,O,tinyint,YES,0,,,ConditionFinancials,DedCode
+183,Acc,CondDedType3Contents,Special condition contents deductible type,CR,tinyint,YES,0,,,ConditionFinancials,DedType
+184,Acc,CondDed3Contents,Special condition contents deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,Ded
+185,Acc,CondMinDed3Contents,Special condition minimum contents deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,MinDed
+186,Acc,CondMaxDed3Contents,Special condition maximum contents deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,MaxDed
+187,Acc,CondDedCode4BI,Special condition BI deductible code,O,tinyint,YES,0,,,ConditionFinancials,DedCode
+188,Acc,CondDedType4BI,Special condition BI deductible type,CR,tinyint,YES,0,,,ConditionFinancials,DedType
+189,Acc,CondDed4BI,Special condition BI deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,Ded
+190,Acc,CondMinDed4BI,Special condition minimum BI deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,MinDed
+191,Acc,CondMaxDed4BI,Special condition maximum BI deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,MaxDed
+192,Acc,CondDedCode5PD,Special condition PD deductible code,O,tinyint,YES,0,,,ConditionFinancials,DedCode
+193,Acc,CondDedType5PD,Special condition PD deductible type,CR,tinyint,YES,0,,,ConditionFinancials,DedType
+194,Acc,CondDed5PD,Special condition PD deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,Ded
+195,Acc,CondMinDed5PD,Special condition minimum PD deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,MinDed
+196,Acc,CondMaxDed5PD,Special condition maximum PD deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,MaxDed
+197,Acc,CondDedCode6All,Special condition blanket deductible code,O,tinyint,YES,0,,,ConditionFinancials,DedCode
+198,Acc,CondDedType6All,Special condition blanket deductible type,CR,tinyint,YES,0,,,ConditionFinancials,DedType
+199,Acc,CondDed6All,Special condition blanket deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,Ded
+200,Acc,CondMinDed6All,Special condition minimum blanket deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,MinDed
+201,Acc,CondMaxDed6All,Special condition maximum blanket deductible,CR,float,YES,0,"[0,)",,ConditionFinancials,MaxDed
+202,Acc,CondLimitCode1Building,Special condition building limit code,O,tinyint,YES,0,,,ConditionFinancials,LimitCode
+203,Acc,CondLimitType1Building,Special condition building limit type,CR,tinyint,YES,0,,,ConditionFinancials,LimitType
+204,Acc,CondLimit1Building,Special condition building limit,CR,float,YES,0,"[0,)",,ConditionFinancials,Limit
+205,Acc,CondLimitCode2Other,Special condition other building limit code,O,tinyint,YES,0,,,ConditionFinancials,LimitCode
+206,Acc,CondLimitType2Other,Special condition other building limit type,CR,tinyint,YES,0,,,ConditionFinancials,LimitType
+207,Acc,CondLimit2Other,Special condition other building limit,CR,float,YES,0,"[0,)",,ConditionFinancials,Limit
+208,Acc,CondLimitCode3Contents,Special condition contents limit code,O,tinyint,YES,0,,,ConditionFinancials,LimitCode
+209,Acc,CondLimitType3Contents,Special condition contents limit type,CR,tinyint,YES,0,,,ConditionFinancials,LimitType
+210,Acc,CondLimit3Contents,Special condition contents limit,CR,float,YES,0,"[0,)",,ConditionFinancials,Limit
+211,Acc,CondLimitCode4BI,Special condition BI limit code,O,tinyint,YES,0,,,ConditionFinancials,LimitCode
+212,Acc,CondLimitType4BI,Special condition BI limit type,CR,tinyint,YES,0,,,ConditionFinancials,LimitType
+213,Acc,CondLimit4BI,Special condition BI limit,CR,float,YES,0,"[0,)",,ConditionFinancials,Limit
+214,Acc,CondLimitCode5PD,Special condition PD limit code,O,tinyint,YES,0,,,ConditionFinancials,LimitCode
+215,Acc,CondLimitType5PD,Special condition PD limit type,CR,tinyint,YES,0,,,ConditionFinancials,LimitType
+216,Acc,CondLimit5PD,Special condition PD limit,CR,float,YES,0,"[0,)",,ConditionFinancials,Limit
+217,Acc,CondLimitCode6All,Special condition blanket limit code,O,tinyint,YES,0,,,ConditionFinancials,LimitCode
+218,Acc,CondLimitType6All,Special condition blanket limit type,CR,tinyint,YES,0,,,ConditionFinancials,LimitType
+219,Acc,CondLimit6All,Special condition blanket limit,CR,float,YES,0,"[0,)",,ConditionFinancials,Limit
+220,Loc,LocNumber,Location number,R,nvarchar(20),NO,,,,Locations,
+221,Loc,LocName,Location name,O,nvarchar(20),YES,,,,Locations,
+222,Loc,LocGroup,Location group name,O,nvarchar(20),YES,,,,Locations,
+223,Loc,CorrelationGroup,Correlation Group: indicates which locations should be correlated between each other in Oasis LMF.,O,int,YES,,"[0,)",,Locations,
+224,Loc,IsPrimary,Whether the location in LocGroup is the primary building in the group,O,tinyint,YES,1,"[0,1]",,Locations,
+225,Loc,IsTenant,Whether property is occupied by a tenant or not,O,tinyint,YES,0,"[0,1]",,Locations,
+226,Loc,BuildingID,Unique building identification number,O,varchar(20),YES,,,,Locations,
+227,Loc,LocInceptionDate,Location inception date - in ISO 8601 format: YYYY-MM-DD,O,smalldatetime,YES,,,,Locations,
+228,Loc,LocExpiryDate,Location expiry date - in ISO 8601 format: YYYY-MM-DD,O,smalldatetime,YES,,,,Locations,
+229,Loc,PercentComplete,Completeness percentage of the construction project at this location. The project completion percentage is by the cost of the project. Values between 0 to 1 (e.g. 12% enterd as 0.12),O,decimal,YES,1,"[0,1]",,Locations,
+230,Loc,CompletionDate,Construction project completion date - in ISO 8601 format: YYYY-MM-DD,O,date,YES,,,,Locations,
+231,Loc,CountryCode,Country code (based on ISO3166 alpha-2 codes),R,char(2),NO,,,,Locations,
+232,Loc,Latitude,Latitude in degrees (-90.0 to +90.0),O,decimal,YES,0,"[-90,90]",,Locations,
+233,Loc,Longitude,Longitude in degrees (-180.0 to +180.0),O,decimal,YES,0,"[-180,180]",,Locations,
+234,Loc,StreetAddress,Street address including house number ,O,nvarchar(100),YES,,,,Locations,
+235,Loc,PostalCode,Postcode: the highest resolution postcode most often used. (e.g. 5 digit zip for the US).,O,nvarchar(20),YES,,,,Locations,
+236,Loc,City,City,O,nvarchar(50),YES,,,,Locations,
+237,Loc,AreaCode,Code representing typically the largest sub-division in a country (e.g. State code). See AreaCode Values sheet for details.,O,nvarchar(20),YES,,,,Locations,
+238,Loc,AreaName,Name relating to the AreaCode (e.g. State name). See AreaCode Values sheet for details.,O,nvarchar(50),YES,,,,Locations,
+239,Loc,GeogSchemeXX,"Geography scheme: Descriptor of the geography scheme used in relation to the geography name in the corresponding GeogName field (e.g. PC4). The 'XX' must be changed to an integer (GeogScheme1......> GeogScheme20 etc) and the user can specify values in addition to those listed in the GeogScheme values list, but user defined scheme values must start with 'X'.",O,varchar(5),YES,,,,Locations,
+240,Loc,GeogNameXX,"Geography name: Descriptor of the geographical area, using the scheme referenced in the corresponding GeogScheme field (e.g. SO31)",O,nvarchar(50),YES,,,,Locations,
+241,Loc,AddressMatch,Address match from geocoder: indicating the resolution that the latitude / longitude represents,O,tinyint,YES,0,,,Locations,
+242,Loc,GeocodeQuality,Geocode quality (values between 0 and 1 e.g. 80% is entered as 0.8),O,float,YES,,"[0,1]",,Locations,
+243,Loc,Geocoder,Company name / version of geocoder. Free text field.,O,varchar(20),YES,,,,Locations,
+244,Loc,OrgOccupancyScheme,Original occupancy scheme,O,varchar(10),YES,,,,Locations,
+245,Loc,OrgOccupancyCode,Original occupancy code,O,varchar(100),YES,,,,Locations,
+246,Loc,OrgConstructionScheme,Original construction scheme,O,varchar(10),YES,,,,Locations,
+247,Loc,OrgConstructionCode,Original construction code,O,varchar(100),YES,,,,Locations,
+248,Loc,OccupancyCode,OED occupancy code,O,int,YES,1000,,,Locations,
+249,Loc,ConstructionCode,OED construction code,O,int,YES,5000,,,Locations,
+250,Loc,YearBuilt,Year built (4 digit year),O,smallint,YES,0,"[0,)",,Locations,
+251,Loc,NumberOfStoreys,Number of storeys,O,tinyint,YES,0,"[0,)",,Locations,
+252,Loc,NumberOfBuildings,Number of buildings,O,int,YES,1,"[1,)",,Locations,
+253,Loc,FloorArea,Floor area: the total area across all floors,O,float,YES,0,"[0,)",,Locations,
+254,Loc,FloorAreaUnit,Units in which FloorArea is specified,O,tinyint,YES,11,,,Locations,
+255,Loc,LocUserDef1,Location user defined field 1,O,varchar(20),YES,,,,Locations,
+256,Loc,LocUserDef2,Location user defined field 2,O,varchar(20),YES,,,,Locations,
+257,Loc,LocUserDef3,Location user defined field 3,O,varchar(20),YES,,,,Locations,
+258,Loc,LocUserDef4,Location user defined field 4,O,varchar(20),YES,,,,Locations,
+259,Loc,LocUserDef5,Location user defined field 5,O,varchar(20),YES,,,,Locations,
+260,Loc,FlexiLocZZZ,Flexible field that is stored in FlexiLoc table in ModifierName = ZZZ,O,varchar(40),YES,,,,FlexiLoc,ModifierName = ZZZ
+261,Loc,LocPerilsCovered,Location perils covered,R,varchar(250),NO,,,,Locations,PerilsCovered
+262,Loc,BuildingTIV,Building Total Insured Value,R,float,NO,,"[0,)",,Locations,
+263,Loc,OtherTIV,"Other Building Insured Value (primarily aimed at specific US policies). For motor exposures, use this field for TIV along with appropriate motor construction code.",O,float,Yes,,"[0,)",,Locations,
+264,Loc,ContentsTIV,Contents Total Insured Value,R,float,NO,,"[0,)",,Locations,
+265,Loc,BITIV,Business Interruption (BI) Total Insured Value,R,float,NO,,"[0,)",,Locations,
+266,Loc,BIPOI,"BI period of indemnity (in days, in increments of 0.5 days). Default value = 365 (1 year).",O,float,YES,365,"[0,3650]",,Locations,
+267,Loc,LocCurrency,Location currency,R,char(3),NO,,,,Locations,Currency
+268,Loc,LocGrossPremium,Gross premium amount at location level,O,float,YES,0,"[0,)",,Locations,GrossPremium
+269,Loc,LocTax,Insurance tax amount at location level,O,float,YES,0,"[0,)",,Locations,Tax
+270,Loc,LocBrokerage,Brokerage amount at location level,O,float,YES,0,"[0,)",,Locations,Brokerage
+271,Loc,LocNetPremium,Net premium at location level,O,float,YES,0,"[0,)",,Locations,NetPremium
+272,Loc,NonCatGroundUpLoss,Ground-Up non-cat loss value prior to the application of non-cat policy terms,O,float,YES,0,"[0,)",,Locations,
+273,Loc,LocParticipation,Percentage of risk that the insurer covers for this location. Values between 0 to 1 (e.g. 12% enterd as 0.12). Usually used in binders or offshore.,O,float,YES,1,"[0,1]",,Locations,Participation
+274,Loc,PayoutBasis,Pay-out basis for the claim (whether depreciation is taken into account). ACV = RCV - depreciation.,O,tinyint,YES,0,,,Locations,
+275,Loc,ReinsTag,User defined reinsurance tag to provide a further option for specifying reinsurance scope,O,varchar(20),YES,,,,Locations,
+276,Loc,LocDedCode1Building,Location building deductible code,O,tinyint,YES,0,,,LocationFinancials,DedCode
+277,Loc,LocDedType1Building,Location building deductible type,CR,tinyint,YES,0,,,LocationFinancials,DedType
+278,Loc,LocDed1Building,Location building deductible,CR,float,YES,0,"[0,)",,LocationFinancials,Ded
+279,Loc,LocMinDed1Building,Location minimum building deductible,CR,float,YES,0,"[0,)",,LocationFinancials,MinDed
+280,Loc,LocMaxDed1Building,Location maximum building deductible,CR,float,YES,0,"[0,)",,LocationFinancials,MaxDed
+281,Loc,LocDedCode2Other,Location other building deductible code,O,tinyint,YES,0,,,LocationFinancials,DedCode
+282,Loc,LocDedType2Other,Location other building deductible type,CR,tinyint,YES,0,,,LocationFinancials,DedType
+283,Loc,LocDed2Other,Location other building deductible,CR,float,YES,0,"[0,)",,LocationFinancials,Ded
+284,Loc,LocMinDed2Other,Location minimum other building deductible,CR,float,YES,0,"[0,)",,LocationFinancials,MinDed
+285,Loc,LocMaxDed2Other,Location maximum other building deductible,CR,float,YES,0,"[0,)",,LocationFinancials,MaxDed
+286,Loc,LocDedCode3Contents,Location contents deductible code,O,tinyint,YES,0,,,LocationFinancials,DedCode
+287,Loc,LocDedType3Contents,Location contents deductible type,CR,tinyint,YES,0,,,LocationFinancials,DedType
+288,Loc,LocDed3Contents,Location contents deductible,CR,float,YES,0,"[0,)",,LocationFinancials,Ded
+289,Loc,LocMinDed3Contents,Location minimum contents deductible,CR,float,YES,0,"[0,)",,LocationFinancials,MinDed
+290,Loc,LocMaxDed3Contents,Location maximum contents deductible,CR,float,YES,0,"[0,)",,LocationFinancials,MaxDed
+291,Loc,LocDedCode4BI,Location BI Deductible Code,O,tinyint,YES,0,,,LocationFinancials,DedCode
+292,Loc,LocDedType4BI,Location BI Deductible Type,CR,tinyint,YES,0,,,LocationFinancials,DedType
+293,Loc,LocDed4BI,Location BI deductible,CR,float,YES,0,"[0,)",,LocationFinancials,Ded
+294,Loc,LocMinDed4BI,Location minimum bi deductible,CR,float,YES,0,"[0,)",,LocationFinancials,MinDed
+295,Loc,LocMaxDed4BI,Location maximum bi deductible,CR,float,YES,0,"[0,)",,LocationFinancials,MaxDed
+296,Loc,LocDedCode5PD,Location PD deductible code,O,tinyint,YES,0,,,LocationFinancials,DedCode
+297,Loc,LocDedType5PD,Location PD deductible type,CR,tinyint,YES,0,,,LocationFinancials,DedType
+298,Loc,LocDed5PD,Location PD deductible,CR,float,YES,0,"[0,)",,LocationFinancials,Ded
+299,Loc,LocMinDed5PD,Location minimum PD deductible,CR,float,YES,0,"[0,)",,LocationFinancials,MinDed
+300,Loc,LocMaxDed5PD,Location maximum PD deductible,CR,float,YES,0,"[0,)",,LocationFinancials,MaxDed
+301,Loc,LocDedCode6All,Location blanket deductible code,O,tinyint,YES,0,,,LocationFinancials,DedCode
+302,Loc,LocDedType6All,Location blanket deductible type,CR,tinyint,YES,0,,,LocationFinancials,DedType
+303,Loc,LocDed6All,Location site deductible,CR,float,YES,0,"[0,)",,LocationFinancials,Ded
+304,Loc,LocMinDed6All,Location minimum blanket deductible,CR,float,YES,0,"[0,)",,LocationFinancials,MinDed
+305,Loc,LocMaxDed6All,Location maximum blanket deductible,CR,float,YES,0,"[0,)",,LocationFinancials,MaxDed
+306,Loc,LocLimitCode1Building,Location building limit code,O,tinyint,YES,0,,,LocationFinancials,LimitCode
+307,Loc,LocLimitType1Building,Location building limit type,CR,tinyint,YES,0,,,LocationFinancials,LimitType
+308,Loc,LocLimit1Building,Location building limit,CR,float,YES,0,"[0,)",,LocationFinancials,Limit
+309,Loc,LocLimitCode2Other,Location other building limit code,O,tinyint,YES,0,,,LocationFinancials,LimitCode
+310,Loc,LocLimitType2Other,Location other building limit type,CR,tinyint,YES,0,,,LocationFinancials,LimitType
+311,Loc,LocLimit2Other,Location other building limit,CR,float,YES,0,"[0,)",,LocationFinancials,Limit
+312,Loc,LocLimitCode3Contents,Location contents limit code,O,tinyint,YES,0,,,LocationFinancials,LimitCode
+313,Loc,LocLimitType3Contents,Location contents limit type,CR,tinyint,YES,0,,,LocationFinancials,LimitType
+314,Loc,LocLimit3Contents,Location contents limit,CR,float,YES,0,"[0,)",,LocationFinancials,Limit
+315,Loc,LocLimitCode4BI,Location BI limit code,O,tinyint,YES,0,,,LocationFinancials,LimitCode
+316,Loc,LocLimitType4BI,Location BI limit type,CR,tinyint,YES,0,,,LocationFinancials,LimitType
+317,Loc,LocLimit4BI,Location BI limit,CR,float,YES,0,"[0,)",,LocationFinancials,Limit
+318,Loc,LocLimitCode5PD,Location PD limit code,O,tinyint,YES,0,,,LocationFinancials,LimitCode
+319,Loc,LocLimitType5PD,Location PD limit type,CR,tinyint,YES,0,,,LocationFinancials,LimitType
+320,Loc,LocLimit5PD,Location PD limit,CR,float,YES,0,"[0,)",,LocationFinancials,Limit
+321,Loc,LocLimitCode6All,Location site limit code,O,tinyint,YES,0,,,LocationFinancials,LimitCode
+322,Loc,LocLimitType6All,Location site limit type,CR,tinyint,YES,0,,,LocationFinancials,LimitType
+323,Loc,LocLimit6All,Location site limit,CR,float,YES,0,"[0,)",,LocationFinancials,Limit
+324,Loc,BIWaitingPeriod,BI waiting period (in days),O,smallint,YES,0,"[0,)",,LocationFinancials,
+325,Loc,LocPeril,Perils for location financial terms,CR,varchar(250),YES,,,,LocationFinancials,PerilCode
+326,Loc,YearUpgraded,Year the building was upgraded (4 digit year),O,smallint,YES,0,"[0,)",1.0,LocationDetails,
+327,Loc,SurgeLeakage,Storm leakage percentage (0% to 100%) for Wind only policies,O,float,YES,-999,"[-999,-999], [0,1]",1.0,LocationDetails,
+328,Loc,SprinklerType,Sprinkler type,O,tinyint,YES,0,,1.0,LocationDetails,
+329,Loc,PercentSprinklered,Percent sprinklered. Values between 0 and 1 inclusive (0.5 = 50%); -999 is unknown,O,float,YES,-999,"[-999,-999], [0,1]",1.0,LocationDetails,
+330,Loc,RoofCover,Code that represents the material used to cover the roof,O,tinyint,YES,0,,1.0,LocationDetails,
+331,Loc,RoofYearBuilt,Year the roof was last replaced (4 digit year),O,smallint,YES,0,"[0,)",1.0,LocationDetails,
+332,Loc,RoofGeometry,Code that represents the shape of the roof,O,tinyint,YES,0,,1.0,LocationDetails,
+333,Loc,RoofEquipment,captures if mechanical or electric equipment is braced on the roof and the impact this modifier will have on the losses.,O,tinyint,YES,0,,1.0,LocationDetails,
+334,Loc,RoofFrame,Roof framing material,O,tinyint,YES,0,,1.0,LocationDetails,
+335,Loc,RoofMaintenance,Captures the impact roof maintenance has on the losses,O,tinyint,YES,0,,1.0,LocationDetails,
+336,Loc,BuildingCondition,Building condition,O,tinyint,YES,0,,1.0,LocationDetails,
+337,Loc,RoofAttachedStructures,"Code that identifies items mounted on the roof, such as A/C units, skylights, or dormers",O,tinyint,YES,0,,1.0,LocationDetails,
+338,Loc,RoofDeck,Code that represents the materials used to construct the roof deck,O,tinyint,YES,0,,1.0,LocationDetails,
+339,Loc,RoofPitch,Code that represents the slope of the roof,O,tinyint,YES,0,,1.0,LocationDetails,
+340,Loc,RoofAnchorage,Code that represents the connections used to secure the roof support system to the walls,O,tinyint,YES,0,,1.0,LocationDetails,
+341,Loc,RoofDeckAttachment,Code that represents the connections used to secure the roof deck to the underlying roof support system,O,tinyint,YES,0,,1.0,LocationDetails,
+342,Loc,RoofCoverAttachment,Code that represents the connections used to secure the roof covering to the roof deck,O,tinyint,YES,0,,1.0,LocationDetails,
+343,Loc,GlassType,Code that represents the type of glass used in the building,O,tinyint,YES,0,,1.0,LocationDetails,
+344,Loc,LatticeType,Code that represents the type of web used for H-shaped steel,O,tinyint,YES,0,,1.0,LocationDetails,
+345,Loc,FloodZone,Flood zone. Free text field.,O,varchar(20),YES,,,1.0,LocationDetails,
+346,Loc,SoftStory,Code that indicates if there is structural weakness at any floor.  First floor garages and taller first floors are likely to exhibit soft-story behaviour.,O,tinyint,YES,0,,1.0,LocationDetails,
+347,Loc,Basement,Code that defines if there is a basement and if so whether it is finished or unfinished,O,tinyint,YES,0,,1.0,LocationDetails,
+348,Loc,BasementLevelCount,"Indicates the number of basement levels in a structure (supports up to 5 levels; for more than 5, enter 5).",O,tinyint,YES,0,"[0,5]",1.0,LocationDetails,
+349,Loc,WindowProtection,Code that represents the wind protection systems used on the windows,O,tinyint,YES,0,,1.0,LocationDetails,
+350,Loc,FoundationType,Code that represents the construction type of the building's foundation,O,tinyint,YES,0,,1.0,LocationDetails,
+351,Loc,WallAttachedStructure," 
+Code that represents a structure that is physically attached to the building, such as garage or balcony",O,tinyint,YES,0,,1.0,LocationDetails,
+352,Loc,AppurtenantStructure," 
+Code for the appurtenant building, such as shed or detached garage",O,tinyint,YES,0,,1.0,LocationDetails,
+353,Loc,ConstructionQuality,Construction quality,O,tinyint,YES,0,,1.0,LocationDetails,
+354,Loc,GroundEquipment,Captures whether mechanical or electrical equipment are present on the ground level of a building and impact it has on losses,O,tinyint,YES,0,,1.0,LocationDetails,
+355,Loc,EquipmentBracing,Identifies where mechanical or electrical equipment is held in place by bracing,O,tinyint,YES,0,,1.0,LocationDetails,
+356,Loc,Flashing,Refers to the impact the quality of the flashing or coping on a roof has on losses,O,tinyint,YES,0,,1.0,LocationDetails,
+357,Loc,BuildingShape,Code that represents the shape of the building,O,tinyint,YES,0,,1.0,LocationDetails,
+358,Loc,ShapeIrregularity,"Identifies vertical irregularities, overhangs and setbacks in the building design",O,tinyint,YES,0,,1.0,LocationDetails,
+359,Loc,Pounding,"Code that represents the distance to the closest structure, which if not adequate, can cause the two structures to collide during earthquake shaking",O,tinyint,YES,0,,1.0,LocationDetails,
+360,Loc,Ornamentation,Code that represents the amount of decorative elements attached to the exterior of a building,O,tinyint,YES,0,,1.0,LocationDetails,
+361,Loc,SpecialEQConstruction,Presence of a seismic base isolation system,O,tinyint,YES,0,,1.0,LocationDetails,
+362,Loc,Retrofit,Presence of retro fit connectivity between walls and floor for retro fit buildings,O,tinyint,YES,0,,1.0,LocationDetails,
+363,Loc,CrippleWall,Presence of cripple walls on the first floor or frame buildings,O,tinyint,YES,0,,1.0,LocationDetails,
+364,Loc,FoundationConnection,Connection of frame to foundation with or without bolts,O,tinyint,YES,0,,1.0,LocationDetails,
+365,Loc,ShortColumn,Code that indicates if there are short columns in the building,O,tinyint,YES,0,,1.0,LocationDetails,
+366,Loc,Fatigue,Captures signs of damage from prior earthquakes,O,tinyint,YES,0,,1.0,LocationDetails,
+367,Loc,Cladding,The presence and material of exterior building cladding,O,tinyint,YES,0,,1.0,LocationDetails,
+368,Loc,BIPreparedness,BI preparedness,O,tinyint,YES,0,,1.0,LocationDetails,
+369,Loc,BIRedundancy,BI redundancy,O,tinyint,YES,0,,1.0,LocationDetails,
+370,Loc,FirstFloorHeight,Height of the lowest floor (above ground) of the building with respect to local ground elevation (NOT relative to datum). First floor in the US is identical to ground floor in Europe.,O,float,YES,-999,"[-999,)",1.0,LocationDetails,
+371,Loc,FirstFloorHeightUnit,Code for the unit of measure used to express FirstFloorHeight,O,tinyint,YES,1,,1.0,LocationDetails,
+372,Loc,Datum,Datum reference for the elevation fields (e.g. NAVD88; WGS84),O,varchar(20),YES,,,1.0,LocationDetails,
+373,Loc,GroundElevation,Flood or Windstorm - Elevation of the local ground surface at the building at this location. This field represents the elevation of the grade (local ground surface) with respect to the datum (e.g. NAVD88).,O,float,YES,-999,"[-999,)",1.0,LocationDetails,
+374,Loc,GroundElevationUnit,Code for the unit of measure used to express the GroundElevation,O,tinyint,YES,1,,1.0,LocationDetails,
+375,Loc,Tank,Code that indicates if there are rooftop tanks on the adjoining higher buildings,O,tinyint,YES,0,,1.0,LocationDetails,
+376,Loc,Redundancy,"Indicates whether there are multiple lateral load resisting elements, such as frames or shear walls",O,tinyint,YES,0,,1.0,LocationDetails,
+377,Loc,InternalPartition,Interior wall partitions or chimneys made from URM,O,tinyint,YES,0,,1.0,LocationDetails,
+378,Loc,ExternalDoors,"Wind resistant doors, doors with a certain rating of hurricane protection",O,tinyint,YES,0,,1.0,LocationDetails,
+379,Loc,Torsion,Code that represents the layout of structural elements that can lead to torsional loads,O,tinyint,YES,0,,1.0,LocationDetails,
+380,Loc,MechanicalEquipmentSide,Mechanical or electrical equipment at the side,O,tinyint,YES,0,,1.0,LocationDetails,
+381,Loc,ContentsWindVuln,Contents relative vulnerability to windstorm or tornado,O,tinyint,YES,0,,1.0,LocationDetails,
+382,Loc,ContentsFloodVuln,Contents relative vulnerability to flood,O,tinyint,YES,0,,1.0,LocationDetails,
+383,Loc,ContentsQuakeVuln,Contents relative vulnerability to earthquake,O,tinyint,YES,0,,1.0,LocationDetails,
+384,Loc,SmallDebris,Code that identifies whether small debris are present within 200 meters of the structure,O,tinyint,YES,0,,1.0,LocationDetails,
+385,Loc,FloorsOccupied,"Number of floors in the building that are occupied (separated by semi-colons). Each floor occupied is separated by a semi-colon. Ranges are not accepted. 0 = ground floor, -1 = first level of basement, -2 = second level of basement; 1 = first floor, 2 = second floor, etc.",O,varchar(255),YES,,,1.0,LocationDetails,
+386,Loc,FloodDefenseHeight,Height of any site specific flood defenses protecting the property with respect to local ground elevation (NOT to datum).,O,float,YES,-999,"[-999,)",1.0,LocationDetails,
+387,Loc,FloodDefenseHeightUnit,Code for the unit of measure used to express the FloodDefenseHeight,O,tinyint,YES,1,,1.0,LocationDetails,
+388,Loc,FloodDebrisResilience,Shows if building is vulnerable to floating debris,O,tinyint,YES,0,,1.0,LocationDetails,
+389,Loc,BaseFloodElevation,Water surface elevation (relative to datum - this is NOT a flood depth) corresponding to a flood having a 1% probability of being equaled or exceeded in a given year. A value of -999 for this field represents unknown/default.,O,float,YES,-999,"[-999,-999], [0,1]",1.0,LocationDetails,
+390,Loc,BaseFloodElevationUnit,Code for the unit of measure used to express the BaseFloodElevation,O,tinyint,YES,1,,1.0,LocationDetails,
+391,Loc,BuildingHeight,Total height of the structure,O,float,YES,-999,"[-999,)",1.0,LocationDetails,
+392,Loc,BuildingHeightUnit,Units of the BuildingHeight,O,tinyint,YES,1,,1.0,LocationDetails,
+393,Loc,BuildingValuation,Field for third party valuation data,O,varchar(20),YES,,,1.0,LocationDetails,
+394,Loc,TreeExposure,Secondary modifier coding density of trees adjacent to structure,O,tinyint,YES,0,,1.0,LocationDetails,
+395,Loc,Chimney,"Code that indicates if the structure has a chimney and, if so, the height of the chimney",O,tinyint,YES,0,,1.0,LocationDetails,
+396,Loc,BuildingType,"Building type (e.g. detached, terraced, etc)",O,tinyint,YES,0,,1.0,LocationDetails,
+397,Loc,Packaging,Describes the susceptibility of the packaging of a risk to the peril,O,tinyint,YES,0,,1.0,LocationDetails,
+398,Loc,Protection,Describes the level of protection from the specific peril,O,tinyint,YES,0,,1.0,LocationDetails,
+399,Loc,SalvageProtection,The salvage potential of a particular product,O,tinyint,YES,0,,1.0,LocationDetails,
+400,Loc,ValuablesStorage,Where the specie element is stored,O,tinyint,YES,0,,1.0,LocationDetails,
+401,Loc,DaysHeld,Number of days cargo is kept at port or the duration of an exhibition. Values between 0 to 1825 (up to 5 years). Default = 365.,O,smallint,YES,365,"[0,1825]",1.0,LocationDetails,
+402,Loc,BrickVeneer,Code that represents the percentage of external walls that consist of brick veneer.,O,tinyint,YES,0,,1.0,LocationDetails,
+403,Loc,FEMACompliance,Indicates whether the building is in compliance with the FEMA flood zone requirements in both design and construction,O,tinyint,YES,0,,1.0,LocationDetails,
+404,Loc,CustomFloodSOP,"Standard of flood protection return period; values from 0-10,000",O,tinyint,YES,0,"[0,10000]",1.0,LocationDetails,
+405,Loc,CustomFloodZone,User-defined flood zone,O,varchar(20),YES,,,1.0,LocationDetails,
+406,Loc,MultiStoryHall,Code that indicates if the building has a multi-story hall,O,tinyint,YES,0,,1.0,LocationDetails,
+407,Loc,BuildingExteriorOpening,Code that represents the percentage of exterior walls that are open (i.e. have windows or doors),O,tinyint,YES,0,,1.0,LocationDetails,
+408,Loc,ServiceEquipmentProtection,Code that indicates whether the service equipment is protected from flood,O,tinyint,YES,0,,1.0,LocationDetails,
+409,Loc,TallOneStory,"The height of the taller than usual one-story building (e.g. gymnasium, auditorium, church, etc.)",O,tinyint,YES,0,,1.0,LocationDetails,
+410,Loc,TerrainRoughness,Terrain conditions around the building.,O,tinyint,YES,0,,1.0,LocationDetails,
+411,Loc,NumberOfOccupants,Number of Occupants,O,int,YES,,"[1,)",,WorkersComp,
+412,Loc,Payroll,Total payroll,O,int,YES,,"[1,)",,WorkersComp,
+413,ReinsInfo,ReinsNumber,Reinsurance number,R,int,NO,,"[1,)",,ReinsuranceInfo,
+414,ReinsInfo,ReinsName,Reinsurance name,O,varchar(30),YES,,,,ReinsuranceInfo,
+415,ReinsInfo,ReinsLayerNumber,Reinsurance layer for information / ordering purposes,O,int,YES,,"[1,)",,ReinsuranceInfo,
+416,ReinsInfo,ReinsPeril,Perils for reinsurance financial terms,R,varchar(250),NO,,,,ReinsuranceInfo,PerilCode
+417,ReinsInfo,ReinsInceptionDate,Reinsurance inception date - in ISO 8601 format: YYYY-MM-DD,O,smalldatetime,YES,,,,ReinsuranceInfo,
+418,ReinsInfo,ReinsExpiryDate,Reinsurance expiry date - in ISO 8601 format: YYYY-MM-DD,O,smalldatetime,YES,,,,ReinsuranceInfo,
+419,ReinsInfo,CededPercent,Reinsurance ceded percentage. Used mainly in surplus treaties. Applies before other reinsurance terms. Values between 0 to 1 (e.g. 12% entered as 0.12),O,float,YES,1,"[0,1]",,ReinsuranceInfo,
+420,ReinsInfo,RiskLimit,Reinsurance per-risk limit,O,float,YES,0,"[0,)",,ReinsuranceInfo,
+421,ReinsInfo,RiskAttachment,Reinsurance per-risk attachment point,O,float,YES,0,"[0,)",,ReinsuranceInfo,
+422,ReinsInfo,OccLimit,Reinsurance occurrence limit,O,float,YES,0,"[0,)",,ReinsuranceInfo,
+423,ReinsInfo,OccAttachment,Reinsurance per occurrence attachment,O,float,YES,0,"[0,)",,ReinsuranceInfo,
+424,ReinsInfo,OccFranchiseDed,Reinsurance franchise deductible,O,float,YES,0,"[0,)",,ReinsuranceInfo,
+425,ReinsInfo,OccReverseFranchise,"Reinsurance reverse franchise - a value of loss that, if exceeded, results in no payment being made for this event from the reinsurer to insurer.",O,float,YES,0,"[0,)",,ReinsuranceInfo,
+426,ReinsInfo,AggLimit,Maximum amount payable under this treaty during the AggPeriod,O,float,YES,0,"[0,)",,ReinsuranceInfo,
+427,ReinsInfo,AggAttachment,The aggregate monetary amount during a given AggPeriod that the resinured retains under this treaty,O,float,YES,0,"[0,)",,ReinsuranceInfo,
+428,ReinsInfo,AggPeriod,Aggregate period associated with the aggregate limits and attachments (in days). Default value = 365 (1 year),O,float,YES,365,"[0,3650]",,ReinsuranceInfo,
+429,ReinsInfo,PlacedPercent,Percentage of the limit that has been placed in the reinsurance market. The main percentage used for reinsurance treaties other than surplus. Applies after other reinsurance terms. Values between 0 to 1 (e.g. 12% entered as 0.12),R,float,NO,,"[0,1]",,ReinsuranceInfo,
+430,ReinsInfo,ReinsCurrency,Reinsurance currency,R,char(3),NO,,,,ReinsuranceInfo,Currency
+431,ReinsInfo,InuringPriority,Reinsurance inuring priority capturing the order in which reinsurance contracts apply. Treaties with lower number inuring priorities apply first.,R,tinyint,NO,,"[1,)",,ReinsuranceInfo,
+432,ReinsInfo,ReinsType,Type of reinsurance contract,R,varchar(3),NO,,,,ReinsuranceInfo,
+433,ReinsInfo,AttachmentBasis,Reinsurance attachment basis,O,char(2),YES,('LO'),,,ReinsuranceInfo,
+434,ReinsInfo,Reinstatement,Number of reinstatements,O,tinyint,YES,,"[0,)",,ReinsuranceInfo,
+435,ReinsInfo,ReinstatementCharge,"Reinstatement charge as %; semi-colon separated if different for each reinstatement (e.g. 1-free, 2-50%, 3-100% should be entered as: 0;0.5;1). If all reinstatements are the same, then just one number is sufficient (e.g. 3 reinstatements at 100% should be entered as 1)",O,varchar(50),YES,,,,ReinsuranceInfo,
+436,ReinsInfo,ReinsPremium,Reinsurance premium,O,float,YES,0,"[0,)",,ReinsuranceInfo,
+437,ReinsInfo,DeemedPercentPlaced,"Deemed percent placed, used to represent notional contracts or any part of the contract being notional. For fully notional contracts, enter 1 (i.e. 100%). For partially placed contracts, enter any value between 0 and 1. For real contracts, enter 0.",O,float,YES,0,"[0,1]",,ReinsuranceInfo,
+438,ReinsInfo,ReinsFXrate,Reinsurance exchange rate (as the contractual reinsurance rate can be different from the actual exchange rates used for policies and locations),O,float,YES,1,"[0,)",,ReinsuranceInfo,
+439,ReinsInfo,TreatyShare,The percentage of a treaty that a given reinsurer may write. Values between 0 to 1 (e.g. 12% entered as 0.12).,O,float,YES,1,"[0,1]",,ReinsuranceInfo,
+440,ReinsInfo,UseReinsDates,A flag to indicate if reinsurance contract dates or  policy inception / expiry dates are to be considered when calculating losses (Y) or ignored (N).,O,char(1),YES,N,,,ReinsuranceInfo,
+441,ReinsScope,ReinsNumber,Reinsurance number to link with ReinsInfo file,R,int,NO,,"[1,)",,ReinsuranceScope,
+442,ReinsScope,PortNumber,Portfolio number: used for defining treaty scope in the reinsurance scope file,CR,varchar(20),YES,,,,ReinsuranceScope,
+443,ReinsScope,AccNumber,Account number:  used for defining treaty scope in the reinsurance scope file,CR,nvarchar(40),YES,,,,ReinsuranceScope,
+444,ReinsScope,PolNumber,Policy number:  used for defining treaty scope in the reinsurance scope file,CR,varchar(20),YES,,,,ReinsuranceScope,
+445,ReinsScope,LocGroup,Location group name:  used for defining treaty scope in the reinsurance scope file,CR,nvarchar(20),YES,,,,ReinsLoc; ReinsuranceScope,
+446,ReinsScope,LocNumber,Location number:  used for defining treaty scope in the reinsurance scope file,CR,nvarchar(20),YES,,,,ReinsuranceScope,
+447,ReinsScope,CedantName,Cedant name:  used for defining treaty scope in the reinsurance scope file,CR,varchar(40),YES,,,,ReinsuranceScope,
+448,ReinsScope,ProducerName,Producer name:  used for defining treaty scope in the reinsurance scope file,CR,varchar(40),YES,,,,ReinsuranceScope,
+449,ReinsScope,LOB,Line of business:  used for defining treaty scope in the reinsurance scope file,CR,varchar(20),YES,,,,ReinsuranceScope,
+450,ReinsScope,CountryCode,Country code: used for defining treaty scope in the reinsurance scope file,O,char(2),YES,,,,ReinsuranceScope,
+451,ReinsScope,ReinsTag,Reinsurance tag: user defined field to for defining treaty scope in the reinsurance scope file,CR,varchar(20),YES,,,,ReinsuranceScope,
+452,ReinsScope,CededPercent,"Ceded percentage (for 12%, enter 0.12). Within the reinsurance scope file, CededPercent should only be entered for surplus share treaties.",CR,float,YES,1,"[0,1]",,ReinsAcc; ReinsPol; ReinsLoc; ReinsuranceScope,
+453,ReinsInfo,RiskLevel,Code to indicate the definition of 'risk' for the per-risk terms in this particular treaty (or portion of the treaty),R,char(3),YES,,,,ReinsLoc; ReinsuranceScope,
+454,Loc,StaticMotorVehicle,Identifies whether a risk is static or dynamic (moves from location to location),O,tinyint,YES,0,"[0,1]",,LocationDetails,
+455,Acc,CondClass,Flags whether a condition is a policy restriction,O,tinyint,YES,0,"[0,1]",,Conditions,
+456,Acc; Loc,CondTag,Identifies a group of locations which are subject to one or more conditions.,CR,varchar(20),YES,,,,Conditions,
+457,Acc; Loc; ReinsInfo; ReinsScope,OEDVersion,The OED schema version of the file,O,varchar(10),YES,latest version,,,,
+458,Loc,IsAggregate,Agggrated Data based on NumberOfBuildings field,O,tinyint,YES,0,"[0,1]",,,
+459,Loc,OccupantPeriod,Period/time of day/season for 'NumberOfOccupants',O,tinyint,Yes,0,"[0,8]",,,

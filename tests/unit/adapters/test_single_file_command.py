@@ -75,6 +75,10 @@ class TestSingleCommandFileAdapter(TestCase):
         self.run_test(function=self.adapter_main_fail_reinsinfo, file_name="fail_reinsinfo.csv",
                       file_type="ReinsInfo")
 
+    def test_adapter_main_spiked_loc(self):
+        self.run_test(function=self.adapter_main_spiked_loc, file_name="spiked_loc.csv",
+                      file_type="Loc")
+
     def adapter_main_pass_loc(self):
         expected_outcome = "valid field check passed for Loc file\n" \
                            "required field check passed for Loc file\n" \
@@ -119,6 +123,12 @@ class TestSingleCommandFileAdapter(TestCase):
                         "column ReinsNumbers is not supported in file ReinsInfo and therefore cannot be type checked\n" \
                         "column ReinsNames is not supported in file ReinsInfo and therefore cannot be type checked"
         self.compare_data(path=self.reinsinfo_outcome_path, expected_data=expected_data)
+
+    def adapter_main_spiked_loc(self):
+        expected_data = "valid field check passed for Loc file\n" \
+                        "required field check passed for Loc file\n" \
+                        "column: IsTenant row: 5 is a <class 'str'> instead of a <class 'int'> in file Loc"
+        self.compare_data(path=self.loc_outcome_path, expected_data=expected_data)
 
 
 if __name__ == "__main__":

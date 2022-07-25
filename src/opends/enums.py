@@ -2,6 +2,7 @@
 This file defines the enums for the data standards.
 """
 from enum import Enum
+from opends.custom_exceptions import PandasValueException
 
 
 class PythonValueTypes(Enum):
@@ -20,6 +21,53 @@ class PythonValueTypes(Enum):
             return float
         if self == PythonValueTypes.STRING:
             return str
+
+
+class PandasValue(Enum):
+    """
+    This class is responsible for converting data from the sql_data_type to a pandas data type.
+    """
+    FLOAT = "float"
+    INT = "int"
+    TINY_INT = "tinyint"
+    STRING = "char"
+    DATETIME = "smalldatetime"
+
+    @staticmethod
+    def from_str(input_str: str) -> "PandasValue":
+        """
+        Creates a PandasValue enum from an input string. Considering that there are checks in this method it is
+        preferred to the __init__ method.
+        
+        Args:
+            input_str: (str) the data type to be converted to a Pandas data type
+
+        Returns: (PandasValue) the constructed enum
+        """
+        processed_str: str = input_str.lower()
+        if "char" in processed_str:
+            return PandasValue(PandasValue.STRING)
+        if input_str == "decimal":
+            return PandasValue(PandasValue.FLOAT)
+        if input_str == "date":
+            return PandasValue(PandasValue.DATETIME)
+        if input_str == "smallint":
+            return PandasValue(PandasValue.TINY_INT)
+        return PandasValue(input_str)
+    
+    @property
+    def pandas_value(self) -> str:
+        if self == PandasValue.FLOAT:
+            return "float64"
+        if self == PandasValue.INT:
+            return "int64"
+        if self == PandasValue.TINY_INT:
+            return "int32"
+        if self == PandasValue.STRING:
+            return "category"
+        if self == PandasValue.DATETIME:
+            return "category"
+        raise PandasValueException(f"{self.value} is not supported in the pandas value conversion")
 
 
 class AllowBlank(Enum):

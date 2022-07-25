@@ -24,14 +24,16 @@ class ValidFieldCheck(Check):
     def run(self) -> None:
         """
         Loops through the column names in the self.data to see if the column name is present in the file metadata.
-        If all the columns in the self.data are present in the metadata then the test has passed.
+        If all the columns in the self.data are present in the metadata then the test has passed. If the field
+        has a "flexi{filetype}" prefix then it will be allowed not matter what it is called.
 
         Returns: None
         """
         data_columns = list(self.data)
 
         for column_name in data_columns:
-            if self.file.fields.get(column_name) is None:
+            flexi_name: bool = self.check_if_flexi_field_name(name=column_name)
+            if self.file.fields.get(column_name) is None and flexi_name is False:
                 self.log_data.append(f"field name: {column_name} for {self.file.name} file is not valid")
 
         if len(self.log_data) == 0:
