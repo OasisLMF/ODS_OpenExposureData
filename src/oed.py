@@ -5,6 +5,8 @@ __all__ = [
     'pd_converter',
     'usual_file_name',
     'get_ods_fields',
+    'prepare_multicurrency_support',
+    'convert_currency',
     'read_csv',
     'read_parquet',
     'csv_to_parquet',
@@ -131,7 +133,21 @@ class CurrencyRate:
             raise Exception(f"currency pair {(cur_from, cur_to)} is missing")
 
 
-def convert_currency(oed_df, reporting_currency, currency_rate, all_ods_fields):
+def prepare_multicurrency_support(oed_df):
+    insensitive_column_map = {str(col).lower():col for col in oed_df.columns}
+
+    for currency_col, file_type in currency_file.items():
+        if currency_col in insensitive_column_map:
+            break
+    else:
+        return None, None
+
+    if 'termcurrency' not in oed_df.columns:
+        oed_df['termcurrency'] = oed_df[insensitive_column_map[currency_col]]
+    return oed_df['termcurrency'].unique(), file_type
+
+
+def convert_currency(oed_df, reporting_currency, currency_rate, ods_fields):
     """
     Convert inplace the columns in currency unit (BuildingTIV, LocNetPremium, LocDed1Building (depending on type),
     LocMinDed1Building, ...) to the reporting_currency
@@ -144,21 +160,9 @@ def convert_currency(oed_df, reporting_currency, currency_rate, all_ods_fields):
     :return: None
     """
 
-    orig_cols = oed_df.columns
-    oed_df.columns = [str(col).lower() for col in orig_cols]
+    insensitive_column_map = {str(col).lower():col for col in oed_df.columns}
+    insensitive_ods_fields = {key.lower(): value for key, value in ods_fields.items()}
 
-    for currency_col, file_type in currency_file.items():
-        if currency_col in oed_df.columns:
-            break
-    else:
-        oed_df.columns = orig_cols
-        return
-
-    insensitive_ods_fields = {key.lower(): value for key, value in all_ods_fields[file_type].items()}
-
-    if 'termcurrency' not in oed_df.columns:
-        oed_df['termcurrency'] = oed_df[currency_col]
-        orig_cols = list(orig_cols) + ['termcurrency']
     transaction_currencies = oed_df['termcurrency'].unique()
 
     for orig_cur in transaction_currencies:
@@ -167,30 +171,29 @@ def convert_currency(oed_df, reporting_currency, currency_rate, all_ods_fields):
         rate = currency_rate.get_rate(orig_cur, reporting_currency)
 
         orig_cur_rows = (oed_df['termcurrency'] == orig_cur)
-        for column in oed_df.columns:
-            field_type = insensitive_ods_fields.get(column, {}).get('Back End DB Field Name', '').lower()
+        for column_lower, column in insensitive_column_map.items():
+            field_type = insensitive_ods_fields.get(column_lower, {}).get('Back End DB Field Name', '').lower()
             if (field_type in ['tax', 'grosspremium', 'netpremium', 'brokerage', 'extraexpenselimit', 'minded', 'maxded']
-                    or column.lower().endswith('tiv')):
+                    or column_lower.endswith('tiv')):
                 row_filter = orig_cur_rows
             elif field_type == 'ded':
-                column_type_name = column.replace('ded', 'dedtype')
-                row_filter = orig_cur_rows & (oed_df[column_type_name] == 0)
+                column_type_name = column_lower.replace('ded', 'dedtype')
+                row_filter = orig_cur_rows & (oed_df[insensitive_column_map[column_type_name]] == 0)
             elif field_type == 'limit':
-                column_type_name = column.replace('limit', 'limittype')
-                row_filter = orig_cur_rows & (oed_df[column_type_name] == 0)
+                column_type_name = column_lower.replace('limit', 'limittype')
+                row_filter = orig_cur_rows & (oed_df[insensitive_column_map[column_type_name]] == 0)
             elif field_type in ['payoutstart', 'payoutend', 'payoutlimit']:
                 column_type_name = 'payouttype'
-                row_filter = orig_cur_rows & (oed_df[column_type_name] == 0)
+                row_filter = orig_cur_rows & (oed_df[insensitive_column_map[column_type_name]] == 0)
             elif field_type in ['triggerstart', 'triggerend']:
                 column_type_name = 'triggertype'
-                row_filter = orig_cur_rows & (oed_df[column_type_name] == 0)
+                row_filter = orig_cur_rows & (oed_df[insensitive_column_map[column_type_name]] == 0)
             else:  # not a currency unit column we go to the next one
                 continue
             oed_df.loc[row_filter, column] *= rate
 
     oed_df['termcurrency'] = reporting_currency
     oed_df['termcurrency'] = oed_df['termcurrency'].astype('category')
-    oed_df.columns = orig_cols
 
 
 def read_csv(filepath_or_buffer, df_engine=pd, file_type=None, dtype=None, default=None, **kwargs):
