@@ -12,5 +12,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           export PYTHONPATH="$PWD/src/"
-      - name: run tests
-        run: python -m unittest discover ./tests/
+          python -m unittest discover ./tests/
