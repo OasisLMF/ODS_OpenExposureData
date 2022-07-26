@@ -122,7 +122,7 @@ ODS is governed by a steering committee that meets periodically and is chaired b
 The governance and process around releases and updates of ODS can be found here but a schematic of the overview is shown below:
 https://github.com/OasisLMF/OpenDataStandards/tree/master/Docs
 
-<img src="images/ODS_Gov_Process_Schematic.png" width="1050"/> &nbsp;
+<img src="images/ODS_Gov_Process_Structure_v0.3.png" width="1050"/> &nbsp;
  
 A **Technical Working Group (TWG)** will maintain and update the assets that define the data standards. Although the TWG has a few core members from Oasis LMF and Nasdaq, its dynamic and will involve the users from the community who have proposed the updates or changes.
 
