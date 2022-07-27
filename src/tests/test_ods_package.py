@@ -11,9 +11,9 @@ from ..oed import (
     get_ods_fields,
     parquet_to_csv,
     csv_to_parquet,
-    CurrencyRate,
     convert_currency,
-    prepare_multicurrency_support
+    prepare_multicurrency_support,
+    DictBasedCurrencyRates
 )
 
 
@@ -111,13 +111,15 @@ class OdsPackageTests(TestCase):
     def test_convert_currency(self):
         loc_df_1 = read_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['Loc']), file_type='Loc')
         loc_df_2 = read_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['Loc']), file_type='Loc')
-        roe = CurrencyRate.from_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['roe']))
-        _, filte_type_1 = prepare_multicurrency_support(loc_df_1)
-        convert_currency(loc_df_1, 'GBP', roe, self.ods_fields[filte_type_1])
-        convert_currency(loc_df_1, 'USD', roe, self.ods_fields[filte_type_1])
-        _, filte_type_2 = prepare_multicurrency_support(loc_df_2)
-        convert_currency(loc_df_2, 'USD', roe, self.ods_fields[filte_type_2])
-        # loc_df_2.to_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['LocExp']), index=False)
+        roe = DictBasedCurrencyRates.from_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['roe']))
+
+        currency_col, file_type_1 = prepare_multicurrency_support(loc_df_1)
+        convert_currency(loc_df_1, currency_col, 'GBP', roe, self.ods_fields[file_type_1])
+        convert_currency(loc_df_1, currency_col, 'USD', roe, self.ods_fields[file_type_1])
+        currency_col, file_type_2 = prepare_multicurrency_support(loc_df_2)
+        convert_currency(loc_df_2, currency_col, 'USD', roe, self.ods_fields[file_type_2])
+
+        #loc_df_2.to_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['LocExp']), index=False)
         expected = read_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['LocExp']), file_type='Loc')
         pd.testing.assert_frame_equal(loc_df_1, expected)
         pd.testing.assert_frame_equal(loc_df_2, expected)

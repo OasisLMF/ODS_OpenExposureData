@@ -5,6 +5,7 @@ __all__ = [
     'pd_converter',
     'usual_file_name',
     'get_ods_fields',
+    'DictBasedCurrencyRates',
     'prepare_multicurrency_support',
     'convert_currency',
     'read_csv',
@@ -58,7 +59,7 @@ usual_file_name = {'location': 'Loc',
 
 currency_file = {'loccurrency': 'Loc',
                  'acccurrency': 'Acc',
-                 'reinscurrency': 'ReinsScope'}
+                 'reinscurrency': 'ReinsInfo'}
 
 
 ods_field_fp = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'OpenExposureData_Spec.csv')
@@ -66,7 +67,7 @@ ods_field_fp = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'OpenExp
 __ods_fields = None
 
 
-def get_ods_fields(df_engine):
+def get_ods_fields(df_engine=pd):
     """get info on ods field by loading ods schema into global variable __ods_fields"""
     global __ods_fields
     if __ods_fields is None:
@@ -105,7 +106,7 @@ def get_ods_fields(df_engine):
     return __ods_fields
 
 
-class CurrencyRate:
+class DictBasedCurrencyRates:
     def __init__(self, roe_dict):
         self.roe_dict = roe_dict
 
@@ -117,12 +118,24 @@ class CurrencyRate:
         return cls(roe_dict)
 
     @classmethod
-    def from_csv(cls, *args, **kwargs):
-        return cls.from_dataframe(pd.read_csv(*args, **kwargs))
+    def from_list(cls, currency_rates):
+        return cls({(cur_from, cur_to): roe for cur_from, cur_to, roe in currency_rates})
 
     @classmethod
-    def from_parquet(cls, *args, **kwargs):
-        return cls.from_dataframe(pd.read_parquet(*args, **kwargs))
+    def from_csv(cls, filepath_or_buffer, df_engine=pd, **kwargs):
+        if df_engine is None:
+            raise Exception(f"df_engine parameter not specified, you must install pandas"
+                            " or pass your DataFrame engine (modin, dask,...)")
+
+        return cls.from_dataframe(df_engine.read_csv(filepath_or_buffer, **kwargs))
+
+    @classmethod
+    def from_parquet(cls, filepath_or_buffer, df_engine=pd, **kwargs):
+        if df_engine is None:
+            raise Exception(f"df_engine parameter not specified, you must install pandas"
+                            " or pass your DataFrame engine (modin, dask,...)")
+
+        return cls.from_dataframe(df_engine.read_parquet(filepath_or_buffer, **kwargs))
 
     def get_rate(self, cur_from, cur_to):
         if (cur_from, cur_to) in self.roe_dict:
@@ -130,7 +143,7 @@ class CurrencyRate:
         elif (cur_to, cur_from) in self.roe_dict:
             return 1. / self.roe_dict[(cur_to, cur_from)]
         else:
-            raise Exception(f"currency pair {(cur_from, cur_to)} is missing")
+            raise ValueError(f"currency pair {(cur_from, cur_to)} is missing")
 
 
 def prepare_multicurrency_support(oed_df):
@@ -142,16 +155,17 @@ def prepare_multicurrency_support(oed_df):
     else:
         return None, None
 
-    if 'termcurrency' not in oed_df.columns:
-        oed_df['termcurrency'] = oed_df[insensitive_column_map[currency_col]]
-    return oed_df['termcurrency'].unique(), file_type
+    if 'originalcurrency' not in oed_df.columns:
+        oed_df['originalcurrency'] = oed_df[insensitive_column_map[currency_col]]
+        oed_df['rateofexchange'] = 1.
+    return insensitive_column_map[currency_col], file_type
 
 
-def convert_currency(oed_df, reporting_currency, currency_rate, ods_fields):
+def convert_currency(oed_df, currency_col, reporting_currency, currency_rate, ods_fields):
     """
     Convert inplace the columns in currency unit (BuildingTIV, LocNetPremium, LocDed1Building (depending on type),
     LocMinDed1Building, ...) to the reporting_currency
-    store the reporting_currency in termcurrencyZ
+    store the original currency  in origincurency, and the rate of exchange in rateofexchange
 
     :param oed_df: OED Dataframe (Loc, Acc, ...)
     :param reporting_currency: currency to convert to
@@ -163,14 +177,15 @@ def convert_currency(oed_df, reporting_currency, currency_rate, ods_fields):
     insensitive_column_map = {str(col).lower():col for col in oed_df.columns}
     insensitive_ods_fields = {key.lower(): value for key, value in ods_fields.items()}
 
-    transaction_currencies = oed_df['termcurrency'].unique()
+    transaction_currencies = oed_df[currency_col].unique()
 
     for orig_cur in transaction_currencies:
         if orig_cur == reporting_currency:
             continue
         rate = currency_rate.get_rate(orig_cur, reporting_currency)
 
-        orig_cur_rows = (oed_df['termcurrency'] == orig_cur)
+        orig_cur_rows = (oed_df[currency_col] == orig_cur)
+        oed_df.loc[orig_cur_rows, 'rateofexchange'] *= rate
         for column_lower, column in insensitive_column_map.items():
             field_type = insensitive_ods_fields.get(column_lower, {}).get('Back End DB Field Name', '').lower()
             if (field_type in ['tax', 'grosspremium', 'netpremium', 'brokerage', 'extraexpenselimit', 'minded', 'maxded']
@@ -192,8 +207,8 @@ def convert_currency(oed_df, reporting_currency, currency_rate, ods_fields):
                 continue
             oed_df.loc[row_filter, column] *= rate
 
-    oed_df['termcurrency'] = reporting_currency
-    oed_df['termcurrency'] = oed_df['termcurrency'].astype('category')
+    oed_df[currency_col] = reporting_currency
+    oed_df[currency_col] = oed_df[currency_col].astype('category')
 
 
 def read_csv(filepath_or_buffer, df_engine=pd, file_type=None, dtype=None, default=None, **kwargs):
@@ -233,7 +248,7 @@ def read_csv(filepath_or_buffer, df_engine=pd, file_type=None, dtype=None, defau
             pd_dtype = {**pd_dtype, **dtype}
         df = df_engine.read_csv(filepath_or_buffer, dtype=pd_dtype, **kwargs)
     else:
-        # manage case insensitive dtype mapping
+        # manage case-insensitive dtype mapping
         pd_dtype = {input_field_name.lower(): info['pd_dtype'] for input_field_name, info in ods_fields.items()}
         if dtype:
             for key, value in dtype.items():
