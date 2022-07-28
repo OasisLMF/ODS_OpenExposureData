@@ -33,10 +33,10 @@ class RequiredFieldsCheck(Check):
         """
         type_dict: Dict[str, str] = dict()
 
-        data_columns: List[str] = self.file.data_types
+        data_columns: Dict[str, str] = self.file.data_types
         file = self.template_data.files.get(self.file_type.value)
 
-        for data_column in data_columns:
+        for data_column in data_columns.keys():
             data_field = file.fields.get(data_column)
             if data_field is not None:
                 type_dict[data_field.name] = data_field.pandas_value.pandas_value

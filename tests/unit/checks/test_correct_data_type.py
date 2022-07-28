@@ -6,6 +6,7 @@ from unittest import TestCase, main
 import pandas as pd
 
 from opends.checks.correct_data_type import CorrectDataTypeCheck
+from opends.components.offending_columns import OffendingColumnsSingleton
 from opends.components.template_loader import TemplateLoader
 from tests.unit.utils import DIR_PATH, META_DATA_PATH
 
@@ -20,7 +21,7 @@ class TestCorrectDataTypeCheck(TestCase):
         self.test = CorrectDataTypeCheck(data=self.df, file=self.file)
 
     def tearDown(self) -> None:
-        pass
+        OffendingColumnsSingleton._instances = {}
 
     def test__pass_cast_column_d_type(self):
         # spiked number = LocNumber, spiked category = PortNumber

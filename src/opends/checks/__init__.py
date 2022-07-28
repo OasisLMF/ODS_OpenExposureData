@@ -7,6 +7,7 @@ import pandas as pd
 
 from opends.checks.base import Check
 from opends.checks.correct_data_type import CorrectDataTypeCheck
+from opends.checks.correct_range import CorrectRangeCheck
 from opends.checks.required_fields import RequiredFieldsCheck
 from opends.checks.valid_fields import ValidFieldCheck
 from opends.components.file import File
@@ -25,7 +26,8 @@ def perform_checks(data: pd.DataFrame, file: File) -> List[str]:
     checks: List[Check] = [
         ValidFieldCheck(data=data, file=file),
         RequiredFieldsCheck(data=data, file=file),
-        CorrectDataTypeCheck(data=data, file=file)
+        CorrectDataTypeCheck(data=data, file=file),
+        CorrectRangeCheck(data=data, file=file)
     ]
     for check in checks:
         check.run()
