@@ -6,7 +6,7 @@ import pandas as pd
 from opends.checks.base import Check
 from opends.components.field import DataField
 from opends.components.file import File
-from typing import Optional
+from typing import Optional, List
 
 
 class CorrectDataTypeCheck(Check):
@@ -22,6 +22,7 @@ class CorrectDataTypeCheck(Check):
             file: (File) the metadata around the data to be checked
         """
         super().__init__(data=data, file=file, check_name="correct data types")
+        self.offending_columns: List[str] = []
 
     def _pass_cast_column_d_type(self, d_type: str, column_name: str) -> bool:
         """
@@ -96,9 +97,11 @@ class CorrectDataTypeCheck(Check):
             expected_type: Optional[str] = self.file.data_types.get(data_column)
 
             if expected_type is None:
+                self.offending_columns.append(data_column)
                 self._log_not_supported(column_name=data_column)
             else:
                 if self._pass_cast_column_d_type(d_type=expected_type, column_name=data_column) is False:
+                    self.offending_columns.append(data_column)
                     data_field = self.file.fields.get(data_column)
                     self._locate_offending_rows(column_name=data_column, data_field=data_field)
 

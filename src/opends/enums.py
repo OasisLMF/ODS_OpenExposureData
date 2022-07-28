@@ -100,3 +100,17 @@ class Required(Enum):
     O = "O"
     CR = "CR"
     R = "R"
+
+
+class FieldRangeType(Enum):
+    """
+    The types of limits that can be checked in data.
+
+    Attributes:
+        CATEGORY: the data value has to be one of a number of categories
+        RANGE: the data value has to be within a range of values
+        NONE: no range to be checked
+    """
+    CATEGORY = "category"
+    RANGE = "range"
+    NONE = None
