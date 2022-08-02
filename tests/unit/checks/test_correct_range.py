@@ -5,10 +5,10 @@ from unittest import TestCase, main
 
 import pandas as pd
 
-from opends.checks.correct_range import CorrectRangeCheck
 from opends.checks.correct_data_type import CorrectDataTypeCheck
-from opends.components.template_loader import TemplateLoader
+from opends.checks.correct_range import CorrectRangeCheck
 from opends.components.offending_columns import OffendingColumnsSingleton
+from opends.components.template_loader import TemplateLoader
 from tests.unit.utils import DIR_PATH, META_DATA_PATH
 
 
@@ -31,23 +31,24 @@ class TestCorrectRangeCheck(TestCase):
 
     def test_clean_run(self):
         self.test.run()
-<<<<<<< HEAD
-        self.assertEqual(['row 5 out of range for column Latitude in file Loc'], self.test.log_data)
-=======
-        self.assertEqual(['data range checking passed for file: Loc'], self.test.log_data)
+        expected_data = [
+            'row 4 out of range for column IsTenant in file Loc',
+            'row 5 out of range for column Latitude in file Loc'
+        ]
+        self.assertEqual(expected_data, self.test.log_data)
 
     def test_out_of_range_run(self):
         self.test.data = pd.read_csv(META_DATA_PATH + "/outranged_loc.csv", index_col=False)
         self.test.run()
 
         expected_data = [
-            'row 2 in column CountryCode is out of bounds for file Loc',
-            'row 7 in column CountryCode is out of bounds for file Loc',
-            'row 3 in column Latitude is out of bounds for file Loc',
-            'row 6 in column Latitude is out of bounds for file Loc'
+            'row 4 out of range for column IsTenant in file Loc',
+            'row 2 out of range for column CountryCode in file Loc',
+            'row 7 out of range for column CountryCode in file Loc',
+            'row 3 out of range for column Latitude in file Loc',
+            'row 6 out of range for column Latitude in file Loc'
         ]
         self.assertEqual(expected_data, self.test.log_data)
->>>>>>> 69503ac1f6c188c1990026dc6d7939c7e4ef9cb5
 
 
 if __name__ == "__main__":

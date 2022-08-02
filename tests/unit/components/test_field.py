@@ -81,6 +81,46 @@ class TestDataField(TestCase):
         with self.assertRaises(ValueError):
             self.test.check_range(array=self.test_array)
 
+    def test_min_val_individual(self):
+        self.test.min_val = 5
+        self.test.max_val = None
+        self.test.valid_values = None
+
+        self.assertEqual(False, self.test.check_individual_rage(value=4))
+        self.assertEqual(True, self.test.check_individual_rage(value=5))
+        self.assertEqual(False, self.test.check_individual_rage(value="test"))
+
+    def test_max_val_individual(self):
+        self.test.min_val = None
+        self.test.max_val = 5
+        self.test.valid_values = None
+
+        self.assertEqual(True, self.test.check_individual_rage(value=5))
+        self.assertEqual(False, self.test.check_individual_rage(value=6))
+        self.assertEqual(False, self.test.check_individual_rage(value="test"))
+
+    def test_multiple_vals_individual(self):
+        self.test.min_val = 3
+        self.test.max_val = 6
+        self.test.valid_values = None
+
+        self.assertEqual(True, self.test.check_individual_rage(value=5))
+        self.assertEqual(True, self.test.check_individual_rage(value=6))
+        self.assertEqual(True, self.test.check_individual_rage(value=3))
+
+        self.assertEqual(False, self.test.check_individual_rage(value=7))
+        self.assertEqual(False, self.test.check_individual_rage(value=2))
+        self.assertEqual(False, self.test.check_individual_rage(value="test"))
+
+    def test_check_unsafe_array(self):
+        self.test.min_val = 5
+        outcome = self.test.check_unsafe_array(array=self.test_array)
+        self.assertEqual([5, 7], list(outcome))
+
+        self.test.min_val = 0
+        outcome = self.test.check_unsafe_array(array=self.test_array)
+        self.assertEqual([], list(outcome))
+
 
 if __name__ == "__main__":
     main()

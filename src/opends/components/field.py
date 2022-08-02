@@ -52,6 +52,9 @@ class DataField:
         """
         Checks to see if the data belonging to a data field is within range.
 
+        This function is faster than the self.check_unsafe_array function because this function uses built-in numpy
+        functions. Only use the self.check_unsafe_array function if you are unsure of the data types in the array.
+
         Args:
             array: (np.array) the data to be checked
 
@@ -77,6 +80,60 @@ class DataField:
             f"min_val: {self.min_val} max_val: {self.max_val} valid_values: {self.valid_values} "
             f"name: {self.name} field desc: {self.field_desc}"
         )
+
+    def check_individual_rage(self, value: Union[str, int, float]) -> bool:
+        """
+        Checks the range of an individual value.
+
+        Args:
+            value: (Union[str, int, float]) value to be checked
+
+        Returns: (bool) False if not in range, True if in range
+        """
+        try:
+            if self.min_val is not None and self.max_val is None:
+                value = float(value)
+                if value >= float(self.min_val):
+                    return True
+                return False
+
+            if self.max_val is not None and self.min_val is None:
+                value = float(value)
+                if value <= float(self.max_val):
+                    return True
+                return False
+
+            if self.max_val is not None and self.min_val is not None:
+                value = float(value)
+                if float(self.max_val) >= value >= float(self.min_val):
+                    return True
+                return False
+
+            if self.valid_values is not None:
+                if str(value) in self.valid_values:
+                    return True
+                return False
+
+        except ValueError:
+            return False
+        return False
+
+    def check_unsafe_array(self, array: np.array) -> List[int]:
+        """
+        Checks to see if the data belonging to a data field is within range.
+
+        This function is slower than the self.check_range function because this function doesn't use built-in numpy
+        functions. Only use the self.check_range function if you are sure of the data types in the array.
+
+        Args:
+            array: (np.array) the data to be checked
+
+        Returns: (List[int]) a list of indexes where the values are out of range
+        """
+        buffer: List[bool] = []
+        for value in list(array):
+            buffer.append(self.check_individual_rage(value=value))
+        return list(np.where(np.array(buffer) == False)[0])
 
     @property
     def should_check(self) -> bool:
