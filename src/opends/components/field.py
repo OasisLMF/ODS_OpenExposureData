@@ -58,13 +58,13 @@ class DataField:
         Returns: (List[int]) a list of indexes where the values are out of range
         """
         if self.min_val is not None and self.max_val is None:
-            return list(np.where(array < self.min_val)[0])
+            return list(np.where(array < float(self.min_val))[0])
 
         if self.max_val is not None and self.min_val is None:
-            return list(np.where(array > self.max_val)[0])
+            return list(np.where(array > float(self.max_val))[0])
 
         if self.max_val is not None and self.min_val is not None:
-            outcome = list(np.where(array > self.max_val)[0]) + list(np.where(array < self.min_val)[0])
+            outcome = list(np.where(array > float(self.max_val))[0]) + list(np.where(array < float(self.min_val))[0])
             outcome.sort()
             return outcome
 

@@ -30,6 +30,7 @@ class TestCorrectRangeCheck(TestCase):
 
     def test__check_range(self):
         self.test.run()
+        self.assertEqual(['row 5 out of range for column Latitude in file Loc'], self.test.log_data)
 
 
 if __name__ == "__main__":

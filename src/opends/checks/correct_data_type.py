@@ -93,6 +93,7 @@ class CorrectDataTypeCheck(Check):
         """
         data_columns = list(self.data)
 
+        # TODO => get rid of offending columns and do try accept to capture everything in one go
         for data_column in data_columns:
             expected_type: Optional[str] = self.file.data_types.get(data_column)
 
