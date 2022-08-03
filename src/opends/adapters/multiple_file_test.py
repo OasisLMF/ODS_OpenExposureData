@@ -62,7 +62,7 @@ class MultipleFileTestAdapter:
     def csv_files(self) -> List[str]:
         if self._csv_files is None:
             all_files = os.listdir(self.root_path)
-            self._csv_files = list(filter(lambda f: f.endswith('.csv'), all_files))
+            self._csv_files = list(filter(lambda f: f.endswith('.csv'), all_files)).sort()
         return self._csv_files
 
 

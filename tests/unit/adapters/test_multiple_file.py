@@ -32,9 +32,9 @@ class MultipleFileTestAdapterTest(TestCase):
     def compare_data(self, path: str, expected_data: List[str]):
         with open(path, "r") as file:
             data = file.read()
-        print(data.split("\n"))
-        print("")
-        # self.assertEqual(expected_data, data.split("\n"))
+        # print(data.split("\n"))
+        # print("")
+        self.assertEqual(expected_data, data.split("\n"))
 
     @staticmethod
     @patch("opends.adapters.multiple_file_test.os.getcwd")
@@ -63,21 +63,33 @@ class MultipleFileTestAdapterTest(TestCase):
             'fail_acc.csv',
             'fail_reinscope.csv'
         ]
-        print(self.test.csv_files)
-        print("")
-        # self.assertEqual(expected_outcome, self.test.csv_files)
+        another_outcome = [
+            'spiked_loc.csv',
+            'pass_reinsinfo.csv',
+            'fail_loc.csv',
+            'pass_acc.csv',
+            'fail_reinsinfo.csv',
+            'pass_reinscope.csv',
+            'outranged_loc.csv',
+            'pass_loc.csv',
+            'fail_reinscope.csv',
+            'fail_acc.csv'
+        ]
+        # print(self.test.csv_files)
+        # print("")
+        self.assertEqual(expected_outcome, self.test.csv_files)
 
     def test_file_path(self):
         self.assertEqual(META_DATA_PATH + "pass_acc.csv", self.test.file_path(file_name='pass_acc.csv'))
 
     def test_run_checks(self):
-        print(self.test.run_checks())
-        print("")
-        # self.assertEqual(EXPECTED_OUTCOME, self.test.run_checks())
+        # print(self.test.run_checks())
+        # print("")
+        self.assertEqual(EXPECTED_OUTCOME, self.test.run_checks())
 
     def test_adapter_main_pass_loc(self):
-        pass
-        # self.run_test(function=self.run_all)
+        # pass
+        self.run_test(function=self.run_all)
 
     def run_all(self):
         self.compare_data(path=self.outcome_path, expected_data=EXPECTED_OUTCOME)
