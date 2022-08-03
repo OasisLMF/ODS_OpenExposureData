@@ -33,6 +33,7 @@ class MultipleFileTestAdapterTest(TestCase):
         with open(path, "r") as file:
             data = file.read()
         print(data.split("\n"))
+        print("")
         # self.assertEqual(expected_data, data.split("\n"))
 
     @staticmethod
@@ -63,6 +64,7 @@ class MultipleFileTestAdapterTest(TestCase):
             'fail_reinscope.csv'
         ]
         print(self.test.csv_files)
+        print("")
         # self.assertEqual(expected_outcome, self.test.csv_files)
 
     def test_file_path(self):
@@ -70,6 +72,7 @@ class MultipleFileTestAdapterTest(TestCase):
 
     def test_run_checks(self):
         print(self.test.run_checks())
+        print("")
         # self.assertEqual(EXPECTED_OUTCOME, self.test.run_checks())
 
     def test_adapter_main_pass_loc(self):
