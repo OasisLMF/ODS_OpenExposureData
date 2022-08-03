@@ -49,16 +49,16 @@ class MultipleFileTestAdapterTest(TestCase):
 
     def test_csv_files(self):
         expected_outcome = [
+            'fail_reinsinfo.csv',
+            'pass_loc.csv',
+            'pass_reinsinfo.csv',
             'pass_acc.csv',
             'outranged_loc.csv',
-            'fail_reinsinfo.csv',
-            'pass_reinscope.csv',
-            'fail_reinscope.csv',
             'fail_loc.csv',
-            'pass_reinsinfo.csv',
             'spiked_loc.csv',
+            'pass_reinscope.csv',
             'fail_acc.csv',
-            'pass_loc.csv'
+            'fail_reinscope.csv'
         ]
         self.assertEqual(expected_outcome, self.test.csv_files)
 
@@ -76,24 +76,33 @@ class MultipleFileTestAdapterTest(TestCase):
 
 
 EXPECTED_OUTCOME = [
-    'valid field check passed for Acc file',
-    'required field check passed for Acc file',
-    'data type checking passed for file: Acc',
-    'data range checking passed for file: Acc',
-    'field name: AccNumbers for Loc file is not valid',
-    'field name: AccNumber for Loc file is missing',
-    'column AccNumbers is not supported in file Loc and therefore cannot be type checked',
-    "column: IsTenant row: 5 is a <class 'str'> instead of a <class 'int'> in file Loc",
-    'row 2 in column CountryCode is out of bounds for file Loc',
-    'row 7 in column CountryCode is out of bounds for file Loc',
-    'row 3 in column Latitude is out of bounds for file Loc',
-    'row 6 in column Latitude is out of bounds for file Loc',
     'field name: ReinsNumbers for ReinsInfo file is not valid',
     'field name: ReinsNames for ReinsInfo file is not valid',
     'field name: ReinsNumber for ReinsInfo file is missing',
     'column ReinsNumbers is not supported in file ReinsInfo and therefore cannot be type checked',
     'column ReinsNames is not supported in file ReinsInfo and therefore cannot be type checked',
-    'data range checking passed for file: ReinsInfo',
+    'range checks passed for file ReinsInfo',
+    'valid field check passed for Loc file',
+    'required field check passed for Loc file',
+    'data type checking passed for file: Loc',
+    'range checks passed for file Loc',
+    'valid field check passed for ReinsInfo file',
+    'required field check passed for ReinsInfo file',
+    'data type checking passed for file: ReinsInfo',
+    'range checks passed for file ReinsInfo',
+    'valid field check passed for Acc file',
+    'required field check passed for Acc file',
+    'data type checking passed for file: Acc',
+    'range checks passed for file Acc',
+    'field name: AccNumbers for Loc file is not valid',
+    'field name: AccNumber for Loc file is missing',
+    'column AccNumbers is not supported in file Loc and therefore cannot be type checked',
+    "column: IsTenant row: 5 is a <class 'str'> instead of a <class 'int'> in file Loc",
+    'row 4 out of range for column IsTenant in file Loc',
+    'row 2 out of range for column CountryCode in file Loc',
+    'row 7 out of range for column CountryCode in file Loc',
+    'row 3 out of range for column Latitude in file Loc',
+    'row 6 out of range for column Latitude in file Loc',
     'field name: PortNumbers for Loc file is not valid',
     'field name: LocNumbers for Loc file is not valid',
     'field name: Longitudes for Loc file is not valid',
@@ -102,27 +111,19 @@ EXPECTED_OUTCOME = [
     'column PortNumbers is not supported in file Loc and therefore cannot be type checked',
     'column LocNumbers is not supported in file Loc and therefore cannot be type checked',
     'column Longitudes is not supported in file Loc and therefore cannot be type checked',
-    'data range checking passed for file: Loc',
-    'valid field check passed for ReinsInfo file',
-    'required field check passed for ReinsInfo file',
-    'data type checking passed for file: ReinsInfo',
-    'data range checking passed for file: ReinsInfo',
+    'range checks passed for file Loc',
     'valid field check passed for Loc file',
     'required field check passed for Loc file',
     "column: IsTenant row: 5 is a <class 'str'> instead of a <class 'int'> in file Loc",
-    'data range checking passed for file: Loc',
+    'row 4 out of range for column IsTenant in file Loc',
+    'row 5 out of range for column Latitude in file Loc',
     'field name: PortNumbers for Acc file is not valid',
     'field name: PolInceptionDates for Acc file is not valid',
     'field name: PortNumber for Acc file is missing',
     'column PortNumbers is not supported in file Acc and therefore cannot be type checked',
     'column PolInceptionDates is not supported in file Acc and therefore cannot be type checked',
-    'data range checking passed for file: Acc',
-    'valid field check passed for Loc file',
-    'required field check passed for Loc file',
-    'data type checking passed for file: Loc',
-    'data range checking passed for file: Loc'
+    'range checks passed for file Acc'
 ]
-
 
 
 if __name__ == "__main__":
