@@ -52,31 +52,17 @@ class MultipleFileTestAdapterTest(TestCase):
 
     def test_csv_files(self):
         expected_outcome = [
-            'fail_reinsinfo.csv',
-            'pass_loc.csv',
-            'pass_reinsinfo.csv',
-            'pass_acc.csv',
-            'outranged_loc.csv',
-            'fail_loc.csv',
-            'spiked_loc.csv',
-            'pass_reinscope.csv',
             'fail_acc.csv',
-            'fail_reinscope.csv'
-        ]
-        another_outcome = [
-            'spiked_loc.csv',
-            'pass_reinsinfo.csv',
             'fail_loc.csv',
-            'pass_acc.csv',
-            'fail_reinsinfo.csv',
-            'pass_reinscope.csv',
-            'outranged_loc.csv',
-            'pass_loc.csv',
             'fail_reinscope.csv',
-            'fail_acc.csv'
+            'fail_reinsinfo.csv',
+            'outranged_loc.csv',
+            'pass_acc.csv',
+            'pass_loc.csv',
+            'pass_reinscope.csv',
+            'pass_reinsinfo.csv',
+            'spiked_loc.csv'
         ]
-        # print(self.test.csv_files)
-        # print("")
         self.assertEqual(expected_outcome, self.test.csv_files)
 
     def test_file_path(self):
