@@ -9,6 +9,7 @@ from unittest.mock import patch
 
 from opends.adapters.multiple_file_test import MultipleFileTestAdapter
 from opends.adapters.multiple_file_test import main as adapter_main
+from opends.components.offending_columns import OffendingColumnsSingleton
 from tests.unit.utils import META_DATA_PATH
 
 
@@ -21,6 +22,7 @@ class MultipleFileTestAdapterTest(TestCase):
 
     def tearDown(self) -> None:
         self._wipe_outcome(path=self.outcome_path)
+        OffendingColumnsSingleton._instances = {}
 
     @staticmethod
     def _wipe_outcome(path: str) -> None:
