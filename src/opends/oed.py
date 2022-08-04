@@ -54,7 +54,7 @@ usual_file_name = {'location': 'Loc',
                   'ri_info': 'ReinsInfo'}
 
 
-ods_field_fp = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'OpenExposureData_Spec.csv')
+ods_field_fp = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../OpenExposureData_Spec.csv')
 
 __ods_fields = None
 

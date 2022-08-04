@@ -1,8 +1,7 @@
 from unittest import TestCase, main
 
-from oed import read_csv
-from tests.unit.utils import LOC_PATH, META_DATA_PATH
-import pandas as pd
+from opends.oed import read_csv
+from tests.unit.utils import META_DATA_PATH
 import json
 
 
