@@ -2,8 +2,8 @@
 This file defines the enums for the data standards.
 """
 from enum import Enum
+
 from opends.custom_exceptions import PandasValueException
-from typing import Any
 
 
 class PythonValueTypes(Enum):
@@ -115,3 +115,11 @@ class FieldRangeType(Enum):
     CATEGORY = "category"
     RANGE = "range"
     NONE = None
+
+
+class PerilFieldsValidation(Enum):
+    """
+    The field names that have to be validated against the Perils covered.
+    """
+    LOC_PERILS_COVERED = "LocPerilsCovered"
+    LOC_PERIL = "LocPeril"

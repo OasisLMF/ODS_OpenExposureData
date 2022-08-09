@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import numpy as np
 import argparse
 import os
 
@@ -81,6 +82,11 @@ def main():
     # get oed field list
     specification_file = f'{DIR_PATH}/schema_versions/exposure_data{file_version}.xlsx'
     df_fields = pd.read_excel(specification_file, sheet_name='OED Input Fields', engine='openpyxl')
+
+    # df_perils = pd.read_excel("./OpenExposureData_Spec.xlsx", sheet_name='Peril Values', engine='openpyxl')
+    # raw_column = df_perils["Input format abbreviation"].drop_duplicates().to_numpy()
+    # end_index = np.argwhere(raw_column != raw_column)[0][0]
+    # supported_perils = list(raw_column[:end_index])
 
     # get valid values
     dict_valid_values = getValidValues(specification_file)
