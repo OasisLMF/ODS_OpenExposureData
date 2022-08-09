@@ -121,6 +121,12 @@ class TestDataField(TestCase):
         outcome = self.test.check_unsafe_array(array=self.test_array)
         self.assertEqual([], list(outcome))
 
+    def test_clean_peril_array(self):
+        test = ['WW1; ORF;QEQ ;WEC', 'WW1', 'WW1']
+        outcome = DataField.clean_peril_array(input_array=np.array(test))
+        expected_outcome = [['WW1', 'ORF', 'QEQ', 'WEC'], ['WW1'], ['WW1']]
+        self.assertEqual(expected_outcome, outcome)
+
 
 if __name__ == "__main__":
     main()

@@ -9,9 +9,9 @@ from typing import List
 import pandas as pd
 
 from opends.checks import perform_checks
+from opends.components.csv_loader import CsvLoader
 from opends.components.template_loader import TemplateLoader
 from opends.enums import FileNames
-from opends.version_control import SchemaPath
 
 
 class SingleFileTestAdapter:
@@ -24,7 +24,6 @@ class SingleFileTestAdapter:
     Attributes:
         file_path (str): the path of the file being checked
         file_name (FileNames): the name of the file being checked
-        templates (TemplateLoader): the loader that loads the data for field standards
         data (pd.DataFrame): the data of the file being loaded
     """
     def __init__(self, file_path: str, file_name: FileNames, version: str) -> None:
@@ -38,9 +37,8 @@ class SingleFileTestAdapter:
         """
         self.file_path: str = file_path
         self.file_name: FileNames = file_name
-        self.schema_path: str = SchemaPath(version_string=version)
-        self.templates: TemplateLoader = TemplateLoader(file_path=self.schema_path)
-        self.data: pd.DataFrame = self._load_csv()
+        self.loader: CsvLoader = CsvLoader(version=version, data_path=self.file_path, file_type=self.file_name)
+        self.data: pd.DataFrame = self.loader.unsafe_read()
 
     def _load_csv(self) -> pd.DataFrame:
         """
@@ -48,10 +46,8 @@ class SingleFileTestAdapter:
 
         Returns: (pd.DataFrame) the data from the CSV
         """
-        # loader = CsvLoader(version="2.3.1", data_path=self.file_path, file_type=self.file_name)
-        # return loader.read()
-        # print(str(pd.read_csv(self.file_path)["Latitude"].dtypes))
-        return pd.read_csv(self.file_path)
+        loader = CsvLoader(version="2.3.1", data_path=self.file_path, file_type=self.file_name)
+        return loader.read()
 
     def run_checks(self) -> List[str]:
         """
@@ -60,6 +56,10 @@ class SingleFileTestAdapter:
         Returns: (List[str]) logs of all the test outcomes for the file
         """
         return perform_checks(data=self.data, file=self.templates.files[self.file_name.value])
+
+    @property
+    def templates(self) -> TemplateLoader:
+        return self.loader.template_data
 
 
 def main() -> None:

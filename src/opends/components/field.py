@@ -2,12 +2,13 @@
 This file defines the class that holds the data around a data field in a file.
 """
 from dataclasses import dataclass
-from typing import List, Optional, Union, Tuple
+from typing import List, Optional, Union
+
+import numpy as np
 
 from opends.enums import AllowBlank, PythonValueTypes, Required, PandasValue
-import numpy as np
 from opends.enums import FieldRangeType
-
+from opends.components.template_meta_loader import TemplateMetaLoader, TemplateMetaLoaderSingleton
 
 ValidValuesType = Union[List[str], List[int]]
 
@@ -60,19 +61,23 @@ class DataField:
 
         Returns: (List[int]) a list of indexes where the values are out of range
         """
-        if self.min_val is not None and self.max_val is None:
+        if self.check_min_value_only is True:
             return list(np.where(array < float(self.min_val))[0])
 
-        if self.max_val is not None and self.min_val is None:
+        if self.check_max_value_only is True:
             return list(np.where(array > float(self.max_val))[0])
 
-        if self.max_val is not None and self.min_val is not None:
+        if self.check_min_and_max_value is True:
             outcome = list(np.where(array > float(self.max_val))[0]) + list(np.where(array < float(self.min_val))[0])
             outcome.sort()
             return outcome
 
         if self.valid_values is not None:
             bool_result = np.isin(np.array(array), np.array(self.valid_values))
+            return list(np.where(bool_result == False)[0])
+
+        if self.is_peril is True:
+            bool_result = np.isin(np.array(array), np.array(self.valid_perils))
             return list(np.where(bool_result == False)[0])
 
         raise ValueError(
@@ -91,25 +96,30 @@ class DataField:
         Returns: (bool) False if not in range, True if in range
         """
         try:
-            if self.min_val is not None and self.max_val is None:
+            if self.check_min_value_only is True:
                 value = float(value)
                 if value >= float(self.min_val):
                     return True
                 return False
 
-            if self.max_val is not None and self.min_val is None:
+            if self.check_max_value_only is True:
                 value = float(value)
                 if value <= float(self.max_val):
                     return True
                 return False
 
-            if self.max_val is not None and self.min_val is not None:
+            if self.check_min_and_max_value is True:
                 value = float(value)
                 if float(self.max_val) >= value >= float(self.min_val):
                     return True
                 return False
 
             if self.valid_values is not None:
+                if str(value) in self.valid_values:
+                    return True
+                return False
+
+            if self.is_peril is True:
                 if str(value) in self.valid_values:
                     return True
                 return False
@@ -135,9 +145,34 @@ class DataField:
             buffer.append(self.check_individual_rage(value=value))
         return list(np.where(np.array(buffer) == False)[0])
 
+    @staticmethod
+    def clean_peril_array(input_array: np.array) -> List[List[str]]:
+        buffer = []
+        for i in input_array:
+            buffer.append(i.replace(" ", "").split(";"))
+        return buffer
+
+    @property
+    def check_min_value_only(self) -> bool:
+        if self.min_val is not None and self.max_val is None:
+            return True
+        return False
+
+    @property
+    def check_max_value_only(self) -> bool:
+        if self.max_val is not None and self.min_val is None:
+            return True
+        return False
+
+    @property
+    def check_min_and_max_value(self) -> bool:
+        if self.max_val is not None and self.min_val is not None:
+            return True
+        return False
+
     @property
     def should_check(self) -> bool:
-        if self.max_val is None and self.min_val is None and self.valid_values is None:
+        if self.max_val is None and self.min_val is None and self.valid_values is None and self.is_peril is False:
             return False
         return True
 
@@ -148,4 +183,17 @@ class DataField:
         if self.valid_values is not None:
             return FieldRangeType.CATEGORY
         return FieldRangeType.RANGE
+
+    @property
+    def is_peril(self) -> bool:
+        if "peril" in self.name.lower():
+            return True
+        return False
+
+    @property
+    def valid_perils(self) -> List[str]:
+        meta_data: Optional[TemplateMetaLoader] = TemplateMetaLoaderSingleton.instances.get(TemplateMetaLoader)
+        if meta_data is None:
+            raise ValueError("meta data has not been loaded before valid perils are being referenced in the data field")
+        return meta_data.supported_perils
 

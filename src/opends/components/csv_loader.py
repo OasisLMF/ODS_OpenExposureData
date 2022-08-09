@@ -6,8 +6,9 @@ from typing import Dict, List
 import pandas as pd
 
 from opends.components.template_loader import TemplateLoader
+from opends.components.template_meta_loader import TemplateMetaLoader
 from opends.enums import FileNames
-from opends.version_control import SchemaPath
+from opends.version_control import SchemaPath, SchemaMetaDataPath
 
 
 class CsvLoader:
@@ -16,6 +17,7 @@ class CsvLoader:
 
     Attributes:
         template_data (TemplateLoader): the metadata around the file and schema for that file being loaded
+        meta_data (TemplateMetaLoader): the metadata around the template_data
         data_path (str): the path to the file being loaded
         file_type (FileNames): the type of file being loaded
     """
@@ -29,6 +31,7 @@ class CsvLoader:
             file_type: (FileNames) the type of file being loaded
         """
         self.template_data: TemplateLoader = TemplateLoader(file_path=SchemaPath(version_string=version))
+        self.meta_data: TemplateMetaLoader = TemplateMetaLoader(file_path=SchemaMetaDataPath(version_string=version))
         self.data_path: str = data_path
         self.file_type: FileNames = file_type
 
@@ -58,3 +61,11 @@ class CsvLoader:
         """
         d_types_dict = self._get_types()
         return pd.read_csv(self.data_path, dtype=d_types_dict)
+
+    def unsafe_read(self) -> pd.DataFrame:
+        """
+        Reads the CSV file with no specific types specified.
+
+        Returns: (pd.DataFrame) the loaded data
+        """
+        return pd.read_csv(self.data_path)

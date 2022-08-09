@@ -40,14 +40,14 @@ class TemplateLoader(metaclass=TemplateLoaderSingleton):
         self._data: Optional[dict] = None
         self._populate_files()
 
-    def _load_json_file(self) -> None:
+    def _load_json_file(self) -> dict:
         """
         Loads all the metadata for all the files from a JSON file.
 
-        Returns: None
+        Returns: (dict) data loaded from the JSON file
         """
         with open(self.file_path, 'r') as json_file:
-            self._data = json.load(json_file)
+            return json.load(json_file)
 
     def _populate_files(self) -> None:
         """
@@ -83,5 +83,5 @@ class TemplateLoader(metaclass=TemplateLoaderSingleton):
     @property
     def data(self) -> dict:
         if self._data is None:
-            self._load_json_file()
+            self._data = self._load_json_file()
         return self._data

@@ -83,16 +83,20 @@ def main():
     specification_file = f'{DIR_PATH}/schema_versions/exposure_data{file_version}.xlsx'
     df_fields = pd.read_excel(specification_file, sheet_name='OED Input Fields', engine='openpyxl')
 
-    # df_perils = pd.read_excel("./OpenExposureData_Spec.xlsx", sheet_name='Peril Values', engine='openpyxl')
-    # raw_column = df_perils["Input format abbreviation"].drop_duplicates().to_numpy()
-    # end_index = np.argwhere(raw_column != raw_column)[0][0]
-    # supported_perils = list(raw_column[:end_index])
+    df_perils = pd.read_excel(specification_file, sheet_name='Peril Values', engine='openpyxl')
+    raw_column = df_perils["Input format abbreviation"].drop_duplicates().to_numpy()
+    end_index = np.argwhere(raw_column != raw_column)[0][0]
+    supported_perils = list(raw_column[:end_index])
 
     # get valid values
     dict_valid_values = getValidValues(specification_file)
 
     # initiate dict of fields
     dict = {}
+
+    # declare the meta-data
+    meta_data = {}
+    meta_data["supported perils"] = supported_perils
 
     # iterate through filed list
     for i, field in df_fields.iterrows():
@@ -146,6 +150,8 @@ def main():
 
     with open(f'{DIR_PATH}/src/opends/version_control/oed_schema_{file_version}.json', 'w') as jsonout:
         json.dump(dict, jsonout)
+    with open(f'{DIR_PATH}/src/opends/version_control/meta_data_{file_version}.json', 'w') as jsonout:
+        json.dump(meta_data, jsonout)
 
 
 if __name__ == "__main__":
