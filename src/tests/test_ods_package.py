@@ -1,10 +1,9 @@
 import os
 import pandas as pd
-import pyarrow
 import requests
 from unittest import TestCase
 
-from ..oed import (
+from opends.oed import (
     read_csv,
     read_parquet,
     get_ods_fields,
