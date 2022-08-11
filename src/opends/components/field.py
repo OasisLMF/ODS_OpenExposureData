@@ -3,6 +3,7 @@ This file defines the class that holds the data around a data field in a file.
 """
 from dataclasses import dataclass
 from typing import List, Optional, Union
+from itertools import zip_longest
 
 import numpy as np
 
@@ -77,8 +78,15 @@ class DataField:
             return list(np.where(bool_result == False)[0])
 
         if self.is_peril is True:
-            bool_result = np.isin(np.array(array), np.array(self.valid_perils))
-            return list(np.where(bool_result == False)[0])
+            clean_array = self.clean_peril_array(input_array=array)
+            clean_array = np.array(list(zip_longest(*clean_array, fillvalue=self.valid_perils[0]))).T
+            two_d_bool_result = np.isin(clean_array, np.array(self.valid_perils))
+
+            flat_result = two_d_bool_result[:, 0]
+            for i in range(1, len(two_d_bool_result[0])):
+                flat_result = flat_result * two_d_bool_result[:, i]
+
+            return list(np.where(flat_result == False)[0])
 
         raise ValueError(
             f"data field does not have the right attributes to perform a check range function "
@@ -120,7 +128,7 @@ class DataField:
                 return False
 
             if self.is_peril is True:
-                if str(value) in self.valid_values:
+                if str(value) in self.valid_perils:
                     return True
                 return False
 
@@ -144,6 +152,25 @@ class DataField:
         for value in list(array):
             buffer.append(self.check_individual_rage(value=value))
         return list(np.where(np.array(buffer) == False)[0])
+
+    @staticmethod
+    def check_against_two_d_array(input_array: np.array, categories: List) -> List[bool]:
+        """
+
+
+        Args:
+            input_array:
+            categories:
+
+        Returns:
+        """
+        padded_array = np.array(list(zip_longest(*input_array, fillvalue=categories[0]))).T
+        two_d_bool_result = np.isin(padded_array, categories)
+        flat_result = two_d_bool_result[:, 0]
+
+        for i in range(1, len(two_d_bool_result[0])):
+            flat_result = flat_result * two_d_bool_result[:, i]
+        return flat_result
 
     @staticmethod
     def clean_peril_array(input_array: np.array) -> List[List[str]]:
