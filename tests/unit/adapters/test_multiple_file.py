@@ -68,6 +68,7 @@ class MultipleFileTestAdapterTest(TestCase):
         self.assertEqual(META_DATA_PATH + "pass_acc.csv", self.test.file_path(file_name='pass_acc.csv'))
 
     def test_run_checks(self):
+        # print(self.test.run_checks())
         self.assertEqual(EXPECTED_OUTCOME, self.test.run_checks())
 
     def test_adapter_main_pass_loc(self):
