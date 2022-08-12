@@ -52,3 +52,21 @@ class TemplateMetaLoader(metaclass=TemplateMetaLoaderSingleton):
     @property
     def supported_perils(self) -> List[str]:
         return self.data["supported perils"]
+
+
+def get_template_meta_data(name: str) -> TemplateMetaLoader:
+    """
+    Gets the meta-data that is already loaded.
+
+    Warnings:
+        This error will raise a ValueError if the meta-data is not already loaded.
+
+    Args:
+        name: (str) name of process accessing the meta-data
+
+    Returns: (TemplateMetaLoader) The meta-data that is already loaded
+    """
+    meta_data: Optional[TemplateMetaLoader] = TemplateMetaLoaderSingleton.instances.get(TemplateMetaLoader)
+    if meta_data is None:
+        raise ValueError(f"meta data has not been loaded before {name}")
+    return meta_data

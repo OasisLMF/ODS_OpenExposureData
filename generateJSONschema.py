@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import argparse
 import os
+from typing import List
 
 
 ### Notes
@@ -73,7 +74,35 @@ def getValidValues(specification_file):
     return dict_valid_values
 
 
-def main():
+def get_supported_perils(file_path: str) -> List[str]:
+    """
+    Gets the supported perils from the excel schema file.
+
+    Args:
+        file_path: (str) the path pointing to the excel schema file
+
+    Returns: (List[str]) the list of supported perils
+    """
+    df_perils = pd.read_excel(file_path, sheet_name='Peril Values', engine='openpyxl')
+    raw_column = df_perils["Input format abbreviation"].drop_duplicates().to_numpy()
+    end_index = np.argwhere(raw_column != raw_column)[0][0]
+    return list(raw_column[:end_index])
+
+
+def get_occupancy_codes(file_path: str) -> List[str]:
+    """
+    Gets the OED codes from the excel schema file.
+
+    Args:
+        file_path: (str) the path pointing to the excel schema file
+
+    Returns: (List[str]) the list of supported OED codes
+    """
+    df_occupancy_codes = pd.read_excel(file_path, sheet_name='OED Input Fields', engine='openpyxl')
+    return df_occupancy_codes["OED Code"].drop_duplicates().to_numpy()
+
+
+def main() -> None:
     args_parser = argparse.ArgumentParser()
     args_parser.add_argument('--version', action='store', type=str, required=True,
                              help="the name of the file being converted to")
@@ -83,11 +112,6 @@ def main():
     specification_file = f'{DIR_PATH}/schema_versions/exposure_data{file_version}.xlsx'
     df_fields = pd.read_excel(specification_file, sheet_name='OED Input Fields', engine='openpyxl')
 
-    df_perils = pd.read_excel(specification_file, sheet_name='Peril Values', engine='openpyxl')
-    raw_column = df_perils["Input format abbreviation"].drop_duplicates().to_numpy()
-    end_index = np.argwhere(raw_column != raw_column)[0][0]
-    supported_perils = list(raw_column[:end_index])
-
     # get valid values
     dict_valid_values = getValidValues(specification_file)
 
@@ -95,8 +119,10 @@ def main():
     dict = {}
 
     # declare the meta-data
-    meta_data = {}
-    meta_data["supported perils"] = supported_perils
+    meta_data = {
+        "supported perils": get_supported_perils(file_path=specification_file),
+        "supported OED codes": get_occupancy_codes(file_path=specification_file)
+    }
 
     # iterate through filed list
     for i, field in df_fields.iterrows():

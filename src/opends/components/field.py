@@ -8,7 +8,7 @@ import numpy as np
 
 from opends.enums import AllowBlank, PythonValueTypes, Required, PandasValue
 from opends.enums import FieldRangeType
-from opends.components.template_meta_loader import TemplateMetaLoader, TemplateMetaLoaderSingleton
+from opends.components.template_meta_loader import get_template_meta_data
 
 ValidValuesType = Union[List[str], List[int]]
 
@@ -192,8 +192,6 @@ class DataField:
 
     @property
     def valid_perils(self) -> List[str]:
-        meta_data: Optional[TemplateMetaLoader] = TemplateMetaLoaderSingleton.instances.get(TemplateMetaLoader)
-        if meta_data is None:
-            raise ValueError("meta data has not been loaded before valid perils are being referenced in the data field")
+        meta_data = get_template_meta_data(name="valid perils for DataField")
         return meta_data.supported_perils
 
