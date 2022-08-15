@@ -58,6 +58,16 @@ class Check:
             return True
         return False
 
+    def validate_pass(self) -> None:
+        """
+        Checks the length of the log data to establish if the check has passed.
+
+        Returns: None
+        """
+        if len(self.log_data) == 0:
+            self.passed = True
+            self.log_data.append(f"{self.check_name} check passed for file {self.file.name}")
+
     @property
     def flexi_prefix(self) -> str:
         return f"flexi{self.file.name}".lower()

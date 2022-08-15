@@ -24,12 +24,14 @@ def perform_checks(data: pd.DataFrame, file: File) -> List[str]:
 
     Returns: (List[str]) the logs of the file test stating that the check passed or where it failed
     """
+    # TODO => add a check for "AreaCode" column use the sheet "AreaCode Values"
+    #  to validate "CountryCode" and "AreaCode" if present. Make sure both column are a valid pair.
     checks: List[Check] = [
         ValidFieldCheck(data=data, file=file),
         RequiredFieldsCheck(data=data, file=file),
         CorrectDataTypeCheck(data=data, file=file),
         CorrectRangeCheck(data=data, file=file),
-        SupportedCodesCheck(data=data, file=file)
+        # SupportedCodesCheck(data=data, file=file)
     ]
     for check in checks:
         check.run()

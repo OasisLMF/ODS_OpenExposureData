@@ -36,6 +36,4 @@ class ValidFieldCheck(Check):
             if self.file.fields.get(column_name) is None and flexi_name is False:
                 self.log_data.append(f"field name: {column_name} for {self.file.name} file is not valid")
 
-        if len(self.log_data) == 0:
-            self.passed = True
-            self.log_data.append(f"valid field check passed for {self.file.name} file")
+        self.validate_pass()

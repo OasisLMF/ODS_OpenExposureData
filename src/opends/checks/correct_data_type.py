@@ -107,6 +107,4 @@ class CorrectDataTypeCheck(Check):
                     data_field = self.file.fields.get(data_column)
                     self._locate_offending_rows(column_name=data_column, data_field=data_field)
 
-        if len(self.log_data) == 0:
-            self.passed = True
-            self.log_data.append(f"data type checking passed for file: {self.file.name}")
+        self.validate_pass()

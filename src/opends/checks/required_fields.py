@@ -57,6 +57,4 @@ class RequiredFieldsCheck(Check):
             if data_field not in data_fields:
                 self.log_data.append(f"field name: {data_field} for {self.file.name} file is missing")
 
-        if len(self.log_data) == 0:
-            self.passed = True
-            self.log_data.append(f"required field check passed for {self.file.name} file")
+        self.validate_pass()

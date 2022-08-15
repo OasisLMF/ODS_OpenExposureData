@@ -80,10 +80,11 @@ class TestSingleCommandFileAdapter(TestCase):
                       file_type="Loc")
 
     def adapter_main_pass_loc(self):
-        expected_outcome = "valid field check passed for Loc file\n" \
-                           "required field check passed for Loc file\n" \
-                           "data type checking passed for file: Loc\n" \
-                           "range checks passed for file Loc"
+        expected_outcome = "valid field check passed for file Loc\n" \
+                           "required fields check passed for file Loc\n" \
+                           "correct data types check passed for file Loc\n" \
+                           "range field check passed for file Loc"
+
         self.compare_data(path=self.loc_outcome_path, expected_data=expected_outcome)
 
     def adapter_main_fail_loc(self):
@@ -95,14 +96,14 @@ class TestSingleCommandFileAdapter(TestCase):
                            "column PortNumbers is not supported in file Loc and therefore cannot be type checked\n" \
                            "column LocNumbers is not supported in file Loc and therefore cannot be type checked\n" \
                            "column Longitudes is not supported in file Loc and therefore cannot be type checked\n" \
-                           "range checks passed for file Loc"
+                           "range field check passed for file Loc"
         self.compare_data(path=self.loc_outcome_path, expected_data=expected_outcome)
 
     def adapter_main_pass_reinscope(self):
-        expected_data = "valid field check passed for ReinsScope file\n" \
-                        "required field check passed for ReinsScope file\n" \
-                        "data type checking passed for file: ReinsScope\n" \
-                        "range checks passed for file ReinsScope"
+        expected_data = "valid field check passed for file ReinsScope\n" \
+                        "required fields check passed for file ReinsScope\n" \
+                        "correct data types check passed for file ReinsScope\n" \
+                        "range field check passed for file ReinsScope"
         self.compare_data(path=self.reinscope_outcome_path, expected_data=expected_data)
 
     def adapter_main_fail_reinscope(self):
@@ -111,14 +112,14 @@ class TestSingleCommandFileAdapter(TestCase):
                         "field name: ReinsNumber for ReinsScope file is missing\n" \
                         "column ReinsNumbers is not supported in file ReinsScope and therefore cannot be type checked\n" \
                         "column PolNumbers is not supported in file ReinsScope and therefore cannot be type checked\n" \
-                        "range checks passed for file ReinsScope"
+                        "range field check passed for file ReinsScope"
         self.compare_data(path=self.reinscope_outcome_path, expected_data=expected_data)
 
     def adapter_main_pass_reinsinfo(self):
-        expected_data = "valid field check passed for ReinsInfo file\n" \
-                        "required field check passed for ReinsInfo file\n" \
-                        "data type checking passed for file: ReinsInfo\n" \
-                        "range checks passed for file ReinsInfo"
+        expected_data = "valid field check passed for file ReinsInfo\n" \
+                        "required fields check passed for file ReinsInfo\n" \
+                        "correct data types check passed for file ReinsInfo\n" \
+                        "range field check passed for file ReinsInfo"
         self.compare_data(path=self.reinsinfo_outcome_path, expected_data=expected_data)
 
     def adapter_main_fail_reinsinfo(self):
@@ -127,12 +128,12 @@ class TestSingleCommandFileAdapter(TestCase):
                         "field name: ReinsNumber for ReinsInfo file is missing\n" \
                         "column ReinsNumbers is not supported in file ReinsInfo and therefore cannot be type checked\n" \
                         "column ReinsNames is not supported in file ReinsInfo and therefore cannot be type checked\n" \
-                        "range checks passed for file ReinsInfo"
+                        "range field check passed for file ReinsInfo"
         self.compare_data(path=self.reinsinfo_outcome_path, expected_data=expected_data)
 
     def adapter_main_spiked_loc(self):
-        expected_data = "valid field check passed for Loc file\n" \
-                        "required field check passed for Loc file\n" \
+        expected_data = "valid field check passed for file Loc\n" \
+                        "required fields check passed for file Loc\n" \
                         "column: IsTenant row: 5 is a <class 'str'> instead of a <class 'int'> in file Loc\n" \
                         "row 4 out of range for column IsTenant in file Loc\n" \
                         "row 5 out of range for column Latitude in file Loc"
