@@ -98,8 +98,8 @@ def get_occupancy_codes(file_path: str) -> List[str]:
 
     Returns: (List[str]) the list of supported OED codes
     """
-    df_occupancy_codes = pd.read_excel(file_path, sheet_name='OED Input Fields', engine='openpyxl')
-    return df_occupancy_codes["OED Code"].drop_duplicates().to_numpy()
+    df_occupancy_codes = pd.read_excel(file_path, sheet_name='Occupancy Values', engine='openpyxl')
+    return df_occupancy_codes["OED Code"].drop_duplicates().to_list()
 
 
 def main() -> None:

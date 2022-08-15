@@ -40,15 +40,6 @@ class SingleFileTestAdapter:
         self.loader: CsvLoader = CsvLoader(version=version, data_path=self.file_path, file_type=self.file_name)
         self.data: pd.DataFrame = self.loader.unsafe_read()
 
-    def _load_csv(self) -> pd.DataFrame:
-        """
-        Loads data from a CSV file.
-
-        Returns: (pd.DataFrame) the data from the CSV
-        """
-        loader = CsvLoader(version="2.3.1", data_path=self.file_path, file_type=self.file_name)
-        return loader.read()
-
     def run_checks(self) -> List[str]:
         """
         Runs a series of checks

@@ -53,6 +53,10 @@ class TemplateMetaLoader(metaclass=TemplateMetaLoaderSingleton):
     def supported_perils(self) -> List[str]:
         return self.data["supported perils"]
 
+    @property
+    def supported_oed_codes(self) -> List[str]:
+        return self.data["supported OED codes"]
+
 
 def get_template_meta_data(name: str) -> TemplateMetaLoader:
     """

@@ -4,6 +4,7 @@ class as it is just a data class so tests are not needed. However, if the implem
 be needed.
 """
 from unittest import main, TestCase
+from unittest.mock import patch
 
 import numpy as np
 
@@ -112,13 +113,35 @@ class TestDataField(TestCase):
         self.assertEqual(False, self.test.check_individual_rage(value=2))
         self.assertEqual(False, self.test.check_individual_rage(value="test"))
 
-    def test_check_unsafe_array(self):
+    @patch("opends.components.field.get_template_meta_data")
+    def test_peril_individual(self, mock_get_template_meta_data):
+        mock_get_template_meta_data.return_value.supported_perils = ['WW1', 'ORF', 'QEQ', 'WEC']
+        self.test.min_val = None
+        self.test.max_val = None
+        self.test.name = "peril"
+
+        input_peril = 'WW1; ORF;QEQ ;WEC'
+        self.assertEqual(True, self.test.check_individual_rage(value=input_peril))
+
+        input_peril = 'WW1; ORF;QEQ ;WEk'
+        self.assertEqual(False, self.test.check_individual_rage(value=input_peril))
+
+        input_peril = 'WW2; ORF;QEQ ;WEC'
+        self.assertEqual(False, self.test.check_individual_rage(value=input_peril))
+
+        input_peril = 'WW1;'
+        self.assertEqual(True, self.test.check_individual_rage(value=input_peril))
+
+        input_peril = 'WW2'
+        self.assertEqual(False, self.test.check_individual_rage(value=input_peril))
+
+    def test_check_unsafe_range(self):
         self.test.min_val = 5
-        outcome = self.test.check_unsafe_array(array=self.test_array)
+        outcome = self.test.check_unsafe_range(array=self.test_array)
         self.assertEqual([5, 7], list(outcome))
 
         self.test.min_val = 0
-        outcome = self.test.check_unsafe_array(array=self.test_array)
+        outcome = self.test.check_unsafe_range(array=self.test_array)
         self.assertEqual([], list(outcome))
 
     def test_clean_peril_array(self):
@@ -126,6 +149,13 @@ class TestDataField(TestCase):
         outcome = DataField.clean_peril_array(input_array=np.array(test))
         expected_outcome = [['WW1', 'ORF', 'QEQ', 'WEC'], ['WW1'], ['WW1']]
         self.assertEqual(expected_outcome, outcome)
+
+    def test_check_against_two_d_array(self):
+        categories = ['WW1', 'ORF', 'WEC']
+        # QEQ should fail the row
+        input_data = [['WW1', 'ORF', 'QEQ', 'WEC'], ['WW1'], ['WW1'], ['WW1', 'ORF', 'WEC'], ['QEQ']]
+        test_outcomes = self.test.check_against_two_d_array(input_array=input_data, categories=categories)
+        self.assertEqual([False, True, True, True, False], list(test_outcomes))
 
 
 if __name__ == "__main__":

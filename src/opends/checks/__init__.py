@@ -10,6 +10,7 @@ from opends.checks.correct_data_type import CorrectDataTypeCheck
 from opends.checks.correct_range import CorrectRangeCheck
 from opends.checks.required_fields import RequiredFieldsCheck
 from opends.checks.valid_fields import ValidFieldCheck
+from opends.checks.supported_codes import SupportedCodesCheck
 from opends.components.file import File
 
 
@@ -27,7 +28,8 @@ def perform_checks(data: pd.DataFrame, file: File) -> List[str]:
         ValidFieldCheck(data=data, file=file),
         RequiredFieldsCheck(data=data, file=file),
         CorrectDataTypeCheck(data=data, file=file),
-        CorrectRangeCheck(data=data, file=file)
+        CorrectRangeCheck(data=data, file=file),
+        SupportedCodesCheck(data=data, file=file)
     ]
     for check in checks:
         check.run()

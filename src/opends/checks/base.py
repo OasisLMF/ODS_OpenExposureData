@@ -5,6 +5,7 @@ from typing import List
 import pandas as pd
 
 from opends.components.file import File
+from opends.components.template_meta_loader import TemplateMetaLoader, get_template_meta_data
 
 
 class Check:
@@ -60,3 +61,8 @@ class Check:
     @property
     def flexi_prefix(self) -> str:
         return f"flexi{self.file.name}".lower()
+
+    @property
+    def meta_data(self) -> TemplateMetaLoader:
+        meta_data = get_template_meta_data(name=self.check_name + "check")
+        return meta_data

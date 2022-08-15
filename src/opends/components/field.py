@@ -79,20 +79,31 @@ class DataField:
 
         if self.is_peril is True:
             clean_array = self.clean_peril_array(input_array=array)
-            clean_array = np.array(list(zip_longest(*clean_array, fillvalue=self.valid_perils[0]))).T
-            two_d_bool_result = np.isin(clean_array, np.array(self.valid_perils))
-
-            flat_result = two_d_bool_result[:, 0]
-            for i in range(1, len(two_d_bool_result[0])):
-                flat_result = flat_result * two_d_bool_result[:, i]
-
-            return list(np.where(flat_result == False)[0])
+            bool_results = self.check_against_two_d_array(input_array=clean_array, categories=self.valid_perils)
+            return list(np.where(bool_results == False)[0])
 
         raise ValueError(
             f"data field does not have the right attributes to perform a check range function "
             f"min_val: {self.min_val} max_val: {self.max_val} valid_values: {self.valid_values} "
             f"name: {self.name} field desc: {self.field_desc}"
         )
+
+    def check_unsafe_range(self, array: np.array) -> List[int]:
+        """
+        Checks to see if the data belonging to a data field is within range.
+
+        This function is slower than the self.check_range function because this function doesn't use built-in numpy
+        functions. Only use the self.check_range function if you are sure of the data types in the array.
+
+        Args:
+            array: (np.array) the data to be checked
+
+        Returns: (List[int]) a list of indexes where the values are out of range
+        """
+        buffer: List[bool] = []
+        for value in list(array):
+            buffer.append(self.check_individual_rage(value=value))
+        return list(np.where(np.array(buffer) == False)[0])
 
     def check_individual_rage(self, value: Union[str, int, float]) -> bool:
         """
@@ -128,41 +139,28 @@ class DataField:
                 return False
 
             if self.is_peril is True:
-                if str(value) in self.valid_perils:
-                    return True
-                return False
+                cleaned_peril_buffer = list(filter(None, str(value).replace(" ", "").split(";")))
+                for peril_value in cleaned_peril_buffer:
+                    if peril_value not in self.valid_perils:
+                        return False
+                return True
 
         except ValueError:
             return False
         return False
 
-    def check_unsafe_array(self, array: np.array) -> List[int]:
-        """
-        Checks to see if the data belonging to a data field is within range.
-
-        This function is slower than the self.check_range function because this function doesn't use built-in numpy
-        functions. Only use the self.check_range function if you are sure of the data types in the array.
-
-        Args:
-            array: (np.array) the data to be checked
-
-        Returns: (List[int]) a list of indexes where the values are out of range
-        """
-        buffer: List[bool] = []
-        for value in list(array):
-            buffer.append(self.check_individual_rage(value=value))
-        return list(np.where(np.array(buffer) == False)[0])
-
     @staticmethod
     def check_against_two_d_array(input_array: np.array, categories: List) -> List[bool]:
         """
-
+        Checks a 2D array of categories and works out if all the categories in each row of the 2D array are in the
+        categories.
 
         Args:
-            input_array:
-            categories:
+            input_array: (np.array) the 2D array that is going to be checked.
+            categories: (List) the list of categories that
 
-        Returns:
+        Returns: (List[bool]) result for each row that is checked. False if the row fails the check, True if the row
+                              passes the check
         """
         padded_array = np.array(list(zip_longest(*input_array, fillvalue=categories[0]))).T
         two_d_bool_result = np.isin(padded_array, categories)
@@ -174,9 +172,17 @@ class DataField:
 
     @staticmethod
     def clean_peril_array(input_array: np.array) -> List[List[str]]:
+        """
+        Takes a range of peril strings in an array and cleans them into structured data.
+
+        Args:
+            input_array: (np.array) the data to be cleaned
+
+        Returns: (List[List[str]]) clean peril data that can be used
+        """
         buffer = []
         for i in input_array:
-            buffer.append(i.replace(" ", "").split(";"))
+            buffer.append(list(filter(None, str(i).replace(" ", "").split(";"))))
         return buffer
 
     @property
@@ -219,6 +225,5 @@ class DataField:
 
     @property
     def valid_perils(self) -> List[str]:
-        meta_data = get_template_meta_data(name="valid perils for DataField")
+        meta_data = get_template_meta_data(name=f"valid perils for '{self.name}' DataField")
         return meta_data.supported_perils
-

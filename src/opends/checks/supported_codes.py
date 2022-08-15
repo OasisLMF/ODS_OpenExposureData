@@ -5,10 +5,12 @@ import pandas as pd
 
 from opends.checks.base import Check
 from opends.components.file import File
-from opends.components.template_meta_loader import TemplateMetaLoader, get_template_meta_data
+from typing import List
 
 
 class SupportedCodesCheck(Check):
+
+    OCCUPANCY_FIELD = "OccupancyCode"
 
     def __init__(self, data: pd.DataFrame, file: File) -> None:
         """
@@ -19,15 +21,27 @@ class SupportedCodesCheck(Check):
             file: (File) the metadata around the data to be checked
         """
         super().__init__(data=data, file=file, check_name="Supported codes")
-        self.meta_data: TemplateMetaLoader = get_template_meta_data(name=self.check_name + "check")
 
-    def _safe_codes_check(self) -> bool:
+    def _unsafe_codes_check(self) -> bool:
         pass
 
     def _codes_check(self) -> bool:
         pass
 
-    def run(self) -> None:
+    def _check_occupancy_codes(self) -> None:
+        occupancy_codes = self.data[self.OCCUPANCY_FIELD].to_numpy()
+        data_field = self.file.fields.get(self.OCCUPANCY_FIELD)
+        failure_indexes = data_field.check_range(array=occupancy_codes)
+        # for index in failure_indexes:
+        #     self.log_data.append()
+
+    def _check_construction_codes(self):
         pass
 
+    def _check_country_and_area_codes(self):
+        pass
 
+    def run(self) -> None:
+        self._check_occupancy_codes()
+        self._check_construction_codes()
+        self._check_country_and_area_codes()

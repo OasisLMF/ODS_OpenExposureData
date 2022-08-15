@@ -57,7 +57,7 @@ class CorrectRangeCheck(Check):
             # checks the column if supported and the column data type is unsure (slower)
             if data_field is not None and data_field.should_check and column in self.offending_columns:
                 array = self.data[column].values
-                indexes: List[int] = data_field.check_unsafe_array(array=array)
+                indexes: List[int] = data_field.check_unsafe_range(array=array)
                 self._log_indexes(indexes=indexes, data_field=data_field)
 
         if len(self.log_data) == 0:
