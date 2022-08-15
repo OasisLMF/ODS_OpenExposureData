@@ -5,8 +5,9 @@ __all__ = [
     'pd_converter',
     'usual_file_name',
     'get_ods_fields',
+    'currency_file',
+    'get_currency_col',
     'DictBasedCurrencyRates',
-    'prepare_multicurrency_support',
     'convert_currency',
     'read_csv',
     'read_parquet',
@@ -106,6 +107,15 @@ def get_ods_fields(df_engine=pd):
     return __ods_fields
 
 
+def get_currency_col(oed_df):
+    insensitive_column_map = {str(col).lower(): col for col in oed_df.columns}
+    for currency_col_lower, file_type in currency_file.items():
+        if currency_col_lower in insensitive_column_map:
+            return insensitive_column_map[currency_col_lower]
+    else:
+        raise ValueError('No currency column found in oed file')
+
+
 class DictBasedCurrencyRates:
     def __init__(self, roe_dict):
         self.roe_dict = roe_dict
@@ -146,22 +156,7 @@ class DictBasedCurrencyRates:
             raise ValueError(f"currency pair {(cur_from, cur_to)} is missing")
 
 
-def prepare_multicurrency_support(oed_df):
-    insensitive_column_map = {str(col).lower():col for col in oed_df.columns}
-
-    for currency_col, file_type in currency_file.items():
-        if currency_col in insensitive_column_map:
-            break
-    else:
-        return None, None
-
-    if 'originalcurrency' not in oed_df.columns:
-        oed_df['originalcurrency'] = oed_df[insensitive_column_map[currency_col]]
-        oed_df['rateofexchange'] = 1.
-    return insensitive_column_map[currency_col], file_type
-
-
-def convert_currency(oed_df, currency_col, reporting_currency, currency_rate, ods_fields):
+def convert_currency(oed_df, reporting_currency, currency_rate, all_ods_fields=get_ods_fields()):
     """
     Convert inplace the columns in currency unit (BuildingTIV, LocNetPremium, LocDed1Building (depending on type),
     LocMinDed1Building, ...) to the reporting_currency
@@ -174,8 +169,14 @@ def convert_currency(oed_df, currency_col, reporting_currency, currency_rate, od
     :return: None
     """
 
-    insensitive_column_map = {str(col).lower():col for col in oed_df.columns}
-    insensitive_ods_fields = {key.lower(): value for key, value in ods_fields.items()}
+    currency_col = get_currency_col(oed_df)
+
+    if 'originalcurrency' not in oed_df.columns:
+        oed_df['originalcurrency'] = oed_df[currency_col]
+        oed_df['rateofexchange'] = 1.
+
+    insensitive_column_map = {str(col).lower(): col for col in oed_df.columns}
+    insensitive_ods_fields = {key.lower(): value for key, value in all_ods_fields[currency_file[currency_col.lower()]].items()}
 
     transaction_currencies = oed_df[currency_col].unique()
 
