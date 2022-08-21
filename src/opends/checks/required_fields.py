@@ -27,6 +27,7 @@ class RequiredFieldsCheck(Check):
 
     def _get_types(self) -> Dict[str, str]:
         """
+        TODO => review this function and how it is implemented in the class/check
         Gets the Pandas data types from the data fields that are needed.
 
         Returns: (Dict[str, str]) the name of the data field and the pandas data type

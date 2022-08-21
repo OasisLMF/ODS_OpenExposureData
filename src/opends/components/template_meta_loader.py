@@ -57,6 +57,10 @@ class TemplateMetaLoader(metaclass=TemplateMetaLoaderSingleton):
     def supported_oed_codes(self) -> List[str]:
         return self.data["supported OED codes"]
 
+    @property
+    def supported_financial_codes(self) -> dict:
+        return self.data["supported financial codes"]
+
 
 def get_template_meta_data(name: str) -> TemplateMetaLoader:
     """

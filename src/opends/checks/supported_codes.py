@@ -5,7 +5,7 @@ import pandas as pd
 
 from opends.checks.base import Check
 from opends.components.file import File
-from typing import List
+from typing import List, Dict
 
 
 class SupportedCodesCheck(Check):
@@ -23,12 +23,6 @@ class SupportedCodesCheck(Check):
         """
         super().__init__(data=data, file=file, check_name="Supported codes")
 
-    def _unsafe_codes_check(self) -> bool:
-        pass
-
-    def _codes_check(self) -> bool:
-        pass
-
     def _check_occupancy_codes(self) -> None:
         if self.file.name == self.FILE_NAME:
             occupancy_codes = self.data[self.OCCUPANCY_FIELD].to_numpy()
@@ -41,14 +35,14 @@ class SupportedCodesCheck(Check):
                     f"file: {self.FILE_NAME}"
                 )
 
-    def _check_construction_codes(self):
-        pass
+    def _check_financial_codes(self) -> None:
+        financial_code_data: Dict[str, dict] = self.meta_data.supported_financial_codes[self.file.name]
 
-    def _check_country_and_area_codes(self):
-        pass
+        for column in list(self.data.columns):
+            financial_code_detail = financial_code_data.get(column)
+            print(financial_code_detail)
 
     def run(self) -> None:
         self._check_occupancy_codes()
-        self._check_construction_codes()
-        self._check_country_and_area_codes()
+        self._check_financial_codes()
         self.validate_pass()

@@ -31,7 +31,7 @@ def perform_checks(data: pd.DataFrame, file: File) -> List[str]:
         RequiredFieldsCheck(data=data, file=file),
         CorrectDataTypeCheck(data=data, file=file),
         CorrectRangeCheck(data=data, file=file),
-        # SupportedCodesCheck(data=data, file=file)
+        SupportedCodesCheck(data=data, file=file)
     ]
     for check in checks:
         check.run()

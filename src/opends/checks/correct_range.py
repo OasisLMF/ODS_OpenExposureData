@@ -47,9 +47,6 @@ class CorrectRangeCheck(Check):
         for column in list(self.data.columns):
             data_field: Optional[DataField] = self.file.fields.get(column)
 
-            if column == "AreaCode":
-                print("test")
-
             # checks the column if supported and the column data type is clean (faster)
             if data_field is not None and data_field.should_check and column not in self.offending_columns:
                 expected_type: Optional[str] = self.file.data_types.get(column)

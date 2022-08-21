@@ -102,6 +102,39 @@ def get_occupancy_codes(file_path: str) -> List[str]:
     return df_occupancy_codes["OED Code"].drop_duplicates().to_list()
 
 
+def get_financial_codes(file_path: str) -> dict:
+    """
+    Gets the supported financial codes for the schema.
+
+    Args:
+        file_path: (str) the path pointing to the excel schema file housing the financial codes
+
+    Returns: (dict) key is the name of the file and each key houses data around the data field with the name of the
+                    data field being the key
+
+                    Examples:
+                        {
+                            "Loc": {  ------------------------------> filename
+                                "PortNumber": {  -------------------> data field name
+                                    ...
+                                }
+                            }
+                        }
+    """
+    df_fields = pd.read_excel(file_path, sheet_name='OED Financial Fields supported', engine='openpyxl')
+    financial_codes_schema = {}
+    for record in list(df_fields.T.to_dict().values()):
+        file_name_list = record["File Name"].replace(" ", "").split(";")
+        del record["File Name"]
+
+        for name in file_name_list:
+            if financial_codes_schema.get(name) is None:
+                financial_codes_schema[name] = {}
+
+            financial_codes_schema[name][record["Input Field Name"]] = record
+    return financial_codes_schema
+
+
 def main() -> None:
     args_parser = argparse.ArgumentParser()
     args_parser.add_argument('--version', action='store', type=str, required=True,
@@ -121,7 +154,8 @@ def main() -> None:
     # declare the meta-data
     meta_data = {
         "supported perils": get_supported_perils(file_path=specification_file),
-        "supported OED codes": get_occupancy_codes(file_path=specification_file)
+        "supported OED codes": get_occupancy_codes(file_path=specification_file),
+        "supported financial codes": get_financial_codes(file_path=f"{DIR_PATH}/OED_financial_terms_supported.xlsx")
     }
 
     # iterate through filed list
