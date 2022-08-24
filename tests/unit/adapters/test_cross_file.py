@@ -19,7 +19,7 @@ class TestCrossFileTestAdapter(TestCase):
 
     def tearDown(self) -> None:
         self._wipe_outcome(path=self.loc_outcome_path)
-        # self._wipe_outcome(path=self.acc_outcome_path)
+        self._wipe_outcome(path=self.acc_outcome_path)
 
     @staticmethod
     def _wipe_outcome(path: str) -> None:
@@ -29,8 +29,8 @@ class TestCrossFileTestAdapter(TestCase):
     def compare_data(self, path: str, expected_data: str):
         with open(path, "r") as file:
             data = file.read()
-        print(data)
-        # self.assertEqual(expected_data, data)
+        # print(data)
+        self.assertEqual(expected_data, data)
 
     @staticmethod
     @patch("opends.adapters.cross_file_test.os")
