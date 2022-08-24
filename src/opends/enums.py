@@ -83,7 +83,7 @@ class FileNames(Enum):
     """
     The filenames in the open data standards raw data.
     """
-    REINSSCOPE = "ReinsScope"
+    REINSSCOPE = "ReinScope"
     ACC = "Acc"
     LOC = "Loc"
     REINSINFO = "ReinsInfo"
