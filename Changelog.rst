@@ -1,14 +1,18 @@
 ODS Changelog
 ==================
 
+
+`v2.3.2`_
+---------
+* (https://github.com/OasisLMF/OpenDataStandards/pull/80) - Add currency conversion capability to ods_tool
+* (https://github.com/OasisLMF/OpenDataStandards/pull/82) - Simplify the currency conversion interface
+
 `v2.3.1`_
 ---------
-.. start_latest_release
 Added missing SoilValue field to OED spec from (https://github.com/OasisLMF/OpenDataStandards/issues/67)
 
 `v2.3.0`_
 ---------
-.. start_latest_release
 * (https://github.com/OasisLMF/OpenDataStandards/issues/66) - additing data tytpes to the ORD outputs, found here: https://github.com/OasisLMF/OpenDataStandards/blob/develop/OpenResultsData/Docs/ORD_Data_Spec.xlsx
 * (https://github.com/OasisLMF/OpenDataStandards/issues/67) - inclusion of soil types for earthquake perils in OED
 * (https://github.com/OasisLMF/OpenDataStandards/issues/68) - additonal geogschemes, roofcover types and OED occupancy codes
@@ -18,29 +22,22 @@ Added missing SoilValue field to OED spec from (https://github.com/OasisLMF/Open
 
 `v2.2.0`_
 ---------
-.. start_latest_release
 * (https://github.com/OasisLMF/OpenDataStandards/issues/65) - update the wording in the 'OED data spec' to limit the use of geogscheme/geogname to '30'
-
 * Inclusion of OED Liability data schema and docs (https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Liability)
 
 
 `v2.1.2`_
 ---------
-.. start_latest_release
-
 Fixed package issue 
 
 missing spec csv in published package
 
 `v2.1.1`_
 ---------
-.. start_latest_release
-
 Fix package installation issue https://github.com/OasisLMF/OpenDataStandards/pull/61 - Patched to `2.1.1` to fix but spec remains the same as `2.1.0`
 
 `v2.1.0`_
 ---------
-.. start_latest_release
 
 * (https://github.com/OasisLMF/OpenDataStandards/issues/53) - new payout type for step policies.
 * (https://github.com/OasisLMF/OpenDataStandards/issues/54) - Addition peril codes for volcanic perils.
@@ -51,13 +48,10 @@ Fix package installation issue https://github.com/OasisLMF/OpenDataStandards/pul
 * Includes the hotfix to the Pypi conversion tool for .csv <> Parquet data formats below:
 https://github.com/OasisLMF/OpenDataStandards/tree/develop/src
 
-.. end_latest_release
-
 
 
 `v2.0.0`_
 ---------
-.. start_latest_release
 
 **OED Version 2.0.0**
 
@@ -120,14 +114,12 @@ https://github.com/OasisLMF/OpenDataStandards/tree/develop/src
 4 = AEP TVaR
 
 * Dropped version from ORD spec filename
-.. end_latest_release
 
 
 
 
 `v2.0.0rc1`_
 ---------
-.. start_latest_release
 
 **OED**
 
@@ -197,30 +189,25 @@ https://github.com/OasisLMF/OpenDataStandards/tree/develop/src
 4 = AEP TVaR
 
 * Dropped version from ORD spec filename
-.. end_latest_release
 
 
 
 `v1.1.5`_
 ---------
-.. start_latest_release
 * (https://github.com/OasisLMF/OpenDataStandards/issues/23) - Added IFM occupancy codes for specific oil, gas, electric and nuclear risks
 * (https://github.com/OasisLMF/OpenDataStandards/issues/27) - Added a occupamcy code for commercial railway buildings
 * Updated OpenExposureData_Spec to include new IFM occ codes
 * Updated Occupancy Values.csv in schema folder with new IFM occ codes
-.. end_latest_release
 
 
 `v1.1.4`_
 ---------
-.. start_latest_release
 * (https://github.com/OasisLMF/OpenDataStandards/issues/22) - Updated ranges for FirstFloorHeight and FirstFloorHeightUnit fields
 * Made updates to the ODS ReadMe - added Munich Re and QOMPLX logos and mission statement
 * Added the 'ODS_2021_Planning_&_Strategy_v1.pdf Doc
 * Updated the ORD data spec for v1.1.3 and associated .csv files from latest one supplied by NASDAQ following the Lloyd's Lab project
 * Added the ORD_Questions_&_Feedback.rst doc
 * Added ODS diagram to the ReadMe file.
-.. end_latest_release
 
 
 `v1.1.3`_
