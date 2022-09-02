@@ -12,7 +12,6 @@ from ..oed import (
     parquet_to_csv,
     csv_to_parquet,
     convert_currency,
-    prepare_multicurrency_support,
     DictBasedCurrencyRates
 )
 
@@ -113,11 +112,9 @@ class OdsPackageTests(TestCase):
         loc_df_2 = read_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['Loc']), file_type='Loc')
         roe = DictBasedCurrencyRates.from_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['roe']))
 
-        currency_col, file_type_1 = prepare_multicurrency_support(loc_df_1)
-        convert_currency(loc_df_1, currency_col, 'GBP', roe, self.ods_fields[file_type_1])
-        convert_currency(loc_df_1, currency_col, 'USD', roe, self.ods_fields[file_type_1])
-        currency_col, file_type_2 = prepare_multicurrency_support(loc_df_2)
-        convert_currency(loc_df_2, currency_col, 'USD', roe, self.ods_fields[file_type_2])
+        convert_currency(loc_df_1, 'GBP', roe)
+        convert_currency(loc_df_1, 'USD', roe)
+        convert_currency(loc_df_2, 'USD', roe)
 
         #loc_df_2.to_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['LocExp']), index=False)
         expected = read_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['LocExp']), file_type='Loc')
