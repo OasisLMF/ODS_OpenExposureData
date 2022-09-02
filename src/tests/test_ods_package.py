@@ -1,4 +1,5 @@
 import os
+import sys
 import pandas as pd
 import pyarrow
 import requests
@@ -10,6 +11,8 @@ from ..oed import (
     get_ods_fields,
     parquet_to_csv,
     csv_to_parquet,
+    convert_currency,
+    DictBasedCurrencyRates
 )
 
 
@@ -20,25 +23,35 @@ input_file_names = {
         'Acc':        'SourceAccOEDPiWind.csv',
         'Loc':        'SourceLocOEDPiWind10.csv',
         'ReinsInfo':  'SourceReinsInfoOEDPiWind.csv',
-        'ReinsScope': 'SourceReinsScopeOEDPiWind.csv'
+        'ReinsScope': 'SourceReinsScopeOEDPiWind.csv',
     },
     "parquet": {
         'Acc':        'SourceAccOEDPiWind.parquet',
         'Loc':        'SourceLocOEDPiWind10.parquet',
         'ReinsInfo':  'SourceReinsInfoOEDPiWind.parquet',
         'ReinsScope': 'SourceReinsScopeOEDPiWind.parquet'
+    },
+    "currency": {
+        'Loc':        'SourceLocOEDPiWind10Currency.csv',
+        'LocExp':     'SourceLocOEDPiWind10Currency_expected.csv',
+        'roe':        'roe.csv'
     }
+
 }
+
 
 def _is_non_empty_file(fp):
     #print(f'{fp} not empty: {os.path.getsize(fp) > 0}')
     return os.path.getsize(fp) > 0
+
 
 class OdsPackageTests(TestCase):
 
     def setUp(self):
         # Load OED Spec
         self.ods_fields = get_ods_fields(pd)
+
+        self.local_test_cases_fp = os.path.join(sys.path[0], 'validation')
 
         # download piwind example files
         for file_format in input_file_names:
@@ -55,7 +68,6 @@ class OdsPackageTests(TestCase):
             for oed_file in input_file_names[file_format]:
                 filename = input_file_names[file_format][oed_file]
                 os.remove(filename)
-
 
     def test_get_ods_fields(self):
         self.assertTrue(isinstance(self.ods_fields,dict))
@@ -87,7 +99,6 @@ class OdsPackageTests(TestCase):
             self.assertTrue(_is_non_empty_file(out_f))
             os.remove(out_f)
 
-
     def test_parquet_to_csv(self):
         for oed_type in input_file_names['parquet']:
             in_f = input_file_names['parquet'][oed_type]
@@ -96,3 +107,16 @@ class OdsPackageTests(TestCase):
             self.assertTrue(_is_non_empty_file(out_f))
             os.remove(out_f)
 
+    def test_convert_currency(self):
+        loc_df_1 = read_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['Loc']), file_type='Loc')
+        loc_df_2 = read_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['Loc']), file_type='Loc')
+        roe = DictBasedCurrencyRates.from_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['roe']))
+
+        convert_currency(loc_df_1, 'GBP', roe)
+        convert_currency(loc_df_1, 'USD', roe)
+        convert_currency(loc_df_2, 'USD', roe)
+
+        #loc_df_2.to_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['LocExp']), index=False)
+        expected = read_csv(os.path.join(self.local_test_cases_fp, input_file_names['currency']['LocExp']), file_type='Loc')
+        pd.testing.assert_frame_equal(loc_df_1, expected)
+        pd.testing.assert_frame_equal(loc_df_2, expected)
