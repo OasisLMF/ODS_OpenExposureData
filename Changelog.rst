@@ -4,7 +4,7 @@ ODS Changelog
 `v3.0.0`_
 ---------
 
-* (https://github.com/OasisLMF/OpenDataStandards/issues/40) - Add ‘locPopulation’ file to the current OED loc file.
+* (https://github.com/OasisLMF/OpenDataStandards/issues/40) - Add ‘locPopulation’ file to the current OED loc file from the current separate input file.
 
 * (https://github.com/OasisLMF/OpenDataStandards/issues/68) (re-opened from v2.3.0) 
 
