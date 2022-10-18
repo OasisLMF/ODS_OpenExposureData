@@ -78,7 +78,7 @@ def get_ods_fields(df_engine=pd):
                                 na_values=[])
 
         # convert Data Type to pandas DataType
-        ods_fields_df['pd_dtype'] = ods_fields_df['Data Type'].str.split('(', 1, expand=True)[0].map(pd_converter)
+        ods_fields_df['pd_dtype'] = ods_fields_df['Data Type'].str.split('(', n=1, expand=True)[0].map(pd_converter)
 
         # check that to Data Type is missing from our converter
         if ods_fields_df['pd_dtype'].isna().any():
