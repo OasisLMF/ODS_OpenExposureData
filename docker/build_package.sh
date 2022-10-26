@@ -10,9 +10,9 @@ fi
     find ./dist/ -name "ods_tools-*" -exec rm -rf {} \;
 
 set -e
-# Create Spec CSV 
-    extract_spec.py --source-excel-path ./OpenExposureData/Docs/OpenExposureData_Spec.xlsx \
-                    --output-csv-path ./src/OpenExposureData_Spec.csv
+# Create Spec Json
+    extract_spec.py json --source-excel-path ./OpenExposureData/Docs/OpenExposureData_Spec.xlsx \
+                         --output-json-path ./src/data/OpenExposureData_Spec.json
 
 # Build
     pip install pip-tools wheel 

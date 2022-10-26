@@ -27,19 +27,20 @@ def get_version():
 version = get_version()
 readme = get_readme()
 
+print('###', setuptools.find_packages(where='ods_tools', exclude='*.pyc'))
 setuptools.setup(
     name="ods_tools",
     version=version,
     include_package_data=True,
-    package_data={"": ["*.csv", "*.md"]},
+    package_data={"": ["*.csv", "*.md", "*.json"]},
     entry_points={
         'console_scripts': [
-            'ods_tools=ods_tools:main',
+            'ods_tools=ods_tools.main:main',
         ]
     },
     author='Oasis LMF',
     author_email="support@oasislmf.org",
-    packages=['ods_tools'],
+    packages=['ods_tools', 'ods_tools.ods', 'ods_tools.data'],
     package_dir={'ods_tools': 'src'},
     python_requires='>=3.7',
     description='Tools to manage ODS files',
