@@ -40,7 +40,7 @@ setuptools.setup(
     },
     author='Oasis LMF',
     author_email="support@oasislmf.org",
-    packages=['ods_tools', 'ods_tools.ods', 'ods_tools.data'],
+    packages=['ods_tools', 'ods_tools.ods'],
     package_dir={'ods_tools': 'src'},
     python_requires='>=3.7',
     description='Tools to manage ODS files',
