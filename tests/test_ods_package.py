@@ -9,6 +9,8 @@ import tempfile
 from src.ods.oed import ExposureData
 from src.ods.ods_exception import OdsException
 
+base_test_path = pathlib.Path(__file__).parent
+
 piwind_branch = 'develop'
 base_url = f'https://raw.githubusercontent.com/OasisLMF/OasisPiWind/{piwind_branch}/tests/inputs'
 input_file_names = {
@@ -191,7 +193,7 @@ class OdsPackageTests(TestCase):
 
     # load non utf-8 file
     def test_load_non_utf8(self):
-        config = {'location': 'non_utf8_loc.csv'
+        config = {'location': str(pathlib.Path(base_test_path, 'non_utf8_loc.csv'))
                   }
         oed = ExposureData(**config)
         self.assertTrue(oed.location.dataframe['StreetAddress'][0] == 'Ô, Avenue des Champs-Élysées')

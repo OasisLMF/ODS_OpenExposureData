@@ -156,7 +156,7 @@ class OedSchema:
             - None to get the current version Oed schema
         :return: OedSchema object
         """
-        if isinstance(oed_schema_info, str):
+        if isinstance(oed_schema_info, (str, Path)):
             return cls.from_json(oed_schema_info)
         elif isinstance(oed_schema_info, cls):
             return oed_schema_info
@@ -538,7 +538,7 @@ class OedSource:
             - DataFrame no source file just oed data is path and can be saved after
         :return: OedSource (or None if  oed_info is None)
         """
-        if isinstance(oed_info, str):
+        if isinstance(oed_info, (str, Path)):
             return OedSource.from_filepath(exposure_data, oed_type, filepath=oed_info)
         elif isinstance(oed_info, dict):
             return OedSource(exposure_data, oed_type, **oed_info)
@@ -660,7 +660,7 @@ class OedSource:
                         'write_param' : all args you may want to pass to the pandas writer function (to_parquet, to_csv)
 
         """
-        if isinstance(source, str):
+        if isinstance(source, (str, Path)):
             source = {'source_type': 'filepath',
                       'filepath': source,
                       }
