@@ -4,3 +4,4 @@ openpyxl
 click
 pytest
 requests
+chardet
