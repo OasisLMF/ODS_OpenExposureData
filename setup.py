@@ -27,7 +27,6 @@ def get_version():
 version = get_version()
 readme = get_readme()
 
-print('###', setuptools.find_packages(where='ods_tools', exclude='*.pyc'))
 setuptools.setup(
     name="ods_tools",
     version=version,
