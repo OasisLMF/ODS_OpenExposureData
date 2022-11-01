@@ -6,7 +6,7 @@ import pandas as pd
 from unittest import TestCase
 import tempfile
 
-from src.ods.oed import ExposureData
+from src.ods.oed import ExposureData, DEFAULT_ODS_SCHEMA_PATH
 from src.ods.ods_exception import OdsException
 
 base_test_path = pathlib.Path(__file__).parent
@@ -87,15 +87,16 @@ class OdsPackageTests(TestCase):
             self.assertTrue(oed.location.dataframe.equals(oed2.location.dataframe))
 
     def test_load_oed_from_df(self):
-        location_df = pd.DataFrame({'PortNumber': [1,1],
-                                 'AccNumber' : [1,2],
-                                 'LocNumber' : [1,2],
-                                 'CountryCode' : ['UK', 'FR'],
-                                 'LocPerilsCovered': 'WTC',
-                                 'BuildingTIV': ['1000', '20000'],
-                                 'ContentsTIV': [0,0],
-                                 'BITIV': [0,0],
-                                 'LocCurrency': ['GBP', 'EUR']})
+        location_df = pd.DataFrame({
+            'PortNumber': [1,1],
+            'AccNumber' : [1,2],
+            'LocNumber' : [1,2],
+            'CountryCode' : ['GB', 'FR'],
+            'LocPerilsCovered': 'WTC',
+            'BuildingTIV': ['1000', '20000'],
+            'ContentsTIV': [0,0],
+            'BITIV': [0,0],
+            'LocCurrency': ['GBP', 'EUR']})
 
         oed = ExposureData(**{'location': location_df})
         # check PortNumber are converted to str
@@ -176,20 +177,19 @@ class OdsPackageTests(TestCase):
                     self.assertTrue(os.path.isfile(pathlib.Path(tmp_run_dir, folder, f'Source{oed_name}OEDPiWind.parquet')))
 
     def test_validation_raise_exception(self):
-        with tempfile.TemporaryDirectory() as tmp_run_dir:
-            config = {'location': base_url + '/SourceLocOEDPiWind.csv',
-                      'account': base_url + '/SourceAccOEDPiWind.csv',
-                      'ri_info': base_url + '/SourceReinsInfoOEDPiWind.csv',
-                      'ri_scope': base_url + '/SourceReinsScopeOEDPiWind.csv',
-                      }
-            oed = ExposureData(**config)
+        config = {'location': base_url + '/SourceLocOEDPiWind.csv',
+                  'account': base_url + '/SourceAccOEDPiWind.csv',
+                  'ri_info': base_url + '/SourceReinsInfoOEDPiWind.csv',
+                  'ri_scope': base_url + '/SourceReinsScopeOEDPiWind.csv',
+                  }
+        oed = ExposureData(**config)
 
-            # create invalid data
-            oed.location.dataframe['BuildingTIV'][0:5] = -1
-            oed.account.dataframe['LayerParticipation'][1:2] = 2
-            oed.ri_info.dataframe['ReinsPeril'] = 'FOOBAR'
+        # create invalid data
+        oed.location.dataframe['BuildingTIV'][0:5] = -1
+        oed.account.dataframe['LayerParticipation'][1:2] = 2
+        oed.ri_info.dataframe['ReinsPeril'] = 'FOOBAR'
 
-            self.assertRaises(OdsException, oed.check)
+        self.assertRaises(OdsException, oed.check)
 
     # load non utf-8 file
     def test_load_non_utf8(self):
@@ -197,3 +197,26 @@ class OdsPackageTests(TestCase):
                   }
         oed = ExposureData(**config)
         self.assertTrue(oed.location.dataframe['StreetAddress'][0] == 'Ô, Avenue des Champs-Élysées')
+
+    def test_aliases_columns(self):
+        location_df = pd.DataFrame({
+            'PortNumber': [1, 1],
+            'AccNumber': [1, 2],
+            'LocNumberAlias': [1, 2],
+            'CountryCode': ['GB', 'FR'],
+            'LocPerilsCovered': 'WTC',
+            'BuildingTIV': ['1000', '20000'],
+            'ContentsTIV': [0, 0],
+            'BITIV': [0, 0],
+            'LocCurrency': ['GBP', 'EUR']})
+        with tempfile.TemporaryDirectory() as tmp_run_dir:
+            # create a custom schema
+            custom_schema_path = pathlib.Path(tmp_run_dir, 'custom_schema.json')
+            with open(DEFAULT_ODS_SCHEMA_PATH) as default_schema_file, open(custom_schema_path, 'w') as custom_schema_file:
+                default_schema = json.load(default_schema_file)
+                default_schema['input_fields']['Loc']['locnumber']['alias'] = 'LocNumberAlias'
+                json.dump(default_schema, custom_schema_file)
+
+            ExposureData(**{'location': location_df,
+                            'oed_schema_info': custom_schema_path,
+                            'check_oed': True})

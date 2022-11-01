@@ -183,26 +183,39 @@ class OedSchema:
                 for area in areas:
                     country_area.add((country, area))
             schema["country_area"] = country_area
+
             return cls(schema, oed_json)
 
     @staticmethod
-    def colname_to_fieldname(colname: str, input_fields: dict):
+    def colname_to_fieldname(colnames: list, input_fields: dict):
         """
         Args:
-            colname: name of the column in oed file
+            colnames: name of the columns in oed file
             input_fields: dict of all the field in ods_schema
         Return:
-            name and info of the field in ods_schema
+            dict mapping between exact oed column name and field name in oed_schema
         """
-        if colname.lower() in input_fields:
-            return colname.lower()
-        else:
-            for field_suffix in ['xx', 'yyy']:
-                for i in range(1, len(colname)):
-                    field_name = colname.lower()[:-i] + field_suffix
-                    if field_name in input_fields:
-                        return field_name
-            return None
+        # support for name different from standard oed column name
+        aliases = {field_info.get('alias').lower(): field_name for field_name, field_info in input_fields.items() if field_info.get('alias')}
+        result = {}
+        for colname in colnames:
+            if colname.lower() in input_fields:
+                result[colname] = colname.lower()
+            elif colname.lower() in aliases:
+                result[colname] = aliases[colname.lower()]
+            else:
+                for field_suffix in ['xx', 'yyy']:
+                    for i in range(1, len(colname)):
+                        field_name = colname.lower()[:-i] + field_suffix
+                        if field_name in input_fields:
+                            result[colname] =  field_name
+                            break
+                    else:
+                        continue
+                    break
+                else:
+                    result[colname] = None
+        return result
 
     @staticmethod
     def is_valid_value(value, valid_ranges):
@@ -406,8 +419,9 @@ class ExposureData:
             if oed_source:
                 # check required field
                 all_field_info = self.get_input_fields(oed_type)
-                colname_to_fieldname = {colname: self.oed_schema.colname_to_fieldname(colname, all_field_info) for colname in oed_source.dataframe.columns}
-                identifier_field = [colname for colname, fieldname in colname_to_fieldname.items() if all_field_info[fieldname]['Input Field Name'] in OED_IDENTIFIER_FIELDS[oed_type]]
+                colname_to_fieldname = self.oed_schema.colname_to_fieldname(oed_source.dataframe.columns, all_field_info)
+                identifier_field = [colname for colname, fieldname in colname_to_fieldname.items()
+                                    if all_field_info.get(fieldname, {}).get('Input Field Name') in OED_IDENTIFIER_FIELDS[oed_type]]
 
                 fieldname_to_colnames = {} #  fieldname_to_colnames stores a list for values, for most column the length will be 1 except for flexi columns
                 for colname, fieldname in colname_to_fieldname.items():
@@ -418,8 +432,7 @@ class ExposureData:
                         if field_info.get('Required Field') == 'R':
                             invalid_data.append({'name': oed_name, 'source': oed_source.current_source,
                                                  'msg': f"missing required column {field_name}"})
-                        else:
-                            continue
+                        continue
 
                     for colname in fieldname_to_colnames[field_name]:
                         if (field_info.get("Allow blanks?") == 'NO'
@@ -577,12 +590,13 @@ class OedSource:
         Returns:
             OedSource
         """
-        oed_source = cls(exposure_data, oed_type, None, {})
+        oed_source = cls(exposure_data, oed_type, 'orig', {'orig': {'source_type': 'DataFrame'}})
         ods_fields = exposure_data.get_input_fields(oed_type)
         pd_dtype = {}
         to_str = {}
+        colname_to_fieldname = OedSchema.colname_to_fieldname(oed_df.columns, ods_fields)
         for column in oed_df.columns:
-            field_name = OedSchema.colname_to_fieldname(column, ods_fields)
+            field_name = colname_to_fieldname[column]
             if field_name:
                 pd_dtype[column] = ods_fields[field_name]['pd_dtype']
             else:
@@ -722,8 +736,9 @@ class OedSource:
         # match header column name to oed field name and prepare pd_dtype used to read the data
         pd_dtype = {}
         colname_to_field = {}
+        colname_to_fieldname = OedSchema.colname_to_fieldname(header, ods_fields)
         for col in header:
-            field_name = OedSchema.colname_to_fieldname(col, ods_fields)
+            field_name = colname_to_fieldname[col]
             if field_name:
                 field_info = ods_fields[field_name]
                 pd_dtype[col] = field_info['pd_dtype']

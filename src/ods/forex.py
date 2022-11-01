@@ -223,7 +223,8 @@ def convert_currency(oed_df, oed_type, reporting_currency, currency_rate, oed_sc
         return
 
     ods_fields = oed_schema.schema['input_fields'][oed_type]
-    fieldname_to_colname = {oed_schema.colname_to_fieldname(colname, ods_fields): colname for colname in oed_df.columns}
+    colname_to_fieldname = oed_schema.colname_to_fieldname(oed_df.columns, ods_fields)
+    fieldname_to_colname = {fieldname: colname for colname, fieldname in colname_to_fieldname.items()}
     currency_col = fieldname_to_colname[CURRENCY_COLUMN[oed_type]]
 
     if 'originalcurrency' not in fieldname_to_colname:
