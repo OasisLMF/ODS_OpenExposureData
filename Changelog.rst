@@ -27,6 +27,8 @@ After the updates to the occupancy codes for common house type such as ‘detach
 
 * (https://github.com/OasisLMF/OpenDataStandards/issues/85) - Additional OED currency and rate of exchange fields.
 
+* (https://github.com/OasisLMF/OpenDataStandards/issues/90) - Additional ORD Exposure summary report
+
 
 `v2.3.2`_
 ---------
