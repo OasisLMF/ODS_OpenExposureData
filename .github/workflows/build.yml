@@ -1,0 +1,79 @@
+name: OpenData Build
+
+on:
+  push:
+  workflow_dispatch:
+  workflow_call:
+    outputs:
+      src_filename:
+        description: "Source Package filename"
+        value: ${{ jobs.build.outputs.src_filename }}
+      whl_filename:
+        description: "Wheel Package filename"
+        value: ${{ jobs.build.outputs.whl_filename }}
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      src_filename: ${{ steps.build_package.outputs.source }}
+      whl_filename: ${{ steps.build_package.outputs.wheel }}
+    env:
+      SPEC_PATH_IN: './OpenExposureData/Docs/OpenExposureData_Spec.xlsx'
+      SPEC_PATH_OUT: './src/OpenExposureData_Spec.csv'
+
+    steps:
+    - name: Github context
+      run:   echo "$GITHUB_CONTEXT"
+      shell: bash
+      env:
+       GITHUB_CONTEXT: ${{ toJson(github) }}
+
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.ref_name }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    - run: pip install pip-tools pandas pyarrow openpyxl click tox
+
+    - name: Extract Spec
+      run: |
+        ./docker/extract_spec.py \
+            --source-excel-path ${{ env.SPEC_PATH_IN }} \
+            --output-csv-path ${{ env.SPEC_PATH_OUT }}
+
+    - name: Build package
+      id: build_package
+      run: |
+        python setup.py sdist
+        python setup.py bdist_wheel
+
+        WHL=$(find ./dist/ -name "*.whl"  -exec basename {} \;)
+        SRC=$(find ./dist/ -name "*.tar.gz"  -exec basename {} \;)
+        echo "wheel=$WHL" >> $GITHUB_OUTPUT
+        echo "source=$SRC" >> $GITHUB_OUTPUT
+
+    - name: Store spec
+      uses: actions/upload-artifact@v3
+      with:
+        name: extracted_spec
+        path: ${{ env.SPEC_PATH_OUT }}
+        retention-days: 5
+
+    - name: Store source package
+      uses: actions/upload-artifact@v3
+      with:
+        name: src_package
+        path: ./dist/${{ steps.build_package.outputs.source }}
+        retention-days: 5
+
+    - name: Store Wheel package
+      uses: actions/upload-artifact@v3
+      with:
+        name: bin_package
+        path: ./dist/${{ steps.build_package.outputs.wheel }}
+        retention-days: 5
