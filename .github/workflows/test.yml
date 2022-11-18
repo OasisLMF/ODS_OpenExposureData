@@ -13,9 +13,6 @@ jobs:
     name: Run Pytest
     runs-on: ubuntu-latest
     needs: build
-    env:
-      SPEC_PATH_IN: './OpenExposureData/Docs/OpenExposureData_Spec.xlsx'
-      SPEC_PATH_OUT: './src/data/OpenExposureData_Spec.json'
 
     strategy:
       matrix:
