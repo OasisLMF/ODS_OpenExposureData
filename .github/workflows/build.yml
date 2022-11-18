@@ -1,7 +1,6 @@
 name: OpenData Build
 
 on:
-  push:
   workflow_dispatch:
   workflow_call:
     outputs:
@@ -15,6 +14,7 @@ on:
 
 jobs:
   build:
+    name: Build OpenData Package
     runs-on: ubuntu-latest
     outputs:
       src_filename: ${{ steps.build_package.outputs.source }}
