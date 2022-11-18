@@ -1,24 +1,24 @@
 """
 This package is in charge of converting relevant ods values such as TIV or policy term into other currencies
 """
-
 import datetime
 import json
 import pandas as pd
 from pathlib import Path
-import os
 from urllib.parse import urljoin
 
-from .ods_exception import OdsException
+from .common import OdsException
 
 try:
     from forex_python.converter import CurrencyRates as BaseFxCurrencyRates
     from forex_python.converter import RatesNotAvailableError
 
+
     class FxCurrencyRates(BaseFxCurrencyRates):
         """
         subclass of forex_python.converter.CurrencyRates that allow to set date to retrieve the rate from in the constructor
         """
+
         def __init__(self, *args, date_obj=None, **kwargs):
             super().__init__(*args, **kwargs)
             self.date_obj = date_obj
@@ -48,8 +48,8 @@ except ImportError:
     FxCurrencyRates = None
 
 import logging
-logger = logging.getLogger(__name__)
 
+logger = logging.getLogger(__name__)
 
 CURRENCY_COLUMN = {'Loc': 'loccurrency',
                    'Acc': 'acccurrency',
@@ -60,6 +60,7 @@ class DictBasedCurrencyRates:
     """
     Currency converter based on a dictionary of currency pair
     """
+
     def __init__(self, roe_dict):
         """
         Args:
@@ -167,14 +168,15 @@ def create_currency_rates(currency_conversion):
     Returns:
         object implementing get_rate(self, cur_from, cur_to) method
     """
+
     def get_path(name):
         if Path(currency_conversion[name]).is_absolute():
             return currency_conversion[name]
-        else: # isabs returns false for url like http link, using urljoin allow those to still work
+        else:  # isabs returns false for url like http link, using urljoin allow those to still work
             return urljoin(str(currency_conversion['root_dir']), currency_conversion[name])
 
     if currency_conversion:
-        if isinstance(currency_conversion, str): # it is a json file
+        if isinstance(currency_conversion, str):  # it is a json file
             currency_conversion = json.load(currency_conversion)
             currency_conversion['root_dir'] = Path(currency_conversion).parents[0]
         else:
@@ -184,16 +186,20 @@ def create_currency_rates(currency_conversion):
 
     if currency_conversion.get('currency_conversion_type') == 'DictBasedCurrencyRates':
         if currency_conversion.get("source_type") == 'csv':
-            return DictBasedCurrencyRates.from_csv(get_path('file_path'), **currency_conversion.get("read_parameters", {}))
+            return DictBasedCurrencyRates.from_csv(get_path('file_path'),
+                                                   **currency_conversion.get("read_parameters", {}))
         elif currency_conversion.get("source_type") == 'parquet':
-            return DictBasedCurrencyRates.from_parquet(get_path('file_path'), **currency_conversion.get("read_parameters", {}))
+            return DictBasedCurrencyRates.from_parquet(get_path('file_path'),
+                                                       **currency_conversion.get("read_parameters", {}))
         elif currency_conversion.get("source_type", '').lower() == 'dict':
             return DictBasedCurrencyRates(currency_conversion['currency_rates'])
         else:
-            raise OdsException(f"Unsupported currency_conversion source type : {currency_conversion.get('source_type')}")
+            raise OdsException(
+                f"Unsupported currency_conversion source type : {currency_conversion.get('source_type')}")
     elif currency_conversion.get('currency_conversion_type') == 'FxCurrencyRates':
         if FxCurrencyRates is None:
-            raise OdsException(f"You must install package forex-python to use builtin_currency_conversion_type FxCurrencyRates")
+            raise OdsException(
+                f"You must install package forex-python to use builtin_currency_conversion_type FxCurrencyRates")
 
         _datetime = currency_conversion.get('datetime')
         if _datetime is not None:
@@ -201,7 +207,8 @@ def create_currency_rates(currency_conversion):
         return FxCurrencyRates(date_obj=_datetime, **currency_conversion.get("fx_currency_rates_parameters", {}))
 
     else:
-        raise OdsException(f"unsupported currency_conversion_type {currency_conversion.get('currency_conversion_type')}")
+        raise OdsException(
+            f"unsupported currency_conversion_type {currency_conversion.get('currency_conversion_type')}")
 
 
 def convert_currency(oed_df, oed_type, reporting_currency, currency_rate, oed_schema):
@@ -223,11 +230,11 @@ def convert_currency(oed_df, oed_type, reporting_currency, currency_rate, oed_sc
         return
 
     ods_fields = oed_schema.schema['input_fields'][oed_type]
-    colname_to_fieldname = oed_schema.colname_to_fieldname(oed_df.columns, ods_fields)
-    fieldname_to_colname = {fieldname: colname for colname, fieldname in colname_to_fieldname.items()}
-    currency_col = fieldname_to_colname[CURRENCY_COLUMN[oed_type]]
+    column_to_field = oed_schema.column_to_field(oed_df.columns, ods_fields)
+    field_to_column = {field: column for column, field in column_to_field.items()}
+    currency_col = field_to_column[CURRENCY_COLUMN[oed_type]]
 
-    if 'originalcurrency' not in fieldname_to_colname:
+    if 'originalcurrency' not in field_to_column:
         oed_df['originalcurrency'] = oed_df[currency_col]
         oed_df['rateofexchange'] = 1.
 
@@ -235,7 +242,8 @@ def convert_currency(oed_df, oed_type, reporting_currency, currency_rate, oed_sc
 
     if set(transaction_currencies) - {reporting_currency}:
         if currency_rate is None:
-            raise OdsException(f'Currency Convertion needs to be specified in order to convert term to reporting currency {reporting_currency}')
+            raise OdsException(
+                f'Currency Convertion needs to be specified in order to convert term to reporting currency {reporting_currency}')
 
     for orig_cur in transaction_currencies:
         if orig_cur == reporting_currency:
@@ -244,27 +252,27 @@ def convert_currency(oed_df, oed_type, reporting_currency, currency_rate, oed_sc
 
         orig_cur_rows = (oed_df[currency_col] == orig_cur)
         oed_df.loc[orig_cur_rows, 'rateofexchange'] *= rate
-        for fieldname, colname in fieldname_to_colname.items():
-            field_type = ods_fields[fieldname].get('Back End DB Field Name', '').lower()
-            if (field_type in ['tax', 'grosspremium', 'netpremium', 'brokerage', 'extraexpenselimit', 'minded', 'maxded']
-                    or fieldname.endswith('tiv')):
+        for field, column in field_to_column.items():
+            field_type = ods_fields[field].get('Back End DB Field Name', '').lower()
+            if (field_type in ['tax', 'grosspremium', 'netpremium', 'brokerage', 'extraexpenselimit', 'minded',
+                               'maxded']
+                    or field.endswith('tiv')):
                 row_filter = orig_cur_rows
             elif field_type == 'ded':
-                column_type_name = fieldname.replace('ded', 'dedtype')
-                row_filter = orig_cur_rows & (oed_df[fieldname_to_colname[column_type_name]] == 0)
+                column_type_name = field.replace('ded', 'dedtype')
+                row_filter = orig_cur_rows & (oed_df[field_to_column[column_type_name]] == 0)
             elif field_type == 'limit':
-                column_type_name = fieldname.replace('limit', 'limittype')
-                row_filter = orig_cur_rows & (oed_df[fieldname_to_colname[column_type_name]] == 0)
+                column_type_name = field.replace('limit', 'limittype')
+                row_filter = orig_cur_rows & (oed_df[field_to_column[column_type_name]] == 0)
             elif field_type in ['payoutstart', 'payoutend', 'payoutlimit']:
                 column_type_name = 'payouttype'
-                row_filter = orig_cur_rows & (oed_df[fieldname_to_colname[column_type_name]] == 0)
+                row_filter = orig_cur_rows & (oed_df[field_to_column[column_type_name]] == 0)
             elif field_type in ['triggerstart', 'triggerend']:
                 column_type_name = 'triggertype'
-                row_filter = orig_cur_rows & (oed_df[fieldname_to_colname[column_type_name]] == 0)
+                row_filter = orig_cur_rows & (oed_df[field_to_column[column_type_name]] == 0)
             else:  # not a currency unit column we go to the next one
                 continue
-            oed_df.loc[row_filter, colname] *= rate
+            oed_df.loc[row_filter, column] *= rate
 
     oed_df[currency_col] = reporting_currency
     oed_df[currency_col] = oed_df[currency_col].astype('category')
-
