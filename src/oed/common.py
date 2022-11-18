@@ -32,6 +32,7 @@ PANDAS_DEFAULT_NULL_VALUES = {
     'null',
     'NaN',
     '-NaN',
+    '-NaN',
     'nan',
     '-nan',
     '',

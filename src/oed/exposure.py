@@ -8,12 +8,12 @@ This package manage:
 import json
 from pathlib import Path
 
-from .common import (OdsException, PANDAS_COMPRESSION_MAP,
+from .common import (PANDAS_COMPRESSION_MAP,
                      USUAL_FILE_NAME, OED_TYPE_TO_NAME)
 from .schema import OedSchema
 from .source import OedSource
 from .validator import Validator
-from .forex import create_currency_rates, convert_currency
+from .forex import create_currency_rates
 
 
 class OedExposure:
@@ -57,13 +57,13 @@ class OedExposure:
         self.ri_scope = OedSource.from_oed_info(exposure=self, oed_type='ReinsScope', oed_info=ri_scope)
 
         if not self.location:
-            raise Exception(f"Exposure needs a Location file, {location=}")
+            raise Exception(f"Exposure needs a Location file, location={location}")
 
         if ri_info or ri_scope:
             if not account:
-                raise Exception(f"Exposure needs account if reinsurance is provided {account=}")
+                raise Exception(f"Exposure needs account if reinsurance is provided account={account}")
             if not ri_info and ri_scope:
-                raise Exception(f"Exposure needs both ri_scope and ri_scope for reinsurance {ri_info=} {ri_scope=}")
+                raise Exception(f"Exposure needs both ri_scope and ri_scope for reinsurance ri_info={ri_info} ri_scope={ri_scope}")
 
         self.currency_conversion = create_currency_rates(currency_conversion)
 
