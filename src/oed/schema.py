@@ -96,7 +96,7 @@ class OedSchema:
                         continue
                     break
                 else:
-                    pass # unrecognized/unknown columns are not added
+                    pass  # unrecognized/unknown columns are not added
         return result
 
     @staticmethod
