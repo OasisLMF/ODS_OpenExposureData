@@ -81,18 +81,16 @@ class OedSchema:
         result = {}
         for column in columns:
             if column.lower() in oed_fields:
-                result[column] = column.lower()
+                result[column] = oed_fields[column.lower()]
             elif column.lower() in aliases:
-                result[column] = aliases[column.lower()]
+                result[column] = oed_fields[aliases[column.lower()]]
             else:
                 for field_suffix in ['xx', 'zzz']:
                     for i in range(1, len(column)):
                         field_name = column.lower()[:-i] + field_suffix
                         if field_name in oed_fields:
                             if use_generic_flexi:
-                                result[column] = field_name
-                            else:
-                                result[column] = column.lower()
+                                result[column] = oed_fields[field_name]
                             break
                     else:
                         continue
@@ -104,7 +102,9 @@ class OedSchema:
     @staticmethod
     def use_field(dataframe, ods_fields: dict):
         """rename the column in the dataframe to their oed field name"""
-        return dataframe.rename(columns=OedSchema.column_to_field(dataframe.columns, ods_fields, use_generic_flexi=False))
+        mapping = {column: field['Input Field Name']
+                   for column, field in OedSchema.column_to_field(dataframe.columns, ods_fields, use_generic_flexi=False).items()}
+        return dataframe.rename(columns=mapping)
 
     @staticmethod
     def is_valid_value(value, valid_ranges, allow_blanks):

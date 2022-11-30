@@ -51,9 +51,9 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-CURRENCY_COLUMN = {'Loc': 'loccurrency',
-                   'Acc': 'acccurrency',
-                   'ReinsInfo': 'reinscurrency'}
+CURRENCY_COLUMN = {'Loc': 'LocCurrency',
+                   'Acc': 'AccCurrency',
+                   'ReinsInfo': 'ReinsCurrency'}
 
 
 class DictBasedCurrencyRates:
@@ -215,7 +215,7 @@ def convert_currency(oed_df, oed_type, reporting_currency, currency_rate, oed_sc
     """
     Convert inplace the columns in currency unit (BuildingTIV, LocNetPremium, LocDed1Building (depending on type),
     LocMinDed1Building, ...) to the reporting_currency
-    store the original currency  in origincurency, and the rate of exchange in rateofexchange
+    store the original currency  in OriginCurency, and the rate of exchange in RateOfExchange
 
     Args:
         oed_df: OED Dataframe (Loc, Acc, ...)
@@ -231,12 +231,12 @@ def convert_currency(oed_df, oed_type, reporting_currency, currency_rate, oed_sc
 
     ods_fields = oed_schema.schema['input_fields'][oed_type]
     column_to_field = oed_schema.column_to_field(oed_df.columns, ods_fields)
-    field_to_column = {field: column for column, field in column_to_field.items()}
+    field_to_column = {field_info['Input Field Name']: column for column, field_info in column_to_field.items()}
     currency_col = field_to_column[CURRENCY_COLUMN[oed_type]]
 
-    if 'originalcurrency' not in field_to_column:
-        oed_df['originalcurrency'] = oed_df[currency_col]
-        oed_df['rateofexchange'] = 1.
+    if 'OriginalCurrency' not in field_to_column:
+        oed_df['OriginalCurrency'] = oed_df[currency_col]
+        oed_df['RateOfExchange'] = 1.
 
     transaction_currencies = oed_df[currency_col].unique()
 
@@ -251,9 +251,9 @@ def convert_currency(oed_df, oed_type, reporting_currency, currency_rate, oed_sc
         rate = currency_rate.get_rate(orig_cur, reporting_currency)
 
         orig_cur_rows = (oed_df[currency_col] == orig_cur)
-        oed_df.loc[orig_cur_rows, 'rateofexchange'] *= rate
+        oed_df.loc[orig_cur_rows, 'RateOfExchange'] *= rate
         for field, column in field_to_column.items():
-            field_type = ods_fields[field].get('Back End DB Field Name', '').lower()
+            field_type = ods_fields[field.lower()].get('Back End DB Field Name', '').lower()
             if (field_type in ['tax', 'grosspremium', 'netpremium', 'brokerage', 'extraexpenselimit', 'minded',
                                'maxded']
                     or field.endswith('tiv')):

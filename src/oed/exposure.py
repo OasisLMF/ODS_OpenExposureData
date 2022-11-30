@@ -101,8 +101,8 @@ class OedExposure:
     def info(self):
         """info on exposure Data to be able to reload it"""
         info = {}
-        for source_name in OED_TYPE_TO_NAME.values():
-            info[source_name] = getattr(self, source_name).info
+        for source in self.get_oed_sources():
+            info[source.oed_name] = source.info
         info['oed_schema_info'] = self.oed_schema.info
         return info
 
@@ -203,19 +203,17 @@ class OedExposure:
             if version_name is None and oed_source.sources[oed_source.cur_version_name]['source_type'] == 'filepath':
                 oed_name = Path(oed_source.sources[oed_source.cur_version_name]['filepath']).name
                 if oed_source.cur_version_name.rsplit('_', 1)[-1] in PANDAS_COMPRESSION_MAP:
-                    version_name = oed_source.cur_version_name.rsplit('_', 1)[0]
+                    saved_version_name = oed_source.cur_version_name.rsplit('_', 1)[0]
                 else:
-                    version_name = oed_source.cur_version_name
-            elif not version_name:
-                oed_name = OED_TYPE_TO_NAME[oed_source.oed_type]
-                version_name = 'base'
-            else:
+                    saved_version_name = oed_source.cur_version_name
+            elif version_name:
                 oed_name = f'{version_name}_{OED_TYPE_TO_NAME[oed_source.oed_type]}'
-
-            if oed_source.sources[oed_source.cur_version_name]['source_type'] == 'filepath':
-                filepath = Path(path, Path(oed_source.sources[oed_source.cur_version_name]['filepath']).name)
+                saved_version_name = version_name
             else:
-                filepath = Path(path, oed_name)
+                oed_name = f'{OED_TYPE_TO_NAME[oed_source.oed_type]}'
+                saved_version_name = ''
+
+            filepath = Path(path, oed_name)
 
             if compression is None:
                 if oed_source.sources[oed_source.cur_version_name]['source_type'] == 'filepath':
@@ -225,7 +223,7 @@ class OedExposure:
 
             filepath = filepath.with_suffix(PANDAS_COMPRESSION_MAP[compression])
 
-            oed_source.save(version_name + '_' + f'{compression}',
+            oed_source.save(saved_version_name + '_' + f'{compression}',
                             {'source_type': 'filepath', 'filepath': filepath, 'extension': compression})
         if save_config:
             self.save_config(Path(path, self.DEFAULT_EXPOSURE_CONFIG_NAME))

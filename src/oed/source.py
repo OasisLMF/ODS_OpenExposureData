@@ -159,7 +159,7 @@ class OedSource:
         column_to_field = OedSchema.column_to_field(oed_df.columns, ods_fields)
         for column in oed_df.columns:
             if column in column_to_field:
-                pd_dtype[column] = ods_fields[column_to_field[column]]['pd_dtype']
+                pd_dtype[column] = column_to_field[column]['pd_dtype']
             else:
                 pd_dtype[column] = 'category'
             if pd_dtype[column] == 'category':  # we need to convert to str first
@@ -317,7 +317,7 @@ class OedSource:
         column_to_field = OedSchema.column_to_field(header, ods_fields)
         for col in header:
             if col in column_to_field:
-                field_info = ods_fields[column_to_field[col]]
+                field_info = column_to_field[col]
                 pd_dtype[col] = field_info['pd_dtype']
                 column_to_fieldinfo[col] = field_info
             else:
@@ -335,7 +335,10 @@ class OedSource:
             field_info = column_to_fieldinfo.get(col)
             if (field_info
                     and field_info['Default'] != 'n/a'
-                    and (df[col].isna().any() or (field_info['pd_dtype'] == 'str' and df[col].isnull().any()))):
-                df[col].fillna(df[col].dtype.type(field_info['Default']), inplace=True)
+                    and (df[col].isna().any() or (field_info['pd_dtype'] == 'category' and df[col].isnull().any()))):
+                if field_info['pd_dtype'] == 'category':
+                    df[col] = df[col].cat.add_categories(field_info['Default']).fillna(field_info['Default'])
+                else:
+                    df[col].fillna(df[col].dtype.type(field_info['Default']), inplace=True)
 
         return df

@@ -171,11 +171,11 @@ class OdsPackageTests(TestCase):
                 json.dump(config, config_json)
 
             OedExposure.convert(config_json=str(pathlib.Path(tmp_run_dir, 'config.json')),
-                             path=pathlib.Path(tmp_run_dir, 'json'),
-                             compression='parquet')
+                                path=pathlib.Path(tmp_run_dir, 'json'),
+                                compression='parquet')
             OedExposure.convert(**config,
-                             path=pathlib.Path(tmp_run_dir, 'direct'),
-                             compression='parquet')
+                                path=pathlib.Path(tmp_run_dir, 'direct'),
+                                compression='parquet')
 
             for folder in ['json', 'direct']:
                 for oed_name in ['Loc', 'Acc', 'ReinsInfo', 'ReinsScope']:
@@ -229,6 +229,6 @@ class OdsPackageTests(TestCase):
                 'oed_schema_info': custom_schema_path,
                 'use_field': True,
                 'check_oed': True})
-            pd.testing.assert_series_equal(exposure.location.dataframe['locnumber'],
+            pd.testing.assert_series_equal(exposure.location.dataframe['LocNumber'],
                                            location_df['LocNumberAlias'].astype(str).astype('category'),
                                            check_names=False)

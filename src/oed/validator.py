@@ -23,20 +23,23 @@ class Validator:
         self.field_to_column_maps = {}
         for oed_source in exposure.get_oed_sources():
             self.column_to_field_maps[oed_source] = oed_source.get_column_to_field()
-            self.identifier_field_maps[oed_source] = [column for column, field in self.column_to_field_maps[oed_source].items()
-                                                      if field in OED_IDENTIFIER_FIELDS[oed_source.oed_type]]
+            self.identifier_field_maps[oed_source] = [column for column, field_info in self.column_to_field_maps[oed_source].items()
+                                                      if field_info['Input Field Name'] in OED_IDENTIFIER_FIELDS[oed_source.oed_type]]
             field_to_column = {}
             self.field_to_column_maps[oed_source] = field_to_column
-            for column, field in self.column_to_field_maps[oed_source].items():
-                if field in field_to_column:
-                    if field.endswith('XX') or field.endswith('ZZZ'):
-                        field_to_column.setdefault(field, []).append(column)
+            for column, field_info in self.column_to_field_maps[oed_source].items():
+                if field_info['Input Field Name'] in field_to_column:
+                    if field_info['Input Field Name'].endswith('XX') or field_info['Input Field Name'].endswith('ZZZ'):
+                        if not isinstance(field_to_column[field_info['Input Field Name']], list):
+                            field_to_column[field_info['Input Field Name']] = [field_to_column[field_info['Input Field Name']]]
+                        field_to_column[field_info['Input Field Name']].append(column)
+
                     else:
-                        raise OdsException(f"Oed file {oed_source.name}, {oed_source.current_source}"
-                                           f" contain multiple instances of unique field {field}"
-                                           f" {field_to_column[field]} and {column}")
+                        raise OdsException(f"Oed file {oed_source.oed_name}, {oed_source.current_source}"
+                                           f" contain multiple instances of unique field {field_info['Input Field Name']}"
+                                           f" {field_to_column[field_info['Input Field Name']]} and {column}")
                 else:
-                    field_to_column[field] = column
+                    field_to_column[field_info['Input Field Name']] = column
 
     def __call__(self, validation_config):
         if validation_config is None:
@@ -49,6 +52,7 @@ class Validator:
             raise OdsException("Unsupported validation type")
 
         invalid_data_group = {}
+
         for check in validation:
             check_fct = getattr(self, 'check_' + str(check['name']), None)
             if check.get('on_error') not in VALIDATOR_ON_ERROR_ACTION:
@@ -60,7 +64,7 @@ class Validator:
             else:
                 raise OdsException('Unknown check name ' + str(check['name']))
 
-        raise_msg =  invalid_data_group.get('raise', [])
+        raise_msg = invalid_data_group.get('raise', [])
         log_msg = invalid_data_group.get('log', [])
         return_msg = invalid_data_group.get('return', [])
 
@@ -77,21 +81,19 @@ class Validator:
         invalid_data = []
         for oed_source in self.exposure.get_oed_sources():
             input_fields = oed_source.get_input_fields()
-            column_to_field = self.column_to_field_maps[oed_source]
             identifier_field = self.identifier_field_maps[oed_source]
+            field_to_columns = self.field_to_column_maps[oed_source]
 
-            field_to_columns = {}  # field_to_columns stores a list for values, for most column the length will be 1 except for flexi columns
-            for column, field in column_to_field.items():
-                field_to_columns.setdefault(field, []).append(column)
-
-            for field_name, field_info in input_fields.items():
-                if field_name not in field_to_columns:
+            for field_info in input_fields.values():
+                if field_info['Input Field Name'] not in field_to_columns:
                     if field_info.get('Required Field') == 'R':
                         invalid_data.append({'name': oed_source.oed_name, 'source': oed_source.current_source,
-                                             'msg': f"missing required column {field_name}"})
+                                             'msg': f"missing required column {field_info['Input Field Name']}"})
                     continue
-
-                for column in field_to_columns[field_name]:
+                columns = field_to_columns[field_info['Input Field Name']]
+                if isinstance(columns, str):
+                    columns = [columns]
+                for column in columns:
                     if (field_info.get("Allow blanks?") == 'NO'
                             and (oed_source.dataframe[column].isna().any()
                                  or (field_info['pd_dtype'] == 'str' and oed_source.dataframe[column].isnull().any()))):
@@ -113,22 +115,19 @@ class Validator:
     def check_valid_values(self):
         invalid_data = []
         for oed_source in self.exposure.get_oed_sources():
-            input_fields = oed_source.get_input_fields()
             column_to_field = self.column_to_field_maps[oed_source]
             identifier_field = self.identifier_field_maps[oed_source]
-            for column, field_name in column_to_field.items():
-                if field_name is not None:
-                    field_info = input_fields[field_name]
-                    valid_ranges = field_info['Valid value range']
-                    if valid_ranges != 'n/a':
-                        is_valid_value = functools.partial(OedSchema.is_valid_value,
-                                                           valid_ranges=valid_ranges,
-                                                           allow_blanks=field_info['Allow blanks?'].lower() == 'yes')
-                        invalid_range_data = oed_source.dataframe[~oed_source.dataframe[column].apply(is_valid_value)]
-                        if not invalid_range_data.empty:
-                            invalid_data.append({'name': oed_source.oed_name, 'source': oed_source.current_source,
-                                                 'msg': f"column '{column}' has values outside range.\n"
-                                                        f"{invalid_range_data[identifier_field + [column]]}"})
+            for column, field_info in column_to_field.items():
+                valid_ranges = field_info['Valid value range']
+                if valid_ranges != 'n/a':
+                    is_valid_value = functools.partial(OedSchema.is_valid_value,
+                                                       valid_ranges=valid_ranges,
+                                                       allow_blanks=field_info['Allow blanks?'].lower() == 'yes')
+                    invalid_range_data = oed_source.dataframe[~oed_source.dataframe[column].apply(is_valid_value)]
+                    if not invalid_range_data.empty:
+                        invalid_data.append({'name': oed_source.oed_name, 'source': oed_source.current_source,
+                                             'msg': f"column '{column}' has values outside range.\n"
+                                                    f"{invalid_range_data[identifier_field + [column]]}"})
         return invalid_data
 
     def check_perils(self):
@@ -141,8 +140,8 @@ class Validator:
                     peril_values[~peril_values.isin(self.exposure.oed_schema.schema['perils']['info'])].index.droplevel(-1)]
                 if not invalid_perils.empty:
                     invalid_data.append({'name': oed_source.oed_name, 'source': oed_source.current_source,
-                                     'msg': f"{column} has invalid perils.\n"
-                                        f"{invalid_perils[identifier_field + [column]]}"})
+                                         'msg': f"{column} has invalid perils.\n"
+                                                f"{invalid_perils[identifier_field + [column]]}"})
         return invalid_data
 
     def check_occupancy_code(self):
@@ -172,7 +171,7 @@ class Validator:
             if not invalid_construction_code.empty:
                 invalid_data.append({'name': oed_source.oed_name, 'source': oed_source.current_source,
                                      'msg': f"invalid ConstructionCode.\n"
-                                        f"{invalid_construction_code[identifier_field + [construction_code_column]]}"})
+                                            f"{invalid_construction_code[identifier_field + [construction_code_column]]}"})
         return invalid_data
 
     def check_country_and_area_code(self):
@@ -203,5 +202,5 @@ class Validator:
             if not invalid_country.empty:
                 invalid_data.append({'name': oed_source.oed_name, 'source': oed_source.current_source,
                                      'msg': f"invalid countrycode.\n"
-                                            f"{invalid_country[identifier_field + [area_code_column]]}"})
-            return invalid_data
+                                            f"{invalid_country[identifier_field + [country_code_column]]}"})
+        return invalid_data
