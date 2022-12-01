@@ -76,12 +76,25 @@ class OedExposure:
 
     @classmethod
     def from_config(cls, config_fp):
+        """
+        create an OedExposure from filepath to a config json file
+        Args:
+            config_fp = path
+        Returns:
+            OedExposure object
+        """
         with open(config_fp) as config:
             return cls(**json.load(config))
 
     @classmethod
     def from_dir(cls, oed_dir, **kwargs):
-        # oed_schema
+        """
+        create an OedExposure from directory path
+        Args:
+            oed_dir = path to the directory
+        Returns:
+            OedExposure object
+        """
         def find_fp(names):
             for name in names:
                 for extension in PANDAS_COMPRESSION_MAP.values():

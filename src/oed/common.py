@@ -61,7 +61,6 @@ OED_IDENTIFIER_FIELDS = {
     'ReinsScope': ['ReinsNumber', 'PortNumber', 'AccNumber', 'LocNumber']
 }
 
-# on_error can be: raise, log, ignore or return
 VALIDATOR_ON_ERROR_ACTION = {'raise', 'log', 'ignore', 'return'}
 DEFAULT_VALIDATION_CONFIG = [
     {'name': 'required_fields', 'on_error': 'raise'},

@@ -16,6 +16,11 @@ logger = logging.getLogger(__name__)
 
 class Validator:
     def __init__(self, exposure):
+        """
+        create a Validator object for exposure data
+        Args:
+            exposure: OedExposure object
+        """
         self.exposure = exposure
 
         self.column_to_field_maps = {}
@@ -42,6 +47,15 @@ class Validator:
                     field_to_column[field_info['Input Field Name']] = column
 
     def __call__(self, validation_config):
+        """
+        run all check from validation_config
+        Args:
+            validation_config = list of checks to perform with their action
+                - ex [{'name': 'required_fields', 'on_error': 'raise'}, ...]
+
+        Returns:
+            list of errors from check with on_error "return"
+        """
         if validation_config is None:
             validation = DEFAULT_VALIDATION_CONFIG
         elif isinstance(validation_config, [str, Path]):
@@ -78,6 +92,15 @@ class Validator:
         return return_msg
 
     def check_required_fields(self):
+        """
+        using Oed input_field definition, check all require field
+        error is raised if
+         - required column is missing
+         - value is missing and "Allow blanks?" == 'NO'
+        Returns:
+            list of invalid_data
+        """
+
         invalid_data = []
         for oed_source in self.exposure.get_oed_sources():
             input_fields = oed_source.get_input_fields()
@@ -103,6 +126,12 @@ class Validator:
         return invalid_data
 
     def check_unkown_column(self):
+        """
+        using Oed input_field definition, check that all column are OED column
+        Returns:
+            list of invalid_data
+        """
+
         invalid_data = []
         for oed_source in self.exposure.get_oed_sources():
             column_to_field = self.column_to_field_maps[oed_source]
@@ -113,6 +142,11 @@ class Validator:
         return invalid_data
 
     def check_valid_values(self):
+        """
+        using Oed input_field definition, check that values are valid for field that define a 'Valid value range'
+        Returns:
+            list of invalid_data
+        """
         invalid_data = []
         for oed_source in self.exposure.get_oed_sources():
             column_to_field = self.column_to_field_maps[oed_source]
@@ -131,6 +165,11 @@ class Validator:
         return invalid_data
 
     def check_perils(self):
+        """
+        using Oed perils list specification, check that Peril column have valid peril values
+        Returns:
+            list of invalid_data
+        """
         invalid_data = []
         for oed_source in self.exposure.get_oed_sources():
             identifier_field = self.identifier_field_maps[oed_source]
@@ -145,6 +184,11 @@ class Validator:
         return invalid_data
 
     def check_occupancy_code(self):
+        """
+        using Oed occupancy_code list specification, check that occupancy_code column have valid occupancy_code values
+        Returns:
+            list of invalid_data
+        """
         invalid_data = []
         for oed_source in self.exposure.get_oed_sources():
             occupancy_code_column = self.field_to_column_maps[oed_source].get('occupancycode')
@@ -160,6 +204,11 @@ class Validator:
         return invalid_data
 
     def check_construction_code(self):
+        """
+        using Oed occupancy_code list specification, check that occupancy_code column have valid occupancy_code values
+        Returns:
+            list of invalid_data
+        """
         invalid_data = []
         for oed_source in self.exposure.get_oed_sources():
             construction_code_column = self.field_to_column_maps[oed_source].get('constructioncode')
@@ -175,6 +224,12 @@ class Validator:
         return invalid_data
 
     def check_country_and_area_code(self):
+        """
+        using Oed country_and_area_code list specification,
+        check that country and area_code column have valid country or (country and area_code) pair values
+        Returns:
+            list of invalid_data
+        """
         invalid_data = []
         for oed_source in self.exposure.get_oed_sources():
             country_code_column = self.field_to_column_maps[oed_source].get('countrycode')

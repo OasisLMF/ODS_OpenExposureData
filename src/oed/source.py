@@ -181,13 +181,25 @@ class OedSource:
 
     @property
     def current_source(self):
-        """current version of the oed source"""
+        """
+        current version of the oed source
+        Returns:
+            source dict of the current version
+        """
         return self.sources[self.cur_version_name]
 
     def get_input_fields(self):
+        """
+        Returns:
+            OED schema input field definition
+        """
         return self.exposure.get_input_fields(self.oed_type)
 
     def get_column_to_field(self):
+        """
+        Returns:
+            mapping between column in dataframe and field definition
+        """
         return OedSchema.column_to_field(
             self.dataframe.columns,
             self.get_input_fields()
@@ -276,10 +288,12 @@ class OedSource:
         By default, it uses pandas to create the DataFrame. In that case you will need to have pandas installed.
         You can use other options such as Dask or modin using the parameter df_engine.
 
-        :param filepath: path
-        :param df_engine: engine that will convert csv to a dataframe object (default to pandas if installed)
-        :param kwargs: extra argument that will be passed to the df_engine
-        :return: df_engine dataframe
+        Args:
+            filepath = path
+            df_engine = engine that will convert csv to a dataframe object (default to pandas if installed)
+            kwargs = extra argument that will be passed to the df_engine
+        Returns:
+            df_engine dataframe
 
         """
 

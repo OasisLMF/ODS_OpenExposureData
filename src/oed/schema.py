@@ -101,7 +101,14 @@ class OedSchema:
 
     @staticmethod
     def use_field(dataframe, ods_fields: dict):
-        """rename the column in the dataframe to their oed field name"""
+        """
+        rename the column in the dataframe to their oed field name
+        Args:
+            dataframe = dataframe with oed column
+            ods_fields = OedSchema input field definition
+        Returns:
+            dataframe with renamed column
+        """
         mapping = {column: field['Input Field Name']
                    for column, field in OedSchema.column_to_field(dataframe.columns, ods_fields, use_generic_flexi=False).items()}
         return dataframe.rename(columns=mapping)
