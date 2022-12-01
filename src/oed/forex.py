@@ -13,7 +13,6 @@ try:
     from forex_python.converter import CurrencyRates as BaseFxCurrencyRates
     from forex_python.converter import RatesNotAvailableError
 
-
     class FxCurrencyRates(BaseFxCurrencyRates):
         """
         subclass of forex_python.converter.CurrencyRates that allow to set date to retrieve the rate from in the constructor

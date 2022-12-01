@@ -198,7 +198,7 @@ class Validator:
             else:
                 country_only_df = oed_source.dataframe
             invalid_country = (country_only_df[~country_only_df[country_code_column]
-            .isin(set(self.exposure.oed_schema.schema['country']) | {np.nan, ''})])
+                                               .isin(set(self.exposure.oed_schema.schema['country']) | {np.nan, ''})])
             if not invalid_country.empty:
                 invalid_data.append({'name': oed_source.oed_name, 'source': oed_source.current_source,
                                      'msg': f"invalid countrycode.\n"

@@ -180,11 +180,16 @@ class OedExposure:
         else:
             config = {}
         # override config with specific parameters
-        if location: config['location'] = location
-        if account: config['account'] = account
-        if ri_info: config['ri_info'] = ri_info
-        if ri_scope: config['ri_scope'] = ri_scope
-        if check_oed: config['check_oed'] = check_oed
+        if location:
+            config['location'] = location
+        if account:
+            config['account'] = account
+        if ri_info:
+            config['ri_info'] = ri_info
+        if ri_scope:
+            config['ri_scope'] = ri_scope
+        if check_oed:
+            config['check_oed'] = check_oed
 
         exposure = cls(**config)
         exposure.save(path=path, compression=compression, save_config=save_config)

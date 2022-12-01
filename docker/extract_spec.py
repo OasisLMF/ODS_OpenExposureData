@@ -43,9 +43,9 @@ def cli():
 
 
 @cli.command('csv')
-@click.option('--source-excel-path', required=True, default=None, help='Path to MS excel sheet' )
-@click.option('--output-csv-path', default='OpenExposureData_Spec.csv', help='Path to write csv file' )
-@click.option('--excel-sheet-name', default="OED Input Fields", help='Sheet label to extract' )
+@click.option('--source-excel-path', required=True, default=None, help='Path to MS excel sheet')
+@click.option('--output-csv-path', default='OpenExposureData_Spec.csv', help='Path to write csv file')
+@click.option('--excel-sheet-name', default="OED Input Fields", help='Sheet label to extract')
 def extract_spec_to_csv(source_excel_path, output_csv_path, excel_sheet_name):
     """
     convert an Excel sheet to a csv file
@@ -88,13 +88,13 @@ def extract_spec_to_json(source_excel_path, output_json_path):
                              na_values=[])
 
     ods_schema = {}
-    ods_schema['input_fields']  = get_ods_input_fields(_read_excel('OED Input Fields'))
-    ods_schema['perils']        = get_ods_perils(_read_excel('Peril Values'))
-    ods_schema['occupancy']     = get_occupancy(_read_excel('Occupancy Values'))
-    ods_schema['construction']  = get_construction(_read_excel('Construction Values'))
-    ods_schema['country']       = get_country(_read_excel('Country Values'))
-    ods_schema['area']          = get_area(_read_excel('AreaCode Values'))
-    ods_schema['cr_field']      = get_cr_field(_read_excel('OED CR Field Appendix'))
+    ods_schema['input_fields'] = get_ods_input_fields(_read_excel('OED Input Fields'))
+    ods_schema['perils'] = get_ods_perils(_read_excel('Peril Values'))
+    ods_schema['occupancy'] = get_occupancy(_read_excel('Occupancy Values'))
+    ods_schema['construction'] = get_construction(_read_excel('Construction Values'))
+    ods_schema['country'] = get_country(_read_excel('Country Values'))
+    ods_schema['area'] = get_area(_read_excel('AreaCode Values'))
+    ods_schema['cr_field'] = get_cr_field(_read_excel('OED CR Field Appendix'))
 
     pathlib.Path(output_json_path).parent.mkdir(parents=True, exist_ok=True)
     with open(output_json_path, 'w') as fp:
@@ -143,7 +143,7 @@ def get_ods_input_fields(ods_fields_df: pd.DataFrame):
     # create a field dict for each File Name available and None
     __ods_fields = {}
     for file_name in ods_fields_df['File Name'].unique():
-        __ods_fields[file_name] = (ods_fields_df[ods_fields_df['File Name']==file_name]
+        __ods_fields[file_name] = (ods_fields_df[ods_fields_df['File Name'] == file_name]
                                    .set_index(['Case Insensitive Field Name'])
                                    .to_dict(orient='index'))
 
@@ -300,14 +300,14 @@ def extract_valid_value_range(valid_value_range, dtype):
         c_index = get_next_bracket(valid_value_range_left, opening=False)
         if o_index == -1:
             break
-        min_val, max_val = [x.strip() for x in valid_value_range_left[o_index+1: c_index].split(',')]
+        min_val, max_val = [x.strip() for x in valid_value_range_left[o_index + 1: c_index].split(',')]
 
         if min_val == max_val:
             valid_single_values.setdefault('enum', []).append(dtype(min_val))
         elif max_val and min_val:
-            valid_values.append({'min':dtype(min_val), 'max': dtype(max_val)})
+            valid_values.append({'min': dtype(min_val), 'max': dtype(max_val)})
         elif min_val:
-            valid_values.append({'min':dtype(min_val)})
+            valid_values.append({'min': dtype(min_val)})
         else:
             valid_values.append({'max': dtype(max_val)})
         valid_value_range_left = valid_value_range_left[c_index + 1:]
@@ -321,4 +321,3 @@ def extract_valid_value_range(valid_value_range, dtype):
 
 if __name__ == '__main__':
     cli()
-
