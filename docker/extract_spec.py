@@ -151,6 +151,7 @@ def get_ods_input_fields(ods_fields_df: pd.DataFrame):
         ods_fields_df
         .drop(columns=['File Name'])
         .drop_duplicates(subset=['Input Field Name'])
+        .set_index(['Case Insensitive Field Name'])
         .to_dict(orient='index')
     )
 
