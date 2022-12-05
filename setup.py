@@ -8,7 +8,7 @@ SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 def get_readme():
-    try: 
+    try:
         with io.open(os.path.join(SCRIPT_DIR, 'src', 'README.md'), encoding='utf-8') as readme:
             return readme.read()
     except FileNotFoundError:
