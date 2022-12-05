@@ -134,7 +134,7 @@ class DictBasedCurrencyRates:
     @classmethod
     def from_csv(cls, filepath_or_buffer, df_engine=pd, **kwargs):
         if df_engine is None:
-            raise Exception(f"df_engine parameter not specified, you must install pandas"
+            raise Exception("df_engine parameter not specified, you must install pandas"
                             " or pass your DataFrame engine (modin, dask,...)")
 
         return cls.from_dataframe(df_engine.read_csv(filepath_or_buffer, **kwargs))
@@ -142,7 +142,7 @@ class DictBasedCurrencyRates:
     @classmethod
     def from_parquet(cls, filepath_or_buffer, df_engine=pd, **kwargs):
         if df_engine is None:
-            raise Exception(f"df_engine parameter not specified, you must install pandas"
+            raise Exception("df_engine parameter not specified, you must install pandas"
                             " or pass your DataFrame engine (modin, dask,...)")
 
         return cls.from_dataframe(df_engine.read_parquet(filepath_or_buffer, **kwargs))
@@ -233,7 +233,7 @@ def read_csv(filepath_or_buffer, df_engine=pd, file_type=None, dtype=None, defau
 
     """
     if df_engine is None:
-        raise Exception(f"df_engine parameter not specified, you must install pandas"
+        raise Exception("df_engine parameter not specified, you must install pandas"
                         " or pass your DataFrame engine (modin, dask,...)")
 
     all_ods_fields = get_ods_fields(df_engine)
@@ -310,7 +310,7 @@ def read_parquet(path, df_engine=pd, **kwargs):
     :return: df_engine dataframe
     """
     if df_engine is None:
-        raise Exception(f"df_engine parameter not specified, you must install pandas"
+        raise Exception("df_engine parameter not specified, you must install pandas"
                         " or pass your DataFrame engine (modin, dask,...)")
     return df_engine.read_parquet(path, **kwargs)
 
