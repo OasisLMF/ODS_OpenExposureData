@@ -215,6 +215,7 @@ class OedExposure:
                           if it's a filepath
             path: output folder
             compression: type of compression to use
+            save_config: if true save the Exposure config as json
         """
 
         for oed_source in self.get_oed_sources():
@@ -246,12 +247,14 @@ class OedExposure:
         if save_config:
             self.save_config(Path(path, self.DEFAULT_EXPOSURE_CONFIG_NAME))
 
-    def check(self):
+    def check(self, validation_config=None):
         """
         check that all oed files respect rules related to an OedSchema
         Raises:
             OdsException if some invalid data is found
 
         """
+        if validation_config is None:
+            validation_config = self.validation_config
         validator = Validator(self)
-        return validator(self.validation_config)
+        return validator(validation_config)

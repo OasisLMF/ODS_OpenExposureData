@@ -45,15 +45,15 @@ config = {'location': 'SourceLocOEDPiWind.csv', # csv file
 
 ### Access Oed File as DataFrame
 
-Once the config is done you can create your ExposureData Object
+Once the config is done you can create your OedExposure Object
 and access the Dataframe representation of the different sources.
 Data Type in the DataFrame will correspond to the type
 
 ```python
 import ods_tools
-exposure_data = ods_tools.ods.ExposureData(**config)
-location = exposure_data.location.dataframe
-account = exposure_data.account.dataframe
+oed_exposure = ods_tools.oed.OedExposure(**config)
+location = oed_exposure.location.dataframe
+account = oed_exposure.account.dataframe
 ```
 
 ### Saving Change to the oed DataFrame
@@ -61,8 +61,21 @@ account = exposure_data.account.dataframe
 You can modify the DataFrame and save it as a new version
 
 ```python
-exposure_data.location.save(version_name='modified version',
+oed_exposure.location.save(version_name='modified version',
                             source='path_to_save_the_file')
+```
+
+you may also save the exposure itself this will save the current dataframe to the specified directory_path.  
+if you specify version_name, oed files will be saved as f'{version_name}_{OED_NAME}' + compression (ex: version_2_location.csv)  
+if the version_name is an empty string, oed files will be saved as just f'{OED_NAME}' + compression (ex: location.parquet)  
+if version_name is None,  oed files will take the same name as the current source if it is a filepath or f'{OED_NAME}' + compression otherwise
+(ex: SourceLocOEDPiWind.csv)
+
+compression let you specify the file extension (csv, parquet, zip, gzip, bz2, zstd)
+
+if save_config is True the exposure config will also be saved in the directory 
+```python
+oed_exposure.save(directory_path, version_name, compression, save_config)
 ```
 
 ### OED Validation
@@ -70,18 +83,34 @@ exposure_data.location.save(version_name='modified version',
 Validity of oed files can be checked at loading time with the argument check_oed
 
 ```python
-exposure_data = ods_tools.ods.ExposureData(check_oed=True, **config)
+oed_exposure = ods_tools.oed.OedExposure(check_oed=True, validation_config=validation_config, **config)
 ```
 
-Current validation encompass:
+validation_config is a list of all check that you want to perform, if one oed source fail a check depending on validation_config
+4 different action can be performed 'raise', 'log', 'ignore', 'return'.
+ - 'raise' will raise an OdsException
+ - 'log' will log the issue with a info level
+ - 'ignore' will ignore the issue
+ - 'return' will return the check issue in a list in order for the developer to perform its own treatment.
+In that case the check method need to be called instead of relying on the constructor
+```python
+oed_exposure = ods_tools.oed.OedExposure(check_oed=False**config)
+invalid_data = oed_exposure.check(custom_validation_config)
+```
 
-- required fields
-- unknown column
-- values range
-- peril codes
-- country and area codes
-- construction codes
-- occupancy codes
+the curent default validation under ods_tools.oed.common DEFAULT_VALIDATION_CONFIG contains
+```python
+VALIDATOR_ON_ERROR_ACTION = {'raise', 'log', 'ignore', 'return'}
+DEFAULT_VALIDATION_CONFIG = [
+    {'name': 'required_fields', 'on_error': 'raise'},
+    {'name': 'unkown_column', 'on_error': 'log'},
+    {'name': 'valid_values', 'on_error': 'raise'},
+    {'name': 'perils', 'on_error': 'raise'},
+    {'name': 'occupancy_code', 'on_error': 'raise'},
+    {'name': 'construction_code', 'on_error': 'raise'},
+    {'name': 'country_and_area_code', 'on_error': 'raise'},
+]
+```
 
 An OdsException is raised with a message indicating which file is invalid and why.
 
@@ -165,12 +194,12 @@ config_with_currency_rate = {
 ```
 
 if reporting_currency is specified in the config, the oed file will be converted on load
-It can also be set once the ExposureData object has been created
+It can also be set once the OedExposure object has been created
 
 ```python
 import ods_tools
-exposure_data = ods_tools.ods.ExposureData(**config)
-exposure_data.currency_conversion = ods_tools.ods.forex.create_currency_rates(
+oed_exposure = ods_tools.oed.OedExposure(**config)
+oed_exposure.currency_conversion = ods_tools.oed.forex.create_currency_rates(
     {
         "currency_conversion_type": "DictBasedCurrencyRates",
         "source_type": "dict",
@@ -180,5 +209,5 @@ exposure_data.currency_conversion = ods_tools.ods.forex.create_currency_rates(
             ('GBP', 'EUR'): 1.12}
         }
 )
-exposure_data.reporting_currency = 'EUR' # this line will trigger currency conversion
+oed_exposure.reporting_currency = 'EUR' # this line will trigger currency conversion
 ```
