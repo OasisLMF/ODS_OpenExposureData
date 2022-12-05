@@ -51,11 +51,11 @@ pd_converter = {
 }
 
 usual_file_name = {'location': 'Loc',
-                  'account': 'Acc',
-                  'reinsscope': 'ReinsScope',
-                  'ri_scope': 'ReinsScope',
-                  'reinsinfo': 'ReinsInfo',
-                  'ri_info': 'ReinsInfo'}
+                   'account': 'Acc',
+                   'reinsscope': 'ReinsScope',
+                   'ri_scope': 'ReinsScope',
+                   'reinsinfo': 'ReinsInfo',
+                   'ri_info': 'ReinsInfo'}
 
 
 currency_file = {'loccurrency': 'Loc',
@@ -73,9 +73,9 @@ def get_ods_fields(df_engine=pd):
     global __ods_fields
     if __ods_fields is None:
         ods_fields_df = df_engine.read_csv(ods_field_fp,
-                                skipinitialspace=True,
-                                keep_default_na=False,
-                                na_values=[])
+                                           skipinitialspace=True,
+                                           keep_default_na=False,
+                                           na_values=[])
 
         # convert Data Type to pandas DataType
         ods_fields_df['pd_dtype'] = ods_fields_df['Data Type'].str.split('(', n=1, expand=True)[0].map(pd_converter)
@@ -87,7 +87,7 @@ def get_ods_fields(df_engine=pd):
                                                ['File Name', 'Input Field Name', 'Type & Description', 'Data Type']]}""")
 
         # split ods_fields per File Name
-        ods_fields_df.rename(columns={'File Name':'File Names'}, inplace=True)
+        ods_fields_df.rename(columns={'File Name': 'File Names'}, inplace=True)
         split_df = ods_fields_df['File Names'].str.split(';').apply(df_engine.Series, 1).stack()
         split_df.index = split_df.index.droplevel(-1)
         split_df.name = 'File Name'
@@ -97,7 +97,7 @@ def get_ods_fields(df_engine=pd):
         # create a field dict for each File Name available and None
         __ods_fields = {}
         for file_name in ods_fields_df['File Name'].unique():
-            file_name_df = ods_fields_df[ods_fields_df['File Name']==file_name]
+            file_name_df = ods_fields_df[ods_fields_df['File Name'] == file_name]
             file_name_df.set_index(['Input Field Name'], inplace=True)
             __ods_fields[file_name] = file_name_df.to_dict(orient='index')
         no_file_name_df = ods_fields_df[['Input Field Name', 'pd_dtype', 'Default']].drop_duplicates()
@@ -134,7 +134,7 @@ class DictBasedCurrencyRates:
     @classmethod
     def from_csv(cls, filepath_or_buffer, df_engine=pd, **kwargs):
         if df_engine is None:
-            raise Exception(f"df_engine parameter not specified, you must install pandas"
+            raise Exception("df_engine parameter not specified, you must install pandas"
                             " or pass your DataFrame engine (modin, dask,...)")
 
         return cls.from_dataframe(df_engine.read_csv(filepath_or_buffer, **kwargs))
@@ -142,7 +142,7 @@ class DictBasedCurrencyRates:
     @classmethod
     def from_parquet(cls, filepath_or_buffer, df_engine=pd, **kwargs):
         if df_engine is None:
-            raise Exception(f"df_engine parameter not specified, you must install pandas"
+            raise Exception("df_engine parameter not specified, you must install pandas"
                             " or pass your DataFrame engine (modin, dask,...)")
 
         return cls.from_dataframe(df_engine.read_parquet(filepath_or_buffer, **kwargs))
@@ -233,7 +233,7 @@ def read_csv(filepath_or_buffer, df_engine=pd, file_type=None, dtype=None, defau
 
     """
     if df_engine is None:
-        raise Exception(f"df_engine parameter not specified, you must install pandas"
+        raise Exception("df_engine parameter not specified, you must install pandas"
                         " or pass your DataFrame engine (modin, dask,...)")
 
     all_ods_fields = get_ods_fields(df_engine)
@@ -255,7 +255,7 @@ def read_csv(filepath_or_buffer, df_engine=pd, file_type=None, dtype=None, defau
             for key, value in dtype.items():
                 pd_dtype[key.lower()] = value
 
-        if filepath_or_buffer.endswith('.gzip') or kwargs.get('compression')== 'gzip':
+        if filepath_or_buffer.endswith('.gzip') or kwargs.get('compression') == 'gzip':
             # support for gzip  https://stackoverflow.com/questions/60460814/pandas-read-csv-failing-on-gzipped-file-with-unicodedecodeerror-utf-8-codec-c
             with open(filepath_or_buffer, 'rb') as f:
                 header = df_engine.read_csv(f, compression='gzip', nrows=0, index_col=False).columns
@@ -273,7 +273,7 @@ def read_csv(filepath_or_buffer, df_engine=pd, file_type=None, dtype=None, defau
 
         pd_dtype = _dtype
 
-        if kwargs.get('compression')== 'gzip':
+        if kwargs.get('compression') == 'gzip':
             with open(filepath_or_buffer, 'rb') as f:
                 df = df_engine.read_csv(f, dtype=pd_dtype, **kwargs)
         else:
@@ -310,7 +310,7 @@ def read_parquet(path, df_engine=pd, **kwargs):
     :return: df_engine dataframe
     """
     if df_engine is None:
-        raise Exception(f"df_engine parameter not specified, you must install pandas"
+        raise Exception("df_engine parameter not specified, you must install pandas"
                         " or pass your DataFrame engine (modin, dask,...)")
     return df_engine.read_parquet(path, **kwargs)
 
@@ -353,7 +353,7 @@ def parquet_to_csv(parquet_fp, csv_fp, **kwargs):
     :param csv_fp: path to a file or a directory to write to
     :param kwargs: extra argument that will be passed to the df_engine when writing csv
     """
-    if 'index' not in kwargs: # change default value for to_csv index
+    if 'index' not in kwargs:  # change default value for to_csv index
         kwargs['index'] = False
 
     if not os.path.exists(parquet_fp):
@@ -384,7 +384,7 @@ to_csv_parsers.add_argument('--compression', help='compression type for csv outp
 to_csv_parsers.add_argument('-p', '--parquet-fp', help='path to the parquet file or directory')
 to_csv_parsers.add_argument('-c', '--csv-fp', help='path to the csv file or directory')
 to_csv_parsers.add_argument('-v', '--logging-level', help='logging level (debug:10, info:20, warning:30, error:40, critical:50)',
-                    default=30, type=int)
+                            default=30, type=int)
 
 
 to_parquet_parser = command_parser.add_parser('csv_to_parquet')
@@ -392,7 +392,7 @@ to_parquet_parser.add_argument('-t', '--file-type', help='type of the csv file t
 to_parquet_parser.add_argument('-p', '--parquet-fp', help='path to the parquet file or directory')
 to_parquet_parser.add_argument('-c', '--csv-fp', help='path to the csv file or directory')
 to_parquet_parser.add_argument('-v', '--logging-level', help='logging level (debug:10, info:20, warning:30, error:40, critical:50)',
-                    default=30, type=int)
+                               default=30, type=int)
 to_parquet_parser.add_argument('--memory-map', help='use memory map to read csv file', default=False)
 
 
@@ -413,4 +413,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

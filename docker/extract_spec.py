@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
 import pandas as pd
-import click 
-import os
+import click
+
 
 @click.command()
-@click.option('--source-excel-path', required=True, default=None, help='Path to MS excel sheet' )
-@click.option('--output-csv-path', default='OpenExposureData_Spec.csv', help='Path to write csv file' )
-@click.option('--excel-sheet-name', default="OED Input Fields", help='Sheet label to extract' )
+@click.option('--source-excel-path', required=True, default=None, help='Path to MS excel sheet')
+@click.option('--output-csv-path', default='OpenExposureData_Spec.csv', help='Path to write csv file')
+@click.option('--excel-sheet-name', default="OED Input Fields", help='Sheet label to extract')
 def extract_spec_to_csv(source_excel_path, output_csv_path, excel_sheet_name):
     df_spec = pd.read_excel(
         source_excel_path,
@@ -21,6 +21,7 @@ def extract_spec_to_csv(source_excel_path, output_csv_path, excel_sheet_name):
         mode='w',
         index=False)
     print(f'Written CSV spec: "{output_csv_path}"  \noutput based on file: "{source_excel_path}", sheet: "{excel_sheet_name}"')
+
 
 if __name__ == '__main__':
     extract_spec_to_csv()

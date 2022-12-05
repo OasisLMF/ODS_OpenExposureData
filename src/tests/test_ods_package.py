@@ -1,7 +1,6 @@
 import os
 import sys
 import pandas as pd
-import pyarrow
 import requests
 from unittest import TestCase
 
@@ -20,21 +19,21 @@ piwind_branch = 'master'
 base_url = f'https://raw.githubusercontent.com/OasisLMF/OasisPiWind/{piwind_branch}/tests/inputs'
 input_file_names = {
     "csv": {
-        'Acc':        'SourceAccOEDPiWind.csv',
-        'Loc':        'SourceLocOEDPiWind10.csv',
-        'ReinsInfo':  'SourceReinsInfoOEDPiWind.csv',
+        'Acc': 'SourceAccOEDPiWind.csv',
+        'Loc': 'SourceLocOEDPiWind10.csv',
+        'ReinsInfo': 'SourceReinsInfoOEDPiWind.csv',
         'ReinsScope': 'SourceReinsScopeOEDPiWind.csv',
     },
     "parquet": {
-        'Acc':        'SourceAccOEDPiWind.parquet',
-        'Loc':        'SourceLocOEDPiWind10.parquet',
-        'ReinsInfo':  'SourceReinsInfoOEDPiWind.parquet',
+        'Acc': 'SourceAccOEDPiWind.parquet',
+        'Loc': 'SourceLocOEDPiWind10.parquet',
+        'ReinsInfo': 'SourceReinsInfoOEDPiWind.parquet',
         'ReinsScope': 'SourceReinsScopeOEDPiWind.parquet'
     },
     "currency": {
-        'Loc':        'SourceLocOEDPiWind10Currency.csv',
-        'LocExp':     'SourceLocOEDPiWind10Currency_expected.csv',
-        'roe':        'roe.csv'
+        'Loc': 'SourceLocOEDPiWind10Currency.csv',
+        'LocExp': 'SourceLocOEDPiWind10Currency_expected.csv',
+        'roe': 'roe.csv'
     }
 
 }
@@ -70,7 +69,7 @@ class OdsPackageTests(TestCase):
                 os.remove(filename)
 
     def test_get_ods_fields(self):
-        self.assertTrue(isinstance(self.ods_fields,dict))
+        self.assertTrue(isinstance(self.ods_fields, dict))
         for oed_type in ['Acc', 'Loc', 'ReinsInfo', 'ReinsScope']:
             self.assertTrue(oed_type in self.ods_fields)
             self.assertTrue(isinstance(self.ods_fields[oed_type], dict))
