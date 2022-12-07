@@ -75,7 +75,7 @@ class OedExposure:
             self.check()
 
     @classmethod
-    def from_config(cls, config_fp):
+    def from_config(cls, config_fp, **kwargs):
         """
         create an OedExposure from filepath to a config json file
         Args:
@@ -84,7 +84,7 @@ class OedExposure:
             OedExposure object
         """
         with open(config_fp) as config:
-            return cls(**json.load(config))
+            return cls(**{**json.load(config), **kwargs})
 
     @classmethod
     def from_dir(cls, oed_dir, **kwargs):
@@ -108,7 +108,7 @@ class OedExposure:
         if Path(oed_dir, OedSchema.DEFAULT_ODS_SCHEMA_FILE).is_file():
             config['oed_schema_info'] = Path(oed_dir, OedSchema.DEFAULT_ODS_SCHEMA_FILE)
 
-        return cls(**config, **kwargs)
+        return cls(**{**config, **kwargs})
 
     @property
     def info(self):
@@ -162,50 +162,6 @@ class OedExposure:
         Path(filepath).parents[0].mkdir(parents=True, exist_ok=True)
         with open(filepath, 'w') as info_file:
             json.dump(self.info, info_file, indent='  ', default=str)
-
-    @classmethod
-    def convert(cls, *,
-                location=None,
-                account=None,
-                ri_info=None,
-                ri_scope=None,
-                check_oed=False,
-                config_json=None,
-                path=None,
-                compression=None,
-                save_config=False):
-        """
-        Convert oed files to another format
-        Args:
-            location: info on location
-            account: info on account
-            ri_info: info on ri_info
-            ri_scope: info on ri_scope
-            check_oed: bool to check if oed is valid
-            config_json: Exposure data config
-            path: path to save the oed files
-            compression: compression to use (parquet, csv, zip, ...
-            save_config: save the oed info with the files
-        """
-        if config_json:
-            with open(config_json) as config_file:
-                config = json.load(config_file)
-        else:
-            config = {}
-        # override config with specific parameters
-        if location:
-            config['location'] = location
-        if account:
-            config['account'] = account
-        if ri_info:
-            config['ri_info'] = ri_info
-        if ri_scope:
-            config['ri_scope'] = ri_scope
-        if check_oed:
-            config['check_oed'] = check_oed
-
-        exposure = cls(**config)
-        exposure.save(path=path, compression=compression, save_config=save_config)
 
     def save(self, path, version_name=None, compression=None, save_config=False):
         """

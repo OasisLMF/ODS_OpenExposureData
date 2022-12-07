@@ -6,6 +6,7 @@ import pandas as pd
 from unittest import TestCase
 import tempfile
 
+from src.main import convert, check
 from src.oed import OedExposure, OedSchema, OdsException
 
 base_test_path = pathlib.Path(__file__).parent
@@ -170,12 +171,12 @@ class OdsPackageTests(TestCase):
             with open(pathlib.Path(tmp_run_dir, 'config.json'), 'w') as config_json:
                 json.dump(config, config_json)
 
-            OedExposure.convert(config_json=str(pathlib.Path(tmp_run_dir, 'config.json')),
-                                path=pathlib.Path(tmp_run_dir, 'json'),
-                                compression='parquet')
-            OedExposure.convert(**config,
-                                path=pathlib.Path(tmp_run_dir, 'direct'),
-                                compression='parquet')
+            convert(config_json=str(pathlib.Path(tmp_run_dir, 'config.json')),
+                    output_dir=pathlib.Path(tmp_run_dir, 'json'),
+                    compression='parquet')
+            convert(**config,
+                    output_dir=pathlib.Path(tmp_run_dir, 'direct'),
+                    compression='parquet')
 
             for folder in ['json', 'direct']:
                 for oed_name in ['Loc', 'Acc', 'ReinsInfo', 'ReinsScope']:
