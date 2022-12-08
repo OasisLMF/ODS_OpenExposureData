@@ -4,6 +4,11 @@ on:
   push:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      ods_branch:
+        description: 'Build package from branch'
+        required: false
+        type: string
     outputs:
       src_filename:
         description: "Source Package filename"
@@ -11,7 +16,6 @@ on:
       whl_filename:
         description: "Wheel Package filename"
         value: ${{ jobs.build.outputs.whl_filename }}
-
 
 jobs:
   build:
@@ -30,9 +34,18 @@ jobs:
       env:
        GITHUB_CONTEXT: ${{ toJson(github) }}
 
-    - uses: actions/checkout@v3
+    - name: Clone
+      uses: actions/checkout@v3
+      if: inputs.ods_branch == ''
       with:
         ref: ${{ github.ref_name }}
+
+    - name: Clone (workflow_call)
+      uses: actions/checkout@v3
+      if: inputs.ods_branch != ''
+      with:
+        repository: OasisLMF/ODS_OpenExposureData
+        ref: ${{ inputs.ods_branch }}
 
     - name: Set up Python
       uses: actions/setup-python@v4
