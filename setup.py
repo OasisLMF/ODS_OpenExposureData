@@ -37,7 +37,10 @@ setuptools.setup(
     name="ods_tools",
     version=version,
     include_package_data=True,
-    package_data={"": ["*.csv", "*.md", "*.json"]},
+    package_data={
+        "": ["*.md"],                # Copy in readme
+        "ods_tools": ["data/*"]      # Copy spec JSON/CSV
+    },
     entry_points={
         'console_scripts': [
             'ods_tools=ods_tools.main:main',
@@ -45,7 +48,7 @@ setuptools.setup(
     },
     author='Oasis LMF',
     author_email="support@oasislmf.org",
-    packages=['ods_tools', 'ods_tools.oed'],
+    packages=['ods_tools', 'ods_tools.oed', 'ods_tools.data'],
     package_dir={'ods_tools': 'ods_tools'},
     python_requires='>=3.7',
     install_requires=reqs,
