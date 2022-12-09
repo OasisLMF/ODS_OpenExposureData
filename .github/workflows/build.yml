@@ -1,7 +1,6 @@
 name: OpenData Build
 
 on:
-  push:
   workflow_dispatch:
   workflow_call:
     inputs:
@@ -19,13 +18,14 @@ on:
 
 jobs:
   build:
+    name: Build OpenData Package
     runs-on: ubuntu-latest
     outputs:
       src_filename: ${{ steps.build_package.outputs.source }}
       whl_filename: ${{ steps.build_package.outputs.wheel }}
     env:
       SPEC_PATH_IN: './OpenExposureData/Docs/OpenExposureData_Spec.xlsx'
-      SPEC_PATH_OUT: './src/OpenExposureData_Spec.csv'
+      SPEC_PATH_OUT: './src/data/OpenExposureData_Spec.json'
 
     steps:
     - name: Github context
@@ -55,9 +55,9 @@ jobs:
 
     - name: Extract Spec
       run: |
-        ./docker/extract_spec.py \
+        ./docker/extract_spec.py json\
             --source-excel-path ${{ env.SPEC_PATH_IN }} \
-            --output-csv-path ${{ env.SPEC_PATH_OUT }}
+            --output-json-path ${{ env.SPEC_PATH_OUT }}
 
     - name: Build package
       id: build_package
