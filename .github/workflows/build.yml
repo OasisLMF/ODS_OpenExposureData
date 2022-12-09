@@ -1,9 +1,13 @@
 name: OpenData Build
 
 on:
-  push:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      ods_branch:
+        description: 'Build package from branch'
+        required: false
+        type: string
     outputs:
       src_filename:
         description: "Source Package filename"
@@ -12,16 +16,16 @@ on:
         description: "Wheel Package filename"
         value: ${{ jobs.build.outputs.whl_filename }}
 
-
 jobs:
   build:
+    name: Build OpenData Package
     runs-on: ubuntu-latest
     outputs:
       src_filename: ${{ steps.build_package.outputs.source }}
       whl_filename: ${{ steps.build_package.outputs.wheel }}
     env:
       SPEC_PATH_IN: './OpenExposureData/Docs/OpenExposureData_Spec.xlsx'
-      SPEC_PATH_OUT: './src/OpenExposureData_Spec.csv'
+      SPEC_PATH_OUT: './src/data/OpenExposureData_Spec.json'
 
     steps:
     - name: Github context
@@ -30,9 +34,18 @@ jobs:
       env:
        GITHUB_CONTEXT: ${{ toJson(github) }}
 
-    - uses: actions/checkout@v3
+    - name: Clone
+      uses: actions/checkout@v3
+      if: inputs.ods_branch == ''
       with:
         ref: ${{ github.ref_name }}
+
+    - name: Clone (workflow_call)
+      uses: actions/checkout@v3
+      if: inputs.ods_branch != ''
+      with:
+        repository: OasisLMF/ODS_OpenExposureData
+        ref: ${{ inputs.ods_branch }}
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -42,9 +55,9 @@ jobs:
 
     - name: Extract Spec
       run: |
-        ./docker/extract_spec.py \
+        ./docker/extract_spec.py json\
             --source-excel-path ${{ env.SPEC_PATH_IN }} \
-            --output-csv-path ${{ env.SPEC_PATH_OUT }}
+            --output-json-path ${{ env.SPEC_PATH_OUT }}
 
     - name: Build package
       id: build_package
