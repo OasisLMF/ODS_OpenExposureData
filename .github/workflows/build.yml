@@ -21,7 +21,7 @@ jobs:
       whl_filename: ${{ steps.build_package.outputs.wheel }}
     env:
       SPEC_PATH_IN: './OpenExposureData/Docs/OpenExposureData_Spec.xlsx'
-      SPEC_PATH_OUT: './src/data/OpenExposureData_Spec.json'
+      SPEC_PATH_OUT: './ods_tools/data/OpenExposureData_Spec.json'
 
     steps:
     - name: Github context
