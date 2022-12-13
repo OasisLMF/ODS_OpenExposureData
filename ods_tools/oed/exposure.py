@@ -1,8 +1,8 @@
 """
 This package manage:
-    loading an oed schema
-    the loading, checking and saving of oed files
-    support conversion of oed to other currencies
+    loading an OED schema
+    the loading, checking and saving of OED files
+    support conversion of OED to other currencies
 """
 
 import json
@@ -18,8 +18,8 @@ from .forex import create_currency_rates
 
 class OedExposure:
     """
-    Object grouping all the oed files related to the exposure Data (location, acoount, ri_info, ri_scope)
-    and the oed schema to follow
+    Object grouping all the OED files related to the exposure Data (location, acoount, ri_info, ri_scope)
+    and the OED schema to follow
     """
     DEFAULT_EXPOSURE_CONFIG_NAME = 'exposure_info.json'
 
@@ -35,18 +35,19 @@ class OedExposure:
                  use_field=False,
                  validation_config=None):
         """
-        Create an oed object,
+        Create an OED object,
         each input can be the object itself or  information that will be used to create the object
+
         Args:
-            location: info for location
-            account: info for account
-            ri_info: info for ri_info
-            ri_scope: info for ri_scope
-            oed_schema_info: info for oed_schema
-            currency_conversion: info  currency_convertion
-            reporting_currency: currency to convert
-            check_oed: check if oed files are valid or not
-            use_field: if true column name are converted to oed field name on load
+            location (path or dict or OedSource or pd.DataFrame): info for location
+            account (path or dict or OedSource or pd.DataFrame): info for account
+            ri_info (path or dict or OedSource or pd.DataFrame): info for ri_info
+            ri_scope (path or dict or OedSource or pd.DataFrame): info for ri_scope
+            oed_schema_info (path_to_json, OedSchema, None): info for oed_schema
+            currency_conversion (path_to_json or dict or None): info  currency_conversion
+            reporting_currency (str): currency to convert
+            check_oed (bool): check if OED files are valid or not
+            use_field (bool): if true column name are converted to OED field name on load
         """
         self.use_field = use_field
         self.oed_schema = OedSchema.from_oed_schema_info(oed_schema_info)
@@ -79,7 +80,7 @@ class OedExposure:
         """
         create an OedExposure from filepath to a config json file
         Args:
-            config_fp = path
+            config_fp (str): path
         Returns:
             OedExposure object
         """
@@ -91,7 +92,7 @@ class OedExposure:
         """
         create an OedExposure from directory path
         Args:
-            oed_dir = path to the directory
+            oed_dir (str): path to the directory
         Returns:
             OedExposure object
         """
@@ -121,12 +122,12 @@ class OedExposure:
 
     def get_input_fields(self, oed_type):
         """
-        helper function to get oed input field info for a particular oed_type
+        helper function to get OED input field info for a particular oed_type
         Args:
             oed_type:
 
         Returns:
-            dict of oed input field info
+            dict of OED input field info
         """
         return self.oed_schema.schema['input_fields'][oed_type]
 
@@ -136,7 +137,7 @@ class OedExposure:
 
     @reporting_currency.setter
     def reporting_currency(self, reporting_currency):
-        """setter for reporting_currency that will automatically convert currency in all oed files"""
+        """setter for reporting_currency that will automatically convert currency in all OED files"""
         self._reporting_currency = reporting_currency
         if reporting_currency:
             for oed_source in self.get_oed_sources():
@@ -157,7 +158,7 @@ class OedExposure:
         """
         save data to directory, loadable later on
         Args:
-            filepath: path to save the config file
+            filepath (str): path to save the config file
         """
         Path(filepath).parents[0].mkdir(parents=True, exist_ok=True)
         with open(filepath, 'w') as info_file:
@@ -165,13 +166,13 @@ class OedExposure:
 
     def save(self, path, version_name=None, compression=None, save_config=False):
         """
-        helper function to save all oed data to a location with specific compression
+        helper function to save all OED data to a location with specific compression
         Args:
-            version_name: use as a prefix for the file names, if None name will be taken from the cur_version file name
+            version_name (str): use as a prefix for the file names, if None name will be taken from the cur_version file name
                           if it's a filepath
-            path: output folder
-            compression: type of compression to use
-            save_config: if true save the Exposure config as json
+            path (str): output folder
+            compression (str): type of compression to use
+            save_config (bool): if true save the Exposure config as json
         """
 
         for oed_source in self.get_oed_sources():
@@ -205,7 +206,14 @@ class OedExposure:
 
     def check(self, validation_config=None):
         """
-        check that all oed files respect rules related to an OedSchema
+        check that all OED files respect rules related to an OedSchema
+
+        Args:
+            validation_config (list): list of validation to perform, if None the default validation list will be used
+
+        Returns:
+            list of invalid data where validation action was 'return'
+
         Raises:
             OdsException if some invalid data is found
 

@@ -49,11 +49,11 @@ def cli():
 def extract_spec_to_csv(source_excel_path, output_csv_path, excel_sheet_name):
     """
     convert an Excel sheet to a csv file
-    Args:
-        source_excel_path: path to the Excel ods_schema
-        output_csv_path: output path
-        excel_sheet_name: name of the sheet to extract
 
+    Args:
+        source_excel_path (str): path to the Excel ods_schema
+        output_csv_path (str): output path
+        excel_sheet_name (str): name of the sheet to extract
     """
     df_spec = pd.read_excel(
         source_excel_path,
@@ -77,8 +77,8 @@ def extract_spec_to_json(source_excel_path, output_json_path):
     read an Excel ods_schema (OpenExposureData_Spec.xlsx) and write relevant information from each sheet to a json file
 
     Args:
-        source_excel_path: path to the Excel ods_schema
-        output_json_path: path to the json output
+        source_excel_path (str): path to the Excel ods_schema
+        output_json_path (str): path to the json output
     """
     def _read_excel(excel_sheet_name):
         return pd.read_excel(source_excel_path,
@@ -101,12 +101,12 @@ def extract_spec_to_json(source_excel_path, output_json_path):
         json.dump(ods_schema, fp, indent='    ')
 
 
-def get_ods_input_fields(ods_fields_df: pd.DataFrame):
+def get_ods_input_fields(ods_fields_df):
     """
     Read OED Input Fields information, provide detailed  field information per file type as a dict
 
     Args:
-        ods_fields_df: OED Input Fields sheet as a Dataframe
+        ods_fields_df (pd.DataFrame): OED Input Fields sheet as a Dataframe
 
     Returns:
         {file_type['loc', 'acc', ...]: {field_name: field_info_dict}}
@@ -158,11 +158,11 @@ def get_ods_input_fields(ods_fields_df: pd.DataFrame):
     return __ods_fields
 
 
-def get_ods_perils(perils_df: pd.DataFrame):
+def get_ods_perils(perils_df):
     """
     information on ods perils
     Args:
-        perils_df: Peril Values DataFrame
+        perils_df (pd.DataFrame): Peril Values DataFrame
 
     Returns:
         dict with info on perils and mapping between peril and list of sub perils
@@ -185,17 +185,17 @@ def get_ods_perils(perils_df: pd.DataFrame):
     }
 
 
-def get_occupancy(occupency_df: pd.DataFrame):
+def get_occupancy(occupancy_df):
     """
     get information on occupancy codes
     Args:
-        occupency_df: occupancy Dataframe
+        occupancy_df (pd.DataFrame): occupancy Dataframe
 
     Returns:
         dict of information on occupancies
     """
     return (
-        occupency_df
+        occupancy_df
         [['Category', 'OED Code', 'AIR code', 'Name', 'Description', 'Code Range', 'Broad Category']]
         .set_index('OED Code')
         .to_dict(orient='index')
@@ -206,7 +206,7 @@ def get_construction(construction_df):
     """
     get information on construction codes
     Args:
-        construction_df: construction Dataframe
+        construction_df (pd.DataFrame): construction Dataframe
 
     Returns:
         dict of information on construction codes
@@ -223,7 +223,7 @@ def get_country(country_df):
     """
     get information on country codes
     Args:
-        country_df: country Dataframe
+        country_df (pd.DataFrame): country Dataframe
 
     Returns:
         dict of information on country codes
@@ -239,7 +239,7 @@ def get_area(area_df):
     """
     get information on country and area codes
     Args:
-        area_df: area Dataframe
+        area_df (pd.DataFrame): area Dataframe
 
     Returns:
         dict of information on area codes
@@ -254,9 +254,9 @@ def get_area(area_df):
 def get_cr_field(cr_field_df):
     """
     For the moment we just store the sheet as is,
-    but we will probably need to build the CR tree to then check on the presence of Data
+    but we will probably need to build the Conditional Requirement (CR) tree to then check on the presence of Data
     Args:
-        cr_field_df:
+        cr_field_df (pd.DataFrame): Conditional Requirement DataFrame
 
     Returns:
         conditional requirement dict
@@ -268,9 +268,10 @@ def get_cr_field(cr_field_df):
 def extract_valid_value_range(valid_value_range, dtype):
     """
     translate a list of valid values from the string input writen in ods schema
+
     Args:
-        valid_value_range: string input
-        dtype: data type to convert the string value to
+        valid_value_range (str): string input
+        dtype (dtype): data type to convert the string value to
 
     Returns:
         list of dict diffining valid values

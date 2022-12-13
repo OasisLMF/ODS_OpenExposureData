@@ -8,13 +8,22 @@ from .common import OdsException
 
 class OedSchema:
     """
-    Object managing information about a certain oed schema
+    Object managing information about a certain OED schema
+
+    Attributes:
+        schema (dict): information about the OED schema
+        json_path (Path or str): path to the json file from where the schema was loaded
     """
     DEFAULT_ODS_SCHEMA_FILE = 'OpenExposureData_Spec.json'
     DEFAULT_ODS_SCHEMA_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                                            'data', DEFAULT_ODS_SCHEMA_FILE)
 
     def __init__(self, schema, json_path):
+        """
+        Args:
+            schema (dict): information about the OED schema
+            json_path (Path or str): path to the json file from where the schema was loaded
+        """
         self.schema = schema
         self.json_path = json_path
 
@@ -29,11 +38,13 @@ class OedSchema:
     def from_oed_schema_info(cls, oed_schema_info):
         """
         Args:
-        oed_schema_info: info to create OedSchema object, can be:
-            - str to specify your own OedSchema path
-            - OedSchema object will be return directly
-            - None to get the current version Oed schema
-        :return: OedSchema object
+            oed_schema_info: info to create OedSchema object, can be:
+                - str to specify your own OedSchema path
+                - OedSchema object will be return directly
+                - None to get the current version Oed schema
+
+        Returns:
+            OedSchema
         """
         if isinstance(oed_schema_info, (str, Path)):
             return cls.from_json(oed_schema_info)
@@ -49,7 +60,7 @@ class OedSchema:
         """
         Create OedSchema from json file
         Args:
-            oed_json: oed schema json path
+            oed_json (str): OED schema json path
 
         Returns:
             OedSchema
@@ -68,15 +79,17 @@ class OedSchema:
     @staticmethod
     def column_to_field(columns: list, oed_fields: dict, use_generic_flexi=True):
         """
+        map column to OED field
+
         Args:
-            columns: name of the columns in oed file
-            oed_fields: dict of all the field in ods_schema
-            use_generic_flexi: if true flexi column return the oed_schema name
+            columns (list): name of the columns in OED file
+            oed_fields (dict): all the field in ods_schema
+            use_generic_flexi (bool): if true flexi column return the oed_schema name
                                       if false flexi column are just lower cased
         Return:
-            dict mapping between exact oed column name and field name in oed_schema
+            dict mapping between exact OED column name and field name in oed_schema
         """
-        # support for name different from standard oed column name
+        # support for name different from standard OED column name
         aliases = {field_info.get('alias').lower(): field_name for field_name, field_info in oed_fields.items() if field_info.get('alias')}
         result = {}
         for column in columns:
@@ -100,12 +113,14 @@ class OedSchema:
         return result
 
     @staticmethod
-    def use_field(dataframe, ods_fields: dict):
+    def use_field(dataframe, ods_fields):
         """
-        rename the column in the dataframe to their oed field name
+        rename the column in the dataframe to their OED field name
+
         Args:
-            dataframe = dataframe with oed column
-            ods_fields = OedSchema input field definition
+            dataframe (pd.DataFrame): dataframe with OED column
+            ods_fields (dict): OedSchema input field definition
+
         Returns:
             dataframe with renamed column
         """
@@ -128,10 +143,13 @@ class OedSchema:
         >>> OedSchema.is_valid_value(-999, [{'min': 0, 'max': 5}, {'min': 10}, {'enum': [-999]}])
         True
 
-        :param value: value to test
-        :param valid_ranges: list of valid range
-        :param allow_blanks: if True blank value (ie pd.nan) will be considered valid
-        :return: True if value is in one of the range
+        Args:
+            value: value to test
+            valid_ranges (list): list of valid range
+            allow_blanks (bool): if True blank value (ie pd.nan) will be considered valid
+
+        Returns:
+            True if value is in one of the range
         """
 
         if pd.isna(value):

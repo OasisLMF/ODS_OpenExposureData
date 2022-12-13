@@ -26,12 +26,12 @@ try:
             """
             get rate from forex for curency pair (base_cur dest_cur)
             Args:
-                base_cur: currency from
-                dest_cur: currency to
-                date_obj: datetime object
+                base_cur (str): currency from
+                dest_cur (str): currency to
+                date_obj (datetime): if not None get the rate at this datetime instead of the latest forex date
 
             Returns:
-                rate of exchange float
+                rate of exchange (float)
 
             Raises:
                 OdsException if rate not found
@@ -68,11 +68,11 @@ class DictBasedCurrencyRates:
         self.roe_dict = roe_dict
 
     @classmethod
-    def from_dataframe(cls, df: pd.DataFrame):
+    def from_dataframe(cls, df):
         """
         create DictBasedCurrencyRates from a DataFrame
         Args:
-            df: Dataframe with columns 'cur_from', 'cur_to', 'roe'
+            df (pd.DataFrame): Dataframe with columns 'cur_from', 'cur_to', 'roe'
 
         Returns:
             DictBasedCurrencyRates
@@ -87,7 +87,7 @@ class DictBasedCurrencyRates:
         """
         create DictBasedCurrencyRates from a list of (cur_from, cur_to, roe) triplet
         Args:
-            currency_rates: list of (cur_from, cur_to, roe) triplet
+            currency_rates (list): list of (cur_from, cur_to, roe) triplet
 
         Returns:
             DictBasedCurrencyRates
@@ -99,7 +99,7 @@ class DictBasedCurrencyRates:
         """
         create DictBasedCurrencyRates from csv file
         Args:
-            filepath_or_buffer: filepath or buffer of the csv file
+            filepath_or_buffer:  the csv file
             df_engine: engine that will read the csv file into a DataFrame
             **kwargs: extra named arg to passes to the read_csv function
 
@@ -138,11 +138,11 @@ class DictBasedCurrencyRates:
         if not found, look for (cur2, cur1) and return the inverse
 
         Args:
-            cur_from: currency from
-            cur_to: currency to
+            cur_from (str): currency from
+            cur_to (str): currency to
 
         Returns:
-            rate of exchange
+            rate of exchange (float)
 
         Raises:
             OdsException if currency pair not found
@@ -162,7 +162,7 @@ def create_currency_rates(currency_conversion):
         DictBasedCurrencyRates
         CurrencyRates from forex_python
     Args:
-        currency_conversion: config dict
+        currency_conversion (path_to_json or dict or None) : information to create the currency conversion object
 
     Returns:
         object implementing get_rate(self, cur_from, cur_to) method
@@ -217,13 +217,11 @@ def convert_currency(oed_df, oed_type, reporting_currency, currency_rate, oed_sc
     store the original currency  in OriginCurency, and the rate of exchange in RateOfExchange
 
     Args:
-        oed_df: OED Dataframe (Loc, Acc, ...)
-        oed_type: type of file (Loc, Acc, ...)
-        reporting_currency: currency to convert to
+        oed_df (pd.DataFrame): OED Dataframe (Loc, Acc, ...)
+        oed_type (str): type of file (Loc, Acc, ...)
+        reporting_currency (str): currency to convert to
         currency_rate: object to get the rate of exchange by calling get_rate(cur_from, cur_to)
-        oed_schema: ods_fields dict
-    Return:
-        None
+        oed_schema (dict): ods_fields dict
     """
     if oed_type not in CURRENCY_COLUMN:
         return

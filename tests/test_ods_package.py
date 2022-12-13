@@ -6,8 +6,8 @@ import pandas as pd
 from unittest import TestCase
 import tempfile
 
-from src.main import convert, check
-from src.oed import OedExposure, OedSchema, OdsException
+from ods_tools.main import convert
+from ods_tools.oed import OedExposure, OedSchema, OdsException
 
 base_test_path = pathlib.Path(__file__).parent
 

@@ -80,6 +80,14 @@ class OedSource:
     """
 
     def __init__(self, exposure, oed_type, cur_version_name, sources):
+        """
+
+        Args:
+            exposure (OedExposure): exposure the OED source is part of
+            oed_type (str): OED type of the source
+            cur_version_name (str): name of the current version
+            sources (dict): all the version/source of the OED source
+        """
         self.exposure = exposure
         self.oed_type = oed_type
         self.oed_name = OED_TYPE_TO_NAME[oed_type]
@@ -88,6 +96,10 @@ class OedSource:
         self.loaded = False
 
     def __str__(self):
+        """
+        Returns:
+            string of the current version source
+        """
         return str(self.sources[self.cur_version_name])
 
     @property
@@ -103,14 +115,18 @@ class OedSource:
     def from_oed_info(cls, exposure, oed_type: str, oed_info):
         """
         Convert data in oed_info to an OedSource
-        :param exposure: Exposure the source is part of
-        :param oed_type: type of oed file (Loc, Acc, ...)
-        :param oed_info: info to create OedSource, can be:
-            - str for filepath
-            - dict for more complex config,
-            - OedSource same object is returned
-            - DataFrame no source file just oed data is path and can be saved after
-        :return: OedSource (or None if  oed_info is None)
+
+        Args:
+            exposure (OedExposure): Exposure the source is part of
+            oed_type (str): type of oed file (Loc, Acc, ...)
+            oed_info: info to create OedSource, can be:
+                - str for filepath
+                - dict for more complex config,
+                - OedSource same object is returned
+                - DataFrame no source file just oed data is path and can be saved after
+
+        Returns:
+            OedSource (or None if  oed_info is None)
         """
         if isinstance(oed_info, (str, Path)):
             return OedSource.from_filepath(exposure, oed_type, filepath=oed_info)
@@ -130,9 +146,9 @@ class OedSource:
         """
         OedSource Constructor from a filepath
         Args:
-            exposure: Exposure the oed source is part of
-            oed_type: type of file (Loc, Acc, ..)
-            filepath: path to the oed source file
+            exposure (OedExposure): Exposure the oed source is part of
+            oed_type (str): type of file (Loc, Acc, ..)
+            filepath (str): path to the oed source file
 
         Returns:
             OedSource
@@ -144,9 +160,9 @@ class OedSource:
         """
         OedSource Constructor from a filepath
         Args:
-            exposure: Exposure the oed source is part of
-            oed_type: type of file (Loc, Acc, ..)
-            oed_df: DataFrame that represent the Oed Source
+            exposure (OedExposure): Exposure the oed source is part of
+            oed_type (str): type of file (Loc, Acc, ..)
+            oed_df (pd.DataFrame): DataFrame that represent the Oed Source
 
         Returns:
             OedSource
@@ -205,14 +221,15 @@ class OedSource:
             self.get_input_fields()
         )
 
-    def load_dataframe(self, version_name=None) -> pd.DataFrame:
+    def load_dataframe(self, version_name=None):
         """
         load the dataframe from a version of oed source
+
         Args:
-            version_name: name of the version in sources
+            version_name (str): name of the version in sources
 
         Returns:
-            Dataframe representing the oed source
+            Dataframe representing the oed source (pd.DataFrame)
         """
         if version_name is None:
             version_name = self.cur_version_name
@@ -252,7 +269,7 @@ class OedSource:
         """
         save dataframe as version_name in source
         Args:
-            version_name: name of the version
+            version_name (str): name of the version
             source: str or dict with information to save the dataframe
                 str : output path
                 dict : {'source_type': 'filepath' # only support for the moment
@@ -289,11 +306,14 @@ class OedSource:
         You can use other options such as Dask or modin using the parameter df_engine.
 
         Args:
-            filepath = path
-            df_engine = engine that will convert csv to a dataframe object (default to pandas if installed)
-            kwargs = extra argument that will be passed to the df_engine
+            filepath (str): path to the csv file
+            df_engine: engine that will convert csv to a dataframe object (default to pandas if installed)
+            kwargs: extra argument that will be passed to the df_engine
         Returns:
-            df_engine dataframe
+            df_engine dataframe of the file with correct dtype and default
+
+        Raises:
+
 
         """
 

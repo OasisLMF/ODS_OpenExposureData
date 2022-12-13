@@ -30,16 +30,27 @@ The path to the file can be absolute relative or even an url
 config example:
 
 ```python
-config = {'location': 'SourceLocOEDPiWind.csv', # csv file
-          'account': 'SourceAccOEDPiWind.parquet', # parquet file
-          'ri_info': {'cur_version_name': 'orig', # passing args to the reader function
-                      'sources': {'orig': {'source_type': 'filepath',
-                                           'filepath': 'SourceReinsInfoOEDPiWind.csv',
-                                           'read_param': {'usecols':['ReinsNumber', 'ReinsLayerNumber', 'ReinsName', 'ReinsPeril',
-                                               'ReinsInceptionDate', 'ReinsExpiryDate', 'CededPercent', 'RiskLimit',
-                                               'RiskAttachment', 'OccLimit', 'OccAttachment', 'PlacedPercent',
-                                               'ReinsCurrency', 'InuringPriority', 'ReinsType', 'RiskLevel', 'OEDVersion']}}}},
-          'ri_scope': 'https://raw.githubusercontent.com/OasisLMF/OasisPiWind/master/tests/inputs/SourceReinsScopeOEDPiWind.csv', # url
+config = {
+    'location': 'SourceLocOEDPiWind.csv', # csv file
+    'account': 'SourceAccOEDPiWind.parquet', # parquet file
+    'ri_info': {
+        'cur_version_name': 'orig', # passing args to the reader function
+        'sources': {
+            'orig': {
+                'source_type': 'filepath',
+                'filepath': 'SourceReinsInfoOEDPiWind.csv',
+                'read_param': {
+                    'usecols':[
+                        'ReinsNumber', 'ReinsLayerNumber', 'ReinsName', 'ReinsPeril',
+                        'ReinsInceptionDate', 'ReinsExpiryDate', 'CededPercent', 'RiskLimit',
+                        'RiskAttachment', 'OccLimit', 'OccAttachment', 'PlacedPercent',
+                        'ReinsCurrency', 'InuringPriority', 'ReinsType', 'RiskLevel', 'OEDVersion'
+                    ]
+                }
+            }
+        }
+    },
+    'ri_scope': 'https://raw.githubusercontent.com/OasisLMF/OasisPiWind/master/tests/inputs/SourceReinsScopeOEDPiWind.csv', # url
 }
 ```
 
@@ -103,7 +114,7 @@ the curent default validation under ods_tools.oed.common DEFAULT_VALIDATION_CONF
 VALIDATOR_ON_ERROR_ACTION = {'raise', 'log', 'ignore', 'return'}
 DEFAULT_VALIDATION_CONFIG = [
     {'name': 'required_fields', 'on_error': 'raise'},
-    {'name': 'unkown_column', 'on_error': 'log'},
+    {'name': 'unknown_column', 'on_error': 'log'},
     {'name': 'valid_values', 'on_error': 'raise'},
     {'name': 'perils', 'on_error': 'raise'},
     {'name': 'occupancy_code', 'on_error': 'raise'},

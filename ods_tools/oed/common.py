@@ -64,7 +64,7 @@ OED_IDENTIFIER_FIELDS = {
 VALIDATOR_ON_ERROR_ACTION = {'raise', 'log', 'ignore', 'return'}
 DEFAULT_VALIDATION_CONFIG = [
     {'name': 'required_fields', 'on_error': 'raise'},
-    {'name': 'unkown_column', 'on_error': 'log'},
+    {'name': 'unknown_column', 'on_error': 'log'},
     {'name': 'valid_values', 'on_error': 'raise'},
     {'name': 'perils', 'on_error': 'raise'},
     {'name': 'occupancy_code', 'on_error': 'raise'},

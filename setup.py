@@ -9,7 +9,7 @@ SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 def get_readme():
     try:
-        with io.open(os.path.join(SCRIPT_DIR, 'src', 'README.md'), encoding='utf-8') as readme:
+        with io.open(os.path.join(SCRIPT_DIR, 'ods_tools', 'README.md'), encoding='utf-8') as readme:
             return readme.read()
     except FileNotFoundError:
         with io.open(os.path.join(SCRIPT_DIR, 'README.md'), encoding='utf-8') as readme:
@@ -20,7 +20,7 @@ def get_version():
     """
     Return package version as listed in `__version__` in `init.py`.
     """
-    with io.open(os.path.join(SCRIPT_DIR, 'src', '__init__.py'), encoding='utf-8') as init_py:
+    with io.open(os.path.join(SCRIPT_DIR, 'ods_tools', '__init__.py'), encoding='utf-8') as init_py:
         return re.search('__version__ = [\'"]([^\'"]+)[\'"]', init_py.read()).group(1)
 
 
@@ -46,7 +46,7 @@ setuptools.setup(
     author='Oasis LMF',
     author_email="support@oasislmf.org",
     packages=['ods_tools', 'ods_tools.oed'],
-    package_dir={'ods_tools': 'src'},
+    package_dir={'ods_tools': 'ods_tools'},
     python_requires='>=3.7',
     install_requires=reqs,
     description='Tools to manage ODS files',

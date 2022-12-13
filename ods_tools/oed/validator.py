@@ -125,7 +125,7 @@ class Validator:
                                                     f"{oed_source.dataframe[identifier_field + [column]]}"})
         return invalid_data
 
-    def check_unkown_column(self):
+    def check_unknown_column(self):
         """
         using Oed input_field definition, check that all column are OED column
         Returns:
