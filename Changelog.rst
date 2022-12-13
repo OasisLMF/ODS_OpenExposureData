@@ -29,6 +29,12 @@ After the updates to the occupancy codes for common house type such as ‘detach
 
 * (https://github.com/OasisLMF/OpenDataStandards/issues/90) - Additional ORD Exposure summary report
 
+* ( https://github.com/OasisLMF/ODS_OpenExposureData/issues/100) - Small changes to default values and data rangesin OED
+
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/109) - Additional account participation field in OED
+
+
+
 
 `v2.3.2`_
 ---------
