@@ -106,7 +106,7 @@ def get_ods_input_fields(ods_fields_df):
     Read OED Input Fields information, provide detailed  field information per file type as a dict
 
     Args:
-        ods_fields_df (pd.DataFrame): OED Input Fields sheet as a Dataframe
+        ods_fields_df (pd.DataFrame): OED Input Fields
 
     Returns:
         {file_type['loc', 'acc', ...]: {field_name: field_info_dict}}
@@ -162,7 +162,7 @@ def get_ods_perils(perils_df):
     """
     information on ods perils
     Args:
-        perils_df (pd.DataFrame): Peril Values DataFrame
+        perils_df (pd.DataFrame): Peril Values
 
     Returns:
         dict with info on perils and mapping between peril and list of sub perils
@@ -189,7 +189,7 @@ def get_occupancy(occupancy_df):
     """
     get information on occupancy codes
     Args:
-        occupancy_df (pd.DataFrame): occupancy Dataframe
+        occupancy_df (pd.DataFrame): occupancy
 
     Returns:
         dict of information on occupancies
@@ -206,7 +206,7 @@ def get_construction(construction_df):
     """
     get information on construction codes
     Args:
-        construction_df (pd.DataFrame): construction Dataframe
+        construction_df (pd.DataFrame): construction
 
     Returns:
         dict of information on construction codes
@@ -223,7 +223,7 @@ def get_country(country_df):
     """
     get information on country codes
     Args:
-        country_df (pd.DataFrame): country Dataframe
+        country_df (pd.DataFrame): country
 
     Returns:
         dict of information on country codes
@@ -239,7 +239,7 @@ def get_area(area_df):
     """
     get information on country and area codes
     Args:
-        area_df (pd.DataFrame): area Dataframe
+        area_df (pd.DataFrame): area
 
     Returns:
         dict of information on area codes
@@ -256,7 +256,7 @@ def get_cr_field(cr_field_df):
     For the moment we just store the sheet as is,
     but we will probably need to build the Conditional Requirement (CR) tree to then check on the presence of Data
     Args:
-        cr_field_df (pd.DataFrame): Conditional Requirement DataFrame
+        cr_field_df (pd.DataFrame): Conditional Requirement
 
     Returns:
         conditional requirement dict
