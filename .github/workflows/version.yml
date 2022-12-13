@@ -20,7 +20,7 @@ jobs:
   version:
     runs-on: ubuntu-latest
     env:
-      ver_file: 'src/__init__.py'
+      ver_file: 'ods_tools/__init__.py'
       ver_regex: '^__version__'
     steps:
 

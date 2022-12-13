@@ -35,7 +35,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: extracted_spec
-        path: ${{ github.workspace }}/src/data/
+        path: ${{ github.workspace }}/ods_tools/data/
 
     - name: install package
       run: pip install ${{ needs.build.outputs.whl_filename }}
