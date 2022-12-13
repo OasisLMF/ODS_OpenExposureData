@@ -1,5 +1,6 @@
 name: OpenData Testing
 
+
 on:
   push:
   workflow_dispatch:
@@ -30,12 +31,6 @@ jobs:
       with:
         name: bin_package
         path: ${{ github.workspace }}/
-
-    - name: Download Spec
-      uses: actions/download-artifact@v3
-      with:
-        name: extracted_spec
-        path: ${{ github.workspace }}/ods_tools/data/
 
     - name: install package
       run: pip install ${{ needs.build.outputs.whl_filename }}
