@@ -1,10 +1,15 @@
 import json
 import os
 import pathlib
+import sys
 
 import pandas as pd
 from unittest import TestCase
 import tempfile
+
+# WORKAROUND - this line to to force an import from the installed ods_tools package 
+# from `python3.xx/site-packages/ods_tools` instead of the local module 
+sys.path.append(sys.path.pop(0))
 
 from ods_tools.main import convert
 from ods_tools.oed import OedExposure, OedSchema, OdsException
