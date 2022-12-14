@@ -7,7 +7,7 @@ import pathlib
 
 pd_converter = {
     "0 or 1": "Int8",
-    "bigint": "float64",
+    "bigint": "Int64",
     "binary": "Int8",
     "bit": "Int8",
     "char": "category",

@@ -170,7 +170,7 @@ class OedSource:
         oed_source = cls(exposure, oed_type, 'orig', {'orig': {'source_type': 'DataFrame'}})
         ods_fields = exposure.get_input_fields(oed_type)
         pd_dtype = {}
-        to_str = {}
+        to_tmp_dtype = {}
         column_to_field = OedSchema.column_to_field(oed_df.columns, ods_fields)
         for column in oed_df.columns:
             if column in column_to_field:
@@ -178,8 +178,11 @@ class OedSource:
             else:
                 pd_dtype[column] = 'category'
             if pd_dtype[column] == 'category':  # we need to convert to str first
-                to_str[column] = 'str'
-        oed_df = oed_df.astype(to_str).astype(pd_dtype)
+                to_tmp_dtype[column] = 'str'
+            elif pd_dtype[column].startswith('Int'):
+                to_tmp_dtype[column] = 'float'
+
+        oed_df = oed_df.astype(to_tmp_dtype).astype(pd_dtype)
         if exposure.use_field:
             oed_df = OedSchema.use_field(oed_df, ods_fields)
         oed_source.dataframe = oed_df
