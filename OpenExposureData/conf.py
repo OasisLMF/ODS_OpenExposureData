@@ -43,7 +43,7 @@ release = u'1.0.0'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-#extensions = [
+# extensions = [
 #    'sphinx.ext.autodoc',
 #    'sphinx.ext.doctest',
 #    'sphinx.ext.intersphinx',
@@ -60,9 +60,9 @@ release = u'1.0.0'
 #    'm2r',
 #    'autoapi.extension',
 #    # 'recommonmark'
-#]
+# ]
 
-#autoapi_dirs = [
+# autoapi_dirs = [
 #    '../modules/OasisLMF/oasislmf',
 #    '../modules/OasisPlatform/src',
 #    ]
@@ -144,7 +144,7 @@ latex_elements = {
 
     # The font size ('10pt', '11pt' or '12pt').
     #
-     'pointsize': '10pt',
+    'pointsize': '10pt',
 
     # Additional stuff for the LaTeX preamble.
     #
@@ -152,7 +152,7 @@ latex_elements = {
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
-    #'fncychap': '\\usepackage[Conny]{fncychap}',
+    # 'fncychap': '\\usepackage[Conny]{fncychap}',
     'preamble': """
 \usepackage{colortbl}
 \protected\def\sphinxstyletheadfamily {\cellcolor{teal}\sffamily} {\\arrayrulecolor{gray}}
@@ -164,7 +164,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'OED.tex', u'Open Exposure Data',
-     #u'Oasis LMF', 'manual'),
+     # u'Oasis LMF', 'manual'),
      u'', 'howto'),
 ]
 
@@ -204,7 +204,7 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 todo_include_todos = True
 
 
-#class CliDocumenter(autodoc.ClassDocumenter):
+# class CliDocumenter(autodoc.ClassDocumenter):
 #    objtype = "cli"
 #
 #    #do not indent the content
@@ -215,5 +215,5 @@ todo_include_todos = True
 #        pass
 #
 #
-#def setup(app):
+# def setup(app):
 #    app.add_autodocumenter(CliDocumenter)
