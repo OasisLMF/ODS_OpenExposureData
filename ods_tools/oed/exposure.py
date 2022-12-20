@@ -197,7 +197,7 @@ class OedExposure:
                 if compression is None:
                     compression = 'csv'
 
-            filepath = filepath.with_suffix(PANDAS_COMPRESSION_MAP[compression])
+            filepath = filepath.relative_to(path).with_suffix(PANDAS_COMPRESSION_MAP[compression])
 
             oed_source.save(saved_version_name + '_' + f'{compression}',
                             {'source_type': 'filepath', 'filepath': filepath, 'extension': compression})
