@@ -15,7 +15,7 @@ from .oed import OedExposure, OdsException
 logger = logging.getLogger(__name__)
 
 
-def get_oed_exposure(config_json=None, oed_dir=None,  **kwargs):
+def get_oed_exposure(config_json=None, oed_dir=None, **kwargs):
     if config_json:
         return OedExposure.from_config(config_json, **kwargs)
     elif oed_dir:
@@ -82,23 +82,25 @@ convert OED files to an other format
 """
 
 command_parser = main_parser.add_subparsers(help='command [convert]', dest='command', required=True)
-convert_command = command_parser.add_parser('convert', description=convert_description + oed_exposure_creation, formatter_class=argparse.RawTextHelpFormatter)
+convert_command = command_parser.add_parser('convert', description=convert_description +
+                                            oed_exposure_creation, formatter_class=argparse.RawTextHelpFormatter)
 add_exposure_data_args(convert_command)
 convert_command.add_argument('--check-oed', help='if True, OED file will be checked before convertion', default=False)
 convert_command.add_argument('--output-dir', help='path of the output directory', required=False)
 convert_command.add_argument('-c', '--compression', help='compression to use (ex: parquet, zip, gzip, csv,...)', required=True)
 convert_command.add_argument('--save-config', help='if True, OED config file will be save in the --path directory', default=False)
 convert_command.add_argument('-v', '--logging-level', help='logging level (debug:10, info:20, warning:30, error:40, critical:50)',
-                     default=30, type=int)
+                             default=30, type=int)
 
 check_description = """
 check exposure data.
 """
 
-check_command = command_parser.add_parser('check', description=check_description + oed_exposure_creation, formatter_class=argparse.RawTextHelpFormatter)
+check_command = command_parser.add_parser('check', description=check_description + oed_exposure_creation,
+                                          formatter_class=argparse.RawTextHelpFormatter)
 add_exposure_data_args(check_command)
 check_command.add_argument('-v', '--logging-level', help='logging level (debug:10, info:20, warning:30, error:40, critical:50)',
-                   default=30, type=int)
+                           default=30, type=int)
 
 
 def main():

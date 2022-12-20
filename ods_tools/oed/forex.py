@@ -107,7 +107,7 @@ class DictBasedCurrencyRates:
             DictBasedCurrencyRates
         """
         if df_engine is None:
-            raise Exception(f"df_engine parameter not specified, you must install pandas"
+            raise Exception("df_engine parameter not specified, you must install pandas"
                             " or pass your DataFrame engine (modin, dask,...)")
 
         return cls.from_dataframe(df_engine.read_csv(filepath_or_buffer, **kwargs))
@@ -125,7 +125,7 @@ class DictBasedCurrencyRates:
             DictBasedCurrencyRates
         """
         if df_engine is None:
-            raise Exception(f"df_engine parameter not specified, you must install pandas"
+            raise Exception("df_engine parameter not specified, you must install pandas"
                             " or pass your DataFrame engine (modin, dask,...)")
 
         return cls.from_dataframe(df_engine.read_parquet(filepath_or_buffer, **kwargs))
@@ -198,7 +198,7 @@ def create_currency_rates(currency_conversion):
     elif currency_conversion.get('currency_conversion_type') == 'FxCurrencyRates':
         if FxCurrencyRates is None:
             raise OdsException(
-                f"You must install package forex-python to use builtin_currency_conversion_type FxCurrencyRates")
+                "You must install package forex-python to use builtin_currency_conversion_type FxCurrencyRates")
 
         _datetime = currency_conversion.get('datetime')
         if _datetime is not None:
