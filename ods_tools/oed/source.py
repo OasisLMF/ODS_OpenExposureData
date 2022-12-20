@@ -334,7 +334,7 @@ class OedSource:
                     raise
 
         if df_engine is None:
-            raise Exception(f"df_engine parameter not specified, you must install pandas"
+            raise Exception("df_engine parameter not specified, you must install pandas"
                             " or pass your DataFrame engine (modin, dask,...)")
 
         if Path(filepath).suffix == '.gzip' or kwargs.get('compression') == 'gzip':
