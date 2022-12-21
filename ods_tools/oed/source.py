@@ -285,14 +285,16 @@ class OedSource:
                       'filepath': source,
                       }
         if source['source_type'] == 'filepath':
-            Path(source['filepath']).parents[0].mkdir(parents=True, exist_ok=True)
-            extension = source.get('extension') or ''.join(Path(source['filepath']).suffixes)
+            write_path = Path(source.get('filedir', ''), source.get('filepath'))
+            Path(write_path).parents[0].mkdir(parents=True, exist_ok=True)
+
+            extension = source.get('extension') or ''.join(Path(write_path).suffixes)
             if extension == 'parquet':
-                self.dataframe.to_parquet(source['filepath'], **source.get('write_param', {}))
+                self.dataframe.to_parquet(write_path, **source.get('write_param', {}))
             else:
                 write_param = {'index': False}
                 write_param.update(source.get('write_param', {}))
-                self.dataframe.to_csv(source['filepath'], **write_param)
+                self.dataframe.to_csv(write_path, **write_param)
         else:
             raise Exception(f"Source type {source['source_type']} is not supported")
         self.cur_version_name = version_name

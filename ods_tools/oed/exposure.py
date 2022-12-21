@@ -164,7 +164,7 @@ class OedExposure:
         with open(filepath, 'w') as info_file:
             json.dump(self.info, info_file, indent='  ', default=str)
 
-    def save(self, path, version_name=None, compression=None, save_config=False):
+    def save(self, path, version_name=None, compression=None, save_config=False, relative_path=False):
         """
         helper function to save all OED data to a location with specific compression
         Args:
@@ -173,6 +173,7 @@ class OedExposure:
             path (str): output folder
             compression (str): type of compression to use
             save_config (bool): if true save the Exposure config as json
+            relative_path (bool): store file relative to config location
         """
 
         for oed_source in self.get_oed_sources():
@@ -197,10 +198,15 @@ class OedExposure:
                 if compression is None:
                     compression = 'csv'
 
-            filepath = filepath.relative_to(path).with_suffix(PANDAS_COMPRESSION_MAP[compression])
+            if relative_path:
+                filepath = filepath.relative_to(path).with_suffix(PANDAS_COMPRESSION_MAP[compression])
+                oed_source.save(saved_version_name + '_' + f'{compression}',
+                                {'source_type': 'filepath', 'filepath': filepath, 'extension': compression, 'filedir': path})
 
-            oed_source.save(saved_version_name + '_' + f'{compression}',
-                            {'source_type': 'filepath', 'filepath': filepath, 'extension': compression})
+            else:
+                filepath = filepath.with_suffix(PANDAS_COMPRESSION_MAP[compression])
+                oed_source.save(saved_version_name + '_' + f'{compression}',
+                                {'source_type': 'filepath', 'filepath': filepath, 'extension': compression})
         if save_config:
             self.save_config(Path(path, self.DEFAULT_EXPOSURE_CONFIG_NAME))
 
