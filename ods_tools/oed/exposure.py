@@ -33,7 +33,8 @@ class OedExposure:
                  reporting_currency=None,
                  check_oed=False,
                  use_field=False,
-                 validation_config=None):
+                 validation_config=None,
+                 working_dir=None):
         """
         Create an OED object,
         each input can be the object itself or  information that will be used to create the object
@@ -72,6 +73,8 @@ class OedExposure:
 
         self.validation_config = validation_config
 
+        self.working_dir = working_dir
+
         if check_oed:
             self.check()
 
@@ -85,6 +88,7 @@ class OedExposure:
             OedExposure object
         """
         with open(config_fp) as config:
+            kwargs['working_dir'] = Path(config_fp).parent
             return cls(**{**json.load(config), **kwargs})
 
     @classmethod
@@ -102,14 +106,17 @@ class OedExposure:
                     if Path(oed_dir, name).with_suffix(extension).is_file():
                         return Path(oed_dir, name).with_suffix(extension)
 
-        config = {}
-        for attr, filenames in USUAL_FILE_NAME.items():
-            config[attr] = find_fp(filenames)
+        if Path(oed_dir, cls.DEFAULT_EXPOSURE_CONFIG_NAME).is_file():
+            return cls.from_config(Path(oed_dir, cls.DEFAULT_EXPOSURE_CONFIG_NAME), **kwargs)
+        else:
+            config = {}
+            for attr, filenames in USUAL_FILE_NAME.items():
+                config[attr] = find_fp(filenames)
 
-        if Path(oed_dir, OedSchema.DEFAULT_ODS_SCHEMA_FILE).is_file():
-            config['oed_schema_info'] = Path(oed_dir, OedSchema.DEFAULT_ODS_SCHEMA_FILE)
-
-        return cls(**{**config, **kwargs})
+            if Path(oed_dir, OedSchema.DEFAULT_ODS_SCHEMA_FILE).is_file():
+                config['oed_schema_info'] = Path(oed_dir, OedSchema.DEFAULT_ODS_SCHEMA_FILE)
+            kwargs['working_dir'] = oed_dir
+            return cls(**{**config, **kwargs})
 
     @property
     def info(self):
@@ -174,6 +181,7 @@ class OedExposure:
             compression (str): type of compression to use
             save_config (bool): if true save the Exposure config as json
         """
+        self.working_dir = path
 
         for oed_source in self.get_oed_sources():
             if version_name is None and oed_source.sources[oed_source.cur_version_name]['source_type'] == 'filepath':
@@ -189,7 +197,10 @@ class OedExposure:
                 oed_name = f'{OED_TYPE_TO_NAME[oed_source.oed_type]}'
                 saved_version_name = ''
 
-            filepath = Path(path, oed_name)
+            if save_config:  # we store filepath relative to config file
+                filepath = Path(oed_name)
+            else:
+                filepath = Path(path, oed_name)
 
             if compression is None:
                 if oed_source.sources[oed_source.cur_version_name]['source_type'] == 'filepath':
