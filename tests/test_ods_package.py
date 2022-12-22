@@ -1,6 +1,8 @@
 import json
 import os
 import pathlib
+import shutil
+
 import sys
 
 import pandas as pd
@@ -238,3 +240,20 @@ class OdsPackageTests(TestCase):
             pd.testing.assert_series_equal(exposure.location.dataframe['LocNumber'],
                                            location_df['LocNumberAlias'].astype(str).astype('category'),
                                            check_names=False)
+
+    def test_load_exposure_from_different_directory(self):
+        """
+        Check that exposure loads correctly after it has been moved to another place
+        """
+        config = {'location': base_url + '/SourceLocOEDPiWind.csv',
+                  'account': base_url + '/SourceAccOEDPiWind.csv', }
+
+        with tempfile.TemporaryDirectory() as tmp_save_dir, tempfile.TemporaryDirectory() as tmp_move_dir:
+            exposure_save = OedExposure(**config)
+            exposure_save.save(pathlib.Path(tmp_save_dir, 'oed'), save_config=True)
+
+            shutil.move(str(pathlib.Path(tmp_save_dir, 'oed')), str(pathlib.Path(tmp_move_dir)))
+
+            exposure_move = OedExposure.from_dir(pathlib.Path(tmp_move_dir, 'oed'))
+            pd.testing.assert_frame_equal(exposure_save.location.dataframe, exposure_move.location.dataframe)
+            pd.testing.assert_frame_equal(exposure_save.account.dataframe, exposure_move.account.dataframe)

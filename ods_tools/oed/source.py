@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 from chardet.universaldetector import UniversalDetector
 
-from .common import OED_TYPE_TO_NAME, OdsException, PANDAS_COMPRESSION_MAP, PANDAS_DEFAULT_NULL_VALUES
+from .common import OED_TYPE_TO_NAME, OdsException, PANDAS_COMPRESSION_MAP, PANDAS_DEFAULT_NULL_VALUES, is_relative
 from .forex import convert_currency
 from .schema import OedSchema
 
@@ -238,14 +238,17 @@ class OedSource:
             version_name = self.cur_version_name
         source = self.sources[version_name]
         if source['source_type'] == 'filepath':
-            extension = PANDAS_COMPRESSION_MAP.get(source.get('extention')) or Path(source['filepath']).suffix
+            filepath = source['filepath']
+            if is_relative(filepath):
+                filepath = Path(self.exposure.working_dir, filepath)
+            extension = PANDAS_COMPRESSION_MAP.get(source.get('extention')) or Path(filepath).suffix
             if extension == '.parquet':
-                oed_df = pd.read_parquet(source['filepath'], **source.get('read_param', {}))
+                oed_df = pd.read_parquet(filepath, **source.get('read_param', {}))
             else:  # default we assume it is csv like
                 read_params = {'keep_default_na': False,
                                'na_values': PANDAS_DEFAULT_NULL_VALUES.difference('NA')}
                 read_params.update(source.get('read_param', {}))
-                oed_df = self.read_csv(source['filepath'], self.exposure.get_input_fields(self.oed_type), **read_params)
+                oed_df = self.read_csv(filepath, self.exposure.get_input_fields(self.oed_type), **read_params)
         else:
             raise Exception(f"Source type {source['source_type']} is not supported")
 
@@ -285,14 +288,17 @@ class OedSource:
                       'filepath': source,
                       }
         if source['source_type'] == 'filepath':
-            Path(source['filepath']).parents[0].mkdir(parents=True, exist_ok=True)
-            extension = source.get('extension') or ''.join(Path(source['filepath']).suffixes)
+            filepath = source['filepath']
+            if is_relative(filepath):
+                filepath = Path(self.exposure.working_dir, filepath)
+            Path(filepath).parents[0].mkdir(parents=True, exist_ok=True)
+            extension = source.get('extension') or ''.join(Path(filepath).suffixes)
             if extension == 'parquet':
-                self.dataframe.to_parquet(source['filepath'], **source.get('write_param', {}))
+                self.dataframe.to_parquet(filepath, **source.get('write_param', {}))
             else:
                 write_param = {'index': False}
                 write_param.update(source.get('write_param', {}))
-                self.dataframe.to_csv(source['filepath'], **write_param)
+                self.dataframe.to_csv(filepath, **write_param)
         else:
             raise Exception(f"Source type {source['source_type']} is not supported")
         self.cur_version_name = version_name

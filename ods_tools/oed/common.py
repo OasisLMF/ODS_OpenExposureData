@@ -1,10 +1,25 @@
 """
 common static variable and ods_tools exceptions
 """
+from urllib.parse import urlparse
+from pathlib import Path
 
 
 class OdsException(Exception):
     pass
+
+
+def is_relative(filepath):
+    """
+    return True is path is relative meaning it is neither internet RFC nor os absolute path
+    Args:
+        filepath (str: path est
+
+    Returns:
+        boolean
+    """
+    url_parsed = urlparse(str(filepath))
+    return not (all([url_parsed.scheme, url_parsed.netloc]) or Path(filepath).is_absolute())
 
 
 # PANDAS_COMPRESSION_MAP is also used to order the preferred input format in ExposureData.from_dir
