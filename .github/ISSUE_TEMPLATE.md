@@ -6,13 +6,14 @@
 ## Reasons for Change
 <!--- A brief explanation, or example --> 
 
-## Scope of change (which files do these apply to)
+## Scope of change 
+<!--- Which files do these apply to) --> 
 - [ ] Location File 
 - [ ] Accounts File 
 - [ ] Reinsurance Scope 
 - [ ] Reinsurance Info 
 
-## Impact of change (are these breaking changes .. etc)
+## Impact of change
 <!--- Are these breaking changes, or an extension to existing functionally? --> 
 <!--- How might this change Impact software/tools using OED --> 
 
