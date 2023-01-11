@@ -178,7 +178,8 @@ def get_ods_perils(perils_df):
         'covered': (  # create a dict of peril => list of sub perils
             perils_df
             [['Peril', 'PerilsCovered']]
-            [:perils_df[perils_df['Peril'] == ''].index[0]]  # select rows until 1st empty cell
+            .replace("", float("NaN"))
+            .dropna()
             .groupby('PerilsCovered')['Peril'].apply(list)
             .to_dict()
         )
