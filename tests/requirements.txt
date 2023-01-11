@@ -6,7 +6,7 @@
 #
 attrs==22.1.0
     # via pytest
-certifi==2022.6.15
+certifi==2022.12.7
     # via requests
 chardet==5.0.0
     # via -r requirements.in
