@@ -1,6 +1,40 @@
 ODS Changelog
 ==================
 
+`v3.0.0`_
+---------
+
+* (https://github.com/OasisLMF/OpenDataStandards/issues/40) - Add ‘locPopulation’ file to the current OED loc file from the current separate input file.
+
+* (https://github.com/OasisLMF/OpenDataStandards/issues/68) (re-opened from v2.3.0) 
+
+After the updates to the occupancy codes for common house type such as ‘detached’, ‘semi-detached’, ‘end-terrace’ and ‘bungalow’ (OED occ codes 1070-1073) were released in ODS v2.3.0, an update to the current occupancy code for ‘terraced-housing’ was required to make it more specific to ‘mid-terraced ‘housing. 
+
+* (https://github.com/OasisLMF/OpenDataStandards/issues/70) - Removal of building types (linked to https://github.com/OasisLMF/OpenDataStandards/issues/68). 
+
+
+* (https://github.com/OasisLMF/OpenDataStandards/issues/74)- OED to support public infrastructure (transport, utilities and other).
+
+* (https://github.com/OasisLMF/OpenDataStandards/issues/76) - support agriculture in OED.
+
+* (https://github.com/OasisLMF/OpenDataStandards/issues/77) - Extended length of loc user def fields (to 200 characters).
+
+* (https://github.com/OasisLMF/OpenDataStandards/issues/78) - Add OED peril code for off-floodplain. 
+
+* (https://github.com/OasisLMF/OpenDataStandards/issues/79) - New OED fields related to vulnerability.
+
+* (https://github.com/OasisLMF/OpenDataStandards/issues/81) - Additions to OED to support off-shore renewable energy.
+
+* (https://github.com/OasisLMF/OpenDataStandards/issues/85) - Additional OED currency and rate of exchange fields.
+
+* (https://github.com/OasisLMF/OpenDataStandards/issues/90) - Additional ORD Exposure summary report
+
+* ( https://github.com/OasisLMF/ODS_OpenExposureData/issues/100) - Small changes to default values and data ranges in OED
+
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/109) - Additional account participation field in OED
+
+
+
 
 `v2.3.2`_
 ---------
