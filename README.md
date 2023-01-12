@@ -83,7 +83,7 @@ Detailed documentation on which financial fields are supported in the Oasis kern
 
 The aim of OED is to provide the industry with a robust, open, and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and the detailed descriptions of each data field for property are covered in the 'Open Exposure Data Spec.xlsx' and reference and background OED information can be found in the 'docs’ folder (https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs). Examples of how to code multiple financial structures in the input files are also covered within these documents.
 
-An additional OED location file 'LocPopulation' is also available here (https://github.com/OasisLMF/OpenDataStandards/blob/master/OpenExposureData/Example_inputs/pi_wind/OED_LocPopulation_v2.0.0.xlsx) for capturing demographic and socio-vulnerability data for more public sector/humanitarian use cases.
+The web (HTML) version of the OED documentation can be viewed here https://oasislmf.github.io/OpenDataStandards/index.html
 
 &nbsp;
 
@@ -102,18 +102,23 @@ The focus for OED has primarily been on property cat business since its inceptio
 
 https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Liability
 
-A cyber data standard is expected to be available in Q3/Q4 of 2022.
+&nbsp; 
 
+**Cyber** 
 
-The web (HTML) version of the OED documentation can be viewed here https://oasislmf.github.io/OpenDataStandards/index.html
+A cyber data standard is expected to be available in late January 2023 and will be accessible in this repo.
+
 
 &nbsp; 
 
 ## Open Results Data (ORD)
 
-ORD was initially developed during the Lloyd's Lab innovation project (Cohort 3) in 2019, by a working group led by Oasis, that focussed on constructing model agnostic results formats and appropriate data formats. These model outputs cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. The ORD Standard encompasses:
+ORD was initially developed during the Lloyd's Lab innovation project (Cohort 3) in 2019, by a working group led by Oasis, that focussed on constructing model agnostic results formats and appropriate data formats. These model outputs cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. 
 
-More details and documents can be found here (https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenResultsData)
+ORD follows the same versioning format as OED (following the SemVer convention as described below) but is developed and versioned independently to OED in a separate repository that can be found here:
+
+https://github.com/OasisLMF/ODS_OpenResultsData
+
 
 &nbsp; 
 
@@ -159,7 +164,7 @@ All new work will be captured as issues in this repository and contain all corre
 ### *CSV to Parquet Data Conversion* 
 Apache Parquet is an open-source columnar data format which has superior data compression and encoding schemes enabling more efficiency around the handling of large datasets. More info here (https://parquet.apache.org)
 
-All source code and info on converting csv to Parquet data format can be found here (https://github.com/OasisLMF/OpenDataStandards/tree/master/src)
+All source code and info on converting csv to Parquet data format can be found here (https://github.com/OasisLMF/OpenDataStandards/tree/master/ods_tools)
 
 &nbsp; 
 

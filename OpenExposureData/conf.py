@@ -17,10 +17,10 @@ import sys
 from sphinx.ext import autodoc
 from recommonmark.parser import CommonMarkParser
 
-#sys.path.insert(0, os.path.abspath('../modules/OasisLMF'))
-#sys.path.insert(0, os.path.abspath('../modules/OasisPlatform'))
+# sys.path.insert(0, os.path.abspath('../modules/OasisLMF'))
+# sys.path.insert(0, os.path.abspath('../modules/OasisPlatform'))
 
-#import src.server.app
+# import src.server.app
 
 # -- Project information -----------------------------------------------------
 
@@ -43,7 +43,7 @@ release = u'1.0.0'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-#extensions = [
+# extensions = [
 #    'sphinx.ext.autodoc',
 #    'sphinx.ext.doctest',
 #    'sphinx.ext.intersphinx',
@@ -60,16 +60,16 @@ release = u'1.0.0'
 #    'm2r',
 #    'autoapi.extension',
 #    # 'recommonmark'
-#]
+# ]
 
-#autoapi_dirs = [
+# autoapi_dirs = [
 #    '../modules/OasisLMF/oasislmf',
 #    '../modules/OasisPlatform/src',
 #    ]
-#autoapi_add_toctree_entry = False
+# autoapi_add_toctree_entry = False
 
 # Add any paths that contain templates here, relative to this directory.
-#templates_path = ['_templates']
+# templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -93,7 +93,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path .
-#exclude_patterns = ['_build', '**.ipynb_checkpoints']
+# exclude_patterns = ['_build', '**.ipynb_checkpoints']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -105,7 +105,7 @@ pygments_style = 'sphinx'
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
-#html_theme = 'classic'
+# html_theme = 'classic'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -116,7 +116,7 @@ html_theme = 'sphinx_rtd_theme'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-#html_static_path = ['_static']
+# html_static_path = ['_static']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -144,7 +144,7 @@ latex_elements = {
 
     # The font size ('10pt', '11pt' or '12pt').
     #
-     'pointsize': '10pt',
+    'pointsize': '10pt',
 
     # Additional stuff for the LaTeX preamble.
     #
@@ -152,7 +152,7 @@ latex_elements = {
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
-    #'fncychap': '\\usepackage[Conny]{fncychap}',
+    # 'fncychap': '\\usepackage[Conny]{fncychap}',
     'preamble': """
 \usepackage{colortbl}
 \protected\def\sphinxstyletheadfamily {\cellcolor{teal}\sffamily} {\\arrayrulecolor{gray}}
@@ -164,7 +164,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'OED.tex', u'Open Exposure Data',
-     #u'Oasis LMF', 'manual'),
+     # u'Oasis LMF', 'manual'),
      u'', 'howto'),
 ]
 
@@ -204,7 +204,7 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 todo_include_todos = True
 
 
-#class CliDocumenter(autodoc.ClassDocumenter):
+# class CliDocumenter(autodoc.ClassDocumenter):
 #    objtype = "cli"
 #
 #    #do not indent the content
@@ -215,5 +215,5 @@ todo_include_todos = True
 #        pass
 #
 #
-#def setup(app):
+# def setup(app):
 #    app.add_autodocumenter(CliDocumenter)

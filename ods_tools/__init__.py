@@ -1,10 +1,6 @@
-__version__ = '2.3.2'
-
-from .oed import *
+__version__ = '3.0.0'
 
 import logging
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
-
-

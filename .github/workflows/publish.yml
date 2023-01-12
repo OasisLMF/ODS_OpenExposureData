@@ -21,7 +21,7 @@ jobs:
     uses: ./.github/workflows/version.yml
     secrets: inherit
     with:
-      package_version: ${{ env.release_tag }}
+      package_version: ${{ inputs.release_tag }}
 
   package:
     uses: ./.github/workflows/build.yml
@@ -74,11 +74,11 @@ jobs:
 
     - name: Check tag matches version set
       run: |
-        BUILD_VER=$(grep '__version__' src/__init__.py | awk -F"'" '{print $2}')
+        BUILD_VER=$(grep '__version__' ods_tools/__init__.py | awk -F"'" '{print $2}')
         RELEASE_VER=${{ env.RELEASE_TAG }}
         [[ "$RELEASE_VER" = "$BUILD_VER" ]] && ERROR_CODE=0 || ERROR_CODE=1
         if [[ "$ERROR_CODE" == 1 ]]; then
-            echo "PACKAGE_VER: $BUILD_VER stored in 'src/__init__.py' dosn't match RELEASE_TAG: $RELEASE_VER" && exit $ERROR_CODE
+            echo "PACKAGE_VER: $BUILD_VER stored in 'ods_tools/__init__.py' dosn't match RELEASE_TAG: $RELEASE_VER" && exit $ERROR_CODE
         fi
 
     - name: Test package names
