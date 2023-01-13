@@ -58,10 +58,10 @@ class Validator:
         """
         if validation_config is None:
             validation = DEFAULT_VALIDATION_CONFIG
-        elif isinstance(validation_config, [str, Path]):
-            validation = json.load(validation_config)
         elif isinstance(validation_config, Iterable):
             validation = validation_config
+        elif isinstance(validation_config, [str, Path]):
+            validation = json.load(validation_config)
         else:
             raise OdsException("Unsupported validation type")
 
