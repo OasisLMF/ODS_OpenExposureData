@@ -24,7 +24,7 @@ class OedExposure:
     DEFAULT_EXPOSURE_CONFIG_NAME = 'exposure_info.json'
 
     def __init__(self,
-                 location,
+                 location=None,
                  account=None,
                  ri_info=None,
                  ri_scope=None,
@@ -57,15 +57,6 @@ class OedExposure:
         self.account = OedSource.from_oed_info(exposure=self, oed_type='Acc', oed_info=account)
         self.ri_info = OedSource.from_oed_info(exposure=self, oed_type='ReinsInfo', oed_info=ri_info)
         self.ri_scope = OedSource.from_oed_info(exposure=self, oed_type='ReinsScope', oed_info=ri_scope)
-
-        if not self.location:
-            raise Exception(f"Exposure needs a Location file, location={location}")
-
-        if ri_info or ri_scope:
-            if not account:
-                raise Exception(f"Exposure needs account if reinsurance is provided account={account}")
-            if not ri_info and ri_scope:
-                raise Exception(f"Exposure needs both ri_scope and ri_scope for reinsurance ri_info={ri_info} ri_scope={ri_scope}")
 
         self.currency_conversion = create_currency_rates(currency_conversion)
 

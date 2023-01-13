@@ -91,6 +91,24 @@ class Validator:
             raise OdsException('\n'.join(invalid_data_to_str(invalid_data) for invalid_data in raise_msg))
         return return_msg
 
+    def check_source_coherence(self):
+        """"""
+        invalid_data = []
+        if not self.exposure.location:
+            invalid_data.append({'name': 'location', 'source': None,
+                                 'msg': f"Exposure needs a Location file, location={self.exposure.location}"})
+
+        if self.exposure.ri_info or self.exposure.ri_scope:
+            if not self.exposure.account:
+                invalid_data.append({'name': 'account', 'source': None,
+                                     'msg': f"Exposure needs account if reinsurance is provided account={self.exposure.account}"})
+
+            if not self.exposure.ri_info and self.exposure.ri_scope:
+                invalid_data.append({'name': 'reinsurance', 'source': None,
+                                     'msg': f"Exposure needs both ri_scope and ri_scope for reinsurance"
+                                            f"ri_info={self.exposure.ri_info} ri_scope={self.exposure.ri_scope}"})
+        return invalid_data
+
     def check_required_fields(self):
         """
         using Oed input_field definition, check all require field
