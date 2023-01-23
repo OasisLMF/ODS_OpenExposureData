@@ -3,7 +3,7 @@ This package is in charge of converting relevant ods values such as TIV or polic
 """
 import datetime
 import json
-import os 
+import os
 import pandas as pd
 from pathlib import Path
 
