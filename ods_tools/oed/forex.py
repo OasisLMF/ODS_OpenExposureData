@@ -171,7 +171,7 @@ def create_currency_rates(currency_conversion):
     def get_path(name):
         if Path(currency_conversion[name]).is_absolute():
             return currency_conversion[name]
-        else:  # isabs returns false for url like http link, using urljoin allow those to still work
+        else:
             return os.path.join(str(currency_conversion['root_dir']), currency_conversion[name])
 
     if currency_conversion:
