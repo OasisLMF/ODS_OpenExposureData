@@ -3,6 +3,7 @@ This package is in charge of converting relevant ods values such as TIV or polic
 """
 import datetime
 import json
+import os 
 import pandas as pd
 from pathlib import Path
 from urllib.parse import urljoin
@@ -172,12 +173,14 @@ def create_currency_rates(currency_conversion):
         if Path(currency_conversion[name]).is_absolute():
             return currency_conversion[name]
         else:  # isabs returns false for url like http link, using urljoin allow those to still work
-            return urljoin(str(currency_conversion['root_dir']), currency_conversion[name])
+            return os.path.join(str(currency_conversion['root_dir']), currency_conversion[name])
 
     if currency_conversion:
         if isinstance(currency_conversion, str):  # it is a json file
-            currency_conversion = json.load(currency_conversion)
-            currency_conversion['root_dir'] = Path(currency_conversion).parents[0]
+            root_dir = Path(currency_conversion).parents[0]
+            with open(currency_conversion, 'r', encoding='utf-8') as f:
+                currency_conversion = json.load(f)
+            currency_conversion['root_dir'] = root_dir
         else:
             currency_conversion.setdefault('root_dir', Path.cwd())
     else:
