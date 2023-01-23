@@ -6,7 +6,6 @@ import json
 import os 
 import pandas as pd
 from pathlib import Path
-from urllib.parse import urljoin
 
 from .common import OdsException
 
