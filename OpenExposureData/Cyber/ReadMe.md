@@ -9,7 +9,25 @@ There is an increasing demand for a set of agreed open standards for cyber busin
 
 It’s important to note that this is NOT an Oasis standard but a market initiative that is only curated by Oasis and so the success of ODS is reliant on community collaboration. The aim of ODS is not to serve or be controlled by a single entity for their own commercial benefit, but to accommodate multiple developers and users, be open and transparent for all.
 
-Throughout 2022, a working group of practitioners from the companies listed below have consulted on various approaches and the majority have agreed on what key data fields need to be included in this standard. 
+Throughout 2022, a working group of practitioners from the companies listed below have consulted on various approaches and the majority have agreed on the key data fields included in this standard. 
+
+* Allianz
+* Aon
+* Axis Capital
+* Convex
+* Cyberacuview
+* Gallagher Re
+* Guidewire Cyence
+* Guy Carp
+* KOVRR
+* Oasis LMF (ODS curator/secretariat)
+* Ren Re
+* Richard DeKorte (Cyber Security Independent)
+* RMS
+* Sompo International
+* Swiss Re
+* Waratah Analytics
+* Zurich
 
 &nbsp;
 
