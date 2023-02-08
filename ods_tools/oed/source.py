@@ -158,6 +158,16 @@ class OedSource:
 
     @classmethod
     def prepare_df(cls, df, column_to_field, ods_fields):
+        """
+        Complete the Oed Dataframe with default valued and required column
+        Args:
+            df: oed dataframe
+            column_to_field: dict mapping column to their field info
+            ods_fields: the ods_field info for this oed source type
+
+        Returns:
+            df
+        """
         # set default values
         for col, field_info in column_to_field.items():
             field_info = column_to_field.get(col)
