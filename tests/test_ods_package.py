@@ -6,6 +6,7 @@ import shutil
 import sys
 
 import pandas as pd
+import numpy as np
 from unittest import TestCase
 import tempfile
 
@@ -221,7 +222,6 @@ class OdsPackageTests(TestCase):
             'LocPerilsCovered': 'WTC',
             'BuildingTIV': ['1000', '20000'],
             'ContentsTIV': [0, 0],
-            'BITIV': [0, 0],
             'LocCurrency': ['GBP', 'EUR']})
         with tempfile.TemporaryDirectory() as tmp_run_dir:
             # create a custom schema to init the test
@@ -257,3 +257,24 @@ class OdsPackageTests(TestCase):
             exposure_move = OedExposure.from_dir(pathlib.Path(tmp_move_dir, 'oed'))
             pd.testing.assert_frame_equal(exposure_save.location.dataframe, exposure_move.location.dataframe)
             pd.testing.assert_frame_equal(exposure_save.account.dataframe, exposure_move.account.dataframe)
+
+
+    def test_field_required_allow_blank_are_set_to_default(self):
+        original_exposure = OedExposure(**{
+            'location': base_url + '/SourceLocOEDPiWind.csv',
+            'account': base_url + '/SourceAccOEDPiWind.csv',
+            'ri_info': base_url + '/SourceReinsInfoOEDPiWind.csv',
+            'ri_scope': base_url + '/SourceReinsScopeOEDPiWind.csv',
+            'use_field': True})
+
+        original_exposure.location.dataframe.drop(columns=['ContentsTIV'], inplace=True)
+        original_exposure.location.dataframe['BITIV'] = np.nan
+        original_exposure.ri_info.dataframe.drop(columns='RiskLevel', inplace=True)
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            original_exposure.save(pathlib.Path(tmp_dir, 'oed'), save_config=True)
+            modified_exposure = OedExposure.from_dir(pathlib.Path(tmp_dir, 'oed'))
+
+            assert (modified_exposure.location.dataframe['ContentsTIV'] == 0).all()  # check column is added with correct value
+            assert (modified_exposure.location.dataframe['BITIV'] == 0).all()  # check default is applied
+            assert (modified_exposure.ri_info.dataframe['RiskLevel'] == '').all()  # check it works for string

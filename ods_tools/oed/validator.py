@@ -135,7 +135,7 @@ class Validator:
                 if isinstance(columns, str):
                     columns = [columns]
                 for column in columns:
-                    if (field_info.get("Allow blanks?") == 'NO'
+                    if (field_info.get("Allow blanks?").upper() == 'NO'
                             and (oed_source.dataframe[column].isna().any()
                                  or (field_info['pd_dtype'] == 'str' and oed_source.dataframe[column].isnull().any()))):
                         invalid_data.append({'name': oed_source.oed_name, 'source': oed_source.current_source,
