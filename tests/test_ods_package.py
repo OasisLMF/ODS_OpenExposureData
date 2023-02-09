@@ -258,7 +258,6 @@ class OdsPackageTests(TestCase):
             pd.testing.assert_frame_equal(exposure_save.location.dataframe, exposure_move.location.dataframe)
             pd.testing.assert_frame_equal(exposure_save.account.dataframe, exposure_move.account.dataframe)
 
-
     def test_field_required_allow_blank_are_set_to_default(self):
         original_exposure = OedExposure(**{
             'location': base_url + '/SourceLocOEDPiWind.csv',
