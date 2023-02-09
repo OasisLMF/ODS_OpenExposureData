@@ -14,7 +14,6 @@ Throughout 2022, a working group of practitioners from the companies listed belo
 * Allianz
 * Aon
 * Axis Capital
-* Convex
 * Cyberacuview
 * Gallagher Re
 * Guidewire Cyence
