@@ -403,38 +403,11 @@ class OedSource:
             else:
                 pd_dtype[col] = 'category'
 
-        present_field = set(field_info['Input Field Name'] for field_info in column_to_field.values())
-
         # read the oed file
         if kwargs.get('compression') == 'gzip':
             with open(filepath, 'rb') as f:
                 df = df_engine.read_csv(f, dtype=pd_dtype, **kwargs)
         else:
             df = df_engine.read_csv(filepath, dtype=pd_dtype, **kwargs)
-
-        # set default values
-        for col in header:
-            field_info = column_to_field.get(col)
-            if (field_info
-                    and field_info['Default'] != 'n/a'
-                    and (df[col].isna().any() or (field_info['pd_dtype'] == 'category' and df[col].isnull().any()))):
-                if field_info['pd_dtype'] == 'category':
-                    df[col] = df[col].cat.add_categories(field_info['Default']).fillna(field_info['Default'])
-                else:
-                    df[col].fillna(df[col].dtype.type(field_info['Default']), inplace=True)
-
-        # add required columns that allow blank values if missing
-        for field_info in ods_fields.values():
-            col = field_info['Input Field Name']
-            if col not in present_field:
-                if field_info.get('Required Field') == 'R' and field_info.get("Allow blanks?").upper() == "YES":
-                    if field_info['pd_dtype'] == 'category':
-                        df[col] = '' if field_info['Default'] == 'n/a' else field_info['Default']
-                        df[col] = df[col].astype('category')
-                    else:
-                        df[col] = np.nan
-                        df[col] = df[col].astype(field_info['pd_dtype'])
-                        if field_info['Default'] != 'n/a':
-                            df[col] = df[col].fillna(df[col].dtype.type(field_info['Default'])).astype(field_info['pd_dtype'])
 
         return cls.prepare_df(df, column_to_field, ods_fields)
