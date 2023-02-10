@@ -1,0 +1,63 @@
+﻿Data Category,Field Name,Field Description,Usage Example,Level of Priority,Data Type
+Policyholder,Name,Full legal name of insured party,Walmart Inc.,Essential,String
+Policyholder,CompanyIDScheme,"I.e. DUNS, LEI",DUNS,Highly Recommended,String
+Policyholder,CompanyID,Company identifier related to the CompanyIDScheme,51957769,Highly Recommended,Integer
+Policyholder,YearFounded,To support insured company identification (YYYY format),1945,Optional,Integer
+Policyholder,StreetAddress,To support insured company identification (free form),702 SW 8th Street,Optional,String
+Policyholder,PostalCode,To support insured company identification (free form),72716,Optional,String
+Policyholder,City,To support insured company identification (free form),Bentonville,Optional,String
+Policyholder,CountryCode,Alpha-2 code for the insured party's country of domicile (ISO 3166-1),US,Highly Recommended,Char(2)
+Policyholder,CountrySubdivisionCode,"Alphanumeric code refining CountryCode into state, province or region (ISO 3166-2)",US-AR,Recommended,String
+Policy Holder,IndustryScheme,"i.e NAISC, USSIC, UKSIC",NAICS,Essential,String
+Policy Holder,IndustryCode,Industry code from the IndustryScheme - see 'Industry Codes' tab,445110,Essential,Integer
+Policyholder,IndustryVintage,Vintage of Industry code used (YYYY format),2022,Highly Recommended,Integer
+Policyholder,IndustryDescription,Concise industry description (associated with code above or free form),Supermarkets and Other Grocery (except Convenience) Stores ,Recommended,String
+Policyholder,EmployeeCount,Most recent estimate of number of employees,"2,300,000",Recommended,Integer
+Policyholder,AnnualRevenue,Most recent estimate for annual total gross income (not profit),"559,150,000,000",Essential,Integer
+Policyholder,AnnualRevenueCurrency,Currency for AnnualRevenue in three digit format (ISO 4217),USD,Essential,Char(3)
+Policyholder,GrossProfitMargin,Gross Profit Margin of company in percentage (0.1 = 10%),0.1,Recommended,Float
+Policyholder,NumberofRecords,Estimated number of records accessed,"12,000",Recommended,Integer
+Policyholder,URL,Link to website,https://www.walmart.com,Highly Recommended,String
+Policy Financial Terms,PolicyID,PolicyID or Reference,ABC12345,Essential,String
+Policy Financial Terms,PolicyType,"Policy Type - Standalone, Package",Standalone,Recommended,String
+Policy Financial Terms,PolLimit,Policy Limit (monetary value for all coverages),"10,000,000",Essential,Integer
+Policy Financial Terms,PolDed,Policy Deductible (monetary value for all coverages),"50,000",Essential,Integer
+Policy Financial Terms,PolCurrency,Policy Currency - all policy financial information in the same currency (ISO3 4217) 3 digit format ,USD,Essential,Char
+Policy Financial Terms,EffectiveDate,Effective date of the policy in YYYY-MM-DD format (ISO 8601),01/01/2020,Essential,Date
+Policy Financial Terms,ExpirationDate,Expiration date of the policy in YYYY-MM-DD format (ISO 8601),01/01/2020,Essential,Date
+Policy Financial Terms,WrittenPremium,100% policy premium paid by the policyholder,5000000,Highly Recommended,Integer
+Policy Financial Terms,PolicyRenewalStatus,Options: New or Renewal,Renewal,Recommended,String
+Policy Financial Terms,PolicyNumberExpiring,The expiring PolicyNumber as related to renewal policies,51957769DO20210101-01,Recommended,String
+Policy Financial Terms,PolicyShare,Participant percentage share of 100% policy terms (0.1 = 10%),0.1,Essential,Float
+Policy Financial Terms,PolicyNumberStacked,If not unique indicates policy stacking (e.g. policies part of same insurance tower),51957769DO20220101,Recommended,String
+Policy Financial Terms,WaitingPeriod,Hours - Only applicable for BI or CBI (contingent BI) ,,Recommended,Integer
+Policy Financial Terms,Attachment,"Policy attachment (per-occurrence basis), inclusive of Deductible/SIR",100000000,Essential,Integer
+Policy Financial Terms,AggregateAttachment,Policy attachment (aggregate basis),,Optional,Integer
+Policy Financial Terms,AggregateLimit,100% policy limit (aggregate basis) ,,Optional,Integer
+Policy Coverage,BIlimit,Sub-limit for BI - see 'Coverages' tab ,"2,000,000",Highly Recommended,Integer
+Policy Coverage,BIded,Sub-deductible for BI - see 'Coverages' tab ,10000,Highly Recommended,Integer
+Policy Coverage,CBIlimit,Sub-limit for CONTINGENT BI - see 'Coverages' tab ,3000000,Highly Recommended,Integer
+Policy Coverage,CBIded,Sub-deductible for CONTINGENT BI- see 'Coverages' tab ,25000,Highly Recommended,Integer
+Policy Coverage,DIASlimit,Sub-limit for DIGITAL ASSETS - see 'Coverages' tab ,1,Highly Recommended,Integer
+Policy Coverage,DIASded,Sub-deductible for DIGITAL ASSETS - see 'Coverages' tab ,1,Highly Recommended,Integer
+Policy Coverage,EXTlimit,Sub-limit for EXTORTION - see 'Coverages' tab ,0,Highly Recommended,Integer
+Policy Coverage,EXTded,Sub-deductible for EXTORTION - see 'Coverages' tab ,0,Highly Recommended,Integer
+Policy Coverage,FINlimit,Sub-limit for FINANCIAL FRAUD - see 'Coverages' tab ,1,Highly Recommended,Integer
+Policy Coverage,FINded,Sub-deductible for FINANCIAL FRAUD - see 'Coverages' tab ,1,Highly Recommended,Integer
+Policy Coverage,INRElimit,Sub-limit for INCIDENT RESPONSE - see 'Coverages' tab ,0,Highly Recommended,Integer
+Policy Coverage,INREded,Sub-deductible for INCIDENT RESPONSE - see 'Coverages' tab ,0,Highly Recommended,Integer
+Policy Coverage,LIABlimit,Sub-limit for LIABILITY - see 'Coverages' tab ,0,Highly Recommended,Integer
+Policy Coverage,LIABded,Sub-deductible for LIABILITY - see 'Coverages' tab ,0,Highly Recommended,Integer
+Policy Coverage,REGlimit,Sub-limit for REGULATORY - see 'Coverages' tab ,0,Highly Recommended,Integer
+Policy Coverage,REGded,Sub-deductible for REGULATORY - see 'Coverages' tab ,0,Highly Recommended,Integer
+Policy Coverage,ENOlimit,Sub-limit for ERRORS & OMISSIONS - see 'Coverages' tab ,0,Highly Recommended,Integer
+Policy Coverage,ENOded,Sub-deductible for ERRORS & OMISSIONS - see 'Coverages' tab ,0,Highly Recommended,Integer
+Policy Coverage,LimitCurr,Limit Currency for all Coverages - (ISO3 4217) 3 digit format,USD,Highly Recommended,Char(3)
+Policy Coverage,DedCurr,Deductible Currency for all currencies - (ISO3 4217) 3 digit format,USD,Highly Recommended,Char(3)
+Policy Coverage,SIR,Self Insured Retention,"200,000",Optional,Integer
+Technographic,OS,"Operating System, Code - See 'Vendor' Tab",OS_1,Optional,String
+Technographic,CloudVendor,Vendor Code - See 'Vendor' Tab,12,Optional,String
+Technographic,EmailVendor,Vendor Code - See 'Vendor' Tab,18,Optional,String
+Technographic,CRM,"Customer Relationship Management, Vendor Code - See 'Vendor' Tab",30,Optional,String
+Technographic,PatchPolicy,Cadence of patches to the 'main system' - Never/Daily/Weekly/Monthly/Annually/Ad-hoc,Monthly,Optional,String
+Technographic,BackUpFreq,Cadence of back-up of the 'main servers' Cadence - Never/Daily/Weekly/Monthly/Annually/Ad-hoc,Weekly,Optional,String

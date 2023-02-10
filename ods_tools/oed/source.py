@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import pandas as pd
+import numpy as np
 from chardet.universaldetector import UniversalDetector
 
 from .common import OED_TYPE_TO_NAME, OdsException, PANDAS_COMPRESSION_MAP, PANDAS_DEFAULT_NULL_VALUES, is_relative
@@ -156,6 +157,45 @@ class OedSource:
         return cls(exposure, oed_type, 'orig', {'orig': {'source_type': 'filepath', 'filepath': filepath}})
 
     @classmethod
+    def prepare_df(cls, df, column_to_field, ods_fields):
+        """
+        Complete the Oed Dataframe with default valued and required column
+        Args:
+            df: oed dataframe
+            column_to_field: dict mapping column to their field info
+            ods_fields: the ods_field info for this oed source type
+
+        Returns:
+            df
+        """
+        # set default values
+        for col, field_info in column_to_field.items():
+            field_info = column_to_field.get(col)
+            if (field_info
+                    and field_info['Default'] != 'n/a'
+                    and (df[col].isna().any() or (field_info['pd_dtype'] == 'category' and df[col].isnull().any()))):
+                if field_info['pd_dtype'] == 'category':
+                    df[col] = df[col].cat.add_categories(field_info['Default']).fillna(field_info['Default'])
+                else:
+                    df[col].fillna(df[col].dtype.type(field_info['Default']), inplace=True)
+
+        # add required columns that allow blank values if missing
+        present_field = set(field_info['Input Field Name'] for field_info in column_to_field.values())
+        for field_info in ods_fields.values():
+            col = field_info['Input Field Name']
+            if col not in present_field:
+                if field_info.get('Required Field') == 'R' and field_info.get("Allow blanks?").upper() == "YES":
+                    if field_info['pd_dtype'] == 'category':
+                        df[col] = '' if field_info['Default'] == 'n/a' else field_info['Default']
+                        df[col] = df[col].astype('category')
+                    else:
+                        df[col] = np.nan
+                        df[col] = df[col].astype(field_info['pd_dtype'])
+                        if field_info['Default'] != 'n/a':
+                            df[col] = df[col].fillna(df[col].dtype.type(field_info['Default'])).astype(field_info['pd_dtype'])
+        return df
+
+    @classmethod
     def from_dataframe(cls, exposure, oed_type, oed_df: pd.DataFrame):
         """
         OedSource Constructor from a filepath
@@ -185,7 +225,7 @@ class OedSource:
         oed_df = oed_df.astype(to_tmp_dtype).astype(pd_dtype)
         if exposure.use_field:
             oed_df = OedSchema.use_field(oed_df, ods_fields)
-        oed_source.dataframe = oed_df
+        oed_source.dataframe = cls.prepare_df(oed_df, column_to_field, ods_fields)
         oed_source.loaded = True
         return oed_source
 
@@ -304,8 +344,8 @@ class OedSource:
         self.cur_version_name = version_name
         self.sources[version_name] = source
 
-    @staticmethod
-    def read_csv(filepath, ods_fields, df_engine=pd, **kwargs):
+    @classmethod
+    def read_csv(cls, filepath, ods_fields, df_engine=pd, **kwargs):
         """
         the function read_csv will load a csv file as a DataFrame
         with all the columns converted to the correct dtype and having the correct default.
@@ -355,13 +395,11 @@ class OedSource:
 
         # match header column name to oed field name and prepare pd_dtype used to read the data
         pd_dtype = {}
-        column_to_fieldinfo = {}
         column_to_field = OedSchema.column_to_field(header, ods_fields)
         for col in header:
             if col in column_to_field:
                 field_info = column_to_field[col]
                 pd_dtype[col] = field_info['pd_dtype']
-                column_to_fieldinfo[col] = field_info
             else:
                 pd_dtype[col] = 'category'
 
@@ -372,15 +410,4 @@ class OedSource:
         else:
             df = df_engine.read_csv(filepath, dtype=pd_dtype, **kwargs)
 
-        # set default values
-        for col in header:
-            field_info = column_to_fieldinfo.get(col)
-            if (field_info
-                    and field_info['Default'] != 'n/a'
-                    and (df[col].isna().any() or (field_info['pd_dtype'] == 'category' and df[col].isnull().any()))):
-                if field_info['pd_dtype'] == 'category':
-                    df[col] = df[col].cat.add_categories(field_info['Default']).fillna(field_info['Default'])
-                else:
-                    df[col].fillna(df[col].dtype.type(field_info['Default']), inplace=True)
-
-        return df
+        return cls.prepare_df(df, column_to_field, ods_fields)
