@@ -1,0 +1,14 @@
+name: Oasislmf intergartion check
+
+on:
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  oasislmf_unittests:
+    uses:  OasisLMF/Oasislmf/.github/workflows/unittest.yml@develop
+    secrets: inherit
+    with:
+      ods_branch: ${{ github.base_ref }}
