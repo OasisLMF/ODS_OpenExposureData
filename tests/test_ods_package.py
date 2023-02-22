@@ -112,7 +112,7 @@ class OdsPackageTests(TestCase):
             'BITIV': [0, 0],
             'LocCurrency': ['GBP', 'EUR']})
 
-        exposure = OedExposure(**{'location': location_df, 'use_field':True})
+        exposure = OedExposure(**{'location': location_df, 'use_field': True})
         # check PortNumber are converted to str
         self.assertTrue((exposure.location.dataframe['PortNumber'] == '1').all())
 
