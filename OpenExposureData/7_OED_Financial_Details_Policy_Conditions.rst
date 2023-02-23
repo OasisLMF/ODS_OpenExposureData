@@ -228,10 +228,12 @@ OED Account file:
     "Acc5", "Pol1",  "California",  "1",  "10,000,000",   "CA sub-limit",  "1"
     "Acc5", "Pol1",  "New Madrid",  "2",  "5,000,000",   "NM sub-limit",  "1"
     "Acc5", "Pol1",  "US",  "3",  "12,500,000",   "US sub-limit",  "2"
-  e regional sub-limits can be referred to as 'child' conditions, with the US sub-limit referred to as the 'parent' condition.  
+
+The California and New Madrid sub-limits can be referred to as 'child' conditions, with the US sub-limit referred to as the 'parent' condition.  
+
 'Nested' means that all locations in the child sub-limit regions also belong to the parent sub-limit region.
 
-The regional sub-limits apply first, and the US sub-limit applies second. This would result in any combined losses from California and New Madrid exceeding $12.5m being limited.  Then policy terms would apply to the sum of limited US locations and the rest of world locations.
+The California and New Madrid sub-limits apply first, and the US sub-limit applies second. This would result in any combined losses from California and New Madrid exceeding the US sub-limit being limited to $12.5m.  Then policy terms would apply to the sum of limited US locations and the rest of world locations.
 
 It is possible to represent an unlimited number of hierarchal conditions in OED, but in practice the number of hierarchal levels rarely exceeds two.
 
@@ -429,39 +431,7 @@ In example 10, California locations are excluded from two different policies on 
 
 |
 
-**Example 10 - Restrictions on two policies**
-
-|
-
-OED Location file:
-
-.. csv-table::
-    :widths: 15,15,15,15,20
-    :header: "AccNumber", "LocNumber", "CountryCode", "AreaCode", "CondTag"
-
-    "Acc10",    "Loc1",  "US", "CA",  "CA"
-    "Acc10",    "Loc2",  "US", "CA",  "CA"
-    "Acc10",    "Loc3",  "US", "IN",  ""
-    "Acc10",    "Loc4",  "MX", "02",  ""
-
-|
-
-OED Account file:
-
-.. csv-table::
-    :widths: 20,20,20,20,20,20,20
-    :header: "AccNumber", "PolNumber", "CondTag", "CondNumber", "CondName", "CondClass", "LayerLimit", "LayerAttachment", "LayerParticipation"
-
-    "Acc10", "PolA",  "CA",  "331826", "EXCL CA LOCS", "1", "5,000,000", "0", "0.5" 
-    "Acc10", "PolB",  "CA",  "331828", "EXCL CA LOCS", "1", "25,000,000","25,000,000", "0.41418"
-
-Only locations 3 and 4 are subject to the terms of PolA and PolB and locations 1 and 2 are excluded.
-
-Although in this example the same locations are excluded from both policies, it is possible to use policy restrictions to exclude different locations from each policy on an account.
-
-|
-
-**Example 11 – Commercial lines – multiple locations per policy with location and policy deductibles but with a sub-limit for tier 1 wind**
+**Example 10 – Commercial lines – multiple locations per policy with location and policy deductibles but with a sub-limit for tier 1 wind**
 
 The tables below show an example of a commercial portfolio with 1 account containing 6 locations. The policy covers earthquake and wind with the same overall policy limit for both perils. However, for certain locations two different sub-limits apply for wind. We show two examples of this below, firstly where the sub-limits are not nested (e.g. Florida wind sub-limit and Texas wind sub-limit), and secondly where the sub-limits are nested (e.g. Texas tier 1 wind sub-limit and Texas overall wind sub-limit).
 
@@ -473,12 +443,12 @@ OED Location file:
     :widths: 15,15,20,25,20,15
     :header: "AccNumber",   "LocNumber",    "BuildingTIV",  "LocDedType1Building",  "LocDed1Building",  "CondTag"
 
-    "Acc11",    "1",    "1,000,000",    "0",    "10,000",   "1"
-    "Acc11",    "2",    "1,000,000",    "2",    "0.01",     "1"
-    "Acc11",    "3",    "1,000,000",    "1",    "0.05",     "2"
-    "Acc11",    "4",    "2,000,000",    "0",    "15,000",   "2"
-    "Acc11",    "5",    "2,000,000",    "0",    "10,000",   
-    "Acc11",    "6",    "2,000,000",    "2",    "0.10", 
+    "Acc10",    "1",    "1,000,000",    "0",    "10,000",   "1"
+    "Acc10",    "2",    "1,000,000",    "2",    "0.01",     "1"
+    "Acc10",    "3",    "1,000,000",    "1",    "0.05",     "2"
+    "Acc10",    "4",    "2,000,000",    "0",    "15,000",   "2"
+    "Acc10",    "5",    "2,000,000",    "0",    "10,000",   
+    "Acc10",    "6",    "2,000,000",    "2",    "0.10", 
 
 |
 
@@ -488,17 +458,15 @@ OED Account file:
     :widths: 20,30,30, 30,30,30,30,30,25
     :header: "AccNumber",   "PolNumber",    "PolPeril", "PolLimit6All", "CondTag", "CondNumber",    "CondPriority", "CondPeril",    "CondLimit6All"
 
-    "Acc11",    "1",    "QQ1;WW1",  "1,500,000", "1",   "1",    "1",    "WW1",  "250,000"
-    "Acc11",    "1",    "QQ1;WW1",  "1,500,000", "2",   "2",    "1",    "WW1",  "500,000"
+    "Acc10",    "1",    "QQ1;WW1",  "1,500,000", "1",   "1",    "1",    "WW1",  "250,000"
+    "Acc10",    "1",    "QQ1;WW1",  "1,500,000", "2",   "2",    "1",    "WW1",  "500,000"
 
 |
+
+
+**Example 11 – Commercial lines – multiple locations per policy with location and policy deductibles with nested hierarchal sub-limits for wind**
 
 If two special conditions are nested or overlap – meaning that some locations have two applicable special conditions (e.g. Texas tier 1 wind sub-limit of 250,000 (**CondNumber** = 1) and Texas overall wind sub-limit of 500,000 (**CondNumber** = 2)), the tables would be specified as shown below. The example below assumes that locations 1 and 2 are in the Texas tier 1 region, locations 3 and 4 are within Texas but not in the Tier 1 wind region, and locations 5 and 6 are outside Texas.
-
-|
-
-**Example 12 – Commercial lines – multiple locations per policy with location and policy deductibles with nested hierarchal sub-limits for wind**
-
 |
 
 OED Location file:
@@ -507,14 +475,14 @@ OED Location file:
     :widths: 12,12,15,20,15,10 
     :header: "AccNumber",   "LocNumber",    "BuildingTIV",  "LocDedType1Building",  "LocDed1Building",  "CondTag"
 
-    "Acc12",    "1",    "1,000,000",    "0",    "10,000",   "1"
-    "Acc12",    "1",    "1,000,000",    "0",    "10,000",   "2"
-    "Acc12",    "2",    "1,000,000",    "2",    "0.01",     "1"
-    "Acc12",    "2",    "1,000,000",    "2",    "0.01",     "2"
-    "Acc12",    "3",    "1,000,000",    "1",    "0.05",     "2"
-    "Acc12",    "4",    "2,000,000",    "0",    "15,000",   "2"
-    "Acc12",    "5",    "2,000,000",    "0",    "10,000"
-    "Acc12",    "6",    "2,000,000",    "2",    "0.10"
+    "Acc11",    "1",    "1,000,000",    "0",    "10,000",   "1"
+    "Acc11",    "1",    "1,000,000",    "0",    "10,000",   "2"
+    "Acc11",    "2",    "1,000,000",    "2",    "0.01",     "1"
+    "Acc11",    "2",    "1,000,000",    "2",    "0.01",     "2"
+    "Acc11",    "3",    "1,000,000",    "1",    "0.05",     "2"
+    "Acc11",    "4",    "2,000,000",    "0",    "15,000",   "2"
+    "Acc11",    "5",    "2,000,000",    "0",    "10,000"
+    "Acc11",    "6",    "2,000,000",    "2",    "0.10"
 
 |
 
@@ -525,7 +493,7 @@ OED Account file:
     :header: "AccNumber",   "PolNumber",    "PolPeril",     "PolLimit6All",  "CondTag",   "CondNumber", "CondPriority", "CondPeril",    "CondLimit6All"
 
 
-    "Acc12",    "1",    "QQ1; WW1",     "1,500,000", "1",   "1",    "1",    "WW1",  "250,000"
-    "Acc12",    "1",    "QQ1; WW1",     "1,500,000", "2",   "2",    "2",    "WW1",  "500,000"
+    "Acc11",    "1",    "QQ1; WW1",     "1,500,000", "1",   "1",    "1",    "WW1",  "250,000"
+    "Acc11",    "1",    "QQ1; WW1",     "1,500,000", "2",   "2",    "2",    "WW1",  "500,000"
 
 
