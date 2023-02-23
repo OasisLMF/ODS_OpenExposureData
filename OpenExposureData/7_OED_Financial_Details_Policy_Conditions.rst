@@ -427,13 +427,18 @@ In this case, the New Madrid losses would be limited to $ 5m for Pol1, but unlim
 
 For each specified CondTag in the locations file, there must be least one associated policy condition in the accounts file, and vice versa.  In other words, there must not be any CondTags in the one file not appearing in the other file.
 
-In example 10, California locations are excluded from two different policies on an account. 
+|
+
+Finally, below are some examples of sub-limits in combination with other policy terms.
+
+
+We show two examples, firstly where the sub-limits are not nested (e.g. Florida wind sub-limit and Texas wind sub-limit), and secondly where the sub-limits are nested (e.g. Texas tier 1 wind sub-limit and Texas overall wind sub-limit).
 
 |
 
 **Example 10 – Commercial lines – multiple locations per policy with location and policy deductibles but with a sub-limit for tier 1 wind**
 
-The tables below show an example of a commercial portfolio with 1 account containing 6 locations. The policy covers earthquake and wind with the same overall policy limit for both perils. However, for certain locations two different sub-limits apply for wind. We show two examples of this below, firstly where the sub-limits are not nested (e.g. Florida wind sub-limit and Texas wind sub-limit), and secondly where the sub-limits are nested (e.g. Texas tier 1 wind sub-limit and Texas overall wind sub-limit).
+The tables below show an example of a commercial portfolio with 1 account containing 6 locations. The policy covers earthquake and wind with the same overall policy limit for both perils. However, for certain locations two different sub-limits apply for wind. 
 
 |
 
@@ -466,7 +471,8 @@ OED Account file:
 
 **Example 11 – Commercial lines – multiple locations per policy with location and policy deductibles with nested hierarchal sub-limits for wind**
 
-If two special conditions are nested or overlap – meaning that some locations have two applicable special conditions (e.g. Texas tier 1 wind sub-limit of 250,000 (**CondNumber** = 1) and Texas overall wind sub-limit of 500,000 (**CondNumber** = 2)), the tables would be specified as shown below. The example below assumes that locations 1 and 2 are in the Texas tier 1 region, locations 3 and 4 are within Texas but not in the Tier 1 wind region, and locations 5 and 6 are outside Texas.
+If two special conditions are nested or overlap (e.g. Texas tier 1 wind sub-limit of 250,000 (**CondNumber** = 1) and Texas overall wind sub-limit of 500,000 (**CondNumber** = 2)), the tables would be specified as shown below. The example below assumes that locations 1 and 2 are in the Texas tier 1 region, locations 3 and 4 are within Texas but not in the Tier 1 wind region, and locations 5 and 6 are outside Texas.
+
 |
 
 OED Location file:
