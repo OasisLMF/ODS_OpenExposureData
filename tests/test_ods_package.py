@@ -300,7 +300,7 @@ class OdsPackageTests(TestCase):
         finally:
             os.chdir(original_cwd)
 
-    def test_aliases_columns(self):
+    def test_NA_value_are_not_nan(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
             loc_path = pathlib.Path(tmp_dir, 'location.csv')
             pd.DataFrame({
