@@ -51,7 +51,7 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: 3.9
-    - run: pip install pip-tools pandas pyarrow openpyxl click tox
+    - run: pip install pip-tools pandas pyarrow openpyxl==3.0.10 click tox
 
     - name: Extract Spec
       run: |

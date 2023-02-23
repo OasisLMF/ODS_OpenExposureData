@@ -64,7 +64,10 @@ class OedExposure:
 
         self.validation_config = validation_config
 
-        self.working_dir = working_dir
+        if not working_dir:
+            self.working_dir = Path('.').absolute()
+        else:
+            self.working_dir = working_dir
 
         if check_oed:
             self.check()

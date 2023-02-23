@@ -223,9 +223,10 @@ class OedSource:
                 to_tmp_dtype[column] = 'float'
 
         oed_df = oed_df.astype(to_tmp_dtype).astype(pd_dtype)
+        oed_df = cls.prepare_df(oed_df, column_to_field, ods_fields)
         if exposure.use_field:
             oed_df = OedSchema.use_field(oed_df, ods_fields)
-        oed_source.dataframe = cls.prepare_df(oed_df, column_to_field, ods_fields)
+        oed_source.dataframe = oed_df
         oed_source.loaded = True
         return oed_source
 
