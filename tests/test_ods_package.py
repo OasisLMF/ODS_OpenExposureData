@@ -2,6 +2,7 @@ import json
 import os
 import pathlib
 import shutil
+import urllib
 
 import sys
 
@@ -277,3 +278,24 @@ class OdsPackageTests(TestCase):
             assert (modified_exposure.location.dataframe['ContentsTIV'] == 0).all()  # check column is added with correct value
             assert (modified_exposure.location.dataframe['BITIV'] == 0).all()  # check default is applied
             assert (modified_exposure.ri_info.dataframe['RiskLevel'] == '').all()  # check it works for string
+
+    def test_relative_and_absolute_path(self):
+        original_cwd = os.getcwd()
+        try:
+            with tempfile.TemporaryDirectory() as tmp_dir:
+                abs_dir = pathlib.Path(tmp_dir, "abs")
+                abs_dir.mkdir()
+                with urllib.request.urlopen(base_url + '/SourceLocOEDPiWind10Currency.csv') as response,\
+                        open(pathlib.Path(tmp_dir, 'SourceLocOEDPiWind10Currency.csv'), 'wb') as out_file:
+                    shutil.copyfileobj(response, out_file)
+                with urllib.request.urlopen(base_url + '/SourceAccOEDPiWind.csv') as response,\
+                        open(pathlib.Path(abs_dir, 'SourceAccOEDPiWind.csv'), 'wb') as out_file:
+                    shutil.copyfileobj(response, out_file)
+
+                os.chdir(tmp_dir)
+                original_exposure = OedExposure(**{
+                    'location': 'SourceLocOEDPiWind10Currency.csv',  # relative path
+                    'account': str(abs_dir) + '/SourceAccOEDPiWind.csv', })   # absolute path
+                original_exposure.check()
+        finally:
+            os.chdir(original_cwd)

@@ -1,4 +1,4 @@
-name: Oasislmf intergartion check
+name: Oasislmf Integration
 
 on:
   pull_request:
