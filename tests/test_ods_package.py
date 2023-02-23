@@ -299,3 +299,18 @@ class OdsPackageTests(TestCase):
                 original_exposure.check()
         finally:
             os.chdir(original_cwd)
+
+    def test_aliases_columns(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            loc_path = pathlib.Path(tmp_dir, 'location.csv')
+            pd.DataFrame({
+                'PortNumber': [1, 1],
+                'AccNumber': [1, 2],
+                'LocNumber': [1, 2],
+                'CountryCode': ['NA', 'FR'],
+                'LocPerilsCovered': 'WTC',
+                'BuildingTIV': ['1000', '20000'],
+                'ContentsTIV': [0, 0],
+                'LocCurrency': ['GBP', 'EUR']}).to_csv(loc_path)
+            oed = OedExposure(**{'location': loc_path})
+            assert oed.location.dataframe['CountryCode'][0] == 'NA'
