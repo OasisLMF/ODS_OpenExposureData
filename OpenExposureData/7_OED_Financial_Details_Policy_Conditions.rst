@@ -432,13 +432,13 @@ For each specified CondTag in the locations file, there must be least one associ
 Finally, below are some examples of sub-limits in combination with other policy terms.
 
 
-We show two examples, firstly where the sub-limits are not nested (e.g. Florida wind sub-limit and Texas wind sub-limit), and secondly where the sub-limits are nested (e.g. Texas tier 1 wind sub-limit and Texas overall wind sub-limit).
+We show two examples, firstly where the sub-limits are not nested and secondly where the sub-limits are nested.
 
 |
 
 **Example 10 – Commercial lines – multiple locations per policy with location and policy deductibles but with a sub-limit for tier 1 wind**
 
-The tables below show an example of a commercial portfolio with 1 account containing 6 locations. The policy covers earthquake and wind with the same overall policy limit for both perils. However, for certain locations two different sub-limits apply for wind. 
+The tables below show an example of a commercial portfolio with 1 account containing 6 locations. The policy covers earthquake and wind with the same overall policy limit for both perils. However, for certain locations two different sub-limits apply for wind (e.g. Florida wind sub-limit and Texas wind sub-limit). 
 
 |
 
