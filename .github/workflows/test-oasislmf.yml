@@ -8,6 +8,9 @@ on:
         description: "Git install oasislmf branch before tests: [git ref]"
         required: false
 
+env:
+  oasislmf_branch: ${{ github.event_name != 'workflow_dispatch' && 'develop' ||  inputs.oasislmf_branch }}
+
 jobs:
   build_ods:
     uses: ./.github/workflows/build.yml
