@@ -107,16 +107,16 @@ class OdsPackageTests(TestCase):
             'LocNumber': [1, 2],
             'CountryCode': ['GB', 'FR'],
             'LocPerilsCovered': 'WTC',
-            'BuildingTIV': ['1000', '20000'],
+            'buildingtiv': ['1000', '20000'],
             'ContentsTIV': [0, 0],
             'BITIV': [0, 0],
             'LocCurrency': ['GBP', 'EUR']})
 
-        exposure = OedExposure(**{'location': location_df})
+        exposure = OedExposure(**{'location': location_df, 'use_field': True})
         # check PortNumber are converted to str
         self.assertTrue((exposure.location.dataframe['PortNumber'] == '1').all())
 
-        # check BuildingTIV converted to float
+        # check BuildingTIV converted to float and use field case
         self.assertTrue(pd.api.types.is_numeric_dtype(exposure.location.dataframe['BuildingTIV']))
 
     def test_reporting_currency(self):
