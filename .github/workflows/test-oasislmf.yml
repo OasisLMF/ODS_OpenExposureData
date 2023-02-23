@@ -3,6 +3,7 @@ name: Oasislmf intergartion check
 on:
   pull_request:
   workflow_dispatch:
+    inputs:
       oasislmf_branch:
         description: "Git install oasislmf branch before tests: [git ref]"
         required: false
