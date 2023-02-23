@@ -286,10 +286,10 @@ class OdsPackageTests(TestCase):
                 abs_dir = pathlib.Path(tmp_dir, "abs")
                 abs_dir.mkdir()
                 with urllib.request.urlopen(base_url + '/SourceLocOEDPiWind10Currency.csv') as response,\
-                     open(pathlib.Path(tmp_dir, 'SourceLocOEDPiWind10Currency.csv'), 'wb') as out_file:
+                        open(pathlib.Path(tmp_dir, 'SourceLocOEDPiWind10Currency.csv'), 'wb') as out_file:
                     shutil.copyfileobj(response, out_file)
                 with urllib.request.urlopen(base_url + '/SourceAccOEDPiWind.csv') as response,\
-                     open(pathlib.Path(abs_dir, 'SourceAccOEDPiWind.csv'), 'wb') as out_file:
+                        open(pathlib.Path(abs_dir, 'SourceAccOEDPiWind.csv'), 'wb') as out_file:
                     shutil.copyfileobj(response, out_file)
 
                 os.chdir(tmp_dir)
