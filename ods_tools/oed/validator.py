@@ -135,12 +135,12 @@ class Validator:
                 if isinstance(columns, str):
                     columns = [columns]
                 for column in columns:
-                    if (field_info.get("Allow blanks?").upper() == 'NO'
-                            and (oed_source.dataframe[column].isna().any()
-                                 or (field_info['pd_dtype'] == 'str' and oed_source.dataframe[column].isnull().any()))):
-                        invalid_data.append({'name': oed_source.oed_name, 'source': oed_source.current_source,
-                                             'msg': f"column '{column}' has missing values in \n"
-                                                    f"{oed_source.dataframe[identifier_field + [column]]}"})
+                    if field_info.get("Allow blanks?").upper() == 'NO':
+                        missing_value_df = oed_source.dataframe[oed_source.dataframe[column].isin({np.nan, ''})]
+                        if not missing_value_df.empty:
+                            invalid_data.append({'name': oed_source.oed_name, 'source': oed_source.current_source,
+                                                 'msg': f"column '{column}' has missing values in \n"
+                                                        f"{missing_value_df[identifier_field + [column]]}"})
         return invalid_data
 
     def check_unknown_column(self):
@@ -209,7 +209,7 @@ class Validator:
         """
         invalid_data = []
         for oed_source in self.exposure.get_oed_sources():
-            occupancy_code_column = self.field_to_column_maps[oed_source].get('occupancycode')
+            occupancy_code_column = self.field_to_column_maps[oed_source].get('OccupancyCode')
             if occupancy_code_column is None:
                 continue
             identifier_field = self.identifier_field_maps[oed_source]
@@ -229,7 +229,7 @@ class Validator:
         """
         invalid_data = []
         for oed_source in self.exposure.get_oed_sources():
-            construction_code_column = self.field_to_column_maps[oed_source].get('constructioncode')
+            construction_code_column = self.field_to_column_maps[oed_source].get('ConstructionCode')
             if construction_code_column is None:
                 continue
             identifier_field = self.identifier_field_maps[oed_source]
@@ -250,11 +250,11 @@ class Validator:
         """
         invalid_data = []
         for oed_source in self.exposure.get_oed_sources():
-            country_code_column = self.field_to_column_maps[oed_source].get('countrycode')
+            country_code_column = self.field_to_column_maps[oed_source].get('CountryCode')
             if country_code_column is None:
                 continue
             identifier_field = self.identifier_field_maps[oed_source]
-            area_code_column = self.field_to_column_maps[oed_source].get('areacode')
+            area_code_column = self.field_to_column_maps[oed_source].get('AreaCode')
             if area_code_column is not None:
                 country_only_df = oed_source.dataframe[oed_source.dataframe[area_code_column].isin([np.nan, ''])]
                 country_area_df = oed_source.dataframe[~oed_source.dataframe[area_code_column].isin([np.nan, ''])]
@@ -266,7 +266,7 @@ class Validator:
                 )
                 if not invalid_country_area.empty:
                     invalid_data.append({'name': oed_source.oed_name, 'source': oed_source.current_source,
-                                         'msg': f"invalid countrycode areacode pair.\n"
+                                         'msg': f"invalid CountryCode AreaCode pair.\n"
                                                 f"{invalid_country_area[identifier_field + [country_code_column, area_code_column]]}"})
             else:
                 country_only_df = oed_source.dataframe
@@ -274,6 +274,6 @@ class Validator:
                                                .isin(set(self.exposure.oed_schema.schema['country']) | {np.nan, ''})])
             if not invalid_country.empty:
                 invalid_data.append({'name': oed_source.oed_name, 'source': oed_source.current_source,
-                                     'msg': f"invalid countrycode.\n"
+                                     'msg': f"invalid CountryCode.\n"
                                             f"{invalid_country[identifier_field + [country_code_column]]}"})
         return invalid_data
