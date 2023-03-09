@@ -59,16 +59,16 @@ jobs:
             --source-excel-path ${{ env.SPEC_PATH_IN }} \
             --output-json-path ${{ env.SPEC_PATH_OUT }}
 
-    - name: Build package
-      id: build_package
-      run: |
-        python setup.py sdist
-        python setup.py bdist_wheel
-
-        WHL=$(find ./dist/ -name "*.whl"  -exec basename {} \;)
-        SRC=$(find ./dist/ -name "*.tar.gz"  -exec basename {} \;)
-        echo "wheel=$WHL" >> $GITHUB_OUTPUT
-        echo "source=$SRC" >> $GITHUB_OUTPUT
+#    - name: Build package
+#      id: build_package
+#      run: |
+#        python setup.py sdist
+#        python setup.py bdist_wheel
+#
+#        WHL=$(find ./dist/ -name "*.whl"  -exec basename {} \;)
+#        SRC=$(find ./dist/ -name "*.tar.gz"  -exec basename {} \;)
+#        echo "wheel=$WHL" >> $GITHUB_OUTPUT
+#        echo "source=$SRC" >> $GITHUB_OUTPUT
 
     - name: Store spec
       uses: actions/upload-artifact@v3
@@ -77,16 +77,16 @@ jobs:
         path: ${{ env.SPEC_PATH_OUT }}
         retention-days: 5
 
-    - name: Store source package
-      uses: actions/upload-artifact@v3
-      with:
-        name: src_package
-        path: ./dist/${{ steps.build_package.outputs.source }}
-        retention-days: 5
-
-    - name: Store Wheel package
-      uses: actions/upload-artifact@v3
-      with:
-        name: bin_package
-        path: ./dist/${{ steps.build_package.outputs.wheel }}
-        retention-days: 5
+#    - name: Store source package
+#      uses: actions/upload-artifact@v3
+#      with:
+#        name: src_package
+#        path: ./dist/${{ steps.build_package.outputs.source }}
+#        retention-days: 5
+#
+#    - name: Store Wheel package
+#      uses: actions/upload-artifact@v3
+#      with:
+#        name: bin_package
+#        path: ./dist/${{ steps.build_package.outputs.wheel }}
+#        retention-days: 5

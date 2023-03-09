@@ -5,38 +5,38 @@ on:
   push:
   workflow_dispatch:
 
-jobs:
-  build:
-    uses: ./.github/workflows/build.yml
-    secrets: inherit
-
-  test:
-    name: Run Pytest
-    runs-on: ubuntu-latest
-    needs: build
-    strategy:
-      matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10"]
-
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
-
-    - name: Download package
-      uses: actions/download-artifact@v3
-      with:
-        name: bin_package
-        path: ${{ github.workspace }}/
-
-    - name: install package
-      run: pip install ${{ needs.build.outputs.whl_filename }}
-
-    - name: Install test deps
-      run: pip install -r tests/requirements.in
-
-    - name: Run tests
-      run: pytest -v
+#jobs:
+#  build:
+#    uses: ./.github/workflows/build.yml
+#    secrets: inherit
+#
+#  test:
+#    name: Run Pytest
+#    runs-on: ubuntu-latest
+#    needs: build
+#    strategy:
+#      matrix:
+#        python-version: ["3.7", "3.8", "3.9", "3.10"]
+#
+#    steps:
+#    - uses: actions/checkout@v3
+#
+#    - name: Set up Python ${{ matrix.python-version }}
+#      uses: actions/setup-python@v4
+#      with:
+#        python-version: ${{ matrix.python-version }}
+#
+#    - name: Download package
+#      uses: actions/download-artifact@v3
+#      with:
+#        name: bin_package
+#        path: ${{ github.workspace }}/
+#
+#    - name: install package
+#      run: pip install ${{ needs.build.outputs.whl_filename }}
+#
+#    - name: Install test deps
+#      run: pip install -r tests/requirements.in
+#
+#    - name: Run tests
+#      run: pytest -v

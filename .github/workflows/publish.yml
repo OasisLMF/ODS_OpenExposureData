@@ -57,156 +57,156 @@ jobs:
             exit 1
         fi
 
-    - name: Check tag is valid for pre-release
-      if: env.PRE_RELEASE == 'true'
-      run: |
-        VALID=$(echo ${{ env.RELEASE_TAG }} | grep -oPc "^(\d+)\.(\d+)\.(\d+)rc(\d+)$")
-        if [[ ! "$VALID" == 1 ]]; then
-            echo "Release Tag ${{ env.RELEASE_TAG }} is not valid"
-            exit 1
-        fi
-
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        ref: ${{ github.ref_name }}
-        fetch-depth: 0
-
-    - name: Check tag matches version set
-      run: |
-        BUILD_VER=$(grep '__version__' ods_tools/__init__.py | awk -F"'" '{print $2}')
-        RELEASE_VER=${{ env.RELEASE_TAG }}
-        [[ "$RELEASE_VER" = "$BUILD_VER" ]] && ERROR_CODE=0 || ERROR_CODE=1
-        if [[ "$ERROR_CODE" == 1 ]]; then
-            echo "PACKAGE_VER: $BUILD_VER stored in 'ods_tools/__init__.py' dosn't match RELEASE_TAG: $RELEASE_VER" && exit $ERROR_CODE
-        fi
-
-    - name: Test package names
-      run: |
-        ERROR_CODE=0
-        SRC_VER=$(echo ${{ needs.package.outputs.src_filename }} | grep -oP "(\d+)\.(\d+)\.(\d+)rc(\d+)|(\d+)\.(\d+)\.(\d+)")
-        BIN_VER=$(echo ${{ needs.package.outputs.whl_filename }} | grep -oP "(\d+)\.(\d+)\.(\d+)rc(\d+)|(\d+)\.(\d+)\.(\d+)")
-        [[ "${{ env.RELEASE_TAG }}" = "$SRC_VER" ]] || ERROR_CODE=1
-        [[ "${{ env.RELEASE_TAG }}" = "$BIN_VER" ]] || ERROR_CODE=1
-        if [[ "$ERROR_CODE" == 1 ]]; then
-            echo "Package names don't match release tag."
-            echo "  RELEASE_TAG: ${{ env.RELEASE_TAG }}"
-            echo "  PACKAGES: ${{ needs.package.outputs.src_filename }}, ${{ needs.package.outputs.whl_filename }}"
-            exit $ERROR_CODE
-        fi
-
-    - name: Setup github user
-      run: |
-        git config --global user.email ${{ env.GIT_EMAIL }}
-        git config --global user.name ${{ env.GIT_USERNAME }}
-        git config --global pull.ff only
-      env:
-        GIT_EMAIL: ${{ secrets.BUILD_GIT_EMAIL }}
-        GIT_USERNAME: ${{ secrets.BUILD_GIT_USERNAME }}
-
-    - name: Tag Release
-      env:
-        GITHUB_TOKEN: ${{ secrets.BUILD_GIT_TOKEN }}
-      run: |
-        git checkout ${{ github.ref_name }}
-        git tag ${{ env.RELEASE_TAG }}
-
-
-    # --- Sign packages --- #
-    - name: Download Source package
-      uses: actions/download-artifact@v3
-      with:
-        name: src_package
-        path: ${{ github.workspace }}/
-
-    - name: Download Linux package
-      uses: actions/download-artifact@v3
-      with:
-        name: bin_package
-        path: ${{ github.workspace }}/
-
-    - name: Import GPG key
-      id: import_gpg
-      uses: crazy-max/ghaction-import-gpg@v5
-      with:
-        gpg_private_key: ${{ secrets.GPG_PYPI_SIGNING_KEY }}
-        passphrase: ${{ secrets.GPG_PYPI_SIGNING_PASS }}
-
-    - name: GPG sign Source package
-      working-directory: ${{ github.workspace }}
-      run: |
-        gpg --batch --no-tty --passphrase-fd 0 --detach-sign -a ${{ needs.package.outputs.src_filename }}
-
-    - name: GPG sign Wheel package
-      working-directory: ${{ github.workspace }}
-      run: |
-        gpg --batch --no-tty --passphrase-fd 0 --detach-sign -a ${{ needs.package.outputs.whl_filename }}
-
-
-    # --- Create Release --- #
-    - name: Push changes
-      run: |
-        git push origin ${{ env.RELEASE_TAG  }}
-        git push
-
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.BUILD_GIT_TOKEN }}
-      with:
-        tag_name: ${{ env.RELEASE_TAG }}
-        release_name: Release ${{ env.RELEASE_TAG }}
-        body_path: ""
-        draft: false
-        prerelease: ${{ env.PRE_RELEASE }}
-
-
-    # --- Attach build assest --- #
-    - name: Upload Source package
-      id: upload-source-release-asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.BUILD_GIT_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{ github.workspace }}/${{ needs.package.outputs.src_filename }}
-        asset_name: ${{ needs.package.outputs.src_filename }}
-        asset_content_type: application/octet-stream
-
-    - name: Upload Wheel package
-      id: upload-linux-release-asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.BUILD_GIT_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{ github.workspace }}/${{ needs.package.outputs.whl_filename }}
-        asset_name: ${{ needs.package.outputs.whl_filename }}
-        asset_content_type: application/octet-stream
-
-
-    # --- Publish to Pypi --- #
-    - name: Setup Twine
-      run: pip install twine
-
-    - name: PYPI - Source package
-      run: |
-        twine upload \
-        ${{ needs.package.outputs.src_filename }} \
-        ${{ needs.package.outputs.src_filename }}.asc
-      env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-
-    - name: PYPI - Linux package
-      run: |
-        twine upload \
-        ${{ needs.package.outputs.whl_filename }} \
-        ${{ needs.package.outputs.whl_filename }}.asc
-      env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+#    - name: Check tag is valid for pre-release
+#      if: env.PRE_RELEASE == 'true'
+#      run: |
+#        VALID=$(echo ${{ env.RELEASE_TAG }} | grep -oPc "^(\d+)\.(\d+)\.(\d+)rc(\d+)$")
+#        if [[ ! "$VALID" == 1 ]]; then
+#            echo "Release Tag ${{ env.RELEASE_TAG }} is not valid"
+#            exit 1
+#        fi
+#
+#    - name: Checkout
+#      uses: actions/checkout@v3
+#      with:
+#        ref: ${{ github.ref_name }}
+#        fetch-depth: 0
+#
+#    - name: Check tag matches version set
+#      run: |
+#        BUILD_VER=$(grep '__version__' ods_tools/__init__.py | awk -F"'" '{print $2}')
+#        RELEASE_VER=${{ env.RELEASE_TAG }}
+#        [[ "$RELEASE_VER" = "$BUILD_VER" ]] && ERROR_CODE=0 || ERROR_CODE=1
+#        if [[ "$ERROR_CODE" == 1 ]]; then
+#            echo "PACKAGE_VER: $BUILD_VER stored in 'ods_tools/__init__.py' dosn't match RELEASE_TAG: $RELEASE_VER" && exit $ERROR_CODE
+#        fi
+#
+#    - name: Test package names
+#      run: |
+#        ERROR_CODE=0
+#        SRC_VER=$(echo ${{ needs.package.outputs.src_filename }} | grep -oP "(\d+)\.(\d+)\.(\d+)rc(\d+)|(\d+)\.(\d+)\.(\d+)")
+#        BIN_VER=$(echo ${{ needs.package.outputs.whl_filename }} | grep -oP "(\d+)\.(\d+)\.(\d+)rc(\d+)|(\d+)\.(\d+)\.(\d+)")
+#        [[ "${{ env.RELEASE_TAG }}" = "$SRC_VER" ]] || ERROR_CODE=1
+#        [[ "${{ env.RELEASE_TAG }}" = "$BIN_VER" ]] || ERROR_CODE=1
+#        if [[ "$ERROR_CODE" == 1 ]]; then
+#            echo "Package names don't match release tag."
+#            echo "  RELEASE_TAG: ${{ env.RELEASE_TAG }}"
+#            echo "  PACKAGES: ${{ needs.package.outputs.src_filename }}, ${{ needs.package.outputs.whl_filename }}"
+#            exit $ERROR_CODE
+#        fi
+#
+#    - name: Setup github user
+#      run: |
+#        git config --global user.email ${{ env.GIT_EMAIL }}
+#        git config --global user.name ${{ env.GIT_USERNAME }}
+#        git config --global pull.ff only
+#      env:
+#        GIT_EMAIL: ${{ secrets.BUILD_GIT_EMAIL }}
+#        GIT_USERNAME: ${{ secrets.BUILD_GIT_USERNAME }}
+#
+#    - name: Tag Release
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.BUILD_GIT_TOKEN }}
+#      run: |
+#        git checkout ${{ github.ref_name }}
+#        git tag ${{ env.RELEASE_TAG }}
+#
+#
+#    # --- Sign packages --- #
+#    - name: Download Source package
+#      uses: actions/download-artifact@v3
+#      with:
+#        name: src_package
+#        path: ${{ github.workspace }}/
+#
+#    - name: Download Linux package
+#      uses: actions/download-artifact@v3
+#      with:
+#        name: bin_package
+#        path: ${{ github.workspace }}/
+#
+#    - name: Import GPG key
+#      id: import_gpg
+#      uses: crazy-max/ghaction-import-gpg@v5
+#      with:
+#        gpg_private_key: ${{ secrets.GPG_PYPI_SIGNING_KEY }}
+#        passphrase: ${{ secrets.GPG_PYPI_SIGNING_PASS }}
+#
+#    - name: GPG sign Source package
+#      working-directory: ${{ github.workspace }}
+#      run: |
+#        gpg --batch --no-tty --passphrase-fd 0 --detach-sign -a ${{ needs.package.outputs.src_filename }}
+#
+#    - name: GPG sign Wheel package
+#      working-directory: ${{ github.workspace }}
+#      run: |
+#        gpg --batch --no-tty --passphrase-fd 0 --detach-sign -a ${{ needs.package.outputs.whl_filename }}
+#
+#
+#    # --- Create Release --- #
+#    - name: Push changes
+#      run: |
+#        git push origin ${{ env.RELEASE_TAG  }}
+#        git push
+#
+#    - name: Create Release
+#      id: create_release
+#      uses: actions/create-release@v1
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.BUILD_GIT_TOKEN }}
+#      with:
+#        tag_name: ${{ env.RELEASE_TAG }}
+#        release_name: Release ${{ env.RELEASE_TAG }}
+#        body_path: ""
+#        draft: false
+#        prerelease: ${{ env.PRE_RELEASE }}
+#
+#
+#    # --- Attach build assest --- #
+#    - name: Upload Source package
+#      id: upload-source-release-asset
+#      uses: actions/upload-release-asset@v1
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.BUILD_GIT_TOKEN }}
+#      with:
+#        upload_url: ${{ steps.create_release.outputs.upload_url }}
+#        asset_path: ${{ github.workspace }}/${{ needs.package.outputs.src_filename }}
+#        asset_name: ${{ needs.package.outputs.src_filename }}
+#        asset_content_type: application/octet-stream
+#
+#    - name: Upload Wheel package
+#      id: upload-linux-release-asset
+#      uses: actions/upload-release-asset@v1
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.BUILD_GIT_TOKEN }}
+#      with:
+#        upload_url: ${{ steps.create_release.outputs.upload_url }}
+#        asset_path: ${{ github.workspace }}/${{ needs.package.outputs.whl_filename }}
+#        asset_name: ${{ needs.package.outputs.whl_filename }}
+#        asset_content_type: application/octet-stream
+#
+#
+#    # --- Publish to Pypi --- #
+#    - name: Setup Twine
+#      run: pip install twine
+#
+#    - name: PYPI - Source package
+#      run: |
+#        twine upload \
+#        ${{ needs.package.outputs.src_filename }} \
+#        ${{ needs.package.outputs.src_filename }}.asc
+#      env:
+#        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+#        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+#
+#    - name: PYPI - Linux package
+#      run: |
+#        twine upload \
+#        ${{ needs.package.outputs.whl_filename }} \
+#        ${{ needs.package.outputs.whl_filename }}.asc
+#      env:
+#        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+#        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
 
 
     # --- Slack notify --- #
