@@ -17,12 +17,6 @@ env:
 
 
 jobs:
-  update:
-    uses: ./.github/workflows/version.yml
-    secrets: inherit
-    with:
-      package_version: ${{ inputs.release_tag }}
-
   build:
     uses: ./.github/workflows/build.yml
     secrets: inherit
