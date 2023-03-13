@@ -9,20 +9,16 @@ on:
         required: false
         type: string
     outputs:
-      src_filename:
-        description: "Source Package filename"
-        value: ${{ jobs.build.outputs.src_filename }}
-      whl_filename:
-        description: "Wheel Package filename"
-        value: ${{ jobs.build.outputs.whl_filename }}
+      spec_filename:
+        description: "OED JSON specification"
+        value: ${{ jobs.build.outputs.oed_json_spec }}
 
 jobs:
   build:
-    name: Build OpenData Package
+    name: Build OED schema
     runs-on: ubuntu-latest
     outputs:
-      src_filename: ${{ steps.build_package.outputs.source }}
-      whl_filename: ${{ steps.build_package.outputs.wheel }}
+      oed_json_spec: ${{ steps.build_result.outputs.oed_json_spec }}
     env:
       SPEC_PATH_IN: './OpenExposureData/Docs/OpenExposureData_Spec.xlsx'
       SPEC_PATH_OUT: './ods_tools/data/OpenExposureData_Spec.json'
@@ -59,17 +55,6 @@ jobs:
             --source-excel-path ${{ env.SPEC_PATH_IN }} \
             --output-json-path ${{ env.SPEC_PATH_OUT }}
 
-    - name: Build package
-      id: build_package
-      run: |
-        python setup.py sdist
-        python setup.py bdist_wheel
-
-        WHL=$(find ./dist/ -name "*.whl"  -exec basename {} \;)
-        SRC=$(find ./dist/ -name "*.tar.gz"  -exec basename {} \;)
-        echo "wheel=$WHL" >> $GITHUB_OUTPUT
-        echo "source=$SRC" >> $GITHUB_OUTPUT
-
     - name: Store spec
       uses: actions/upload-artifact@v3
       with:
@@ -77,16 +62,6 @@ jobs:
         path: ${{ env.SPEC_PATH_OUT }}
         retention-days: 5
 
-    - name: Store source package
-      uses: actions/upload-artifact@v3
-      with:
-        name: src_package
-        path: ./dist/${{ steps.build_package.outputs.source }}
-        retention-days: 5
-
-    - name: Store Wheel package
-      uses: actions/upload-artifact@v3
-      with:
-        name: bin_package
-        path: ./dist/${{ steps.build_package.outputs.wheel }}
-        retention-days: 5
+    - name: Build output
+      id: build_result
+      run: echo "oed_json_spec=OpenExposureData_Spec.json" >> $GITHUB_OUTPUT
