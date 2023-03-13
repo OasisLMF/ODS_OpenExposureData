@@ -1,9 +1,15 @@
 name: OpenData Testing
 
-
 on:
   push:
   workflow_dispatch:
+    inputs:
+      ods_tools_branch:
+        description: "Build ODS tools package for tests: [git ref]"
+        required: false
+
+env:
+  ods_tools_branch: ${{ github.event_name != 'workflow_dispatch' && 'feature/split-package' ||  inputs.ods_tools_branch }}
 
 jobs:
   build_spec:
@@ -16,7 +22,6 @@ jobs:
     secrets: inherit
     with:
       oed_spec_json: ${{ needs.build_spec.outputs.spec_filename }}
-      #oed_spec_json: ${{ needs.build_spec.outputs.spec_filename }}
 
   test:
     name: Run Pytest
@@ -27,7 +32,11 @@ jobs:
         python-version: ["3.7", "3.8", "3.9", "3.10"]
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Clone ODS_Tools repo
+        uses: actions/checkout@v3
+        with:
+          repository: Oasislmf/ODS_Tools
+          ref: ${{ env.ods_tools_branch }}
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
