@@ -30,7 +30,7 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-    needs: spec
+    needs: build
     outputs:
       heading: ${{ steps.slack_vars.outputs.heading }}
       title: ${{ steps.slack_vars.outputs.title }}
