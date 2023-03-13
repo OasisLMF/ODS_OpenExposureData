@@ -16,6 +16,7 @@ jobs:
     secrets: inherit
     with:
       oed_spec_json: ${{ needs.build_spec.outputs.spec_filename }}
+      #oed_spec_json: ${{ needs.build_spec.outputs.spec_filename }}
 
   test:
     name: Run Pytest
@@ -40,7 +41,7 @@ jobs:
         path: ${{ github.workspace }}/
 
     - name: install package
-      run: pip install ${{ needs.build.outputs.whl_filename }}
+      run: pip install ${{ needs.build_package.outputs.whl_filename }}
 
     - name: Install test deps
       run: pip install -r tests/requirements.in
