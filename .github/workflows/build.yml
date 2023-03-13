@@ -65,5 +65,3 @@ jobs:
     - name: Build output
       id: build_result
       run: echo "oed_json_spec=OpenExposureData_Spec.json" >> $GITHUB_OUTPUT
-      #run: echo "oed_json_spec=${{ env.SPEC_PATH_OUT }}" >> $GITHUB_OUTPUT
-      # TO FIX -> Appened build sha to spec fileoutput ?
