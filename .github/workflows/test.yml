@@ -33,10 +33,10 @@ jobs:
 
     steps:
     - name: Clone ODS_Tools repo
-        uses: actions/checkout@v3
-        with:
-          repository: Oasislmf/ODS_Tools
-          ref: ${{ env.ods_tools_branch }}
+      uses: actions/checkout@v3
+      with:
+        repository: Oasislmf/ODS_Tools
+        ref: ${{ env.ods_tools_branch }}
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
