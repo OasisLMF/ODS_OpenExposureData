@@ -15,7 +15,7 @@ on:
 
 jobs:
   build:
-    name: Build OpenData Package
+    name: Build OED schema
     runs-on: ubuntu-latest
     outputs:
       oed_json_spec: ${{ steps.build_result.outputs.oed_json_spec }}

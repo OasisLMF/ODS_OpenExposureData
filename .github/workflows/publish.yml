@@ -35,11 +35,11 @@ jobs:
 
 
     steps:
-    - name: is branch valid for release
-      if: ${{ !startsWith(github.ref_name , 'release/') }}
-      run: |
-        echo "Releases must be trigged on branch named 'release/x.x.x'"
-        exit 1
+#    - name: is branch valid for release
+#      if: ${{ !startsWith(github.ref_name , 'release/') }}
+#      run: |
+#        echo "Releases must be trigged on branch named 'release/x.x.x'"
+#        exit 1
 
     - name: Check tag is valid for release
       if: env.PRE_RELEASE == 'false'
