@@ -51,6 +51,8 @@ OED Account file:
 
     "Acc1", "Pol1",  "California",  "1",  "10,000,000"
 
+In this example, a 'sub-limit' of $10m applies to the combined loss for locations 1 and 2 in California. This applies after any location terms specified and before any policy terms which apply to all locations under the account.
+
 It is common to have multiple conditions on a policy, applying to different groups of locations.  When this is the case, the policy record must be duplicated for each different **CondTag** on the locations.
 
 |
@@ -81,7 +83,7 @@ OED Account file:
     "Acc2", "Pol1",  "California",  "1",  "10,000,000"
     "Acc2", "Pol1",  "New Madrid",  "1",  "10,000,000"
 
-In this example, a 'sub-limit' of $10m will apply to the sum of California locations 1 and 2 losses and separately to the New Madrid location 3 loss, before any policy terms.  
+In this example, a sub-limit of $10m will apply to the sum of California locations 1 and 2 losses and separately to the New Madrid location 3 loss, before any policy terms.  
 
 No sub-limits apply to the Mexico location 4, because it is not subject to any condition (CondTag field is blank).
 
@@ -128,7 +130,7 @@ OED Account file:
 
 Unlike the CondTag, **CondNumber** must be an integer but its value is unimportant.  **CondName** can be used to describe the condition in meaningful terms.
 
-Note that although these types of conditions are referred to as 'sub-limits', they can be any combination of the regular types of financial terms such as deductibles, min and max deductibles, and limits.
+Note that although these types of conditions are referred to as sub-limits, they can be any combination of the regular types of financial terms such as deductibles, min and max deductibles, and limits.
 
 |
 
