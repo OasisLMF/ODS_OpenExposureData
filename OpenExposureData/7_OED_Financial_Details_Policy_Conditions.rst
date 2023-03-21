@@ -54,7 +54,7 @@ OED Account file:
 
     "Acc1", "Pol1",  "California",  "1",  "10,000,000"
 
-In this example, a 'sub-limit' of $10m applies to the combined loss for locations 1 and 2 in California. This applies after any location terms specified and before any policy terms which apply to all locations under the account.
+In this example, a 'sub-limit' of $10,000,000 applies to the combined loss for locations 1 and 2 in California. This applies after any location terms specified and before any policy terms which apply to all locations under the account.
 
 Some example ground up losses are as follows;
 
@@ -78,7 +78,7 @@ It is common to have multiple conditions on a policy, applying to different grou
 CondNumber
 ##########
 
-The financial terms for each condition is identified by the **CondNumber** field in the account file.
+The set of financial terms for each condition is identified by the **CondNumber** field in the account file.
 
 For each policy in the account file, the financial terms identified by the **CondNumber** will be applied to the locations under the scope defined by each CondTag.
 
@@ -215,14 +215,14 @@ In the account file, we have policy record for each condition: Florida, Texas an
 OED Account file:
 
 .. csv-table::
-    :widths: 20,20,20,20,20,20,20.20
+    :widths: 20,20,20,20,20,20,20,20
     :header: "AccNumber", "PolNumber", "CondTag", "CondNumber", "CondLimit6All", "CondName", "CondPeril","CondPriority"
 
-    "Acc4", "Pol1",  "Florida",  "1",  "10,000,000",   "CA sub-limit", "WW1", "1"
-    "Acc4", "Pol1",  "Texas",  "2",  "5,000,000",   "NM sub-limit",  "WW1", "1"
+    "Acc4", "Pol1",  "Florida",  "1",  "10,000,000",   "FL sub-limit", "WW1", "1"
+    "Acc4", "Pol1",  "Texas",  "2",  "5,000,000",   "TX sub-limit",  "WW1", "1"
     "Acc4", "Pol1",  "US",  "3",  "12,500,000",   "US sub-limit",  "WW1", "2"
 
-The Florida and Texas sub-limits apply first, and the US sub-limit applies second. This would result in any combined losses from Florida and Texas exceeding the US sub-limit being limited to $12.5m.  Then policy terms would apply to the sum of limited US locations and the rest of world locations.
+The Florida and Texas sub-limits apply first, and the US sub-limit applies second. This would result in any combined losses from Florida and Texas exceeding the US sub-limit being limited to $12,500,000.  Then policy terms would apply to the sum of limited US locations and the rest of world locations.
 
 |
 
@@ -230,7 +230,7 @@ Example losses:
 
 .. csv-table::
     :widths: 15,15,15,15,20
-    :header: "AccNumber", "LocNumber", "CountryCode", AreaCode", "Ground up loss"
+    :header: "AccNumber", "LocNumber", "CountryCode", "AreaCode", "Ground up loss"
 
     "Acc4",    "Loc1",  "US", "FL",  "5,000,000"
     "Acc4",    "Loc2",  "US", "FL",  "6,000,000"
@@ -357,7 +357,7 @@ OED Account file:
     :widths: 20,20,20,20,20,20,20
     :header: "AccNumber", "PolNumber", "CondTag", "CondNumber", "CondName", "CondClass", "LayerLimit"
     
-    "Acc6", "Pol1",  "366450",  "366450", "EXCL FL LOCS", "1", "2,500,000"
+    "Acc6", "Pol1",  "366450",  "366450", "EXCL FL LOCS", "1", "25,000,000"
 
 Only Locations 1, 2, and 4 are subject to the policy terms and Florida location 3 is excluded.
 
@@ -375,14 +375,14 @@ Example losses:
     "Acc6",    "Loc4",  "US", "TX",  "10,000,000"
 |
 
-The policy restriction means that the Florida loss is excluded, The gross loss before policy terms is the sum of losses from the non-Florida locations which is **$16,000,000**.
+The policy restriction means that the Florida loss is excluded, The gross loss is the sum of losses from the non-Florida locations which is **$16,000,000**.
 
 Conditions on multi-policy accounts
 ###################################
 
 When there are multiple policies on an account, conditions can be symmetric (same conditions apply to all policies) or assymmetric (different conditions per policy).
 
-Continuing the regional sub-limit example 3, we can add a second excess policy to the account with the same conditions.
+Continuing the regional sub-limit example 2, we can add a second excess policy to the account with the same conditions.
 
 |
 
@@ -399,7 +399,7 @@ OED Location file:
     "Acc7",    "Loc1",  "US", "CA",  "California"
     "Acc7",    "Loc2",  "US", "CA",  "California"
     "Acc7",    "Loc3",  "US", "IN",  "New Madrid"
-    "Acc7",    "Loc4",  "MX", "02",  ""
+    "Acc7",    "Loc4",  "US", "NV",  ""
 
 |
 
@@ -433,7 +433,7 @@ OED Location file:
     "Acc8",    "Loc1",  "US", "CA",  "California"
     "Acc8",    "Loc2",  "US", "CA",  "California"
     "Acc8",    "Loc3",  "US", "IN",  "New Madrid"
-    "Acc8",    "Loc4",  "MX", "02",  ""
+    "Acc8",    "Loc4",  "US", "NV",  ""
 
 |
     
@@ -445,9 +445,28 @@ OED Account file:
 
     "Acc8", "Pol1",  "California",  "1",  "10,000,000", "0", "10,000,000"
     "Acc8", "Pol1",  "New Madrid",  "2",  "5,000,000", "0", "10,000,000"
-    "Acc8", "Pol2",  "California",  "1",  "10,000,000", "10,000,000", "15,000,000"
+    "Acc8", "Pol2",  "New Madrid",  "2",  "5,000,000", "10,000,000", "15,000,000"
 
-In this case, the New Madrid losses would be limited to $ 5m for Pol1, but unlimited for Pol2.
+In this case, the California losses would be limited to $10,000,000 for Pol1, but unlimited for Pol2.
+
+|
+
+Example losses: 
+
+.. csv-table::
+    :widths: 15,15,15,15,20
+    :header: "AccNumber", "LocNumber", "CountryCode", AreaCode", "Ground up loss"
+
+    "Acc1",    "Loc1",  "US", "CA",  "5,000,000"
+    "Acc1",    "Loc2",  "US", "CA",  "7,000,000"
+    "Acc1",    "Loc3",  "US", "IN",  "0"
+    "Acc1",    "Loc4",  "US", "NV",  "4,000,000"
+
+
+Pol1: California losses are limited to $10,000,000. Loss before layer limit = $14,000,000. Gross loss after layer limit = $10,000,000
+
+Pol2: California losses are not limited. Loss before layer limit = $16,000,000.  Gross loss after layer attachement and limit = $6,000,000
+
 
 For each specified CondTag in the locations file, there must be least one associated policy condition in the accounts file, and vice versa.  In other words, there must not be any CondTags in the one file not appearing in the other file.
 
