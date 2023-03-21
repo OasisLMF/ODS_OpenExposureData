@@ -75,6 +75,8 @@ The policy loss for an earthquake affecting California and Nevada in this scenar
 
 It is common to have multiple conditions on a policy, applying to different groups of locations.  When this is the case, the policy record in the account file must be duplicated for each different **CondTag** on the locations, as demonstrated in the next example.
 
+|
+
 CondNumber
 ##########
 
@@ -121,7 +123,6 @@ In this example, a sub-limit of $10,000,000 will apply to the sum of losses from
 No sub-limits apply to losses for the Nevada location 4, because it is not subject to any condition (CondTag field is blank).
 
 |
-
 
 CondPeril
 #########
@@ -206,7 +207,7 @@ OED Location file:
     "Acc4",    "Loc3",  "US", "TX",  "US"  
     "Acc4",    "Loc4",  "MX", "02",  ""
 
-We have two location records for Locations 1,2 and 3, with a CondTag for the 'Florida' and 'Texas' sub-limits and a second CondTag 'US' for the US wind sub-limit.
+We have two location records for Locations 1,2 and 3, with a CondTag for the 'Florida' or 'Texas' sub-limits and a second CondTag 'US' for the US wind sub-limit.
 
 In the account file, we have policy record for each condition: Florida, Texas and US sub-limit.
 
@@ -367,15 +368,16 @@ Example losses:
 
 .. csv-table::
     :widths: 15,15,15,15,20
-    :header: "AccNumber", "LocNumber", "CountryCode", AreaCode", "Ground up loss"
+    :header: "AccNumber", "LocNumber", "CountryCode", "AreaCode", "Ground up loss"
 
     "Acc6",    "Loc1",  "US", "NC",  "4,000,000"
     "Acc6",    "Loc2",  "US", "NC",  "2,000,000"
     "Acc6",    "Loc3",  "US", "FL",  "20,000,000"
     "Acc6",    "Loc4",  "US", "TX",  "10,000,000"
-|
 
 The policy restriction means that the Florida loss is excluded, The gross loss is the sum of losses from the non-Florida locations which is $16,000,000. The layer limit of $25,000,000 then applies, and so the final gross loss is **$16,000,000**.
+
+|
 
 Conditions on multi-policy accounts
 ###################################
@@ -422,7 +424,7 @@ Example losses:
 
 .. csv-table::
     :widths: 15,15,15,15,20
-    :header: "AccNumber", "LocNumber", "CountryCode", AreaCode", "Ground up loss"
+    :header: "AccNumber", "LocNumber", "CountryCode", "AreaCode", "Ground up loss"
 
     "Acc1",    "Loc1",  "US", "CA",  "5,000,000"
     "Acc1",    "Loc2",  "US", "CA",  "7,000,000"
@@ -430,9 +432,9 @@ Example losses:
     "Acc1",    "Loc4",  "US", "NV",  "4,000,000"
 
 
-Pol1: California losses are limited to $10,000,000. Loss before layer terms = $14,000,000. Gross loss after layer limit = $10,000,000
+Pol1: California losses are limited to $10,000,000. Loss before layer terms = $14,000,000. Gross loss after layer limit = **$10,000,000**
 
-Pol2: California losses are limited to $10,000,000. Loss before layer terms = $14,000,000.  Gross loss after layer attachement and limit = $4,000,000
+Pol2: California losses are limited to $10,000,000. Loss before layer terms = $14,000,000.  Gross loss after layer attachement and limit = **$4,000,000**
 
 | 
 
@@ -475,7 +477,7 @@ Example losses:
 
 .. csv-table::
     :widths: 15,15,15,15,20
-    :header: "AccNumber", "LocNumber", "CountryCode", AreaCode", "Ground up loss"
+    :header: "AccNumber", "LocNumber", "CountryCode", "AreaCode", "Ground up loss"
 
     "Acc1",    "Loc1",  "US", "CA",  "5,000,000"
     "Acc1",    "Loc2",  "US", "CA",  "7,000,000"
@@ -483,17 +485,15 @@ Example losses:
     "Acc1",    "Loc4",  "US", "NV",  "4,000,000"
 
 
-Pol1: California losses are limited to $10,000,000. Loss before layer limit = $14,000,000. Gross loss after layer limit = $10,000,000
+Pol1: California losses are limited to $10,000,000. Loss before layer limit = $14,000,000. Gross loss after layer limit = **$10,000,000**
 
-Pol2: California losses are not limited. Loss before layer limit = $16,000,000.  Gross loss after layer attachement and limit = $6,000,000
-
-
-For each specified CondTag in the locations file, there must be least one associated policy condition in the accounts file, and vice versa.  In other words, there must not be any CondTags in the one file not appearing in the other file.
+Pol2: California losses are not limited. Loss before layer limit = $16,000,000.  Gross loss after layer attachement and limit = **$6,000,000**
 
 |
 
-Finally, below are some examples of sub-limits in combination with other policy terms.
+For each specified CondTag in the locations file, there must be least one associated policy condition in the accounts file, and vice versa.  In other words, there must not be any CondTags in the one file not appearing in the other file.
 
+Finally, below are some examples of sub-limits in combination with other policy terms.
 
 We show two examples, firstly where the sub-limits are not nested and secondly where the sub-limits are nested.
 
@@ -530,7 +530,6 @@ OED Account file:
     "Acc9",    "1",    "QQ1;WW1",  "1,500,000", "2",   "2",    "1",    "WW1",  "500,000"
 
 |
-
 
 **Example 10 – Commercial lines – multiple locations per policy with location and policy deductibles with nested hierarchal sub-limits for wind**
 
