@@ -1,7 +1,7 @@
 Policy Special Conditions
 #########################
 
-Policy special conditions are financial structures that apply to only a subset of locations within a policy. They apply after all location terms, but before any blanket policy terms or layer terms.  As well as the financial fields for conditions which begin with 'Cond' and follow the same field name convention as for location and policy terms, there are the following key fields:
+Policy special conditions are financial structures that apply to only a subset of locations within a policy. They apply after all location terms, but before any blanket policy terms or layer terms.  As well as the deductibles and limits for conditions which begin with 'Cond' and follow the same field name convention as for location and policy terms, there are the following required fields:
 
 In the OED location and account file:
 
@@ -10,10 +10,13 @@ In the OED location and account file:
 In the OED account file:
 
 *   **CondNumber** identifies a unique set of financial terms of the condition 
-*   **CondName** is a descriptive field for the condition
 *   **CondPeril** identifies the perils that the condition applies to
 *   **CondPriority** identifies the order in which special conditions apply in case more than one condition applies to the same locations.
-*   **CondClass** is used to specify a policy restriction
+
+Optionally in the OED account file;
+
+*   **CondName** is a descriptive field for the condition
+*   **CondClass** can be used to specify a policy restriction condition
 
 |
 
@@ -60,17 +63,17 @@ Some example ground up losses are as follows;
 Example losses: 
 
 .. csv-table::
-    :widths: 15,15,15,20
-    :header: "AccNumber", "LocNumber", "AreaCode", "Ground up loss"
+    :widths: 15,15,15,15,20
+    :header: "AccNumber", "LocNumber", "CountryCode", AreaCode", "Ground up loss"
 
     "Acc1",    "Loc1",  "US", "CA",  "5,000,000"
     "Acc1",    "Loc2",  "US", "CA",  "7,000,000"
     "Acc1",    "Loc3",  "US", "IN",  "0"
     "Acc1",    "Loc4",  "US", "NV",  "4,000,000"
 
-The policy loss for an earthquake affecting California and Nevada in this scenario would be **$14m** due to the California losses being limited to $10m.
+The policy loss for an earthquake affecting California and Nevada in this scenario would be **$14,000,000** due to the California losses being limited to $10,000,000.
 
-It is common to have multiple conditions on a policy, applying to different groups of locations.  When this is the case, the policy record must be duplicated for each different **CondTag** on the locations.
+It is common to have multiple conditions on a policy, applying to different groups of locations.  When this is the case, the policy record in the account file must be duplicated for each different **CondTag** on the locations, as demonstrated in the next example.
 
 CondNumber
 ##########
@@ -79,7 +82,7 @@ The financial terms for each condition is identified by the **CondNumber** field
 
 For each policy in the account file, the financial terms identified by the **CondNumber** will be applied to the locations under the scope defined by each CondTag.
 
-In example 2, **CondNumber** 1 is a $10m sub-limit applies to California losses and **CondNumber** 2 is a $15m sublimit for losses in the New Madrid region.
+In Example 2, **CondNumber** 1 is a $10,000,000 sub-limit applies to California losses and **CondNumber** 2 is a $15,000,000 sublimit for losses in the New Madrid region.
 
 Unlike the CondTag, **CondNumber** must be an integer but its value is unimportant. An optional field **CondName** can be used to describe the condition in meaningful terms.
 
@@ -107,13 +110,13 @@ OED Location file:
 OED Account file:
 
 .. csv-table::
-    :widths: 20,20,20,20,20
+    :widths: 20,20,20,20,20,20
     :header: "AccNumber", "PolNumber", "CondTag", "CondNumber", "CondLimit6All", "CondName"
 
     "Acc2", "Pol1",  "California",  "1",  "10,000,000", "CA sub-limit"
     "Acc2", "Pol1",  "New Madrid",  "2",  "15,000,000", "NM sub-limit"
 
-In this example, a sub-limit of $10m will apply to the sum of losses from locations 1 and 2 for an earthquake in the California area, and a sub-limit of $15m will apply to the loss from Indiana location 3 from an earthquake in the New Madrid region, before any policy terms.  
+In this example, a sub-limit of $10,000,000 will apply to the sum of losses from locations 1 and 2 for an earthquake in the California area, and a sub-limit of $15,000,000 will apply to the loss from Indiana location 3 from an earthquake in the New Madrid region, before any policy terms.  
 
 No sub-limits apply to losses for the Nevada location 4, because it is not subject to any condition (CondTag field is blank).
 
@@ -143,12 +146,12 @@ OED Location file
     :widths: 15,15,15,15,20,20
     :header: "AccNumber", "LocNumber", "CountryCode", "AreaCode", "CondTag", "LocPerilsCovered"
 
-    "Acc3",    "Loc1",  "US", "CA",  "California",  "WW1;QQ1"
-    "Acc3",    "Loc2",  "US", "CA",  "California",  "WW1;QQ1"
-    "Acc3",    "Loc3",  "US", "IN",  "",  "WW1;QQ1"
-    "Acc3",    "Loc4",  "MX", "02",  "",  "WW1;QQ1"
+    "Acc3",    "Loc1",  "US", "CA",  "California",  "OO1;QQ1"
+    "Acc3",    "Loc2",  "US", "CA",  "California",  "OO1;QQ1"
+    "Acc3",    "Loc3",  "US", "IN",  "",  "OO1;QQ1"
+    "Acc3",    "Loc4",  "MX", "02",  "",  "OO1;QQ1"
 
-The **LocPerilsCovered** field specify that each location in the account is subject to 'All wind perils' and 'All earthquake perils'.
+The **LocPerilsCovered** field specify that each location in the account is subject to 'All flood perils' and 'All earthquake perils'.
 
 |
 
@@ -160,11 +163,11 @@ OED Account file:
     :widths: 20,20,20,20,20,20,20
     :header: "AccNumber", "PolNumber", "CondTag", "CondNumber", "CondLimit6All", "PolPerilsCovered", "CondPeril"
 
-    "Acc3", "Pol1",  "California",  "1",  "10,000,000", "WW1;QQ1", "QQ1"
+    "Acc3", "Pol1",  "California",  "1",  "10,000,000", "OO1;QQ1", "QQ1"
 
 |
 
-The **PolPerilsCovered** field specifies that the policy is subject to 'All wind perils', 'All earthquake perils' and 'All flood perils'.
+The **PolPerilsCovered** field specifies that the policy is subject to 'All flood perils' and 'All earthquake perils'.
 
 However the **CondPeril** field specifies that the condition is subject to 'All earthquake perils' only.
 
@@ -179,9 +182,9 @@ In the above examples with multiple conditions, each condition applied to a diff
 
 There can also be multiple sub-limits that apply to the same location in a nested hierarchy.
 
-An example of this might be a US Wind sub-limit with nested regional sub-limits on an account covering multi-state locations.
+An example of this might be a US Wind sub-limit with nested state-level sub-limits, say for Florida and Texas, on an account covering global locations.
 
-If we add a US Earthquake sub-limit to example 3 above, we must 'tag' all of the US sub-limit locations by adding a second record per location to the locations file.
+We must 'tag' all of the locations for each condition that applies to them by adding more records in the locations file.
 
 |
 
@@ -195,35 +198,52 @@ OED Location file:
     :widths: 15,15,15,15,20
     :header: "AccNumber", "LocNumber", "CountryCode", "AreaCode", "CondTag"
 
-    "Acc4",    "Loc1",  "US", "CA",  "California"
-    "Acc4",    "Loc1",  "US", "CA",  "US"
-    "Acc4",    "Loc2",  "US", "CA",  "California"
-    "Acc4",    "Loc2",  "US", "CA",  "US"
-    "Acc4",    "Loc3",  "US", "IN",  "New Madrid"
-    "Acc4",    "Loc3",  "US", "IN",  "US"  
+    "Acc4",    "Loc1",  "US", "FL",  "Florida"
+    "Acc4",    "Loc1",  "US", "FL",  "US"
+    "Acc4",    "Loc2",  "US", "FL",  "Florida"
+    "Acc4",    "Loc2",  "US", "FL",  "US"
+    "Acc4",    "Loc3",  "US", "TX",  "Texas"
+    "Acc4",    "Loc3",  "US", "TX",  "US"  
     "Acc4",    "Loc4",  "MX", "02",  ""
 
-Now we have two location records for Locations 1,2 and 3, with a second CondTag 'US'.
+We have two location records for Locations 1,2 and 3, with a CondTag for the 'Florida' and 'Texas' sub-limits and a second CondTag 'US' for the US wind sub-limit.
 
-In the account file, we add a policy record for the US sub-limit.
+In the account file, we have policy record for each condition: Florida, Texas and US sub-limit.
 
 |
 
 OED Account file:
 
 .. csv-table::
-    :widths: 20,20,20,20,20,20,20
-    :header: "AccNumber", "PolNumber", "CondTag", "CondNumber", "CondLimit6All", "CondName", "CondPriority"
+    :widths: 20,20,20,20,20,20,20.20
+    :header: "AccNumber", "PolNumber", "CondTag", "CondNumber", "CondLimit6All", "CondName", "CondPeril","CondPriority"
 
-    "Acc4", "Pol1",  "California",  "1",  "10,000,000",   "CA sub-limit",  "1"
-    "Acc4", "Pol1",  "New Madrid",  "2",  "5,000,000",   "NM sub-limit",  "1"
-    "Acc4", "Pol1",  "US",  "3",  "12,500,000",   "US sub-limit",  "2"
+    "Acc4", "Pol1",  "Florida",  "1",  "10,000,000",   "CA sub-limit", "WW1", "1"
+    "Acc4", "Pol1",  "Texas",  "2",  "5,000,000",   "NM sub-limit",  "WW1", "1"
+    "Acc4", "Pol1",  "US",  "3",  "12,500,000",   "US sub-limit",  "WW1", "2"
 
-The California and New Madrid sub-limits can be referred to as 'child' conditions, with the US sub-limit referred to as the 'parent' condition.  
+The Florida and Texas sub-limits apply first, and the US sub-limit applies second. This would result in any combined losses from Florida and Texas exceeding the US sub-limit being limited to $12.5m.  Then policy terms would apply to the sum of limited US locations and the rest of world locations.
+
+|
+
+Example losses: 
+
+.. csv-table::
+    :widths: 15,15,15,15,20
+    :header: "AccNumber", "LocNumber", "CountryCode", AreaCode", "Ground up loss"
+
+    "Acc4",    "Loc1",  "US", "FL",  "5,000,000"
+    "Acc4",    "Loc2",  "US", "FL",  "6,000,000"
+    "Acc4",    "Loc3",  "US", "TX",  "7,000,000"
+    "Acc4",    "Loc4",  "MX", "02",  "0"
+
+The Florida sub-limit applies to the losses from Locations 1 and 2 and limits them to $10,000,000.   The Texas sub-limit limits the Location 3 loss to $5,000,000.
+
+The US sub-limit applies to the sum of the **limited** state level losses of $10,000,000 and $5,000,000.   The gross loss before policy terms is **$12,500,000**. 
+
+The Florida and Texas sub-limits can be referred to as 'child' conditions, with the US sub-limit referred to as the 'parent' condition.  
 
 'Nested' means that all locations in the child sub-limit regions also belong to the parent sub-limit region.
-
-The California and New Madrid sub-limits apply first, and the US sub-limit applies second. This would result in any combined losses from California and New Madrid exceeding the US sub-limit being limited to $12.5m.  Then policy terms would apply to the sum of limited US locations and the rest of world locations.
 
 It is possible to represent an unlimited number of hierarchal conditions in OED, but in practice the number of hierarchal levels rarely exceeds two.
 
@@ -342,6 +362,20 @@ OED Account file:
 Only Locations 1, 2, and 4 are subject to the policy terms and Florida location 3 is excluded.
 
 |
+
+Example losses: 
+
+.. csv-table::
+    :widths: 15,15,15,15,20
+    :header: "AccNumber", "LocNumber", "CountryCode", AreaCode", "Ground up loss"
+
+    "Acc6",    "Loc1",  "US", "NC",  "4,000,000"
+    "Acc6",    "Loc2",  "US", "NC",  "2,000,000"
+    "Acc6",    "Loc3",  "US", "FL",  "20,000,000"
+    "Acc6",    "Loc4",  "US", "TX",  "10,000,000"
+|
+
+The policy restriction means that the Florida loss is excluded, The gross loss before policy terms is the sum of losses from the non-Florida locations which is **$16,000,000**.
 
 Conditions on multi-policy accounts
 ###################################
