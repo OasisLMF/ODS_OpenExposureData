@@ -64,7 +64,7 @@ Example losses:
 
 .. csv-table::
     :widths: 15,15,15,15,20
-    :header: "AccNumber", "LocNumber", "CountryCode", AreaCode", "Ground up loss"
+    :header: "AccNumber", "LocNumber", "CountryCode", "AreaCode", "Ground up loss"
 
     "Acc1",    "Loc1",  "US", "CA",  "5,000,000"
     "Acc1",    "Loc2",  "US", "CA",  "7,000,000"
@@ -245,7 +245,7 @@ The Florida and Texas sub-limits can be referred to as 'child' conditions, with 
 
 'Nested' means that all locations in the child sub-limit regions also belong to the parent sub-limit region.
 
-It is possible to represent an unlimited number of hierarchal conditions in OED, but in practice the number of hierarchal levels rarely exceeds two.
+It is possible to represent an unlimited number of hierarchal levels in OED, but in practice the number of hierarchal levels rarely exceeds two.
 
 |
 
@@ -328,9 +328,9 @@ The difference between them is what happens to losses for locations under the ac
 * When the condition is a sub-limit - the locations that have no CondTag will still contribute loss to the policy on the account.
 * When the condition is a policy restriction - the locations that have no CondTag **will not** contribute loss to the policy on the account.
 
-There are not normally any financial terms such as limits or deductibles that apply in policy restrictions.  A policy restriction is normally only used to exclude locations from contributing to a policy. 
+There are usually no financial terms such as limits or deductibles that apply in policy restrictions.  A policy restriction is normally only used to exclude locations from contributing to a policy. 
 
-Next is an example which excludes Florida locations from the policy. This time, CondTag uses a numeric condition reference number.
+Next is an example which excludes Florida locations from the policy. This time, CondTag is a numeric condition reference number.
 
 |
 
@@ -375,7 +375,7 @@ Example losses:
     "Acc6",    "Loc4",  "US", "TX",  "10,000,000"
 |
 
-The policy restriction means that the Florida loss is excluded, The gross loss is the sum of losses from the non-Florida locations which is **$16,000,000**.
+The policy restriction means that the Florida loss is excluded, The gross loss is the sum of losses from the non-Florida locations which is $16,000,000. The layer limit of $25,000,000 then applies, and so the final gross loss is **$16,000,000**.
 
 Conditions on multi-policy accounts
 ###################################
@@ -409,12 +409,32 @@ OED Account file:
     :widths: 20,20,20,20,20,20,20
     :header: "AccNumber", "PolNumber", "CondTag", "CondNumber", "CondLimit6All", "LayerAttachment", "LayerLimit"
 
-    "Acc7", "Pol1",  "California",  "1",  "10,000,000", "0", "5,000,000"
-    "Acc7", "Pol1",  "New Madrid",  "2",  "5,000,000", "0", "5,000,000"
-    "Acc7", "Pol2",  "California",  "1",  "10,000,000", "5,000,000", "15,000,000"
-    "Acc7", "Pol2",  "New Madrid",  "2",  "5,000,000", "5,000,000", "15,000,000"
+    "Acc7", "Pol1",  "California",  "1",  "10,000,000", "0", "10,000,000"
+    "Acc7", "Pol1",  "New Madrid",  "2",  "5,000,000", "0", "10,000,000"
+    "Acc7", "Pol2",  "California",  "1",  "10,000,000", "10,000,000", "15,000,000"
+    "Acc7", "Pol2",  "New Madrid",  "2",  "5,000,000", "10,000,000", "15,000,000"
     
 Some layer terms are added to distinguish between Pol1 and Pol2. This is an example where conditions are symmetric across policies.
+
+|
+
+Example losses: 
+
+.. csv-table::
+    :widths: 15,15,15,15,20
+    :header: "AccNumber", "LocNumber", "CountryCode", AreaCode", "Ground up loss"
+
+    "Acc1",    "Loc1",  "US", "CA",  "5,000,000"
+    "Acc1",    "Loc2",  "US", "CA",  "7,000,000"
+    "Acc1",    "Loc3",  "US", "IN",  "0"
+    "Acc1",    "Loc4",  "US", "NV",  "4,000,000"
+
+
+Pol1: California losses are limited to $10,000,000. Loss before layer terms = $14,000,000. Gross loss after layer limit = $10,000,000
+
+Pol2: California losses are limited to $10,000,000. Loss before layer terms = $14,000,000.  Gross loss after layer attachement and limit = $4,000,000
+
+| 
 
 If we drop one of the sub-limits from Pol2, then this is an example of assymmetric conditions.
 
