@@ -18,7 +18,7 @@ jobs:
 
   build_package:
     needs: build_spec
-    uses: OasisLMF/ODS_Tools/.github/workflows/build.yml@develop
+    uses: OasisLMF/ODS_Tools/.github/workflows/build.yml@fix/local-spec-install
     secrets: inherit
     with:
       oed_spec_json: ${{ needs.build_spec.outputs.spec_filename }}
