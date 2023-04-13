@@ -22,6 +22,7 @@ jobs:
     secrets: inherit
     with:
       oed_spec_json: ${{ needs.build_spec.outputs.spec_filename }}
+      ods_branch: ${{ github.event_name != 'workflow_dispatch' && 'develop' ||  inputs.ods_tools_branch }}
 
   test:
     name: Run Pytest
