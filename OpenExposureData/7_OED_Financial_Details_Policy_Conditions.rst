@@ -23,7 +23,7 @@ Optionally in the OED account file;
 CondTag
 #######
 
-The scope of each special condition is specified using a **CondTag** on each location in the location input file that corresponds with the **CondTag** in the account input file. This field can contain a meaningful string such as 'California', or it can be a policy condition reference number.
+The scope of each special condition is specified using a **CondTag** on each location in the location input file that corresponds with the **CondTag** in the account input file. This field is normally a meaningful string describing the scope of the condition, such as 'California'.
 
 |
 
@@ -205,9 +205,10 @@ OED Location file:
     "Acc4",    "Loc2",  "US", "FL",  "US"
     "Acc4",    "Loc3",  "US", "TX",  "Texas"
     "Acc4",    "Loc3",  "US", "TX",  "US"  
-    "Acc4",    "Loc4",  "MX", "02",  ""
+    "Acc4",    "Loc4",  "US", "LA",  "US"
+    "Acc4",    "Loc5",  "MX", "02",  ""
 
-We have two location records for Locations 1,2 and 3, with a CondTag for the 'Florida' or 'Texas' sub-limits and a second CondTag 'US' for the US wind sub-limit.
+We have two location records for Locations 1,2 and 3, with a CondTag for the 'Florida' or 'Texas' sub-limits and a second CondTag 'US' for the US wind sub-limit. Location 5 is outside the scope of all conditions.
 
 In the account file, we have policy record for each condition: Florida, Texas and US sub-limit.
 
@@ -236,15 +237,17 @@ Example losses:
     "Acc4",    "Loc1",  "US", "FL",  "5,000,000"
     "Acc4",    "Loc2",  "US", "FL",  "6,000,000"
     "Acc4",    "Loc3",  "US", "TX",  "7,000,000"
-    "Acc4",    "Loc4",  "MX", "02",  "0"
+    "Acc4",    "Loc4",  "US", "LA",  "1,000,000"
+    "Acc4",    "Loc5",  "MX", "02",  "0"
 
 The Florida sub-limit applies to the losses from Locations 1 and 2 and limits them to $10,000,000.   The Texas sub-limit limits the Location 3 loss to $5,000,000.
 
-The US sub-limit applies to the sum of the **limited** state level losses of $10,000,000 and $5,000,000.   The gross loss before policy terms is **$12,500,000**. 
+The US sub-limit applies to the sum of the **limited** state level losses of $10,000,000 and $5,000,000, and to the $1,000,000 loss from Location 4 which is only subject to the US sub-limit .  The total gross loss before policy terms is **$12,500,000**. 
 
 The Florida and Texas sub-limits can be referred to as 'child' conditions, with the US sub-limit referred to as the 'parent' condition.  
 
-'Nested' means that all locations in the child sub-limit regions also belong to the parent sub-limit region.
+'Nested' means that all locations in the child sub-limit regions also belong to the parent sub-limit region. There may be locations belonging 
+to the parent sub-limit region but not any child sub-limit region.
 
 It is possible to represent an unlimited number of hierarchal levels in OED, but in practice the number of hierarchal levels rarely exceeds two.
 
@@ -277,11 +280,12 @@ OED Location file:
     "Acc5",    "Loc2", "parent"
     "Acc5",    "Loc3", "child3"
     "Acc5",    "Loc3", "parent"
-    "Acc5",    "Loc4", "child4"
     "Acc5",    "Loc4", "parent"
     "Acc5",    "Loc5", ""
 
-The location file must have two records for each location subject to a child condition and the parent condition.  Locations 1-4 all appear twice in the locations file with two different CondTags and are part of the nested hierarchal conditions. 
+The location file must have two records for each location subject to a child condition and the parent condition.  Locations 1-3 all appear twice in the locations file with two different CondTags and are part of the nested hierarchal conditions. 
+
+Location 4 is subject to the parent condition only so it appears only once.
 
 Location 5 appears once and is outside of the hierarchy with no conditions, and its loss is carried into the policy terms with no sub-limits applied.
 
@@ -296,8 +300,7 @@ OED Account file:
     "Acc5", "Pol1",  "child1",  "1",  "10,000,000",   "child1",  "1"
     "Acc5", "Pol1",  "child2",  "2",  "5,000,000",   "child2",  "2"
     "Acc5", "Pol1",  "child3",  "3",  "5,000,000",   "child3",  "3"
-    "Acc5", "Pol1",  "child4",  "4",  "5,000,000",   "child4",  "4"
-    "Acc5", "Pol1",  "parent",  "5",  "20,000,000",   "parent",  "5"
+    "Acc5", "Pol1",  "parent",  "5",  "20,000,000",   "parent",  "4"
     
 
 The relative values of CondPriority between the child conditions do not matter when the conditions apply to non-overlapping groups of locations.  All that matters is that the relative value of the CondPriority of the parent condition is greater than the value of CondPriority of each of the child conditions.
@@ -331,7 +334,7 @@ The difference between them is what happens to losses for locations under the ac
 
 There are usually no financial terms such as limits or deductibles that apply in policy restrictions.  A policy restriction is normally only used to exclude locations from contributing to a policy. 
 
-Next is an example which excludes Florida locations from the policy. This time, CondTag is a numeric condition reference number.
+Next is an example which excludes Florida locations from the policy. 
 
 |
 
@@ -345,20 +348,20 @@ OED Location file:
     :widths: 15,15,15,15,20
     :header: "AccNumber", "LocNumber", "CountryCode", "AreaCode", "CondTag"
 
-    "Acc6",    "Loc1",  "US", "NC",  "366450"
-    "Acc6",    "Loc2",  "US", "NC",  "366450"
+    "Acc6",    "Loc1",  "US", "NC",  "366"
+    "Acc6",    "Loc2",  "US", "NC",  "366"
     "Acc6",    "Loc3",  "US", "FL",  ""
-    "Acc6",    "Loc4",  "US", "TX",  "366450"
+    "Acc6",    "Loc4",  "US", "TX",  "366"
 
 |
 
 OED Account file:
 
 .. csv-table::
-    :widths: 20,20,20,20,20,20,20
-    :header: "AccNumber", "PolNumber", "CondTag", "CondNumber", "CondName", "CondClass", "LayerLimit"
+    :widths: 20,20,20,20,20,20
+    :header: "AccNumber", "PolNumber", "CondTag", "CondNumber", "CondName", "CondClass"
     
-    "Acc6", "Pol1",  "366450",  "366450", "EXCL FL LOCS", "1", "25,000,000"
+    "Acc6", "Pol1",  "366",  "366450", "EXCL FL LOCS", "1"
 
 Only Locations 1, 2, and 4 are subject to the policy terms and Florida location 3 is excluded.
 
@@ -375,7 +378,7 @@ Example losses:
     "Acc6",    "Loc3",  "US", "FL",  "20,000,000"
     "Acc6",    "Loc4",  "US", "TX",  "10,000,000"
 
-The policy restriction means that the Florida loss is excluded, The gross loss is the sum of losses from the non-Florida locations which is $16,000,000. The layer limit of $25,000,000 then applies, and so the final gross loss is **$16,000,000**.
+The policy restriction means that the Florida loss is excluded, The gross loss is the sum of losses from the non-Florida locations which is **$16,000,000**.
 
 |
 
@@ -388,7 +391,7 @@ Continuing the regional sub-limit example 2, we can add a second excess policy t
 
 |
 
-**Example 7 - Symmetric policy sub-limits**
+**Example 7 - Symmetric policy conditions**
 
 |
 
@@ -426,10 +429,10 @@ Example losses:
     :widths: 15,15,15,15,20
     :header: "AccNumber", "LocNumber", "CountryCode", "AreaCode", "Ground up loss"
 
-    "Acc1",    "Loc1",  "US", "CA",  "5,000,000"
-    "Acc1",    "Loc2",  "US", "CA",  "7,000,000"
-    "Acc1",    "Loc3",  "US", "IN",  "0"
-    "Acc1",    "Loc4",  "US", "NV",  "4,000,000"
+    "Acc7",    "Loc1",  "US", "CA",  "5,000,000"
+    "Acc7",    "Loc2",  "US", "CA",  "7,000,000"
+    "Acc7",    "Loc3",  "US", "IN",  "0"
+    "Acc7",    "Loc4",  "US", "NV",  "4,000,000"
 
 
 Pol1: California losses are limited to $10,000,000. Loss before layer terms = $14,000,000. Gross loss after layer limit = **$10,000,000**
@@ -442,20 +445,27 @@ If we drop one of the sub-limits from Pol2, then this is an example of assymmetr
 
 |
 
-**Example 8 - Asymmetric policy sub-limits**
+**Example 8 - Asymmetric policy conditions**
+
+Policies may be defined to apply to different locations within an account.  When this is the case, policy restrictions can be used to specify the exclusion of different locations for each policy.  This leads to assymmetric policy conditions.
+
+In this example, a policy restriction is used to exclude location 4 from policy A.  In addition, a normal sub-limit applies to a location in policy A.  The sub-limit is applied as priority 1, and the restriction as priority 2.  
+
+Policy B covers all 4 locations without the sublimit.
 
 |
 
 OED Location file:
 
 .. csv-table::
-    :widths: 15,15,15,15,20
-    :header: "AccNumber", "LocNumber", "CountryCode", "AreaCode", "CondTag"
+    :widths: 15,15,15
+    :header: "AccNumber", "LocNumber", "CondTag"
 
-    "Acc8",    "Loc1",  "US", "CA",  "California"
-    "Acc8",    "Loc2",  "US", "CA",  "California"
-    "Acc8",    "Loc3",  "US", "IN",  "New Madrid"
-    "Acc8",    "Loc4",  "US", "NV",  ""
+    "Acc8",    "Loc1",  "PolA"
+    "Acc8",    "Loc2",  "Sublimit_400k"
+    "Acc8",    "Loc2",  "PolA"
+    "Acc8",    "Loc3",  "PolA"
+    "Acc8",    "Loc4",  ""
 
 |
     
@@ -463,31 +473,29 @@ OED Account file:
 
 .. csv-table::
     :widths: 20,20,20,20,20,20,20
-    :header: "AccNumber", "PolNumber", "CondTag", "CondNumber", "CondLimit6All", "LayerAttachment", "LayerLimit"
+    :header: "AccNumber", "PolNumber", "CondTag", "CondNumber", "CondPriority", "CondClass", "CondLimit6All"
 
-    "Acc8", "Pol1",  "California",  "1",  "10,000,000", "0", "10,000,000"
-    "Acc8", "Pol1",  "New Madrid",  "2",  "5,000,000", "0", "10,000,000"
-    "Acc8", "Pol2",  "New Madrid",  "2",  "5,000,000", "10,000,000", "15,000,000"
-
-In this case, the California losses would be limited to $10,000,000 for Pol1, but unlimited for Pol2.
+    "Acc8", "PolA",  "Sublimit_400k",  "1",  "1",  "0",  "400,000"
+    "Acc8", "PolA",  "PolA",  "2",  "2",  "1",  ""
+    "Acc8", "PolB",  "",  "",  "",  "",  ""
 
 |
 
 Example losses: 
 
 .. csv-table::
-    :widths: 15,15,15,15,20
-    :header: "AccNumber", "LocNumber", "CountryCode", "AreaCode", "Ground up loss"
+    :widths: 15,15,20
+    :header: "AccNumber", "LocNumber", "Ground up loss"
 
-    "Acc1",    "Loc1",  "US", "CA",  "5,000,000"
-    "Acc1",    "Loc2",  "US", "CA",  "7,000,000"
-    "Acc1",    "Loc3",  "US", "IN",  "0"
-    "Acc1",    "Loc4",  "US", "NV",  "4,000,000"
+    "Acc8",    "Loc1",  "800,000"
+    "Acc8",    "Loc2",  "1,000,000"
+    "Acc8",    "Loc3",  "500,000"
+    "Acc8",    "Loc4",  "300,000"
 
 
-Pol1: California losses are limited to $10,000,000. Loss before layer limit = $14,000,000. Gross loss after layer limit = **$10,000,000**
+PolA: Location 2 is limited to $400,000. Location 4 is excluded. Gross loss before policy terms = $800k + $400k + $500k = **$1,700,000**
 
-Pol2: California losses are not limited. Loss before layer limit = $16,000,000.  Gross loss after layer attachement and limit = **$6,000,000**
+Pol2: Gross loss before policy terms = $800k + $1000k + $500k + $300k = **$2,600,000**
 
 |
 
@@ -524,7 +532,7 @@ OED Account file:
 
 .. csv-table::
     :widths: 20,30,30, 30,30,30,30,30,25
-    :header: "AccNumber",   "PolNumber",    "PolPeril", "PolLimit6All", "CondTag", "CondNumber",    "CondPriority", "CondPeril",    "CondLimit6All"
+    :header: "AccNumber",   "PolNumber",    "PolPerilsCovered", "PolLimit6All", "CondTag", "CondNumber",    "CondPriority", "CondPeril",    "CondLimit6All"
 
     "Acc9",    "1",    "QQ1;WW1",  "1,500,000", "1",   "1",    "1",    "WW1",  "250,000"
     "Acc9",    "1",    "QQ1;WW1",  "1,500,000", "2",   "2",    "1",    "WW1",  "500,000"
@@ -558,7 +566,7 @@ OED Account file:
 
 .. csv-table::
     :widths: 20,20,30,30,20,20,20,25,25
-    :header: "AccNumber",   "PolNumber",    "PolPeril",     "PolLimit6All",  "CondTag",   "CondNumber", "CondPriority", "CondPeril",    "CondLimit6All"
+    :header: "AccNumber",   "PolNumber",    "PolPerilsCovered",     "PolLimit6All",  "CondTag",   "CondNumber", "CondPriority", "CondPeril",    "CondLimit6All"
 
 
     "Acc10",    "1",    "QQ1; WW1",     "1,500,000", "1",   "1",    "1",    "WW1",  "250,000"
