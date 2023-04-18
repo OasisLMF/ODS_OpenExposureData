@@ -86,7 +86,7 @@ For each policy in the account file, the financial terms identified by the **Con
 
 In Example 2, **CondNumber** 1 is a $10,000,000 sub-limit applies to California losses and **CondNumber** 2 is a $15,000,000 sublimit for losses in the New Madrid region.
 
-Unlike the CondTag, **CondNumber** must be an integer but its value is unimportant. An optional field **CondName** can be used to describe the condition in meaningful terms.
+**CondNumber** is normally a policy condition reference number, and may be numeric or alphanumeric. An optional field **CondName** can be used to describe the condition in meaningful terms.
 
 Note that although these types of conditions are referred to as sub-limits, they can be any combination of the regular types of financial terms such as deductibles, min and max deductibles, and limits.
 
@@ -242,11 +242,11 @@ Example losses:
 
 The Florida sub-limit applies to the losses from Locations 1 and 2 and limits them to $10,000,000.   The Texas sub-limit limits the Location 3 loss to $5,000,000.
 
-The US sub-limit applies to the sum of the **limited** state level losses of $10,000,000 and $5,000,000, and to the $1,000,000 loss from Location 4 which is only subject to the US sub-limit .  The total gross loss before policy terms is **$12,500,000**. 
+The US sub-limit applies to the sum of the **limited** state level losses of $10,000,000 and $5,000,000, and the $1,000,000 loss from Location 4 which is only subject to the US sub-limit .  The total gross loss before policy terms is **$12,500,000**. 
 
 The Florida and Texas sub-limits can be referred to as 'child' conditions, with the US sub-limit referred to as the 'parent' condition.  
 
-'Nested' means that all locations in the child sub-limit regions also belong to the parent sub-limit region. There may be locations belonging 
+'Nested' means that all locations in the child sub-limit regions also belong to the parent sub-limit region.  There may be locations belonging 
 to the parent sub-limit region but not any child sub-limit region.
 
 It is possible to represent an unlimited number of hierarchal levels in OED, but in practice the number of hierarchal levels rarely exceeds two.
@@ -439,19 +439,15 @@ Pol1: California losses are limited to $10,000,000. Loss before layer terms = $1
 
 Pol2: California losses are limited to $10,000,000. Loss before layer terms = $14,000,000.  Gross loss after layer attachement and limit = **$4,000,000**
 
-| 
-
-If we drop one of the sub-limits from Pol2, then this is an example of assymmetric conditions.
-
 |
 
 **Example 8 - Asymmetric policy conditions**
 
-Policies may be defined to apply to different locations within an account.  When this is the case, policy restrictions can be used to specify the exclusion of different locations for each policy.  This leads to assymmetric policy conditions.
+Policies may be defined to apply to different locations within an account.  When this is the case, policy restrictions can be used to specify the exclusion of different locations from each policy.  This leads to assymmetric policy conditions.
 
 In this example, a policy restriction is used to exclude location 4 from policy A.  In addition, a normal sub-limit applies to a location in policy A.  The sub-limit is applied as priority 1, and the restriction as priority 2.  
 
-Policy B covers all 4 locations without the sublimit.
+Policy B covers all 4 locations without the sub-limit.
 
 |
 
@@ -495,7 +491,7 @@ Example losses:
 
 PolA: Location 2 is limited to $400,000. Location 4 is excluded. Gross loss before policy terms = $800k + $400k + $500k = **$1,700,000**
 
-Pol2: Gross loss before policy terms = $800k + $1000k + $500k + $300k = **$2,600,000**
+PolB: All location losses are included. Gross loss before policy terms = $800k + $1000k + $500k + $300k = **$2,600,000**
 
 |
 
