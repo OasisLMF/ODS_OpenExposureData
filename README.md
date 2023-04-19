@@ -18,9 +18,9 @@ Steering Committee Members:
 <table id="verticalalign">
     <tbody>
         <tr>
-            <td align="middle" valign="middle"><img src="images/Oasis_LOGO.png" width="220"/></td>
-            <td align="middle" valign="middle"><img src="images/NASDAQ_logo.png" width ="150"/></td>
-            <td align="middle" valign="middle"><img src="images/corelogic_logo.png" width ="160"/></td>
+            <td align="middle" valign="middle"><img src="images/Oasis_LOGO.png" width="250"/></td>
+            <td align="middle" valign="middle"><img src="images/NASDAQ_logo.png" width ="170"/></td>
+            <td align="middle" valign="middle"><img src="images/CoreLogic_logo_update.png" width ="130"/></td>
             <td align="middle" valign="middle"><img src="images/AIR_Worldwide's_logo.jpeg" width ="70"/></td>
             <td align="middle" valign="middle"><img src="images/JBA_logo.jpeg" width ="60"/></td>
             <td align="middle" valign="middle"><img src="images/IF_Logo.png" width ="130"/></td>
@@ -38,7 +38,7 @@ Steering Committee Members:
         </tr>
         <tr></tr>  <!--  empty line to avoid table zebra striping  -->
         <tr> 
-            <td align="middle" valign="middle"><img src="images/Aon_v2_logo.png" width ="80"/></td>
+            <td align="middle" valign="middle"><img src="images/Aon_v2_logo.png" width ="70"/></td>
             <td align="middle" valign="middle"><img src="images/wtw_v2.png" width ="80"/></td>
             <td align="middle" valign="middle"><img src="images/GC_logo_v2.png" width ="250"/></td>
             <td align="middle" valign="middle"><img src="images/Gallagher_logo.jpg" width ="180"/></td>
