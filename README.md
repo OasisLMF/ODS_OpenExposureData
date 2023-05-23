@@ -84,7 +84,7 @@ Detailed documentation on which financial fields are supported in the Oasis kern
 
 ## Open Exposure Data (OED)
 
-The aim of OED is to provide the industry with a robust, open, and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and the detailed descriptions of each data field for property are covered in the 'Open Exposure Data Spec.xlsx' and reference and background OED information can be found in the 'docs’ folder (https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs). Examples of how to code multiple financial structures in the input files are also covered within these documents.
+The aim of OED is to provide the industry with a robust, open, and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and the detailed descriptions of each data field for property are covered in the 'Open Exposure Data Spec.xlsx' and reference and background OED information can be found in the 'docs’ folder (https://github.com/OasisLMF/ODS_OpenExposureData/tree/develop/OpenExposureData/Docs). Examples of how to code multiple financial structures in the input files are also covered within these documents.
 
 The web (HTML) version of the OED documentation can be viewed here https://oasislmf.github.io/OpenDataStandards/index.html
 
@@ -103,13 +103,15 @@ https://github.com/OasisLMF/OpenDataTransform
 
 The focus for OED has primarily been on property cat business since its inception but has now expanded to support other lines of business. The liability data schema was released in April 2022 - details and docs can be found here:
 
-https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Liability
+https://github.com/OasisLMF/ODS_OpenExposureData/tree/develop/OpenExposureData/Liability
 
 &nbsp; 
 
 **Cyber** 
 
-A cyber data standard is expected to be available in late January 2023 and will be accessible in this repo.
+A cyber data standard was released in February 2023 and the data schema and associated docs can be found here:
+
+https://github.com/OasisLMF/ODS_OpenExposureData/tree/develop/OpenExposureData/Cyber
 
 
 &nbsp; 
@@ -131,7 +133,7 @@ https://github.com/OasisLMF/ODS_OpenResultsData
 ODS is governed by a steering committee that meets periodically and is chaired by Oasis LMF. 
 
 The governance and process around releases and updates of ODS can be found here but a schematic of the overview is shown below:
-https://github.com/OasisLMF/OpenDataStandards/tree/master/Docs
+https://github.com/OasisLMF/ODS_OpenExposureData/tree/develop/Docs
 
 <img src="images/ODS_Gov_Process_Structure_v0.3.png" width="1050"/> &nbsp;
  
