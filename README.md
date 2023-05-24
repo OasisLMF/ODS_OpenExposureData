@@ -169,7 +169,8 @@ All new work will be captured as issues in this repository and contain all corre
 ### *CSV to Parquet Data Conversion* 
 Apache Parquet is an open-source columnar data format which has superior data compression and encoding schemes enabling more efficiency around the handling of large datasets. More info here (https://parquet.apache.org)
 
-All source code and info on converting csv to Parquet data format can be found here (https://github.com/OasisLMF/OpenDataStandards/tree/master/ods_tools)
+All source code and info on converting csv to Parquet data format can be found at the repo below: 
+https://github.com/OasisLMF/ODS_Tools
 
 &nbsp; 
 
