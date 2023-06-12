@@ -262,8 +262,17 @@ def get_cr_field(cr_field_df):
     Returns:
         conditional requirement dict
     """
+    cr_to_field = cr_field_df.groupby('Required Field')['Input Field Name'].apply(list).to_dict()
+    cr_field = {}
+    for cr, fields in cr_to_field.items():
+        for field in fields:
+            cur_cr_field = set(fields)
+            for i in range(cr.count('-') + 1):
+                cur_cr_field |= set(cr_to_field.get(cr.rsplit('-', i)[0], []))
+            if len(cur_cr_field) > 1:  # we remove field that provide no extra requirement
+                cr_field[field] = list(cur_cr_field)
 
-    return cr_field_df.to_dict(orient='records')
+    return cr_field
 
 
 def extract_valid_value_range(valid_value_range, dtype):
