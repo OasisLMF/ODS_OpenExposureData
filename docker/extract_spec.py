@@ -262,17 +262,36 @@ def get_cr_field(cr_field_df):
     Returns:
         conditional requirement dict
     """
-    cr_to_field = cr_field_df.groupby('Required Field')['Input Field Name'].apply(list).to_dict()
-    cr_field = {}
-    for cr, fields in cr_to_field.items():
-        for field in fields:
-            cur_cr_field = set(fields)
-            for i in range(cr.count('-') + 1):
-                cur_cr_field |= set(cr_to_field.get(cr.rsplit('-', i)[0], []))
-            if len(cur_cr_field) > 1:  # we remove field that provide no extra requirement
-                cr_field[field] = list(cur_cr_field)
+    cr_field_df = (
+        cr_field_df
+        .assign(pd_dtype=cr_field_df['Data Type'].str.split('(', n=1, expand=True)[0].map(pd_converter))
+        .rename(columns={'File Name': 'File Names'})
+    )
 
-    return cr_field
+    # split ods_fields per File Name
+    split_df = cr_field_df['File Names'].str.split(';').apply(pd.Series, 1).stack()
+    split_df = (
+        split_df
+        .set_axis(split_df.index.droplevel(-1))
+        .rename('File Name')
+        .str.strip()
+    )
+    cr_field_df = cr_field_df.join(split_df).drop(columns='File Names')
+
+    cr_fields_by_file = {}
+    for file_name in cr_field_df['File Name'].unique():
+        cr_to_field = cr_field_df[cr_field_df['File Name'] == file_name].groupby('Required Field')['Input Field Name'].apply(list).to_dict()
+        cr_field = {}
+        for cr, fields in cr_to_field.items():
+            for field in fields:
+                cur_cr_field = set(fields)
+                for i in range(cr.count('-') + 1):
+                    cur_cr_field |= set(cr_to_field.get(cr.rsplit('-', i)[0], []))
+                if len(cur_cr_field) > 1:  # we remove field that provide no extra requirement
+                    cr_field[field] = list(cur_cr_field)
+        cr_fields_by_file[file_name] = cr_field
+
+    return cr_fields_by_file
 
 
 def extract_valid_value_range(valid_value_range, dtype):
