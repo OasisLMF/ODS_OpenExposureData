@@ -283,6 +283,8 @@ def get_cr_field(cr_field_df):
         cr_to_field = cr_field_df[cr_field_df['File Name'] == file_name].groupby('Required Field')['Input Field Name'].apply(list).to_dict()
         cr_field = {}
         for cr, fields in cr_to_field.items():
+            if '-' not in cr:
+                continue
             for field in fields:
                 cur_cr_field = set(fields)
                 for i in range(cr.count('-') + 1):
