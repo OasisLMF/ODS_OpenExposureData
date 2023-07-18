@@ -86,7 +86,7 @@ Detailed documentation on which financial fields are supported in the Oasis kern
 
 The aim of OED is to provide the industry with a robust, open, and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and the detailed descriptions of each data field for property are covered in the 'Open Exposure Data Spec.xlsx' and reference and background OED information can be found in the 'docs’ folder (https://github.com/OasisLMF/ODS_OpenExposureData/tree/develop/OpenExposureData/Docs). Examples of how to code multiple financial structures in the input files are also covered within these documents.
 
-The web (HTML) version of the OED documentation can be viewed here https://oasislmf.github.io/OpenDataStandards/index.html
+The web (HTML) version of the OED documentation can be viewed here [https://oasislmf.github.io/sections/OED.html](https://oasislmf.github.io/sections/OED.html)
 
 &nbsp;
 
