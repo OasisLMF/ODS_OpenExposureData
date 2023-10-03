@@ -141,28 +141,44 @@ A **Technical Working Group (TWG)** will maintain and update the assets that def
 
 &nbsp; 
 
-### *Releases*
+## Releases
 
-All the assets that define ODS will be managed in this GitHub repository. All releases will follow the SemVer convention (https://semver.org/), so given a version number MAJOR.MINOR.PATCH, increment the:
+All releases will follow the SemVer convention (https://semver.org/), so given a version number MAJOR.MINOR.PATCH.
 
-   * **MAJOR** version when you make incompatible changes e.g. changing column names, changing the structure of the data.
+## Major Updates
+
+**Major** version updates are when incompatible changes are made that can cause 'breakages' in processes or validations, examples are highlighted below. Major updates require signoff from the Steer Co and require a three month time frame for notice and any UAT by the community.
+
+  * Removing fields from the schema.*
+  * Adding ‘mandatory’ fields to the schema.
+  * Moving fields between input files (i.e., from ‘ReinsScope’ to ‘ReinsInfo’ files)
+  * Removing occupancy or construction codes.
+  * Changing or removing any other codes currently used in the OED schema. I.e., any codes contained in the tabs of the *OpenExposureData_Spec.xlsx* 
+(https://github.com/OasisLMF/ODS_OpenExposureData/blob/develop/OpenExposureData/Docs/OpenExposureData_Spec.xlsx)
+  * Reducing the ‘valid value range’.
+  * Changing the ‘allow blanks’ field.
+  * Changing the ‘default’ values.
+
     
-   * **MINOR** version when you add functionality in a backwards compatible manner e.g. adding a new column with a default value, adding a new allowed value for an existing field.
+## Minor Updates
+**Minor** version updates are when functionality is added and is backwards compatible and WILL NOT cause breaking changes. These are highlighted below:
+
+  * Adding new fields to the OED schema.
+  * Adding new occupancy or construction codes.
+  * Adding new codes in the tabs of the *OpenExposureData_Spec.xlsx* (https://github.com/OasisLMF/ODS_OpenExposureData/blob/develop/OpenExposureData/Docs/OpenExposureData_Spec.xlsx)
+  * Increasing ‘valid value range’.
     
-   * **PATCH** version when you make backwards compatible bug fixes e.g. correcting a typo in a column label.
+**PATCH** version when you make backwards compatible bug fixes e.g. correcting a typo in a column label.
    
    
-All new work will be done in **feature** branches, following the [GitFlow model](https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master** branch and the current development work will be in develop or specific feature branches.
+All new work will be done in **feature** branches, following the [GitFlow model](https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master**  branch and the current development work will be in develop or specific feature branches.
 
 &nbsp; 
 
 ### *Tracking*
 
-All new work will be captured as issues in this repository and contain all correspondence and associated documents or data. Any GitHub user can raise an issue and the TWG will classify as:
+Suggestions for updates will be raised in this repository and contain all correspondence and associated documents or data. Any GitHub user can raise an issue and the TWG will classify as a **major** or **minor** update as specified above and follow the governance and signoff process.
 
-**Major Updates:** These are major work items that may require significant effort and may cause breaking changes. An example of a major feature would be  changes to the data schema with new or revised fields.  All major features will be reviewed during a steering committee meeting.
-
-**Minor Updates:** These are minor work items that will not cause breaking changes. An example of a minor feature would be the inclusion of a new location attribute with a default value.  Minor features must be approved, by email, by two members of the steering committee before being addressed by the maintenance team. If approval is not given, or an objection is raised by a member of the steering committee, then the feature will be reviewed at the next steering committee meeting.
 
 &nbsp; 
 
