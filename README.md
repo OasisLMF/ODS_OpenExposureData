@@ -168,10 +168,10 @@ All releases will follow the SemVer convention (https://semver.org/), so given a
   * Adding new codes in the tabs of the *OpenExposureData_Spec.xlsx* (https://github.com/OasisLMF/ODS_OpenExposureData/blob/develop/OpenExposureData/Docs/OpenExposureData_Spec.xlsx)
   * Increasing ‘valid value range’.
     
-**PATCH** version when you make backwards compatible bug fixes e.g. correcting a typo in a column label.
+**PATCH** updates are for making backwards compatible bug fixes e.g. correcting a typo in a column label.
    
    
-All new work will be done in **feature** branches, following the [GitFlow model](https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master**  branch and the current development work will be in develop or specific feature branches.
+All new work will be done in **feature** branches, following the [GitFlow model](https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master** branch and the current development work will be in **develop** or specific feature branches.
 
 &nbsp; 
 
