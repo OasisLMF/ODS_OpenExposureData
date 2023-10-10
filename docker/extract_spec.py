@@ -95,6 +95,7 @@ def extract_spec_to_json(source_excel_path, output_json_path):
     ods_schema['country'] = get_country(_read_excel('Country Values'))
     ods_schema['area'] = get_area(_read_excel('AreaCode Values'))
     ods_schema['cr_field'] = get_cr_field(_read_excel('OED CR Field Appendix'))
+    ods_schema['versioning'] = get_versioning(_read_excel('Versioning')) 
 
     pathlib.Path(output_json_path).parent.mkdir(parents=True, exist_ok=True)
     with open(output_json_path, 'w') as fp:
@@ -295,6 +296,18 @@ def get_cr_field(cr_field_df):
 
     return cr_fields_by_file
 
+
+def get_versioning(version_values_df):                       ###### Does it need input checks?
+    """
+    Extracts the list of necessary modifications to convert OED data to different versions.
+    """
+    print("did")
+    return (
+        version_values_df
+        [['Category', 'New code', 'Fallback', 'Version', 'Other']]
+        .set_index('Version')
+        .to_dict(orient='index')
+    )
 
 def extract_valid_value_range(valid_value_range, dtype):
     """
