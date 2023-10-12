@@ -297,17 +297,20 @@ def get_cr_field(cr_field_df):
     return cr_fields_by_file
 
 
-def get_versioning(version_values_df):                       ###### Does it need input checks?
+def get_versioning(version_values_df):
     """
     Extracts the list of necessary modifications to convert OED data to different versions.
     """
-    print("did")
-    return (
-        version_values_df
-        [['Category', 'New code', 'Fallback', 'Version', 'Other']]
-        .set_index('Version')
-        .to_dict(orient='index')
-    )
+    # Group by the version
+    grouped = version_values_df.groupby('Version')
+
+    version_dict = {
+        version: group[['Category', 'New code', 'Fallback', 'Other']].to_dict(orient='records')
+        for version, group in grouped
+    }
+
+    return version_dict
+
 
 def extract_valid_value_range(valid_value_range, dtype):
     """
