@@ -305,7 +305,7 @@ def get_versioning(version_values_df):
     grouped = version_values_df.groupby('Version')
 
     version_dict = {
-        version: group[['Category', 'New code', 'Fallback', 'Other']].to_dict(orient='records')
+        version: group[['Category', 'New code', 'Fallback']].to_dict(orient='records')
         for version, group in grouped
     }
 
