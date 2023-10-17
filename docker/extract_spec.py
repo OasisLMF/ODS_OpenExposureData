@@ -24,16 +24,16 @@ pd_converter = {
     "tinyint": "Int32",
     "uniqueidentifier": "category",
     "varbinary": "bytes",
-    "varchar": "category"
+    "varchar": "category",
 }
 
 dtype_to_python = {
-    'Int8': int,
-    'Int32': int,
-    'Int64': int,
-    'bytes': lambda x: bytes(x, 'utf-8'),
-    'float64': float,
-    'category': str
+    "Int8": int,
+    "Int32": int,
+    "Int64": int,
+    "bytes": lambda x: bytes(x, "utf-8"),
+    "float64": float,
+    "category": str,
 }
 
 
@@ -42,10 +42,18 @@ def cli():
     pass
 
 
-@cli.command('csv')
-@click.option('--source-excel-path', required=True, default=None, help='Path to MS excel sheet')
-@click.option('--output-csv-path', default='OpenExposureData_Spec.csv', help='Path to write csv file')
-@click.option('--excel-sheet-name', default="OED Input Fields", help='Sheet label to extract')
+@cli.command("csv")
+@click.option(
+    "--source-excel-path", required=True, default=None, help="Path to MS excel sheet"
+)
+@click.option(
+    "--output-csv-path",
+    default="OpenExposureData_Spec.csv",
+    help="Path to write csv file",
+)
+@click.option(
+    "--excel-sheet-name", default="OED Input Fields", help="Sheet label to extract"
+)
 def extract_spec_to_csv(source_excel_path, output_csv_path, excel_sheet_name):
     """
     convert an Excel sheet to a csv file
@@ -58,20 +66,23 @@ def extract_spec_to_csv(source_excel_path, output_csv_path, excel_sheet_name):
     df_spec = pd.read_excel(
         source_excel_path,
         sheet_name=excel_sheet_name,
-        dtype={'Default': str},
+        dtype={"Default": str},
         keep_default_na=False,
-        na_values=[])
-    df_spec.to_csv(
-        path_or_buf=output_csv_path,
-        encoding='utf-8',
-        mode='w',
-        index=False)
-    print(f'Written CSV spec: "{output_csv_path}"  \noutput based on file: "{source_excel_path}", sheet: "{excel_sheet_name}"')
+        na_values=[],
+    )
+    df_spec.to_csv(path_or_buf=output_csv_path, encoding="utf-8", mode="w", index=False)
+    print(
+        f'Written CSV spec: "{output_csv_path}"  \noutput based on file: "{source_excel_path}", sheet: "{excel_sheet_name}"'
+    )
 
 
-@cli.command('json')
-@click.option('--source-excel-path', required=True, default=None, help='Path to MS excel sheet')
-@click.option('--output-json-path', default='oed.json', help='Path to write json oed file')
+@cli.command("json")
+@click.option(
+    "--source-excel-path", required=True, default=None, help="Path to MS excel sheet"
+)
+@click.option(
+    "--output-json-path", default="oed.json", help="Path to write json oed file"
+)
 def extract_spec_to_json(source_excel_path, output_json_path):
     """
     read an Excel ods_schema (OpenExposureData_Spec.xlsx) and write relevant information from each sheet to a json file
@@ -80,26 +91,32 @@ def extract_spec_to_json(source_excel_path, output_json_path):
         source_excel_path (str): path to the Excel ods_schema
         output_json_path (str): path to the json output
     """
+
     def _read_excel(excel_sheet_name):
-        return pd.read_excel(source_excel_path,
-                             sheet_name=excel_sheet_name,
-                             dtype={'Default': str},
-                             keep_default_na=False,
-                             na_values=[])
+        return pd.read_excel(
+            source_excel_path,
+            sheet_name=excel_sheet_name,
+            dtype={"Default": str},
+            keep_default_na=False,
+            na_values=[],
+        )
 
     ods_schema = {}
-    ods_schema['input_fields'] = get_ods_input_fields(_read_excel('OED Input Fields'))
-    ods_schema['perils'] = get_ods_perils(_read_excel('Peril Values'))
-    ods_schema['occupancy'] = get_occupancy(_read_excel('Occupancy Values'))
-    ods_schema['construction'] = get_construction(_read_excel('Construction Values'))
-    ods_schema['country'] = get_country(_read_excel('Country Values'))
-    ods_schema['area'] = get_area(_read_excel('AreaCode Values'))
-    ods_schema['cr_field'] = get_cr_field(_read_excel('OED CR Field Appendix'))
-    ods_schema['versioning'] = get_versioning(_read_excel('Versioning')) 
+    ods_schema["input_fields"] = get_ods_input_fields(_read_excel("OED Input Fields"))
+    ods_schema["perils"] = get_ods_perils(_read_excel("Peril Values"))
+    ods_schema["occupancy"] = get_occupancy(_read_excel("Occupancy Values"))
+    ods_schema["construction"] = get_construction(_read_excel("Construction Values"))
+    ods_schema["country"] = get_country(_read_excel("Country Values"))
+    ods_schema["area"] = get_area(_read_excel("AreaCode Values"))
+    ods_schema["cr_field"] = get_cr_field(_read_excel("OED CR Field Appendix"))
+    try:
+        ods_schema["versioning"] = get_versioning(_read_excel("Versioning"))
+    except ValueError:
+        ods_schema["versioning"] = {}
 
     pathlib.Path(output_json_path).parent.mkdir(parents=True, exist_ok=True)
-    with open(output_json_path, 'w') as fp:
-        json.dump(ods_schema, fp, indent='    ')
+    with open(output_json_path, "w") as fp:
+        json.dump(ods_schema, fp, indent="    ")
 
 
 def get_ods_input_fields(ods_fields_df):
@@ -114,46 +131,51 @@ def get_ods_input_fields(ods_fields_df):
 
     """
     # convert Data Type to pandas DataType
-    ods_fields_df = (
-        ods_fields_df
-        .assign(pd_dtype=ods_fields_df['Data Type'].str.split('(', n=1, expand=True)[0].map(pd_converter))
-        .rename(columns={'File Name': 'File Names'})
-    )
-    ods_fields_df["Case Insensitive Field Name"] = ods_fields_df["Input Field Name"].str.lower()
+    ods_fields_df = ods_fields_df.assign(
+        pd_dtype=ods_fields_df["Data Type"]
+        .str.split("(", n=1, expand=True)[0]
+        .map(pd_converter)
+    ).rename(columns={"File Name": "File Names"})
+    ods_fields_df["Case Insensitive Field Name"] = ods_fields_df[
+        "Input Field Name"
+    ].str.lower()
 
     # check that to Data Type is missing from our converter
-    if ods_fields_df['pd_dtype'].isna().any():
-        raise ValueError(f"missing pd_dtype for:\n"
-                         f"""{ods_fields_df.loc[ods_fields_df['pd_dtype'].isna(),
-                                           ['File Name', 'Input Field Name', 'Type & Description', 'Data Type']]}""")
+    if ods_fields_df["pd_dtype"].isna().any():
+        raise ValueError(
+            f"missing pd_dtype for:\n"
+            f"""{ods_fields_df.loc[ods_fields_df['pd_dtype'].isna(),
+                                           ['File Name', 'Input Field Name', 'Type & Description', 'Data Type']]}"""
+        )
 
     # split ods_fields per File Name
-    split_df = ods_fields_df['File Names'].str.split(';').apply(pd.Series, 1).stack()
+    split_df = ods_fields_df["File Names"].str.split(";").apply(pd.Series, 1).stack()
     split_df = (
-        split_df
-        .set_axis(split_df.index.droplevel(-1))
-        .rename('File Name')
-        .str.strip()
+        split_df.set_axis(split_df.index.droplevel(-1)).rename("File Name").str.strip()
     )
-    ods_fields_df = ods_fields_df.join(split_df).drop(columns='File Names')
+    ods_fields_df = ods_fields_df.join(split_df).drop(columns="File Names")
 
-    ods_fields_df['Valid value range'] = ods_fields_df.apply(lambda row: extract_valid_value_range(row['Valid value range'],
-                                                                                                   dtype_to_python[row['pd_dtype']]),
-                                                             axis=1)
+    ods_fields_df["Valid value range"] = ods_fields_df.apply(
+        lambda row: extract_valid_value_range(
+            row["Valid value range"], dtype_to_python[row["pd_dtype"]]
+        ),
+        axis=1,
+    )
 
     # create a field dict for each File Name available and None
     __ods_fields = {}
-    for file_name in ods_fields_df['File Name'].unique():
-        __ods_fields[file_name] = (ods_fields_df[ods_fields_df['File Name'] == file_name]
-                                   .set_index(['Case Insensitive Field Name'])
-                                   .to_dict(orient='index'))
+    for file_name in ods_fields_df["File Name"].unique():
+        __ods_fields[file_name] = (
+            ods_fields_df[ods_fields_df["File Name"] == file_name]
+            .set_index(["Case Insensitive Field Name"])
+            .to_dict(orient="index")
+        )
 
     __ods_fields[None] = (
-        ods_fields_df
-        .drop(columns=['File Name'])
-        .drop_duplicates(subset=['Input Field Name'])
-        .set_index(['Case Insensitive Field Name'])
-        .to_dict(orient='index')
+        ods_fields_df.drop(columns=["File Name"])
+        .drop_duplicates(subset=["Input Field Name"])
+        .set_index(["Case Insensitive Field Name"])
+        .to_dict(orient="index")
     )
 
     return __ods_fields
@@ -169,21 +191,28 @@ def get_ods_perils(perils_df):
         dict with info on perils and mapping between peril and list of sub perils
     """
     return {
-        'info': (
-            perils_df
-            [['DB table PerilCode', 'Peril Description', 'Input format abbreviation', 'Grouped PerilCode']]
-            [:perils_df[perils_df['Input format abbreviation'] == ''].index[0]]  # select rows until 1st empty cell
-            .set_index(['Input format abbreviation'])
-            .to_dict(orient='index')
+        "info": (
+            perils_df[
+                [
+                    "DB table PerilCode",
+                    "Peril Description",
+                    "Input format abbreviation",
+                    "Grouped PerilCode",
+                ]
+            ][
+                : perils_df[perils_df["Input format abbreviation"] == ""].index[0]
+            ]  # select rows until 1st empty cell
+            .set_index(["Input format abbreviation"])
+            .to_dict(orient="index")
         ),
-        'covered': (  # create a dict of peril => list of sub perils
-            perils_df
-            [['Peril', 'PerilsCovered']]
+        "covered": (  # create a dict of peril => list of sub perils
+            perils_df[["Peril", "PerilsCovered"]]
             .replace("", float("NaN"))
             .dropna()
-            .groupby('PerilsCovered')['Peril'].apply(list)
+            .groupby("PerilsCovered")["Peril"]
+            .apply(list)
             .to_dict()
-        )
+        ),
     }
 
 
@@ -197,10 +226,19 @@ def get_occupancy(occupancy_df):
         dict of information on occupancies
     """
     return (
-        occupancy_df
-        [['Category', 'OED Code', 'AIR code', 'Name', 'Description', 'Code Range', 'Broad Category']]
-        .set_index('OED Code')
-        .to_dict(orient='index')
+        occupancy_df[
+            [
+                "Category",
+                "OED Code",
+                "AIR code",
+                "Name",
+                "Description",
+                "Code Range",
+                "Broad Category",
+            ]
+        ]
+        .set_index("OED Code")
+        .to_dict(orient="index")
     )
 
 
@@ -214,10 +252,19 @@ def get_construction(construction_df):
         dict of information on construction codes
     """
     return (
-        construction_df
-        [['Category', 'OED Code', 'AIR code', 'Name', 'Description', 'Code Range', 'Broad Category']]
-        .set_index('OED Code')
-        .to_dict(orient='index')
+        construction_df[
+            [
+                "Category",
+                "OED Code",
+                "AIR code",
+                "Name",
+                "Description",
+                "Code Range",
+                "Broad Category",
+            ]
+        ]
+        .set_index("OED Code")
+        .to_dict(orient="index")
     )
 
 
@@ -230,11 +277,7 @@ def get_country(country_df):
     Returns:
         dict of information on country codes
     """
-    return (
-        country_df
-        .set_index('Code')
-        .to_dict(orient='index')
-    )
+    return country_df.set_index("Code").to_dict(orient="index")
 
 
 def get_area(area_df):
@@ -246,11 +289,7 @@ def get_area(area_df):
     Returns:
         dict of information on area codes
     """
-    return (
-        area_df
-        .groupby('CountryCode')['AreaCode'].apply(list)
-        .to_dict()
-    )
+    return area_df.groupby("CountryCode")["AreaCode"].apply(list).to_dict()
 
 
 def get_cr_field(cr_field_df):
@@ -263,34 +302,38 @@ def get_cr_field(cr_field_df):
     Returns:
         conditional requirement dict
     """
-    cr_field_df = (
-        cr_field_df
-        .assign(pd_dtype=cr_field_df['Data Type'].str.split('(', n=1, expand=True)[0].map(pd_converter))
-        .rename(columns={'File Name': 'File Names'})
-    )
+    cr_field_df = cr_field_df.assign(
+        pd_dtype=cr_field_df["Data Type"]
+        .str.split("(", n=1, expand=True)[0]
+        .map(pd_converter)
+    ).rename(columns={"File Name": "File Names"})
 
     # split ods_fields per File Name
-    split_df = cr_field_df['File Names'].str.split(';').apply(pd.Series, 1).stack()
+    split_df = cr_field_df["File Names"].str.split(";").apply(pd.Series, 1).stack()
     split_df = (
-        split_df
-        .set_axis(split_df.index.droplevel(-1))
-        .rename('File Name')
-        .str.strip()
+        split_df.set_axis(split_df.index.droplevel(-1)).rename("File Name").str.strip()
     )
-    cr_field_df = cr_field_df.join(split_df).drop(columns='File Names')
+    cr_field_df = cr_field_df.join(split_df).drop(columns="File Names")
 
     cr_fields_by_file = {}
-    for file_name in cr_field_df['File Name'].unique():
-        cr_to_field = cr_field_df[cr_field_df['File Name'] == file_name].groupby('Required Field')['Input Field Name'].apply(list).to_dict()
+    for file_name in cr_field_df["File Name"].unique():
+        cr_to_field = (
+            cr_field_df[cr_field_df["File Name"] == file_name]
+            .groupby("Required Field")["Input Field Name"]
+            .apply(list)
+            .to_dict()
+        )
         cr_field = {}
         for cr, fields in cr_to_field.items():
-            if '-' not in cr:
+            if "-" not in cr:
                 continue
             for field in fields:
                 cur_cr_field = set(fields)
-                for i in range(cr.count('-') + 1):
-                    cur_cr_field |= set(cr_to_field.get(cr.rsplit('-', i)[0], []))
-                if len(cur_cr_field) > 1:  # we remove field that provide no extra requirement
+                for i in range(cr.count("-") + 1):
+                    cur_cr_field |= set(cr_to_field.get(cr.rsplit("-", i)[0], []))
+                if (
+                    len(cur_cr_field) > 1
+                ):  # we remove field that provide no extra requirement
                     cr_field[field] = list(cur_cr_field)
         cr_fields_by_file[file_name] = cr_field
 
@@ -299,16 +342,24 @@ def get_cr_field(cr_field_df):
 
 def get_versioning(version_values_df):
     """
-    Extracts the list of necessary modifications to convert OED data to different versions.
+    Gets information on versioning. The sheet should be structured as follow:
+    Version: the version to which the change will lead
+    Category: the category to which the change applies (e.g. "Occupancy")
+    New code: the code that should be reverted
+    Fallback: the code to which we should revert
+
+    Args:
+        version_values_df (pd.DataFrame): Versioning
+
+    Returns:
+        dict of information on versioning
     """
     # Group by the version
-    grouped = version_values_df.groupby('Version')
-
+    grouped = version_values_df.groupby("Version")
     version_dict = {
-        version: group[['Category', 'New code', 'Fallback']].to_dict(orient='records')
+        version: group[["Category", "New code", "Fallback"]].to_dict(orient="records")
         for version, group in grouped
     }
-
     return version_dict
 
 
@@ -327,11 +378,12 @@ def extract_valid_value_range(valid_value_range, dtype):
     >>> extract_valid_value_range('[-999,-999], [0,5], [10,), (,-5)', int)
     [{'min': 0, 'max': 5}, {'min': 10}, {'max': -5}, {'enum': [-999]}]
     """
+
     def get_next_bracket(_str: str, opening):
         if opening:
-            bracket = ['[', '(']
+            bracket = ["[", "("]
         else:
-            bracket = [']', ')']
+            bracket = ["]", ")"]
 
         ind = (_str.find(s) for s in bracket)
         found_ind = [i for i in ind if i >= 0]
@@ -349,24 +401,26 @@ def extract_valid_value_range(valid_value_range, dtype):
         c_index = get_next_bracket(valid_value_range_left, opening=False)
         if o_index == -1:
             break
-        min_val, max_val = [x.strip() for x in valid_value_range_left[o_index + 1: c_index].split(',')]
+        min_val, max_val = [
+            x.strip() for x in valid_value_range_left[o_index + 1 : c_index].split(",")
+        ]
 
         if min_val == max_val:
-            valid_single_values.setdefault('enum', []).append(dtype(min_val))
+            valid_single_values.setdefault("enum", []).append(dtype(min_val))
         elif max_val and min_val:
-            valid_values.append({'min': dtype(min_val), 'max': dtype(max_val)})
+            valid_values.append({"min": dtype(min_val), "max": dtype(max_val)})
         elif min_val:
-            valid_values.append({'min': dtype(min_val)})
+            valid_values.append({"min": dtype(min_val)})
         else:
-            valid_values.append({'max': dtype(max_val)})
-        valid_value_range_left = valid_value_range_left[c_index + 1:]
+            valid_values.append({"max": dtype(max_val)})
+        valid_value_range_left = valid_value_range_left[c_index + 1 :]
     if valid_single_values:
         valid_values.append(valid_single_values)
     if valid_values:
         return valid_values
     else:
-        return 'n/a'
+        return "n/a"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     cli()
