@@ -1,5 +1,13 @@
 ODS Changelog
 ==================
+`v3.1.0`_
+---------
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/129) - Occupancy is only property oriented (can we include motor?)
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/153) - Add INSEE Code as a valid GeogScheme value
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/160) - RI Scope Required Fields to be updated
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/161) - Additional OccupancyCode values for commercial low/mid/high-rise blocks
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/165) - Additional Occupancy code values for Commercial Banks and financial institutions
+* (https://github.com/OasisLMF/ODS_Tools/issues/64) - Backward compatibility when adding new codes in OED. A new 'versioning' tab has been added to the OED Spec .xlsx to show mapping of occupany and contruction codes between older versions of OED
 
 `v3.0.0`_
 ---------
