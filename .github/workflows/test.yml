@@ -9,7 +9,7 @@ on:
         required: false
 
 env:
-  ods_tools_branch: ${{ github.event_name != 'workflow_dispatch' && 'develop' ||  inputs.ods_tools_branch }}
+  ods_tools_branch: ${{ github.event_name != 'workflow_dispatch' && 'main' ||  inputs.ods_tools_branch }}
 
 jobs:
   build_spec:
@@ -18,11 +18,11 @@ jobs:
 
   build_package:
     needs: build_spec
-    uses: OasisLMF/ODS_Tools/.github/workflows/build.yml@develop
+    uses: OasisLMF/ODS_Tools/.github/workflows/build.yml@main
     secrets: inherit
     with:
       oed_spec_json: ${{ needs.build_spec.outputs.spec_filename }}
-      ods_branch: ${{ github.event_name != 'workflow_dispatch' && 'develop' ||  inputs.ods_tools_branch }}
+      ods_branch: ${{ github.event_name != 'workflow_dispatch' && 'main' ||  inputs.ods_tools_branch }}
 
   test:
     name: Run Pytest

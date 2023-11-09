@@ -134,7 +134,7 @@ jobs:
         echo "run_status=${{ job.status }}" >> $GITHUB_OUTPUT
 
   slack:
-    uses: OasisLMF/OasisLMF/.github/workflows/notify.yml@master
+    uses: OasisLMF/OasisLMF/.github/workflows/notify.yml@main
     secrets: inherit
     needs: release
     with:
