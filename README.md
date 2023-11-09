@@ -86,7 +86,7 @@ Detailed documentation on which financial fields are supported in the Oasis kern
 
 The aim of OED is to provide the industry with a robust, open, and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and the detailed descriptions of each data field for property are covered in the 'Open Exposure Data Spec.xlsx' and reference and background OED information can be found in the 'docs’ folder (https://github.com/OasisLMF/ODS_OpenExposureData/tree/develop/OpenExposureData/Docs). Examples of how to code multiple financial structures in the input files are also covered within these documents.
 
-The web (HTML) version of the OED documentation can be viewed here https://oasislmf.github.io/OpenDataStandards/index.html
+The web (HTML) version of the OED documentation can be viewed here [https://oasislmf.github.io/sections/OED.html](https://oasislmf.github.io/sections/OED.html)
 
 &nbsp;
 
@@ -141,32 +141,53 @@ A **Technical Working Group (TWG)** will maintain and update the assets that def
 
 &nbsp; 
 
-### *Releases*
+## Releases
 
-All the assets that define ODS will be managed in this GitHub repository. All releases will follow the SemVer convention (https://semver.org/), so given a version number MAJOR.MINOR.PATCH, increment the:
+All releases will follow the SemVer convention (https://semver.org/), so given a version number MAJOR.MINOR.PATCH.
 
-   * **MAJOR** version when you make incompatible changes e.g. changing column names, changing the structure of the data.
+## Major Updates
+
+**Major** version updates are when incompatible changes are made that can cause 'breakages' in processes or validations, examples are highlighted below. Major updates require signoff from the Steer Co and require a three month time frame for notice and any UAT by the community.
+
+  * Removing fields from the schema.*
+  * Adding ‘mandatory’ fields to the schema.
+  * Moving fields between input files (i.e., from ‘ReinsScope’ to ‘ReinsInfo’ files)
+  * Removing occupancy or construction codes.
+  * Changing or removing any other codes currently used in the OED schema. I.e., any codes contained in the tabs of the *OpenExposureData_Spec.xlsx* 
+(https://github.com/OasisLMF/ODS_OpenExposureData/blob/develop/OpenExposureData/Docs/OpenExposureData_Spec.xlsx)
+  * Reducing the ‘valid value range’.
+  * Changing the ‘allow blanks’ field.
+  * Changing the ‘default’ values.
+
     
-   * **MINOR** version when you add functionality in a backwards compatible manner e.g. adding a new column with a default value, adding a new allowed value for an existing field.
+## Minor Updates
+**Minor** version updates are when functionality is added and is backwards compatible and WILL NOT cause breaking changes. These are highlighted below:
+
+  * Adding new fields to the OED schema.
+  * Adding new occupancy or construction codes.
+  * Adding new codes in the tabs of the *OpenExposureData_Spec.xlsx* (https://github.com/OasisLMF/ODS_OpenExposureData/blob/develop/OpenExposureData/Docs/OpenExposureData_Spec.xlsx)
+  * Increasing ‘valid value range’.
     
-   * **PATCH** version when you make backwards compatible bug fixes e.g. correcting a typo in a column label.
+**PATCH** updates are for making backwards compatible bug fixes e.g. correcting a typo in a column label.
    
-   
-All new work will be done in **feature** branches, following the [GitFlow model](https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master** branch and the current development work will be in develop or specific feature branches.
+All new work will be done in **feature** branches, following the [GitFlow model](https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master** branch and the current development work will be in **develop** or specific feature branches.
 
 &nbsp; 
 
-### *Tracking*
+### Versioning and Back Compatibility
 
-All new work will be captured as issues in this repository and contain all correspondence and associated documents or data. Any GitHub user can raise an issue and the TWG will classify as:
-
-**Major Updates:** These are major work items that may require significant effort and may cause breaking changes. An example of a major feature would be  changes to the data schema with new or revised fields.  All major features will be reviewed during a steering committee meeting.
-
-**Minor Updates:** These are minor work items that will not cause breaking changes. An example of a minor feature would be the inclusion of a new location attribute with a default value.  Minor features must be approved, by email, by two members of the steering committee before being addressed by the maintenance team. If approval is not given, or an objection is raised by a member of the steering committee, then the feature will be reviewed at the next steering committee meeting.
+The 'versioning' tab in the OED spec (https://github.com/OasisLMF/ODS_OpenExposureData/tree/OED_v3.1_testing/OpenExposureData/Docs) contains the mapping and back compatibility of occupancy and construction codes from previous versions of OED. For example, if a user codes exposure data using an occupancy or construction code from OED v3, but the model implementation they are running is only using the OED v2 schema, then that code will be mapped back to an appropriate code in OED v2 so any validation processes will still work.
 
 &nbsp; 
 
-### *CSV to Parquet Data Conversion* 
+### Tracking
+
+Suggestions for updates will be raised in this repository and contain all correspondence and associated documents or data. Any GitHub user can raise an issue and the TWG will classify as a **major** or **minor** update as specified above and follow the governance and signoff process.
+
+
+&nbsp; 
+
+### CSV to Parquet Data Conversion 
 Apache Parquet is an open-source columnar data format which has superior data compression and encoding schemes enabling more efficiency around the handling of large datasets. More info here (https://parquet.apache.org)
 
 All source code and info on converting csv to Parquet data format can be found at the repo below: 
@@ -174,13 +195,13 @@ https://github.com/OasisLMF/ODS_Tools
 
 &nbsp; 
 
-### *Documentation Updates* 
+### Documentation Updates 
 
 These can be actioned directly by the TWG but are likely to be done by Oasis LMF.
 
 &nbsp; 
 
-### *Bugs* 
+### Bugs 
 
 These can be actioned directly by the TWG, assuming they do not cause a breaking change. All communication around bugs should be submitted in an issue within this repo.
 

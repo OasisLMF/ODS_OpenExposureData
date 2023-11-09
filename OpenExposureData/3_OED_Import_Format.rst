@@ -136,5 +136,7 @@ If there is no reinsurance, the reinsurance scope import file is not required. I
 The minimum fields required are: **ReinsNumber**, at least one of the ten filter fields, and **CededPercent** for surplus treaties.
 The full set of fields in a reinsurance scope import file can be found by filtering on ‘ReinsScope’ in the Input File column of the *Open Exposure Data Spec* spreadsheet. There are over 10 potential fields that could be used within the reinsurance scope file. However, it is not mandatory to use a field that contains no data. 
 
-For a list of the reinsurance financial terms available and examples about how to specify such terms see the reinsurance section and associated examples. **<insert links here>**
+These filter fields are mostly optional and can be included in the scope file and used as needed. The exception is when specifying filters using **LocNumber** and **PolNumber**, the fields **AccNumber** and **PortNumber** are conditionally required and must also be populated, and **PortNumber** is required to be populated when **AccNumber** is used as a filter.  These field dependencies are expressed as 'Conditionally Required' 'CR' codes and included in the 'OED CR Field Appendix' tab of the *Open Exposure Data Spec*.
+
+For a list of the reinsurance financial terms available and examples about how to specify such terms see the reinsurance section and associated examples.
 
