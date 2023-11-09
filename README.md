@@ -170,19 +170,24 @@ All releases will follow the SemVer convention (https://semver.org/), so given a
     
 **PATCH** updates are for making backwards compatible bug fixes e.g. correcting a typo in a column label.
    
-   
 All new work will be done in **feature** branches, following the [GitFlow model](https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master** branch and the current development work will be in **develop** or specific feature branches.
 
 &nbsp; 
 
-### *Tracking*
+### Versioning and Back Compatibility
+
+The 'versioning' tab in the OED spec (https://github.com/OasisLMF/ODS_OpenExposureData/tree/OED_v3.1_testing/OpenExposureData/Docs) contains the mapping and back compatibility of occupancy and construction codes from previous versions of OED. For example, if a user codes exposure data using an occupancy or construction code from OED v3, but the model implementation they are running is only using the OED v2 schema, then that code will be mapped back to an appropriate code in OED v2 so any validation processes will still work.
+
+&nbsp; 
+
+### Tracking
 
 Suggestions for updates will be raised in this repository and contain all correspondence and associated documents or data. Any GitHub user can raise an issue and the TWG will classify as a **major** or **minor** update as specified above and follow the governance and signoff process.
 
 
 &nbsp; 
 
-### *CSV to Parquet Data Conversion* 
+### CSV to Parquet Data Conversion 
 Apache Parquet is an open-source columnar data format which has superior data compression and encoding schemes enabling more efficiency around the handling of large datasets. More info here (https://parquet.apache.org)
 
 All source code and info on converting csv to Parquet data format can be found at the repo below: 
@@ -190,13 +195,13 @@ https://github.com/OasisLMF/ODS_Tools
 
 &nbsp; 
 
-### *Documentation Updates* 
+### Documentation Updates 
 
 These can be actioned directly by the TWG but are likely to be done by Oasis LMF.
 
 &nbsp; 
 
-### *Bugs* 
+### Bugs 
 
 These can be actioned directly by the TWG, assuming they do not cause a breaking change. All communication around bugs should be submitted in an issue within this repo.
 
