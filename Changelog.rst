@@ -1,5 +1,16 @@
 ODS Changelog
 ==================
+`v3.2.0`_
+-----------
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/40) - Added missing occupant fields
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/74) - Geom field usage and updated description, removed enumeration from OtherValues
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/174) - New GeogScheme FTM1
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/175) - Wind peril codes description update
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/176) - Added 'OT' AreaCode for Australia
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/100) - Valid value and description updates for ExtraExpensesFactor, DebrisRemoval and NumberOfBuildings
+
+
+
 `v3.1.0`_
 ---------
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/129) - Occupancy is only property oriented (can we include motor?)
