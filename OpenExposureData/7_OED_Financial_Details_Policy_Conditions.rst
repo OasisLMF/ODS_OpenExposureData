@@ -196,3 +196,12 @@ We must 'tag' all of the locations for each condition that applies to them by ad
 OED Location file:
 
 .. csv-table::
+    :widths: 15,15,15,15,20
+    :header: "AccNumber", "LocNumber", "CountryCode", "AreaCode", "CondTag"
+
+    "Acc4","Loc1","US","FL","Florida"
+    "Acc4","Loc1","US","FL","US"
+    "Acc4","Loc2","US","FL","Florida"
+    "Acc4","Loc2","US","FL","US"
+    "Acc4","Loc3","US","TX","Texas"
+    "Acc4","Loc3","US","TX","US"  
