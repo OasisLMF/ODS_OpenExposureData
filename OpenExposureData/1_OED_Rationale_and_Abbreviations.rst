@@ -21,7 +21,7 @@ The following abbreviations are used in OED field names:
     :widths: 8, 40
     :header: "Abbreviation", "Description"
 
-    "Acc", "Account" 
+    "Acc", "Account"
     "Agg", "Aggregate"
     "BI",	"Business interruption, but also used to denote other time-based coverage insurable values such as alternative living expenses"
     "Cond",	"Condition (as in special condition such as sub-limit or sub-deductible)"
