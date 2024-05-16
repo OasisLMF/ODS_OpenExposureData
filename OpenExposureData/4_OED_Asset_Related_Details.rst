@@ -36,8 +36,8 @@ Occupancy codes are stored in the **OccupancyCode** field. The occupancy type li
     "1250 – 1299",	"Transportation"
     "1300 – 1349",	"Utilities"
     "1350 – 1399",	"Miscellaneous"
-    "2000 – 2799",	"Industrial Facility" 
-    "3000 – 3999",	"Offshore"  
+    "2000 – 2799",	"Industrial Facility"
+    "3000 – 3999",	"Offshore"
 
 Although the code ranges above infer an extremely long list of codes there are less than 200 distinct occupancy codes in total. Yachts and automobiles are included under construction type codes rather than occupancy codes.
 Some users may have translated from a different (original) occupancy code to the OED occupancy code but would like to store the original occupancy code information. This can be done using the **OrgOccupancyScheme** and **OrgOccupancyCode** fields.
