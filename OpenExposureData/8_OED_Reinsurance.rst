@@ -29,29 +29,7 @@ OED has been designed to allow capture of a broad range of reinsurance terms wit
  
 The fields used to define reinsurance financial terms are given in the table below. These are all specified in the reinsurance info table, although for surplus treaties note that **CededPercent** must be specified in the reinsurance scope table.
 
-|
 
-.. csv-table::
-    :widths: 18, 60
-    :header: "Field Name",	"Description"
-
-	"RiskLevel",            "The definition of risk. See below for more information."
-    "RiskLimit",            "Limit applicable to the losses from an event at the defined **RiskLevel.**"
-    "RiskAttachment",	    "Attachment applicable to the losses from an event at the defined **RiskLevel.**"
-    "OccLimit",	            "Limit applicable to the sum of losses from an event."
-    "OccAttachment",	    "Attachment applicable to the sum of losses from an event."
-    "OccFranchiseDed",	    "A per-occurrence deductible that vanishes when it is exceeded."
-    "OccReverseFranchise",	"The total event loss is excluded from the treaty if the reverse franchise threshold is exceeded."
-    "AggLimit",	            "Limit applicable to the sum of losses within an **AggPeriod.**"
-    "AggAttachment",	    "Attachment applicable to the sum of losses within an **AggPeriod.**"
-    "AggPeriod",	        "The period within which to sum losses (in days)."
-    "InuringPriority",	    "Indicates the order in which reinsurance applies. 1 denotes the contract that applies first."
-    "Reinstatement",	    "The number of reinstatements."
-    "CededPercent",	        "The percentage applied to the gross loss entering the reinsurance contracts before other reinsurance terms. Predominantly used for surplus treaties. Unlike all the other terms in this table, **CededPercent** is specified in the reinsurance scope table for surplus treaties and in the reinsurance info table for all other treaty types."    
-    "PlacedPercent",	    "The percentage applied to the reinsurance loss after other reinsurance terms. Predominantly used for all contracts other than surplus treaties."
-    "TreatyShare",	        "The treaty share which is applicable to the individual reinsurer."
-
-|
 
 Risk Level
 ##########
