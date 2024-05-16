@@ -15,21 +15,17 @@ OED has been designed to allow capture of a broad range of reinsurance terms wit
 .. csv-table::
     :header: "Type of Reinsurance",	"Value in ReinsType Field",	"Notes"
 
-    "Facultative",	"FAC",	"Excess of loss (or sometimes proportional) contract applicable at location, location group, policy or account level. The risk level must be consistent with the field used to define the scope. **RiskLimit, RiskAttachment** and **PlacedPercent** are typically the fields used. 
+    "Facultative",	"FAC",	"Excess of loss (or sometimes proportional) contract applicable at location, location group, policy or account level. The risk level must be consistent with the field used to define the scope. **RiskLimit, RiskAttachment** and **PlacedPercent** are typically the fields used."
+    "Quota Share",	"QS",	"A proportional contract applicable to a tranche of exposure defined using the reinsurance scope filter fields. **PlacedPercent**, and sometimes **RiskLimit** and **OccLimit** are typically the fields used."
+    "Surplus Share",	"SS",	"A proportional contract where the proportion ceded varies by risk. The risk level must be consistent with the field used to define the scope. **CededPercent** must be specified for each risk in the reinsurance scope table. **OccLimit** is sometimes also used."
+    "Per Risk Treaty",	"PR",	"An excess of loss contract applying per-risk to a tranche of exposure defined using the reinsurance scope filter fields. 'RiskLimit, RiskAttachment' and sometimes 'PlacedPercent' and 'OccLimit' are the fields typically used."
+    "Catastrophe Excess of Loss",	"CXL",	"An excess of loss contract applying per-event to a tranche of exposure defined using the reinsurance scope filter fields. **OccLimit, OccAttachment** and sometimes **PlacedPercent** are the fields typically used."
+    "Aggregate Excess of Loss",	"AXL",	"An aggregate excess of loss contract applying per-period to a tranche of exposure defined using the reinsurance scope filter fields. **AggLimit, AggAttachment** and sometimes **PlacedPercent** are the fields typically used."
 
-    "Quota Share",	"QS",	"A proportional contract applicable to a tranche of exposure defined using the reinsurance scope filter fields. **PlacedPercent**, and sometimes **RiskLimit** and **OccLimit** are typically the fields used.
 
-    "Surplus Share",	"SS",	"A proportional contract where the proportion ceded varies by risk. The risk level must be consistent with the field used to define the scope. **CededPercent** must be specified for each risk in the reinsurance scope table. **OccLimit** is sometimes also used.
-
-    "Per Risk Treaty",	"PR",	"An excess of loss contract applying per-risk to a tranche of exposure defined using the reinsurance scope filter fields. "RiskLimit, RiskAttachment" and sometimes "PlacedPercent" and "OccLimit" are the fields typically used.
-
-    "Catastrophe Excess of Loss",	"CXL",	"An excess of loss contract applying per-event to a tranche of exposure defined using the reinsurance scope filter fields. **OccLimit, OccAttachment** and sometimes **PlacedPercent** are the fields typically used.
-
-    "Aggregate Excess of Loss",	"AXL",	"An aggregate excess of loss contract applying per-period to a tranche of exposure defined using the reinsurance scope filter fields. **AggLimit, AggAttachment** and sometimes **PlacedPercent** are the fields typically used.
- 
 The fields used to define reinsurance financial terms are given in the table below. These are all specified in the reinsurance info table, although for surplus treaties note that **CededPercent** must be specified in the reinsurance scope table.
 
-
+|
 
 Risk Level
 ##########
@@ -209,6 +205,7 @@ The logic in the reinsurance scope table means that only items with **PortNumber
 
 |
 
+
 **Example 3 - Surplus share reinsurance**
 
 The example shows how a 3-line surplus treaty with a retention of 500,000 is specified in OED. The surplus treaty has an event limit of 3,000,000 (applicable to the loss ceded to the treaty, not the gross amount), and ‘risk’ is defined as the location.
@@ -317,6 +314,7 @@ OED Reinsurance Info file:
 
 |
 
+
 OED Reinsurance Scope file:
 
 .. csv-table::
@@ -324,8 +322,8 @@ OED Reinsurance Scope file:
 
     "1",	"1",	"", "", ""
     "1",	"2",	"", "", ""
-    "2",	"1",	"", "", ""			 
-    "2",	"2",	"", "", ""			 	
+    "2",	"1",	"", "", ""
+    "2",	"2",	"", "", ""
 
 |
 
@@ -338,3 +336,6 @@ The reinsurance scope table contains two rows per treaty. This is to indicate th
 Essentially, within each **ReinsNumber**, each row of the reinsurance scope table acts as an OR operator and each filtering column acts as an AND operator. Although only four reinsurance scope fields are shown in the table above, all 10 reinsurance scope filtering fields could be used to define the scope of quota share, per-risk, cat XL or aggregate XL treaties.
 
 The **RiskLevel** of the per-risk treaty is defined at location level (*LOC*). For the Cat XL treaty in this example there are no risk terms and so the **RiskLevel** is left blank.
+
+
+
