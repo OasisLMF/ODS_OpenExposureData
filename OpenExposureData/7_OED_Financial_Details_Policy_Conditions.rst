@@ -1,3 +1,5 @@
+
+
 Policy Special Conditions
 #########################
 
@@ -76,6 +78,7 @@ The policy loss for an earthquake affecting California and Nevada in this scenar
 It is common to have multiple conditions on a policy, applying to different groups of locations.  When this is the case, the policy record in the account file must be duplicated for each different **CondTag** on the locations, as demonstrated in the next example.
 
 |
+
 
 CondNumber
 ##########
@@ -193,6 +196,9 @@ We must 'tag' all of the locations for each condition that applies to them by ad
 
 |
 
+
+
+
 OED Location file:
 
 .. csv-table::
@@ -204,9 +210,10 @@ OED Location file:
     "Acc4",    "Loc2",  "US", "FL",  "Florida"
     "Acc4",    "Loc2",  "US", "FL",  "US"
     "Acc4",    "Loc3",  "US", "TX",  "Texas"
-    "Acc4",    "Loc3",  "US", "TX",  "US"  
+    "Acc4",    "Loc3",  "US", "TX",  "US"
     "Acc4",    "Loc4",  "US", "LA",  "US"
     "Acc4",    "Loc5",  "MX", "02",  ""
+
 
 We have two location records for Locations 1,2 and 3, with a CondTag for the 'Florida' or 'Texas' sub-limits and a second CondTag 'US' for the US wind sub-limit. Location 5 is outside the scope of all conditions.
 
@@ -252,6 +259,8 @@ to the parent sub-limit region but not any child sub-limit region.
 It is possible to represent an unlimited number of hierarchal levels in OED, but in practice the number of hierarchal levels rarely exceeds two.
 
 |
+
+
 
 CondPriority
 ############
@@ -519,8 +528,8 @@ OED Location file:
     "Acc9",    "2",    "1,000,000",    "2",    "0.01",     "1"
     "Acc9",    "3",    "1,000,000",    "1",    "0.05",     "2"
     "Acc9",    "4",    "2,000,000",    "0",    "15,000",   "2"
-    "Acc9",    "5",    "2,000,000",    "0",    "10,000",   
-    "Acc9",    "6",    "2,000,000",    "2",    "0.10", 
+    "Acc9",    "5",    "2,000,000",    "0",    "10,000",   ""
+    "Acc9",    "6",    "2,000,000",    "2",    "0.10", ""
 
 |
 
@@ -553,8 +562,8 @@ OED Location file:
     "Acc10",    "2",    "1,000,000",    "2",    "0.01",     "2"
     "Acc10",    "3",    "1,000,000",    "1",    "0.05",     "2"
     "Acc10",    "4",    "2,000,000",    "0",    "15,000",   "2"
-    "Acc10",    "5",    "2,000,000",    "0",    "10,000"
-    "Acc10",    "6",    "2,000,000",    "2",    "0.10"
+    "Acc10",    "5",    "2,000,000",    "0",    "10,000", ""
+    "Acc10",    "6",    "2,000,000",    "2",    "0.10", ""
 
 |
 
@@ -567,5 +576,21 @@ OED Account file:
 
     "Acc10",    "1",    "QQ1; WW1",     "1,500,000", "1",   "1",    "1",    "WW1",  "250,000"
     "Acc10",    "1",    "QQ1; WW1",     "1,500,000", "2",   "2",    "2",    "WW1",  "500,000"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
