@@ -1,6 +1,13 @@
 Notes
 =====
 
+Blanks Allowed
+##############
+
+With reference to the Required Field column in the OEDInputFields table, blanks are not allowed for any required 'R' fields but are allowed for all optional 'O' and conditionally required 'CR' fields.
+
+|
+
 Peril Values
 ############
 
@@ -88,7 +95,11 @@ Motor classification
 
 References for motor classification:
 
-.. _HAZUS: https://www.hsdl.org/?view&did=480580
+HAZUS: 
 
-.. _GEC: https://www.mvn.usace.army.mil/Portals/56/docs/PD/Donaldsv-Gulf.pdf
+https://www.hsdl.org/?view&did=480580
+
+GEC: 
+
+https://www.mvn.usace.army.mil/Portals/56/docs/PD/Donaldsv-Gulf.pdf
 
