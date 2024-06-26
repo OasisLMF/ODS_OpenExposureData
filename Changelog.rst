@@ -1,5 +1,18 @@
 ODS Changelog
 ==================
+
+`v3.4.0`_
+-----------
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/195) - [Property] Correct Data Type of SoilType from float to tinyint and valid values from [0,) to [0,1]
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/198) - [Reinsurance] RiskLevel blank value explicitly added to the v3.0.0 specification
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/197) - [Property] ContentsFloodVuln updates introduced in v3.0.0
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/199) - [Specification] Add csvs of OED specification data tables
+
+`v3.3.0`_
+-----------
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/184) - Removespaces in the RST docs which were causing csv tables to not format
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/189) - Change to Queensland code in v3.2 in Error
+
 `v3.2.0`_
 -----------
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/40) - Added missing occupant fields
