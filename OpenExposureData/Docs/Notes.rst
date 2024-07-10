@@ -80,7 +80,7 @@ Any deductibles and limits that apply to specific coverages are specified using 
 
 **Liability**
 
-Liability insurance policies do not have explicit coverage codes in OED. Instead the liability coverage should be described using the CoverageClassDescription field, which is a required feild. The coverage of defense costs may be specified using the DefenceCost field.
+Liability insurance policies do not have explicit coverage codes in OED. Instead the liability coverage should be described using the 'CoverageClassDescription' field, which is a required field. The coverage of defense costs may be specified using the DefenceCost field.
 
 |
 
