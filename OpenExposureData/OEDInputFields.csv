@@ -552,4 +552,4 @@ Provide the generating capacity of each asset (e.g. for a turbine, this is the c
 "Acc","DefenceCost","Options: 0-Outside the limit, 1-Inside the limit or 2-Not Covered","n/a","tinyint","0","[0,2]","n/a","O"
 "Acc","BIWaitingPeriod","BI waiting period defined at policy level (in days)","n/a","float","0","[0,)","O","n/a"
 "Acc","BIPOI","BI period of indemnity defined at policy level (in days, in increments of 0.5 days). Default value = 365 (1 year).","n/a","float","365","[0,3650]","O","n/a"
-"Loc","SoilLiquefiable","Defines whether a soil is susceptible to liquefaction or not.","O","int","n/a","[0,2]","n/a","n/a"
+"Loc","SoilLiquefiable","Defines whether a soil is susceptible to liquefaction or not.","O","int","0","[0,2]","n/a","n/a"
