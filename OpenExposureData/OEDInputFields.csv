@@ -493,7 +493,7 @@ Provide the generating capacity of each asset (e.g. for a turbine, this is the c
 "Loc","VoltageOfEnergy","Voltage of energy infrastructure (applicable to substations, generation facilities and transmission)","O","tinyint","","[0,)","n/a","n/a"
 "Loc","PumpingCapacity","Capacity of water pumping and treatment plants, in MGD (Millions gallons per day)","O","tinyint","","[0,)","n/a","n/a"
 "Acc","AccParticipation","Insurance company share of the account loss. Values between 0 to 1 (e.g. 12% entered as 0.12)","O","float","1","[0,1]","n/a","n/a"
-"Acc","CompanyIDSchemeXX","Company identification scheme. Eg. DUNS, LEI 'OtherValues'","CR","varchar(5)","n/a","","CR","CR"
+"Acc","CompanyIDSchemeXX","Company identification scheme. Eg. DUNS, LEI. See 'OtherValues'","CR","varchar(5)","n/a","","CR","CR"
 "Acc","CompanyIDCodeXX","Company identifier related to the CompanyIDScheme","CR","int","0","[0,)","CR","CR"
 "Acc","YearFounded","Year that insured entity founded to support company identification (YYYY format)","O","smallInt","0","","O","O"
 "Acc","StreetAddress","Main street address of insured entity","O","nvarchar(100)","n/a","","O","O"
