@@ -10,16 +10,16 @@ def _read_excel(source_excel_path, excel_sheet_name):
                          keep_default_na=False,
                          na_values=[])
 # File paths
-excel_file_path = '../Docs/OpenExposureData_Spec.xlsx'
-output_directory = '../Docs'  # Directory where CSV files will be saved
+excel_file_path = '../OpenExposureData/Docs/OpenExposureData_Spec.xlsx'
+output_directory = '../OpenExposureData/Docs'  # Directory where CSV files will be saved
 
 # Ensure the output directory exists
 if not os.path.exists(output_directory):
     os.makedirs(output_directory)
 
 # List of sheet names to export
-sheet_names = ['README', 'OED Input Fields', 'Peril Values','Financial Code Values','Occupancy Values','Construction Values','Currency Values','Country Values','AreaCode Values','Other Values','OED CR Field Appendix','Versioning']  # Add your sheet names here
-
+#sheet_names = ['README', 'OED Input Fields', 'Financial Code Values','Occupancy Values','Construction Values','Currency Values','Country Values','AreaCode Values','Other Values', 'OED CR Field Appendix','Versioning']  # Add your sheet names here
+sheet_names = ['OED Input Fields','Other Values']  
 # Dictionary of columns to remove for each sheet
 columns_to_remove = {
     'OED Input Fields': ['SecMod?', 'BackEndTableName','Back End DB Field Name'],

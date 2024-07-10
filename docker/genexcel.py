@@ -12,10 +12,10 @@ def _read_excel(source_excel_path, excel_sheet_name):
                          na_values=[])
     
 # Directory containing the CSV files
-directory = '../Docs'
+directory = '../OpenExposureData/Docs'
 
 # List of CSV filenames in the desired order
-csv_files = ['OEDInputFields.csv', 'PerilValues.csv', 'PerilsCovered.csv','FinancialCodeValues.csv','OccupancyValues.csv','ConstructionValues.csv','CurrencyValues.csv','CountryValues.csv','AreaCodeValues.csv','OtherValues.csv','OEDCRFieldAppendix.csv','Versioning.csv']
+csv_files = ['OEDInputFields.csv', 'PerilValues.csv', 'PerilsCovered.csv', 'CoverageValues.csv','FinancialCodeValues.csv','OccupancyValues.csv','ConstructionValues.csv','CurrencyValues.csv','CountryValues.csv','AreaCodeValues.csv','OtherValues.csv','OEDCRFieldAppendix.csv','IndustryCodeValues.csv']
 
 # Create a Pandas Excel writer using openpyxl as the engine
 combined_workbook_path = os.path.join(directory, 'OpenExposureData.xlsx')
