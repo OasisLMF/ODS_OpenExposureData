@@ -41,6 +41,49 @@ Examples of combining peril codes:
 
 |
 
+Coverage Values
+###############
+
+|
+
+There are explicit coverage codes in OED for property and cyber classes of business.
+
+**Property**
+
+For property insurance policies, 1Building, 2Other, 3Contents and 4BI are covered under a policy if a value greater than zero is entered into the fields BuildingTIV, OtherTIV, ContentsTIV, BITIV, respectively.  
+
+Any deductibles and limits that apply to these coverages are specified using the financial fields with the coverage codes embedded in the field names. e.g. PolDed1Building.
+
+**Cyber**
+
+For cyber insurance policies, coverage should be specified using the 'PolCoverage' field. Multiple coverages are indicated by entering a semi-colon-separated list as shown in the examples table.
+
+|
+
+**Examples** 
+|
+
+.. csv-table::
+    :widths: 30,25
+    :header: "Example", "PolCoverage"
+
+    "Single coverage","EXT"
+    "Multiple coverages", "BI;CBI;DIAS;EXT;REG"
+    "All cyber coverages", "CYB"
+    
+
+|
+
+If the PolCoverage field is not present, the default value is 'CYB', i.e. the policy covers all cyber coverages.
+
+Any deductibles and limits that apply to specific coverages are specified using the financial fields with the coverage codes embedded in the field names. e.g. PolDedEXT.
+
+**Liability**
+
+Liability insurance policies do not have explicit coverage codes in OED. Instead the liability coverage should be described using the CoverageClassDescription field, which is a required feild. The coverage of defense costs may be specified using the DefenceCost field.
+
+|
+
 Conditionally Required (CR) fields
 ##################################
 
