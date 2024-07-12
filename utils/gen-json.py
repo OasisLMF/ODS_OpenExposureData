@@ -47,14 +47,6 @@ def _read_oed_data(sheet_name, basepath='../OpenExposureData'):
         na_values=[],
     )
 
-    #return pd.read_excel(
-    #    source_excel_path,
-    #    sheet_name=excel_sheet_name,
-    #    dtype={"Default": str},
-    #    keep_default_na=False,
-    #    na_values=[],
-    #)
-
 
 def extract_spec_to_json(output_json_path):
     """
