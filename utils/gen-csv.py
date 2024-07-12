@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import pandas as pd
 import csv
@@ -33,18 +35,18 @@ for sheet_name in sheet_names:
 
     # Strip spaces out of the sheet name
     sanitized_sheet_name = sheet_name.replace(" ", "")
- 
+
     # Remove specified columns if they exist in the DataFrame
     if sheet_name in columns_to_remove:
         df = df.drop(columns=columns_to_remove[sheet_name], errors='ignore')
-    
+
     # Identify and remove unnamed columns
     unnamed_columns = [col for col in df.columns if 'Unnamed' in col]
     df.drop(unnamed_columns, axis=1, inplace=True)
 
     # Define the CSV file path
     csv_file_path = os.path.join(output_directory, '{}.csv'.format(sanitized_sheet_name))
-    
+
     # Export the DataFrame to a CSV file with double quotes for strings
     df.to_csv(csv_file_path, index=False, quoting=csv.QUOTE_ALL, encoding='utf-8')
 
