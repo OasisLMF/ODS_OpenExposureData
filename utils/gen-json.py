@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-import click
 import json
 import pandas as pd
 import pathlib
+import os
 
 pd_converter = {
     "0 or 1": "Int8",
@@ -37,53 +37,26 @@ dtype_to_python = {
 }
 
 
-@click.group()
-def cli():
-    pass
 
 
-@cli.command("csv")
-@click.option(
-    "--source-excel-path", required=True, default=None, help="Path to MS excel sheet"
-)
-@click.option(
-    "--output-csv-path",
-    default="OpenExposureData_Spec.csv",
-    help="Path to write csv file",
-)
-@click.option(
-    "--excel-sheet-name", default="OED Input Fields", help="Sheet label to extract"
-)
-def extract_spec_to_csv(source_excel_path, output_csv_path, excel_sheet_name):
-    """
-    convert an Excel sheet to a csv file
-
-    Args:
-        source_excel_path (str): path to the Excel ods_schema
-        output_csv_path (str): output path
-        excel_sheet_name (str): name of the sheet to extract
-    """
-    df_spec = pd.read_excel(
-        source_excel_path,
-        sheet_name=excel_sheet_name,
+def _read_oed_data(sheet_name, basepath='../OpenExposureData'):
+    return pd.read_csv(
+        os.path.join(basepath, f"{sheet_name}.csv"),
         dtype={"Default": str},
         keep_default_na=False,
         na_values=[],
     )
-    df_spec.to_csv(path_or_buf=output_csv_path, encoding="utf-8", mode="w", index=False)
-    print(
-        f'Written CSV spec: "{output_csv_path}"  \noutput based on file: "{source_excel_path}", sheet: "{excel_sheet_name}"'
-    )
+
+    #return pd.read_excel(
+    #    source_excel_path,
+    #    sheet_name=excel_sheet_name,
+    #    dtype={"Default": str},
+    #    keep_default_na=False,
+    #    na_values=[],
+    #)
 
 
-@cli.command("json")
-@click.option(
-    "--source-excel-path", required=True, default=None, help="Path to MS excel sheet"
-)
-@click.option(
-    "--output-json-path", default="oed.json", help="Path to write json oed file"
-)
-def extract_spec_to_json(source_excel_path, output_json_path):
+def extract_spec_to_json(output_json_path):
     """
     read an Excel ods_schema (OpenExposureData_Spec.xlsx) and write relevant information from each sheet to a json file
 
@@ -92,25 +65,16 @@ def extract_spec_to_json(source_excel_path, output_json_path):
         output_json_path (str): path to the json output
     """
 
-    def _read_excel(excel_sheet_name):
-        return pd.read_excel(
-            source_excel_path,
-            sheet_name=excel_sheet_name,
-            dtype={"Default": str},
-            keep_default_na=False,
-            na_values=[],
-        )
-
     ods_schema = {}
-    ods_schema["input_fields"] = get_ods_input_fields(_read_excel("OEDInputFields"))
-    ods_schema["perils"] = get_ods_perils(_read_excel("PerilValues"), _read_excel("PerilsCovered"))
-    ods_schema["occupancy"] = get_occupancy(_read_excel("OccupancyValues"))
-    ods_schema["construction"] = get_construction(_read_excel("ConstructionValues"))
-    ods_schema["country"] = get_country(_read_excel("CountryValues"))
-    ods_schema["area"] = get_area(_read_excel("AreaCodeValues"))
-    ods_schema["cr_field"] = get_cr_field(_read_excel("OEDCRFieldAppendix"))
+    ods_schema["input_fields"] = get_ods_input_fields(_read_oed_data("OEDInputFields"))
+    ods_schema["perils"] = get_ods_perils(_read_oed_data("PerilValues"), _read_oed_data("PerilsCovered"))
+    ods_schema["occupancy"] = get_occupancy(_read_oed_data("OccupancyValues"))
+    ods_schema["construction"] = get_construction(_read_oed_data("ConstructionValues"))
+    ods_schema["country"] = get_country(_read_oed_data("CountryValues"))
+    ods_schema["area"] = get_area(_read_oed_data("AreaCodeValues"))
+    ods_schema["cr_field"] = get_cr_field(_read_oed_data("OEDCRFieldAppendix"))
     try:
-        ods_schema["versioning"] = get_versioning(_read_excel("Versioning"))
+        ods_schema["versioning"] = get_versioning(_read_oed_data("Versioning"))
     except ValueError:
         ods_schema["versioning"] = {}
 
@@ -190,9 +154,6 @@ def get_ods_perils(perils_df, perils_cov_df):
     Returns:
         dict with info on perils and mapping between peril and list of sub perils
     """
-
-
-    import ipdb; ipdb.set_trace()
 
 
     return {
@@ -424,4 +385,4 @@ def extract_valid_value_range(valid_value_range, dtype):
 
 
 if __name__ == "__main__":
-    cli()
+    extract_spec_to_json('csv-to-spec.json')
