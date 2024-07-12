@@ -61,14 +61,14 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: extracted_spec
-        path: ${{ env.json_path_out }}
+        path: ${{ env.JSON_PATH_OUT }}
         retention-days: 5
 
     - name: Store Excel
       uses: actions/upload-artifact@v3
       with:
         name: excel_spec
-        path: ${{ env.excel_path_out }}
+        path: ${{ env.EXCEL_PATH_OUT }}
         retention-days: 5
 
     - name: Build output
