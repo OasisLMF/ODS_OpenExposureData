@@ -37,6 +37,7 @@ dtype_to_python = {
     "category": str,
 }
 
+# Directory containing the CSV files
 source_csv_default = pathlib.Path(os.path.dirname(os.path.realpath(__file__))).parent.joinpath('OpenExposureData')
 
 
