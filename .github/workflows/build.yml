@@ -21,7 +21,7 @@ jobs:
       oed_json_spec: ${{ steps.build_result.outputs.oed_json_spec }}
       oed_excel_spec: ${{ steps.build_result.outputs.oed_excel_spec }}
     env:
-      SPEC_PATH_IN: './OpenExposureData/OpenExposureData'
+      SPEC_PATH_IN: './OpenExposureData'
       JSON_PATH_OUT: './ods_tools/data/OpenExposureData_Spec.json'
       EXCEL_PATH_OUT: './ods_tools/data/OpenExposureData_Spec.xlsx'
 
@@ -51,24 +51,20 @@ jobs:
         python-version: 3.9
     - run: pip install pip-tools pandas pyarrow openpyxl click tox
 
-    - name: Create JSON spec
-      run: ./utils/gen-json.py
-            --source-csv-dir ${{ env.SPEC_PATH_IN }} \
-            --output-path ${{ env.JSON_PATH_OUT }}
+    - name: Create JSON
+      run: ./utils/gen-json.py --source-csv-dir ${{ env.SPEC_PATH_IN }} --output-path ${{ env.JSON_PATH_OUT }}
 
-    - name: Create JSON spec
-      run: ./utils/gen-excel.py
-            --source-csv-dir ${{ env.SPEC_PATH_IN }} \
-            --output-path ${{ env.EXCEL_PATH_OUT }}
+    - name: Create Excel
+      run: ./utils/gen-excel.py --source-csv-dir ${{ env.SPEC_PATH_IN }} --output-path ${{ env.EXCEL_PATH_OUT }}
 
-    - name: store json spec
+    - name: Store JSON
       uses: actions/upload-artifact@v3
       with:
         name: extracted_spec
         path: ${{ env.json_path_out }}
         retention-days: 5
 
-    - name: store excel spec
+    - name: Store Excel
       uses: actions/upload-artifact@v3
       with:
         name: excel_spec
