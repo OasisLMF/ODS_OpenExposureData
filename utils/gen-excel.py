@@ -9,19 +9,23 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 
 # List of CSV filenames in the desired order
 csv_files = [
-    'OEDInputFields.csv',
-    'PerilValues.csv',
-    'PerilsCovered.csv',
-    'FinancialCodeValues.csv',
-    'OccupancyValues.csv',
-    'ConstructionValues.csv',
-    'CurrencyValues.csv',
-    'CountryValues.csv',
+    'Abbreviations.csv',
     'AreaCodeValues.csv',
-    'OtherValues.csv',
+    'ConstructionValues.csv',
+    'CountryValues.csv',
+    'CoverageValues.csv',
+    'CurrencyValues.csv',
+    'FinancialCodeValues.csv',
+    'IndustryCodeValues.csv',
+    'OccupancyValues.csv',
     'OEDCRFieldAppendix.csv',
-    'Versioning.csv'
+    'OEDInputFields.csv',
+    'OtherValues.csv',
+    'PerilsCovered.csv',
+    'PerilValues.csv',
+    'Versioning.csv',
 ]
+
 
 # Directory containing the CSV files
 source_csv_default = pathlib.Path(os.path.dirname(os.path.realpath(__file__))).parent.joinpath('OpenExposureData')
