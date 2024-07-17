@@ -129,6 +129,7 @@
 "CodeProvision","2","Low Code","N/A"
 "CodeProvision","3","Moderate Code","N/A"
 "CodeProvision","4","High Code","N/A"
+"CommodityScheme","HS22","HS Nomenclature 2022 Edition","The Harmonized Commodity Description and Coding System generally referred to as ""Harmonized System"" or simply ""HS"" is a multipurpose international product nomenclature developed by the World Customs Organization (WCO)"
 "CompanyIDScheme","LEI","Legal Entity Identifier scheme","The Legal Entity Identifier (LEI) is an alphanumeric code, consisting of 20 characters, based on the international standard ISO 17442"
 "CompanyIDScheme","DUNS","Duns & Bradstreet scheme","The Dun & Bradstreet D‑U‑N‑S Number is a unique nine-digit identifier for businesses."
 "CompanyIDScheme","BIN","Bank Identification Number scheme","The Bank Identification Number (BIN) system is a globally recognized standard for identifying banks and financial institutions in payment card transactions."

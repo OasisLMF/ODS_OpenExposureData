@@ -554,3 +554,6 @@ Provide the generating capacity of each asset (e.g. for a turbine, this is the c
 "Acc","BIPOI","BI period of indemnity defined at policy level (in days, in increments of 0.5 days). Default value = 365 (1 year).","n/a","float","365","[0,3650]","O","n/a"
 "Loc","SoilLiquefiable","Defines whether a soil is susceptible to liquefaction or not.","O","int","0","[0,2]","n/a","n/a"
 "Acc","InsuredName","Full legal name of insured party","O","nvarchar(100)","n/a","","R","R"
+"Loc","CommoditySchemeXX","Commodity scheme eg. Harmonised System Commodity Codes. See 'Other Values'","CR","varchar(5)","n/a","","n/a","n/a"
+"Loc","CommodityCodeXX","Commodity code related to CommodityScheme. See 'Commodity Values'.","CR","varchar(10)","n/a","","n/a","n/a"
+"Loc","CommodityVintageXX","Vintage of commodity scheme used  (YYYY format)","O","smallint","0","[0,)","n/a","n/a"
