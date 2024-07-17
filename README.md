@@ -6,7 +6,7 @@
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
- <img src="images/ODS_LOGO.png" width = "400" /> 
+ <img src="Docs/images/ODS_LOGO.png" width = "400" /> 
 
 
 ## Mission Statement: 
@@ -18,33 +18,33 @@ Steering Committee Members:
 <table id="verticalalign">
     <tbody>
         <tr>
-            <td align="middle" valign="middle"><img src="images/Oasis_LOGO.png" width="250"/></td>
-            <td align="middle" valign="middle"><img src="images/NASDAQ_logo.png" width ="170"/></td>
-            <td align="middle" valign="middle"><img src="images/CoreLogic_logo_update.png" width ="130"/></td>
-            <td align="middle" valign="middle"><img src="images/AIR_Worldwide's_logo.jpeg" width ="70"/></td>
-            <td align="middle" valign="middle"><img src="images/JBA_logo.jpeg" width ="60"/></td>
-            <td align="middle" valign="middle"><img src="images/IF_Logo.png" width ="130"/></td>
-            <td align="middle" valign="middle"><img src="images/fathom-logo.jpeg" width="220"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/Oasis_LOGO.png" width="250"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/NASDAQ_logo.png" width ="170"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/CoreLogic_logo_update.png" width ="130"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/AIR_Worldwide's_logo.jpeg" width ="70"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/JBA_logo.jpeg" width ="60"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/IF_Logo.png" width ="130"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/fathom-logo.jpeg" width="220"/></td>
         </tr>
         <tr></tr>  <!--  empty line to avoid table zebra striping  -->
         <tr>
-            <td align="middle" valign="middle"><img src="images/RMS_logo.png" width ="120"/></td>
-            <td align="middle" valign="middle"><img src="images/zurich_logo.png" width ="80"/></td>
-            <td align="middle" valign="middle"><img src="images/Allianz_Logo.png" width ="110"/></td>
-            <td align="middle" valign="middle"><img src="images/ascot_logo.png" width ="60"/></td>
-            <td align="middle" valign="middle"><img src="images/Munich-RE-logo.jpeg" width ="180"/></td>
-            <td align="middle" valign="middle"><img src="images/renre_logo.png" width ="160"/></td>
-            <td align="middle" valign="middle"><img src="images/SwissRe_logo.jpg" width="120"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/RMS_logo.png" width ="120"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/zurich_logo.png" width ="80"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/Allianz_Logo.png" width ="110"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/ascot_logo.png" width ="60"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/Munich-RE-logo.jpeg" width ="180"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/renre_logo.png" width ="160"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/SwissRe_logo.jpg" width="120"/></td>
         </tr>
         <tr></tr>  <!--  empty line to avoid table zebra striping  -->
         <tr> 
-            <td align="middle" valign="middle"><img src="images/Aon_v2_logo.png" width ="70"/></td>
-            <td align="middle" valign="middle"><img src="images/wtw_v2.png" width ="80"/></td>
-            <td align="middle" valign="middle"><img src="images/GC_logo_v2.png" width ="250"/></td>
-            <td align="middle" valign="middle"><img src="images/Gallagher_logo.jpg" width ="180"/></td>
-            <td align="middle" valign="middle"><img src="images/bms_logo.jpeg" width ="90"/></td>
-            <td align="middle" valign="middle"><img src="images/Lloyds_logo.png" width ="100"/></td>
-            <td align="middle" valign="middle"><img src="images/idf_logo.jpg" height= "130" width="120"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/Aon_v2_logo.png" width ="70"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/wtw_v2.png" width ="80"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/GC_logo_v2.png" width ="250"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/Gallagher_logo.jpg" width ="180"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/bms_logo.jpeg" width ="90"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/Lloyds_logo.png" width ="100"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/idf_logo.jpg" height= "130" width="120"/></td>
         </tr>
     </tbody>
 </table>
@@ -68,11 +68,27 @@ https://oasislmf.org/open-data-standards
 &nbsp; 
 
 
+## Releases 
+
+| Version |  Excel Spec | JSON Spec | Release Notes | 
+| ------- | ----------- | --------- | ------------- |
+| 2.0.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/2.0.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/2.0.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/2.0.0) | 
+| 2.1.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/2.1.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/2.1.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/2.1.0) |
+| 2.2.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/2.2.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/2.2.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/2.2.0) |
+| 2.3.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/2.3.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/2.3.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/2.3.0) |
+| 3.0.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.0.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.0.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.0.0) |
+| 3.1.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.1.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.1.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.1.0) |
+| 3.2.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.2.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.2.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.2.0) |
+| 3.3.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.3.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.3.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.3.0) |
+| 3.4.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.4.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.4.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.4.0) |
+<!-- NEW VERSION TAG -->
+
+
 ## Structure of ODS
 
 The diagram below highlights the proposed, long-term structure of ODS and all the key components. Interoperability is vital to ensure efficient interaction across multiple databases, systems and external exposure management and data storage facilities.
 
-<img src="images/ODS_Diagram.png" width="900"/> &nbsp;
+<img src="Docs/images/ODS_Diagram.png" width="900"/> &nbsp;
 
 &nbsp; 
 
@@ -135,7 +151,7 @@ ODS is governed by a steering committee that meets periodically and is chaired b
 The governance and process around releases and updates of ODS can be found here but a schematic of the overview is shown below:
 https://github.com/OasisLMF/ODS_OpenExposureData/tree/develop/Docs
 
-<img src="images/ODS_Gov_Process_Structure_v0.3.png" width="1050"/> &nbsp;
+<img src="Docs/images/ODS_Gov_Process_Structure_v0.3.png" width="1050"/> &nbsp;
  
 A **Technical Working Group (TWG)** will maintain and update the assets that define the data standards. Although the TWG has a few core members from Oasis LMF and Nasdaq, its dynamic and will involve the users from the community who have proposed the updates or changes.
 

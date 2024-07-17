@@ -19,9 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       oed_json_spec: ${{ steps.build_result.outputs.oed_json_spec }}
+      oed_excel_spec: ${{ steps.build_result.outputs.oed_excel_spec }}
     env:
-      SPEC_PATH_IN: './OpenExposureData/Docs/OpenExposureData_Spec.xlsx'
-      SPEC_PATH_OUT: './ods_tools/data/OpenExposureData_Spec.json'
+      SPEC_PATH_IN: './OpenExposureData'
+      JSON_PATH_OUT: './ods_tools/data/OpenExposureData_Spec.json'
+      EXCEL_PATH_OUT: './ods_tools/data/OpenExposureData_Spec.xlsx'
 
     steps:
     - name: Github context
@@ -49,19 +51,28 @@ jobs:
         python-version: 3.9
     - run: pip install pip-tools pandas pyarrow openpyxl click tox
 
-    - name: Extract Spec
-      run: |
-        ./docker/extract_spec.py json\
-            --source-excel-path ${{ env.SPEC_PATH_IN }} \
-            --output-json-path ${{ env.SPEC_PATH_OUT }}
+    - name: Create JSON
+      run: ./utils/gen-json.py --source-csv-dir ${{ env.SPEC_PATH_IN }} --output-path ${{ env.JSON_PATH_OUT }}
 
-    - name: Store spec
+    - name: Create Excel
+      run: ./utils/gen-excel.py --source-csv-dir ${{ env.SPEC_PATH_IN }} --output-path ${{ env.EXCEL_PATH_OUT }}
+
+    - name: Store JSON
       uses: actions/upload-artifact@v3
       with:
         name: extracted_spec
-        path: ${{ env.SPEC_PATH_OUT }}
+        path: ${{ env.JSON_PATH_OUT }}
+        retention-days: 5
+
+    - name: Store Excel
+      uses: actions/upload-artifact@v3
+      with:
+        name: excel_spec
+        path: ${{ env.EXCEL_PATH_OUT }}
         retention-days: 5
 
     - name: Build output
       id: build_result
-      run: echo "oed_json_spec=OpenExposureData_Spec.json" >> $GITHUB_OUTPUT
+      run: |
+        echo "oed_json_spec=OpenExposureData_Spec.json" >> $GITHUB_OUTPUT
+        echo "oed_excel_spec=OpenExposureData_Spec.xlsx" >> $GITHUB_OUTPUT
