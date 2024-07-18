@@ -11,6 +11,7 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 csv_files = [
     'Abbreviations.csv',
     'AreaCodeValues.csv',
+    'CommodityValues.csv',
     'ConstructionValues.csv',
     'CountryValues.csv',
     'CoverageValues.csv',
