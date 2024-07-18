@@ -113,7 +113,7 @@ Examples of combining peril codes:
 | All perils covered | AA1 | 
 
 <a id="othervalues"></a>
-## OtherValues
+## Other Values
 
 The code lists in Other Values are generally closed, meaning that only values that appear in the list are allowed to be populated in the relevant OED field. There are a few exceptions which are explained in the relevant OED field description. In particular;
 
@@ -129,7 +129,7 @@ User defined scheme names may be populated in these fields as long as they are p
 These codes may be used by the fields 'AccStatus' and 'PolStatus'. In addition to the codes listed in OtherValues, users may enter any other single character code for their own purposes.
 
 
-<a id="oedinputfields"></a>
+<a id="oedcrfieldappendix"></a>
 ## OED CR Field Appendix
 
 Notes on Conditionally Required (CR) fields;
