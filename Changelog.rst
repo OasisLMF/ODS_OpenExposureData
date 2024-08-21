@@ -1,6 +1,28 @@
 ODS Changelog
 ==================
 
+`v4.0.0`_
+-----------
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/207) - [Specification] Repo restructure and tidy up
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/194) - [Specification] Formally assign ids to coverages in OED specification
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/201) - [Specification] Introduce required field column by exposure class
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/196) - [Specification] Industry Codes table refactor
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/192) - [Specification] Update how the OED specification is stored, move from excel to csv
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/205) - [Specification] Update data examples for v4.0.0
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/206) - [Specification] Update general documentation for Cyber and Liability
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/193) - [All] Correct AreaCode for Queensland to QLD
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/185) - [Property] LocPopNumber no longer needed after merge with property loc file
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/191) - [Property] OED fields update for offshore assets modelling
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/181) - [Property] Clarify relationship between "required field" and "blanks allowed" in OED Spec
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/187) - [Property] Original Currency field should not default to 0
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/186) - [Property, Cyber] BIWaitingPeriod change datatype from smallint to float
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/173) - [Cyber] Do not include implicit business logic in the schema design
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/182) - [Cyber, Liability] Integration of Cyber and Liability into Property specification
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/188) - [Cyber, Liability] Financial coverages and field name revisions
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/202) - [Marine] Integration into OED
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/210) - [Marine] Additional Occupancy codes for Marine Cargo to Accompany Current Marine Construction Codes
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/162) - [Reinsurance] OriginalCurrency and RateOfExchange fields should not be in ReinsScope
+
 `v3.4.0`_
 -----------
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/195) - [Property] Correct Data Type of SoilType from float to tinyint and valid values from [0,) to [0,1]
