@@ -10,7 +10,7 @@ ODS Changelog
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/192) - [Specification] Update how the OED specification is stored, move from excel to csv
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/205) - [Specification] Update data examples for v4.0.0
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/206) - [Specification] Update general documentation for Cyber and Liability
-* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/193) - [All] Correct AreaCode for Queensland to QLD
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/193) - [Property] Correct AreaCode for Queensland to QLD
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/185) - [Property] LocPopNumber no longer needed after merge with property loc file
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/191) - [Property] OED fields update for offshore assets modelling
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/181) - [Property] Clarify relationship between "required field" and "blanks allowed" in OED Spec
