@@ -35,6 +35,20 @@ jobs:
 
 
     steps:
+    - name: Github context
+      run:   echo "$GITHUB_CONTEXT"
+      shell: bash
+      env:
+       GITHUB_CONTEXT: ${{ toJson(github) }}
+
+    - name: build context
+      run:   echo "$GITHUB_CONTEXT"
+      shell: bash
+      env:
+       GITHUB_CONTEXT: ${{ toJson(needs) }}
+    
+
+
     #- name: is branch valid for release
     #  if: ${{ !startsWith(github.ref_name , 'release/') }}
     #  run: |
