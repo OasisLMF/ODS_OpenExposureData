@@ -35,34 +35,20 @@ jobs:
 
 
     steps:
-    - name: Github context
-      run:   echo "$GITHUB_CONTEXT"
-      shell: bash
-      env:
-       GITHUB_CONTEXT: ${{ toJson(github) }}
+    - name: is branch valid for release
+      if: ${{ !startsWith(github.ref_name , 'release/') }}
+      run: |
+        echo "Releases must be trigged on branch named 'release/x.x.x'"
+        exit 1
 
-    - name: build context
-      run:   echo "$GITHUB_CONTEXT"
-      shell: bash
-      env:
-       GITHUB_CONTEXT: ${{ toJson(needs) }}
-    
-
-
-    #- name: is branch valid for release
-    #  if: ${{ !startsWith(github.ref_name , 'release/') }}
-    #  run: |
-    #    echo "Releases must be trigged on branch named 'release/x.x.x'"
-    #    exit 1
-
-    #- name: Check tag is valid for release
-    #  if: env.PRE_RELEASE == 'false'
-    #  run: |
-    #    VALID=$(echo ${{ env.RELEASE_TAG }} | grep -oPc "^(\d+)\.(\d+)\.(\d+)$")
-    #    if [[ ! "$VALID" == 1 ]]; then
-    #        echo "Release Tag ${{ env.RELEASE_TAG }} is not valid"
-    #        exit 1
-    #    fi
+    - name: Check tag is valid for release
+      if: env.PRE_RELEASE == 'false'
+      run: |
+        VALID=$(echo ${{ env.RELEASE_TAG }} | grep -oPc "^(\d+)\.(\d+)\.(\d+)$")
+        if [[ ! "$VALID" == 1 ]]; then
+            echo "Release Tag ${{ env.RELEASE_TAG }} is not valid"
+            exit 1
+        fi
 
     - name: Check tag is valid for pre-release
       if: env.PRE_RELEASE == 'true'
@@ -157,32 +143,31 @@ jobs:
         asset_name: ${{ needs.build.outputs.excel_filename }}
         asset_content_type: application/octet-stream
 
+    # --- Slack notify --- #
+    - name: slack message vars
+      id: slack_vars
+      run: |
+        HEAD=$(echo "*${{ github.event.repository.name}} Release* (${{ env.RELEASE_TAG }})")
+        DATE=$(date)
+        TITLE=$(echo "• <https://github.com/${{ github.repository }}/releases/tag/${{ env.RELEASE_TAG }}|${{ github.event.repository.name }} ${{ env.RELEASE_TAG }} - Release Notes>")
+        JOB_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        echo "heading=$HEAD" >> $GITHUB_OUTPUT
+        echo "run_date=$DATE" >> $GITHUB_OUTPUT
+        echo "title=$TITLE" >> $GITHUB_OUTPUT
+        echo "run_url=$JOB_URL" >> $GITHUB_OUTPUT
+        echo "run_id=${{ github.run_id }}"  >> $GITHUB_OUTPUT
+        echo "branch=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+        echo "run_status=${{ job.status }}" >> $GITHUB_OUTPUT
 
-#    # --- Slack notify --- #
-#    - name: slack message vars
-#      id: slack_vars
-#      run: |
-#        HEAD=$(echo "*${{ github.event.repository.name}} Release* (${{ env.RELEASE_TAG }})")
-#        DATE=$(date)
-#        TITLE=$(echo "• <https://github.com/${{ github.repository }}/releases/tag/${{ env.RELEASE_TAG }}|${{ github.event.repository.name }} ${{ env.RELEASE_TAG }} - Release Notes>")
-#        JOB_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-#        echo "heading=$HEAD" >> $GITHUB_OUTPUT
-#        echo "run_date=$DATE" >> $GITHUB_OUTPUT
-#        echo "title=$TITLE" >> $GITHUB_OUTPUT
-#        echo "run_url=$JOB_URL" >> $GITHUB_OUTPUT
-#        echo "run_id=${{ github.run_id }}"  >> $GITHUB_OUTPUT
-#        echo "branch=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-#        echo "run_status=${{ job.status }}" >> $GITHUB_OUTPUT
-#
-#  slack:
-#    uses: OasisLMF/OasisLMF/.github/workflows/notify.yml@main
-#    secrets: inherit
-#    needs: release
-#    with:
-#      heading: ${{ needs.release.outputs.heading }}
-#      title: ${{ needs.release.outputs.title }}
-#      build_branch: ${{ needs.release.outputs.build_branch }}
-#      run_url: ${{ needs.release.outputs.run_url }}
-#      run_id: ${{ needs.release.outputs.run_id }}
-#      run_status: ${{ needs.release.outputs.run_status }}
-#      run_date: ${{ needs.release.outputs.run_date }}
+  slack:
+    uses: OasisLMF/OasisLMF/.github/workflows/notify.yml@main
+    secrets: inherit
+    needs: release
+    with:
+      heading: ${{ needs.release.outputs.heading }}
+      title: ${{ needs.release.outputs.title }}
+      build_branch: ${{ needs.release.outputs.build_branch }}
+      run_url: ${{ needs.release.outputs.run_url }}
+      run_id: ${{ needs.release.outputs.run_id }}
+      run_status: ${{ needs.release.outputs.run_status }}
+      run_date: ${{ needs.release.outputs.run_date }}
