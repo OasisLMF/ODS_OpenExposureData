@@ -74,6 +74,14 @@ jobs:
         GIT_EMAIL: ${{ secrets.BUILD_GIT_EMAIL }}
         GIT_USERNAME: ${{ secrets.BUILD_GIT_USERNAME }}
 
+    - name: Update Readme
+      env:
+        GITHUB_TOKEN: ${{ secrets.BUILD_GIT_TOKEN }}
+      run: |
+        ./utils/update-readme-release.sh ${{ env.RELEASE_TAG }}
+        git add ./README.md
+        git commit -m 'Update Readme.md'
+
     - name: Tag Release
       env:
         GITHUB_TOKEN: ${{ secrets.BUILD_GIT_TOKEN }}
@@ -82,9 +90,16 @@ jobs:
         git tag ${{ env.RELEASE_TAG }}
 
     - name: Download JSON spec
-      uses: actions/download-artifact@v4.1.7
+      uses: actions/download-artifact@v4
       with:
         name: extracted_spec
+        path: ${{ github.workspace }}/
+
+
+    - name: Download EXCEL spec
+      uses: actions/download-artifact@v4
+      with:
+        name: excel_spec
         path: ${{ github.workspace }}/
 
     # --- Create Release --- #
@@ -105,7 +120,7 @@ jobs:
         draft: false
         prerelease: ${{ env.PRE_RELEASE }}
 
-    # --- Attach build assest --- #
+    # --- Attach build assests --- #
     - name: Upload JSON Spec
       id: upload-source-release-asset
       uses: actions/upload-release-asset@v1
@@ -113,8 +128,19 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.BUILD_GIT_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{ github.workspace }}/${{ needs.build.outputs.spec_filename }}
-        asset_name: ${{ needs.build.outputs.spec_filename }}
+        asset_path: ${{ github.workspace }}/${{ needs.build.outputs.json_filename }}
+        asset_name: ${{ needs.build.outputs.json_filename }}
+        asset_content_type: application/octet-stream
+
+    - name: Upload EXCEL Spec
+      id: upload-excel-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.BUILD_GIT_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ github.workspace }}/${{ needs.build.outputs.excel_filename }}
+        asset_name: ${{ needs.build.outputs.excel_filename }}
         asset_content_type: application/octet-stream
 
     # --- Slack notify --- #

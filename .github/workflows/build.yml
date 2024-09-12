@@ -9,9 +9,12 @@ on:
         required: false
         type: string
     outputs:
-      spec_filename:
+      json_filename:
         description: "OED JSON specification"
         value: ${{ jobs.build.outputs.oed_json_spec }}
+      excel_filename:
+        description: "OED EXCEL specification"
+        value: ${{ jobs.build.outputs.oed_excel_spec }}
 
 jobs:
   build:
@@ -36,7 +39,7 @@ jobs:
       uses: actions/checkout@v3
       if: inputs.ods_branch == ''
       with:
-        ref: ${{ github.ref_name }}
+        ref: ${{ github.ref }}
 
     - name: Clone (workflow_call)
       uses: actions/checkout@v3
@@ -58,18 +61,18 @@ jobs:
       run: ./utils/gen-excel.py --source-csv-dir ${{ env.SPEC_PATH_IN }} --output-path ${{ env.EXCEL_PATH_OUT }}
 
     - name: Store JSON
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: extracted_spec
         path: ${{ env.JSON_PATH_OUT }}
-        retention-days: 5
+        retention-days: 14
 
     - name: Store Excel
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: excel_spec
         path: ${{ env.EXCEL_PATH_OUT }}
-        retention-days: 5
+        retention-days: 14
 
     - name: Build output
       id: build_result
