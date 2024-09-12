@@ -9,9 +9,12 @@ on:
         required: false
         type: string
     outputs:
-      spec_filename:
+      json_filename:
         description: "OED JSON specification"
         value: ${{ jobs.build.outputs.oed_json_spec }}
+      excel_filename:
+        description: "OED EXCEL specification"
+        value: ${{ jobs.build.outputs.oed_excel_spec }}
 
 jobs:
   build:

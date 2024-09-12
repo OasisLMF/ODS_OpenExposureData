@@ -22,7 +22,7 @@ jobs:
     uses: OasisLMF/ODS_Tools/.github/workflows/build.yml@main
     secrets: inherit
     with:
-      oed_spec_json: ${{ needs.build_spec.outputs.spec_filename }}
+      oed_spec_json: ${{ needs.build_spec.outputs.json_filename }}
       ods_branch: ${{ github.event_name != 'workflow_dispatch' && 'main' ||  inputs.ods_tools_branch }}
 
 
