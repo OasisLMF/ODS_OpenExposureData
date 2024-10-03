@@ -1,0 +1,8 @@
+PortNumber,AccNumber,LocNumber,CountryCode,StreetAddress,PostalCode,City,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,NumberOfBuildings,LocPerilsCovered,BuildingTIV,OtherTIV,ContentsTIV,BITIV,BIPOI,LocCurrency,SprinklerType,PercentSprinklered,ContentsWindVuln,ContentsFloodVuln,ContentsQuakeVuln,OEDVersion,OriginalCurrency,RateOfExchange,CommodityScheme1,CommodityCode1,CommodityVintage1
+Marine Cargo,MC1,L1,AU,,,,NSW,1400,6000,,,1,AA1,13000000,0,60000000,0,,AUD,0,0,,,,4.0.0,,,HS22,10,2022
+Marine Cargo,MC1,L2,AU,,,,QLD,1400,6000,,,1,AA1,11021573.17,0,44349261.07,0,,AUD,0,0,,,,4.0.0,,,HS22,11,2022
+Marine Cargo,MC1,L3,AU,,,,NSW,1400,6000,,,1,AA1,8085118,0,32493751,0,,AUD,0,0,,,,4.0.0,,,HS22,12,2022
+Marine Cargo,MC1,L4,AU,,,,NSW,1400,6000,,,1,AA1,7975880.609,0,32393273.87,0,,AUD,0,0,,,,4.0.0,,,HS22,13,2022
+Marine Cargo,MC1,L5,AU,,,,ACT,1400,6000,,,1,AA1,6482830.086,0,26550963.79,0,,AUD,1,0.5,,,,4.0.0,,,HS22,14,2022
+Marine Cargo,MC1,L6,AU,,,,NSW,1400,6000,,,1,AA1,6482329,0,26550319.83,0,,AUD,2,1,,,,4.0.0,,,HS22,15,2022
+Marine Cargo,MC1,L7,AU,,,,NSW,1400,6000,,,1,AA1,8577665.727,0,24372133.55,0,,AUD,4,0.75,,,,4.0.0,,,HS22,16,2022
