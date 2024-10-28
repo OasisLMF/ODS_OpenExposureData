@@ -230,7 +230,7 @@ def get_occupancy(occupancy_df):
             [
                 "Category",
                 "OED Code",
-                "CEDE code",
+                "AIR code",
                 "Name",
                 "Description",
                 "Code Range",
@@ -256,7 +256,7 @@ def get_construction(construction_df):
             [
                 "Category",
                 "OED Code",
-                "CEDE code",
+                "AIR code",
                 "Name",
                 "Description",
                 "Code Range",
