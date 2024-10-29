@@ -224,15 +224,15 @@ AreaCode,CA,BC,British Columbia,Province
 AreaCode,CA,YT,Yukon,Province
 AreaCode,CA,NT,North West Territories,Province
 AreaCode,CA,NU,Nunavut,Province
-AreaCode,CH,1,Zürich,Region
-AreaCode,CH,2,Bern,Region
-AreaCode,CH,3,Luzern,Region
-AreaCode,CH,4,Uri,Region
-AreaCode,CH,5,Schwyz,Region
-AreaCode,CH,6,Obwalden,Region
-AreaCode,CH,7,Nidwalden,Region
-AreaCode,CH,8,Glarus,Region
-AreaCode,CH,9,Zug,Region
+AreaCode,CH,01,Zürich,Region
+AreaCode,CH,02,Bern,Region
+AreaCode,CH,03,Luzern,Region
+AreaCode,CH,04,Uri,Region
+AreaCode,CH,05,Schwyz,Region
+AreaCode,CH,06,Obwalden,Region
+AreaCode,CH,07,Nidwalden,Region
+AreaCode,CH,08,Glarus,Region
+AreaCode,CH,09,Zug,Region
 AreaCode,CH,10,Fribourg,Region
 AreaCode,CH,11,Solothurn,Region
 AreaCode,CH,12,Basel-Stadt,Region
@@ -250,15 +250,15 @@ AreaCode,CH,23,Valais,Region
 AreaCode,CH,24,Neuchâtel,Region
 AreaCode,CH,25,Genève,Region
 AreaCode,CH,26,Jura,Region
-AreaCode,CL,1,Tarapacá,State
-AreaCode,CL,2,Antofagasta,State
-AreaCode,CL,3,Atacama,State
-AreaCode,CL,4,Coquimbo,State
-AreaCode,CL,5,Valparaíso,State
-AreaCode,CL,6,O'Higgins,State
-AreaCode,CL,7,Maule,State
-AreaCode,CL,8,Biobío,State
-AreaCode,CL,9,Araucanía,State
+AreaCode,CL,01,Tarapacá,State
+AreaCode,CL,02,Antofagasta,State
+AreaCode,CL,03,Atacama,State
+AreaCode,CL,04,Coquimbo,State
+AreaCode,CL,05,Valparaíso,State
+AreaCode,CL,06,O'Higgins,State
+AreaCode,CL,07,Maule,State
+AreaCode,CL,08,Biobío,State
+AreaCode,CL,09,Araucanía,State
 AreaCode,CL,10,Los Lagos,State
 AreaCode,CL,11,Aisén,State
 AreaCode,CL,12,Magallanes y la Antártica,State
@@ -294,8 +294,8 @@ AreaCode,CN,62,Gansu,Province
 AreaCode,CN,63,Qinghai,Province
 AreaCode,CN,64,Ningxia,Province
 AreaCode,CN,65,Xinjiang,Province
-AreaCode,CO,5,Antioquia,Region
-AreaCode,CO,8,Atlántico,Region
+AreaCode,CO,05,Antioquia,Region
+AreaCode,CO,08,Atlántico,Region
 AreaCode,CO,11,Bogotá,Region
 AreaCode,CO,13,Bolívar,Region
 AreaCode,CO,15,Boyacá,Region
@@ -341,15 +341,15 @@ AreaCode,CU,6,Holguin,Province
 AreaCode,CU,7,Isla de la Juventud,Province
 AreaCode,CU,8,La Habana,Province
 AreaCode,CU,9,Las Tunas,Province
-AreaCode,DE,1,Schleswig-Holstein,Region
-AreaCode,DE,2,Hamburg,Region
-AreaCode,DE,3,Niedersachsen,Region
-AreaCode,DE,4,Bremen,Region
-AreaCode,DE,5,Nordrhein-Westfalen,Region
-AreaCode,DE,6,Hessen,Region
-AreaCode,DE,7,Rheinland-Pfalz,Region
-AreaCode,DE,8,Baden-Württemberg,Region
-AreaCode,DE,9,Bayern,Region
+AreaCode,DE,01,Schleswig-Holstein,Region
+AreaCode,DE,02,Hamburg,Region
+AreaCode,DE,03,Niedersachsen,Region
+AreaCode,DE,04,Bremen,Region
+AreaCode,DE,05,Nordrhein-Westfalen,Region
+AreaCode,DE,06,Hessen,Region
+AreaCode,DE,07,Rheinland-Pfalz,Region
+AreaCode,DE,08,Baden-Württemberg,Region
+AreaCode,DE,09,Bayern,Region
 AreaCode,DE,10,Saarland,Region
 AreaCode,DE,11,Berlin,Region
 AreaCode,DE,12,Brandenburg,Region
@@ -403,15 +403,15 @@ AreaCode,DO,6,Duarte,Province
 AreaCode,DO,7,Elias Pina,Province
 AreaCode,DO,8,El Seibo,Province
 AreaCode,DO,9,Espaillat,Province
-AreaCode,EC,1,Azuay,Province
-AreaCode,EC,2,Bolivar,Province
-AreaCode,EC,3,Canar,Province
-AreaCode,EC,4,Carchi,Province
-AreaCode,EC,5,Cotopaxi,Province
-AreaCode,EC,6,Chimborazo,Province
-AreaCode,EC,7,El Oro,Province
-AreaCode,EC,8,Esmeraldas,Province
-AreaCode,EC,9,Guayas,Province
+AreaCode,EC,01,Azuay,Province
+AreaCode,EC,02,Bolivar,Province
+AreaCode,EC,03,Canar,Province
+AreaCode,EC,04,Carchi,Province
+AreaCode,EC,05,Cotopaxi,Province
+AreaCode,EC,06,Chimborazo,Province
+AreaCode,EC,07,El Oro,Province
+AreaCode,EC,08,Esmeraldas,Province
+AreaCode,EC,09,Guayas,Province
 AreaCode,EC,10,Imbabura,Province
 AreaCode,EC,11,Loja,Province
 AreaCode,EC,12,Los Rios,Province
@@ -428,15 +428,15 @@ AreaCode,EC,22,Orellana,Province
 AreaCode,EC,23,Santo Domingo de los Tsachilas,Province
 AreaCode,EC,24,Santa Elena,Province
 AreaCode,EC,90,Zonas No Delimitadas,Province
-AreaCode,FR,1,Ain,County
-AreaCode,FR,2,Aisne,County
-AreaCode,FR,3,Allier,County
-AreaCode,FR,4,Alpes-de-Haute-Provence,County
-AreaCode,FR,5,Hautes-Alpes,County
-AreaCode,FR,6,Alpes-Maritimes,County
-AreaCode,FR,7,Ardèche,County
-AreaCode,FR,8,Ardennes,County
-AreaCode,FR,9,Ariège,County
+AreaCode,FR,01,Ain,County
+AreaCode,FR,02,Aisne,County
+AreaCode,FR,03,Allier,County
+AreaCode,FR,04,Alpes-de-Haute-Provence,County
+AreaCode,FR,05,Hautes-Alpes,County
+AreaCode,FR,06,Alpes-Maritimes,County
+AreaCode,FR,07,Ardèche,County
+AreaCode,FR,08,Ardennes,County
+AreaCode,FR,09,Ariège,County
 AreaCode,FR,10,Aube,County
 AreaCode,FR,11,Aude,County
 AreaCode,FR,12,Aveyron,County
@@ -525,7 +525,7 @@ AreaCode,FR,93,Seine-Saint-Denis,County
 AreaCode,FR,94,Val-de-Marne,County
 AreaCode,FR,95,Val-d'Oise,County
 AreaCode,FR,99,Monaco,County
-AreaCode,G2,1,Alabama,Administrative Region
+AreaCode,G2,01,Alabama,Administrative Region
 AreaCode,G2,12,Florida,Administrative Region
 AreaCode,G2,22,Louisiana,Administrative Region
 AreaCode,G2,28,Mississippi,Administrative Region
@@ -656,12 +656,12 @@ AreaCode,GB,WS,Walsall,Postcode Area
 AreaCode,GB,WV,Wolverhampton,Postcode Area
 AreaCode,GB,YO,York,Postcode Area
 AreaCode,GB,ZE,Lerwick,Postcode Area
-AreaCode,GR,1,Aitolias Kai Akarnanias,Province
-AreaCode,GR,3,Voiotia,Province
-AreaCode,GR,4,Eivoias,Province
-AreaCode,GR,5,Evritania,Province
-AreaCode,GR,6,Fthiotida,Province
-AreaCode,GR,7,Fokida,Province
+AreaCode,GR,01,Aitolias Kai Akarnanias,Province
+AreaCode,GR,03,Voiotia,Province
+AreaCode,GR,04,Eivoias,Province
+AreaCode,GR,05,Evritania,Province
+AreaCode,GR,06,Fthiotida,Province
+AreaCode,GR,07,Fokida,Province
 AreaCode,GR,11,Argolidos,Province
 AreaCode,GR,12,Arkadias,Province
 AreaCode,GR,13,Ahaia,Province
@@ -753,15 +753,15 @@ AreaCode,ID,81,Maluku,Province
 AreaCode,ID,82,Maluku Utara,Province
 AreaCode,ID,91,Papua Barat,Province
 AreaCode,ID,94,Papua,Province
-AreaCode,IE,1,Carlow,County/Sector
-AreaCode,IE,2,Dublin County Borough,County/Sector
-AreaCode,IE,3,South Dublin,County/Sector
-AreaCode,IE,4,Fingal,County/Sector
-AreaCode,IE,5,Dun Laoghaire-Rathdown,County/Sector
-AreaCode,IE,6,Kildare,County/Sector
-AreaCode,IE,7,Kilkenny,County/Sector
-AreaCode,IE,8,Laoighis,County/Sector
-AreaCode,IE,9,Longford,County/Sector
+AreaCode,IE,01,Carlow,County/Sector
+AreaCode,IE,02,Dublin County Borough,County/Sector
+AreaCode,IE,03,South Dublin,County/Sector
+AreaCode,IE,04,Fingal,County/Sector
+AreaCode,IE,05,Dun Laoghaire-Rathdown,County/Sector
+AreaCode,IE,06,Kildare,County/Sector
+AreaCode,IE,07,Kilkenny,County/Sector
+AreaCode,IE,08,Laoighis,County/Sector
+AreaCode,IE,09,Longford,County/Sector
 AreaCode,IE,10,Louth,County/Sector
 AreaCode,IE,11,Meath,County/Sector
 AreaCode,IE,12,Offaly,County/Sector
@@ -787,15 +787,15 @@ AreaCode,IE,34,Cavan,County/Sector
 AreaCode,IE,35,Donegal,County/Sector
 AreaCode,IE,36,Monaghan,County/Sector
 AreaCode,IE,37,Galway County Borough,County/Sector
-AreaCode,IL,1,Akko,District
-AreaCode,IL,2,Ashqelon,District
-AreaCode,IL,3,Beer Sheva,District
-AreaCode,IL,4,Gaza Area,District
-AreaCode,IL,5,Golan,District
-AreaCode,IL,6,Hadera,District
-AreaCode,IL,7,Haifa,District
-AreaCode,IL,8,Jericho,District
-AreaCode,IL,9,Jerusalem,District
+AreaCode,IL,01,Akko,District
+AreaCode,IL,02,Ashqelon,District
+AreaCode,IL,03,Beer Sheva,District
+AreaCode,IL,04,Gaza Area,District
+AreaCode,IL,05,Golan,District
+AreaCode,IL,06,Hadera,District
+AreaCode,IL,07,Haifa,District
+AreaCode,IL,08,Jericho,District
+AreaCode,IL,09,Jerusalem,District
 AreaCode,IL,10,Kinneret,District
 AreaCode,IL,11,Petah Tiqwa,District
 AreaCode,IL,12,Ramla,District
@@ -804,105 +804,105 @@ AreaCode,IL,14,Sharon,District
 AreaCode,IL,15,Tel Aviv,District
 AreaCode,IL,16,Yizreel,District
 AreaCode,IL,17,Zefat,District
-AreaCode,IT,1,Torino,Province
-AreaCode,IT,2,Vercelli,Province
-AreaCode,IT,3,Novara,Province
-AreaCode,IT,4,Cuneo,Province
-AreaCode,IT,5,Asti,Province
-AreaCode,IT,6,Alessandria,Province
-AreaCode,IT,7,Valle dAosta,Province
-AreaCode,IT,8,Imperia,Province
-AreaCode,IT,9,Savona,Province
-AreaCode,IT,10,Genova,Province
-AreaCode,IT,11,La Spezia,Province
-AreaCode,IT,12,Varese,Province
-AreaCode,IT,13,Como,Province
-AreaCode,IT,14,Sondrio,Province
-AreaCode,IT,15,Milano,Province
-AreaCode,IT,16,Bergamo,Province
-AreaCode,IT,17,Brescia,Province
-AreaCode,IT,18,Pavia,Province
-AreaCode,IT,19,Cremona,Province
-AreaCode,IT,20,Mantova,Province
-AreaCode,IT,21,Bolzano,Province
-AreaCode,IT,22,Trento,Province
-AreaCode,IT,23,Verona,Province
-AreaCode,IT,24,Vicenza,Province
-AreaCode,IT,25,Belluno,Province
-AreaCode,IT,26,Treviso,Province
-AreaCode,IT,27,Venezia,Province
-AreaCode,IT,28,Padova,Province
-AreaCode,IT,29,Rovigo,Province
-AreaCode,IT,30,Udine,Province
-AreaCode,IT,31,Gorizia,Province
-AreaCode,IT,32,Trieste,Province
-AreaCode,IT,33,Piacenza,Province
-AreaCode,IT,34,Parma,Province
-AreaCode,IT,35,Reggio Emilia,Province
-AreaCode,IT,36,Modena,Province
-AreaCode,IT,37,Bologna,Province
-AreaCode,IT,38,Ferrara,Province
-AreaCode,IT,39,Ravenna,Province
-AreaCode,IT,40,Forli-Cesena,Province
-AreaCode,IT,41,Pesaro E Urbino,Province
-AreaCode,IT,42,Ancona,Province
-AreaCode,IT,43,Macerata,Province
-AreaCode,IT,44,Ascoli Piceno,Province
-AreaCode,IT,45,Massa Carrara,Province
-AreaCode,IT,46,Lucca,Province
-AreaCode,IT,47,Pistoia,Province
-AreaCode,IT,48,Firenze,Province
-AreaCode,IT,49,Livorno,Province
-AreaCode,IT,50,Pisa,Province
-AreaCode,IT,51,Arezzo,Province
-AreaCode,IT,52,Siena,Province
-AreaCode,IT,53,Grosseto,Province
-AreaCode,IT,54,Perugia,Province
-AreaCode,IT,55,Terni,Province
-AreaCode,IT,56,Viterbo,Province
-AreaCode,IT,57,Rieti,Province
-AreaCode,IT,58,Roma,Province
-AreaCode,IT,59,Latina,Province
-AreaCode,IT,60,Frosinone,Province
-AreaCode,IT,61,Caserta,Province
-AreaCode,IT,62,Benevento,Province
-AreaCode,IT,63,Napoli,Province
-AreaCode,IT,64,Avellino,Province
-AreaCode,IT,65,Salerno,Province
-AreaCode,IT,66,L'Aquila,Province
-AreaCode,IT,67,Teramo,Province
-AreaCode,IT,68,Pescara,Province
-AreaCode,IT,69,Chieti,Province
-AreaCode,IT,70,Campobasso,Province
-AreaCode,IT,71,Foggia,Province
-AreaCode,IT,72,Bari,Province
-AreaCode,IT,73,Taranto,Province
-AreaCode,IT,74,Brindisi,Province
-AreaCode,IT,75,Lecce,Province
-AreaCode,IT,76,Potenza,Province
-AreaCode,IT,77,Matera,Province
-AreaCode,IT,78,Cosenza,Province
-AreaCode,IT,79,Catanzaro,Province
-AreaCode,IT,80,Reggio Calabria,Province
-AreaCode,IT,81,Trapani,Province
-AreaCode,IT,82,Palermo,Province
-AreaCode,IT,83,Messina,Province
-AreaCode,IT,84,Agrigento,Province
-AreaCode,IT,85,Caltanissetta,Province
-AreaCode,IT,86,Enna,Province
-AreaCode,IT,87,Catania,Province
-AreaCode,IT,88,Ragusa,Province
-AreaCode,IT,89,Siracusa,Province
-AreaCode,IT,90,Sassari,Province
-AreaCode,IT,91,Nuoro,Province
-AreaCode,IT,92,Cagliari,Province
-AreaCode,IT,93,Pordenone,Province
-AreaCode,IT,94,Isernia,Province
-AreaCode,IT,95,Oristano,Province
-AreaCode,IT,96,Biella,Province
-AreaCode,IT,97,Lecco,Province
-AreaCode,IT,98,Lodi,Province
-AreaCode,IT,99,Rimini,Province
+AreaCode,IT,001,Torino,Province
+AreaCode,IT,002,Vercelli,Province
+AreaCode,IT,003,Novara,Province
+AreaCode,IT,004,Cuneo,Province
+AreaCode,IT,005,Asti,Province
+AreaCode,IT,006,Alessandria,Province
+AreaCode,IT,007,Valle dAosta,Province
+AreaCode,IT,008,Imperia,Province
+AreaCode,IT,009,Savona,Province
+AreaCode,IT,010,Genova,Province
+AreaCode,IT,011,La Spezia,Province
+AreaCode,IT,012,Varese,Province
+AreaCode,IT,013,Como,Province
+AreaCode,IT,014,Sondrio,Province
+AreaCode,IT,015,Milano,Province
+AreaCode,IT,016,Bergamo,Province
+AreaCode,IT,017,Brescia,Province
+AreaCode,IT,018,Pavia,Province
+AreaCode,IT,019,Cremona,Province
+AreaCode,IT,020,Mantova,Province
+AreaCode,IT,021,Bolzano,Province
+AreaCode,IT,022,Trento,Province
+AreaCode,IT,023,Verona,Province
+AreaCode,IT,024,Vicenza,Province
+AreaCode,IT,025,Belluno,Province
+AreaCode,IT,026,Treviso,Province
+AreaCode,IT,027,Venezia,Province
+AreaCode,IT,028,Padova,Province
+AreaCode,IT,029,Rovigo,Province
+AreaCode,IT,030,Udine,Province
+AreaCode,IT,031,Gorizia,Province
+AreaCode,IT,032,Trieste,Province
+AreaCode,IT,033,Piacenza,Province
+AreaCode,IT,034,Parma,Province
+AreaCode,IT,035,Reggio Emilia,Province
+AreaCode,IT,036,Modena,Province
+AreaCode,IT,037,Bologna,Province
+AreaCode,IT,038,Ferrara,Province
+AreaCode,IT,039,Ravenna,Province
+AreaCode,IT,040,Forli-Cesena,Province
+AreaCode,IT,041,Pesaro E Urbino,Province
+AreaCode,IT,042,Ancona,Province
+AreaCode,IT,043,Macerata,Province
+AreaCode,IT,044,Ascoli Piceno,Province
+AreaCode,IT,045,Massa Carrara,Province
+AreaCode,IT,046,Lucca,Province
+AreaCode,IT,047,Pistoia,Province
+AreaCode,IT,048,Firenze,Province
+AreaCode,IT,049,Livorno,Province
+AreaCode,IT,050,Pisa,Province
+AreaCode,IT,051,Arezzo,Province
+AreaCode,IT,052,Siena,Province
+AreaCode,IT,053,Grosseto,Province
+AreaCode,IT,054,Perugia,Province
+AreaCode,IT,055,Terni,Province
+AreaCode,IT,056,Viterbo,Province
+AreaCode,IT,057,Rieti,Province
+AreaCode,IT,058,Roma,Province
+AreaCode,IT,059,Latina,Province
+AreaCode,IT,060,Frosinone,Province
+AreaCode,IT,061,Caserta,Province
+AreaCode,IT,062,Benevento,Province
+AreaCode,IT,063,Napoli,Province
+AreaCode,IT,064,Avellino,Province
+AreaCode,IT,065,Salerno,Province
+AreaCode,IT,066,L'Aquila,Province
+AreaCode,IT,067,Teramo,Province
+AreaCode,IT,068,Pescara,Province
+AreaCode,IT,069,Chieti,Province
+AreaCode,IT,070,Campobasso,Province
+AreaCode,IT,071,Foggia,Province
+AreaCode,IT,072,Bari,Province
+AreaCode,IT,073,Taranto,Province
+AreaCode,IT,074,Brindisi,Province
+AreaCode,IT,075,Lecce,Province
+AreaCode,IT,076,Potenza,Province
+AreaCode,IT,077,Matera,Province
+AreaCode,IT,078,Cosenza,Province
+AreaCode,IT,079,Catanzaro,Province
+AreaCode,IT,080,Reggio Calabria,Province
+AreaCode,IT,081,Trapani,Province
+AreaCode,IT,082,Palermo,Province
+AreaCode,IT,083,Messina,Province
+AreaCode,IT,084,Agrigento,Province
+AreaCode,IT,085,Caltanissetta,Province
+AreaCode,IT,086,Enna,Province
+AreaCode,IT,087,Catania,Province
+AreaCode,IT,088,Ragusa,Province
+AreaCode,IT,089,Siracusa,Province
+AreaCode,IT,090,Sassari,Province
+AreaCode,IT,091,Nuoro,Province
+AreaCode,IT,092,Cagliari,Province
+AreaCode,IT,093,Pordenone,Province
+AreaCode,IT,094,Isernia,Province
+AreaCode,IT,095,Oristano,Province
+AreaCode,IT,096,Biella,Province
+AreaCode,IT,097,Lecco,Province
+AreaCode,IT,098,Lodi,Province
+AreaCode,IT,099,Rimini,Province
 AreaCode,IT,100,Prato,Province
 AreaCode,IT,101,Crotone,Province
 AreaCode,IT,102,Vibo Valentia,Province
@@ -997,28 +997,28 @@ AreaCode,KY,4,North Side,District
 AreaCode,KY,5,West Bay,District
 AreaCode,KY,6,Little Cayman,District
 AreaCode,KY,7,Cayman Brac,District
-AreaCode,LU,1,Luxembourg-ville,District
-AreaCode,LU,2,Capellen,District
-AreaCode,LU,3,Esch-Alzette,District
-AreaCode,LU,5,Mersch,District
-AreaCode,LU,6,Clervaux,District
-AreaCode,LU,7,Diekirch,District
-AreaCode,LU,8,Redange,District
-AreaCode,LU,9,Wiltz,District
+AreaCode,LU,01,Luxembourg-ville,District
+AreaCode,LU,02,Capellen,District
+AreaCode,LU,03,Esch-Alzette,District
+AreaCode,LU,05,Mersch,District
+AreaCode,LU,06,Clervaux,District
+AreaCode,LU,07,Diekirch,District
+AreaCode,LU,08,Redange,District
+AreaCode,LU,09,Wiltz,District
 AreaCode,LU,10,Vianden,District
 AreaCode,LU,11,Echternach,District
 AreaCode,LU,12,Grevenmacher,District
 AreaCode,LU,13,Remich,District
 AreaCode,LU,40,Luxembourg-Campagne,District
-AreaCode,MX,1,Aguascalientes,State
-AreaCode,MX,2,Baja California,State
-AreaCode,MX,3,Baja California Sur,State
-AreaCode,MX,4,Campeche,State
-AreaCode,MX,5,Coahuila,State
-AreaCode,MX,6,Colima,State
-AreaCode,MX,7,Chiapas,State
-AreaCode,MX,8,Chihuahua,State
-AreaCode,MX,9,Mexico City / Distrito Federal,State
+AreaCode,MX,01,Aguascalientes,State
+AreaCode,MX,02,Baja California,State
+AreaCode,MX,03,Baja California Sur,State
+AreaCode,MX,04,Campeche,State
+AreaCode,MX,05,Coahuila,State
+AreaCode,MX,06,Colima,State
+AreaCode,MX,07,Chiapas,State
+AreaCode,MX,08,Chihuahua,State
+AreaCode,MX,09,Mexico City / Distrito Federal,State
 AreaCode,MX,10,Durango,State
 AreaCode,MX,11,Guanajuato,State
 AreaCode,MX,12,Guerrero,State
@@ -1054,15 +1054,15 @@ AreaCode,NL,28,Zuid-Holland,Province
 AreaCode,NL,29,Zeeland,Province
 AreaCode,NL,30,Noord-Brabant,Province
 AreaCode,NL,31,Limburg,Province
-AreaCode,NO,1,Østfold,District
-AreaCode,NO,2,Akershus,District
-AreaCode,NO,3,Oslo,District
-AreaCode,NO,4,Hedmark,District
-AreaCode,NO,5,Oppland,District
-AreaCode,NO,6,Buskerud,District
-AreaCode,NO,7,Vestfold,District
-AreaCode,NO,8,Telemark,District
-AreaCode,NO,9,Aust-Agder,District
+AreaCode,NO,01,Østfold,District
+AreaCode,NO,02,Akershus,District
+AreaCode,NO,03,Oslo,District
+AreaCode,NO,04,Hedmark,District
+AreaCode,NO,05,Oppland,District
+AreaCode,NO,06,Buskerud,District
+AreaCode,NO,07,Vestfold,District
+AreaCode,NO,08,Telemark,District
+AreaCode,NO,09,Aust-Agder,District
 AreaCode,NO,10,Vest-Agder,District
 AreaCode,NO,11,Rogaland,District
 AreaCode,NO,12,Hordaland,District
@@ -1074,15 +1074,15 @@ AreaCode,NO,18,Nordland,District
 AreaCode,NO,19,Troms,District
 AreaCode,NO,20,Finnmark,District
 AreaCode,NO,SJ,Svalbard and Jan Mayen Islands,District
-AreaCode,PE,1,Amazonas,State
-AreaCode,PE,2,Ancash,State
-AreaCode,PE,3,Apurímac,State
-AreaCode,PE,4,Arequipa,State
-AreaCode,PE,5,Ayacucho,State
-AreaCode,PE,6,Cajamarca,State
-AreaCode,PE,7,Callao,State
-AreaCode,PE,8,Cusco,State
-AreaCode,PE,9,Huancavelica,State
+AreaCode,PE,01,Amazonas,State
+AreaCode,PE,02,Ancash,State
+AreaCode,PE,03,Apurímac,State
+AreaCode,PE,04,Arequipa,State
+AreaCode,PE,05,Ayacucho,State
+AreaCode,PE,06,Cajamarca,State
+AreaCode,PE,07,Callao,State
+AreaCode,PE,08,Cusco,State
+AreaCode,PE,09,Huancavelica,State
 AreaCode,PE,10,Huánuco,State
 AreaCode,PE,11,Ica,State
 AreaCode,PE,12,Junín,State
@@ -1099,15 +1099,15 @@ AreaCode,PE,22,San Martín,State
 AreaCode,PE,23,Tacna,State
 AreaCode,PE,24,Tumbes,State
 AreaCode,PE,25,Ucayali,State
-AreaCode,PH,1,Ilocos Region,Region/State
-AreaCode,PH,2,Cagayan Valley,Region/State
-AreaCode,PH,3,Central Luzon,Region/State
-AreaCode,PH,4,Calabarzon,Region/State
-AreaCode,PH,5,Bicol Region,Region/State
-AreaCode,PH,6,Western Visayas,Region/State
-AreaCode,PH,7,Central Visayas,Region/State
-AreaCode,PH,8,Eastern Visayas,Region/State
-AreaCode,PH,9,Zamboanga Peninsula,Region/State
+AreaCode,PH,01,Ilocos Region,Region/State
+AreaCode,PH,02,Cagayan Valley,Region/State
+AreaCode,PH,03,Central Luzon,Region/State
+AreaCode,PH,04,Calabarzon,Region/State
+AreaCode,PH,05,Bicol Region,Region/State
+AreaCode,PH,06,Western Visayas,Region/State
+AreaCode,PH,07,Central Visayas,Region/State
+AreaCode,PH,08,Eastern Visayas,Region/State
+AreaCode,PH,09,Zamboanga Peninsula,Region/State
 AreaCode,PH,10,Northern Mindanao,Region/State
 AreaCode,PH,11,Davao Region,Region/State
 AreaCode,PH,12,Soccsksargen,Region/State
@@ -1194,15 +1194,15 @@ AreaCode,PR,93,Maricao,Municipality
 AreaCode,PR,95,Maunabo,Municipality
 AreaCode,PR,97,Mayaguez,Municipality
 AreaCode,PR,99,Moca,Municipality
-AreaCode,PT,1,Aveiro,District
-AreaCode,PT,2,Beja,District
-AreaCode,PT,3,Braga,District
-AreaCode,PT,4,Braganta,District
-AreaCode,PT,5,Castelo Branco,District
-AreaCode,PT,6,Coimbra,District
-AreaCode,PT,7,Évora,District
-AreaCode,PT,8,Faro,District
-AreaCode,PT,9,Guarda,District
+AreaCode,PT,01,Aveiro,District
+AreaCode,PT,02,Beja,District
+AreaCode,PT,03,Braga,District
+AreaCode,PT,04,Braganta,District
+AreaCode,PT,05,Castelo Branco,District
+AreaCode,PT,06,Coimbra,District
+AreaCode,PT,07,Évora,District
+AreaCode,PT,08,Faro,District
+AreaCode,PT,09,Guarda,District
 AreaCode,PT,10,Leiria,District
 AreaCode,PT,11,Lisboa,District
 AreaCode,PT,12,Portalegre,District
@@ -1223,14 +1223,14 @@ AreaCode,PT,46,Ilha do Pico,District
 AreaCode,PT,47,Ilha do Faial,District
 AreaCode,PT,48,Ilha das Flores,District
 AreaCode,PT,49,Ilha do Corvo,District
-AreaCode,SE,1,Stockholms län,Province
-AreaCode,SE,2,Uppsala län,Province
-AreaCode,SE,4,Södermanlands län,Province
-AreaCode,SE,5,Östergötlands län,Province
-AreaCode,SE,6,Jönköpings län,Province
-AreaCode,SE,7,Kronobergs län,Province
-AreaCode,SE,8,Kalmar län,Province
-AreaCode,SE,9,Gotlands län,Province
+AreaCode,SE,01,Stockholms län,Province
+AreaCode,SE,02,Uppsala län,Province
+AreaCode,SE,04,Södermanlands län,Province
+AreaCode,SE,05,Östergötlands län,Province
+AreaCode,SE,06,Jönköpings län,Province
+AreaCode,SE,07,Kronobergs län,Province
+AreaCode,SE,08,Kalmar län,Province
+AreaCode,SE,09,Gotlands län,Province
 AreaCode,SE,10,Blekinge län,Province
 AreaCode,SE,12,Skåne län,Province
 AreaCode,SE,13,Hallands län,Province
@@ -1247,15 +1247,15 @@ AreaCode,SE,25,Norrbottens län,Province
 AreaCode,TC,1,Caicos,District
 AreaCode,TC,2,Grand Turk Island,District
 AreaCode,TC,3,Salt Cay,District
-AreaCode,TR,1,Adana,Province
-AreaCode,TR,2,Adýyaman,Province
-AreaCode,TR,3,Afyonkarahisar,Province
-AreaCode,TR,4,Aðrý,Province
-AreaCode,TR,5,Amasya,Province
-AreaCode,TR,6,Ankara,Province
-AreaCode,TR,7,Antalya,Province
-AreaCode,TR,8,Artvin,Province
-AreaCode,TR,9,Aydýn,Province
+AreaCode,TR,01,Adana,Province
+AreaCode,TR,02,Adýyaman,Province
+AreaCode,TR,03,Afyonkarahisar,Province
+AreaCode,TR,04,Aðrý,Province
+AreaCode,TR,05,Amasya,Province
+AreaCode,TR,06,Ankara,Province
+AreaCode,TR,07,Antalya,Province
+AreaCode,TR,08,Artvin,Province
+AreaCode,TR,09,Aydýn,Province
 AreaCode,TR,10,Balýkesir,Province
 AreaCode,TR,11,Bilecik,Province
 AreaCode,TR,12,Bingöl,Province
@@ -1337,15 +1337,15 @@ AreaCode,TT,6,St. George,County/Sector
 AreaCode,TT,7,St. Patrick,County/Sector
 AreaCode,TT,8,Victoria,County/Sector
 AreaCode,TT,9,Tobago,County/Sector
-AreaCode,TW,1,Taipei County,County/Sector
-AreaCode,TW,2,Yilan County,County/Sector
-AreaCode,TW,3,Taoyuan County,County/Sector
-AreaCode,TW,4,Hsinchu County,County/Sector
-AreaCode,TW,5,Miaoli County,County/Sector
-AreaCode,TW,6,Taichung County,County/Sector
-AreaCode,TW,7,Changhua County,County/Sector
-AreaCode,TW,8,Nantou County,County/Sector
-AreaCode,TW,9,Yunlin County,County/Sector
+AreaCode,TW,01,Taipei County,County/Sector
+AreaCode,TW,02,Yilan County,County/Sector
+AreaCode,TW,03,Taoyuan County,County/Sector
+AreaCode,TW,04,Hsinchu County,County/Sector
+AreaCode,TW,05,Miaoli County,County/Sector
+AreaCode,TW,06,Taichung County,County/Sector
+AreaCode,TW,07,Changhua County,County/Sector
+AreaCode,TW,08,Nantou County,County/Sector
+AreaCode,TW,09,Yunlin County,County/Sector
 AreaCode,TW,10,Chiayi County,County/Sector
 AreaCode,TW,11,Tainan County,County/Sector
 AreaCode,TW,12,Kaohsiung County,County/Sector
@@ -1415,15 +1415,15 @@ AreaCode,US,WV,West Virginia,State
 AreaCode,US,WY,Wyoming,State
 AreaCode,VC,1,Saint Vincent,District
 AreaCode,VC,2,The Grenadines,District
-AreaCode,VE,1,Distrito Capital,State
-AreaCode,VE,2,Amazonas,State
-AreaCode,VE,3,Anzoátegui,State
-AreaCode,VE,4,Apure,State
-AreaCode,VE,5,Aragua,State
-AreaCode,VE,6,Barinas,State
-AreaCode,VE,7,Bolívar,State
-AreaCode,VE,8,Carabobo,State
-AreaCode,VE,9,Cojedes,State
+AreaCode,VE,01,Distrito Capital,State
+AreaCode,VE,02,Amazonas,State
+AreaCode,VE,03,Anzoátegui,State
+AreaCode,VE,04,Apure,State
+AreaCode,VE,05,Aragua,State
+AreaCode,VE,06,Barinas,State
+AreaCode,VE,07,Bolívar,State
+AreaCode,VE,08,Carabobo,State
+AreaCode,VE,09,Cojedes,State
 AreaCode,VE,10,Delta Amacuro,State
 AreaCode,VE,11,Falcón,State
 AreaCode,VE,12,Guárico,State
