@@ -56,7 +56,7 @@ jobs:
             --output-json-path ${{ env.SPEC_PATH_OUT }}
 
     - name: Store spec
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: extracted_spec
         path: ${{ env.SPEC_PATH_OUT }}

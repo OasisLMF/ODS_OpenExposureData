@@ -82,7 +82,7 @@ jobs:
         git tag ${{ env.RELEASE_TAG }}
 
     - name: Download JSON spec
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: extracted_spec
         path: ${{ github.workspace }}/
