@@ -1,6 +1,10 @@
 ODS Changelog
 ==================
 
+`v3.4.1`_
+-----------
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/220) - Fixed group Peril codes, ZZ1 is not represented in the group peril to individual peril mappings
+
 `v3.4.0`_
 -----------
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/195) - [Property] Correct Data Type of SoilType from float to tinyint and valid values from [0,) to [0,1]
