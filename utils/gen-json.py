@@ -74,6 +74,10 @@ def oed_spec_to_json(output_path, source_csv_dir):
         ods_schema["versioning"] = get_versioning(_read_oed_data("Versioning"))
     except ValueError:
         ods_schema["versioning"] = {}
+    try:
+        ods_schema["CoverageValues"] = get_coverage_values(_read_oed_data("CoverageValues"))
+    except ValueError:
+        print("no CoverageValues file found for this OED version")
 
     pathlib.Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w") as fp:
@@ -113,7 +117,7 @@ def get_ods_input_fields(ods_fields_df):
         )
 
     # split ods_fields per File Name
-    split_df = ods_fields_df["File Names"].str.split(";").apply(pd.Series, 1).stack()
+    split_df = ods_fields_df["File Names"].str.split(";").apply(pd.Series).stack()
     split_df = (
         split_df.set_axis(split_df.index.droplevel(-1)).rename("File Name").str.strip()
     )
@@ -271,7 +275,7 @@ def get_cr_field(cr_field_df):
     ).rename(columns={"File Name": "File Names"})
 
     # split ods_fields per File Name
-    split_df = cr_field_df["File Names"].str.split(";").apply(pd.Series, 1).stack()
+    split_df = cr_field_df["File Names"].str.split(";").apply(pd.Series).stack()
     split_df = (
         split_df.set_axis(split_df.index.droplevel(-1)).rename("File Name").str.strip()
     )
@@ -324,6 +328,16 @@ def get_versioning(version_values_df):
     }
     return version_dict
 
+def get_coverage_values(coverage_value_df):
+    """
+    get information on coverages
+    Args:
+        coverage_value_df (pd.DataFrame): coverages
+
+    Returns:
+        dict of information on coverages
+    """
+    return coverage_value_df.set_index("CoverageCode").to_dict(orient="index")
 
 def extract_valid_value_range(valid_value_range, dtype):
     """
