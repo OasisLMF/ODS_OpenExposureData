@@ -1,196 +1,196 @@
-"Category","Code","Name","Country","Notes"
-"Currency","AED","United Arab Emirates Dirham","Arab Emirates",""
-"Currency","AFA","Afghan Afghani (Retired)","Afghanistan","Historic ISO4217 standard code"
-"Currency","AFN","Afghanistan Afghani","Afghanistan",""
-"Currency","ALL","Albania Lek","Albania",""
-"Currency","AMD","Armenia Dram","Armenia",""
-"Currency","ANG","Netherlands Antillean Guilder","Netherlands",""
-"Currency","AOA","Angola Kwanza","Angola",""
-"Currency","AON","Novo kwanza (Retired)","Angola","Historic ISO4217 standard code"
-"Currency","ARS","Argentina Peso","Argentina",""
-"Currency","ATS","Austrian Schilling","Austria","Historic ISO4217 standard code"
-"Currency","AUD","Australia Dollar","Australia",""
-"Currency","AWG","Aruba Guilder","Netherlands",""
-"Currency","AZM","Old Azerbaijan Manat","Azerbaijan","Historic ISO4217 standard code"
-"Currency","AZN","Azerbaijan Manat","Azerbaijan",""
-"Currency","BAM","Bosnia Convertible Marks","Bosnia and Herzegovina",""
-"Currency","BBD","Barbados Dollar","Barbados",""
-"Currency","BDT","Bangladesh Taka","Bangladesh",""
-"Currency","BEF","Belgian Franc","Belgium","Historic ISO4217 standard code"
-"Currency","BGL","Bulgarian Lev","Bulgaria","Historic ISO4217 standard code"
-"Currency","BGN","Bulgaria Lev","Bulgaria",""
-"Currency","BHD","Bahrain Dinar","Bahrain",""
-"Currency","BIF","Burundi Franc","Burundi",""
-"Currency","BMD","Bermuda Dollar","Bermuda",""
-"Currency","BND","Brunei Dollar","Brunei",""
-"Currency","BOB","Bolivia Boliviano","Bolivia",""
-"Currency","BOV","Bolivia Mvdol","Bolivia",""
-"Currency","BRL","Brazil Real","Brazil",""
-"Currency","BSD","Bahamas Dollar","Bahamas",""
-"Currency","BTN","Bhutan Ngultrum","Bhutan",""
-"Currency","BWP","Botswana Pula","Botswana",""
-"Currency","BYN","Belarus Ruble","Belarus",""
-"Currency","BZD","Belize Dollar","Belize",""
-"Currency","CAD","Canada Dollar","Canada",""
-"Currency","CDF","DR Congo Franc Congolais","Congo, Dem Rep of / Zaire",""
-"Currency","CHF","Switzerland Franc","Switzerland",""
-"Currency","CLF","(Chile) Unidad de fomento","Chile",""
-"Currency","CLP","Chile Peso","Chile",""
-"Currency","CNY","Chinese Yuan","China",""
-"Currency","COP","Colombia Peso","Colombia",""
-"Currency","CRC","Costa Rica Colon","Costa Rica",""
-"Currency","CUP","Cuba Peso","Cuba",""
-"Currency","CVE","Cape Verde Escudo","Cape Verde",""
-"Currency","CYP","Cypriot Pound","Cyprus","Historic ISO4217 standard code"
-"Currency","CZK","Czech Republic Koruna","Czech Republic",""
-"Currency","DEM","Deutsche Mark","Germany","Historic ISO4217 standard code"
-"Currency","DJF","Djibouti Franc","Djibouti",""
-"Currency","DKK","Denmark Krone","Denmark",""
-"Currency","DOP","Dominican Rep. Peso","Dominican",""
-"Currency","DZD","Algeria Dinar","Algeria",""
-"Currency","EEK","Estonia Kroon","Estonia","Historic ISO4217 standard code"
-"Currency","EGP","Egypt Pound","Egypt",""
-"Currency","ERN","Eritrea Nakfa","Eritrea",""
-"Currency","ETB","Ethiopia Birr","Ethiopia",""
-"Currency","EUR","Euro","Europe",""
-"Currency","FJD","Fiji Dollar","Fiji",""
-"Currency","FKP","Falkland Islands Pound","Falkland Islands (Islas Malvinas)",""
-"Currency","FRF","French Franc","France","Historic ISO4217 standard code"
-"Currency","GBP","Great Britain Pound","United Kingdom",""
-"Currency","GEL","Georgia Lari","Georgia",""
-"Currency","GHC","Ghana Cedi (Old)","Ghana","Historic ISO4217 standard code"
-"Currency","GHS","Ghana Cedi","Ghana",""
-"Currency","GIP","Gibraltar Pound","Gibraltar",""
-"Currency","GMD","Gambia Dalasi","Gambia, The",""
-"Currency","GNF","Guinea Franc","Guinea",""
-"Currency","GRD","Greek Drachmas","Greece","Historic ISO4217 standard code"
-"Currency","GTQ","Guatemala Quetzal","Guatemala",""
-"Currency","GYD","Guyana Dollar","Guyana",""
-"Currency","HKD","Hong Kong Dollar","Hong Kong",""
-"Currency","HNL","Honduras Lempira","Honduras",""
-"Currency","HRK","Croatia Kuna","Croatia",""
-"Currency","HTG","Haiti Gourde","Haiti",""
-"Currency","HUF","Hungary Forint","Hungary",""
-"Currency","IDR","Indonesia Rupiah","Indonesia",""
-"Currency","IEP","Ireland Pound","Ireland","Historic ISO4217 standard code"
-"Currency","ILS","Israel New Shekel","Israel",""
-"Currency","INR"," India Rupee","India",""
-"Currency","IQD","Iraq Dinar","Iraq",""
-"Currency","IRR","Iran Rial","Iran",""
-"Currency","ISK","Iceland Krona","Iceland",""
-"Currency","ITL","Italian Lira","Italy","Historic ISO4217 standard code"
-"Currency","JMD","Jamaica Dollar","Jamaica",""
-"Currency","JOD","Jordan Dinar","Jordan",""
-"Currency","JPY","Japan Yen","Japan",""
-"Currency","KES","Kenya Shilling","Kenya",""
-"Currency","KGS","Kyrgyzstan Som","Kyrgyzstan",""
-"Currency","KHR","Cambodia Riel","Cambodia",""
-"Currency","KMF","Comoro Franc","Comoros",""
-"Currency","KPW","North Korea Won","Korea, North",""
-"Currency","KRW","South Korea Won","Republic of Korea",""
-"Currency","KWD"," Kuwait Dinar","Kuwait",""
-"Currency","KYD","Cayman Islands Dollar","Cayman Islands",""
-"Currency","KZT","Kazakhstan Tenge","Kazakhstan",""
-"Currency","LAK","Laos Kip","Laos",""
-"Currency","LBP","Lebanon Pound","Lebanon",""
-"Currency","LKR","Sri Lanka Rupee","Sri Lanka",""
-"Currency","LRD","Liberia Dollar","Liberia",""
-"Currency","LSL","Lesotho Loti","Lesotho",""
-"Currency","LTL","Lithuania Litas","Lithuania","Historic ISO4217 standard code"
-"Currency","LUF","Luxembourg Franc","Luxembourg","Historic ISO4217 standard code"
-"Currency","LVL","Latvia Lats","Latvia","Historic ISO4217 standard code"
-"Currency","LYD","Libya Dinar","Libya",""
-"Currency","MAD","Morocco Dirham","Morocco",""
-"Currency","MDL","Moldova Leu","Moldova",""
-"Currency","MGA","Madagascar Malagasy Ariary","Madagascar",""
-"Currency","MKD","Macedonia Denar","Macedonia, The Republic of",""
-"Currency","MMK","Myanmar Kyat","Burma / Myanmar",""
-"Currency","MNT","Mongolia Tugrik","Mongolia",""
-"Currency","MOP","Macau Pataca","Macau",""
-"Currency","MRO","Mauritania Ouguiya (old)","Mauritania","Historic ISO4217 standard code"
-"Currency","MRU","Mauritania Ouguiya","Mauritania",""
-"Currency","MTL","Malta Lira","Malta","Historic ISO4217 standard code"
-"Currency","MUR","Mauritius Rupee","Mauritius",""
-"Currency","MVR","Maldives Rufiyaa","Maldives",""
-"Currency","MWK","Malawi Kwacha","Malawi",""
-"Currency","MXN","Mexico Peso","Mexico",""
-"Currency","MXP","Mexico Peso","Mexico","Historic ISO4217 standard code"
-"Currency","MXV","Mexico Unidad de Inversion","Mexico",""
-"Currency","MYR","Malaysia Ringgit","Malaysia",""
-"Currency","MZM","Mozambican Metical (Retired)","Mozambique","Historic ISO4217 standard code"
-"Currency","MZN","Mozambique Metical","Mozambique",""
-"Currency","NAD","Namibia Dollar","Namibia",""
-"Currency","NGN","Nigeria Naira","Nigeria",""
-"Currency","NIO","Nicaragua Cordoba Oro","Nicaragua",""
-"Currency","NIS","Israeli New Shekel","Israel","Unofficial currency code"
-"Currency","NLG","Dutch Guilder","Netherlands","Historic ISO4217 standard code"
-"Currency","NOK","Norway Kroner","Norway",""
-"Currency","NPR","Nepal Rupee","Nepal",""
-"Currency","NZD","New Zealand Dollar","New Zealand",""
-"Currency","OMR","Oman Rial","Oman",""
-"Currency","PAB","Panama Balboa","Panama",""
-"Currency","PEN","Peru Nuevo Sol","Peru",""
-"Currency","PGK","Papua New Guinea Kina","Papua New Guinea",""
-"Currency","PHP","Philippines Peso","Philippines",""
-"Currency","PKR","Pakistan Rupee","Pakistan",""
-"Currency","PLN","Poland Zloty","Poland",""
-"Currency","PTE","Portuguese Escudo","Portugal","Historic ISO4217 standard code"
-"Currency","PYG","Paraguay Guarani","Paraguay",""
-"Currency","QAR","Qatar Rial","Qatar",""
-"Currency","ROL","Romanian Leu","Romania","Historic ISO4217 standard code"
-"Currency","RON","Romania New Leu","Romania",""
-"Currency","RSD","Serbia Dinar","Serbia",""
-"Currency","RUB","Russia Ruble","Russia",""
-"Currency","RWF","Rwanda Franc","Rwanda",""
-"Currency","SAR","Saudi Arabia Riyal","Saudi Arabia",""
-"Currency","SBD","Solomon Islands Dollar","Solomon Islands",""
-"Currency","SCR","Seychelles Rupee","Seychelles",""
-"Currency","SDD","Sudan Dinar","Sudan","Historic ISO4217 standard code"
-"Currency","SDG","Sudan Pound","Sudan",""
-"Currency","SEK","Sweden Krona","Sweden",""
-"Currency","SGD","Singapore Dollar","SINGAPORE",""
-"Currency","SHP","Saint Helena Pound","St. Helena",""
-"Currency","SIT","Slovenia Tolar","Slovenia","Historic ISO4217 standard code"
-"Currency","SKK","Slovak Koruna","Slovakia","Historic ISO4217 standard code"
-"Currency","SLL","Sierra Leone, Leone","Sierra Leone",""
-"Currency","SOS","Somalia Shilling","Somalia",""
-"Currency","SRD","Suriname Dollar","Suriname",""
-"Currency","SSP","South Sudanese pound","South Sudan",""
-"Currency","STD","Sao Tome and Principe Dobra (Old)","Sao Tome & Principe","Historic ISO4217 standard code"
-"Currency","STN","Sao Tome and Principe Dobra","Sao Tome & Principe",""
-"Currency","SVC","El Salvador Colon","El Salvador",""
-"Currency","SYP","Syria Pound","Syria",""
-"Currency","SZL","Swaziland Lilangeni","Swaziland",""
-"Currency","THB","Thailand Baht","Thailand",""
-"Currency","TJS","Tajikistan Somoni","Tajikistan",""
-"Currency","TMM","Turkmen Manat (Retired)","Turkmenistan","Historic ISO4217 standard code"
-"Currency","TMT","Turkmenistani  Manat","Turkmenistan",""
-"Currency","TND","Tunisia Dinar","Tunisia",""
-"Currency","TOP","Tonga Paanga","Tonga",""
-"Currency","TRL","Turkish Lira","Turkey","Historic ISO4217 standard code"
-"Currency","TRY","Turkey New Lira","Turkey",""
-"Currency","TTD","Trinidad and Tobago Dollar","Trinidad & Tobago",""
-"Currency","TWD","Taiwan Dollar","Taiwan",""
-"Currency","TZS","Tanzania Shilling","Tanzania",""
-"Currency","UAH","Ukraine Hryvnia","Ukraine",""
-"Currency","UF","(Chile) Unidades de fomento","Chile","Not in ISO4217 standard"
-"Currency","UGX","Uganda Shilling","Uganda",""
-"Currency","USD","U.S. Dollar","United States",""
-"Currency","UYU","Uruguay Peso","Uruguay",""
-"Currency","UZS","Uzbekistan Som","Uzbekistan",""
-"Currency","VEB","Venezuelan Bolivar (Retired)","Venezuela","Historic ISO4217 standard code"
-"Currency","VEF","Venezuela Bolivar Fuerte","Venezuela","Historic ISO4217 standard code"
-"Currency","VES","Venezuelan Bolivar Soberano","Venezuela",""
-"Currency","VND","Vietnam Dong","Vietnam",""
-"Currency","VUV","Vanuatu Vatu","Vanuatu",""
-"Currency","WST","Samoa Tala","Western Samoa",""
-"Currency","XAF","CFA Franc BEAC","Central Africa",""
-"Currency","XCD","Eastern Caribbean Dollar","Caribbean",""
-"Currency","XOF","CFA Franc BCEAO","West Africa",""
-"Currency","XPF","CFP Franc","Pacific Franc Exchange",""
-"Currency","YER","Yemen Rial","Yemen",""
-"Currency","ZAR","South Africa Rand","South Africa",""
-"Currency","ZMK","Zambia Kwacha","Zambia","Historic ISO4217 standard code"
-"Currency","ZMW","Zambian Kwacha","Zambia",""
-"Currency","ZWD","Zimbabwean Dollar","Zimbabwe","Historic ISO4217 standard code"
-"Currency","ZWL","Zimbabwe Dollar","Zimbabwe",""
+Category,Code,Name,Country,Notes
+Currency,AED,United Arab Emirates Dirham,Arab Emirates,
+Currency,AFA,Afghan Afghani (Retired),Afghanistan,Historic ISO4217 standard code
+Currency,AFN,Afghanistan Afghani,Afghanistan,
+Currency,ALL,Albania Lek,Albania,
+Currency,AMD,Armenia Dram,Armenia,
+Currency,ANG,Netherlands Antillean Guilder,Netherlands,
+Currency,AOA,Angola Kwanza,Angola,
+Currency,AON,Novo kwanza (Retired),Angola,Historic ISO4217 standard code
+Currency,ARS,Argentina Peso,Argentina,
+Currency,ATS,Austrian Schilling,Austria,Historic ISO4217 standard code
+Currency,AUD,Australia Dollar,Australia,
+Currency,AWG,Aruba Guilder,Netherlands,
+Currency,AZM,Old Azerbaijan Manat,Azerbaijan,Historic ISO4217 standard code
+Currency,AZN,Azerbaijan Manat,Azerbaijan,
+Currency,BAM,Bosnia Convertible Marks,Bosnia and Herzegovina,
+Currency,BBD,Barbados Dollar,Barbados,
+Currency,BDT,Bangladesh Taka,Bangladesh,
+Currency,BEF,Belgian Franc,Belgium,Historic ISO4217 standard code
+Currency,BGL,Bulgarian Lev,Bulgaria,Historic ISO4217 standard code
+Currency,BGN,Bulgaria Lev,Bulgaria,
+Currency,BHD,Bahrain Dinar,Bahrain,
+Currency,BIF,Burundi Franc,Burundi,
+Currency,BMD,Bermuda Dollar,Bermuda,
+Currency,BND,Brunei Dollar,Brunei,
+Currency,BOB,Bolivia Boliviano,Bolivia,
+Currency,BOV,Bolivia Mvdol,Bolivia,
+Currency,BRL,Brazil Real,Brazil,
+Currency,BSD,Bahamas Dollar,Bahamas,
+Currency,BTN,Bhutan Ngultrum,Bhutan,
+Currency,BWP,Botswana Pula,Botswana,
+Currency,BYN,Belarus Ruble,Belarus,
+Currency,BZD,Belize Dollar,Belize,
+Currency,CAD,Canada Dollar,Canada,
+Currency,CDF,DR Congo Franc Congolais,"Congo, Dem Rep of / Zaire",
+Currency,CHF,Switzerland Franc,Switzerland,
+Currency,CLF,(Chile) Unidad de fomento,Chile,
+Currency,CLP,Chile Peso,Chile,
+Currency,CNY,Chinese Yuan,China,
+Currency,COP,Colombia Peso,Colombia,
+Currency,CRC,Costa Rica Colon,Costa Rica,
+Currency,CUP,Cuba Peso,Cuba,
+Currency,CVE,Cape Verde Escudo,Cape Verde,
+Currency,CYP,Cypriot Pound,Cyprus,Historic ISO4217 standard code
+Currency,CZK,Czech Republic Koruna,Czech Republic,
+Currency,DEM,Deutsche Mark,Germany,Historic ISO4217 standard code
+Currency,DJF,Djibouti Franc,Djibouti,
+Currency,DKK,Denmark Krone,Denmark,
+Currency,DOP,Dominican Rep. Peso,Dominican,
+Currency,DZD,Algeria Dinar,Algeria,
+Currency,EEK,Estonia Kroon,Estonia,Historic ISO4217 standard code
+Currency,EGP,Egypt Pound,Egypt,
+Currency,ERN,Eritrea Nakfa,Eritrea,
+Currency,ETB,Ethiopia Birr,Ethiopia,
+Currency,EUR,Euro,Europe,
+Currency,FJD,Fiji Dollar,Fiji,
+Currency,FKP,Falkland Islands Pound,Falkland Islands (Islas Malvinas),
+Currency,FRF,French Franc,France,Historic ISO4217 standard code
+Currency,GBP,Great Britain Pound,United Kingdom,
+Currency,GEL,Georgia Lari,Georgia,
+Currency,GHC,Ghana Cedi (Old),Ghana,Historic ISO4217 standard code
+Currency,GHS,Ghana Cedi,Ghana,
+Currency,GIP,Gibraltar Pound,Gibraltar,
+Currency,GMD,Gambia Dalasi,"Gambia, The",
+Currency,GNF,Guinea Franc,Guinea,
+Currency,GRD,Greek Drachmas,Greece,Historic ISO4217 standard code
+Currency,GTQ,Guatemala Quetzal,Guatemala,
+Currency,GYD,Guyana Dollar,Guyana,
+Currency,HKD,Hong Kong Dollar,Hong Kong,
+Currency,HNL,Honduras Lempira,Honduras,
+Currency,HRK,Croatia Kuna,Croatia,
+Currency,HTG,Haiti Gourde,Haiti,
+Currency,HUF,Hungary Forint,Hungary,
+Currency,IDR,Indonesia Rupiah,Indonesia,
+Currency,IEP,Ireland Pound,Ireland,Historic ISO4217 standard code
+Currency,ILS,Israel New Shekel,Israel,
+Currency,INR, India Rupee,India,
+Currency,IQD,Iraq Dinar,Iraq,
+Currency,IRR,Iran Rial,Iran,
+Currency,ISK,Iceland Krona,Iceland,
+Currency,ITL,Italian Lira,Italy,Historic ISO4217 standard code
+Currency,JMD,Jamaica Dollar,Jamaica,
+Currency,JOD,Jordan Dinar,Jordan,
+Currency,JPY,Japan Yen,Japan,
+Currency,KES,Kenya Shilling,Kenya,
+Currency,KGS,Kyrgyzstan Som,Kyrgyzstan,
+Currency,KHR,Cambodia Riel,Cambodia,
+Currency,KMF,Comoro Franc,Comoros,
+Currency,KPW,North Korea Won,"Korea, North",
+Currency,KRW,South Korea Won,Republic of Korea,
+Currency,KWD, Kuwait Dinar,Kuwait,
+Currency,KYD,Cayman Islands Dollar,Cayman Islands,
+Currency,KZT,Kazakhstan Tenge,Kazakhstan,
+Currency,LAK,Laos Kip,Laos,
+Currency,LBP,Lebanon Pound,Lebanon,
+Currency,LKR,Sri Lanka Rupee,Sri Lanka,
+Currency,LRD,Liberia Dollar,Liberia,
+Currency,LSL,Lesotho Loti,Lesotho,
+Currency,LTL,Lithuania Litas,Lithuania,Historic ISO4217 standard code
+Currency,LUF,Luxembourg Franc,Luxembourg,Historic ISO4217 standard code
+Currency,LVL,Latvia Lats,Latvia,Historic ISO4217 standard code
+Currency,LYD,Libya Dinar,Libya,
+Currency,MAD,Morocco Dirham,Morocco,
+Currency,MDL,Moldova Leu,Moldova,
+Currency,MGA,Madagascar Malagasy Ariary,Madagascar,
+Currency,MKD,Macedonia Denar,"Macedonia, The Republic of",
+Currency,MMK,Myanmar Kyat,Burma / Myanmar,
+Currency,MNT,Mongolia Tugrik,Mongolia,
+Currency,MOP,Macau Pataca,Macau,
+Currency,MRO,Mauritania Ouguiya (old),Mauritania,Historic ISO4217 standard code
+Currency,MRU,Mauritania Ouguiya,Mauritania,
+Currency,MTL,Malta Lira,Malta,Historic ISO4217 standard code
+Currency,MUR,Mauritius Rupee,Mauritius,
+Currency,MVR,Maldives Rufiyaa,Maldives,
+Currency,MWK,Malawi Kwacha,Malawi,
+Currency,MXN,Mexico Peso,Mexico,
+Currency,MXP,Mexico Peso,Mexico,Historic ISO4217 standard code
+Currency,MXV,Mexico Unidad de Inversion,Mexico,
+Currency,MYR,Malaysia Ringgit,Malaysia,
+Currency,MZM,Mozambican Metical (Retired),Mozambique,Historic ISO4217 standard code
+Currency,MZN,Mozambique Metical,Mozambique,
+Currency,NAD,Namibia Dollar,Namibia,
+Currency,NGN,Nigeria Naira,Nigeria,
+Currency,NIO,Nicaragua Cordoba Oro,Nicaragua,
+Currency,NIS,Israeli New Shekel,Israel,Unofficial currency code
+Currency,NLG,Dutch Guilder,Netherlands,Historic ISO4217 standard code
+Currency,NOK,Norway Kroner,Norway,
+Currency,NPR,Nepal Rupee,Nepal,
+Currency,NZD,New Zealand Dollar,New Zealand,
+Currency,OMR,Oman Rial,Oman,
+Currency,PAB,Panama Balboa,Panama,
+Currency,PEN,Peru Nuevo Sol,Peru,
+Currency,PGK,Papua New Guinea Kina,Papua New Guinea,
+Currency,PHP,Philippines Peso,Philippines,
+Currency,PKR,Pakistan Rupee,Pakistan,
+Currency,PLN,Poland Zloty,Poland,
+Currency,PTE,Portuguese Escudo,Portugal,Historic ISO4217 standard code
+Currency,PYG,Paraguay Guarani,Paraguay,
+Currency,QAR,Qatar Rial,Qatar,
+Currency,ROL,Romanian Leu,Romania,Historic ISO4217 standard code
+Currency,RON,Romania New Leu,Romania,
+Currency,RSD,Serbia Dinar,Serbia,
+Currency,RUB,Russia Ruble,Russia,
+Currency,RWF,Rwanda Franc,Rwanda,
+Currency,SAR,Saudi Arabia Riyal,Saudi Arabia,
+Currency,SBD,Solomon Islands Dollar,Solomon Islands,
+Currency,SCR,Seychelles Rupee,Seychelles,
+Currency,SDD,Sudan Dinar,Sudan,Historic ISO4217 standard code
+Currency,SDG,Sudan Pound,Sudan,
+Currency,SEK,Sweden Krona,Sweden,
+Currency,SGD,Singapore Dollar,SINGAPORE,
+Currency,SHP,Saint Helena Pound,St. Helena,
+Currency,SIT,Slovenia Tolar,Slovenia,Historic ISO4217 standard code
+Currency,SKK,Slovak Koruna,Slovakia,Historic ISO4217 standard code
+Currency,SLL,"Sierra Leone, Leone",Sierra Leone,
+Currency,SOS,Somalia Shilling,Somalia,
+Currency,SRD,Suriname Dollar,Suriname,
+Currency,SSP,South Sudanese pound,South Sudan,
+Currency,STD,Sao Tome and Principe Dobra (Old),Sao Tome & Principe,Historic ISO4217 standard code
+Currency,STN,Sao Tome and Principe Dobra,Sao Tome & Principe,
+Currency,SVC,El Salvador Colon,El Salvador,
+Currency,SYP,Syria Pound,Syria,
+Currency,SZL,Swaziland Lilangeni,Swaziland,
+Currency,THB,Thailand Baht,Thailand,
+Currency,TJS,Tajikistan Somoni,Tajikistan,
+Currency,TMM,Turkmen Manat (Retired),Turkmenistan,Historic ISO4217 standard code
+Currency,TMT,Turkmenistani  Manat,Turkmenistan,
+Currency,TND,Tunisia Dinar,Tunisia,
+Currency,TOP,Tonga Paanga,Tonga,
+Currency,TRL,Turkish Lira,Turkey,Historic ISO4217 standard code
+Currency,TRY,Turkey New Lira,Turkey,
+Currency,TTD,Trinidad and Tobago Dollar,Trinidad & Tobago,
+Currency,TWD,Taiwan Dollar,Taiwan,
+Currency,TZS,Tanzania Shilling,Tanzania,
+Currency,UAH,Ukraine Hryvnia,Ukraine,
+Currency,UF,(Chile) Unidades de fomento,Chile,Not in ISO4217 standard
+Currency,UGX,Uganda Shilling,Uganda,
+Currency,USD,U.S. Dollar,United States,
+Currency,UYU,Uruguay Peso,Uruguay,
+Currency,UZS,Uzbekistan Som,Uzbekistan,
+Currency,VEB,Venezuelan Bolivar (Retired),Venezuela,Historic ISO4217 standard code
+Currency,VEF,Venezuela Bolivar Fuerte,Venezuela,Historic ISO4217 standard code
+Currency,VES,Venezuelan Bolivar Soberano,Venezuela,
+Currency,VND,Vietnam Dong,Vietnam,
+Currency,VUV,Vanuatu Vatu,Vanuatu,
+Currency,WST,Samoa Tala,Western Samoa,
+Currency,XAF,CFA Franc BEAC,Central Africa,
+Currency,XCD,Eastern Caribbean Dollar,Caribbean,
+Currency,XOF,CFA Franc BCEAO,West Africa,
+Currency,XPF,CFP Franc,Pacific Franc Exchange,
+Currency,YER,Yemen Rial,Yemen,
+Currency,ZAR,South Africa Rand,South Africa,
+Currency,ZMK,Zambia Kwacha,Zambia,Historic ISO4217 standard code
+Currency,ZMW,Zambian Kwacha,Zambia,
+Currency,ZWD,Zimbabwean Dollar,Zimbabwe,Historic ISO4217 standard code
+Currency,ZWL,Zimbabwe Dollar,Zimbabwe,
