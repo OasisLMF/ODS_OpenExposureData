@@ -30,7 +30,9 @@ It’s worth noting that in designing the taxonomy, it was decided to consider a
 ### Taxonomy 
 
 Below is the proposed class-based taxonomy, for the purpose of identifying the insurance policy coverages that should be in or out of scope of the first version of the standard.
-<img src="https://github.com/OasisLMF/OpenDataStandards/blob/develop/images/ODS_Liability_Taxonomy_v1.png" />
+&nbsp;
+
+<img src="https://github.com/OasisLMF/ODS_OpenExposureData/blob/MattDonovan82-patch-1/Docs/images/ODS_Liability_Taxonomy_v1.png" />
 
 **Note:** What is considered 'Other', EIOPA has termed ‘general liability’. To avoid confusion, its intended to avoid this term as far as possible. In the US, general liability is better described as either Commercial or Personal Liability whereas in the UK it’s referred to as either Public or Employers Liability. 
 
