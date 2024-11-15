@@ -5,34 +5,34 @@
 
 ### Introduction
 
-The increasing demand over the last five years, resulted in the release of the first data schema for cyber exposure data in 2022. Since then, it became obvious that only one OED data schema accommodating multiple classes of business would be more efficient than being separate.
+Growing demand over the past five years led to the release of the first cyber exposure data schema in 2022 as part of the Open Exposure Data standard. It soon became clear that a single, unified OED schema for multiple business classes would be more efficient than separate schemas.
 
-Following this, OED 4.0.0. was released in Jan 2025 and incorporates all of the fields captured in the original version of the cyber schema. There has been some changes to the names of the data fields to align and integrate with property and the original schema.
+OED v4.0.0 is the first version which brings together the data standards for multiple exposure classes; property, cyber, liability and marine cargo, into a single integrated specification. It incorporates all fields from the original cyber schema, with some field names updated for better alignment with property and the main schema.
 
 Please refer to the release notes for OED v4 that includes all updates (https://github.com/OasisLMF/ODS_OpenExposureData/releases).
 
-More general information can also be found on the ODS webpage (https://oasislmf.org/open-data-standards.
+More general information can also be found on the ODS webpage (https://oasislmf.org/open-data-standards).
 
-It’s important to note that this is NOT an Oasis standard but a market initiative that is only curated by Oasis and so the success of ODS is reliant on community collaboration. The aim of ODS is not to serve or be controlled by a single entity for their own commercial benefit, but to accommodate multiple developers and users, be open and transparent for all.
+### Contributors
 
-The initial cyber data standard was developed through the collaboration of a working group throughout 2022, made up of participants from the following companies. Their time and efforts were hugely appreciated. 
+The cyber data standard v1 was developed through the collaboration of a working group throughout 2022, made up of participants from the following companies. Their time and effort are hugely appreciated. 
 
 * Allianz
 * Aon
 * Axis Capital
-* Cyberacuview
+* CyberAcuView
 * Gallagher Re
 * Guidewire Cyence
-* Guy Carp
+* Guy Carpenter
 * KOVRR
 * Oasis LMF (ODS curator/secretariat)
-* Ren Re
+* RenaissanceRe
 * Richard DeKorte (Cyber Security Independent)
-* RMS
+* Moody's RMS
 * Sompo International
 * Swiss Re
 * Waratah Analytics
-* Zurich
+* Zurich Insurance
 
 &nbsp;
 
@@ -42,9 +42,7 @@ The initial data schema was primarily intended to ensure a degree of consistency
 
 The cyber specific data fields are highlighted in the 'Cyber Fields Status' column in the 'OEDInputsFields.csv' where the fields can be filtered on 'R' for 'required fields', 'O' for 'optional' and 'CR' for 'conditionally required'. 
 
-The cyber specific coverages are included in the 'CoverageValues'.csv and prefixed by 'PolDed' for sub-deductibles and 'PolLimit' for sub-limits.
-
-
+The cyber specific coverage codes are included in the 'CoverageValues.csv' and prefixed by 'PolDed' for sub-deductibles and 'PolLimit' for sub-limits.
 
 ### Considerations
 
@@ -59,7 +57,7 @@ They should consider the vendors of their 'primary' or 'main' systems/servers as
 
 4. The user is responsible for populating the data fields in this schema. No fields will be linked to any external database (i.e., for industry scheme or code).
 
-5. All cyber exposure fields are captured in the acc (account) file. There are no 'required' fields for cyber captured in the loc file.
+5. All cyber exposure fields are captured in the acc (account) file. There is no need for a location file as the data standard does not currently require the capture of physical asset data with geographical locators, although there is nothing to preclude this from being developed going forward.
    
 Any feedback or suggestions should be sent as an issue in the GitHub repo: https://github.com/OasisLMF/ODS_OpenExposureData/issues
 

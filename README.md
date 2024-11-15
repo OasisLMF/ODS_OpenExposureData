@@ -63,7 +63,7 @@ Further information and community views of ODS can be found on the ODS website:
 https://oasislmf.org/open-data-standards
 
 
-***It's important to understand that ODS is NOT an Oasis standard, but an initiative developed by the market for the market.***
+***It's important to understand that ODS is NOT an Oasis standard, but an initiative developed by the market for the market.*** The success of ODS is reliant on community collaboration. The aim of ODS is not to serve or be controlled by a single entity for their own commercial benefit, but to accommodate multiple developers and users, be open and transparent for all.
 
 &nbsp; 
 
@@ -81,6 +81,7 @@ https://oasislmf.org/open-data-standards
  | 3.2.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.2.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.2.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.2.0) |
  | 3.3.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.3.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.3.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.3.0) |
  | 3.4.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.4.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.4.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.4.0) |
+ | 3.4.1 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.4.1/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.4.1/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.4.1) |
 <!-- NEW VERSION TAG -->
 
 
@@ -108,14 +109,14 @@ https://github.com/OasisLMF/OpenDataTransform
 
 **Liability** 
 
-The focus for OED has primarily been on property cat business since its inception but has now expanded to support other lines of business. The initial (separate) liability data schema was released in April 2022 but has now been incorporated into the OED schema. See the 'liability field status' field here https://github.com/OasisLMF/ODS_OpenExposureData/blob/release/4.0.0/OpenExposureData/OEDInputFields.csv.
+The focus for OED has primarily been on property exposure data since its inception but has now expanded to support other lines of business. The v1 liability data schema was released in April 2022 and has now been incorporated into the main OED schema. See the 'liability field status' field here https://github.com/OasisLMF/ODS_OpenExposureData/blob/release/4.0.0/OpenExposureData/OEDInputFields.csv.
 
 
 &nbsp; 
 
 **Cyber** 
 
-The initial (separate) cyber schema was released in February 2023 bit has now been incorporated into the OED schema. See the 'cyber field status' field here: 
+The v1 cyber schema was released in February 2023 but has now been incorporated into the main OED schema. See the 'cyber field status' field here: 
 https://github.com/OasisLMF/ODS_OpenExposureData/blob/release/4.0.0/OpenExposureData/OEDInputFields.csv.
 
 
