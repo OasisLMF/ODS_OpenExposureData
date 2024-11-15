@@ -10,7 +10,7 @@
 
 
 ## Mission Statement: 
-***ODS should be the standard used for exposure data, result outputs and contract(s) terminology for the (Re)Insurance industry and other interested parties in catastrophe modelling and exposure management across all classes of business.***
+***ODS should be the standard used for exposure data and result outputs for the (Re)Insurance industry, and other interested parties in catastrophe modelling and exposure management across all classes of business.***
 
 
 Steering Committee Members:
@@ -55,7 +55,7 @@ Steering Committee Members:
                                                                                                                      
 # Open Data Standards (ODS)
 
-ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Committee (SC), comprised of industry experts representing (re)insurers, brokers, service providers and catastrophe model vendors. The SC will evolve over time and include Subject Matter Experts to assist with areas requiring specific domain experience, including data validation and support for enhancing and automating the interoperability of these standards. 
+ODS is curated by Oasis LMF and governed by the Open Data Standards Steering Committee (SC), comprised of industry experts representing (re)insurers, brokers, service providers and catastrophe model vendors. 
 
 The components of ODS are (but not limited to) the **Open Exposure Data (OED)** format and the **Open Results Data (ORD)** format. Both OED and ORD are designed to assist with solving interoperability problems current in the cat modelling community, where implementing a model-developer-independent exposure data and results format will assist in creating choice in the use of catastrophe models and analytical tools.
 
@@ -63,7 +63,7 @@ Further information and community views of ODS can be found on the ODS website:
 https://oasislmf.org/open-data-standards
 
 
-***It's important to know that ODS is NOT an Oasis standard, but an initiative developed by the market for the market.***
+***It's important to understand that ODS is NOT an Oasis standard, but an initiative developed by the market for the market.*** The success of ODS is reliant on community collaboration. The aim of ODS is not to serve or be controlled by a single entity for their own commercial benefit, but to accommodate multiple developers and users, be open and transparent for all.
 
 &nbsp; 
 
@@ -81,6 +81,7 @@ https://oasislmf.org/open-data-standards
  | 3.2.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.2.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.2.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.2.0) |
  | 3.3.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.3.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.3.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.3.0) |
  | 3.4.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.4.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.4.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.4.0) |
+ | 3.4.1 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.4.1/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.4.1/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.4.1) |
 <!-- NEW VERSION TAG -->
 
 
@@ -88,21 +89,12 @@ https://oasislmf.org/open-data-standards
 
 The diagram below highlights the proposed, long-term structure of ODS and all the key components. Interoperability is vital to ensure efficient interaction across multiple databases, systems and external exposure management and data storage facilities.
 
-<img src="Docs/images/ODS_Diagram.png" width="900"/> &nbsp;
-
-&nbsp; 
-
-**ODS Implementation into Oasis:** Oasis LMF are continuously expanding the ODS functionality they support on their platform, especially in their financial module (FM). 
-
-Detailed documentation on which financial fields are supported in the Oasis kernel can be found here: https://github.com/OasisLMF/OasisLMF/blob/master/docs/OED_financial_terms_supported.xlsx
-&nbsp; 
+<img src="https://github.com/OasisLMF/ODS_OpenExposureData/blob/MattDonovan82-patch-1/Docs/images/ODS_Structure_v2.jpg" width="800" />  
 
 
 ## Open Exposure Data (OED)
 
-The aim of OED is to provide the industry with a robust, open, and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and the detailed descriptions of each data field for property are covered in the 'Open Exposure Data Spec.xlsx' and reference and background OED information can be found in the 'docs’ folder (https://github.com/OasisLMF/ODS_OpenExposureData/tree/develop/OpenExposureData/Docs). Examples of how to code multiple financial structures in the input files are also covered within these documents.
-
-The web (HTML) version of the OED documentation can be viewed here [https://oasislmf.github.io/sections/OED.html](https://oasislmf.github.io/sections/OED.html)
+The aim of OED is to provide the industry with a robust, open, and transparent data format. This will improve efficiency and transparency for the cat modelling community, facilitating data transfer and analytics across models and vendors. OED is a model agnostic data format and the detailed descriptions of each data field for property and how to code financial structures can all be found here: https://oasislmf.github.io/sections/OED.html
 
 &nbsp;
 
@@ -117,24 +109,23 @@ https://github.com/OasisLMF/OpenDataTransform
 
 **Liability** 
 
-The focus for OED has primarily been on property cat business since its inception but has now expanded to support other lines of business. The liability data schema was released in April 2022 - details and docs can be found here:
+The focus for OED has primarily been on property exposure data since its inception but has now expanded to support other lines of business. The v1 liability data schema was released in April 2022 and has now been incorporated into the main OED schema. See the 'liability field status' field here https://github.com/OasisLMF/ODS_OpenExposureData/blob/release/4.0.0/OpenExposureData/OEDInputFields.csv.
 
-https://github.com/OasisLMF/ODS_OpenExposureData/tree/develop/OpenExposureData/Liability
 
 &nbsp; 
 
 **Cyber** 
 
-A cyber data standard was released in February 2023 and the data schema and associated docs can be found here:
+The v1 cyber schema was released in February 2023 but has now been incorporated into the main OED schema. See the 'cyber field status' field here: 
+https://github.com/OasisLMF/ODS_OpenExposureData/blob/release/4.0.0/OpenExposureData/OEDInputFields.csv.
 
-https://github.com/OasisLMF/ODS_OpenExposureData/tree/develop/OpenExposureData/Cyber
 
 
 &nbsp; 
 
 ## Open Results Data (ORD)
 
-ORD was initially developed during the Lloyd's Lab innovation project (Cohort 3) in 2019, by a working group led by Oasis, that focussed on constructing model agnostic results formats and appropriate data formats. These model outputs cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. 
+ORD was initially developed during the Lloyd's Lab innovation project (Cohort 3) in 2019, by a working group led by Oasis. This working group focussed on constructing model agnostic results formats and appropriate data formats. These model outputs cover an extensive suite of results that can be isolated by aspects of the exposure data, financial and statistical perspectives. 
 
 ORD follows the same versioning format as OED (following the SemVer convention as described below) but is developed and versioned independently to OED in a separate repository that can be found here:
 
