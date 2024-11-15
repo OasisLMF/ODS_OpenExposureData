@@ -15,7 +15,7 @@ More general information can also be found on the ODS webpage (https://oasislmf.
 
 ### Contributors
 
-The cyber data standard v1 was developed through the collaboration of a working group throughout 2022, made up of participants from the following companies. Their time and effort are hugely appreciated. 
+The cyber data standard v1 was developed through the collaboration of a working group throughout 2022, made up of participants from the following companies. Their time and effort is hugely appreciated. 
 
 * Allianz
 * Aon
@@ -50,12 +50,11 @@ The cyber specific coverage codes are included in the 'CoverageValues.csv' and p
 
 2. ODS encourages the capture of company identifier information but does not endorse any one provider of this data.  It is the responsibility of the user to ensure that no contractual agreements with third parties are breached in the use of this schema or the transfer of licensed data such as DUNS or LEI company identifies.
 
-3. TECHNOGRAPHIC DATA: Opinions around the capture of technographic data were mixed during the development of the original schema. Most suggested they should be considered "aspirational" at this stage and should be the focus for further developments. The main reason for that thinking is that capturing this data accurately to reflect how and where these providers are used in a complex business is not trivial. Questions to consider for example are, "is the cloud/email provider the same for all servers and systems within a company?" or "do all devices/systems use the same OS?"
-
+3. TECHNOGRAPHIC DATA: Opinions around the capture of technographic data were mixed during the development of the original schema. Most suggested they should be considered "aspirational" at this stage and should be the focus for further developments. The main reason for that thinking is that capturing this data accurately to reflect how and where these providers are used in a complex business is not trivial. Questions to consider for example are, "is the cloud/email provider the same for all servers and systems within a company?" or "do all devices/systems use the same OS?". 
 However, reinsurers consider that even capturing the basic data would provide value, especially for accumulation analytics. Therefore, it was decided that some basic fields should be included but populated at the discretion of the user. 
 They should consider the vendors of their 'primary' or 'main' systems/servers as included in the 'OSVendor' (operating system), 'CloudVendor' (cloud provider), 'CRMVendor' (customer relationship management provider), 'PatchPolicy' (cadence of patches for the main systems) and 'BackUpFreq' (cadence of backups for the main systems) fields.
 
-4. The user is responsible for populating the data fields in this schema. No fields will be linked to any external database (i.e., for industry scheme or code).
+4. The user is responsible for populating the data fields in this schema. No fields will be linked to any external database (i.e. for industry scheme or code).
 
 5. All cyber exposure fields are captured in the acc (account) file. There is no need for a location file as the data standard does not currently require the capture of physical asset data with geographical locators, although there is nothing to preclude this from being developed going forward.
    
