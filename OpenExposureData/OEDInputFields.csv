@@ -264,7 +264,7 @@
 "Loc","BuildingTIV","Building Total Insured Value","O","float","0","[0,)","n/a","n/a","O"
 "Loc","OtherTIV","Other Building Insured Value (primarily aimed at specific US policies). For motor exposures, use this field for TIV along with appropriate motor construction code.","O","float","0","[0,)","n/a","n/a","O"
 "Loc","ContentsTIV","Contents Total Insured Value","O","float","0","[0,)","n/a","n/a","O"
-"Loc","BITIV","Business Interruption (BI) Total Insured Value","O","float","0","[0,)","n/a","n/a","O"
+"Loc","BITIV","Business Interruption (BI) Total Insured Value. Enter an annualized amount, and use LocDed4BI and LocLimit4BI fields for non-annualized values","O","float","0","[0,)","n/a","n/a","O"
 "Loc","BIPOI","BI period of indemnity (in days, in increments of 0.5 days). Default value = 365 (1 year).","O","float","365","[0,3650]","n/a","n/a","O"
 "Loc","LocCurrency","Location currency","R","char(3)","n/a","","n/a","n/a","R"
 "Loc","LocGrossPremium","Gross premium amount at location level","O","float","0","[0,)","n/a","n/a","n/a"
