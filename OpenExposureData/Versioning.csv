@@ -1,193 +1,193 @@
-"Category","New code","Fallback","Version","Code description","Proposed code description"
-"Construction","5454","5452","2.3","Highways, Motorways","Highways, General"
-"Construction","5455","5452","2.3","Highways, Trunk road","Highways, General"
-"Construction","5456","5452","2.3","Highways, Primary roads","Highways, General"
-"Construction","5457","5452","2.3","Highways, Seconday roads","Highways, General"
-"Construction","5458","5452","2.3","Highways, Tertiary roads","Highways, General"
-"Construction","5459","5452","2.3","Highways, Unclassified roads","Highways, General"
-"Construction","5460","5452","2.3","Highways, Residential roads","Highways, General"
-"Construction","5461","5452","2.3","Highways, Service road","Highways, General"
-"Construction","5463","5451","2.3","Railways, light rail","Railways, General"
-"Construction","5464","5451","2.3","Railways, Monorail","Railways, General"
-"Construction","5465","5451","2.3","Railways, Standard gauge","Railways, General"
-"Construction","5466","5451","2.3","Railways, Subway","Railways, General"
-"Construction","5467","5451","2.3","Railways, Tram","Railways, General"
-"Construction","5756","5000","2.3","Distribution circuits","Unknown"
-"Construction","5961","5000","2.3","Miscellaneous, treatment plant","Unknown"
-"Construction","7014","5000","2.3","Offshore wind","Unknown"
-"Construction","7015","5000","2.3","Offshore wind","Unknown"
-"Construction","7016","5000","2.3","Offshore wind","Unknown"
-"Construction","7017","5000","2.3","Offshore wind","Unknown"
-"Construction","7018","5000","2.3","Offshore wind","Unknown"
-"Construction","7019","5000","2.3","Offshore wind","Unknown"
-"Construction","7020","5000","2.3","Offshore wind","Unknown"
-"Construction","7021","5000","2.3","Offshore wind","Unknown"
-"Construction","7022","5000","2.3","Offshore wind","Unknown"
-"Construction","7023","5000","2.3","Offshore wind","Unknown"
-"Construction","8000","5000","2.3","Crops, Unknown crop","Unknown"
-"Construction","8010","5000","2.3","Crops, Cereals, Unknown","Unknown"
-"Construction","8011","5000","2.3","Crops, Cereals, Wheat","Unknown"
-"Construction","8012","5000","2.3","Crops, Cereals, Maize","Unknown"
-"Construction","8013","5000","2.3","Crops, Cereals, Rice","Unknown"
-"Construction","8014","5000","2.3","Crops, Cereals, Sorghum","Unknown"
-"Construction","8015","5000","2.3","Crops, Cereals, Barley","Unknown"
-"Construction","8016","5000","2.3","Crops, Cereals, Rye","Unknown"
-"Construction","8017","5000","2.3","Crops, Cereals, Oats","Unknown"
-"Construction","8018","5000","2.3","Crops, Cereals, Millets","Unknown"
-"Construction","8019","5000","2.3","Crops, Cereals, Other","Unknown"
-"Construction","8030","5000","2.3","Crops, Vegetables and melons, Unknown","Unknown"
-"Construction","8031","5000","2.3","Crops, Vegetables and melons, Leafy or stem vegetables","Unknown"
-"Construction","8032","5000","2.3","Crops, Vegetables and melons, Fruit-bearing vegetables","Unknown"
-"Construction","8033","5000","2.3","Crops, Vegetables and melons, Root, bulb, or tuberous vegetables","Unknown"
-"Construction","8034","5000","2.3","Crops, Vegetables and melons, Mushrooms and truffles","Unknown"
-"Construction","8035","5000","2.3","Crops, Vegetables and melons, Other","Unknown"
-"Construction","8050","5000","2.3","Crops, Fruits and nuts, Unknown","Unknown"
-"Construction","8051","5000","2.3","Crops, Fruits and nuts, Tropical and subtropical fruits","Unknown"
-"Construction","8052","5000","2.3","Crops, Fruits and nuts, Citrus fruits","Unknown"
-"Construction","8053","5000","2.3","Crops, Fruits and nuts, Grapes","Unknown"
-"Construction","8054","5000","2.3","Crops, Fruits and nuts, Berries","Unknown"
-"Construction","8055","5000","2.3","Crops, Fruits and nuts, Pome fruits and stone fruits","Unknown"
-"Construction","8056","5000","2.3","Crops, Fruits and nuts, Nuts","Unknown"
-"Construction","8057","5000","2.3","Crops, Fruits and nuts, Other","Unknown"
-"Construction","8070","5000","2.3","Crops, Oilseed crops, Unknown","Unknown"
-"Construction","8071","5000","2.3","Crops, Oilseed crops, Soya beans","Unknown"
-"Construction","8072","5000","2.3","Crops, Oilseed crops, Groundnuts","Unknown"
-"Construction","8073","5000","2.3","Crops, Oilseed crops, Other","Unknown"
-"Construction","8090","5000","2.3","Crops, Root/tuber crops with high starch or inulin content, Unknown","Unknown"
-"Construction","8091","5000","2.3","Crops, Root/tuber crops with high starch or inulin content, Potatoes","Unknown"
-"Construction","8092","5000","2.3","Crops, Root/tuber crops with high starch or inulin content, Sweet potatoes","Unknown"
-"Construction","8093","5000","2.3","Crops, Root/tuber crops with high starch or inulin content, Cassava Yams","Unknown"
-"Construction","8094","5000","2.3","Crops, Root/tuber crops with high starch or inulin content, Other","Unknown"
-"Construction","8100","5000","2.3","Crops, Beverage and spice crops, Unknown","Unknown"
-"Construction","8101","5000","2.3","Crops, Beverage and spice crops, Beverage crops","Unknown"
-"Construction","8102","5000","2.3","Crops, Beverage and spice crops, Spice crops","Unknown"
-"Construction","8103","5000","2.3","Crops, Beverage and spice crops, Other","Unknown"
-"Construction","8110","5000","2.3","Crops, Leguminous crops, Unknown","Unknown"
-"Construction","8111","5000","2.3","Crops, Leguminous crops, Beans","Unknown"
-"Construction","8112","5000","2.3","Crops, Leguminous crops, Broad beans","Unknown"
-"Construction","8113","5000","2.3","Crops, Leguminous crops, Chick peas","Unknown"
-"Construction","8114","5000","2.3","Crops, Leguminous crops, Cow peas","Unknown"
-"Construction","8115","5000","2.3","Crops, Leguminous crops, Lentils","Unknown"
-"Construction","8116","5000","2.3","Crops, Leguminous crops, Lupins","Unknown"
-"Construction","8117","5000","2.3","Crops, Leguminous crops, Peas","Unknown"
-"Construction","8118","5000","2.3","Crops, Leguminous crops, Pigeon peas","Unknown"
-"Construction","8119","5000","2.3","Crops, Leguminous crops, Leguminous crops","Unknown"
-"Construction","8120","5000","2.3","Crops, Leguminous crops, Other","Unknown"
-"Construction","8130","5000","2.3","Crops, Sugar crops, Unknown","Unknown"
-"Construction","8131","5000","2.3","Crops, Sugar crops, Sugar beet","Unknown"
-"Construction","8132","5000","2.3","Crops, Sugar crops, Sugar cane","Unknown"
-"Construction","8133","5000","2.3","Crops, Sugar crops, Sweet sorghum","Unknown"
-"Construction","8134","5000","2.3","Crops, Sugar crops, Other","Unknown"
-"Construction","8140","5000","2.3","Crops, Other crops, Grasses and other fodder crops","Unknown"
-"Construction","8141","5000","2.3","Crops, Other crops, Fibre crops","Unknown"
-"Construction","8142","5000","2.3","Crops, Other crops, Medicinal, aromatic, pesticidal, or similar crops","Unknown"
-"Construction","8143","5000","2.3","Crops, Other crops, Rubber","Unknown"
-"Construction","8144","5000","2.3","Crops, Other crops, Flower crops","Unknown"
-"Construction","8145","5000","2.3","Crops, Other crops, Tobacco","Unknown"
-"Construction","8146","5000","2.3","Crops, Other crops, Other","Unknown"
-"Construction","8300","5000","2.3","Livestock, Unknown livestock","Unknown"
-"Construction","8301","5000","2.3","Livestock, Large ruminants, Cattle","Unknown"
-"Construction","8302","5000","2.3","Livestock, Large ruminants, Buffaloes","Unknown"
-"Construction","8303","5000","2.3","Livestock, Large ruminants, Yaks","Unknown"
-"Construction","8304","5000","2.3","Livestock, Small ruminants, Sheep","Unknown"
-"Construction","8305","5000","2.3","Livestock, Small ruminants, Goats","Unknown"
-"Construction","8306","5000","2.3","Livestock, Pigs or swines, ","Unknown"
-"Construction","8307","5000","2.3","Livestock, Equines, Horses","Unknown"
-"Construction","8308","5000","2.3","Livestock, Equines, Mules and hinnies","Unknown"
-"Construction","8309","5000","2.3","Livestock, Equines, Asses","Unknown"
-"Construction","8310","5000","2.3","Livestock, Equines, Other (e.g. zebras)","Unknown"
-"Construction","8311","5000","2.3","Livestock, Camels and camelids, Camels","Unknown"
-"Construction","8312","5000","2.3","Livestock, Camels and camelids, Llamas and alpacas","Unknown"
-"Construction","8313","5000","2.3","Livestock, Poultry, Chickens","Unknown"
-"Construction","8314","5000","2.3","Livestock, Poultry, Ducks","Unknown"
-"Construction","8315","5000","2.3","Livestock, Poultry, Geese","Unknown"
-"Construction","8316","5000","2.3","Livestock, Poultry, Turkeys","Unknown"
-"Construction","8317","5000","2.3","Livestock, Poultry, Guinea fowls","Unknown"
-"Construction","8318","5000","2.3","Livestock, Poultry, Pigeons","Unknown"
-"Construction","8319","5000","2.3","Livestock, Poultry, Other","Unknown"
-"Construction","8320","5000","2.3","Livestock, Other animals, Deer, elk, reindeer","Unknown"
-"Construction","8321","5000","2.3","Livestock, Other animals, Fur-bearing animals such as foxes and minks","Unknown"
-"Construction","8322","5000","2.3","Livestock, Other animals, Dogs and cats","Unknown"
-"Construction","8323","5000","2.3","Livestock, Other animals, Rabbits and hares","Unknown"
-"Construction","8324","5000","2.3","Livestock, Other animals, Other (e.g. emus, ostriches, elephants)","Unknown"
-"Construction","8325","5000","2.3","Livestock, Insects, Bees","Unknown"
-"Construction","8326","5000","2.3","Livestock, Insects, Silkworms","Unknown"
-"Construction","8327","5000","2.3","Livestock, Insects, Other worms or insects","Unknown"
-"Construction","8400","5000","2.3","Forestry, Unknown","Unknown"
-"Construction","8401","5000","2.3","Forestry, Closed forest, Mainly evergreen forest","Unknown"
-"Construction","8402","5000","2.3","Forestry, Closed forest, Mainly deciduous forest","Unknown"
-"Construction","8403","5000","2.3","Forestry, Closed forest, Extremely xeromorphic forest","Unknown"
-"Construction","8404","5000","2.3","Forestry, Woodland, Mainly evergreen woodland","Unknown"
-"Construction","8405","5000","2.3","Forestry, Woodland, Mainly deciduous woodland","Unknown"
-"Construction","8406","5000","2.3","Forestry, Woodland, Extremely xeromorphic woodland","Unknown"
-"Construction","8407","5000","2.3","Forestry, Scrub, Mainly evergreen scrub","Unknown"
-"Construction","8408","5000","2.3","Forestry, Scrub, Mainly deciduous scrub","Unknown"
-"Construction","8409","5000","2.3","Forestry, Scrub, Extremely xeromorphic (subdesert) shrubland","Unknown"
-"Construction","8410","5000","2.3","Forestry, Dwarf-scrub and related communities, Mainly evergreen dwarf-scrub","Unknown"
-"Construction","8411","5000","2.3","Forestry, Dwarf-scrub and related communities, Mainly deciduous scrub","Unknown"
-"Construction","8412","5000","2.3","Forestry, Dwarf-scrub and related communities, Extremely xeromorphic dwarf-shrubland","Unknown"
-"Construction","8413","5000","2.3","Forestry, Dwarf-scrub and related communities, Tundra","Unknown"
-"Construction","8414","5000","2.3","Forestry, Dwarf-scrub and related communities, Mossy bog formations with dwarf-shrub","Unknown"
-"Construction","8415","5000","2.3","Forestry, Herbaceous vegetation, Tall graminoid vegetation","Unknown"
-"Construction","8416","5000","2.3","Forestry, Herbaceous vegetation, Medium tall grassland","Unknown"
-"Construction","8417","5000","2.3","Forestry, Herbaceous vegetation, Short grassland","Unknown"
-"Construction","8418","5000","2.3","Forestry, Herbaceous vegetation, Forb vegetation","Unknown"
-"Construction","8419","5000","2.3","Forestry, Herbaceous vegetation, Hydromorphic fresh-water vegetation","Unknown"
-"Construction","8420","5000","2.3","Forestry, Spruce","Unknown"
-"Construction","8421","5000","2.3","Forestry, Birch","Unknown"
-"Construction","8422","5000","2.3","Forestry, Pine","Unknown"
-"Occupancy","1360","1351","2.3","Agriculture, Crops","Agriculture"
-"Occupancy","1370","1351","2.3","Agriculture, Livestock","Agriculture"
-"Occupancy","2543","2530","2.3","Industrial Facilities Model, IFM: Biomass plant","Industrial Facilities Model, IFM: Electric Substation - General"
-"Occupancy","2651","2300","2.3","Industrial Facilities Model, IFM: Transmission Systems - Other/Unknown","Industrial Facilities Model, IFM: High Technology - General"
-"Occupancy","3032","3000","2.3","Offshore renewables - general","Offshore, Unknown"
-"Occupancy","3033","3000","2.3","Offshore Wind","Offshore, Unknown"
-"Occupancy","3034","3000","2.3","Offshore Tidal","Offshore, Unknown"
-"Occupancy","3035","3000","2.3","Offshore Ocean Wave","Offshore, Unknown"
-"Occupancy","3036","3000","2.3","Floating Solar PV","Offshore, Unknown"
-"Occupancy","1070","1051","2.2","Residential, detached house","Residential, Permanent dwelling: single-family"
-"Occupancy","1071","1052","2.2","Residential, semi-detached house","Residential, Permanent dwelling: multi-family"
-"Occupancy","1072","1056","2.2","Residential, end-terrace house","Residential, Mid-Terraced Housing"
-"Occupancy","1073","1051","2.2","Residential, bungalow","Residential, Permanent dwelling: single-family"
-"Construction","5354","5350","2.0","Mobile Homes, Double Wide","Mobile Homes, Mobile Homes"
-"Construction","5309","5000","2.0","Special, Basement Flood Loss - High Value","Unknown"
-"Construction","5310","5000","2.0","Special, Flood Resistance General","Unknown"
-"Construction","5503","5501","2.0","Dam, General","Dams, Concrete dams"
-"Occupancy","1256","1150","2.0","Transportation, General","Industrial, General industrial"
-"Occupancy","1305","1150","2.0","Utilities, General","Industrial, General industrial"
-"Occupancy","1057","1050","2.0","Residential, Renter","Residential, General residential"
-"Occupancy","1058","1050","2.0","Residential Apartment/Condo Asso, Common Areas","Residential, General residential"
-"Occupancy","1059","1050","4.0","Residential, Large or Multiple Unit Apartment/Condo Asso, Common Areas","Residential, General residential"
-"Occupancy","1400","1100","4.0","Marine Cargo, General / Unknown","Marine Cargo, General / Unknown"
-"Occupancy","1401","1100","4.0","Marine Cargo, Designated Facilities / Vaults","Marine Cargo, Designated Facilities / Vaults"
-"Occupancy","1402","1100","4.0","Marine Cargo, Silo","Marine Cargo, Silo"
-"Occupancy","1403","1100","4.0","Marine Cargo, Liquid Tanks","Marine Cargo, Liquid Tanks"
-"Occupancy","1404","1100","4.0","Marine Cargo, Gas Tanks","Marine Cargo, Gas Tanks"
-"Occupancy","1405","1100","4.0","Marine Cargo, Inside Warehouse at Port","Marine Cargo, Inside Warehouse at Port"
-"Occupancy","1406","1100","4.0","Marine Cargo, Containerized Inside Warehouse","Marine Cargo, Containerized Inside Warehouse"
-"Occupancy","1407","1100","4.0","Marine Cargo, Containerized Stacked Outside","Marine Cargo, Containerized Stacked Outside"
-"Occupancy","1408","1100","4.0","Marine Cargo, Open Lot or Stockpiled Outside","Marine Cargo, Open Lot or Stockpiled Outside"
-"Occupancy","1409","1100","4.0","Marine Cargo, At Destination in Warehouse","Marine Cargo, At Destination in Warehouse"
-"Occupancy","1410","1100","4.0","Marine Cargo, At Destination Retail","Marine Cargo, At Destination Retail"
-"Occupancy","1411","1100","4.0","Marine Cargo, Museums, Institutions, Public Buildings","Marine Cargo, Museums, Institutions, Public Buildings"
-"Occupancy","1412","1100","4.0","Marine Cargo, Retail & Private Buildings","Marine Cargo, Retail & Private Buildings"
-"Construction","6200","6000","4.0","Marine Cargo, Automobiles","Marine Cargo, Automobiles"
-"Construction","6201","6000","4.0","Marine Cargo, Break Bulk","Marine Cargo, Break Bulk"
-"Construction","6202","6000","4.0","Marine Cargo, Dry Bulk","Marine Cargo, Dry Bulk"
-"Construction","6203","6000","4.0","Marine Cargo, Liquid Bulk","Marine Cargo, Liquid Bulk"
-"Construction","6204","6000","4.0","Marine Cargo, Consumables","Marine Cargo, Consumables"
-"Construction","6205","6000","4.0","Marine Cargo, Temperature-controlled","Marine Cargo, Temperature-controlled"
-"Construction","6206","6000","4.0","Marine Cargo, Electronics","Marine Cargo, Electronics"
-"Construction","6207","6000","4.0","Marine Cargo, Chemical Products","Marine Cargo, Chemical Products"
-"Construction","6208","6000","4.0","Marine Cargo, Explosives","Marine Cargo, Explosives"
-"Construction","6209","6000","4.0","Marine Cargo, General Cargo","Marine Cargo, General Cargo"
-"Construction","6210","6000","4.0","Marine Cargo, Heavy Industry","Marine Cargo, Heavy Industry"
-"Construction","6211","6000","4.0","Marine Cargo, Light Industry","Marine Cargo, Light Industry"
-"Construction","6212","6000","4.0","Marine Cargo, Petroleum Products","Marine Cargo, Petroleum Products"
-"Construction","6213","6000","4.0","Marine Cargo, Pharmaceuticals","Marine Cargo, Pharmaceuticals"
-"Construction","6214","6000","4.0","Marine Cargo, Project Cargo","Marine Cargo, Project Cargo"
-"Construction","6215","6000","4.0","Marine Cargo, Livestock","Marine Cargo, Livestock"
-"Construction","6216","6000","4.0","Marine Cargo, General Specie","Marine Cargo, General Specie"
-"Construction","6217","6000","4.0","Marine Cargo, Fine Art & Collectibles","Marine Cargo, Fine Art & Collectibles"
-"Construction","6218","6000","4.0","Marine Cargo, Cash In Transit","Marine Cargo, Cash In Transit"
-"Construction","6219","6000","4.0","Marine Cargo, Jewelers Blocks","Marine Cargo, Jewelers Blocks"
+Category,New code,Fallback,Version,Code description,Proposed code description
+Construction,5454,5452,2.3,"Highways, Motorways","Highways, General"
+Construction,5455,5452,2.3,"Highways, Trunk road","Highways, General"
+Construction,5456,5452,2.3,"Highways, Primary roads","Highways, General"
+Construction,5457,5452,2.3,"Highways, Seconday roads","Highways, General"
+Construction,5458,5452,2.3,"Highways, Tertiary roads","Highways, General"
+Construction,5459,5452,2.3,"Highways, Unclassified roads","Highways, General"
+Construction,5460,5452,2.3,"Highways, Residential roads","Highways, General"
+Construction,5461,5452,2.3,"Highways, Service road","Highways, General"
+Construction,5463,5451,2.3,"Railways, light rail","Railways, General"
+Construction,5464,5451,2.3,"Railways, Monorail","Railways, General"
+Construction,5465,5451,2.3,"Railways, Standard gauge","Railways, General"
+Construction,5466,5451,2.3,"Railways, Subway","Railways, General"
+Construction,5467,5451,2.3,"Railways, Tram","Railways, General"
+Construction,5756,5000,2.3,Distribution circuits,Unknown
+Construction,5961,5000,2.3,"Miscellaneous, treatment plant",Unknown
+Construction,7014,5000,2.3,Offshore wind,Unknown
+Construction,7015,5000,2.3,Offshore wind,Unknown
+Construction,7016,5000,2.3,Offshore wind,Unknown
+Construction,7017,5000,2.3,Offshore wind,Unknown
+Construction,7018,5000,2.3,Offshore wind,Unknown
+Construction,7019,5000,2.3,Offshore wind,Unknown
+Construction,7020,5000,2.3,Offshore wind,Unknown
+Construction,7021,5000,2.3,Offshore wind,Unknown
+Construction,7022,5000,2.3,Offshore wind,Unknown
+Construction,7023,5000,2.3,Offshore wind,Unknown
+Construction,8000,5000,2.3,"Crops, Unknown crop",Unknown
+Construction,8010,5000,2.3,"Crops, Cereals, Unknown",Unknown
+Construction,8011,5000,2.3,"Crops, Cereals, Wheat",Unknown
+Construction,8012,5000,2.3,"Crops, Cereals, Maize",Unknown
+Construction,8013,5000,2.3,"Crops, Cereals, Rice",Unknown
+Construction,8014,5000,2.3,"Crops, Cereals, Sorghum",Unknown
+Construction,8015,5000,2.3,"Crops, Cereals, Barley",Unknown
+Construction,8016,5000,2.3,"Crops, Cereals, Rye",Unknown
+Construction,8017,5000,2.3,"Crops, Cereals, Oats",Unknown
+Construction,8018,5000,2.3,"Crops, Cereals, Millets",Unknown
+Construction,8019,5000,2.3,"Crops, Cereals, Other",Unknown
+Construction,8030,5000,2.3,"Crops, Vegetables and melons, Unknown",Unknown
+Construction,8031,5000,2.3,"Crops, Vegetables and melons, Leafy or stem vegetables",Unknown
+Construction,8032,5000,2.3,"Crops, Vegetables and melons, Fruit-bearing vegetables",Unknown
+Construction,8033,5000,2.3,"Crops, Vegetables and melons, Root, bulb, or tuberous vegetables",Unknown
+Construction,8034,5000,2.3,"Crops, Vegetables and melons, Mushrooms and truffles",Unknown
+Construction,8035,5000,2.3,"Crops, Vegetables and melons, Other",Unknown
+Construction,8050,5000,2.3,"Crops, Fruits and nuts, Unknown",Unknown
+Construction,8051,5000,2.3,"Crops, Fruits and nuts, Tropical and subtropical fruits",Unknown
+Construction,8052,5000,2.3,"Crops, Fruits and nuts, Citrus fruits",Unknown
+Construction,8053,5000,2.3,"Crops, Fruits and nuts, Grapes",Unknown
+Construction,8054,5000,2.3,"Crops, Fruits and nuts, Berries",Unknown
+Construction,8055,5000,2.3,"Crops, Fruits and nuts, Pome fruits and stone fruits",Unknown
+Construction,8056,5000,2.3,"Crops, Fruits and nuts, Nuts",Unknown
+Construction,8057,5000,2.3,"Crops, Fruits and nuts, Other",Unknown
+Construction,8070,5000,2.3,"Crops, Oilseed crops, Unknown",Unknown
+Construction,8071,5000,2.3,"Crops, Oilseed crops, Soya beans",Unknown
+Construction,8072,5000,2.3,"Crops, Oilseed crops, Groundnuts",Unknown
+Construction,8073,5000,2.3,"Crops, Oilseed crops, Other",Unknown
+Construction,8090,5000,2.3,"Crops, Root/tuber crops with high starch or inulin content, Unknown",Unknown
+Construction,8091,5000,2.3,"Crops, Root/tuber crops with high starch or inulin content, Potatoes",Unknown
+Construction,8092,5000,2.3,"Crops, Root/tuber crops with high starch or inulin content, Sweet potatoes",Unknown
+Construction,8093,5000,2.3,"Crops, Root/tuber crops with high starch or inulin content, Cassava Yams",Unknown
+Construction,8094,5000,2.3,"Crops, Root/tuber crops with high starch or inulin content, Other",Unknown
+Construction,8100,5000,2.3,"Crops, Beverage and spice crops, Unknown",Unknown
+Construction,8101,5000,2.3,"Crops, Beverage and spice crops, Beverage crops",Unknown
+Construction,8102,5000,2.3,"Crops, Beverage and spice crops, Spice crops",Unknown
+Construction,8103,5000,2.3,"Crops, Beverage and spice crops, Other",Unknown
+Construction,8110,5000,2.3,"Crops, Leguminous crops, Unknown",Unknown
+Construction,8111,5000,2.3,"Crops, Leguminous crops, Beans",Unknown
+Construction,8112,5000,2.3,"Crops, Leguminous crops, Broad beans",Unknown
+Construction,8113,5000,2.3,"Crops, Leguminous crops, Chick peas",Unknown
+Construction,8114,5000,2.3,"Crops, Leguminous crops, Cow peas",Unknown
+Construction,8115,5000,2.3,"Crops, Leguminous crops, Lentils",Unknown
+Construction,8116,5000,2.3,"Crops, Leguminous crops, Lupins",Unknown
+Construction,8117,5000,2.3,"Crops, Leguminous crops, Peas",Unknown
+Construction,8118,5000,2.3,"Crops, Leguminous crops, Pigeon peas",Unknown
+Construction,8119,5000,2.3,"Crops, Leguminous crops, Leguminous crops",Unknown
+Construction,8120,5000,2.3,"Crops, Leguminous crops, Other",Unknown
+Construction,8130,5000,2.3,"Crops, Sugar crops, Unknown",Unknown
+Construction,8131,5000,2.3,"Crops, Sugar crops, Sugar beet",Unknown
+Construction,8132,5000,2.3,"Crops, Sugar crops, Sugar cane",Unknown
+Construction,8133,5000,2.3,"Crops, Sugar crops, Sweet sorghum",Unknown
+Construction,8134,5000,2.3,"Crops, Sugar crops, Other",Unknown
+Construction,8140,5000,2.3,"Crops, Other crops, Grasses and other fodder crops",Unknown
+Construction,8141,5000,2.3,"Crops, Other crops, Fibre crops",Unknown
+Construction,8142,5000,2.3,"Crops, Other crops, Medicinal, aromatic, pesticidal, or similar crops",Unknown
+Construction,8143,5000,2.3,"Crops, Other crops, Rubber",Unknown
+Construction,8144,5000,2.3,"Crops, Other crops, Flower crops",Unknown
+Construction,8145,5000,2.3,"Crops, Other crops, Tobacco",Unknown
+Construction,8146,5000,2.3,"Crops, Other crops, Other",Unknown
+Construction,8300,5000,2.3,"Livestock, Unknown livestock",Unknown
+Construction,8301,5000,2.3,"Livestock, Large ruminants, Cattle",Unknown
+Construction,8302,5000,2.3,"Livestock, Large ruminants, Buffaloes",Unknown
+Construction,8303,5000,2.3,"Livestock, Large ruminants, Yaks",Unknown
+Construction,8304,5000,2.3,"Livestock, Small ruminants, Sheep",Unknown
+Construction,8305,5000,2.3,"Livestock, Small ruminants, Goats",Unknown
+Construction,8306,5000,2.3,"Livestock, Pigs or swines, ",Unknown
+Construction,8307,5000,2.3,"Livestock, Equines, Horses",Unknown
+Construction,8308,5000,2.3,"Livestock, Equines, Mules and hinnies",Unknown
+Construction,8309,5000,2.3,"Livestock, Equines, Asses",Unknown
+Construction,8310,5000,2.3,"Livestock, Equines, Other (e.g. zebras)",Unknown
+Construction,8311,5000,2.3,"Livestock, Camels and camelids, Camels",Unknown
+Construction,8312,5000,2.3,"Livestock, Camels and camelids, Llamas and alpacas",Unknown
+Construction,8313,5000,2.3,"Livestock, Poultry, Chickens",Unknown
+Construction,8314,5000,2.3,"Livestock, Poultry, Ducks",Unknown
+Construction,8315,5000,2.3,"Livestock, Poultry, Geese",Unknown
+Construction,8316,5000,2.3,"Livestock, Poultry, Turkeys",Unknown
+Construction,8317,5000,2.3,"Livestock, Poultry, Guinea fowls",Unknown
+Construction,8318,5000,2.3,"Livestock, Poultry, Pigeons",Unknown
+Construction,8319,5000,2.3,"Livestock, Poultry, Other",Unknown
+Construction,8320,5000,2.3,"Livestock, Other animals, Deer, elk, reindeer",Unknown
+Construction,8321,5000,2.3,"Livestock, Other animals, Fur-bearing animals such as foxes and minks",Unknown
+Construction,8322,5000,2.3,"Livestock, Other animals, Dogs and cats",Unknown
+Construction,8323,5000,2.3,"Livestock, Other animals, Rabbits and hares",Unknown
+Construction,8324,5000,2.3,"Livestock, Other animals, Other (e.g. emus, ostriches, elephants)",Unknown
+Construction,8325,5000,2.3,"Livestock, Insects, Bees",Unknown
+Construction,8326,5000,2.3,"Livestock, Insects, Silkworms",Unknown
+Construction,8327,5000,2.3,"Livestock, Insects, Other worms or insects",Unknown
+Construction,8400,5000,2.3,"Forestry, Unknown",Unknown
+Construction,8401,5000,2.3,"Forestry, Closed forest, Mainly evergreen forest",Unknown
+Construction,8402,5000,2.3,"Forestry, Closed forest, Mainly deciduous forest",Unknown
+Construction,8403,5000,2.3,"Forestry, Closed forest, Extremely xeromorphic forest",Unknown
+Construction,8404,5000,2.3,"Forestry, Woodland, Mainly evergreen woodland",Unknown
+Construction,8405,5000,2.3,"Forestry, Woodland, Mainly deciduous woodland",Unknown
+Construction,8406,5000,2.3,"Forestry, Woodland, Extremely xeromorphic woodland",Unknown
+Construction,8407,5000,2.3,"Forestry, Scrub, Mainly evergreen scrub",Unknown
+Construction,8408,5000,2.3,"Forestry, Scrub, Mainly deciduous scrub",Unknown
+Construction,8409,5000,2.3,"Forestry, Scrub, Extremely xeromorphic (subdesert) shrubland",Unknown
+Construction,8410,5000,2.3,"Forestry, Dwarf-scrub and related communities, Mainly evergreen dwarf-scrub",Unknown
+Construction,8411,5000,2.3,"Forestry, Dwarf-scrub and related communities, Mainly deciduous scrub",Unknown
+Construction,8412,5000,2.3,"Forestry, Dwarf-scrub and related communities, Extremely xeromorphic dwarf-shrubland",Unknown
+Construction,8413,5000,2.3,"Forestry, Dwarf-scrub and related communities, Tundra",Unknown
+Construction,8414,5000,2.3,"Forestry, Dwarf-scrub and related communities, Mossy bog formations with dwarf-shrub",Unknown
+Construction,8415,5000,2.3,"Forestry, Herbaceous vegetation, Tall graminoid vegetation",Unknown
+Construction,8416,5000,2.3,"Forestry, Herbaceous vegetation, Medium tall grassland",Unknown
+Construction,8417,5000,2.3,"Forestry, Herbaceous vegetation, Short grassland",Unknown
+Construction,8418,5000,2.3,"Forestry, Herbaceous vegetation, Forb vegetation",Unknown
+Construction,8419,5000,2.3,"Forestry, Herbaceous vegetation, Hydromorphic fresh-water vegetation",Unknown
+Construction,8420,5000,2.3,"Forestry, Spruce",Unknown
+Construction,8421,5000,2.3,"Forestry, Birch",Unknown
+Construction,8422,5000,2.3,"Forestry, Pine",Unknown
+Occupancy,1360,1351,2.3,"Agriculture, Crops",Agriculture
+Occupancy,1370,1351,2.3,"Agriculture, Livestock",Agriculture
+Occupancy,2543,2530,2.3,"Industrial Facilities Model, IFM: Biomass plant","Industrial Facilities Model, IFM: Electric Substation - General"
+Occupancy,2651,2300,2.3,"Industrial Facilities Model, IFM: Transmission Systems - Other/Unknown","Industrial Facilities Model, IFM: High Technology - General"
+Occupancy,3032,3000,2.3,Offshore renewables - general,"Offshore, Unknown"
+Occupancy,3033,3000,2.3,Offshore Wind,"Offshore, Unknown"
+Occupancy,3034,3000,2.3,Offshore Tidal,"Offshore, Unknown"
+Occupancy,3035,3000,2.3,Offshore Ocean Wave,"Offshore, Unknown"
+Occupancy,3036,3000,2.3,Floating Solar PV,"Offshore, Unknown"
+Occupancy,1070,1051,2.2,"Residential, detached house","Residential, Permanent dwelling: single-family"
+Occupancy,1071,1052,2.2,"Residential, semi-detached house","Residential, Permanent dwelling: multi-family"
+Occupancy,1072,1056,2.2,"Residential, end-terrace house","Residential, Mid-Terraced Housing"
+Occupancy,1073,1051,2.2,"Residential, bungalow","Residential, Permanent dwelling: single-family"
+Construction,5354,5350,2.0,"Mobile Homes, Double Wide","Mobile Homes, Mobile Homes"
+Construction,5309,5000,2.0,"Special, Basement Flood Loss - High Value",Unknown
+Construction,5310,5000,2.0,"Special, Flood Resistance General",Unknown
+Construction,5503,5501,2.0,"Dam, General","Dams, Concrete dams"
+Occupancy,1256,1150,2.0,"Transportation, General","Industrial, General industrial"
+Occupancy,1305,1150,2.0,"Utilities, General","Industrial, General industrial"
+Occupancy,1057,1050,2.0,"Residential, Renter","Residential, General residential"
+Occupancy,1058,1050,2.0,"Residential Apartment/Condo Asso, Common Areas","Residential, General residential"
+Occupancy,1059,1050,4.0,"Residential, Large or Multiple Unit Apartment/Condo Asso, Common Areas","Residential, General residential"
+Occupancy,1400,1100,4.0,"Marine Cargo, General / Unknown","Marine Cargo, General / Unknown"
+Occupancy,1401,1100,4.0,"Marine Cargo, Designated Facilities / Vaults","Marine Cargo, Designated Facilities / Vaults"
+Occupancy,1402,1100,4.0,"Marine Cargo, Silo","Marine Cargo, Silo"
+Occupancy,1403,1100,4.0,"Marine Cargo, Liquid Tanks","Marine Cargo, Liquid Tanks"
+Occupancy,1404,1100,4.0,"Marine Cargo, Gas Tanks","Marine Cargo, Gas Tanks"
+Occupancy,1405,1100,4.0,"Marine Cargo, Inside Warehouse at Port","Marine Cargo, Inside Warehouse at Port"
+Occupancy,1406,1100,4.0,"Marine Cargo, Containerized Inside Warehouse","Marine Cargo, Containerized Inside Warehouse"
+Occupancy,1407,1100,4.0,"Marine Cargo, Containerized Stacked Outside","Marine Cargo, Containerized Stacked Outside"
+Occupancy,1408,1100,4.0,"Marine Cargo, Open Lot or Stockpiled Outside","Marine Cargo, Open Lot or Stockpiled Outside"
+Occupancy,1409,1100,4.0,"Marine Cargo, At Destination in Warehouse","Marine Cargo, At Destination in Warehouse"
+Occupancy,1410,1100,4.0,"Marine Cargo, At Destination Retail","Marine Cargo, At Destination Retail"
+Occupancy,1411,1100,4.0,"Marine Cargo, Museums, Institutions, Public Buildings","Marine Cargo, Museums, Institutions, Public Buildings"
+Occupancy,1412,1100,4.0,"Marine Cargo, Retail & Private Buildings","Marine Cargo, Retail & Private Buildings"
+Construction,6200,6000,4.0,"Marine Cargo, Automobiles","Marine Cargo, Automobiles"
+Construction,6201,6000,4.0,"Marine Cargo, Break Bulk","Marine Cargo, Break Bulk"
+Construction,6202,6000,4.0,"Marine Cargo, Dry Bulk","Marine Cargo, Dry Bulk"
+Construction,6203,6000,4.0,"Marine Cargo, Liquid Bulk","Marine Cargo, Liquid Bulk"
+Construction,6204,6000,4.0,"Marine Cargo, Consumables","Marine Cargo, Consumables"
+Construction,6205,6000,4.0,"Marine Cargo, Temperature-controlled","Marine Cargo, Temperature-controlled"
+Construction,6206,6000,4.0,"Marine Cargo, Electronics","Marine Cargo, Electronics"
+Construction,6207,6000,4.0,"Marine Cargo, Chemical Products","Marine Cargo, Chemical Products"
+Construction,6208,6000,4.0,"Marine Cargo, Explosives","Marine Cargo, Explosives"
+Construction,6209,6000,4.0,"Marine Cargo, General Cargo","Marine Cargo, General Cargo"
+Construction,6210,6000,4.0,"Marine Cargo, Heavy Industry","Marine Cargo, Heavy Industry"
+Construction,6211,6000,4.0,"Marine Cargo, Light Industry","Marine Cargo, Light Industry"
+Construction,6212,6000,4.0,"Marine Cargo, Petroleum Products","Marine Cargo, Petroleum Products"
+Construction,6213,6000,4.0,"Marine Cargo, Pharmaceuticals","Marine Cargo, Pharmaceuticals"
+Construction,6214,6000,4.0,"Marine Cargo, Project Cargo","Marine Cargo, Project Cargo"
+Construction,6215,6000,4.0,"Marine Cargo, Livestock","Marine Cargo, Livestock"
+Construction,6216,6000,4.0,"Marine Cargo, General Specie","Marine Cargo, General Specie"
+Construction,6217,6000,4.0,"Marine Cargo, Fine Art & Collectibles","Marine Cargo, Fine Art & Collectibles"
+Construction,6218,6000,4.0,"Marine Cargo, Cash In Transit","Marine Cargo, Cash In Transit"
+Construction,6219,6000,4.0,"Marine Cargo, Jewelers Blocks","Marine Cargo, Jewelers Blocks"
