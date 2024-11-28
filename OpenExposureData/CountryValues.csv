@@ -1,287 +1,287 @@
-Category,Code,Name,Inland,Non-ISO3166 code,Offshore
-CountryCode,A1,Alaska Offshore,No,In AIR: ALO,"Arctic, Bering, North Pacific"
-CountryCode,A2,Angola Offshore,No,In AIR: ANO,South Atlantic
-CountryCode,A3,Arctic Offshore,No,In AIR: ARO,Arctic
-CountryCode,A4,Australasia Offshore,No,In AIR: AUO,"South Pacific, North Pacific, Indian"
-CountryCode,AD,Andorra,Yes,,
-CountryCode,AE,United Arab Emirates,Yes,,
-CountryCode,AF,Afghanistan,Yes,,
-CountryCode,AG,Antigua and Barbuda,Yes,,
-CountryCode,AI,Anguilla,Yes,,
-CountryCode,AL,Albania,Yes,,
-CountryCode,AM,Armenia,Yes,,
-CountryCode,AO,Angola,Yes,,
-CountryCode,AQ,Antarctica,Yes,,
-CountryCode,AR,Argentina,Yes,,
-CountryCode,AS,American Samoa,Yes,,
-CountryCode,AT,Austria,Yes,,
-CountryCode,AU,Australia,Yes,,
-CountryCode,AW,Aruba,Yes,,
-CountryCode,AX,Aland Islands,Yes,,
-CountryCode,AZ,Azerbaijan,Yes,,
-CountryCode,B1,Bay of Campeche Offshore,No,In AIR: BCO,Gulf of Mexico
-CountryCode,B2,Brazil Offshore,No,In AIR: BRO,"South Atlantic, North atlantic"
-CountryCode,B3,Baltic Sea Offshore,No,In AIR: BSO,Baltic Sea
-CountryCode,BA,Bosnia and Herzegovina,Yes,,
-CountryCode,BB,Barbados,Yes,,
-CountryCode,BD,Bangladesh,Yes,,
-CountryCode,BE,Belgium,Yes,,
-CountryCode,BF,Burkina Faso,Yes,,
-CountryCode,BG,Bulgaria,Yes,,
-CountryCode,BH,Bahrain,Yes,,
-CountryCode,BI,Burundi,Yes,,
-CountryCode,BJ,Benin,Yes,,
-CountryCode,BL,Saint Barthélemy,Yes,,
-CountryCode,BM,Bermuda,Yes,,
-CountryCode,BN,Brunei,Yes,,
-CountryCode,BO,Bolivia,Yes,,
-CountryCode,BR,Brazil,Yes,,
-CountryCode,BS,Bahamas,Yes,,
-CountryCode,BT,Bhutan,Yes,,
-CountryCode,BV,Bouvet Island,Yes,,
-CountryCode,BW,Botswana,Yes,,
-CountryCode,BY,Belarus,Yes,,
-CountryCode,BZ,Belize,Yes,,
-CountryCode,C1,Canada Offshore,No,In AIR: CAO,"North Pacific, North Atlantic, Hudson Bay"
-CountryCode,C2,Caspian Sea,Yes,In AIR: CAS,Caspian Sea
-CountryCode,C3,China Offshore,No,In AIR: CNO,North Pacific
-CountryCode,CA,Canada,Yes,,
-CountryCode,CC,Cocos Islands,Yes,,
-CountryCode,CD,Congo  Republic Of,Yes,,
-CountryCode,CF,Central African Republic,Yes,,
-CountryCode,CG,Congo,Yes,,
-CountryCode,CH,Switzerland,Yes,,
-CountryCode,CI,Cote D Ivoire,Yes,,
-CountryCode,CK,Cook Islands,Yes,,
-CountryCode,CL,Chile,Yes,,
-CountryCode,CM,Cameroon,Yes,,
-CountryCode,CN,China,Yes,,
-CountryCode,CO,Colombia,Yes,,
-CountryCode,CR,Costa Rica,Yes,,
-CountryCode,CU,Cuba,Yes,,
-CountryCode,CV,Cape Verde,Yes,,
-CountryCode,CW,Curacao,Yes,,
-CountryCode,CX,Christmas Island,Yes,,
-CountryCode,CY,Cyprus,Yes,,
-CountryCode,CZ,Czech Republic,Yes,,
-CountryCode,DE,Germany,Yes,,
-CountryCode,DJ,Djibouti,Yes,,
-CountryCode,DK,Denmark,Yes,,
-CountryCode,DM,Dominica,Yes,,
-CountryCode,DO,Dominican Republic,Yes,,
-CountryCode,DZ,Algeria,Yes,,
-CountryCode,E1,East Africa Offshore,No,In AIR: EAO,Indian
-CountryCode,E2,Egypt Offshore,No,In AIR: EGO,"Mediterranean Sea, Red Sea"
-CountryCode,EC,Ecuador,Yes,,
-CountryCode,EE,Estonia,Yes,,
-CountryCode,EG,Egypt,Yes,,
-CountryCode,EH,Western Sahara,Yes,,
-CountryCode,ER,Eritrea,Yes,,
-CountryCode,ES,Spain,Yes,,
-CountryCode,ET,Ethiopia,Yes,,
-CountryCode,F1,Far East Offshore,No,In AIR: FAO,"North Pacific, Arctic"
-CountryCode,FI,Finland,Yes,,
-CountryCode,FJ,Fiji,Yes,,
-CountryCode,FK,Falkland Islands,Yes,,
-CountryCode,FM,Micronesia,Yes,,
-CountryCode,FO,Faeroe Islands,Yes,,
-CountryCode,FR,France,Yes,,
-CountryCode,G1,Gabon Offshore,No,In AIR: GAO,"North Atlantic, South Atlantic"
-CountryCode,G2,Gulf Of Mexico,No,In AIR: GOM,Gulf of Mexico
-CountryCode,GA,Gabon,Yes,,
-CountryCode,GB,United Kingdom,Yes,,
-CountryCode,GD,Grenada,Yes,,
-CountryCode,GE,Georgia,Yes,,
-CountryCode,GF,French Guiana,Yes,,
-CountryCode,GG,Guernsey,Yes,,
-CountryCode,GH,Ghana,Yes,,
-CountryCode,GI,Gibraltar,Yes,,
-CountryCode,GL,Greenland,Yes,,
-CountryCode,GM,Gambia,Yes,,
-CountryCode,GN,Guinea,Yes,,
-CountryCode,GP,Guadeloupe,Yes,,
-CountryCode,GQ,Equatorial Guinea,Yes,,
-CountryCode,GR,Greece,Yes,,
-CountryCode,GS,South Georgia and the South Sandwich Islands,Yes,,
-CountryCode,GT,Guatemala,Yes,,
-CountryCode,GU,Guam,Yes,,
-CountryCode,GW,Guinea-Bissau,Yes,,
-CountryCode,GY,Guyana,Yes,,
-CountryCode,HK,Hong Kong,Yes,,
-CountryCode,HM,Heard Island and Mcdonald Islands,Yes,,
-CountryCode,HN,Honduras,Yes,,
-CountryCode,HR,Croatia,Yes,,
-CountryCode,HT,Haiti,Yes,,
-CountryCode,HU,Hungary,Yes,,
-CountryCode,I1,Indian Subcontinent Offshore,No,In AIR: INO,Indian
-CountryCode,ID,Indonesia,Yes,,
-CountryCode,IE,Ireland,Yes,,
-CountryCode,IL,Israel,Yes,,
-CountryCode,IM,Isle Of Man,Yes,,
-CountryCode,IN,India,Yes,,
-CountryCode,IO,British Indian Ocean Territory,Yes,,
-CountryCode,IQ,Iraq,Yes,,
-CountryCode,IR,Iran,Yes,,
-CountryCode,IS,Iceland,Yes,,
-CountryCode,IT,Italy,Yes,,
-CountryCode,J1,Japan/Korea Offshore,No,In AIR: JKO,"Sea of Japan, North Pacific"
-CountryCode,JE,Jersey,Yes,,
-CountryCode,JM,Jamaica,Yes,,
-CountryCode,JO,Jordan,Yes,,
-CountryCode,JP,Japan,Yes,,
-CountryCode,KE,Kenya,Yes,,
-CountryCode,KG,Kyrgyzstan,Yes,,
-CountryCode,KH,Cambodia,Yes,,
-CountryCode,KI,Kiribati,Yes,,
-CountryCode,KM,Comoros,Yes,,
-CountryCode,KN,Saint Kitts and Nevis,Yes,,
-CountryCode,KP,Korea,Yes,,
-CountryCode,KR,South Korea,Yes,,
-CountryCode,KW,Kuwait,Yes,,
-CountryCode,KY,Cayman Islands,Yes,,
-CountryCode,KZ,Kazakhstan,Yes,,
-CountryCode,LA,Lao Peoples Democratic Republic,Yes,,
-CountryCode,LB,Lebanon,Yes,,
-CountryCode,LC,Saint Lucia,Yes,,
-CountryCode,LI,Liechtenstein,Yes,,
-CountryCode,LK,Sri Lanka,Yes,,
-CountryCode,LR,Liberia,Yes,,
-CountryCode,LS,Lesotho,Yes,,
-CountryCode,LT,Lithuania,Yes,,
-CountryCode,LU,Luxembourg,Yes,,
-CountryCode,LV,Latvia,Yes,,
-CountryCode,LY,Libya,Yes,,
-CountryCode,M1,Mediterranean Offshore,No,In AIR: MEO,Mediterranean Sea
-CountryCode,M2,Middle East Offshore,No,In AIR: MIO,"India, Mediterranean Sea"
-CountryCode,M3,Mexico Offshore,No,In AIR: MXO,"Gulf of Mexico, North Pacific"
-CountryCode,MA,Morocco,Yes,,
-CountryCode,MC,Monaco,Yes,,
-CountryCode,MD,Moldova,Yes,,
-CountryCode,ME,Montenegro,Yes,,
-CountryCode,MF,St. Martin (French Part),Yes,,
-CountryCode,MG,Madagascar,Yes,,
-CountryCode,MH,Marshall Islands,Yes,,
-CountryCode,MK,Macedonia,Yes,,
-CountryCode,ML,Mali,Yes,,
-CountryCode,MM,Myanmar,Yes,,
-CountryCode,MN,Mongolia,Yes,,
-CountryCode,MO,Macau / Macao,Yes,,
-CountryCode,MP,Northern Mariana Islands / Saipan,Yes,,
-CountryCode,MQ,Martinique,Yes,,
-CountryCode,MR,Mauritania,Yes,,
-CountryCode,MS,Montserrat,Yes,,
-CountryCode,MT,Malta,Yes,,
-CountryCode,MU,Mauritius,Yes,,
-CountryCode,MV,Maldives,Yes,,
-CountryCode,MW,Malawi,Yes,,
-CountryCode,MX,Mexico,Yes,,
-CountryCode,MY,Malaysia,Yes,,
-CountryCode,MZ,Mozambique,Yes,,
-CountryCode,N1,Nigeria Offshore,No,In AIR: NIO,North Atlantic
-CountryCode,N2,Norway Offshore,No,In AIR: NOO,"Norwegian Sea, Barents Sea"
-CountryCode,N3,North Sea Offshore,No,In AIR: NSO,North Sea
-CountryCode,NA,Namibia,Yes,,
-CountryCode,NC,New Caledonia,Yes,,
-CountryCode,NE,Niger,Yes,,
-CountryCode,NF,Norfolk Island,Yes,,
-CountryCode,NG,Nigeria,Yes,,
-CountryCode,NI,Nicaragua,Yes,,
-CountryCode,NL,Netherlands,Yes,,
-CountryCode,NO,Norway,Yes,,
-CountryCode,NP,Nepal,Yes,,
-CountryCode,NR,Nauru,Yes,,
-CountryCode,NU,Niue,Yes,,
-CountryCode,NZ,New Zealand,Yes,,
-CountryCode,OM,Oman,Yes,,
-CountryCode,PA,Panama,Yes,,
-CountryCode,PE,Peru,Yes,,
-CountryCode,PF,French Polynesia,Yes,,
-CountryCode,PG,Papua New Guinea,Yes,,
-CountryCode,PH,Philippines,Yes,,
-CountryCode,PK,Pakistan,Yes,,
-CountryCode,PL,Poland,Yes,,
-CountryCode,PM,Saint Pierre and Miquelon,Yes,,
-CountryCode,PN,Pitcairn,Yes,,
-CountryCode,PR,Puerto Rico,Yes,,
-CountryCode,PS,Palestinian Territories,Yes,,
-CountryCode,PT,Portugal,Yes,,
-CountryCode,PW,Palau,Yes,,
-CountryCode,PY,Paraguay,Yes,,
-CountryCode,QA,Qatar,Yes,,
-CountryCode,R1,Russia Offshore,No,In AIR: RUO,"Barents, Kara Sea, East Siberian Sea"
-CountryCode,RE,Reunion,Yes,,
-CountryCode,RO,Romania,Yes,,
-CountryCode,RS,Serbia,Yes,,
-CountryCode,RU,Russian Federation,Yes,,
-CountryCode,RW,Rwanda,Yes,,
-CountryCode,S1,South America Offshore,No,In AIR: SAO,"South Atlantic, North Atlantic, South Pacific, North Pacific"
-CountryCode,S2,Sweden Offshore,No,In AIR: SEO,"North Sea, Baltic Sea"
-CountryCode,S3,South Asia Offshore,No,In AIR: SSO,"Gulf of Thailand, South China Sea"
-CountryCode,SA,Saudi Arabia,Yes,,
-CountryCode,SB,Solomon Islands,Yes,,
-CountryCode,SC,Seychelles,Yes,,
-CountryCode,SD,Sudan,Yes,,
-CountryCode,SE,Sweden,Yes,,
-CountryCode,SG,Singapore,Yes,,
-CountryCode,SH,Saint Helena,Yes,,
-CountryCode,SI,Slovenia,Yes,,
-CountryCode,SJ,Svalbard and Jan Mayen,Yes,,
-CountryCode,SK,Slovakia,Yes,,
-CountryCode,SL,Sierra Leone,Yes,,
-CountryCode,SM,San Marino,Yes,,
-CountryCode,SN,Senegal,Yes,,
-CountryCode,SO,Somalia,Yes,,
-CountryCode,SR,Suriname,Yes,,
-CountryCode,SS,South Sudan,Yes,,
-CountryCode,ST,Sao Tome and Principe,Yes,,
-CountryCode,SV,El Salvador,Yes,,
-CountryCode,SX,St. Maarten (Dutch part),Yes,,
-CountryCode,SY,Syrian Arab Republic,Yes,,
-CountryCode,SZ,Swaziland,Yes,,
-CountryCode,T1,Trinidad and Tobago Offshore,No,In AIR: TTO,North Atlantic
-CountryCode,TC,Turks and Caicos Islands,Yes,,
-CountryCode,TD,Chad,Yes,,
-CountryCode,TF,French Southern Territories,Yes,,
-CountryCode,TG,Togo,Yes,,
-CountryCode,TH,Thailand,Yes,,
-CountryCode,TJ,Tajikistan,Yes,,
-CountryCode,TK,Tokelau,Yes,,
-CountryCode,TL,Timor-leste,Yes,,
-CountryCode,TM,Turkmenistan,Yes,,
-CountryCode,TN,Tunisia,Yes,,
-CountryCode,TO,Tonga,Yes,,
-CountryCode,TR,Turkey,Yes,,
-CountryCode,TT,Trinidad and Tobago,Yes,,
-CountryCode,TV,Tuvalu,Yes,,
-CountryCode,TW,Taiwan,Yes,,
-CountryCode,TZ,Tanzania,Yes,,
-CountryCode,U1,United Kingdom Offshore,No,In AIR: UKO,"North Sea, English Channel, North Atlantic"
-CountryCode,UA,Ukraine,Yes,,
-CountryCode,UG,Uganda,Yes,,
-CountryCode,UM,United States Minor Outlying Islands,Yes,,
-CountryCode,US,United States,Yes,,
-CountryCode,UY,Uruguay,Yes,,
-CountryCode,UZ,Uzbekistan,Yes,,
-CountryCode,V1,Venezuela Offshore,No,In AIR: VEO,Atlantic Ocean
-CountryCode,V2,Vietnam Offshore,No,In AIR: VNO,"Gulf of Thailand, South China Sea"
-CountryCode,VA,Vatican City,Yes,,
-CountryCode,VC,Saint Vincent and the Grenadines,Yes,,
-CountryCode,VE,Venezuela,Yes,,
-CountryCode,VG,Virgin Islands British,Yes,,
-CountryCode,VI,Virgin Islands (US),Yes,,
-CountryCode,VN,Vietnam,Yes,,
-CountryCode,VU,Vanuatu,Yes,,
-CountryCode,W4,West Africa Offshore,No,In AIR: WAO,"North Atlantic, South Atlantic"
-CountryCode,W5,West US/California Offshore,No,In AIR: WUO,North Pacific
-CountryCode,WF,Wallis and Futuna,Yes,,
-CountryCode,WS,Samoa,Yes,,
-CountryCode,XB,Bonaire,Yes,OED defined code,
-CountryCode,XE,St. Eustatius,Yes,OED defined code,
-CountryCode,XK,Kosavo,Yes,OED defined code,
-CountryCode,XS,Saba,Yes,OED defined code,
-CountryCode,XW,Worldwide exposure - not used for modelling,Yes,OED defined code,
-CountryCode,YE,Yemen,Yes,,
-CountryCode,YT,Mayotte,Yes,,
-CountryCode,ZA,South Africa,Yes,,
-CountryCode,ZM,Zambia,Yes,,
-CountryCode,ZW,Zimbabwe ,Yes,,
+"Category","Code","Name","Inland","Non-ISO3166 code","Offshore"
+"CountryCode","A1","Alaska Offshore","No","In AIR: ALO","Arctic, Bering, North Pacific"
+"CountryCode","A2","Angola Offshore","No","In AIR: ANO","South Atlantic"
+"CountryCode","A3","Arctic Offshore","No","In AIR: ARO","Arctic"
+"CountryCode","A4","Australasia Offshore","No","In AIR: AUO","South Pacific, North Pacific, Indian"
+"CountryCode","AD","Andorra","Yes","",""
+"CountryCode","AE","United Arab Emirates","Yes","",""
+"CountryCode","AF","Afghanistan","Yes","",""
+"CountryCode","AG","Antigua and Barbuda","Yes","",""
+"CountryCode","AI","Anguilla","Yes","",""
+"CountryCode","AL","Albania","Yes","",""
+"CountryCode","AM","Armenia","Yes","",""
+"CountryCode","AO","Angola","Yes","",""
+"CountryCode","AQ","Antarctica","Yes","",""
+"CountryCode","AR","Argentina","Yes","",""
+"CountryCode","AS","American Samoa","Yes","",""
+"CountryCode","AT","Austria","Yes","",""
+"CountryCode","AU","Australia","Yes","",""
+"CountryCode","AW","Aruba","Yes","",""
+"CountryCode","AX","Aland Islands","Yes","",""
+"CountryCode","AZ","Azerbaijan","Yes","",""
+"CountryCode","B1","Bay of Campeche Offshore","No","In AIR: BCO","Gulf of Mexico"
+"CountryCode","B2","Brazil Offshore","No","In AIR: BRO","South Atlantic, North atlantic"
+"CountryCode","B3","Baltic Sea Offshore","No","In AIR: BSO","Baltic Sea"
+"CountryCode","BA","Bosnia and Herzegovina","Yes","",""
+"CountryCode","BB","Barbados","Yes","",""
+"CountryCode","BD","Bangladesh","Yes","",""
+"CountryCode","BE","Belgium","Yes","",""
+"CountryCode","BF","Burkina Faso","Yes","",""
+"CountryCode","BG","Bulgaria","Yes","",""
+"CountryCode","BH","Bahrain","Yes","",""
+"CountryCode","BI","Burundi","Yes","",""
+"CountryCode","BJ","Benin","Yes","",""
+"CountryCode","BL","Saint Barthélemy","Yes","",""
+"CountryCode","BM","Bermuda","Yes","",""
+"CountryCode","BN","Brunei","Yes","",""
+"CountryCode","BO","Bolivia","Yes","",""
+"CountryCode","BR","Brazil","Yes","",""
+"CountryCode","BS","Bahamas","Yes","",""
+"CountryCode","BT","Bhutan","Yes","",""
+"CountryCode","BV","Bouvet Island","Yes","",""
+"CountryCode","BW","Botswana","Yes","",""
+"CountryCode","BY","Belarus","Yes","",""
+"CountryCode","BZ","Belize","Yes","",""
+"CountryCode","C1","Canada Offshore","No","In AIR: CAO","North Pacific, North Atlantic, Hudson Bay"
+"CountryCode","C2","Caspian Sea","Yes","In AIR: CAS","Caspian Sea"
+"CountryCode","C3","China Offshore","No","In AIR: CNO","North Pacific"
+"CountryCode","CA","Canada","Yes","",""
+"CountryCode","CC","Cocos Islands","Yes","",""
+"CountryCode","CD","Congo  Republic Of","Yes","",""
+"CountryCode","CF","Central African Republic","Yes","",""
+"CountryCode","CG","Congo","Yes","",""
+"CountryCode","CH","Switzerland","Yes","",""
+"CountryCode","CI","Cote D Ivoire","Yes","",""
+"CountryCode","CK","Cook Islands","Yes","",""
+"CountryCode","CL","Chile","Yes","",""
+"CountryCode","CM","Cameroon","Yes","",""
+"CountryCode","CN","China","Yes","",""
+"CountryCode","CO","Colombia","Yes","",""
+"CountryCode","CR","Costa Rica","Yes","",""
+"CountryCode","CU","Cuba","Yes","",""
+"CountryCode","CV","Cape Verde","Yes","",""
+"CountryCode","CW","Curacao","Yes","",""
+"CountryCode","CX","Christmas Island","Yes","",""
+"CountryCode","CY","Cyprus","Yes","",""
+"CountryCode","CZ","Czech Republic","Yes","",""
+"CountryCode","DE","Germany","Yes","",""
+"CountryCode","DJ","Djibouti","Yes","",""
+"CountryCode","DK","Denmark","Yes","",""
+"CountryCode","DM","Dominica","Yes","",""
+"CountryCode","DO","Dominican Republic","Yes","",""
+"CountryCode","DZ","Algeria","Yes","",""
+"CountryCode","E1","East Africa Offshore","No","In AIR: EAO","Indian"
+"CountryCode","E2","Egypt Offshore","No","In AIR: EGO","Mediterranean Sea, Red Sea"
+"CountryCode","EC","Ecuador","Yes","",""
+"CountryCode","EE","Estonia","Yes","",""
+"CountryCode","EG","Egypt","Yes","",""
+"CountryCode","EH","Western Sahara","Yes","",""
+"CountryCode","ER","Eritrea","Yes","",""
+"CountryCode","ES","Spain","Yes","",""
+"CountryCode","ET","Ethiopia","Yes","",""
+"CountryCode","F1","Far East Offshore","No","In AIR: FAO","North Pacific, Arctic"
+"CountryCode","FI","Finland","Yes","",""
+"CountryCode","FJ","Fiji","Yes","",""
+"CountryCode","FK","Falkland Islands","Yes","",""
+"CountryCode","FM","Micronesia","Yes","",""
+"CountryCode","FO","Faeroe Islands","Yes","",""
+"CountryCode","FR","France","Yes","",""
+"CountryCode","G1","Gabon Offshore","No","In AIR: GAO","North Atlantic, South Atlantic"
+"CountryCode","G2","Gulf Of Mexico","No","In AIR: GOM","Gulf of Mexico"
+"CountryCode","GA","Gabon","Yes","",""
+"CountryCode","GB","United Kingdom","Yes","",""
+"CountryCode","GD","Grenada","Yes","",""
+"CountryCode","GE","Georgia","Yes","",""
+"CountryCode","GF","French Guiana","Yes","",""
+"CountryCode","GG","Guernsey","Yes","",""
+"CountryCode","GH","Ghana","Yes","",""
+"CountryCode","GI","Gibraltar","Yes","",""
+"CountryCode","GL","Greenland","Yes","",""
+"CountryCode","GM","Gambia","Yes","",""
+"CountryCode","GN","Guinea","Yes","",""
+"CountryCode","GP","Guadeloupe","Yes","",""
+"CountryCode","GQ","Equatorial Guinea","Yes","",""
+"CountryCode","GR","Greece","Yes","",""
+"CountryCode","GS","South Georgia and the South Sandwich Islands","Yes","",""
+"CountryCode","GT","Guatemala","Yes","",""
+"CountryCode","GU","Guam","Yes","",""
+"CountryCode","GW","Guinea-Bissau","Yes","",""
+"CountryCode","GY","Guyana","Yes","",""
+"CountryCode","HK","Hong Kong","Yes","",""
+"CountryCode","HM","Heard Island and Mcdonald Islands","Yes","",""
+"CountryCode","HN","Honduras","Yes","",""
+"CountryCode","HR","Croatia","Yes","",""
+"CountryCode","HT","Haiti","Yes","",""
+"CountryCode","HU","Hungary","Yes","",""
+"CountryCode","I1","Indian Subcontinent Offshore","No","In AIR: INO","Indian"
+"CountryCode","ID","Indonesia","Yes","",""
+"CountryCode","IE","Ireland","Yes","",""
+"CountryCode","IL","Israel","Yes","",""
+"CountryCode","IM","Isle Of Man","Yes","",""
+"CountryCode","IN","India","Yes","",""
+"CountryCode","IO","British Indian Ocean Territory","Yes","",""
+"CountryCode","IQ","Iraq","Yes","",""
+"CountryCode","IR","Iran","Yes","",""
+"CountryCode","IS","Iceland","Yes","",""
+"CountryCode","IT","Italy","Yes","",""
+"CountryCode","J1","Japan/Korea Offshore","No","In AIR: JKO","Sea of Japan, North Pacific"
+"CountryCode","JE","Jersey","Yes","",""
+"CountryCode","JM","Jamaica","Yes","",""
+"CountryCode","JO","Jordan","Yes","",""
+"CountryCode","JP","Japan","Yes","",""
+"CountryCode","KE","Kenya","Yes","",""
+"CountryCode","KG","Kyrgyzstan","Yes","",""
+"CountryCode","KH","Cambodia","Yes","",""
+"CountryCode","KI","Kiribati","Yes","",""
+"CountryCode","KM","Comoros","Yes","",""
+"CountryCode","KN","Saint Kitts and Nevis","Yes","",""
+"CountryCode","KP","Korea","Yes","",""
+"CountryCode","KR","South Korea","Yes","",""
+"CountryCode","KW","Kuwait","Yes","",""
+"CountryCode","KY","Cayman Islands","Yes","",""
+"CountryCode","KZ","Kazakhstan","Yes","",""
+"CountryCode","LA","Lao Peoples Democratic Republic","Yes","",""
+"CountryCode","LB","Lebanon","Yes","",""
+"CountryCode","LC","Saint Lucia","Yes","",""
+"CountryCode","LI","Liechtenstein","Yes","",""
+"CountryCode","LK","Sri Lanka","Yes","",""
+"CountryCode","LR","Liberia","Yes","",""
+"CountryCode","LS","Lesotho","Yes","",""
+"CountryCode","LT","Lithuania","Yes","",""
+"CountryCode","LU","Luxembourg","Yes","",""
+"CountryCode","LV","Latvia","Yes","",""
+"CountryCode","LY","Libya","Yes","",""
+"CountryCode","M1","Mediterranean Offshore","No","In AIR: MEO","Mediterranean Sea"
+"CountryCode","M2","Middle East Offshore","No","In AIR: MIO","India, Mediterranean Sea"
+"CountryCode","M3","Mexico Offshore","No","In AIR: MXO","Gulf of Mexico, North Pacific"
+"CountryCode","MA","Morocco","Yes","",""
+"CountryCode","MC","Monaco","Yes","",""
+"CountryCode","MD","Moldova","Yes","",""
+"CountryCode","ME","Montenegro","Yes","",""
+"CountryCode","MF","St. Martin (French Part)","Yes","",""
+"CountryCode","MG","Madagascar","Yes","",""
+"CountryCode","MH","Marshall Islands","Yes","",""
+"CountryCode","MK","Macedonia","Yes","",""
+"CountryCode","ML","Mali","Yes","",""
+"CountryCode","MM","Myanmar","Yes","",""
+"CountryCode","MN","Mongolia","Yes","",""
+"CountryCode","MO","Macau / Macao","Yes","",""
+"CountryCode","MP","Northern Mariana Islands / Saipan","Yes","",""
+"CountryCode","MQ","Martinique","Yes","",""
+"CountryCode","MR","Mauritania","Yes","",""
+"CountryCode","MS","Montserrat","Yes","",""
+"CountryCode","MT","Malta","Yes","",""
+"CountryCode","MU","Mauritius","Yes","",""
+"CountryCode","MV","Maldives","Yes","",""
+"CountryCode","MW","Malawi","Yes","",""
+"CountryCode","MX","Mexico","Yes","",""
+"CountryCode","MY","Malaysia","Yes","",""
+"CountryCode","MZ","Mozambique","Yes","",""
+"CountryCode","N1","Nigeria Offshore","No","In AIR: NIO","North Atlantic"
+"CountryCode","N2","Norway Offshore","No","In AIR: NOO","Norwegian Sea, Barents Sea"
+"CountryCode","N3","North Sea Offshore","No","In AIR: NSO","North Sea"
+"CountryCode","NA","Namibia","Yes","",""
+"CountryCode","NC","New Caledonia","Yes","",""
+"CountryCode","NE","Niger","Yes","",""
+"CountryCode","NF","Norfolk Island","Yes","",""
+"CountryCode","NG","Nigeria","Yes","",""
+"CountryCode","NI","Nicaragua","Yes","",""
+"CountryCode","NL","Netherlands","Yes","",""
+"CountryCode","NO","Norway","Yes","",""
+"CountryCode","NP","Nepal","Yes","",""
+"CountryCode","NR","Nauru","Yes","",""
+"CountryCode","NU","Niue","Yes","",""
+"CountryCode","NZ","New Zealand","Yes","",""
+"CountryCode","OM","Oman","Yes","",""
+"CountryCode","PA","Panama","Yes","",""
+"CountryCode","PE","Peru","Yes","",""
+"CountryCode","PF","French Polynesia","Yes","",""
+"CountryCode","PG","Papua New Guinea","Yes","",""
+"CountryCode","PH","Philippines","Yes","",""
+"CountryCode","PK","Pakistan","Yes","",""
+"CountryCode","PL","Poland","Yes","",""
+"CountryCode","PM","Saint Pierre and Miquelon","Yes","",""
+"CountryCode","PN","Pitcairn","Yes","",""
+"CountryCode","PR","Puerto Rico","Yes","",""
+"CountryCode","PS","Palestinian Territories","Yes","",""
+"CountryCode","PT","Portugal","Yes","",""
+"CountryCode","PW","Palau","Yes","",""
+"CountryCode","PY","Paraguay","Yes","",""
+"CountryCode","QA","Qatar","Yes","",""
+"CountryCode","R1","Russia Offshore","No","In AIR: RUO","Barents, Kara Sea, East Siberian Sea"
+"CountryCode","RE","Reunion","Yes","",""
+"CountryCode","RO","Romania","Yes","",""
+"CountryCode","RS","Serbia","Yes","",""
+"CountryCode","RU","Russian Federation","Yes","",""
+"CountryCode","RW","Rwanda","Yes","",""
+"CountryCode","S1","South America Offshore","No","In AIR: SAO","South Atlantic, North Atlantic, South Pacific, North Pacific"
+"CountryCode","S2","Sweden Offshore","No","In AIR: SEO","North Sea, Baltic Sea"
+"CountryCode","S3","South Asia Offshore","No","In AIR: SSO","Gulf of Thailand, South China Sea"
+"CountryCode","SA","Saudi Arabia","Yes","",""
+"CountryCode","SB","Solomon Islands","Yes","",""
+"CountryCode","SC","Seychelles","Yes","",""
+"CountryCode","SD","Sudan","Yes","",""
+"CountryCode","SE","Sweden","Yes","",""
+"CountryCode","SG","Singapore","Yes","",""
+"CountryCode","SH","Saint Helena","Yes","",""
+"CountryCode","SI","Slovenia","Yes","",""
+"CountryCode","SJ","Svalbard and Jan Mayen","Yes","",""
+"CountryCode","SK","Slovakia","Yes","",""
+"CountryCode","SL","Sierra Leone","Yes","",""
+"CountryCode","SM","San Marino","Yes","",""
+"CountryCode","SN","Senegal","Yes","",""
+"CountryCode","SO","Somalia","Yes","",""
+"CountryCode","SR","Suriname","Yes","",""
+"CountryCode","SS","South Sudan","Yes","",""
+"CountryCode","ST","Sao Tome and Principe","Yes","",""
+"CountryCode","SV","El Salvador","Yes","",""
+"CountryCode","SX","St. Maarten (Dutch part)","Yes","",""
+"CountryCode","SY","Syrian Arab Republic","Yes","",""
+"CountryCode","SZ","Swaziland","Yes","",""
+"CountryCode","T1","Trinidad and Tobago Offshore","No","In AIR: TTO","North Atlantic"
+"CountryCode","TC","Turks and Caicos Islands","Yes","",""
+"CountryCode","TD","Chad","Yes","",""
+"CountryCode","TF","French Southern Territories","Yes","",""
+"CountryCode","TG","Togo","Yes","",""
+"CountryCode","TH","Thailand","Yes","",""
+"CountryCode","TJ","Tajikistan","Yes","",""
+"CountryCode","TK","Tokelau","Yes","",""
+"CountryCode","TL","Timor-leste","Yes","",""
+"CountryCode","TM","Turkmenistan","Yes","",""
+"CountryCode","TN","Tunisia","Yes","",""
+"CountryCode","TO","Tonga","Yes","",""
+"CountryCode","TR","Turkey","Yes","",""
+"CountryCode","TT","Trinidad and Tobago","Yes","",""
+"CountryCode","TV","Tuvalu","Yes","",""
+"CountryCode","TW","Taiwan","Yes","",""
+"CountryCode","TZ","Tanzania","Yes","",""
+"CountryCode","U1","United Kingdom Offshore","No","In AIR: UKO","North Sea, English Channel, North Atlantic"
+"CountryCode","UA","Ukraine","Yes","",""
+"CountryCode","UG","Uganda","Yes","",""
+"CountryCode","UM","United States Minor Outlying Islands","Yes","",""
+"CountryCode","US","United States","Yes","",""
+"CountryCode","UY","Uruguay","Yes","",""
+"CountryCode","UZ","Uzbekistan","Yes","",""
+"CountryCode","V1","Venezuela Offshore","No","In AIR: VEO","Atlantic Ocean"
+"CountryCode","V2","Vietnam Offshore","No","In AIR: VNO","Gulf of Thailand, South China Sea"
+"CountryCode","VA","Vatican City","Yes","",""
+"CountryCode","VC","Saint Vincent and the Grenadines","Yes","",""
+"CountryCode","VE","Venezuela","Yes","",""
+"CountryCode","VG","Virgin Islands British","Yes","",""
+"CountryCode","VI","Virgin Islands (US)","Yes","",""
+"CountryCode","VN","Vietnam","Yes","",""
+"CountryCode","VU","Vanuatu","Yes","",""
+"CountryCode","W4","West Africa Offshore","No","In AIR: WAO","North Atlantic, South Atlantic"
+"CountryCode","W5","West US/California Offshore","No","In AIR: WUO","North Pacific"
+"CountryCode","WF","Wallis and Futuna","Yes","",""
+"CountryCode","WS","Samoa","Yes","",""
+"CountryCode","XB","Bonaire","Yes","OED defined code",""
+"CountryCode","XE","St. Eustatius","Yes","OED defined code",""
+"CountryCode","XK","Kosavo","Yes","OED defined code",""
+"CountryCode","XS","Saba","Yes","OED defined code",""
+"CountryCode","XW","Worldwide exposure - not used for modelling","Yes","OED defined code",""
+"CountryCode","YE","Yemen","Yes","",""
+"CountryCode","YT","Mayotte","Yes","",""
+"CountryCode","ZA","South Africa","Yes","",""
+"CountryCode","ZM","Zambia","Yes","",""
+"CountryCode","ZW","Zimbabwe ","Yes","",""

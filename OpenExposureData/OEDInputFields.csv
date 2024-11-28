@@ -1,559 +1,559 @@
-File Name,Input Field Name,Type & Description,Property field status,Data Type,Default,Valid value range,Cyber field status,Liability field status,Marine Cargo field status
-Acc; Loc,PortNumber,Portfolio number,R,varchar(20),n/a,,R,R,R
-Acc,PortName,Portfolio name,O,varchar(40),n/a,,O,O,n/a
-Acc,PortNotes,"Portfolio notes, longer description than allowed in portfolio name",O,varchar(200),n/a,,O,O,n/a
-Acc; Loc,AccNumber,Account number,R,nvarchar(40),n/a,,R,R,R
-Acc,AccName,Account name,O,nvarchar(100),n/a,,O,O,n/a
-Acc,AccGroup,"Account group, could use to group multiple accounts (e.g. for binders)",O,varchar(40),n/a,,O,O,n/a
-Acc,AccStatus,"Account status. Aside from predefined values, you can use other single character values for user specific purposes",O,char(1),n/a,,O,O,n/a
-Acc,ExpiringAccNumber,Expiring account number,O,nvarchar(40),n/a,,O,O,n/a
-Acc,CedantName,Cedant name (defined at account level),O,varchar(40),n/a,,O,O,n/a
-Acc,AccCurrency,Account currency,R,char(3),n/a,,R,R,R
-Acc,AccUserDef1,Account user defined field 1,O,varchar(100),n/a,,O,O,n/a
-Acc,AccUserDef2,Account user defined field 2,O,varchar(100),n/a,,O,O,n/a
-Acc,AccUserDef3,Account user defined field 3,O,varchar(100),n/a,,O,O,n/a
-Acc,AccUserDef4,Account user defined field 4,O,varchar(100),n/a,,O,O,n/a
-Acc,AccUserDef5,Account user defined field 5,O,varchar(100),n/a,,O,O,n/a
-Acc,FlexiAccZZZ,Flexible field that is stored in FlexiAcc table in ModifierName = ZZZ,O,varchar(40),n/a,,O,O,n/a
-Acc,AccPeril,Perils for account financial terms,CR,varchar(250),n/a,,n/a,n/a,CR
-Acc,AccDedCode1Building,Account building deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,AccDedType1Building,Account building deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,AccDed1Building,Account building deductible,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,AccMinDed1Building,Account minimum building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,AccMaxDed1Building,Account maximum building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,AccDedCode2Other,Account other building deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,AccDedType2Other,Account other building deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,AccDed2Other,Account other building deductible,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,AccMinDed2Other,Account minimum other building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,AccMaxDed2Other,Account maximum other building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,AccDedCode3Contents,Account contents deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,AccDedType3Contents,Account contents deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,AccDed3Contents,Account contents deductible,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,AccMinDed3Contents,Account minimum contents deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,AccMaxDed3Contents,Account maximum contents deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,AccDedCode4BI,Account BI deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,AccDedType4BI,Account BI deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,AccDed4BI,Account BI deductible,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,AccMinDed4BI,Account minimum BI deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,AccMaxDed4BI,Account maximum BI deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,AccDedCode5PD,Account PD deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,AccDedType5PD,Account PD deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,AccDed5PD,Account PD deductible,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,AccMinDed5PD,Account minimum PD deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,AccMaxDed5PD,Account maximum PD deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,AccDedCode6All,Account blanket deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,AccDedType6All,Account blanket deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,AccDed6All,Account blanket deductible,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,AccMinDed6All,Account minimum blanket deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,AccMaxDed6All,Account maximum blanket deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,AccLimitCode1Building,Account building limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,AccLimitType1Building,Account building limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,AccLimit1Building,Account building limit,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,AccLimitCode2Other,Account other building limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,AccLimitType2Other,Account other building limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,AccLimit2Other,Account other building limit,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,AccLimitCode3Contents,Account contents limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,AccLimitType3Contents,Account contents limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,AccLimit3Contents,Account contents limit,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,AccLimitCode4BI,Account BI limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,AccLimitType4BI,Account BI limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,AccLimit4BI,Account BI limit,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,AccLimitCode5PD,Account PD limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,AccLimitType5PD,Account PD limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,AccLimit5PD,Account PD limit,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,AccLimitCode6All,Account blanket limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,AccLimitType6All,Account blanket limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,AccLimit6All,Account blanket limit,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,PolNumber,Policy layer number,R,varchar(20),n/a,,R,O,R
-Acc,PolStatus,"Policy layer status. Aside from predefined values, other single character values for user specific purposes can be used.",O,char(1),n/a,,O,O,n/a
-Acc,PolInceptionDate,Policy inception date - in ISO 8601 format: YYYY-MM-DD,O,smalldatetime,n/a,,R,R,O
-Acc,PolExpiryDate,Policy expiry date - in ISO 8601 format: YYYY-MM-DD,O,smalldatetime,n/a,,R,R,O
-Acc,ProducerName,Producer name (defined at policy level),O,varchar(40),n/a,,O,O,n/a
-Acc,Underwriter,Underwriter name,O,varchar(40),n/a,,O,O,n/a
-Acc,BranchName,Branch name,O,varchar(20),n/a,,O,O,n/a
-Acc,LOB,Line of business (defined at policy level),O,varchar(20),n/a,,O,O,n/a
-Acc,ExpiringPolNumber,Expiring policy number,O,varchar(20),n/a,,O,O,n/a
-Acc,PolPerilsCovered,Policy perils covered,R,varchar(250),n/a,,R,n/a,R
-Acc,PolGrossPremium,Policy gross premium,O,float,0,"[0,)",O,O,n/a
-Acc,PolTax,Policy insurance tax amount,O,float,0,"[0,)",O,O,n/a
-Acc,PolBrokerage,Policy brokerage amount,O,float,0,"[0,)",O,O,n/a
-Acc,PolNetPremium,Policy net premium,O,float,0,"[0,)",O,O,n/a
-Acc,LayerNumber,Layer number,O,int,1,"[1,)",O,O,O
-Acc,LayerParticipation,Insurance company share of the policy layer. Values between 0 to 1 (e.g. 12% entered as 0.12),O,float,1,"[0,1]",R,R,O
-Acc,LayerLimit,Policy layer limit (always treated as amount),O,float,0,"[0,)",R,R,O
-Acc,LayerAttachment,Policy layer attachment point (always treated as amount),O,float,0,"[0,)",R,R,O
-Acc,HoursClause,"For perils with an inherent event duration, the insurance contract may contain an hours clause that limits the time in which claims can be added up and assigned to one event",O,int,n/a,"[0,)",n/a,n/a,n/a
-Acc,PolPeril,Perils for policy financial terms,CR,varchar(250),n/a,,n/a,n/a,CR
-Acc,PolDedCode1Building,Policy building deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,PolDedType1Building,Policy building deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,PolDed1Building,Policy building deductible,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,PolMinDed1Building,Policy minimum building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PolMaxDed1Building,Policy maximum building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PolDedCode2Other,Policy other building deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,PolDedType2Other,Policy other building deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,PolDed2Other,Policy other building deductible,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,PolMinDed2Other,Policy minimum other building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PolMaxDed2Other,Policy maximum other building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PolDedCode3Contents,Policy contents deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,PolDedType3Contents,Policy contents deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,PolDed3Contents,Policy contents deductible,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,PolMinDed3Contents,Policy minimum contents deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PolMaxDed3Contents,Policy maximum contents deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PolDedCode4BI,Policy BI deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,PolDedType4BI,Policy BI deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,PolDed4BI,Policy BI deductible,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,PolMinDed4BI,Policy minimum BI deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PolMaxDed4BI,Policy maximum BI deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PolDedCode5PD,Policy PD deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,PolDedType5PD,Policy PD deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,PolDed5PD,Policy PD deductible,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,PolMinDed5PD,Policy minimum PD deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PolMaxDed5PD,Policy maximum PD deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PolDedCode6All,Policy blanket deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,PolDedType6All,Policy blanket deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,PolDed6All,Policy blanket deductible,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,PolMinDed6All,Policy minimum blanket deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PolMaxDed6All,Policy maximum blanket deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PolLimitCode1Building,Policy building limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,PolLimitType1Building,Policy building limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,PolLimit1Building,Policy building limit,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,PolLimitCode2Other,Policy other building limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,PolLimitType2Other,Policy other building limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,PolLimit2Other,Policy other building limit,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,PolLimitCode3Contents,Policy contents limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,PolLimitType3Contents,Policy contents limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,PolLimit3Contents,Policy contents limit,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,PolLimitCode4BI,Policy BI limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,PolLimitType4BI,Policy BI limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,PolLimit4BI,Policy BI limit,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,PolLimitCode5PD,Policy PD limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,PolLimitType5PD,Policy PD limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,PolLimit5PD,Policy PD limit,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,PolLimitCode6All,Policy blanket limit code (annual aggregate only),O,tinyint,0,,n/a,n/a,n/a
-Acc,PolLimitType6All,Policy blanket limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,PolLimit6All,Policy blanket limit,CR,float,0,"[0,)",n/a,n/a,CR
-Acc,StepFunctionName,Step function name,CR,varchar(30),n/a,,n/a,n/a,n/a
-Acc,StepTriggerType,"Code that represents how, and for which coverages, pay-outs are triggered.",CR,tinyint,n/a,,n/a,n/a,n/a
-Acc,StepNumber,Number between 1 and 10 that is used to sort the step function in the correct order.,CR,tinyint,n/a,"[1,10]",n/a,n/a,n/a
-Acc,PayOutType,"Refers to PayoutBuilding, PayoutContents, PayoutBuildingContents. Payout can be % TIV, % Loss, a monetary amount, or % Limit.",CR,tinyint,n/a,,n/a,n/a,n/a
-Acc,TriggerType,"Refers to TriggerStart and TriggerEnd fields which could be specified as a % TIV, % Loss or a monetary amount.",CR,tinyint,n/a,,n/a,n/a,n/a
-Acc,TriggerBuildingStart,Starting value of the building damage range over which the corresponding pay-out(s) should be made.,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,TriggerBuildingEnd,Ending value of the building damage range over which the corresponding pay-out(s) should be made.,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,DeductibleBuilding,"Building deductible that can be used, for example, to account for fire policies before applying step functions.",CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PayOutBuildingStart,Pay-out amount for the building losses for this step. If a ramp policy then it represents the start payout value.,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PayOutBuildingEnd,"Pay-out amount for the end-point building losses for this ramp. This field should only be used if you have a ramp policy to indicate the end of the building payout. Otherwise, it should be left blank.",CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PayOutLimitBuilding,Pay-out limit for building,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,TriggerContentsStart,Starting value of the content damage range over which the corresponding pay-out(s) should be made.,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,TriggerContentsEnd,Ending value of the content damage range over which the corresponding pay-out(s) should be made.,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,DeductibleContents,"Content deductible that can be used, for example, to account for fire policies before applying step functions.",CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PayOutContentsStart,Pay-out amount for the contents losses for this step. If a ramp policy then it represents the start payout value.,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PayOutContentsEnd,"Pay-out amount for the end-point contents losses for this ramp. This field should only be used if you have a ramp policy to indicate the end of the contents payout. Otherwise, it should be left blank.",CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PayOutLimitContents,Pay-out limit for contents,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,TriggerBuildingContentsStart,Starting value of the building and content damage range over which the corresponding pay-out(s) should be made.,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,TriggerBuildingContentsEnd,Ending value of the building and content damage range over which the corresponding pay-out(s) should be made.,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,DeductibleBuildingContents,"Building and contents deductible that can be used, for example, to account for fire policies before applying step functions.",CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PayOutBuildingContentsStart,Pay-out amount for the building and contents losses for this step. If a ramp policy then it represents the start payout value.,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PayOutBuildingContentsEnd,"Pay-out amount for the end-point building and contents losses for this ramp. This field should only be used if you have a ramp policy to indicate the end of the building and contents payout. Otherwise, it should be left blank.",CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,PayOutLimitBuildingContents,Pay-out limit for building and contents,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,ExtraExpenseFactor,"A factor that is applied to main coverage loss for extra expenses. This value, entered as a decimal, should be the same for all steps for a policy contract and must be a value >=0. For example, 0.12 for 12%.",CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,ExtraExpenseLimit,A limit that applies to the total extra expense loss,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,DebrisRemovalFactor,"A factor for a conditional coverage which tends to apply to all steps and is to cover Debris Removal. This value, entered as a decimal, should be the same for all steps for a policy contract and must be a value >=0. For example, 0.12 for 12%.",CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,MinimumTIV,Minimum replacement value for which pay-outs to the corresponding damage range will be allowed.,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,ScaleFactor,"Factor used to scale up calculated losses. This value, entered as a proportion, should be the same for all steps for a policy contract. Must be a value >0 and may be >1. For example, 0.12 would scale up losses by 12%.",CR,float,1,"[0,)",n/a,n/a,n/a
-Acc,IsLimitAtDamage,Indicates whether the pay-out is limited by the actual ground-up loss.,CR,tinyint,0,"[0,1]",n/a,n/a,n/a
-Acc,PolUserDef1,Policy user defined field,O,varchar(100),n/a,,O,O,n/a
-Acc,PolUserDef2,Policy user defined field,O,varchar(100),n/a,,O,O,n/a
-Acc,PolUserDef3,Policy user defined field,O,varchar(100),n/a,,O,O,n/a
-Acc,PolUserDef4,Policy user defined field,O,varchar(100),n/a,,O,O,n/a
-Acc,PolUserDef5,Policy user defined field,O,varchar(100),n/a,,O,O,n/a
-Acc,FlexiPolZZZ,Flexible field that is stored in FlexiPol table in ModifierName = ZZZ,O,varchar(40),n/a,,O,O,n/a
-Acc,CondNumber,Condition number identifies a unique set of condition financial terms applicable to one or more CondTag's.,CR,varchar(20),n/a,,n/a,n/a,n/a
-Acc,CondName,Condition name.,O,varchar(40),n/a,,n/a,n/a,n/a
-Acc,CondPriority,Condition priority: specifies the order in which special conditions apply if multiple conditions apply to one location.,CR,int,n/a,"[1,)",n/a,n/a,n/a
-Acc,CondPeril,Perils for condition financial terms,CR,varchar(250),n/a,,n/a,n/a,n/a
-Acc,CondDedCode1Building,Special condition building deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,CondDedType1Building,Special condition building deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,CondDed1Building,Special condition building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondMinDed1Building,Special condition minimum building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondMaxDed1Building,Special condition maximum building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondDedCode2Other,Special condition other building deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,CondDedType2Other,Special condition other building deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,CondDed2Other,Special condition other building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondMinDed2Other,Special condition minimum other building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondMaxDed2Other,Special condition maximum other building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondDedCode3Contents,Special condition contents deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,CondDedType3Contents,Special condition contents deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,CondDed3Contents,Special condition contents deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondMinDed3Contents,Special condition minimum contents deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondMaxDed3Contents,Special condition maximum contents deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondDedCode4BI,Special condition BI deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,CondDedType4BI,Special condition BI deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,CondDed4BI,Special condition BI deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondMinDed4BI,Special condition minimum BI deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondMaxDed4BI,Special condition maximum BI deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondDedCode5PD,Special condition PD deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,CondDedType5PD,Special condition PD deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,CondDed5PD,Special condition PD deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondMinDed5PD,Special condition minimum PD deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondMaxDed5PD,Special condition maximum PD deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondDedCode6All,Special condition blanket deductible code,O,tinyint,0,,n/a,n/a,n/a
-Acc,CondDedType6All,Special condition blanket deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,CondDed6All,Special condition blanket deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondMinDed6All,Special condition minimum blanket deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondMaxDed6All,Special condition maximum blanket deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondLimitCode1Building,Special condition building limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,CondLimitType1Building,Special condition building limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,CondLimit1Building,Special condition building limit,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondLimitCode2Other,Special condition other building limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,CondLimitType2Other,Special condition other building limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,CondLimit2Other,Special condition other building limit,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondLimitCode3Contents,Special condition contents limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,CondLimitType3Contents,Special condition contents limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,CondLimit3Contents,Special condition contents limit,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondLimitCode4BI,Special condition BI limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,CondLimitType4BI,Special condition BI limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,CondLimit4BI,Special condition BI limit,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondLimitCode5PD,Special condition PD limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,CondLimitType5PD,Special condition PD limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,CondLimit5PD,Special condition PD limit,CR,float,0,"[0,)",n/a,n/a,n/a
-Acc,CondLimitCode6All,Special condition blanket limit code,O,tinyint,0,,n/a,n/a,n/a
-Acc,CondLimitType6All,Special condition blanket limit type,CR,tinyint,0,,n/a,n/a,n/a
-Acc,CondLimit6All,Special condition blanket limit,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocNumber,Location number,R,nvarchar(20),n/a,,n/a,n/a,R
-Loc,LocName,Location name,O,nvarchar(20),n/a,,n/a,n/a,n/a
-Loc,LocGroup,Location group name,O,nvarchar(20),n/a,,n/a,n/a,n/a
-Loc,CorrelationGroup,Correlation Group: indicates which locations should be correlated between each other in Oasis LMF.,O,int,n/a,"[0,)",n/a,n/a,n/a
-Loc,IsPrimary,Whether the location in LocGroup is the primary building in the group,O,tinyint,1,"[0,1]",n/a,n/a,n/a
-Loc,IsTenant,Whether property is occupied by a tenant or not,O,tinyint,0,"[0,1]",n/a,n/a,n/a
-Loc,BuildingID,Unique building identification number,O,varchar(20),n/a,,n/a,n/a,n/a
-Loc,LocInceptionDate,Location inception date - in ISO 8601 format: YYYY-MM-DD,O,smalldatetime,n/a,,n/a,n/a,n/a
-Loc,LocExpiryDate,Location expiry date - in ISO 8601 format: YYYY-MM-DD,O,smalldatetime,n/a,,n/a,n/a,n/a
-Loc,PercentComplete,"Percentage of the construction project complete, entered as a proportion with values between 0 and 1 (e.g. 12% entered as 0.12). The completeness percentage is by the cost of the project.",O,decimal,1,"[0,1]",n/a,n/a,n/a
-Loc,CompletionDate,Construction project completion date - in ISO 8601 format: YYYY-MM-DD,O,date,n/a,,n/a,n/a,n/a
-Loc,CountryCode,Country code (based on ISO3166 alpha-2 codes),R,char(2),n/a,,n/a,n/a,R
-Loc,Latitude,Latitude in degrees (-90.0 to +90.0),O,decimal,n/a,"[-90,90]",n/a,n/a,n/a
-Loc,Longitude,Longitude in degrees (-180.0 to +180.0),O,decimal,n/a,"[-180,180]",n/a,n/a,n/a
-Loc,StreetAddress,Street address including house number ,O,nvarchar(100),n/a,,n/a,n/a,O
-Loc,PostalCode,Postcode: the highest resolution postcode most often used. (e.g. 5 digit zip for the US).,O,nvarchar(20),n/a,,n/a,n/a,O
-Loc,City,City,O,nvarchar(50),n/a,,n/a,n/a,O
-Loc,AreaCode,Code representing typically the largest sub-division in a country (e.g. State code). See AreaCode Values sheet for details.,O,nvarchar(20),n/a,,n/a,n/a,O
-Loc,AreaName,Name relating to the AreaCode (e.g. State name). See AreaCode Values sheet for details.,O,nvarchar(50),n/a,,n/a,n/a,n/a
-Loc,GeogSchemeXX,"Geography scheme: Descriptor of the geography scheme used in relation to the geography name in the corresponding GeogName field (e.g. PC4). The 'XX' must be changed to an integer (GeogScheme1......> GeogScheme30 (max) etc) and the user can specify values in addition to those listed in the GeogScheme values list, but user defined scheme values must start with 'X'.",O,varchar(5),n/a,,n/a,n/a,n/a
-Loc,GeogNameXX,"Geography name: Descriptor of the geographical area, using the scheme referenced in the corresponding GeogScheme field (e.g. SO31)",O,nvarchar(50),n/a,,n/a,n/a,n/a
-Loc,AddressMatch,Address match from geocoder: indicating the resolution that the latitude / longitude represents,O,tinyint,0,,n/a,n/a,n/a
-Loc,GeocodeQuality,Geocode quality (values between 0 and 1 e.g. 80% is entered as 0.8),O,float,n/a,"[0,1]",n/a,n/a,n/a
-Loc,Geocoder,Company name / version of geocoder. Free text field.,O,varchar(20),n/a,,n/a,n/a,n/a
-Loc,OrgOccupancyScheme,Original occupancy scheme,O,varchar(10),n/a,,n/a,n/a,n/a
-Loc,OrgOccupancyCode,Original occupancy code,O,varchar(100),n/a,,n/a,n/a,n/a
-Loc,OrgConstructionScheme,Original construction scheme,O,varchar(10),n/a,,n/a,n/a,n/a
-Loc,OrgConstructionCode,Original construction code,O,varchar(100),n/a,,n/a,n/a,n/a
-Loc,OccupancyCode,OED occupancy code,O,int,1000,,n/a,n/a,O
-Loc,ConstructionCode,OED construction code,O,int,5000,,n/a,n/a,O
-Loc,YearBuilt,Year built (4 digit year),O,smallint,0,"[0,)",n/a,n/a,O
-Loc,NumberOfStoreys,"Number of storeys (-1 = Unknown No. storeys - low rise), (-2 = Unknown No. storeys - mid rise), (-3 = Unknown No. storeys = high rise). Can be used with occupancy types where the number of storeys are unknown.",O,tinyint,0,"[-3,)",n/a,n/a,O
-Loc,NumberOfBuildings,Number of buildings. Default to 1 but user should enter '0' if unknown.,O,int,1,"[0,)",n/a,n/a,O
-Loc,FloorArea,Floor area: the total area across all floors,O,float,0,"[0,)",n/a,n/a,n/a
-Loc,FloorAreaUnit,Units in which FloorArea is specified,O,tinyint,11,,n/a,n/a,n/a
-Loc,LocUserDef1,Location user defined field 1,O,varchar(100),n/a,,n/a,n/a,n/a
-Loc,LocUserDef2,Location user defined field 2,O,varchar(100),n/a,,n/a,n/a,n/a
-Loc,LocUserDef3,Location user defined field 3,O,varchar(100),n/a,,n/a,n/a,n/a
-Loc,LocUserDef4,Location user defined field 4,O,varchar(100),n/a,,n/a,n/a,n/a
-Loc,LocUserDef5,Location user defined field 5,O,varchar(100),n/a,,n/a,n/a,n/a
-Loc,FlexiLocZZZ,Flexible field that is stored in FlexiLoc table in ModifierName = ZZZ,O,varchar(40),n/a,,n/a,n/a,n/a
-Loc,LocPerilsCovered,Location perils covered,R,varchar(250),n/a,,n/a,n/a,R
-Loc,BuildingTIV,Building Total Insured Value,O,float,0,"[0,)",n/a,n/a,O
-Loc,OtherTIV,"Other Building Insured Value (primarily aimed at specific US policies). For motor exposures, use this field for TIV along with appropriate motor construction code.",O,float,0,"[0,)",n/a,n/a,O
-Loc,ContentsTIV,Contents Total Insured Value,O,float,0,"[0,)",n/a,n/a,O
-Loc,BITIV,"Business Interruption (BI) Total Insured Value. Enter an annualized amount, and use LocDed4BI and LocLimit4BI fields for non-annualized values",O,float,0,"[0,)",n/a,n/a,O
-Loc,BIPOI,"BI period of indemnity (in days, in increments of 0.5 days). Default value = 365 (1 year).",O,float,365,"[0,3650]",n/a,n/a,O
-Loc,LocCurrency,Location currency,R,char(3),n/a,,n/a,n/a,R
-Loc,LocGrossPremium,Gross premium amount at location level,O,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocTax,Insurance tax amount at location level,O,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocBrokerage,Brokerage amount at location level,O,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocNetPremium,Net premium at location level,O,float,0,"[0,)",n/a,n/a,n/a
-Loc,NonCatGroundUpLoss,Ground-Up non-cat loss value prior to the application of non-cat policy terms,O,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocParticipation,"Share of the risk that the insurer covers for this location, entered as a proportion with values between 0 to 1 (e.g. 12% entered as 0.12). Usually used in binders or offshore.",O,float,1,"[0,1]",n/a,n/a,n/a
-Loc,PayoutBasis,Pay-out basis for the claim (whether depreciation is taken into account). ACV = RCV - depreciation.,O,tinyint,0,,n/a,n/a,n/a
-Loc,ReinsTag,User defined reinsurance tag to provide a further option for specifying reinsurance scope,O,varchar(20),n/a,,n/a,n/a,n/a
-Loc,LocDedCode1Building,Location building deductible code,O,tinyint,0,,n/a,n/a,n/a
-Loc,LocDedType1Building,Location building deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Loc,LocDed1Building,Location building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocMinDed1Building,Location minimum building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocMaxDed1Building,Location maximum building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocDedCode2Other,Location other building deductible code,O,tinyint,0,,n/a,n/a,n/a
-Loc,LocDedType2Other,Location other building deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Loc,LocDed2Other,Location other building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocMinDed2Other,Location minimum other building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocMaxDed2Other,Location maximum other building deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocDedCode3Contents,Location contents deductible code,O,tinyint,0,,n/a,n/a,n/a
-Loc,LocDedType3Contents,Location contents deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Loc,LocDed3Contents,Location contents deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocMinDed3Contents,Location minimum contents deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocMaxDed3Contents,Location maximum contents deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocDedCode4BI,Location BI Deductible Code,O,tinyint,0,,n/a,n/a,n/a
-Loc,LocDedType4BI,Location BI Deductible Type,CR,tinyint,0,,n/a,n/a,n/a
-Loc,LocDed4BI,Location BI deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocMinDed4BI,Location minimum bi deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocMaxDed4BI,Location maximum bi deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocDedCode5PD,Location PD deductible code,O,tinyint,0,,n/a,n/a,n/a
-Loc,LocDedType5PD,Location PD deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Loc,LocDed5PD,Location PD deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocMinDed5PD,Location minimum PD deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocMaxDed5PD,Location maximum PD deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocDedCode6All,Location blanket deductible code,O,tinyint,0,,n/a,n/a,n/a
-Loc,LocDedType6All,Location blanket deductible type,CR,tinyint,0,,n/a,n/a,n/a
-Loc,LocDed6All,Location site deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocMinDed6All,Location minimum blanket deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocMaxDed6All,Location maximum blanket deductible,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocLimitCode1Building,Location building limit code,O,tinyint,0,,n/a,n/a,n/a
-Loc,LocLimitType1Building,Location building limit type,CR,tinyint,0,,n/a,n/a,n/a
-Loc,LocLimit1Building,Location building limit,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocLimitCode2Other,Location other building limit code,O,tinyint,0,,n/a,n/a,n/a
-Loc,LocLimitType2Other,Location other building limit type,CR,tinyint,0,,n/a,n/a,n/a
-Loc,LocLimit2Other,Location other building limit,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocLimitCode3Contents,Location contents limit code,O,tinyint,0,,n/a,n/a,n/a
-Loc,LocLimitType3Contents,Location contents limit type,CR,tinyint,0,,n/a,n/a,n/a
-Loc,LocLimit3Contents,Location contents limit,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocLimitCode4BI,Location BI limit code,O,tinyint,0,,n/a,n/a,n/a
-Loc,LocLimitType4BI,Location BI limit type,CR,tinyint,0,,n/a,n/a,n/a
-Loc,LocLimit4BI,Location BI limit,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocLimitCode5PD,Location PD limit code,O,tinyint,0,,n/a,n/a,n/a
-Loc,LocLimitType5PD,Location PD limit type,CR,tinyint,0,,n/a,n/a,n/a
-Loc,LocLimit5PD,Location PD limit,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocLimitCode6All,Location site limit code,O,tinyint,0,,n/a,n/a,n/a
-Loc,LocLimitType6All,Location site limit type,CR,tinyint,0,,n/a,n/a,n/a
-Loc,LocLimit6All,Location site limit,CR,float,0,"[0,)",n/a,n/a,n/a
-Loc,BIWaitingPeriod,BI waiting period (in days),O,float,0,"[0,)",n/a,n/a,n/a
-Loc,LocPeril,Perils for location financial terms,CR,varchar(250),n/a,,n/a,n/a,n/a
-Loc,YearUpgraded,Year the building was upgraded (4 digit year),O,smallint,0,"[0,)",n/a,n/a,n/a
-Loc,SurgeLeakage,Storm leakage percentage entered as a proportion with values between 0 and 1 (0% to 100%) for Wind only policies,O,float,-999,"[-999,-999], [0,1]",n/a,n/a,n/a
-Loc,SprinklerType,Sprinkler type,O,tinyint,0,,n/a,n/a,O
-Loc,PercentSprinklered,"Percent sprinklered, entered as a proportion with values between 0 and 1 inclusive (0.5 = 50%); -999 is unknown",O,float,-999,"[-999,-999], [0,1]",n/a,n/a,O
-Loc,RoofCover,Code that represents the material used to cover the roof,O,tinyint,0,,n/a,n/a,n/a
-Loc,RoofYearBuilt,Year the roof was last replaced (4 digit year),O,smallint,0,"[0,)",n/a,n/a,n/a
-Loc,RoofGeometry,Code that represents the shape of the roof,O,tinyint,0,,n/a,n/a,n/a
-Loc,RoofEquipment,captures if mechanical or electric equipment is braced on the roof and the impact this modifier will have on the losses.,O,tinyint,0,,n/a,n/a,n/a
-Loc,RoofFrame,Roof framing material,O,tinyint,0,,n/a,n/a,n/a
-Loc,RoofMaintenance,Captures the impact roof maintenance has on the losses,O,tinyint,0,,n/a,n/a,n/a
-Loc,BuildingCondition,Building condition,O,tinyint,0,,n/a,n/a,n/a
-Loc,RoofAttachedStructures,"Code that identifies items mounted on the roof, such as A/C units, skylights, or dormers",O,tinyint,0,,n/a,n/a,n/a
-Loc,RoofDeck,Code that represents the materials used to construct the roof deck,O,tinyint,0,,n/a,n/a,n/a
-Loc,RoofPitch,Code that represents the slope of the roof,O,tinyint,0,,n/a,n/a,n/a
-Loc,RoofAnchorage,Code that represents the connections used to secure the roof support system to the walls,O,tinyint,0,,n/a,n/a,n/a
-Loc,RoofDeckAttachment,Code that represents the connections used to secure the roof deck to the underlying roof support system,O,tinyint,0,,n/a,n/a,n/a
-Loc,RoofCoverAttachment,Code that represents the connections used to secure the roof covering to the roof deck,O,tinyint,0,,n/a,n/a,n/a
-Loc,GlassType,Code that represents the type of glass used in the building,O,tinyint,0,,n/a,n/a,n/a
-Loc,LatticeType,Code that represents the type of web used for H-shaped steel,O,tinyint,0,,n/a,n/a,n/a
-Loc,FloodZone,Flood zone. Free text field.,O,varchar(20),n/a,,n/a,n/a,n/a
-Loc,SoftStory,Code that indicates if there is structural weakness at any floor.  First floor garages and taller first floors are likely to exhibit soft-story behaviour.,O,tinyint,0,,n/a,n/a,n/a
-Loc,Basement,Code that defines if there is a basement and if so whether it is finished or unfinished,O,tinyint,0,,n/a,n/a,n/a
-Loc,BasementLevelCount,"Indicates the number of basement levels in a structure (supports up to 5 levels; for more than 5, enter 5).",O,tinyint,0,"[0,5]",n/a,n/a,n/a
-Loc,WindowProtection,Code that represents the wind protection systems used on the windows,O,tinyint,0,,n/a,n/a,n/a
-Loc,FoundationType,Code that represents the construction type of the building's foundation,O,tinyint,0,,n/a,n/a,n/a
-Loc,WallAttachedStructure," 
-Code that represents a structure that is physically attached to the building, such as garage or balcony",O,tinyint,0,,n/a,n/a,n/a
-Loc,AppurtenantStructure," 
-Code for the appurtenant building, such as shed or detached garage",O,tinyint,0,,n/a,n/a,n/a
-Loc,ConstructionQuality,Construction quality,O,tinyint,0,,n/a,n/a,n/a
-Loc,GroundEquipment,Captures whether mechanical or electrical equipment are present on the ground level of a building and impact it has on losses,O,tinyint,0,,n/a,n/a,n/a
-Loc,EquipmentBracing,Identifies where mechanical or electrical equipment is held in place by bracing,O,tinyint,0,,n/a,n/a,n/a
-Loc,Flashing,Refers to the impact the quality of the flashing or coping on a roof has on losses,O,tinyint,0,,n/a,n/a,n/a
-Loc,BuildingShape,Code that represents the shape of the building,O,tinyint,0,,n/a,n/a,n/a
-Loc,ShapeIrregularity,"Identifies vertical irregularities, overhangs and setbacks in the building design",O,tinyint,0,,n/a,n/a,n/a
-Loc,Pounding,"Code that represents the distance to the closest structure, which if not adequate, can cause the two structures to collide during earthquake shaking",O,tinyint,0,,n/a,n/a,n/a
-Loc,Ornamentation,Code that represents the amount of decorative elements attached to the exterior of a building,O,tinyint,0,,n/a,n/a,n/a
-Loc,SpecialEQConstruction,Presence of a seismic base isolation system,O,tinyint,0,,n/a,n/a,n/a
-Loc,Retrofit,Presence of retro fit connectivity between walls and floor for retro fit buildings,O,tinyint,0,,n/a,n/a,n/a
-Loc,CrippleWall,Presence of cripple walls on the first floor or frame buildings,O,tinyint,0,,n/a,n/a,n/a
-Loc,FoundationConnection,Connection of frame to foundation with or without bolts,O,tinyint,0,,n/a,n/a,n/a
-Loc,ShortColumn,Code that indicates if there are short columns in the building,O,tinyint,0,,n/a,n/a,n/a
-Loc,Fatigue,Captures signs of damage from prior earthquakes,O,tinyint,0,,n/a,n/a,n/a
-Loc,Cladding,The presence and material of exterior building cladding,O,tinyint,0,,n/a,n/a,n/a
-Loc,BIPreparedness,BI preparedness,O,tinyint,0,,n/a,n/a,n/a
-Loc,BIRedundancy,BI redundancy,O,tinyint,0,,n/a,n/a,n/a
-Loc,FirstFloorHeight,Height of the lowest floor (above ground) of the building with respect to local ground elevation (NOT relative to datum). First floor in the US is identical to ground floor in Europe.,O,float,-999,"[-999,)",n/a,n/a,n/a
-Loc,FirstFloorHeightUnit,Code for the unit of measure used to express FirstFloorHeight,O,tinyint,1,,n/a,n/a,n/a
-Loc,Datum,Datum reference for the elevation fields (e.g. NAVD88; WGS84),O,varchar(20),n/a,,n/a,n/a,n/a
-Loc,GroundElevation,Flood or Windstorm - Elevation of the local ground surface at the building at this location. This field represents the elevation of the grade (local ground surface) with respect to the datum (e.g. NAVD88).,O,float,-999,"[-999,)",n/a,n/a,n/a
-Loc,GroundElevationUnit,Code for the unit of measure used to express the GroundElevation,O,tinyint,1,,n/a,n/a,n/a
-Loc,Tank,Code that indicates if there are rooftop tanks on the adjoining higher buildings,O,tinyint,0,,n/a,n/a,n/a
-Loc,Redundancy,"Indicates whether there are multiple lateral load resisting elements, such as frames or shear walls",O,tinyint,0,,n/a,n/a,n/a
-Loc,InternalPartition,Interior wall partitions or chimneys made from URM,O,tinyint,0,,n/a,n/a,n/a
-Loc,ExternalDoors,"Wind resistant doors, doors with a certain rating of hurricane protection",O,tinyint,0,,n/a,n/a,n/a
-Loc,Torsion,Code that represents the layout of structural elements that can lead to torsional loads,O,tinyint,0,,n/a,n/a,n/a
-Loc,MechanicalEquipmentSide,Mechanical or electrical equipment at the side,O,tinyint,0,,n/a,n/a,n/a
-Loc,ContentsWindVuln,Contents relative vulnerability to windstorm or tornado,O,tinyint,0,,n/a,n/a,O
-Loc,ContentsFloodVuln,Contents relative vulnerability to flood,O,tinyint,0,,n/a,n/a,O
-Loc,ContentsQuakeVuln,Contents relative vulnerability to earthquake,O,tinyint,0,,n/a,n/a,O
-Loc,SmallDebris,Code that identifies whether small debris are present within 200 meters of the structure,O,tinyint,0,,n/a,n/a,n/a
-Loc,FloorsOccupied,"Number of floors in the building that are occupied (separated by semi-colons). Each floor occupied is separated by a semi-colon. Ranges are not accepted. 0 = ground floor, -1 = first level of basement, -2 = second level of basement; 1 = first floor, 2 = second floor, etc.",O,varchar(255),n/a,,n/a,n/a,n/a
-Loc,FloodDefenseHeight,Height of any site specific flood defenses protecting the property with respect to local ground elevation (NOT to datum).,O,float,-999,"[-999,)",n/a,n/a,n/a
-Loc,FloodDefenseHeightUnit,Code for the unit of measure used to express the FloodDefenseHeight,O,tinyint,1,,n/a,n/a,n/a
-Loc,FloodDebrisResilience,Shows if building is vulnerable to floating debris,O,tinyint,0,,n/a,n/a,n/a
-Loc,BaseFloodElevation,Water surface elevation (relative to datum - this is NOT a flood depth) corresponding to a flood having a 1% probability of being equaled or exceeded in a given year. A value of -999 for this field represents unknown/default.,O,float,-999,"[-999,-999], [0,)",n/a,n/a,n/a
-Loc,BaseFloodElevationUnit,Code for the unit of measure used to express the BaseFloodElevation,O,tinyint,1,,n/a,n/a,n/a
-Loc,BuildingHeight,Total height of the structure,O,float,-999,"[-999,)",n/a,n/a,n/a
-Loc,BuildingHeightUnit,Units of the BuildingHeight,O,tinyint,1,,n/a,n/a,n/a
-Loc,BuildingValuation,Field for third party valuation data,O,varchar(20),n/a,,n/a,n/a,n/a
-Loc,TreeExposure,Secondary modifier coding density of trees adjacent to structure,O,tinyint,0,,n/a,n/a,n/a
-Loc,Chimney,"Code that indicates if the structure has a chimney and, if so, the height of the chimney",O,tinyint,0,,n/a,n/a,n/a
-Loc,BuildingType,"Building type (e.g. detached, terraced, etc)",O,tinyint,0,,n/a,n/a,n/a
-Loc,Packaging,Describes the susceptibility of the packaging of a risk to the peril,O,tinyint,0,,n/a,n/a,n/a
-Loc,Protection,Describes the level of protection from the specific peril,O,tinyint,0,,n/a,n/a,n/a
-Loc,SalvageProtection,The salvage potential of a particular product,O,tinyint,0,,n/a,n/a,n/a
-Loc,ValuablesStorage,Where the specie element is stored,O,tinyint,0,,n/a,n/a,n/a
-Loc,DaysHeld,Number of days cargo is kept at port or the duration of an exhibition. Values between 0 to 1825 (up to 5 years). Default = 365.,O,smallint,365,"[0,1825]",n/a,n/a,n/a
-Loc,BrickVeneer,Code that represents the proportion of external walls that consist of brick veneer. See 'OtherValues' for list of valid values.,O,tinyint,0,,n/a,n/a,n/a
-Loc,FEMACompliance,Indicates whether the building is in compliance with the FEMA flood zone requirements in both design and construction,O,tinyint,0,,n/a,n/a,n/a
-Loc,CustomFloodSOP,"Standard of flood protection return period; values from 0-10,000",O,tinyint,0,"[0,10000]",n/a,n/a,n/a
-Loc,CustomFloodZone,User-defined flood zone,O,varchar(20),n/a,,n/a,n/a,n/a
-Loc,MultiStoryHall,Code that indicates if the building has a multi-story hall,O,tinyint,0,,n/a,n/a,n/a
-Loc,BuildingExteriorOpening,Code that represents the proportion of exterior walls that are open (i.e. have windows or doors). See 'OtherValues' for list of valid values.,O,tinyint,0,,n/a,n/a,n/a
-Loc,ServiceEquipmentProtection,Code that indicates whether the service equipment is protected from flood,O,tinyint,0,,n/a,n/a,n/a
-Loc,TallOneStory,"The height of the taller than usual one-story building (e.g. gymnasium, auditorium, church, etc.)",O,tinyint,0,,n/a,n/a,n/a
-Loc,TerrainRoughness,Terrain conditions around the building.,O,tinyint,0,,n/a,n/a,n/a
-Loc,Payroll,Total payroll,O,int,n/a,"[1,)",n/a,n/a,n/a
-ReinsInfo,ReinsNumber,Reinsurance number,R,int,n/a,"[1,)",R,R,R
-ReinsInfo,ReinsName,Reinsurance name,O,varchar(30),n/a,,O,O,n/a
-ReinsInfo,ReinsLayerNumber,Reinsurance layer for information / ordering purposes,O,int,n/a,"[1,)",O,O,O
-ReinsInfo,ReinsPeril,Perils for reinsurance financial terms,R,varchar(250),n/a,,R,R,R
-ReinsInfo,ReinsInceptionDate,Reinsurance inception date - in ISO 8601 format: YYYY-MM-DD,O,smalldatetime,n/a,,O,O,O
-ReinsInfo,ReinsExpiryDate,Reinsurance expiry date - in ISO 8601 format: YYYY-MM-DD,O,smalldatetime,n/a,,O,O,O
-ReinsInfo,CededPercent,"Reinsurance ceded percentage, entered as a proportion with values between 0 and 1 (e.g. 12% entered as 0.12). Used mainly in surplus treaties. Applies before other reinsurance terms.",O,float,1,"[0,1]",O,O,O
-ReinsInfo,RiskLimit,Reinsurance per-risk limit,CR,float,0,"[0,)",CR,CR,CR
-ReinsInfo,RiskAttachment,Reinsurance per-risk attachment point,CR,float,0,"[0,)",CR,CR,CR
-ReinsInfo,OccLimit,Reinsurance occurrence limit,O,float,0,"[0,)",O,O,O
-ReinsInfo,OccAttachment,Reinsurance per occurrence attachment,O,float,0,"[0,)",O,O,O
-ReinsInfo,OccFranchiseDed,Reinsurance franchise deductible,O,float,0,"[0,)",O,O,n/a
-ReinsInfo,OccReverseFranchise,"Reinsurance reverse franchise - a value of loss that, if exceeded, results in no payment being made for this event from the reinsurer to insurer.",O,float,0,"[0,)",O,O,n/a
-ReinsInfo,AggLimit,Maximum amount payable under this treaty during the AggPeriod,O,float,0,"[0,)",O,O,n/a
-ReinsInfo,AggAttachment,The aggregate monetary amount during a given AggPeriod that the resinured retains under this treaty,O,float,0,"[0,)",O,O,n/a
-ReinsInfo,AggPeriod,Aggregate period associated with the aggregate limits and attachments (in days). Default value = 365 (1 year),O,float,365,"[0,3650]",O,O,n/a
-ReinsInfo,PlacedPercent,"Percentage of the limit that has been placed in the reinsurance market, entered as a proportion with values between 0 and 1 (e.g. 12% entered as 0.12). Used for reinsurance treaties other than surplus, after other reinsurance terms. ",R,float,n/a,"[0,1]",R,R,R
-ReinsInfo,ReinsCurrency,Reinsurance currency,R,char(3),n/a,,R,R,R
-ReinsInfo,InuringPriority,Reinsurance inuring priority capturing the order in which reinsurance contracts apply. Treaties with lower number inuring priorities apply first.,R,tinyint,n/a,"[1,)",R,R,R
-ReinsInfo,ReinsType,Type of reinsurance contract,R,varchar(3),n/a,,R,R,R
-ReinsInfo,AttachmentBasis,Reinsurance attachment basis,O,char(2),('LO'),,O,O,n/a
-ReinsInfo,Reinstatement,Number of reinstatements,O,tinyint,n/a,"[0,)",O,O,n/a
-ReinsInfo,ReinstatementCharge,"Reinstatement charge as %; semi-colon separated if different for each reinstatement (e.g. 1-free, 2-50%, 3-100% should be entered as: 0;0.5;1). If all reinstatements are the same, then just one number is sufficient (e.g. 3 reinstatements at 100% should be entered as 1)",O,varchar(50),n/a,,O,O,n/a
-ReinsInfo,ReinsPremium,Reinsurance premium,O,float,0,"[0,)",O,O,n/a
-ReinsInfo,DeemedPercentPlaced,"Deemed percent placed, entered as a proportion with values between 0 and 1. Used to represent notional contracts or any part of the contract being notional. For fully notional contracts, enter 1 (i.e. 100%). For partially placed contracts, enter any value between 0 and 1. For real contracts, enter 0.",O,float,0,"[0,1]",O,O,n/a
-ReinsInfo,ReinsFXrate,Reinsurance exchange rate (as the contractual reinsurance rate can be different from the actual exchange rates used for policies and locations),O,float,1,"[0,)",O,O,n/a
-ReinsInfo,TreatyShare,"The percentage of a treaty that a given reinsurer may write, entered as a proportion with values between 0 to 1 (e.g. 12% entered as 0.12).",O,float,1,"[0,1]",O,O,n/a
-ReinsInfo,UseReinsDates,A flag to indicate if reinsurance contract dates or  policy inception / expiry dates are to be considered when calculating losses (Y) or ignored (N).,O,char(1),N,,O,O,n/a
-ReinsScope,ReinsNumber,Reinsurance number to link with ReinsInfo file,R,int,n/a,"[1,)",R,R,R
-ReinsScope,PortNumber,Portfolio number: used for defining treaty scope in the reinsurance scope file,CR,varchar(20),n/a,,CR,CR,CR
-ReinsScope,AccNumber,Account number:  used for defining treaty scope in the reinsurance scope file,CR,nvarchar(40),n/a,,CR,CR,CR
-ReinsScope,PolNumber,Policy number:  used for defining treaty scope in the reinsurance scope file,CR,varchar(20),n/a,,CR,CR,CR
-ReinsScope,LocGroup,Location group name:  used for defining treaty scope in the reinsurance scope file,O,nvarchar(20),n/a,,O,O,n/a
-ReinsScope,LocNumber,Location number:  used for defining treaty scope in the reinsurance scope file,CR,nvarchar(20),n/a,,CR,CR,CR
-ReinsScope,CedantName,Cedant name:  used for defining treaty scope in the reinsurance scope file,O,varchar(40),n/a,,O,O,n/a
-ReinsScope,ProducerName,Producer name:  used for defining treaty scope in the reinsurance scope file,O,varchar(40),n/a,,O,O,n/a
-ReinsScope,LOB,Line of business:  used for defining treaty scope in the reinsurance scope file,O,varchar(20),n/a,,O,O,n/a
-ReinsScope,CountryCode,Country code: used for defining treaty scope in the reinsurance scope file,O,char(2),n/a,,O,O,n/a
-ReinsScope,ReinsTag,Reinsurance tag: user defined field to for defining treaty scope in the reinsurance scope file,O,varchar(20),n/a,,O,O,n/a
-ReinsScope,CededPercent,"Reinsurance ceded percentage, entered as a proportion with values between 0 and 1 (e.g. 12% entered as 0.12). Within the reinsurance scope file, CededPercent should only be entered for surplus share treaties.",CR,float,1,"[0,1]",CR,CR,CR
-ReinsInfo,RiskLevel,Code to indicate the definition of 'risk' for the per-risk terms in this particular treaty (or portion of the treaty),CR,char(3),n/a,,CR,CR,CR
-Loc,StaticMotorVehicle,Identifies whether a risk is static or dynamic (moves from location to location),O,tinyint,0,"[0,1]",n/a,n/a,n/a
-Acc,CondClass,Flags whether a condition is a policy restriction,O,tinyint,0,"[0,1]",n/a,n/a,n/a
-Acc; Loc,CondTag,Identifies a group of locations which are subject to one or more conditions.,CR,varchar(20),n/a,,n/a,n/a,n/a
-Acc; Loc; ReinsInfo; ReinsScope,OEDVersion,"The OED schema version of the file - 'major, minor, patch' format i.e. (2.0.0)",O,varchar(10),latest version,,O,O,O
-Loc,IsAggregate,Agggrated Data based on NumberOfBuildings field,O,tinyint,0,"[0,1]",n/a,n/a,n/a
-Loc,OccupantPeriod,Period/time of day/season for 'NumberOfOccupants',O,tinyint,0,"[0,8]",n/a,n/a,n/a
-Loc,SoilType,"0 = no soil information, 1 = time averaged shear-wave velocity to 30m depth (vs30 (m/s))",O,tinyint,0,"[0,1]",n/a,n/a,n/a
-Loc,SoilValue,The value associated with the SoilType and the corresponding unit,O,float,0,"[0,)",n/a,n/a,n/a
-Loc,NumberOfOccupants,"Total number of occupants at a location (e.g., residents, employees, visitors)",O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantUnderfive,Number of occupants aged under 5 years,O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantOver65,Number of occupants aged over 65 years,O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantAge5to65,Number of occupants aged 5-65 years,O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantFemale,Number of female occupants ,O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantMale,Number of male occupants,O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantOther,Number of occupants who identify as non-binary or other gender,O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantUrban,Number of occupants classed as living in an urban area,O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantRural,Number of occupants classed as living in a rural area,O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantPoverty,Number of occupants classed as living in poverty,O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantRefugee,Number of occupants with refugee status,O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantUnemployed,Number of occupants classed as unemployed,O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantDisability,Number of occupants with a disability,O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantEthnicMinority,Number of ethnic minority occupants ,O,int,0,"[0,)",n/a,n/a,n/a
-Loc,OccupantTemporary,"Number of temporary occupants (e.g., tourists)",O,int,0,"[0,)",n/a,n/a,n/a
-Acc; Loc; ReinsInfo,OriginalCurrency,Original currency in which the business has been written before any conversions,O,char(3),n/a,,O,O,O
-Acc; Loc; ReinsInfo,RateOfExchange,Rate of exchange used to convert the terms from OriginalCurrency,O,float,0,"[0,)",O,O,O
-Loc,OffshoreWaterDepth,Depth of water for offshore structures (in metres),O,float,n/a,"(,0]",n/a,n/a,n/a
-Loc,SectionLength,"Length of line element associated with point location. Intended for line-assets, such as roads, railways and cables. Such an asset can be defined as a series of points along its length, and the 'Length' field describes the length associated with each point. E.g. if a road is coded as points at 2km intervals, then the 'Length' value is 2, and the TIV represents the value for that 2km stretch of road.",O,float,n/a,"[0,)",n/a,n/a,n/a
-Loc,PowerCapacity,"The electrical capacity (e.g. in MW) associated with an infrastructure asset. Intended for power generation and power transmission assets. E.g. power stations, turbines, cables, etc.
-Provide the generating capacity of each asset (e.g. for a turbine, this is the capacity of the turbine, not the windfarm).",O,float,n/a,"[0,)",n/a,n/a,n/a
-Loc,VulnerabilitySetID,ID allowing custom location level vulnerability to be captured,O,int,n/a,"[0,)",n/a,n/a,n/a
-Loc,BuildingFloodVuln,Building relative vulnerability to flood,O,tinyint,n/a,"[0,)",n/a,n/a,n/a
-Loc,BIFloodVuln,BI relative vulnerability to flood,O,tinyint,n/a,"[0,)",n/a,n/a,n/a
-Loc,Geom,Geometry of the location: refer to http://postgis.net/workshops/postgis-intro/geometries.html,O,varchar(250),n/a,,n/a,n/a,n/a
-Loc,CodeProvision,"Code provision for energy, water and communication infrastructure",O,tinyint,,"[0,)",n/a,n/a,n/a
-Loc,Anchorage,"Anchorage of for energy, water and communication infrastructure",O,tinyint,,"[0,)",n/a,n/a,n/a
-Loc,DiameterOfPipeline,Diameter of pipeline,O,tinyint,,"[0,)",n/a,n/a,n/a
-Loc,VoltageOfEnergy,"Voltage of energy infrastructure (applicable to substations, generation facilities and transmission)",O,tinyint,,"[0,)",n/a,n/a,n/a
-Loc,PumpingCapacity,"Capacity of water pumping and treatment plants, in MGD (Millions gallons per day)",O,tinyint,,"[0,)",n/a,n/a,n/a
-Acc,AccParticipation,Insurance company share of the account loss. Values between 0 to 1 (e.g. 12% entered as 0.12),O,float,1,"[0,1]",n/a,n/a,n/a
-Acc,CompanyIDSchemeXX,"Company identification scheme. Eg. DUNS, LEI. See 'OtherValues'",CR,varchar(5),n/a,,CR,CR,n/a
-Acc,CompanyIDCodeXX,Company identifier related to the CompanyIDScheme,CR,int,0,"[0,)",CR,CR,n/a
-Acc,YearFounded,Year that insured entity founded to support company identification (YYYY format),O,smallint,0,,O,O,n/a
-Acc,StreetAddress,Main street address of insured entity,O,nvarchar(100),n/a,,O,O,n/a
-Acc,PostalCode,Postal code of main address for insured entity ,O,nvarchar(20),n/a,,O,O,n/a
-Acc,City,City of main address for insured entity ,O,nvarchar(50),n/a,,O,O,n/a
-Acc,CountryCode,Country code for the country of domicile of the insured entity - see 'CountryValues',O,char(2),n/a,,O,O,n/a
-Acc,AreaCode,Area code of main address for insured entity - see 'AreaCodeValues',O,char(3),n/a,,O,O,n/a
-Acc,IndustrySchemeXX,"Industry scheme i.e NAISC, USSIC, UKSIC. See 'OtherValues'",CR,varchar(5),n/a,,R,CR,n/a
-Acc,IndustryCodeXX,Industry code from the IndustryScheme - see 'IndustryCodeValues',CR,int,0,"[0,)",R,CR,n/a
-Acc,IndustryVintageXX,Vintage of Industry code used (YYYY format),O,smallint,0,"[0,)",O,O,n/a
-Acc,IndustryDescription,Concise industry description (associated with IndustryCode or free form),O,nvarchar(250),n/a,,O,O,n/a
-Acc,NumberOfEmployees,Most recent estimate of number of employees,O,int,0,"[0,)",O,O,n/a
-Acc,AnnualRevenue,Most recent estimate for annual total gross income (not profit),CR,float,0,"[0,)",R,CR,n/a
-Acc,AnnualRevenueCurrency,Currency for AnnualRevenue in three digit format. See 'CurrencyValues',CR,char(3),n/a,,R,CR,n/a
-Acc,GrossProfitMargin,Gross Profit Margin of company in percentage (0.1 = 10%),O,float,0,"[0,)",O,O,n/a
-Acc,NumberOfRecords,Estimated number of records accessed,O,int,0,"[0,)",O,n/a,n/a
-Acc,URL,Link to website,O,varchar(250),n/a,,O,O,n/a
-Acc,IsPackage,"Policy Type - Standalone (0), Package (1)",n/a,smallint,0,,O,n/a,n/a
-Acc,PolDed,Policy Deductible (monetary value for all coverages - non-property),n/a,float,0,"[0,)",R,O,n/a
-Acc,StackedPolNumber,If not unique indicates policy stacking (e.g. policies part of same insurance tower),n/a,varchar(20),n/a,,O,O,n/a
-Acc,LayerAggAttachment,Policy layer attachment (aggregate basis),n/a,float,0,"[0,)",O,O,n/a
-Acc,LayerAggLimit,100% policy layer limit (aggregate basis) ,n/a,float,0,"[0,)",O,O,n/a
-Acc,PolLimitNPBI,Sub-limit for (non-property) BI - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolDedNPBI,Sub-deductible for (non-property) BI - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolLimitCBI,Sub-limit for CONTINGENT BI - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolDedCBI,Sub-deductible for CONTINGENT BI- see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolLimitDIAS,Sub-limit for DIGITAL ASSETS - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolDedDIAS,Sub-deductible for DIGITAL ASSETS - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolLimitEXT,Sub-limit for EXTORTION - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolDedEXT,Sub-deductible for EXTORTION - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolLimitFIN,Sub-limit for FINANCIAL FRAUD - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolDedFIN,Sub-deductible for FINANCIAL FRAUD - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolLimitINRE,Sub-limit for INCIDENT RESPONSE - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolDedINRE,Sub-deductible for INCIDENT RESPONSE - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolLimitLIA,Sub-limit for LIABILITY - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolDedLIA,Sub-deductible for LIABILITY - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolLimitREG,Sub-limit for REGULATORY - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolDedREG,Sub-deductible for REGULATORY - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolLimitENO,Sub-limit for ERRORS & OMISSIONS - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,PolDedENO,Sub-deductible for ERRORS & OMISSIONS - see 'CoverageValues' ,n/a,float,0,"[0,)",O,n/a,n/a
-Acc,LimitCurrency,Limit Currency for all Coverages -  see 'CurrencyValues',n/a,char(3),n/a,,O,n/a,n/a
-Acc,DedCurrency,Deductible Currency for all currencies -  see 'CurrencyValues',n/a,char(3),n/a,,O,n/a,n/a
-Acc,PolSIR,Self Insured Retention,n/a,float,0,"[0,)",O,O,n/a
-Acc,PolCoverage,List of coverages in policy - see 'CoverageValues',n/a,varchar(250),CYB',,O,n/a,n/a
-Acc,OSVendor,"Operating System, Code - see 'OtherValues'",n/a,int,0,"[0,10]",O,n/a,n/a
-Acc,CloudVendor,Cloud vendor Code - see 'OtherValues',n/a,int,0,"[0,6]",O,n/a,n/a
-Acc,EmailVendor,Email vendor Code - see 'OtherValues',n/a,int,0,"[0,13]",O,n/a,n/a
-Acc,CRMVendor,Customer Relationship Management vendor code - see 'OtherValues',n/a,int,0,"[0,8]",O,n/a,n/a
-Acc,PatchPolicy,Cadence of patches to the 'main system' - 0-Unknown/1-Never/2-Daily/3-Weekly/4-Monthly/5-Annually/6-Ad-hoc,n/a,tinyint,0,"[0,6]",O,n/a,n/a
-Acc,BackUpFreq,Cadence of back-up of the 'main servers' - 0-Unknown/1-Never/2-Daily/3-Weekly/4-Monthly/5-Annually/6-Ad-hoc,n/a,tinyint,0,"[0,6]",O,n/a,n/a
-Acc,AreaName,AreaName of main address for insured entity - see 'AreaCodeValues',O,nvarchar(50),n/a,,O,O,n/a
-Acc,CoverageClassDescription,Concise class of business description for the policy coverage (free form),n/a,nvarchar(100),n/a,,n/a,R,n/a
-Acc,CoverageTerritory,Concise territorial description for the policy coverage (free form),n/a,nvarchar(100),n/a,,n/a,O,n/a
-Acc,CoverageTrigger,Options: 0-Claims Made or 1-Losses Occurring or 2-Occurrence Reported,n/a,tinyint,0,"[0,2]",n/a,O,n/a
-Acc,IsGroupCover,Is the policy coverage extended to subsidiaries of the insured party; Options: 0-No or 1-Yes,n/a,smallint,0,"[0,1]",n/a,O,n/a
-Acc,DefenceCost,"Options: 0-Outside the limit, 1-Inside the limit or 2-Not Covered",n/a,tinyint,0,"[0,2]",n/a,O,n/a
-Acc,BIWaitingPeriod,BI waiting period defined at policy level (in days),n/a,float,0,"[0,)",O,n/a,n/a
-Acc,BIPOI,"BI period of indemnity defined at policy level (in days, in increments of 0.5 days). Default value = 365 (1 year).",n/a,float,365,"[0,3650]",O,n/a,n/a
-Loc,SoilLiquefiable,Defines whether a soil is susceptible to liquefaction or not.,O,int,0,"[0,2]",n/a,n/a,n/a
-Acc,InsuredName,Full legal name of insured party,O,nvarchar(100),n/a,,R,R,n/a
-Loc,CommoditySchemeXX,Commodity scheme eg. Harmonised System Commodity Codes. See 'Other Values',CR,varchar(5),n/a,,n/a,n/a,CR
-Loc,CommodityCodeXX,Commodity code related to CommodityScheme. See 'Commodity Values'.,CR,varchar(10),n/a,,n/a,n/a,CR
-Loc,CommodityVintageXX,Vintage of commodity scheme used  (YYYY format),O,smallint,0,"[0,)",n/a,n/a,O
+"File Name","Input Field Name","Type & Description","Property field status","Data Type","Default","Valid value range","Cyber field status","Liability field status","Marine Cargo field status"
+"Acc; Loc","PortNumber","Portfolio number","R","varchar(20)","n/a","","R","R","R"
+"Acc","PortName","Portfolio name","O","varchar(40)","n/a","","O","O","n/a"
+"Acc","PortNotes","Portfolio notes, longer description than allowed in portfolio name","O","varchar(200)","n/a","","O","O","n/a"
+"Acc; Loc","AccNumber","Account number","R","nvarchar(40)","n/a","","R","R","R"
+"Acc","AccName","Account name","O","nvarchar(100)","n/a","","O","O","n/a"
+"Acc","AccGroup","Account group, could use to group multiple accounts (e.g. for binders)","O","varchar(40)","n/a","","O","O","n/a"
+"Acc","AccStatus","Account status. Aside from predefined values, you can use other single character values for user specific purposes","O","char(1)","n/a","","O","O","n/a"
+"Acc","ExpiringAccNumber","Expiring account number","O","nvarchar(40)","n/a","","O","O","n/a"
+"Acc","CedantName","Cedant name (defined at account level)","O","varchar(40)","n/a","","O","O","n/a"
+"Acc","AccCurrency","Account currency","R","char(3)","n/a","","R","R","R"
+"Acc","AccUserDef1","Account user defined field 1","O","varchar(100)","n/a","","O","O","n/a"
+"Acc","AccUserDef2","Account user defined field 2","O","varchar(100)","n/a","","O","O","n/a"
+"Acc","AccUserDef3","Account user defined field 3","O","varchar(100)","n/a","","O","O","n/a"
+"Acc","AccUserDef4","Account user defined field 4","O","varchar(100)","n/a","","O","O","n/a"
+"Acc","AccUserDef5","Account user defined field 5","O","varchar(100)","n/a","","O","O","n/a"
+"Acc","FlexiAccZZZ","Flexible field that is stored in FlexiAcc table in ModifierName = ZZZ","O","varchar(40)","n/a","","O","O","n/a"
+"Acc","AccPeril","Perils for account financial terms","CR","varchar(250)","n/a","","n/a","n/a","CR"
+"Acc","AccDedCode1Building","Account building deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccDedType1Building","Account building deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccDed1Building","Account building deductible","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","AccMinDed1Building","Account minimum building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","AccMaxDed1Building","Account maximum building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","AccDedCode2Other","Account other building deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccDedType2Other","Account other building deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccDed2Other","Account other building deductible","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","AccMinDed2Other","Account minimum other building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","AccMaxDed2Other","Account maximum other building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","AccDedCode3Contents","Account contents deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccDedType3Contents","Account contents deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccDed3Contents","Account contents deductible","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","AccMinDed3Contents","Account minimum contents deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","AccMaxDed3Contents","Account maximum contents deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","AccDedCode4BI","Account BI deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccDedType4BI","Account BI deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccDed4BI","Account BI deductible","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","AccMinDed4BI","Account minimum BI deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","AccMaxDed4BI","Account maximum BI deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","AccDedCode5PD","Account PD deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccDedType5PD","Account PD deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccDed5PD","Account PD deductible","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","AccMinDed5PD","Account minimum PD deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","AccMaxDed5PD","Account maximum PD deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","AccDedCode6All","Account blanket deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccDedType6All","Account blanket deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccDed6All","Account blanket deductible","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","AccMinDed6All","Account minimum blanket deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","AccMaxDed6All","Account maximum blanket deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","AccLimitCode1Building","Account building limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccLimitType1Building","Account building limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccLimit1Building","Account building limit","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","AccLimitCode2Other","Account other building limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccLimitType2Other","Account other building limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccLimit2Other","Account other building limit","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","AccLimitCode3Contents","Account contents limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccLimitType3Contents","Account contents limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccLimit3Contents","Account contents limit","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","AccLimitCode4BI","Account BI limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccLimitType4BI","Account BI limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccLimit4BI","Account BI limit","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","AccLimitCode5PD","Account PD limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccLimitType5PD","Account PD limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccLimit5PD","Account PD limit","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","AccLimitCode6All","Account blanket limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccLimitType6All","Account blanket limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","AccLimit6All","Account blanket limit","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","PolNumber","Policy layer number","R","varchar(20)","n/a","","R","O","R"
+"Acc","PolStatus","Policy layer status. Aside from predefined values, other single character values for user specific purposes can be used.","O","char(1)","n/a","","O","O","n/a"
+"Acc","PolInceptionDate","Policy inception date - in ISO 8601 format: YYYY-MM-DD","O","smalldatetime","n/a","","R","R","O"
+"Acc","PolExpiryDate","Policy expiry date - in ISO 8601 format: YYYY-MM-DD","O","smalldatetime","n/a","","R","R","O"
+"Acc","ProducerName","Producer name (defined at policy level)","O","varchar(40)","n/a","","O","O","n/a"
+"Acc","Underwriter","Underwriter name","O","varchar(40)","n/a","","O","O","n/a"
+"Acc","BranchName","Branch name","O","varchar(20)","n/a","","O","O","n/a"
+"Acc","LOB","Line of business (defined at policy level)","O","varchar(20)","n/a","","O","O","n/a"
+"Acc","ExpiringPolNumber","Expiring policy number","O","varchar(20)","n/a","","O","O","n/a"
+"Acc","PolPerilsCovered","Policy perils covered","R","varchar(250)","n/a","","R","n/a","R"
+"Acc","PolGrossPremium","Policy gross premium","O","float","0","[0,)","O","O","n/a"
+"Acc","PolTax","Policy insurance tax amount","O","float","0","[0,)","O","O","n/a"
+"Acc","PolBrokerage","Policy brokerage amount","O","float","0","[0,)","O","O","n/a"
+"Acc","PolNetPremium","Policy net premium","O","float","0","[0,)","O","O","n/a"
+"Acc","LayerNumber","Layer number","O","int","1","[1,)","O","O","O"
+"Acc","LayerParticipation","Insurance company share of the policy layer. Values between 0 to 1 (e.g. 12% entered as 0.12)","O","float","1","[0,1]","R","R","O"
+"Acc","LayerLimit","Policy layer limit (always treated as amount)","O","float","0","[0,)","R","R","O"
+"Acc","LayerAttachment","Policy layer attachment point (always treated as amount)","O","float","0","[0,)","R","R","O"
+"Acc","HoursClause","For perils with an inherent event duration, the insurance contract may contain an hours clause that limits the time in which claims can be added up and assigned to one event","O","int","n/a","[0,)","n/a","n/a","n/a"
+"Acc","PolPeril","Perils for policy financial terms","CR","varchar(250)","n/a","","n/a","n/a","CR"
+"Acc","PolDedCode1Building","Policy building deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolDedType1Building","Policy building deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolDed1Building","Policy building deductible","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","PolMinDed1Building","Policy minimum building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PolMaxDed1Building","Policy maximum building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PolDedCode2Other","Policy other building deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolDedType2Other","Policy other building deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolDed2Other","Policy other building deductible","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","PolMinDed2Other","Policy minimum other building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PolMaxDed2Other","Policy maximum other building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PolDedCode3Contents","Policy contents deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolDedType3Contents","Policy contents deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolDed3Contents","Policy contents deductible","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","PolMinDed3Contents","Policy minimum contents deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PolMaxDed3Contents","Policy maximum contents deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PolDedCode4BI","Policy BI deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolDedType4BI","Policy BI deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolDed4BI","Policy BI deductible","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","PolMinDed4BI","Policy minimum BI deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PolMaxDed4BI","Policy maximum BI deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PolDedCode5PD","Policy PD deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolDedType5PD","Policy PD deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolDed5PD","Policy PD deductible","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","PolMinDed5PD","Policy minimum PD deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PolMaxDed5PD","Policy maximum PD deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PolDedCode6All","Policy blanket deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolDedType6All","Policy blanket deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolDed6All","Policy blanket deductible","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","PolMinDed6All","Policy minimum blanket deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PolMaxDed6All","Policy maximum blanket deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PolLimitCode1Building","Policy building limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolLimitType1Building","Policy building limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolLimit1Building","Policy building limit","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","PolLimitCode2Other","Policy other building limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolLimitType2Other","Policy other building limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolLimit2Other","Policy other building limit","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","PolLimitCode3Contents","Policy contents limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolLimitType3Contents","Policy contents limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolLimit3Contents","Policy contents limit","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","PolLimitCode4BI","Policy BI limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolLimitType4BI","Policy BI limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolLimit4BI","Policy BI limit","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","PolLimitCode5PD","Policy PD limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolLimitType5PD","Policy PD limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolLimit5PD","Policy PD limit","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","PolLimitCode6All","Policy blanket limit code (annual aggregate only)","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolLimitType6All","Policy blanket limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","PolLimit6All","Policy blanket limit","CR","float","0","[0,)","n/a","n/a","CR"
+"Acc","StepFunctionName","Step function name","CR","varchar(30)","n/a","","n/a","n/a","n/a"
+"Acc","StepTriggerType","Code that represents how, and for which coverages, pay-outs are triggered.","CR","tinyint","n/a","","n/a","n/a","n/a"
+"Acc","StepNumber","Number between 1 and 10 that is used to sort the step function in the correct order.","CR","tinyint","n/a","[1,10]","n/a","n/a","n/a"
+"Acc","PayOutType","Refers to PayoutBuilding, PayoutContents, PayoutBuildingContents. Payout can be % TIV, % Loss, a monetary amount, or % Limit.","CR","tinyint","n/a","","n/a","n/a","n/a"
+"Acc","TriggerType","Refers to TriggerStart and TriggerEnd fields which could be specified as a % TIV, % Loss or a monetary amount.","CR","tinyint","n/a","","n/a","n/a","n/a"
+"Acc","TriggerBuildingStart","Starting value of the building damage range over which the corresponding pay-out(s) should be made.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","TriggerBuildingEnd","Ending value of the building damage range over which the corresponding pay-out(s) should be made.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","DeductibleBuilding","Building deductible that can be used, for example, to account for fire policies before applying step functions.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PayOutBuildingStart","Pay-out amount for the building losses for this step. If a ramp policy then it represents the start payout value.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PayOutBuildingEnd","Pay-out amount for the end-point building losses for this ramp. This field should only be used if you have a ramp policy to indicate the end of the building payout. Otherwise, it should be left blank.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PayOutLimitBuilding","Pay-out limit for building","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","TriggerContentsStart","Starting value of the content damage range over which the corresponding pay-out(s) should be made.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","TriggerContentsEnd","Ending value of the content damage range over which the corresponding pay-out(s) should be made.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","DeductibleContents","Content deductible that can be used, for example, to account for fire policies before applying step functions.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PayOutContentsStart","Pay-out amount for the contents losses for this step. If a ramp policy then it represents the start payout value.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PayOutContentsEnd","Pay-out amount for the end-point contents losses for this ramp. This field should only be used if you have a ramp policy to indicate the end of the contents payout. Otherwise, it should be left blank.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PayOutLimitContents","Pay-out limit for contents","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","TriggerBuildingContentsStart","Starting value of the building and content damage range over which the corresponding pay-out(s) should be made.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","TriggerBuildingContentsEnd","Ending value of the building and content damage range over which the corresponding pay-out(s) should be made.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","DeductibleBuildingContents","Building and contents deductible that can be used, for example, to account for fire policies before applying step functions.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PayOutBuildingContentsStart","Pay-out amount for the building and contents losses for this step. If a ramp policy then it represents the start payout value.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PayOutBuildingContentsEnd","Pay-out amount for the end-point building and contents losses for this ramp. This field should only be used if you have a ramp policy to indicate the end of the building and contents payout. Otherwise, it should be left blank.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","PayOutLimitBuildingContents","Pay-out limit for building and contents","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","ExtraExpenseFactor","A factor that is applied to main coverage loss for extra expenses. This value, entered as a decimal, should be the same for all steps for a policy contract and must be a value >=0. For example, 0.12 for 12%.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","ExtraExpenseLimit","A limit that applies to the total extra expense loss","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","DebrisRemovalFactor","A factor for a conditional coverage which tends to apply to all steps and is to cover Debris Removal. This value, entered as a decimal, should be the same for all steps for a policy contract and must be a value >=0. For example, 0.12 for 12%.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","MinimumTIV","Minimum replacement value for which pay-outs to the corresponding damage range will be allowed.","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","ScaleFactor","Factor used to scale up calculated losses. This value, entered as a proportion, should be the same for all steps for a policy contract. Must be a value >0 and may be >1. For example, 0.12 would scale up losses by 12%.","CR","float","1","[0,)","n/a","n/a","n/a"
+"Acc","IsLimitAtDamage","Indicates whether the pay-out is limited by the actual ground-up loss.","CR","tinyint","0","[0,1]","n/a","n/a","n/a"
+"Acc","PolUserDef1","Policy user defined field","O","varchar(100)","n/a","","O","O","n/a"
+"Acc","PolUserDef2","Policy user defined field","O","varchar(100)","n/a","","O","O","n/a"
+"Acc","PolUserDef3","Policy user defined field","O","varchar(100)","n/a","","O","O","n/a"
+"Acc","PolUserDef4","Policy user defined field","O","varchar(100)","n/a","","O","O","n/a"
+"Acc","PolUserDef5","Policy user defined field","O","varchar(100)","n/a","","O","O","n/a"
+"Acc","FlexiPolZZZ","Flexible field that is stored in FlexiPol table in ModifierName = ZZZ","O","varchar(40)","n/a","","O","O","n/a"
+"Acc","CondNumber","Condition number identifies a unique set of condition financial terms applicable to one or more CondTag's.","CR","varchar(20)","n/a","","n/a","n/a","n/a"
+"Acc","CondName","Condition name.","O","varchar(40)","n/a","","n/a","n/a","n/a"
+"Acc","CondPriority","Condition priority: specifies the order in which special conditions apply if multiple conditions apply to one location.","CR","int","n/a","[1,)","n/a","n/a","n/a"
+"Acc","CondPeril","Perils for condition financial terms","CR","varchar(250)","n/a","","n/a","n/a","n/a"
+"Acc","CondDedCode1Building","Special condition building deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondDedType1Building","Special condition building deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondDed1Building","Special condition building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondMinDed1Building","Special condition minimum building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondMaxDed1Building","Special condition maximum building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondDedCode2Other","Special condition other building deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondDedType2Other","Special condition other building deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondDed2Other","Special condition other building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondMinDed2Other","Special condition minimum other building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondMaxDed2Other","Special condition maximum other building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondDedCode3Contents","Special condition contents deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondDedType3Contents","Special condition contents deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondDed3Contents","Special condition contents deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondMinDed3Contents","Special condition minimum contents deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondMaxDed3Contents","Special condition maximum contents deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondDedCode4BI","Special condition BI deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondDedType4BI","Special condition BI deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondDed4BI","Special condition BI deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondMinDed4BI","Special condition minimum BI deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondMaxDed4BI","Special condition maximum BI deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondDedCode5PD","Special condition PD deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondDedType5PD","Special condition PD deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondDed5PD","Special condition PD deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondMinDed5PD","Special condition minimum PD deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondMaxDed5PD","Special condition maximum PD deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondDedCode6All","Special condition blanket deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondDedType6All","Special condition blanket deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondDed6All","Special condition blanket deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondMinDed6All","Special condition minimum blanket deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondMaxDed6All","Special condition maximum blanket deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondLimitCode1Building","Special condition building limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondLimitType1Building","Special condition building limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondLimit1Building","Special condition building limit","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondLimitCode2Other","Special condition other building limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondLimitType2Other","Special condition other building limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondLimit2Other","Special condition other building limit","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondLimitCode3Contents","Special condition contents limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondLimitType3Contents","Special condition contents limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondLimit3Contents","Special condition contents limit","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondLimitCode4BI","Special condition BI limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondLimitType4BI","Special condition BI limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondLimit4BI","Special condition BI limit","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondLimitCode5PD","Special condition PD limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondLimitType5PD","Special condition PD limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondLimit5PD","Special condition PD limit","CR","float","0","[0,)","n/a","n/a","n/a"
+"Acc","CondLimitCode6All","Special condition blanket limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondLimitType6All","Special condition blanket limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Acc","CondLimit6All","Special condition blanket limit","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocNumber","Location number","R","nvarchar(20)","n/a","","n/a","n/a","R"
+"Loc","LocName","Location name","O","nvarchar(20)","n/a","","n/a","n/a","n/a"
+"Loc","LocGroup","Location group name","O","nvarchar(20)","n/a","","n/a","n/a","n/a"
+"Loc","CorrelationGroup","Correlation Group: indicates which locations should be correlated between each other in Oasis LMF.","O","int","n/a","[0,)","n/a","n/a","n/a"
+"Loc","IsPrimary","Whether the location in LocGroup is the primary building in the group","O","tinyint","1","[0,1]","n/a","n/a","n/a"
+"Loc","IsTenant","Whether property is occupied by a tenant or not","O","tinyint","0","[0,1]","n/a","n/a","n/a"
+"Loc","BuildingID","Unique building identification number","O","varchar(20)","n/a","","n/a","n/a","n/a"
+"Loc","LocInceptionDate","Location inception date - in ISO 8601 format: YYYY-MM-DD","O","smalldatetime","n/a","","n/a","n/a","n/a"
+"Loc","LocExpiryDate","Location expiry date - in ISO 8601 format: YYYY-MM-DD","O","smalldatetime","n/a","","n/a","n/a","n/a"
+"Loc","PercentComplete","Percentage of the construction project complete, entered as a proportion with values between 0 and 1 (e.g. 12% entered as 0.12). The completeness percentage is by the cost of the project.","O","decimal","1","[0,1]","n/a","n/a","n/a"
+"Loc","CompletionDate","Construction project completion date - in ISO 8601 format: YYYY-MM-DD","O","date","n/a","","n/a","n/a","n/a"
+"Loc","CountryCode","Country code (based on ISO3166 alpha-2 codes)","R","char(2)","n/a","","n/a","n/a","R"
+"Loc","Latitude","Latitude in degrees (-90.0 to +90.0)","O","decimal","n/a","[-90,90]","n/a","n/a","n/a"
+"Loc","Longitude","Longitude in degrees (-180.0 to +180.0)","O","decimal","n/a","[-180,180]","n/a","n/a","n/a"
+"Loc","StreetAddress","Street address including house number ","O","nvarchar(100)","n/a","","n/a","n/a","O"
+"Loc","PostalCode","Postcode: the highest resolution postcode most often used. (e.g. 5 digit zip for the US).","O","nvarchar(20)","n/a","","n/a","n/a","O"
+"Loc","City","City","O","nvarchar(50)","n/a","","n/a","n/a","O"
+"Loc","AreaCode","Code representing typically the largest sub-division in a country (e.g. State code). See AreaCode Values sheet for details.","O","nvarchar(20)","n/a","","n/a","n/a","O"
+"Loc","AreaName","Name relating to the AreaCode (e.g. State name). See AreaCode Values sheet for details.","O","nvarchar(50)","n/a","","n/a","n/a","n/a"
+"Loc","GeogSchemeXX","Geography scheme: Descriptor of the geography scheme used in relation to the geography name in the corresponding GeogName field (e.g. PC4). The 'XX' must be changed to an integer (GeogScheme1......> GeogScheme30 (max) etc) and the user can specify values in addition to those listed in the GeogScheme values list, but user defined scheme values must start with 'X'.","O","varchar(5)","n/a","","n/a","n/a","n/a"
+"Loc","GeogNameXX","Geography name: Descriptor of the geographical area, using the scheme referenced in the corresponding GeogScheme field (e.g. SO31)","O","nvarchar(50)","n/a","","n/a","n/a","n/a"
+"Loc","AddressMatch","Address match from geocoder: indicating the resolution that the latitude / longitude represents","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","GeocodeQuality","Geocode quality (values between 0 and 1 e.g. 80% is entered as 0.8)","O","float","n/a","[0,1]","n/a","n/a","n/a"
+"Loc","Geocoder","Company name / version of geocoder. Free text field.","O","varchar(20)","n/a","","n/a","n/a","n/a"
+"Loc","OrgOccupancyScheme","Original occupancy scheme","O","varchar(10)","n/a","","n/a","n/a","n/a"
+"Loc","OrgOccupancyCode","Original occupancy code","O","varchar(100)","n/a","","n/a","n/a","n/a"
+"Loc","OrgConstructionScheme","Original construction scheme","O","varchar(10)","n/a","","n/a","n/a","n/a"
+"Loc","OrgConstructionCode","Original construction code","O","varchar(100)","n/a","","n/a","n/a","n/a"
+"Loc","OccupancyCode","OED occupancy code","O","int","1000","","n/a","n/a","O"
+"Loc","ConstructionCode","OED construction code","O","int","5000","","n/a","n/a","O"
+"Loc","YearBuilt","Year built (4 digit year)","O","smallint","0","[0,)","n/a","n/a","O"
+"Loc","NumberOfStoreys","Number of storeys (-1 = Unknown No. storeys - low rise), (-2 = Unknown No. storeys - mid rise), (-3 = Unknown No. storeys = high rise). Can be used with occupancy types where the number of storeys are unknown.","O","tinyint","0","[-3,)","n/a","n/a","O"
+"Loc","NumberOfBuildings","Number of buildings. Default to 1 but user should enter '0' if unknown.","O","int","1","[0,)","n/a","n/a","O"
+"Loc","FloorArea","Floor area: the total area across all floors","O","float","0","[0,)","n/a","n/a","n/a"
+"Loc","FloorAreaUnit","Units in which FloorArea is specified","O","tinyint","11","","n/a","n/a","n/a"
+"Loc","LocUserDef1","Location user defined field 1","O","varchar(100)","n/a","","n/a","n/a","n/a"
+"Loc","LocUserDef2","Location user defined field 2","O","varchar(100)","n/a","","n/a","n/a","n/a"
+"Loc","LocUserDef3","Location user defined field 3","O","varchar(100)","n/a","","n/a","n/a","n/a"
+"Loc","LocUserDef4","Location user defined field 4","O","varchar(100)","n/a","","n/a","n/a","n/a"
+"Loc","LocUserDef5","Location user defined field 5","O","varchar(100)","n/a","","n/a","n/a","n/a"
+"Loc","FlexiLocZZZ","Flexible field that is stored in FlexiLoc table in ModifierName = ZZZ","O","varchar(40)","n/a","","n/a","n/a","n/a"
+"Loc","LocPerilsCovered","Location perils covered","R","varchar(250)","n/a","","n/a","n/a","R"
+"Loc","BuildingTIV","Building Total Insured Value","O","float","0","[0,)","n/a","n/a","O"
+"Loc","OtherTIV","Other Building Insured Value (primarily aimed at specific US policies). For motor exposures, use this field for TIV along with appropriate motor construction code.","O","float","0","[0,)","n/a","n/a","O"
+"Loc","ContentsTIV","Contents Total Insured Value","O","float","0","[0,)","n/a","n/a","O"
+"Loc","BITIV","Business Interruption (BI) Total Insured Value. Enter an annualized amount, and use LocDed4BI and LocLimit4BI fields for non-annualized values","O","float","0","[0,)","n/a","n/a","O"
+"Loc","BIPOI","BI period of indemnity (in days, in increments of 0.5 days). Default value = 365 (1 year).","O","float","365","[0,3650]","n/a","n/a","O"
+"Loc","LocCurrency","Location currency","R","char(3)","n/a","","n/a","n/a","R"
+"Loc","LocGrossPremium","Gross premium amount at location level","O","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocTax","Insurance tax amount at location level","O","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocBrokerage","Brokerage amount at location level","O","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocNetPremium","Net premium at location level","O","float","0","[0,)","n/a","n/a","n/a"
+"Loc","NonCatGroundUpLoss","Ground-Up non-cat loss value prior to the application of non-cat policy terms","O","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocParticipation","Share of the risk that the insurer covers for this location, entered as a proportion with values between 0 to 1 (e.g. 12% entered as 0.12). Usually used in binders or offshore.","O","float","1","[0,1]","n/a","n/a","n/a"
+"Loc","PayoutBasis","Pay-out basis for the claim (whether depreciation is taken into account). ACV = RCV - depreciation.","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","ReinsTag","User defined reinsurance tag to provide a further option for specifying reinsurance scope","O","varchar(20)","n/a","","n/a","n/a","n/a"
+"Loc","LocDedCode1Building","Location building deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocDedType1Building","Location building deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocDed1Building","Location building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocMinDed1Building","Location minimum building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocMaxDed1Building","Location maximum building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocDedCode2Other","Location other building deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocDedType2Other","Location other building deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocDed2Other","Location other building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocMinDed2Other","Location minimum other building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocMaxDed2Other","Location maximum other building deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocDedCode3Contents","Location contents deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocDedType3Contents","Location contents deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocDed3Contents","Location contents deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocMinDed3Contents","Location minimum contents deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocMaxDed3Contents","Location maximum contents deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocDedCode4BI","Location BI Deductible Code","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocDedType4BI","Location BI Deductible Type","CR","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocDed4BI","Location BI deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocMinDed4BI","Location minimum bi deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocMaxDed4BI","Location maximum bi deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocDedCode5PD","Location PD deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocDedType5PD","Location PD deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocDed5PD","Location PD deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocMinDed5PD","Location minimum PD deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocMaxDed5PD","Location maximum PD deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocDedCode6All","Location blanket deductible code","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocDedType6All","Location blanket deductible type","CR","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocDed6All","Location site deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocMinDed6All","Location minimum blanket deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocMaxDed6All","Location maximum blanket deductible","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocLimitCode1Building","Location building limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocLimitType1Building","Location building limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocLimit1Building","Location building limit","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocLimitCode2Other","Location other building limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocLimitType2Other","Location other building limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocLimit2Other","Location other building limit","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocLimitCode3Contents","Location contents limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocLimitType3Contents","Location contents limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocLimit3Contents","Location contents limit","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocLimitCode4BI","Location BI limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocLimitType4BI","Location BI limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocLimit4BI","Location BI limit","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocLimitCode5PD","Location PD limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocLimitType5PD","Location PD limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocLimit5PD","Location PD limit","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocLimitCode6All","Location site limit code","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocLimitType6All","Location site limit type","CR","tinyint","0","","n/a","n/a","n/a"
+"Loc","LocLimit6All","Location site limit","CR","float","0","[0,)","n/a","n/a","n/a"
+"Loc","BIWaitingPeriod","BI waiting period (in days)","O","float","0","[0,)","n/a","n/a","n/a"
+"Loc","LocPeril","Perils for location financial terms","CR","varchar(250)","n/a","","n/a","n/a","n/a"
+"Loc","YearUpgraded","Year the building was upgraded (4 digit year)","O","smallint","0","[0,)","n/a","n/a","n/a"
+"Loc","SurgeLeakage","Storm leakage percentage entered as a proportion with values between 0 and 1 (0% to 100%) for Wind only policies","O","float","-999","[-999,-999], [0,1]","n/a","n/a","n/a"
+"Loc","SprinklerType","Sprinkler type","O","tinyint","0","","n/a","n/a","O"
+"Loc","PercentSprinklered","Percent sprinklered, entered as a proportion with values between 0 and 1 inclusive (0.5 = 50%); -999 is unknown","O","float","-999","[-999,-999], [0,1]","n/a","n/a","O"
+"Loc","RoofCover","Code that represents the material used to cover the roof","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","RoofYearBuilt","Year the roof was last replaced (4 digit year)","O","smallint","0","[0,)","n/a","n/a","n/a"
+"Loc","RoofGeometry","Code that represents the shape of the roof","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","RoofEquipment","captures if mechanical or electric equipment is braced on the roof and the impact this modifier will have on the losses.","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","RoofFrame","Roof framing material","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","RoofMaintenance","Captures the impact roof maintenance has on the losses","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","BuildingCondition","Building condition","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","RoofAttachedStructures","Code that identifies items mounted on the roof, such as A/C units, skylights, or dormers","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","RoofDeck","Code that represents the materials used to construct the roof deck","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","RoofPitch","Code that represents the slope of the roof","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","RoofAnchorage","Code that represents the connections used to secure the roof support system to the walls","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","RoofDeckAttachment","Code that represents the connections used to secure the roof deck to the underlying roof support system","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","RoofCoverAttachment","Code that represents the connections used to secure the roof covering to the roof deck","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","GlassType","Code that represents the type of glass used in the building","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","LatticeType","Code that represents the type of web used for H-shaped steel","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","FloodZone","Flood zone. Free text field.","O","varchar(20)","n/a","","n/a","n/a","n/a"
+"Loc","SoftStory","Code that indicates if there is structural weakness at any floor.  First floor garages and taller first floors are likely to exhibit soft-story behaviour.","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","Basement","Code that defines if there is a basement and if so whether it is finished or unfinished","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","BasementLevelCount","Indicates the number of basement levels in a structure (supports up to 5 levels; for more than 5, enter 5).","O","tinyint","0","[0,5]","n/a","n/a","n/a"
+"Loc","WindowProtection","Code that represents the wind protection systems used on the windows","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","FoundationType","Code that represents the construction type of the building's foundation","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","WallAttachedStructure"," 
+Code that represents a structure that is physically attached to the building, such as garage or balcony","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","AppurtenantStructure"," 
+Code for the appurtenant building, such as shed or detached garage","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","ConstructionQuality","Construction quality","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","GroundEquipment","Captures whether mechanical or electrical equipment are present on the ground level of a building and impact it has on losses","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","EquipmentBracing","Identifies where mechanical or electrical equipment is held in place by bracing","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","Flashing","Refers to the impact the quality of the flashing or coping on a roof has on losses","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","BuildingShape","Code that represents the shape of the building","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","ShapeIrregularity","Identifies vertical irregularities, overhangs and setbacks in the building design","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","Pounding","Code that represents the distance to the closest structure, which if not adequate, can cause the two structures to collide during earthquake shaking","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","Ornamentation","Code that represents the amount of decorative elements attached to the exterior of a building","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","SpecialEQConstruction","Presence of a seismic base isolation system","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","Retrofit","Presence of retro fit connectivity between walls and floor for retro fit buildings","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","CrippleWall","Presence of cripple walls on the first floor or frame buildings","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","FoundationConnection","Connection of frame to foundation with or without bolts","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","ShortColumn","Code that indicates if there are short columns in the building","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","Fatigue","Captures signs of damage from prior earthquakes","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","Cladding","The presence and material of exterior building cladding","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","BIPreparedness","BI preparedness","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","BIRedundancy","BI redundancy","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","FirstFloorHeight","Height of the lowest floor (above ground) of the building with respect to local ground elevation (NOT relative to datum). First floor in the US is identical to ground floor in Europe.","O","float","-999","[-999,)","n/a","n/a","n/a"
+"Loc","FirstFloorHeightUnit","Code for the unit of measure used to express FirstFloorHeight","O","tinyint","1","","n/a","n/a","n/a"
+"Loc","Datum","Datum reference for the elevation fields (e.g. NAVD88; WGS84)","O","varchar(20)","n/a","","n/a","n/a","n/a"
+"Loc","GroundElevation","Flood or Windstorm - Elevation of the local ground surface at the building at this location. This field represents the elevation of the grade (local ground surface) with respect to the datum (e.g. NAVD88).","O","float","-999","[-999,)","n/a","n/a","n/a"
+"Loc","GroundElevationUnit","Code for the unit of measure used to express the GroundElevation","O","tinyint","1","","n/a","n/a","n/a"
+"Loc","Tank","Code that indicates if there are rooftop tanks on the adjoining higher buildings","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","Redundancy","Indicates whether there are multiple lateral load resisting elements, such as frames or shear walls","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","InternalPartition","Interior wall partitions or chimneys made from URM","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","ExternalDoors","Wind resistant doors, doors with a certain rating of hurricane protection","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","Torsion","Code that represents the layout of structural elements that can lead to torsional loads","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","MechanicalEquipmentSide","Mechanical or electrical equipment at the side","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","ContentsWindVuln","Contents relative vulnerability to windstorm or tornado","O","tinyint","0","","n/a","n/a","O"
+"Loc","ContentsFloodVuln","Contents relative vulnerability to flood","O","tinyint","0","","n/a","n/a","O"
+"Loc","ContentsQuakeVuln","Contents relative vulnerability to earthquake","O","tinyint","0","","n/a","n/a","O"
+"Loc","SmallDebris","Code that identifies whether small debris are present within 200 meters of the structure","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","FloorsOccupied","Number of floors in the building that are occupied (separated by semi-colons). Each floor occupied is separated by a semi-colon. Ranges are not accepted. 0 = ground floor, -1 = first level of basement, -2 = second level of basement; 1 = first floor, 2 = second floor, etc.","O","varchar(255)","n/a","","n/a","n/a","n/a"
+"Loc","FloodDefenseHeight","Height of any site specific flood defenses protecting the property with respect to local ground elevation (NOT to datum).","O","float","-999","[-999,)","n/a","n/a","n/a"
+"Loc","FloodDefenseHeightUnit","Code for the unit of measure used to express the FloodDefenseHeight","O","tinyint","1","","n/a","n/a","n/a"
+"Loc","FloodDebrisResilience","Shows if building is vulnerable to floating debris","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","BaseFloodElevation","Water surface elevation (relative to datum - this is NOT a flood depth) corresponding to a flood having a 1% probability of being equaled or exceeded in a given year. A value of -999 for this field represents unknown/default.","O","float","-999","[-999,-999], [0,)","n/a","n/a","n/a"
+"Loc","BaseFloodElevationUnit","Code for the unit of measure used to express the BaseFloodElevation","O","tinyint","1","","n/a","n/a","n/a"
+"Loc","BuildingHeight","Total height of the structure","O","float","-999","[-999,)","n/a","n/a","n/a"
+"Loc","BuildingHeightUnit","Units of the BuildingHeight","O","tinyint","1","","n/a","n/a","n/a"
+"Loc","BuildingValuation","Field for third party valuation data","O","varchar(20)","n/a","","n/a","n/a","n/a"
+"Loc","TreeExposure","Secondary modifier coding density of trees adjacent to structure","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","Chimney","Code that indicates if the structure has a chimney and, if so, the height of the chimney","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","BuildingType","Building type (e.g. detached, terraced, etc)","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","Packaging","Describes the susceptibility of the packaging of a risk to the peril","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","Protection","Describes the level of protection from the specific peril","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","SalvageProtection","The salvage potential of a particular product","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","ValuablesStorage","Where the specie element is stored","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","DaysHeld","Number of days cargo is kept at port or the duration of an exhibition. Values between 0 to 1825 (up to 5 years). Default = 365.","O","smallint","365","[0,1825]","n/a","n/a","n/a"
+"Loc","BrickVeneer","Code that represents the proportion of external walls that consist of brick veneer. See 'OtherValues' for list of valid values.","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","FEMACompliance","Indicates whether the building is in compliance with the FEMA flood zone requirements in both design and construction","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","CustomFloodSOP","Standard of flood protection return period; values from 0-10,000","O","tinyint","0","[0,10000]","n/a","n/a","n/a"
+"Loc","CustomFloodZone","User-defined flood zone","O","varchar(20)","n/a","","n/a","n/a","n/a"
+"Loc","MultiStoryHall","Code that indicates if the building has a multi-story hall","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","BuildingExteriorOpening","Code that represents the proportion of exterior walls that are open (i.e. have windows or doors). See 'OtherValues' for list of valid values.","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","ServiceEquipmentProtection","Code that indicates whether the service equipment is protected from flood","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","TallOneStory","The height of the taller than usual one-story building (e.g. gymnasium, auditorium, church, etc.)","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","TerrainRoughness","Terrain conditions around the building.","O","tinyint","0","","n/a","n/a","n/a"
+"Loc","Payroll","Total payroll","O","int","n/a","[1,)","n/a","n/a","n/a"
+"ReinsInfo","ReinsNumber","Reinsurance number","R","int","n/a","[1,)","R","R","R"
+"ReinsInfo","ReinsName","Reinsurance name","O","varchar(30)","n/a","","O","O","n/a"
+"ReinsInfo","ReinsLayerNumber","Reinsurance layer for information / ordering purposes","O","int","n/a","[1,)","O","O","O"
+"ReinsInfo","ReinsPeril","Perils for reinsurance financial terms","R","varchar(250)","n/a","","R","R","R"
+"ReinsInfo","ReinsInceptionDate","Reinsurance inception date - in ISO 8601 format: YYYY-MM-DD","O","smalldatetime","n/a","","O","O","O"
+"ReinsInfo","ReinsExpiryDate","Reinsurance expiry date - in ISO 8601 format: YYYY-MM-DD","O","smalldatetime","n/a","","O","O","O"
+"ReinsInfo","CededPercent","Reinsurance ceded percentage, entered as a proportion with values between 0 and 1 (e.g. 12% entered as 0.12). Used mainly in surplus treaties. Applies before other reinsurance terms.","O","float","1","[0,1]","O","O","O"
+"ReinsInfo","RiskLimit","Reinsurance per-risk limit","CR","float","0","[0,)","CR","CR","CR"
+"ReinsInfo","RiskAttachment","Reinsurance per-risk attachment point","CR","float","0","[0,)","CR","CR","CR"
+"ReinsInfo","OccLimit","Reinsurance occurrence limit","O","float","0","[0,)","O","O","O"
+"ReinsInfo","OccAttachment","Reinsurance per occurrence attachment","O","float","0","[0,)","O","O","O"
+"ReinsInfo","OccFranchiseDed","Reinsurance franchise deductible","O","float","0","[0,)","O","O","n/a"
+"ReinsInfo","OccReverseFranchise","Reinsurance reverse franchise - a value of loss that, if exceeded, results in no payment being made for this event from the reinsurer to insurer.","O","float","0","[0,)","O","O","n/a"
+"ReinsInfo","AggLimit","Maximum amount payable under this treaty during the AggPeriod","O","float","0","[0,)","O","O","n/a"
+"ReinsInfo","AggAttachment","The aggregate monetary amount during a given AggPeriod that the resinured retains under this treaty","O","float","0","[0,)","O","O","n/a"
+"ReinsInfo","AggPeriod","Aggregate period associated with the aggregate limits and attachments (in days). Default value = 365 (1 year)","O","float","365","[0,3650]","O","O","n/a"
+"ReinsInfo","PlacedPercent","Percentage of the limit that has been placed in the reinsurance market, entered as a proportion with values between 0 and 1 (e.g. 12% entered as 0.12). Used for reinsurance treaties other than surplus, after other reinsurance terms. ","R","float","n/a","[0,1]","R","R","R"
+"ReinsInfo","ReinsCurrency","Reinsurance currency","R","char(3)","n/a","","R","R","R"
+"ReinsInfo","InuringPriority","Reinsurance inuring priority capturing the order in which reinsurance contracts apply. Treaties with lower number inuring priorities apply first.","R","tinyint","n/a","[1,)","R","R","R"
+"ReinsInfo","ReinsType","Type of reinsurance contract","R","varchar(3)","n/a","","R","R","R"
+"ReinsInfo","AttachmentBasis","Reinsurance attachment basis","O","char(2)","('LO')","","O","O","n/a"
+"ReinsInfo","Reinstatement","Number of reinstatements","O","tinyint","n/a","[0,)","O","O","n/a"
+"ReinsInfo","ReinstatementCharge","Reinstatement charge as %; semi-colon separated if different for each reinstatement (e.g. 1-free, 2-50%, 3-100% should be entered as: 0;0.5;1). If all reinstatements are the same, then just one number is sufficient (e.g. 3 reinstatements at 100% should be entered as 1)","O","varchar(50)","n/a","","O","O","n/a"
+"ReinsInfo","ReinsPremium","Reinsurance premium","O","float","0","[0,)","O","O","n/a"
+"ReinsInfo","DeemedPercentPlaced","Deemed percent placed, entered as a proportion with values between 0 and 1. Used to represent notional contracts or any part of the contract being notional. For fully notional contracts, enter 1 (i.e. 100%). For partially placed contracts, enter any value between 0 and 1. For real contracts, enter 0.","O","float","0","[0,1]","O","O","n/a"
+"ReinsInfo","ReinsFXrate","Reinsurance exchange rate (as the contractual reinsurance rate can be different from the actual exchange rates used for policies and locations)","O","float","1","[0,)","O","O","n/a"
+"ReinsInfo","TreatyShare","The percentage of a treaty that a given reinsurer may write, entered as a proportion with values between 0 to 1 (e.g. 12% entered as 0.12).","O","float","1","[0,1]","O","O","n/a"
+"ReinsInfo","UseReinsDates","A flag to indicate if reinsurance contract dates or  policy inception / expiry dates are to be considered when calculating losses (Y) or ignored (N).","O","char(1)","N","","O","O","n/a"
+"ReinsScope","ReinsNumber","Reinsurance number to link with ReinsInfo file","R","int","n/a","[1,)","R","R","R"
+"ReinsScope","PortNumber","Portfolio number: used for defining treaty scope in the reinsurance scope file","CR","varchar(20)","n/a","","CR","CR","CR"
+"ReinsScope","AccNumber","Account number:  used for defining treaty scope in the reinsurance scope file","CR","nvarchar(40)","n/a","","CR","CR","CR"
+"ReinsScope","PolNumber","Policy number:  used for defining treaty scope in the reinsurance scope file","CR","varchar(20)","n/a","","CR","CR","CR"
+"ReinsScope","LocGroup","Location group name:  used for defining treaty scope in the reinsurance scope file","O","nvarchar(20)","n/a","","O","O","n/a"
+"ReinsScope","LocNumber","Location number:  used for defining treaty scope in the reinsurance scope file","CR","nvarchar(20)","n/a","","CR","CR","CR"
+"ReinsScope","CedantName","Cedant name:  used for defining treaty scope in the reinsurance scope file","O","varchar(40)","n/a","","O","O","n/a"
+"ReinsScope","ProducerName","Producer name:  used for defining treaty scope in the reinsurance scope file","O","varchar(40)","n/a","","O","O","n/a"
+"ReinsScope","LOB","Line of business:  used for defining treaty scope in the reinsurance scope file","O","varchar(20)","n/a","","O","O","n/a"
+"ReinsScope","CountryCode","Country code: used for defining treaty scope in the reinsurance scope file","O","char(2)","n/a","","O","O","n/a"
+"ReinsScope","ReinsTag","Reinsurance tag: user defined field to for defining treaty scope in the reinsurance scope file","O","varchar(20)","n/a","","O","O","n/a"
+"ReinsScope","CededPercent","Reinsurance ceded percentage, entered as a proportion with values between 0 and 1 (e.g. 12% entered as 0.12). Within the reinsurance scope file, CededPercent should only be entered for surplus share treaties.","CR","float","1","[0,1]","CR","CR","CR"
+"ReinsInfo","RiskLevel","Code to indicate the definition of 'risk' for the per-risk terms in this particular treaty (or portion of the treaty)","CR","char(3)","n/a","","CR","CR","CR"
+"Loc","StaticMotorVehicle","Identifies whether a risk is static or dynamic (moves from location to location)","O","tinyint","0","[0,1]","n/a","n/a","n/a"
+"Acc","CondClass","Flags whether a condition is a policy restriction","O","tinyint","0","[0,1]","n/a","n/a","n/a"
+"Acc; Loc","CondTag","Identifies a group of locations which are subject to one or more conditions.","CR","varchar(20)","n/a","","n/a","n/a","n/a"
+"Acc; Loc; ReinsInfo; ReinsScope","OEDVersion","The OED schema version of the file - 'major, minor, patch' format i.e. (2.0.0)","O","varchar(10)","latest version","","O","O","O"
+"Loc","IsAggregate","Agggrated Data based on NumberOfBuildings field","O","tinyint","0","[0,1]","n/a","n/a","n/a"
+"Loc","OccupantPeriod","Period/time of day/season for 'NumberOfOccupants'","O","tinyint","0","[0,8]","n/a","n/a","n/a"
+"Loc","SoilType","0 = no soil information, 1 = time averaged shear-wave velocity to 30m depth (vs30 (m/s))","O","tinyint","0","[0,1]","n/a","n/a","n/a"
+"Loc","SoilValue","The value associated with the SoilType and the corresponding unit","O","float","0","[0,)","n/a","n/a","n/a"
+"Loc","NumberOfOccupants","Total number of occupants at a location (e.g., residents, employees, visitors)","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantUnderfive","Number of occupants aged under 5 years","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantOver65","Number of occupants aged over 65 years","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantAge5to65","Number of occupants aged 5-65 years","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantFemale","Number of female occupants ","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantMale","Number of male occupants","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantOther","Number of occupants who identify as non-binary or other gender","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantUrban","Number of occupants classed as living in an urban area","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantRural","Number of occupants classed as living in a rural area","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantPoverty","Number of occupants classed as living in poverty","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantRefugee","Number of occupants with refugee status","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantUnemployed","Number of occupants classed as unemployed","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantDisability","Number of occupants with a disability","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantEthnicMinority","Number of ethnic minority occupants ","O","int","0","[0,)","n/a","n/a","n/a"
+"Loc","OccupantTemporary","Number of temporary occupants (e.g., tourists)","O","int","0","[0,)","n/a","n/a","n/a"
+"Acc; Loc; ReinsInfo","OriginalCurrency","Original currency in which the business has been written before any conversions","O","char(3)","n/a","","O","O","O"
+"Acc; Loc; ReinsInfo","RateOfExchange","Rate of exchange used to convert the terms from OriginalCurrency","O","float","0","[0,)","O","O","O"
+"Loc","OffshoreWaterDepth","Depth of water for offshore structures (in metres)","O","float","n/a","(,0]","n/a","n/a","n/a"
+"Loc","SectionLength","Length of line element associated with point location. Intended for line-assets, such as roads, railways and cables. Such an asset can be defined as a series of points along its length, and the 'Length' field describes the length associated with each point. E.g. if a road is coded as points at 2km intervals, then the 'Length' value is 2, and the TIV represents the value for that 2km stretch of road.","O","float","n/a","[0,)","n/a","n/a","n/a"
+"Loc","PowerCapacity","The electrical capacity (e.g. in MW) associated with an infrastructure asset. Intended for power generation and power transmission assets. E.g. power stations, turbines, cables, etc.
+Provide the generating capacity of each asset (e.g. for a turbine, this is the capacity of the turbine, not the windfarm).","O","float","n/a","[0,)","n/a","n/a","n/a"
+"Loc","VulnerabilitySetID","ID allowing custom location level vulnerability to be captured","O","int","n/a","[0,)","n/a","n/a","n/a"
+"Loc","BuildingFloodVuln","Building relative vulnerability to flood","O","tinyint","n/a","[0,)","n/a","n/a","n/a"
+"Loc","BIFloodVuln","BI relative vulnerability to flood","O","tinyint","n/a","[0,)","n/a","n/a","n/a"
+"Loc","Geom","Geometry of the location: refer to http://postgis.net/workshops/postgis-intro/geometries.html","O","varchar(250)","n/a","","n/a","n/a","n/a"
+"Loc","CodeProvision","Code provision for energy, water and communication infrastructure","O","tinyint","","[0,)","n/a","n/a","n/a"
+"Loc","Anchorage","Anchorage of for energy, water and communication infrastructure","O","tinyint","","[0,)","n/a","n/a","n/a"
+"Loc","DiameterOfPipeline","Diameter of pipeline","O","tinyint","","[0,)","n/a","n/a","n/a"
+"Loc","VoltageOfEnergy","Voltage of energy infrastructure (applicable to substations, generation facilities and transmission)","O","tinyint","","[0,)","n/a","n/a","n/a"
+"Loc","PumpingCapacity","Capacity of water pumping and treatment plants, in MGD (Millions gallons per day)","O","tinyint","","[0,)","n/a","n/a","n/a"
+"Acc","AccParticipation","Insurance company share of the account loss. Values between 0 to 1 (e.g. 12% entered as 0.12)","O","float","1","[0,1]","n/a","n/a","n/a"
+"Acc","CompanyIDSchemeXX","Company identification scheme. Eg. DUNS, LEI. See 'OtherValues'","CR","varchar(5)","n/a","","CR","CR","n/a"
+"Acc","CompanyIDCodeXX","Company identifier related to the CompanyIDScheme","CR","int","0","[0,)","CR","CR","n/a"
+"Acc","YearFounded","Year that insured entity founded to support company identification (YYYY format)","O","smallint","0","","O","O","n/a"
+"Acc","StreetAddress","Main street address of insured entity","O","nvarchar(100)","n/a","","O","O","n/a"
+"Acc","PostalCode","Postal code of main address for insured entity ","O","nvarchar(20)","n/a","","O","O","n/a"
+"Acc","City","City of main address for insured entity ","O","nvarchar(50)","n/a","","O","O","n/a"
+"Acc","CountryCode","Country code for the country of domicile of the insured entity - see 'CountryValues'","O","char(2)","n/a","","O","O","n/a"
+"Acc","AreaCode","Area code of main address for insured entity - see 'AreaCodeValues'","O","char(3)","n/a","","O","O","n/a"
+"Acc","IndustrySchemeXX","Industry scheme i.e NAISC, USSIC, UKSIC. See 'OtherValues'","CR","varchar(5)","n/a","","R","CR","n/a"
+"Acc","IndustryCodeXX","Industry code from the IndustryScheme - see 'IndustryCodeValues'","CR","int","0","[0,)","R","CR","n/a"
+"Acc","IndustryVintageXX","Vintage of Industry code used (YYYY format)","O","smallint","0","[0,)","O","O","n/a"
+"Acc","IndustryDescription","Concise industry description (associated with IndustryCode or free form)","O","nvarchar(250)","n/a","","O","O","n/a"
+"Acc","NumberOfEmployees","Most recent estimate of number of employees","O","int","0","[0,)","O","O","n/a"
+"Acc","AnnualRevenue","Most recent estimate for annual total gross income (not profit)","CR","float","0","[0,)","R","CR","n/a"
+"Acc","AnnualRevenueCurrency","Currency for AnnualRevenue in three digit format. See 'CurrencyValues'","CR","char(3)","n/a","","R","CR","n/a"
+"Acc","GrossProfitMargin","Gross Profit Margin of company in percentage (0.1 = 10%)","O","float","0","[0,)","O","O","n/a"
+"Acc","NumberOfRecords","Estimated number of records accessed","O","int","0","[0,)","O","n/a","n/a"
+"Acc","URL","Link to website","O","varchar(250)","n/a","","O","O","n/a"
+"Acc","IsPackage","Policy Type - Standalone (0), Package (1)","n/a","smallint","0","","O","n/a","n/a"
+"Acc","PolDed","Policy Deductible (monetary value for all coverages - non-property)","n/a","float","0","[0,)","R","O","n/a"
+"Acc","StackedPolNumber","If not unique indicates policy stacking (e.g. policies part of same insurance tower)","n/a","varchar(20)","n/a","","O","O","n/a"
+"Acc","LayerAggAttachment","Policy layer attachment (aggregate basis)","n/a","float","0","[0,)","O","O","n/a"
+"Acc","LayerAggLimit","100% policy layer limit (aggregate basis) ","n/a","float","0","[0,)","O","O","n/a"
+"Acc","PolLimitNPBI","Sub-limit for (non-property) BI - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolDedNPBI","Sub-deductible for (non-property) BI - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolLimitCBI","Sub-limit for CONTINGENT BI - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolDedCBI","Sub-deductible for CONTINGENT BI- see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolLimitDIAS","Sub-limit for DIGITAL ASSETS - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolDedDIAS","Sub-deductible for DIGITAL ASSETS - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolLimitEXT","Sub-limit for EXTORTION - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolDedEXT","Sub-deductible for EXTORTION - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolLimitFIN","Sub-limit for FINANCIAL FRAUD - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolDedFIN","Sub-deductible for FINANCIAL FRAUD - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolLimitINRE","Sub-limit for INCIDENT RESPONSE - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolDedINRE","Sub-deductible for INCIDENT RESPONSE - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolLimitLIA","Sub-limit for LIABILITY - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolDedLIA","Sub-deductible for LIABILITY - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolLimitREG","Sub-limit for REGULATORY - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolDedREG","Sub-deductible for REGULATORY - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolLimitENO","Sub-limit for ERRORS & OMISSIONS - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","PolDedENO","Sub-deductible for ERRORS & OMISSIONS - see 'CoverageValues' ","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","LimitCurrency","Limit Currency for all Coverages -  see 'CurrencyValues'","n/a","char(3)","n/a","","O","n/a","n/a"
+"Acc","DedCurrency","Deductible Currency for all currencies -  see 'CurrencyValues'","n/a","char(3)","n/a","","O","n/a","n/a"
+"Acc","PolSIR","Self Insured Retention","n/a","float","0","[0,)","O","O","n/a"
+"Acc","PolCoverage","List of coverages in policy - see 'CoverageValues'","n/a","varchar(250)","CYB'","","O","n/a","n/a"
+"Acc","OSVendor","Operating System, Code - see 'OtherValues'","n/a","int","0","[0,10]","O","n/a","n/a"
+"Acc","CloudVendor","Cloud vendor Code - see 'OtherValues'","n/a","int","0","[0,6]","O","n/a","n/a"
+"Acc","EmailVendor","Email vendor Code - see 'OtherValues'","n/a","int","0","[0,13]","O","n/a","n/a"
+"Acc","CRMVendor","Customer Relationship Management vendor code - see 'OtherValues'","n/a","int","0","[0,8]","O","n/a","n/a"
+"Acc","PatchPolicy","Cadence of patches to the 'main system' - 0-Unknown/1-Never/2-Daily/3-Weekly/4-Monthly/5-Annually/6-Ad-hoc","n/a","tinyint","0","[0,6]","O","n/a","n/a"
+"Acc","BackUpFreq","Cadence of back-up of the 'main servers' - 0-Unknown/1-Never/2-Daily/3-Weekly/4-Monthly/5-Annually/6-Ad-hoc","n/a","tinyint","0","[0,6]","O","n/a","n/a"
+"Acc","AreaName","AreaName of main address for insured entity - see 'AreaCodeValues'","O","nvarchar(50)","n/a","","O","O","n/a"
+"Acc","CoverageClassDescription","Concise class of business description for the policy coverage (free form)","n/a","nvarchar(100)","n/a","","n/a","R","n/a"
+"Acc","CoverageTerritory","Concise territorial description for the policy coverage (free form)","n/a","nvarchar(100)","n/a","","n/a","O","n/a"
+"Acc","CoverageTrigger","Options: 0-Claims Made or 1-Losses Occurring or 2-Occurrence Reported","n/a","tinyint","0","[0,2]","n/a","O","n/a"
+"Acc","IsGroupCover","Is the policy coverage extended to subsidiaries of the insured party; Options: 0-No or 1-Yes","n/a","smallint","0","[0,1]","n/a","O","n/a"
+"Acc","DefenceCost","Options: 0-Outside the limit, 1-Inside the limit or 2-Not Covered","n/a","tinyint","0","[0,2]","n/a","O","n/a"
+"Acc","BIWaitingPeriod","BI waiting period defined at policy level (in days)","n/a","float","0","[0,)","O","n/a","n/a"
+"Acc","BIPOI","BI period of indemnity defined at policy level (in days, in increments of 0.5 days). Default value = 365 (1 year).","n/a","float","365","[0,3650]","O","n/a","n/a"
+"Loc","SoilLiquefiable","Defines whether a soil is susceptible to liquefaction or not.","O","int","0","[0,2]","n/a","n/a","n/a"
+"Acc","InsuredName","Full legal name of insured party","O","nvarchar(100)","n/a","","R","R","n/a"
+"Loc","CommoditySchemeXX","Commodity scheme eg. Harmonised System Commodity Codes. See 'Other Values'","CR","varchar(5)","n/a","","n/a","n/a","CR"
+"Loc","CommodityCodeXX","Commodity code related to CommodityScheme. See 'Commodity Values'.","CR","varchar(10)","n/a","","n/a","n/a","CR"
+"Loc","CommodityVintageXX","Vintage of commodity scheme used  (YYYY format)","O","smallint","0","[0,)","n/a","n/a","O"

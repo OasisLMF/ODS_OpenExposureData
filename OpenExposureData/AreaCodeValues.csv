@@ -1,1451 +1,1451 @@
-Category,CountryCode,AreaCode,AreaName,Resolution
-AreaCode,AT,101,Eisenstadt (Stadt),District
-AreaCode,AT,102,Rust,District
-AreaCode,AT,103,Eisenstadt (Land),District
-AreaCode,AT,104,Güssing,District
-AreaCode,AT,105,Jennersdorf,District
-AreaCode,AT,106,Mattersburg,District
-AreaCode,AT,107,Neusiedl am See,District
-AreaCode,AT,108,Oberpullendorf,District
-AreaCode,AT,109,Oberwart,District
-AreaCode,AT,201,Klagenfurt (Stadt),District
-AreaCode,AT,202,Villach (Stadt),District
-AreaCode,AT,203,Hermagor,District
-AreaCode,AT,204,Klagenfurt Land,District
-AreaCode,AT,205,Sankt Veit an der Glan,District
-AreaCode,AT,206,Spittal an der Drau,District
-AreaCode,AT,207,Villach Land,District
-AreaCode,AT,208,Völkermarkt,District
-AreaCode,AT,209,Wolfsberg,District
-AreaCode,AT,210,Feldkirchen,District
-AreaCode,AT,301,Krems an der Donau (Stadt),District
-AreaCode,AT,302,St. Pölten (Stadt),District
-AreaCode,AT,303,Waidhofen an der Ybbs,District
-AreaCode,AT,304,Wiener Neustadt (Stadt),District
-AreaCode,AT,305,Amstetten,District
-AreaCode,AT,306,Baden,District
-AreaCode,AT,307,Bruck an der Leitha,District
-AreaCode,AT,308,Gänserndorf,District
-AreaCode,AT,309,Gmünd,District
-AreaCode,AT,310,Hollabrunn,District
-AreaCode,AT,311,Horn,District
-AreaCode,AT,312,Korneuburg,District
-AreaCode,AT,313,Krems an der Donau (Land),District
-AreaCode,AT,314,Lilienfeld,District
-AreaCode,AT,315,Melk,District
-AreaCode,AT,316,Mistelbach,District
-AreaCode,AT,317,Mödling,District
-AreaCode,AT,318,Neunkirchen,District
-AreaCode,AT,319,St. Pölten (Land),District
-AreaCode,AT,320,Scheibbs,District
-AreaCode,AT,321,Tulln,District
-AreaCode,AT,322,Waidhofen an der Thaya,District
-AreaCode,AT,323,Wiener Neustadt (Land),District
-AreaCode,AT,324,Wien-Umgebung,District
-AreaCode,AT,325,Zwettl,District
-AreaCode,AT,401,Linz,District
-AreaCode,AT,402,Steyr,District
-AreaCode,AT,403,Wels,District
-AreaCode,AT,404,Braunau am Inn,District
-AreaCode,AT,405,Eferding,District
-AreaCode,AT,406,Freistadt,District
-AreaCode,AT,407,Gmunden,District
-AreaCode,AT,408,Grieskirchen,District
-AreaCode,AT,409,Kirchdorf an der Krems,District
-AreaCode,AT,410,Linz-Land,District
-AreaCode,AT,411,Perg,District
-AreaCode,AT,412,Ried im Innkreis,District
-AreaCode,AT,413,Rohrbach,District
-AreaCode,AT,414,Schärding,District
-AreaCode,AT,415,Steyr-Land,District
-AreaCode,AT,416,Urfahr-Umgebung,District
-AreaCode,AT,417,Vöcklabruck,District
-AreaCode,AT,418,Wels-Land,District
-AreaCode,AT,501,Salzburg,District
-AreaCode,AT,502,Hallein,District
-AreaCode,AT,503,Salzburg-Umgebung,District
-AreaCode,AT,504,Sankt Johann im Pongau,District
-AreaCode,AT,505,Tamsweg,District
-AreaCode,AT,506,Zell am See,District
-AreaCode,AT,601,Graz,District
-AreaCode,AT,602,Bruck an der Mur,District
-AreaCode,AT,603,Deutschlandsberg,District
-AreaCode,AT,604,Feldbach,District
-AreaCode,AT,605,Fürstenfeld,District
-AreaCode,AT,606,Graz-Umgebung,District
-AreaCode,AT,607,Hartberg,District
-AreaCode,AT,608,Judenburg,District
-AreaCode,AT,609,Knittelfeld,District
-AreaCode,AT,610,Leibnitz,District
-AreaCode,AT,611,Leoben,District
-AreaCode,AT,612,Liezen,District
-AreaCode,AT,613,Mürzzuschlag,District
-AreaCode,AT,614,Murau,District
-AreaCode,AT,615,Bad Radkersburg,District
-AreaCode,AT,616,Voitsberg,District
-AreaCode,AT,617,Weiz,District
-AreaCode,AT,701,Innsbruck-Stadt,District
-AreaCode,AT,702,Imst,District
-AreaCode,AT,703,Innsbruck-Land,District
-AreaCode,AT,704,Kitzbühel,District
-AreaCode,AT,705,Kufstein,District
-AreaCode,AT,706,Landeck,District
-AreaCode,AT,707,Lienz,District
-AreaCode,AT,708,Reutte,District
-AreaCode,AT,709,Schwaz,District
-AreaCode,AT,801,Bludenz,District
-AreaCode,AT,802,Bregenz,District
-AreaCode,AT,803,Dornbirn,District
-AreaCode,AT,804,Feldkirch,District
-AreaCode,AT,901,Wien I Innere Stadt,District
-AreaCode,AT,902,Wien II Leopoldstadt,District
-AreaCode,AT,903,Wien III Landstraße,District
-AreaCode,AT,904,Wien IV Wieden,District
-AreaCode,AT,905,Wien V Margareten,District
-AreaCode,AT,906,Wien VI Mariahilf,District
-AreaCode,AT,907,Wien VII Neubau,District
-AreaCode,AT,908,Wien VIII Josefstadt,District
-AreaCode,AT,909,Wien IX Alsergrund,District
-AreaCode,AT,910,Wien X Favoriten,District
-AreaCode,AT,911,Wien XI Simmering,District
-AreaCode,AT,912,Wien XII Meidling,District
-AreaCode,AT,913,Wien XIII Hietzing,District
-AreaCode,AT,914,Wien XIV Penzing,District
-AreaCode,AT,915,Wien XV Rudolfsheim-Fünfhaus,District
-AreaCode,AT,916,Wien XVI Ottakring,District
-AreaCode,AT,917,Wien XVII Hernals,District
-AreaCode,AT,918,Wien XVIII Währing,District
-AreaCode,AT,919,Wien XIX Döbling,District
-AreaCode,AT,920,Wien XX Brigittenau,District
-AreaCode,AT,921,Wien XXI Floridsdorf,District
-AreaCode,AT,922,Wien XXII Dounaustadt,District
-AreaCode,AT,923,Wien XXIII Liesing,District
-AreaCode,AU,ACT,Australian Capital Territory,State
-AreaCode,AU,NSW,New South Wales,State
-AreaCode,AU,NT,Northern Territory,State
-AreaCode,AU,QLD,Queensland,State
-AreaCode,AU,SA,South Australia,State
-AreaCode,AU,TAS,Tasmania,State
-AreaCode,AU,VIC,Victoria,State
-AreaCode,AU,WA,Western Australia,State
-AreaCode,AU,OT,Australian Overseas Territories,State
-AreaCode,BB,1,Christ Church,Parish
-AreaCode,BB,10,St. Philip,Parish
-AreaCode,BB,11,St. Thomas,Parish
-AreaCode,BB,2,St. Andrew,Parish
-AreaCode,BB,3,St. George,Parish
-AreaCode,BB,4,St. James,Parish
-AreaCode,BB,5,St. John,Parish
-AreaCode,BB,6,St. Joseph,Parish
-AreaCode,BB,7,St. Lucy,Parish
-AreaCode,BB,8,St. Michael,Parish
-AreaCode,BB,9,St. Peter,Parish
-AreaCode,BE,11,Antwerpen,District
-AreaCode,BE,12,Mechelen,District
-AreaCode,BE,13,Turnhout,District
-AreaCode,BE,21,Brussel-Hoofdstad,District
-AreaCode,BE,23,Halle-Vilvoorde,District
-AreaCode,BE,24,Leuven,District
-AreaCode,BE,25,Nijvel,District
-AreaCode,BE,31,Brugge,District
-AreaCode,BE,32,Diksmuide,District
-AreaCode,BE,33,Ieper,District
-AreaCode,BE,34,Kortrijk,District
-AreaCode,BE,35,Oostende,District
-AreaCode,BE,36,Roeselare,District
-AreaCode,BE,37,Tielt,District
-AreaCode,BE,38,Veurne,District
-AreaCode,BE,41,Aalst,District
-AreaCode,BE,42,Dendermonde,District
-AreaCode,BE,43,Eeklo,District
-AreaCode,BE,44,Gent,District
-AreaCode,BE,45,Oudenaarde,District
-AreaCode,BE,46,Sint-Niklaas,District
-AreaCode,BE,51,Aat,District
-AreaCode,BE,52,Charleroi,District
-AreaCode,BE,53,Bergen,District
-AreaCode,BE,54,Moeskroen,District
-AreaCode,BE,55,Zinnik,District
-AreaCode,BE,56,Thuin,District
-AreaCode,BE,57,Doornik,District
-AreaCode,BE,61,Hoei,District
-AreaCode,BE,62,Luik,District
-AreaCode,BE,63,Verviers,District
-AreaCode,BE,64,Borgworm,District
-AreaCode,BE,71,Hasselt,District
-AreaCode,BE,72,Maaseik,District
-AreaCode,BE,73,Tongeren,District
-AreaCode,BE,81,Aarlen,District
-AreaCode,BE,82,Bastenaken,District
-AreaCode,BE,83,Marche-en-Famenne,District
-AreaCode,BE,84,Neufchâteau,District
-AreaCode,BE,85,Virton,District
-AreaCode,BE,91,Dinant,District
-AreaCode,BE,92,Namen,District
-AreaCode,BE,93,Philippeville,District
-AreaCode,BH,1,New Providence,District
-AreaCode,BH,10,Eleuthra,District
-AreaCode,BH,11,Exuma and Cays,District
-AreaCode,BH,12,Long Island,District
-AreaCode,BH,13,Harbour Island,District
-AreaCode,BH,14,Inagua,District
-AreaCode,BH,15,Mayaguana,District
-AreaCode,BH,16,Ragged Island,District
-AreaCode,BH,17,Rum Cay,District
-AreaCode,BH,18,San Salvador,District
-AreaCode,BH,19,Spanish Wells,District
-AreaCode,BH,2,Grand Bahama,District
-AreaCode,BH,3,Abaco,District
-AreaCode,BH,4,Acklins,District
-AreaCode,BH,5,Andros,District
-AreaCode,BH,6,Berry Islands,District
-AreaCode,BH,7,Biminis,District
-AreaCode,BH,8,Cat Island,District
-AreaCode,BH,9,Crooked Island,District
-AreaCode,BM,1,Sandys,Parish
-AreaCode,BM,2,Southampton,Parish
-AreaCode,BM,3,Warwick,Parish
-AreaCode,BM,4,Paget,Parish
-AreaCode,BM,5,Pembroke,Parish
-AreaCode,BM,6,Devonshire,Parish
-AreaCode,BM,7,Smith's,Parish
-AreaCode,BM,8,Hamilton,Parish
-AreaCode,BM,9,St.George's,Parish
-AreaCode,CA,NL,Newfoundland,Province
-AreaCode,CA,PE,Prince Edward Island,Province
-AreaCode,CA,NS,Nova Scotia,Province
-AreaCode,CA,NB,New Brunswick,Province
-AreaCode,CA,QC,Quebec,Province
-AreaCode,CA,ON,Ontario,Province
-AreaCode,CA,MB,Manitoba,Province
-AreaCode,CA,SK,Saskatchewan,Province
-AreaCode,CA,AB,Alberta,Province
-AreaCode,CA,BC,British Columbia,Province
-AreaCode,CA,YT,Yukon,Province
-AreaCode,CA,NT,North West Territories,Province
-AreaCode,CA,NU,Nunavut,Province
-AreaCode,CH,01,Zürich,Region
-AreaCode,CH,02,Bern,Region
-AreaCode,CH,03,Luzern,Region
-AreaCode,CH,04,Uri,Region
-AreaCode,CH,05,Schwyz,Region
-AreaCode,CH,06,Obwalden,Region
-AreaCode,CH,07,Nidwalden,Region
-AreaCode,CH,08,Glarus,Region
-AreaCode,CH,09,Zug,Region
-AreaCode,CH,10,Fribourg,Region
-AreaCode,CH,11,Solothurn,Region
-AreaCode,CH,12,Basel-Stadt,Region
-AreaCode,CH,13,Basel-Land,Region
-AreaCode,CH,14,Schaffhausen,Region
-AreaCode,CH,15,Appenzell A.Rh.,Region
-AreaCode,CH,16,Appenzell I.Rh.,Region
-AreaCode,CH,17,St. Gallen,Region
-AreaCode,CH,18,Graubünden,Region
-AreaCode,CH,19,Aargau,Region
-AreaCode,CH,20,Thurgau,Region
-AreaCode,CH,21,Ticino,Region
-AreaCode,CH,22,Vaud,Region
-AreaCode,CH,23,Valais,Region
-AreaCode,CH,24,Neuchâtel,Region
-AreaCode,CH,25,Genève,Region
-AreaCode,CH,26,Jura,Region
-AreaCode,CL,01,Tarapacá,State
-AreaCode,CL,02,Antofagasta,State
-AreaCode,CL,03,Atacama,State
-AreaCode,CL,04,Coquimbo,State
-AreaCode,CL,05,Valparaíso,State
-AreaCode,CL,06,O'Higgins,State
-AreaCode,CL,07,Maule,State
-AreaCode,CL,08,Biobío,State
-AreaCode,CL,09,Araucanía,State
-AreaCode,CL,10,Los Lagos,State
-AreaCode,CL,11,Aisén,State
-AreaCode,CL,12,Magallanes y la Antártica,State
-AreaCode,CL,13,Metropolitana,State
-AreaCode,CN,11,Beijing,Province
-AreaCode,CN,12,Tianjin,Province
-AreaCode,CN,13,Hebei,Province
-AreaCode,CN,14,Shanxi,Province
-AreaCode,CN,15,Inner Mongolia,Province
-AreaCode,CN,21,Liaoning,Province
-AreaCode,CN,22,Jilin,Province
-AreaCode,CN,23,Heilongjiang,Province
-AreaCode,CN,31,Shanghai,Province
-AreaCode,CN,32,Jiangsu,Province
-AreaCode,CN,33,Zhejiang,Province
-AreaCode,CN,34,Anhui,Province
-AreaCode,CN,35,Fujian,Province
-AreaCode,CN,36,Jiangxi,Province
-AreaCode,CN,37,Shandong,Province
-AreaCode,CN,41,Henan,Province
-AreaCode,CN,42,Hubei,Province
-AreaCode,CN,43,Hunan,Province
-AreaCode,CN,44,Guangdong,Province
-AreaCode,CN,45,Guangxi,Province
-AreaCode,CN,46,Hainan,Province
-AreaCode,CN,50,Chongqing,Province
-AreaCode,CN,51,Sichuan,Province
-AreaCode,CN,52,Guizhou,Province
-AreaCode,CN,53,Yunnan,Province
-AreaCode,CN,54,Xizang,Province
-AreaCode,CN,61,Shaanxi,Province
-AreaCode,CN,62,Gansu,Province
-AreaCode,CN,63,Qinghai,Province
-AreaCode,CN,64,Ningxia,Province
-AreaCode,CN,65,Xinjiang,Province
-AreaCode,CO,05,Antioquia,Region
-AreaCode,CO,08,Atlántico,Region
-AreaCode,CO,11,Bogotá,Region
-AreaCode,CO,13,Bolívar,Region
-AreaCode,CO,15,Boyacá,Region
-AreaCode,CO,17,Caldas,Region
-AreaCode,CO,18,Caquetá,Region
-AreaCode,CO,19,Cauca,Region
-AreaCode,CO,20,Cesar,Region
-AreaCode,CO,23,Córdoba,Region
-AreaCode,CO,25,Cundinamarca,Region
-AreaCode,CO,27,Chocó,Region
-AreaCode,CO,41,Huila,Region
-AreaCode,CO,44,Guajira,Region
-AreaCode,CO,47,Magdalena,Region
-AreaCode,CO,50,Meta,Region
-AreaCode,CO,52,Nariño,Region
-AreaCode,CO,54,Norte de Santander,Region
-AreaCode,CO,63,Quindío,Region
-AreaCode,CO,66,Risaralda,Region
-AreaCode,CO,68,Santander,Region
-AreaCode,CO,70,Sucre,Region
-AreaCode,CO,73,Tolima,Region
-AreaCode,CO,76,Valle del Cauca,Region
-AreaCode,CO,81,Arauca,Region
-AreaCode,CO,85,Casanare,Region
-AreaCode,CO,86,Putumayo,Region
-AreaCode,CO,88,San Andrés and Providenci,Region
-AreaCode,CO,91,Amazonas,Region
-AreaCode,CO,94,Guainía,Region
-AreaCode,CO,95,Guaviare,Region
-AreaCode,CO,97,Vaupés,Region
-AreaCode,CO,99,Vichada,Region
-AreaCode,CU,1,Camagüey,Province
-AreaCode,CU,10,Matanzas,Province
-AreaCode,CU,11,Pinar del Rio,Province
-AreaCode,CU,12,Sancti Spíritus,Province
-AreaCode,CU,13,Santiago de Cuba,Province
-AreaCode,CU,14,Villa Clara,Province
-AreaCode,CU,2,Ciego de Avila,Province
-AreaCode,CU,3,Cienfuegos,Province
-AreaCode,CU,4,Granma,Province
-AreaCode,CU,5,Guantánamo,Province
-AreaCode,CU,6,Holguin,Province
-AreaCode,CU,7,Isla de la Juventud,Province
-AreaCode,CU,8,La Habana,Province
-AreaCode,CU,9,Las Tunas,Province
-AreaCode,DE,01,Schleswig-Holstein,Region
-AreaCode,DE,02,Hamburg,Region
-AreaCode,DE,03,Niedersachsen,Region
-AreaCode,DE,04,Bremen,Region
-AreaCode,DE,05,Nordrhein-Westfalen,Region
-AreaCode,DE,06,Hessen,Region
-AreaCode,DE,07,Rheinland-Pfalz,Region
-AreaCode,DE,08,Baden-Württemberg,Region
-AreaCode,DE,09,Bayern,Region
-AreaCode,DE,10,Saarland,Region
-AreaCode,DE,11,Berlin,Region
-AreaCode,DE,12,Brandenburg,Region
-AreaCode,DE,13,Mecklenburg-Vorpommern,Region
-AreaCode,DE,14,Sachsen,Region
-AreaCode,DE,15,Sachsen-Anhalt,Region
-AreaCode,DE,16,Thueringen,Region
-AreaCode,DK,101,København,District
-AreaCode,DK,102,Frederiksberg,District
-AreaCode,DK,150,Københavns Amt,District
-AreaCode,DK,200,Frederiksborg Amt,District
-AreaCode,DK,250,Roskilde Amt,District
-AreaCode,DK,300,Vestsjællands Amt,District
-AreaCode,DK,350,Storstrøms Amt,District
-AreaCode,DK,400,Bornholms Amt,District
-AreaCode,DK,420,Fyns Amt,District
-AreaCode,DK,500,Sønderjyllands Amt,District
-AreaCode,DK,550,Ribe Amt,District
-AreaCode,DK,600,Vejle Amt,District
-AreaCode,DK,650,Ringkøbing Amt,District
-AreaCode,DK,700,Århus Amt,District
-AreaCode,DK,760,Viborg Amt,District
-AreaCode,DK,800,Nordjyllands Amt,District
-AreaCode,DO,1,Azua,Province
-AreaCode,DO,10,Hato Mayor,Province
-AreaCode,DO,11,Independencia,Province
-AreaCode,DO,12,La Altagracia,Province
-AreaCode,DO,13,La Romana,Province
-AreaCode,DO,14,La Vega,Province
-AreaCode,DO,15,Maria Trinidad Sánchez,Province
-AreaCode,DO,16,Monsenor Nouel,Province
-AreaCode,DO,17,Monte Cristi,Province
-AreaCode,DO,18,Monte Plata,Province
-AreaCode,DO,19,Pedernales,Province
-AreaCode,DO,2,Bahoruco,Province
-AreaCode,DO,20,Peravia,Province
-AreaCode,DO,21,Puerto Plata,Province
-AreaCode,DO,22,Salcedo,Province
-AreaCode,DO,23,Samana,Province
-AreaCode,DO,24,Sánchez Ramirez,Province
-AreaCode,DO,25,San Cristobal,Province
-AreaCode,DO,26,San Juan,Province
-AreaCode,DO,27,San Pedro de Macoris,Province
-AreaCode,DO,28,Santiago,Province
-AreaCode,DO,29,Santiago Rodriguez,Province
-AreaCode,DO,3,Barahona,Province
-AreaCode,DO,30,Valverde,Province
-AreaCode,DO,4,Dajabon,Province
-AreaCode,DO,5,Distrito National,Province
-AreaCode,DO,6,Duarte,Province
-AreaCode,DO,7,Elias Pina,Province
-AreaCode,DO,8,El Seibo,Province
-AreaCode,DO,9,Espaillat,Province
-AreaCode,EC,01,Azuay,Province
-AreaCode,EC,02,Bolivar,Province
-AreaCode,EC,03,Canar,Province
-AreaCode,EC,04,Carchi,Province
-AreaCode,EC,05,Cotopaxi,Province
-AreaCode,EC,06,Chimborazo,Province
-AreaCode,EC,07,El Oro,Province
-AreaCode,EC,08,Esmeraldas,Province
-AreaCode,EC,09,Guayas,Province
-AreaCode,EC,10,Imbabura,Province
-AreaCode,EC,11,Loja,Province
-AreaCode,EC,12,Los Rios,Province
-AreaCode,EC,13,Manabi,Province
-AreaCode,EC,14,Morona Santiago,Province
-AreaCode,EC,15,Napo,Province
-AreaCode,EC,16,Pastaza,Province
-AreaCode,EC,17,Pichincha,Province
-AreaCode,EC,18,Tungurahua,Province
-AreaCode,EC,19,Zamora Chinchipe,Province
-AreaCode,EC,20,Galapagos,Province
-AreaCode,EC,21,Sucumbios,Province
-AreaCode,EC,22,Orellana,Province
-AreaCode,EC,23,Santo Domingo de los Tsachilas,Province
-AreaCode,EC,24,Santa Elena,Province
-AreaCode,EC,90,Zonas No Delimitadas,Province
-AreaCode,FR,01,Ain,County
-AreaCode,FR,02,Aisne,County
-AreaCode,FR,03,Allier,County
-AreaCode,FR,04,Alpes-de-Haute-Provence,County
-AreaCode,FR,05,Hautes-Alpes,County
-AreaCode,FR,06,Alpes-Maritimes,County
-AreaCode,FR,07,Ardèche,County
-AreaCode,FR,08,Ardennes,County
-AreaCode,FR,09,Ariège,County
-AreaCode,FR,10,Aube,County
-AreaCode,FR,11,Aude,County
-AreaCode,FR,12,Aveyron,County
-AreaCode,FR,13,Bouches-du-Rhône,County
-AreaCode,FR,14,Calvados,County
-AreaCode,FR,15,Cantal,County
-AreaCode,FR,16,Charente,County
-AreaCode,FR,17,Charente-Maritime,County
-AreaCode,FR,18,Cher,County
-AreaCode,FR,19,Corrèze,County
-AreaCode,FR,21,Côte-d'Or,County
-AreaCode,FR,22,Côtes-du-Nord,County
-AreaCode,FR,23,Creuse,County
-AreaCode,FR,24,Dordogne,County
-AreaCode,FR,25,Doubs,County
-AreaCode,FR,26,Drôme,County
-AreaCode,FR,27,Eure,County
-AreaCode,FR,28,Eure-et-Loir,County
-AreaCode,FR,29,Finistère,County
-AreaCode,FR,2A,Corse-du-Sud,County
-AreaCode,FR,2B,Haute-Corse,County
-AreaCode,FR,30,Gard,County
-AreaCode,FR,31,Haute-Garonne,County
-AreaCode,FR,32,Gers,County
-AreaCode,FR,33,Gironde,County
-AreaCode,FR,34,Hérault,County
-AreaCode,FR,35,Ille-et-Vilaine,County
-AreaCode,FR,36,Indre,County
-AreaCode,FR,37,Indre-et-Loire,County
-AreaCode,FR,38,Isère,County
-AreaCode,FR,39,Jura,County
-AreaCode,FR,40,Landes,County
-AreaCode,FR,41,Loir-et-Cher,County
-AreaCode,FR,42,Loire,County
-AreaCode,FR,43,Haute-Loire,County
-AreaCode,FR,44,Loire-Atlantique,County
-AreaCode,FR,45,Loiret,County
-AreaCode,FR,46,Lot,County
-AreaCode,FR,47,Lot-et-Garonne,County
-AreaCode,FR,48,Lozère,County
-AreaCode,FR,49,Maine-et-Loire,County
-AreaCode,FR,50,Manche,County
-AreaCode,FR,51,Marne,County
-AreaCode,FR,52,Haute-Marne,County
-AreaCode,FR,53,Mayenne,County
-AreaCode,FR,54,Meurthe-et-Moselle,County
-AreaCode,FR,55,Meuse,County
-AreaCode,FR,56,Morbihan,County
-AreaCode,FR,57,Moselle,County
-AreaCode,FR,58,Nièvre,County
-AreaCode,FR,59,Nord,County
-AreaCode,FR,60,Oise,County
-AreaCode,FR,61,Orne,County
-AreaCode,FR,62,Pas-de-Calais,County
-AreaCode,FR,63,Puy-de-Dôme,County
-AreaCode,FR,64,Pyrénées-Atlantiques,County
-AreaCode,FR,65,Hautes-Pyrénées,County
-AreaCode,FR,66,Pyrénées-Orientales,County
-AreaCode,FR,67,Bas-Rhin,County
-AreaCode,FR,68,Haut-Rhin,County
-AreaCode,FR,69,Rhône,County
-AreaCode,FR,70,Haute-Saône,County
-AreaCode,FR,71,Saône-et-Loire,County
-AreaCode,FR,72,Sarthe,County
-AreaCode,FR,73,Savoie,County
-AreaCode,FR,74,Haute-Savoie,County
-AreaCode,FR,75,Ville-de-Paris,County
-AreaCode,FR,76,Seine-Maritime,County
-AreaCode,FR,77,Seine-et-Marne,County
-AreaCode,FR,78,Yvelines,County
-AreaCode,FR,79,Deux-Sèvres,County
-AreaCode,FR,80,Somme,County
-AreaCode,FR,81,Tarn,County
-AreaCode,FR,82,Tarn-et-Garonne,County
-AreaCode,FR,83,Var,County
-AreaCode,FR,84,Vaucluse,County
-AreaCode,FR,85,Vendée,County
-AreaCode,FR,86,Vienne,County
-AreaCode,FR,87,Haute-Vienne,County
-AreaCode,FR,88,Vosges,County
-AreaCode,FR,89,Yonne,County
-AreaCode,FR,90,Territoire-de-Belfort,County
-AreaCode,FR,91,Essonne,County
-AreaCode,FR,92,Hauts-de-Seine,County
-AreaCode,FR,93,Seine-Saint-Denis,County
-AreaCode,FR,94,Val-de-Marne,County
-AreaCode,FR,95,Val-d'Oise,County
-AreaCode,FR,99,Monaco,County
-AreaCode,G2,01,Alabama,Administrative Region
-AreaCode,G2,12,Florida,Administrative Region
-AreaCode,G2,22,Louisiana,Administrative Region
-AreaCode,G2,28,Mississippi,Administrative Region
-AreaCode,G2,48,Texas,Administrative Region
-AreaCode,G2,OCS,Outer Continental Shelf,Administrative Region
-AreaCode,GB,AB,Aberdeen,Postcode Area
-AreaCode,GB,AL,St Albans,Postcode Area
-AreaCode,GB,B,Birmingham,Postcode Area
-AreaCode,GB,BA,Bath,Postcode Area
-AreaCode,GB,BB,Blackburn,Postcode Area
-AreaCode,GB,BD,Bradford,Postcode Area
-AreaCode,GB,BH,Bournemouth,Postcode Area
-AreaCode,GB,BL,Bolton,Postcode Area
-AreaCode,GB,BN,Brighton,Postcode Area
-AreaCode,GB,BR,Bromley,Postcode Area
-AreaCode,GB,BS,Bristol,Postcode Area
-AreaCode,GB,BT,Northern Ireland,Postcode Area
-AreaCode,GB,CA,Carlisle,Postcode Area
-AreaCode,GB,CB,Cambridge,Postcode Area
-AreaCode,GB,CF,Cardiff,Postcode Area
-AreaCode,GB,CH,Chester,Postcode Area
-AreaCode,GB,CM,Chelmsford,Postcode Area
-AreaCode,GB,CO,Colchester,Postcode Area
-AreaCode,GB,CR,Croydon,Postcode Area
-AreaCode,GB,CT,Canterbury,Postcode Area
-AreaCode,GB,CV,Coventry,Postcode Area
-AreaCode,GB,CW,Crewe,Postcode Area
-AreaCode,GB,DA,Dartford,Postcode Area
-AreaCode,GB,DD,Dundee,Postcode Area
-AreaCode,GB,DE,Derby,Postcode Area
-AreaCode,GB,DG,Dumfries,Postcode Area
-AreaCode,GB,DH,Durham,Postcode Area
-AreaCode,GB,DL,Darlington,Postcode Area
-AreaCode,GB,DN,Doncaster,Postcode Area
-AreaCode,GB,DT,Dorchester,Postcode Area
-AreaCode,GB,DY,Dudley,Postcode Area
-AreaCode,GB,E,London E,Postcode Area
-AreaCode,GB,EC,London EC,Postcode Area
-AreaCode,GB,EH,Edinburgh,Postcode Area
-AreaCode,GB,EN,Enfield,Postcode Area
-AreaCode,GB,EX,Exeter,Postcode Area
-AreaCode,GB,FK,Falkirk,Postcode Area
-AreaCode,GB,FY,Blackpool,Postcode Area
-AreaCode,GB,G,Glasgow,Postcode Area
-AreaCode,GB,GL,Gloucester,Postcode Area
-AreaCode,GB,GU,Guildford,Postcode Area
-AreaCode,GB,GY,Guernsey,Postcode Area
-AreaCode,GB,HA,Harrow,Postcode Area
-AreaCode,GB,HD,Huddersfield,Postcode Area
-AreaCode,GB,HG,Harrogate,Postcode Area
-AreaCode,GB,HP,Hemel Hempstead,Postcode Area
-AreaCode,GB,HR,Hereford,Postcode Area
-AreaCode,GB,HS,Outer Hebrides,Postcode Area
-AreaCode,GB,HU,Hull,Postcode Area
-AreaCode,GB,HX,Halifax,Postcode Area
-AreaCode,GB,IC,Channel Islands,Postcode Area
-AreaCode,GB,IG,Ilford,Postcode Area
-AreaCode,GB,IM,Isle of Man,Postcode Area
-AreaCode,GB,IP,Ipswich,Postcode Area
-AreaCode,GB,IV,Inverness,Postcode Area
-AreaCode,GB,JE,Jersey,Postcode Area
-AreaCode,GB,KA,Kilmarnock,Postcode Area
-AreaCode,GB,KT,Kingston upon Thames,Postcode Area
-AreaCode,GB,KW,Kirkwall,Postcode Area
-AreaCode,GB,KY,Kirkcaldy,Postcode Area
-AreaCode,GB,L,Liverpool,Postcode Area
-AreaCode,GB,LA,Lancaster,Postcode Area
-AreaCode,GB,LD,Llandrindod Wells,Postcode Area
-AreaCode,GB,LE,Leicester,Postcode Area
-AreaCode,GB,LL,Llandudno,Postcode Area
-AreaCode,GB,LN,Lincoln,Postcode Area
-AreaCode,GB,LS,Leeds,Postcode Area
-AreaCode,GB,LU,Luton,Postcode Area
-AreaCode,GB,M,Manchester,Postcode Area
-AreaCode,GB,ME,Medway,Postcode Area
-AreaCode,GB,MK,Milton Keynes,Postcode Area
-AreaCode,GB,ML,Motherwell,Postcode Area
-AreaCode,GB,N,London N,Postcode Area
-AreaCode,GB,NE,Newcastle upon Tyne,Postcode Area
-AreaCode,GB,NG,Nottingham,Postcode Area
-AreaCode,GB,NN,Northampton,Postcode Area
-AreaCode,GB,NP,Newport,Postcode Area
-AreaCode,GB,NR,Norwich,Postcode Area
-AreaCode,GB,NW,London NW,Postcode Area
-AreaCode,GB,OL,Oldham,Postcode Area
-AreaCode,GB,OX,Oxford,Postcode Area
-AreaCode,GB,PA,Paisley,Postcode Area
-AreaCode,GB,PE,Peterborough,Postcode Area
-AreaCode,GB,PH,Perth,Postcode Area
-AreaCode,GB,PL,Plymouth,Postcode Area
-AreaCode,GB,PO,Portsmouth,Postcode Area
-AreaCode,GB,PR,Preston,Postcode Area
-AreaCode,GB,RG,Reading,Postcode Area
-AreaCode,GB,RH,Redhill,Postcode Area
-AreaCode,GB,RM,Romford,Postcode Area
-AreaCode,GB,S,Sheffield,Postcode Area
-AreaCode,GB,SA,Swansea,Postcode Area
-AreaCode,GB,SE,London SE,Postcode Area
-AreaCode,GB,SG,Stevenage,Postcode Area
-AreaCode,GB,SK,Stockport,Postcode Area
-AreaCode,GB,SL,Slough,Postcode Area
-AreaCode,GB,SM,Sutton,Postcode Area
-AreaCode,GB,SN,Swindon,Postcode Area
-AreaCode,GB,SO,Southampton,Postcode Area
-AreaCode,GB,SP,Salisbury,Postcode Area
-AreaCode,GB,SR,Sunderland,Postcode Area
-AreaCode,GB,SS,Southend-on-Sea,Postcode Area
-AreaCode,GB,ST,Stoke-on-Trent,Postcode Area
-AreaCode,GB,SW,London SW,Postcode Area
-AreaCode,GB,SY,Shrewsbury,Postcode Area
-AreaCode,GB,TA,Taunton,Postcode Area
-AreaCode,GB,TD,Galashiels,Postcode Area
-AreaCode,GB,TF,Telford,Postcode Area
-AreaCode,GB,TN,Tonbridge,Postcode Area
-AreaCode,GB,TQ,Torquay,Postcode Area
-AreaCode,GB,TR,Truro,Postcode Area
-AreaCode,GB,TS,Cleveland,Postcode Area
-AreaCode,GB,TW,Twickenham,Postcode Area
-AreaCode,GB,UB,Southall,Postcode Area
-AreaCode,GB,W,London W,Postcode Area
-AreaCode,GB,WA,Warrington,Postcode Area
-AreaCode,GB,WC,London WC,Postcode Area
-AreaCode,GB,WD,Watford,Postcode Area
-AreaCode,GB,WF,Wakefield,Postcode Area
-AreaCode,GB,WN,Wigan,Postcode Area
-AreaCode,GB,WR,Worcester,Postcode Area
-AreaCode,GB,WS,Walsall,Postcode Area
-AreaCode,GB,WV,Wolverhampton,Postcode Area
-AreaCode,GB,YO,York,Postcode Area
-AreaCode,GB,ZE,Lerwick,Postcode Area
-AreaCode,GR,01,Aitolias Kai Akarnanias,Province
-AreaCode,GR,03,Voiotia,Province
-AreaCode,GR,04,Eivoias,Province
-AreaCode,GR,05,Evritania,Province
-AreaCode,GR,06,Fthiotida,Province
-AreaCode,GR,07,Fokida,Province
-AreaCode,GR,11,Argolidos,Province
-AreaCode,GR,12,Arkadias,Province
-AreaCode,GR,13,Ahaia,Province
-AreaCode,GR,14,Ilia,Province
-AreaCode,GR,15,Korinthos,Province
-AreaCode,GR,16,Lakonia,Province
-AreaCode,GR,17,Messinia,Province
-AreaCode,GR,21,Zakinthos,Province
-AreaCode,GR,22,Kerkira (Corfu),Province
-AreaCode,GR,23,Kefallonia,Province
-AreaCode,GR,24,Lefkada,Province
-AreaCode,GR,31,Arta,Province
-AreaCode,GR,32,Thesprotia,Province
-AreaCode,GR,33,Ioannina,Province
-AreaCode,GR,34,Preveza,Province
-AreaCode,GR,41,Karditsa,Province
-AreaCode,GR,42,Larissa,Province
-AreaCode,GR,43,Magnisias,Province
-AreaCode,GR,44,Trikala,Province
-AreaCode,GR,51,Grevena,Province
-AreaCode,GR,52,Drama,Province
-AreaCode,GR,53,Imathia,Province
-AreaCode,GR,54,Thessaloniki,Province
-AreaCode,GR,55,Kavala,Province
-AreaCode,GR,56,Kastoria,Province
-AreaCode,GR,57,Kilkis,Province
-AreaCode,GR,58,Kozani,Province
-AreaCode,GR,59,Pela,Province
-AreaCode,GR,61,Pieria,Province
-AreaCode,GR,62,Seres,Province
-AreaCode,GR,63,Florina,Province
-AreaCode,GR,64,Halkida,Province
-AreaCode,GR,65,Agion Opos,Province
-AreaCode,GR,71,Evros,Province
-AreaCode,GR,72,Xanthi,Province
-AreaCode,GR,73,Rodopi,Province
-AreaCode,GR,81,Dodekanissa (Dodecanese),Province
-AreaCode,GR,82,Kiklades (Cyclades),Province
-AreaCode,GR,83,Lesvos,Province
-AreaCode,GR,84,Samos,Province
-AreaCode,GR,85,Hios,Province
-AreaCode,GR,91,Iraklio,Province
-AreaCode,GR,92,Lasithioi,Province
-AreaCode,GR,93,Rethimno,Province
-AreaCode,GR,94,Hania,Province
-AreaCode,GR,A1,Athina (Athens),Province
-AreaCode,GR,A2,Anatoliki Attiki,Province
-AreaCode,GR,A3,Ditiki Attiki,Province
-AreaCode,GR,A4,Peiria,Province
-AreaCode,HT,1,Artibonite,Province
-AreaCode,HT,2,Centre,Province
-AreaCode,HT,3,Grand' Anse,Province
-AreaCode,HT,4,Nord,Province
-AreaCode,HT,5,Nord-Est,Province
-AreaCode,HT,6,Nord-Ouest,Province
-AreaCode,HT,7,Ouest,Province
-AreaCode,HT,8,Sud,Province
-AreaCode,HT,9,Sud-Est,Province
-AreaCode,ID,11,Nanggroe Aceh Darussalam,Province
-AreaCode,ID,12,Sumatera Utara,Province
-AreaCode,ID,13,Sumatera Barat,Province
-AreaCode,ID,14,Riau,Province
-AreaCode,ID,15,Jambi,Province
-AreaCode,ID,16,Sumatera Selatan,Province
-AreaCode,ID,17,Bengkulu,Province
-AreaCode,ID,18,Lampung,Province
-AreaCode,ID,19,Kepulauan Bangka Belitung,Province
-AreaCode,ID,21,Kepulauan Riau,Province
-AreaCode,ID,31,DKI Jakarta,Province
-AreaCode,ID,32,Jawa Barat,Province
-AreaCode,ID,33,Jawa Tengah,Province
-AreaCode,ID,34,DI Yogyakarta,Province
-AreaCode,ID,35,Jawa Timur,Province
-AreaCode,ID,36,Banten,Province
-AreaCode,ID,51,Bali,Province
-AreaCode,ID,52,Nusa Tenggara Barat,Province
-AreaCode,ID,53,Nusa Tenggara Timur,Province
-AreaCode,ID,61,Kalimantan Barat,Province
-AreaCode,ID,62,Kalimantan Tengah,Province
-AreaCode,ID,63,Kalimantan Selatan,Province
-AreaCode,ID,64,Kalimantan Timur,Province
-AreaCode,ID,71,Sulawesi Utara,Province
-AreaCode,ID,72,Sulawesi Tengah,Province
-AreaCode,ID,73,Sulawesi Selatan,Province
-AreaCode,ID,74,Sulawesi Tenggara,Province
-AreaCode,ID,75,Gorontalo,Province
-AreaCode,ID,76,Sulawesi Barat,Province
-AreaCode,ID,81,Maluku,Province
-AreaCode,ID,82,Maluku Utara,Province
-AreaCode,ID,91,Papua Barat,Province
-AreaCode,ID,94,Papua,Province
-AreaCode,IE,01,Carlow,County/Sector
-AreaCode,IE,02,Dublin County Borough,County/Sector
-AreaCode,IE,03,South Dublin,County/Sector
-AreaCode,IE,04,Fingal,County/Sector
-AreaCode,IE,05,Dun Laoghaire-Rathdown,County/Sector
-AreaCode,IE,06,Kildare,County/Sector
-AreaCode,IE,07,Kilkenny,County/Sector
-AreaCode,IE,08,Laoighis,County/Sector
-AreaCode,IE,09,Longford,County/Sector
-AreaCode,IE,10,Louth,County/Sector
-AreaCode,IE,11,Meath,County/Sector
-AreaCode,IE,12,Offaly,County/Sector
-AreaCode,IE,13,Westmeath,County/Sector
-AreaCode,IE,14,Wexford,County/Sector
-AreaCode,IE,15,Wicklow,County/Sector
-AreaCode,IE,16,Clare,County/Sector
-AreaCode,IE,18,Cork County Borough,County/Sector
-AreaCode,IE,19,Cork,County/Sector
-AreaCode,IE,20,Kerry,County/Sector
-AreaCode,IE,22,Limerick County Borough,County/Sector
-AreaCode,IE,23,Limerick,County/Sector
-AreaCode,IE,24,Tipperary North Riding,County/Sector
-AreaCode,IE,25,Tipperay South Riding,County/Sector
-AreaCode,IE,27,Waterford County Borough,County/Sector
-AreaCode,IE,28,Waterford,County/Sector
-AreaCode,IE,29,Galway,County/Sector
-AreaCode,IE,30,Leitrim,County/Sector
-AreaCode,IE,31,Mayo,County/Sector
-AreaCode,IE,32,Roscommon,County/Sector
-AreaCode,IE,33,Sligo,County/Sector
-AreaCode,IE,34,Cavan,County/Sector
-AreaCode,IE,35,Donegal,County/Sector
-AreaCode,IE,36,Monaghan,County/Sector
-AreaCode,IE,37,Galway County Borough,County/Sector
-AreaCode,IL,01,Akko,District
-AreaCode,IL,02,Ashqelon,District
-AreaCode,IL,03,Beer Sheva,District
-AreaCode,IL,04,Gaza Area,District
-AreaCode,IL,05,Golan,District
-AreaCode,IL,06,Hadera,District
-AreaCode,IL,07,Haifa,District
-AreaCode,IL,08,Jericho,District
-AreaCode,IL,09,Jerusalem,District
-AreaCode,IL,10,Kinneret,District
-AreaCode,IL,11,Petah Tiqwa,District
-AreaCode,IL,12,Ramla,District
-AreaCode,IL,13,Rehovot,District
-AreaCode,IL,14,Sharon,District
-AreaCode,IL,15,Tel Aviv,District
-AreaCode,IL,16,Yizreel,District
-AreaCode,IL,17,Zefat,District
-AreaCode,IT,001,Torino,Province
-AreaCode,IT,002,Vercelli,Province
-AreaCode,IT,003,Novara,Province
-AreaCode,IT,004,Cuneo,Province
-AreaCode,IT,005,Asti,Province
-AreaCode,IT,006,Alessandria,Province
-AreaCode,IT,007,Valle dAosta,Province
-AreaCode,IT,008,Imperia,Province
-AreaCode,IT,009,Savona,Province
-AreaCode,IT,010,Genova,Province
-AreaCode,IT,011,La Spezia,Province
-AreaCode,IT,012,Varese,Province
-AreaCode,IT,013,Como,Province
-AreaCode,IT,014,Sondrio,Province
-AreaCode,IT,015,Milano,Province
-AreaCode,IT,016,Bergamo,Province
-AreaCode,IT,017,Brescia,Province
-AreaCode,IT,018,Pavia,Province
-AreaCode,IT,019,Cremona,Province
-AreaCode,IT,020,Mantova,Province
-AreaCode,IT,021,Bolzano,Province
-AreaCode,IT,022,Trento,Province
-AreaCode,IT,023,Verona,Province
-AreaCode,IT,024,Vicenza,Province
-AreaCode,IT,025,Belluno,Province
-AreaCode,IT,026,Treviso,Province
-AreaCode,IT,027,Venezia,Province
-AreaCode,IT,028,Padova,Province
-AreaCode,IT,029,Rovigo,Province
-AreaCode,IT,030,Udine,Province
-AreaCode,IT,031,Gorizia,Province
-AreaCode,IT,032,Trieste,Province
-AreaCode,IT,033,Piacenza,Province
-AreaCode,IT,034,Parma,Province
-AreaCode,IT,035,Reggio Emilia,Province
-AreaCode,IT,036,Modena,Province
-AreaCode,IT,037,Bologna,Province
-AreaCode,IT,038,Ferrara,Province
-AreaCode,IT,039,Ravenna,Province
-AreaCode,IT,040,Forli-Cesena,Province
-AreaCode,IT,041,Pesaro E Urbino,Province
-AreaCode,IT,042,Ancona,Province
-AreaCode,IT,043,Macerata,Province
-AreaCode,IT,044,Ascoli Piceno,Province
-AreaCode,IT,045,Massa Carrara,Province
-AreaCode,IT,046,Lucca,Province
-AreaCode,IT,047,Pistoia,Province
-AreaCode,IT,048,Firenze,Province
-AreaCode,IT,049,Livorno,Province
-AreaCode,IT,050,Pisa,Province
-AreaCode,IT,051,Arezzo,Province
-AreaCode,IT,052,Siena,Province
-AreaCode,IT,053,Grosseto,Province
-AreaCode,IT,054,Perugia,Province
-AreaCode,IT,055,Terni,Province
-AreaCode,IT,056,Viterbo,Province
-AreaCode,IT,057,Rieti,Province
-AreaCode,IT,058,Roma,Province
-AreaCode,IT,059,Latina,Province
-AreaCode,IT,060,Frosinone,Province
-AreaCode,IT,061,Caserta,Province
-AreaCode,IT,062,Benevento,Province
-AreaCode,IT,063,Napoli,Province
-AreaCode,IT,064,Avellino,Province
-AreaCode,IT,065,Salerno,Province
-AreaCode,IT,066,L'Aquila,Province
-AreaCode,IT,067,Teramo,Province
-AreaCode,IT,068,Pescara,Province
-AreaCode,IT,069,Chieti,Province
-AreaCode,IT,070,Campobasso,Province
-AreaCode,IT,071,Foggia,Province
-AreaCode,IT,072,Bari,Province
-AreaCode,IT,073,Taranto,Province
-AreaCode,IT,074,Brindisi,Province
-AreaCode,IT,075,Lecce,Province
-AreaCode,IT,076,Potenza,Province
-AreaCode,IT,077,Matera,Province
-AreaCode,IT,078,Cosenza,Province
-AreaCode,IT,079,Catanzaro,Province
-AreaCode,IT,080,Reggio Calabria,Province
-AreaCode,IT,081,Trapani,Province
-AreaCode,IT,082,Palermo,Province
-AreaCode,IT,083,Messina,Province
-AreaCode,IT,084,Agrigento,Province
-AreaCode,IT,085,Caltanissetta,Province
-AreaCode,IT,086,Enna,Province
-AreaCode,IT,087,Catania,Province
-AreaCode,IT,088,Ragusa,Province
-AreaCode,IT,089,Siracusa,Province
-AreaCode,IT,090,Sassari,Province
-AreaCode,IT,091,Nuoro,Province
-AreaCode,IT,092,Cagliari,Province
-AreaCode,IT,093,Pordenone,Province
-AreaCode,IT,094,Isernia,Province
-AreaCode,IT,095,Oristano,Province
-AreaCode,IT,096,Biella,Province
-AreaCode,IT,097,Lecco,Province
-AreaCode,IT,098,Lodi,Province
-AreaCode,IT,099,Rimini,Province
-AreaCode,IT,100,Prato,Province
-AreaCode,IT,101,Crotone,Province
-AreaCode,IT,102,Vibo Valentia,Province
-AreaCode,IT,103,Verbano-Cusio-Ossola,Province
-AreaCode,IT,104,Olbia-Tempio,Province
-AreaCode,IT,105,Ogliastra,Province
-AreaCode,IT,106,Medio Campidano,Province
-AreaCode,IT,107,Carbonia-Iglesias,Province
-AreaCode,IT,888,Citta del Vaticano,Province
-AreaCode,IT,999,San Marino,Province
-AreaCode,JM,1,Clarendon,Parish
-AreaCode,JM,10,St. James,Parish
-AreaCode,JM,11,St. Mary,Parish
-AreaCode,JM,12,St. Thomas,Parish
-AreaCode,JM,13,Trelawny,Parish
-AreaCode,JM,14,Westmoreland,Parish
-AreaCode,JM,2,Hanover,Parish
-AreaCode,JM,3,Kingston,Parish
-AreaCode,JM,4,Manchester,Parish
-AreaCode,JM,5,Portland,Parish
-AreaCode,JM,6,St. Andrew,Parish
-AreaCode,JM,7,St. Ann,Parish
-AreaCode,JM,8,St. Catherine,Parish
-AreaCode,JM,9,St. Elizabeth,Parish
-AreaCode,JP,100,Hokkaido,Prefecture
-AreaCode,JP,1010,Kagawa,Prefecture
-AreaCode,JP,1020,Tokushima,Prefecture
-AreaCode,JP,1030,Ehime,Prefecture
-AreaCode,JP,1040,Kochi,Prefecture
-AreaCode,JP,1110,Fukuoka,Prefecture
-AreaCode,JP,1120,Saga,Prefecture
-AreaCode,JP,1130,Nagasaki,Prefecture
-AreaCode,JP,1140,Kumamoto,Prefecture
-AreaCode,JP,1150,Oita,Prefecture
-AreaCode,JP,1160,Miyazaki,Prefecture
-AreaCode,JP,1170,Kagoshima,Prefecture
-AreaCode,JP,1200,Okinawa,Prefecture
-AreaCode,JP,210,Aomori,Prefecture
-AreaCode,JP,220,Akita,Prefecture
-AreaCode,JP,230,Yamagata,Prefecture
-AreaCode,JP,240,Niigata,Prefecture
-AreaCode,JP,310,Iwate,Prefecture
-AreaCode,JP,320,Miyagi,Prefecture
-AreaCode,JP,330,Fukushima,Prefecture
-AreaCode,JP,410,Gumma,Prefecture
-AreaCode,JP,420,Tochigi,Prefecture
-AreaCode,JP,430,Saitama,Prefecture
-AreaCode,JP,440,Ibaraki,Prefecture
-AreaCode,JP,510,Chiba,Prefecture
-AreaCode,JP,520,Tokyo,Prefecture
-AreaCode,JP,530,Kanagawa,Prefecture
-AreaCode,JP,610,Gifu,Prefecture
-AreaCode,JP,620,Nagano,Prefecture
-AreaCode,JP,630,Yamanashi,Prefecture
-AreaCode,JP,640,Shizuoka,Prefecture
-AreaCode,JP,650,Aichi,Prefecture
-AreaCode,JP,660,Mie,Prefecture
-AreaCode,JP,710,Toyama,Prefecture
-AreaCode,JP,720,Ishikawa,Prefecture
-AreaCode,JP,730,Fukui,Prefecture
-AreaCode,JP,810,Hyogo,Prefecture
-AreaCode,JP,820,Kyoto,Prefecture
-AreaCode,JP,830,Shiga,Prefecture
-AreaCode,JP,840,Osaka,Prefecture
-AreaCode,JP,850,Nara,Prefecture
-AreaCode,JP,860,Wakayama,Prefecture
-AreaCode,JP,910,Tottori,Prefecture
-AreaCode,JP,920,Okayama,Prefecture
-AreaCode,JP,930,Hiroshima,Prefecture
-AreaCode,JP,940,Shimane,Prefecture
-AreaCode,JP,950,Yamaguchi,Prefecture
-AreaCode,KR,11,Seoul,Province
-AreaCode,KR,21,Busan,Province
-AreaCode,KR,22,Daegu,Province
-AreaCode,KR,23,Incheon,Province
-AreaCode,KR,24,Gwangju,Province
-AreaCode,KR,25,Daejeon,Province
-AreaCode,KR,26,Ulsan,Province
-AreaCode,KR,31,Gyeonggi-do,Province
-AreaCode,KR,32,Gangwon-do,Province
-AreaCode,KR,33,Chungcheongbuk-do,Province
-AreaCode,KR,34,Chungcheongnam-do,Province
-AreaCode,KR,35,Jeollabuk-do,Province
-AreaCode,KR,36,Jeollanam-do,Province
-AreaCode,KR,37,Gyeongsangbuk-do,Province
-AreaCode,KR,38,Gyeongsangnam-do,Province
-AreaCode,KR,39,Jeju-do,Province
-AreaCode,KY,1,Bodden Town,District
-AreaCode,KY,2,East End,District
-AreaCode,KY,3,George Town,District
-AreaCode,KY,4,North Side,District
-AreaCode,KY,5,West Bay,District
-AreaCode,KY,6,Little Cayman,District
-AreaCode,KY,7,Cayman Brac,District
-AreaCode,LU,01,Luxembourg-ville,District
-AreaCode,LU,02,Capellen,District
-AreaCode,LU,03,Esch-Alzette,District
-AreaCode,LU,05,Mersch,District
-AreaCode,LU,06,Clervaux,District
-AreaCode,LU,07,Diekirch,District
-AreaCode,LU,08,Redange,District
-AreaCode,LU,09,Wiltz,District
-AreaCode,LU,10,Vianden,District
-AreaCode,LU,11,Echternach,District
-AreaCode,LU,12,Grevenmacher,District
-AreaCode,LU,13,Remich,District
-AreaCode,LU,40,Luxembourg-Campagne,District
-AreaCode,MX,01,Aguascalientes,State
-AreaCode,MX,02,Baja California,State
-AreaCode,MX,03,Baja California Sur,State
-AreaCode,MX,04,Campeche,State
-AreaCode,MX,05,Coahuila,State
-AreaCode,MX,06,Colima,State
-AreaCode,MX,07,Chiapas,State
-AreaCode,MX,08,Chihuahua,State
-AreaCode,MX,09,Mexico City / Distrito Federal,State
-AreaCode,MX,10,Durango,State
-AreaCode,MX,11,Guanajuato,State
-AreaCode,MX,12,Guerrero,State
-AreaCode,MX,13,Hidalgo,State
-AreaCode,MX,14,Jalisco,State
-AreaCode,MX,15,Mexico,State
-AreaCode,MX,16,Michoacan,State
-AreaCode,MX,17,Morelos,State
-AreaCode,MX,18,Nayarit,State
-AreaCode,MX,19,Nuevo Leon,State
-AreaCode,MX,20,Oaxaca,State
-AreaCode,MX,21,Puebla,State
-AreaCode,MX,22,Queretaro,State
-AreaCode,MX,23,Quintana Roo,State
-AreaCode,MX,24,San Luis Potosi,State
-AreaCode,MX,25,Sinaloa,State
-AreaCode,MX,26,Sonora,State
-AreaCode,MX,27,Tabasco,State
-AreaCode,MX,28,Tamaulipas,State
-AreaCode,MX,29,Tlaxcala,State
-AreaCode,MX,30,Veracruz,State
-AreaCode,MX,31,Yucatan,State
-AreaCode,MX,32,Zacatecas,State
-AreaCode,NL,20,Groningen,Province
-AreaCode,NL,21,Friesland,Province
-AreaCode,NL,22,Drenthe,Province
-AreaCode,NL,23,Overijssel,Province
-AreaCode,NL,24,Flevoland,Province
-AreaCode,NL,25,Gelderland,Province
-AreaCode,NL,26,Utrecht,Province
-AreaCode,NL,27,Noord-Holland,Province
-AreaCode,NL,28,Zuid-Holland,Province
-AreaCode,NL,29,Zeeland,Province
-AreaCode,NL,30,Noord-Brabant,Province
-AreaCode,NL,31,Limburg,Province
-AreaCode,NO,01,Østfold,District
-AreaCode,NO,02,Akershus,District
-AreaCode,NO,03,Oslo,District
-AreaCode,NO,04,Hedmark,District
-AreaCode,NO,05,Oppland,District
-AreaCode,NO,06,Buskerud,District
-AreaCode,NO,07,Vestfold,District
-AreaCode,NO,08,Telemark,District
-AreaCode,NO,09,Aust-Agder,District
-AreaCode,NO,10,Vest-Agder,District
-AreaCode,NO,11,Rogaland,District
-AreaCode,NO,12,Hordaland,District
-AreaCode,NO,14,Sogn og Fjordane,District
-AreaCode,NO,15,Møre og Romsdal,District
-AreaCode,NO,16,Sør-Trøndelag,District
-AreaCode,NO,17,Nord-Trøndelag,District
-AreaCode,NO,18,Nordland,District
-AreaCode,NO,19,Troms,District
-AreaCode,NO,20,Finnmark,District
-AreaCode,NO,SJ,Svalbard and Jan Mayen Islands,District
-AreaCode,PE,01,Amazonas,State
-AreaCode,PE,02,Ancash,State
-AreaCode,PE,03,Apurímac,State
-AreaCode,PE,04,Arequipa,State
-AreaCode,PE,05,Ayacucho,State
-AreaCode,PE,06,Cajamarca,State
-AreaCode,PE,07,Callao,State
-AreaCode,PE,08,Cusco,State
-AreaCode,PE,09,Huancavelica,State
-AreaCode,PE,10,Huánuco,State
-AreaCode,PE,11,Ica,State
-AreaCode,PE,12,Junín,State
-AreaCode,PE,13,La Libertad,State
-AreaCode,PE,14,Lambayeque,State
-AreaCode,PE,15,Lima,State
-AreaCode,PE,16,Loreto,State
-AreaCode,PE,17,Madre de Dios,State
-AreaCode,PE,18,Moquegua,State
-AreaCode,PE,19,Pasco,State
-AreaCode,PE,20,Piura,State
-AreaCode,PE,21,Puno,State
-AreaCode,PE,22,San Martín,State
-AreaCode,PE,23,Tacna,State
-AreaCode,PE,24,Tumbes,State
-AreaCode,PE,25,Ucayali,State
-AreaCode,PH,01,Ilocos Region,Region/State
-AreaCode,PH,02,Cagayan Valley,Region/State
-AreaCode,PH,03,Central Luzon,Region/State
-AreaCode,PH,04,Calabarzon,Region/State
-AreaCode,PH,05,Bicol Region,Region/State
-AreaCode,PH,06,Western Visayas,Region/State
-AreaCode,PH,07,Central Visayas,Region/State
-AreaCode,PH,08,Eastern Visayas,Region/State
-AreaCode,PH,09,Zamboanga Peninsula,Region/State
-AreaCode,PH,10,Northern Mindanao,Region/State
-AreaCode,PH,11,Davao Region,Region/State
-AreaCode,PH,12,Soccsksargen,Region/State
-AreaCode,PH,13,National Capital Region (NCR),Region/State
-AreaCode,PH,14,Cordillera Administrative Region (CAR),Region/State
-AreaCode,PH,15,Autonomous Region In Muslim Mindanao (ARMM),Region/State
-AreaCode,PH,16,Caraga,Region/State
-AreaCode,PH,17,Mimaropa,Region/State
-AreaCode,PR,1,Adjuntas,Municipality
-AreaCode,PR,101,Morovis,Municipality
-AreaCode,PR,103,Naguabo,Municipality
-AreaCode,PR,105,Naranjito,Municipality
-AreaCode,PR,107,Orocovis,Municipality
-AreaCode,PR,109,Patillas,Municipality
-AreaCode,PR,11,Anasco,Municipality
-AreaCode,PR,111,Penuelas,Municipality
-AreaCode,PR,113,Ponce,Municipality
-AreaCode,PR,115,Quebradillas,Municipality
-AreaCode,PR,117,Rincon,Municipality
-AreaCode,PR,119,Rio Grande,Municipality
-AreaCode,PR,121,Sabana Grande,Municipality
-AreaCode,PR,123,Salinas,Municipality
-AreaCode,PR,125,San German,Municipality
-AreaCode,PR,127,San Juan,Municipality
-AreaCode,PR,129,San Lorenzo,Municipality
-AreaCode,PR,13,Arecibo,Municipality
-AreaCode,PR,131,San Sebastian,Municipality
-AreaCode,PR,133,Santa Isabel,Municipality
-AreaCode,PR,135,Toa Alta,Municipality
-AreaCode,PR,137,Toa Baja,Municipality
-AreaCode,PR,139,Trujillo Alto,Municipality
-AreaCode,PR,141,Utuado,Municipality
-AreaCode,PR,143,Vega Alta,Municipality
-AreaCode,PR,145,Vega Baja,Municipality
-AreaCode,PR,147,Vieques,Municipality
-AreaCode,PR,149,Villalba,Municipality
-AreaCode,PR,15,Arroyo,Municipality
-AreaCode,PR,151,Yabucoa,Municipality
-AreaCode,PR,153,Yauco,Municipality
-AreaCode,PR,17,Barceloneta,Municipality
-AreaCode,PR,19,Barranquitas,Municipality
-AreaCode,PR,21,Bayamon,Municipality
-AreaCode,PR,23,Cabo Rojo,Municipality
-AreaCode,PR,25,Caguas,Municipality
-AreaCode,PR,27,Camuy,Municipality
-AreaCode,PR,29,Canovanas,Municipality
-AreaCode,PR,3,Aguada,Municipality
-AreaCode,PR,31,Carolina,Municipality
-AreaCode,PR,33,Catano,Municipality
-AreaCode,PR,35,Cayey,Municipality
-AreaCode,PR,37,Ceiba,Municipality
-AreaCode,PR,39,Ciales,Municipality
-AreaCode,PR,41,Cidra,Municipality
-AreaCode,PR,43,Coamo,Municipality
-AreaCode,PR,45,Comerio,Municipality
-AreaCode,PR,47,Corozal,Municipality
-AreaCode,PR,49,Culebra,Municipality
-AreaCode,PR,5,Aguadilla,Municipality
-AreaCode,PR,51,Dorado,Municipality
-AreaCode,PR,53,Fajardo,Municipality
-AreaCode,PR,54,Florida,Municipality
-AreaCode,PR,55,Guanica,Municipality
-AreaCode,PR,57,Guayama,Municipality
-AreaCode,PR,59,Guayanilla,Municipality
-AreaCode,PR,61,Guaynabo,Municipality
-AreaCode,PR,63,Gurabo,Municipality
-AreaCode,PR,65,Hatillo,Municipality
-AreaCode,PR,67,Hormigueros,Municipality
-AreaCode,PR,69,Humacao,Municipality
-AreaCode,PR,7,Aguas Buenas,Municipality
-AreaCode,PR,71,Isabela,Municipality
-AreaCode,PR,73,Jayuya,Municipality
-AreaCode,PR,75,Juana Diaz,Municipality
-AreaCode,PR,77,Juncos,Municipality
-AreaCode,PR,79,Lajas,Municipality
-AreaCode,PR,81,Lares,Municipality
-AreaCode,PR,83,Las Marias,Municipality
-AreaCode,PR,85,Las Piedras,Municipality
-AreaCode,PR,87,Loiza,Municipality
-AreaCode,PR,89,Luquillo,Municipality
-AreaCode,PR,9,Aibonito,Municipality
-AreaCode,PR,91,Manati,Municipality
-AreaCode,PR,93,Maricao,Municipality
-AreaCode,PR,95,Maunabo,Municipality
-AreaCode,PR,97,Mayaguez,Municipality
-AreaCode,PR,99,Moca,Municipality
-AreaCode,PT,01,Aveiro,District
-AreaCode,PT,02,Beja,District
-AreaCode,PT,03,Braga,District
-AreaCode,PT,04,Braganta,District
-AreaCode,PT,05,Castelo Branco,District
-AreaCode,PT,06,Coimbra,District
-AreaCode,PT,07,Évora,District
-AreaCode,PT,08,Faro,District
-AreaCode,PT,09,Guarda,District
-AreaCode,PT,10,Leiria,District
-AreaCode,PT,11,Lisboa,District
-AreaCode,PT,12,Portalegre,District
-AreaCode,PT,13,Porto,District
-AreaCode,PT,14,SantarTm,District
-AreaCode,PT,15,Setúbal,District
-AreaCode,PT,16,Viana do Castelo,District
-AreaCode,PT,17,Vila Real,District
-AreaCode,PT,18,Viseu,District
-AreaCode,PT,31,Ilha da Madeira,District
-AreaCode,PT,32,Ilha de Porto Santo,District
-AreaCode,PT,41,Ilha de Santa Maria,District
-AreaCode,PT,42,Ilha de Spo Miguel,District
-AreaCode,PT,43,Ilha Terceira,District
-AreaCode,PT,44,Ilha da Graciosa,District
-AreaCode,PT,45,Ilha de Spo Jorge,District
-AreaCode,PT,46,Ilha do Pico,District
-AreaCode,PT,47,Ilha do Faial,District
-AreaCode,PT,48,Ilha das Flores,District
-AreaCode,PT,49,Ilha do Corvo,District
-AreaCode,SE,01,Stockholms län,Province
-AreaCode,SE,02,Uppsala län,Province
-AreaCode,SE,04,Södermanlands län,Province
-AreaCode,SE,05,Östergötlands län,Province
-AreaCode,SE,06,Jönköpings län,Province
-AreaCode,SE,07,Kronobergs län,Province
-AreaCode,SE,08,Kalmar län,Province
-AreaCode,SE,09,Gotlands län,Province
-AreaCode,SE,10,Blekinge län,Province
-AreaCode,SE,12,Skåne län,Province
-AreaCode,SE,13,Hallands län,Province
-AreaCode,SE,14,Västra Götalands län,Province
-AreaCode,SE,17,Värmlands län,Province
-AreaCode,SE,18,Örebro län,Province
-AreaCode,SE,19,Västmanlands län,Province
-AreaCode,SE,20,Dalarnas län,Province
-AreaCode,SE,21,Gävleborgs län,Province
-AreaCode,SE,22,Västernorrlands län,Province
-AreaCode,SE,23,Jämtlands län,Province
-AreaCode,SE,24,Västerbottens län,Province
-AreaCode,SE,25,Norrbottens län,Province
-AreaCode,TC,1,Caicos,District
-AreaCode,TC,2,Grand Turk Island,District
-AreaCode,TC,3,Salt Cay,District
-AreaCode,TR,01,Adana,Province
-AreaCode,TR,02,Adýyaman,Province
-AreaCode,TR,03,Afyonkarahisar,Province
-AreaCode,TR,04,Aðrý,Province
-AreaCode,TR,05,Amasya,Province
-AreaCode,TR,06,Ankara,Province
-AreaCode,TR,07,Antalya,Province
-AreaCode,TR,08,Artvin,Province
-AreaCode,TR,09,Aydýn,Province
-AreaCode,TR,10,Balýkesir,Province
-AreaCode,TR,11,Bilecik,Province
-AreaCode,TR,12,Bingöl,Province
-AreaCode,TR,13,Bitlis,Province
-AreaCode,TR,14,Bolu,Province
-AreaCode,TR,15,Burdur,Province
-AreaCode,TR,16,Bursa,Province
-AreaCode,TR,17,Çanakkale,Province
-AreaCode,TR,18,Çankýrý,Province
-AreaCode,TR,19,Çorum,Province
-AreaCode,TR,20,Denizli,Province
-AreaCode,TR,21,Diyarbakýr,Province
-AreaCode,TR,22,Edirne,Province
-AreaCode,TR,23,Elazýð,Province
-AreaCode,TR,24,Erzincan,Province
-AreaCode,TR,25,Erzurum,Province
-AreaCode,TR,26,Eskiþehir,Province
-AreaCode,TR,27,Gaziantep,Province
-AreaCode,TR,28,Giresun,Province
-AreaCode,TR,29,Gümüþhane,Province
-AreaCode,TR,30,Hakkari,Province
-AreaCode,TR,31,Hatay,Province
-AreaCode,TR,32,Isparta,Province
-AreaCode,TR,33,Mersin,Province
-AreaCode,TR,34,Ýstanbul,Province
-AreaCode,TR,35,Ýzmir,Province
-AreaCode,TR,36,Kars,Province
-AreaCode,TR,37,Kastamonu,Province
-AreaCode,TR,38,Kayseri,Province
-AreaCode,TR,39,Kýrklareli,Province
-AreaCode,TR,40,Kýrþehir,Province
-AreaCode,TR,41,Kocaeli,Province
-AreaCode,TR,42,Konya,Province
-AreaCode,TR,43,Kütahya,Province
-AreaCode,TR,44,Malatya,Province
-AreaCode,TR,45,Manisa,Province
-AreaCode,TR,46,Kahramanmaraþ,Province
-AreaCode,TR,47,Mardin,Province
-AreaCode,TR,48,Muðla,Province
-AreaCode,TR,49,Muþ,Province
-AreaCode,TR,50,Nevþehir,Province
-AreaCode,TR,51,Niðde,Province
-AreaCode,TR,52,Ordu,Province
-AreaCode,TR,53,Rize,Province
-AreaCode,TR,54,Sakarya,Province
-AreaCode,TR,55,Samsun,Province
-AreaCode,TR,56,Siirt,Province
-AreaCode,TR,57,Sinop,Province
-AreaCode,TR,58,Sivas,Province
-AreaCode,TR,59,Tekirdað,Province
-AreaCode,TR,60,Tokat,Province
-AreaCode,TR,61,Trabzon,Province
-AreaCode,TR,62,Tunceli,Province
-AreaCode,TR,63,Þanlýurfa,Province
-AreaCode,TR,64,Uþak,Province
-AreaCode,TR,65,Van,Province
-AreaCode,TR,66,Yozgat,Province
-AreaCode,TR,67,Zonguldak,Province
-AreaCode,TR,68,Aksaray,Province
-AreaCode,TR,69,Bayburt,Province
-AreaCode,TR,70,Karaman,Province
-AreaCode,TR,71,Kýrýkkale,Province
-AreaCode,TR,72,Batman,Province
-AreaCode,TR,73,Þýrnak,Province
-AreaCode,TR,74,Bartýn,Province
-AreaCode,TR,75,Ardahan,Province
-AreaCode,TR,76,Iðdýr,Province
-AreaCode,TR,77,Yalova,Province
-AreaCode,TR,78,Karabük,Province
-AreaCode,TR,79,Kilis,Province
-AreaCode,TR,80,Osmaniye,Province
-AreaCode,TR,81,Düzce,Province
-AreaCode,TT,1,Caroni,County/Sector
-AreaCode,TT,2,Mayaro,County/Sector
-AreaCode,TT,3,Nariva,County/Sector
-AreaCode,TT,4,St. Andrew,County/Sector
-AreaCode,TT,5,St. David,County/Sector
-AreaCode,TT,6,St. George,County/Sector
-AreaCode,TT,7,St. Patrick,County/Sector
-AreaCode,TT,8,Victoria,County/Sector
-AreaCode,TT,9,Tobago,County/Sector
-AreaCode,TW,01,Taipei County,County/Sector
-AreaCode,TW,02,Yilan County,County/Sector
-AreaCode,TW,03,Taoyuan County,County/Sector
-AreaCode,TW,04,Hsinchu County,County/Sector
-AreaCode,TW,05,Miaoli County,County/Sector
-AreaCode,TW,06,Taichung County,County/Sector
-AreaCode,TW,07,Changhua County,County/Sector
-AreaCode,TW,08,Nantou County,County/Sector
-AreaCode,TW,09,Yunlin County,County/Sector
-AreaCode,TW,10,Chiayi County,County/Sector
-AreaCode,TW,11,Tainan County,County/Sector
-AreaCode,TW,12,Kaohsiung County,County/Sector
-AreaCode,TW,13,Pingtung County,County/Sector
-AreaCode,TW,14,Taitung County,County/Sector
-AreaCode,TW,15,Hualien County,County/Sector
-AreaCode,TW,16,Penghu County,County/Sector
-AreaCode,TW,17,Keelung City,County/Sector
-AreaCode,TW,18,Hsinchu City,County/Sector
-AreaCode,TW,19,Taichung City,County/Sector
-AreaCode,TW,20,Chiayi City,County/Sector
-AreaCode,TW,21,Tainan City,County/Sector
-AreaCode,TW,63,Taipei City,County/Sector
-AreaCode,TW,64,Kaohsiung City,County/Sector
-AreaCode,TW,71,Lienchiang County,County/Sector
-AreaCode,TW,72,Kinmen County,County/Sector
-AreaCode,US,AK,Alaska,State
-AreaCode,US,AL,Alabama,State
-AreaCode,US,AR,Arkansas,State
-AreaCode,US,AZ,Arizona,State
-AreaCode,US,CA,California,State
-AreaCode,US,CO,Colorado,State
-AreaCode,US,CT,Connecticut,State
-AreaCode,US,DC,Dist of Columbia,State
-AreaCode,US,DE,Delaware,State
-AreaCode,US,FL,Florida,State
-AreaCode,US,GA,Georgia,State
-AreaCode,US,HI,Hawaii,State
-AreaCode,US,IA,Iowa,State
-AreaCode,US,ID,Idaho,State
-AreaCode,US,IL,Illinois,State
-AreaCode,US,IN,Indiana,State
-AreaCode,US,KS,Kansas,State
-AreaCode,US,KY,Kentucky,State
-AreaCode,US,LA,Louisiana,State
-AreaCode,US,MA,Massachusetts,State
-AreaCode,US,MD,Maryland,State
-AreaCode,US,ME,Maine,State
-AreaCode,US,MI,Michigan,State
-AreaCode,US,MN,Minnesota,State
-AreaCode,US,MO,Missouri,State
-AreaCode,US,MS,Mississippi,State
-AreaCode,US,MT,Montana,State
-AreaCode,US,NC,North Carolina,State
-AreaCode,US,ND,North Dakota,State
-AreaCode,US,NE,Nebraska,State
-AreaCode,US,NH,New Hampshire,State
-AreaCode,US,NJ,New Jersey,State
-AreaCode,US,NM,New Mexico,State
-AreaCode,US,NV,Nevada,State
-AreaCode,US,NY,New York,State
-AreaCode,US,OH,Ohio,State
-AreaCode,US,OK,Oklahoma,State
-AreaCode,US,OR,Oregon,State
-AreaCode,US,PA,Pennsylvania,State
-AreaCode,US,RI,Rhode Island,State
-AreaCode,US,SC,South Carolina,State
-AreaCode,US,SD,South Dakota,State
-AreaCode,US,TN,Tennessee,State
-AreaCode,US,TX,Texas,State
-AreaCode,US,UT,Utah,State
-AreaCode,US,VA,Virginia,State
-AreaCode,US,VT,Vermont,State
-AreaCode,US,WA,Washington,State
-AreaCode,US,WI,Wisconsin,State
-AreaCode,US,WV,West Virginia,State
-AreaCode,US,WY,Wyoming,State
-AreaCode,VC,1,Saint Vincent,District
-AreaCode,VC,2,The Grenadines,District
-AreaCode,VE,01,Distrito Capital,State
-AreaCode,VE,02,Amazonas,State
-AreaCode,VE,03,Anzoátegui,State
-AreaCode,VE,04,Apure,State
-AreaCode,VE,05,Aragua,State
-AreaCode,VE,06,Barinas,State
-AreaCode,VE,07,Bolívar,State
-AreaCode,VE,08,Carabobo,State
-AreaCode,VE,09,Cojedes,State
-AreaCode,VE,10,Delta Amacuro,State
-AreaCode,VE,11,Falcón,State
-AreaCode,VE,12,Guárico,State
-AreaCode,VE,13,Lara,State
-AreaCode,VE,14,Mérida,State
-AreaCode,VE,15,Miranda,State
-AreaCode,VE,16,Monagas,State
-AreaCode,VE,17,Nueva Esparta,State
-AreaCode,VE,18,Portuguesa,State
-AreaCode,VE,19,Sucre,State
-AreaCode,VE,20,Táchira,State
-AreaCode,VE,21,Trujillo,State
-AreaCode,VE,22,Yaracuy,State
-AreaCode,VE,23,Zulia,State
-AreaCode,VE,24,Vargas,State
-AreaCode,VG,1,Anegada,District
-AreaCode,VG,2,Cooper Island,District
-AreaCode,VG,3,Great Camanoe,District
-AreaCode,VG,4,Jost van Dyke,District
-AreaCode,VG,5,Peter Island,District
-AreaCode,VG,6,Tortola,District
-AreaCode,VG,7,Virgin Gorda,District
-AreaCode,VI,10,St. Croix,District
-AreaCode,VI,20,St. John,District
-AreaCode,VI,30,St. Thomas,District
+"Category","CountryCode","AreaCode","AreaName","Resolution"
+"AreaCode","AT","101","Eisenstadt (Stadt)","District"
+"AreaCode","AT","102","Rust","District"
+"AreaCode","AT","103","Eisenstadt (Land)","District"
+"AreaCode","AT","104","Güssing","District"
+"AreaCode","AT","105","Jennersdorf","District"
+"AreaCode","AT","106","Mattersburg","District"
+"AreaCode","AT","107","Neusiedl am See","District"
+"AreaCode","AT","108","Oberpullendorf","District"
+"AreaCode","AT","109","Oberwart","District"
+"AreaCode","AT","201","Klagenfurt (Stadt)","District"
+"AreaCode","AT","202","Villach (Stadt)","District"
+"AreaCode","AT","203","Hermagor","District"
+"AreaCode","AT","204","Klagenfurt Land","District"
+"AreaCode","AT","205","Sankt Veit an der Glan","District"
+"AreaCode","AT","206","Spittal an der Drau","District"
+"AreaCode","AT","207","Villach Land","District"
+"AreaCode","AT","208","Völkermarkt","District"
+"AreaCode","AT","209","Wolfsberg","District"
+"AreaCode","AT","210","Feldkirchen","District"
+"AreaCode","AT","301","Krems an der Donau (Stadt)","District"
+"AreaCode","AT","302","St. Pölten (Stadt)","District"
+"AreaCode","AT","303","Waidhofen an der Ybbs","District"
+"AreaCode","AT","304","Wiener Neustadt (Stadt)","District"
+"AreaCode","AT","305","Amstetten","District"
+"AreaCode","AT","306","Baden","District"
+"AreaCode","AT","307","Bruck an der Leitha","District"
+"AreaCode","AT","308","Gänserndorf","District"
+"AreaCode","AT","309","Gmünd","District"
+"AreaCode","AT","310","Hollabrunn","District"
+"AreaCode","AT","311","Horn","District"
+"AreaCode","AT","312","Korneuburg","District"
+"AreaCode","AT","313","Krems an der Donau (Land)","District"
+"AreaCode","AT","314","Lilienfeld","District"
+"AreaCode","AT","315","Melk","District"
+"AreaCode","AT","316","Mistelbach","District"
+"AreaCode","AT","317","Mödling","District"
+"AreaCode","AT","318","Neunkirchen","District"
+"AreaCode","AT","319","St. Pölten (Land)","District"
+"AreaCode","AT","320","Scheibbs","District"
+"AreaCode","AT","321","Tulln","District"
+"AreaCode","AT","322","Waidhofen an der Thaya","District"
+"AreaCode","AT","323","Wiener Neustadt (Land)","District"
+"AreaCode","AT","324","Wien-Umgebung","District"
+"AreaCode","AT","325","Zwettl","District"
+"AreaCode","AT","401","Linz","District"
+"AreaCode","AT","402","Steyr","District"
+"AreaCode","AT","403","Wels","District"
+"AreaCode","AT","404","Braunau am Inn","District"
+"AreaCode","AT","405","Eferding","District"
+"AreaCode","AT","406","Freistadt","District"
+"AreaCode","AT","407","Gmunden","District"
+"AreaCode","AT","408","Grieskirchen","District"
+"AreaCode","AT","409","Kirchdorf an der Krems","District"
+"AreaCode","AT","410","Linz-Land","District"
+"AreaCode","AT","411","Perg","District"
+"AreaCode","AT","412","Ried im Innkreis","District"
+"AreaCode","AT","413","Rohrbach","District"
+"AreaCode","AT","414","Schärding","District"
+"AreaCode","AT","415","Steyr-Land","District"
+"AreaCode","AT","416","Urfahr-Umgebung","District"
+"AreaCode","AT","417","Vöcklabruck","District"
+"AreaCode","AT","418","Wels-Land","District"
+"AreaCode","AT","501","Salzburg","District"
+"AreaCode","AT","502","Hallein","District"
+"AreaCode","AT","503","Salzburg-Umgebung","District"
+"AreaCode","AT","504","Sankt Johann im Pongau","District"
+"AreaCode","AT","505","Tamsweg","District"
+"AreaCode","AT","506","Zell am See","District"
+"AreaCode","AT","601","Graz","District"
+"AreaCode","AT","602","Bruck an der Mur","District"
+"AreaCode","AT","603","Deutschlandsberg","District"
+"AreaCode","AT","604","Feldbach","District"
+"AreaCode","AT","605","Fürstenfeld","District"
+"AreaCode","AT","606","Graz-Umgebung","District"
+"AreaCode","AT","607","Hartberg","District"
+"AreaCode","AT","608","Judenburg","District"
+"AreaCode","AT","609","Knittelfeld","District"
+"AreaCode","AT","610","Leibnitz","District"
+"AreaCode","AT","611","Leoben","District"
+"AreaCode","AT","612","Liezen","District"
+"AreaCode","AT","613","Mürzzuschlag","District"
+"AreaCode","AT","614","Murau","District"
+"AreaCode","AT","615","Bad Radkersburg","District"
+"AreaCode","AT","616","Voitsberg","District"
+"AreaCode","AT","617","Weiz","District"
+"AreaCode","AT","701","Innsbruck-Stadt","District"
+"AreaCode","AT","702","Imst","District"
+"AreaCode","AT","703","Innsbruck-Land","District"
+"AreaCode","AT","704","Kitzbühel","District"
+"AreaCode","AT","705","Kufstein","District"
+"AreaCode","AT","706","Landeck","District"
+"AreaCode","AT","707","Lienz","District"
+"AreaCode","AT","708","Reutte","District"
+"AreaCode","AT","709","Schwaz","District"
+"AreaCode","AT","801","Bludenz","District"
+"AreaCode","AT","802","Bregenz","District"
+"AreaCode","AT","803","Dornbirn","District"
+"AreaCode","AT","804","Feldkirch","District"
+"AreaCode","AT","901","Wien I Innere Stadt","District"
+"AreaCode","AT","902","Wien II Leopoldstadt","District"
+"AreaCode","AT","903","Wien III Landstraße","District"
+"AreaCode","AT","904","Wien IV Wieden","District"
+"AreaCode","AT","905","Wien V Margareten","District"
+"AreaCode","AT","906","Wien VI Mariahilf","District"
+"AreaCode","AT","907","Wien VII Neubau","District"
+"AreaCode","AT","908","Wien VIII Josefstadt","District"
+"AreaCode","AT","909","Wien IX Alsergrund","District"
+"AreaCode","AT","910","Wien X Favoriten","District"
+"AreaCode","AT","911","Wien XI Simmering","District"
+"AreaCode","AT","912","Wien XII Meidling","District"
+"AreaCode","AT","913","Wien XIII Hietzing","District"
+"AreaCode","AT","914","Wien XIV Penzing","District"
+"AreaCode","AT","915","Wien XV Rudolfsheim-Fünfhaus","District"
+"AreaCode","AT","916","Wien XVI Ottakring","District"
+"AreaCode","AT","917","Wien XVII Hernals","District"
+"AreaCode","AT","918","Wien XVIII Währing","District"
+"AreaCode","AT","919","Wien XIX Döbling","District"
+"AreaCode","AT","920","Wien XX Brigittenau","District"
+"AreaCode","AT","921","Wien XXI Floridsdorf","District"
+"AreaCode","AT","922","Wien XXII Dounaustadt","District"
+"AreaCode","AT","923","Wien XXIII Liesing","District"
+"AreaCode","AU","ACT","Australian Capital Territory","State"
+"AreaCode","AU","NSW","New South Wales","State"
+"AreaCode","AU","NT","Northern Territory","State"
+"AreaCode","AU","QLD","Queensland","State"
+"AreaCode","AU","SA","South Australia","State"
+"AreaCode","AU","TAS","Tasmania","State"
+"AreaCode","AU","VIC","Victoria","State"
+"AreaCode","AU","WA","Western Australia","State"
+"AreaCode","AU","OT","Australian Overseas Territories","State"
+"AreaCode","BB","1","Christ Church","Parish"
+"AreaCode","BB","10","St. Philip","Parish"
+"AreaCode","BB","11","St. Thomas","Parish"
+"AreaCode","BB","2","St. Andrew","Parish"
+"AreaCode","BB","3","St. George","Parish"
+"AreaCode","BB","4","St. James","Parish"
+"AreaCode","BB","5","St. John","Parish"
+"AreaCode","BB","6","St. Joseph","Parish"
+"AreaCode","BB","7","St. Lucy","Parish"
+"AreaCode","BB","8","St. Michael","Parish"
+"AreaCode","BB","9","St. Peter","Parish"
+"AreaCode","BE","11","Antwerpen","District"
+"AreaCode","BE","12","Mechelen","District"
+"AreaCode","BE","13","Turnhout","District"
+"AreaCode","BE","21","Brussel-Hoofdstad","District"
+"AreaCode","BE","23","Halle-Vilvoorde","District"
+"AreaCode","BE","24","Leuven","District"
+"AreaCode","BE","25","Nijvel","District"
+"AreaCode","BE","31","Brugge","District"
+"AreaCode","BE","32","Diksmuide","District"
+"AreaCode","BE","33","Ieper","District"
+"AreaCode","BE","34","Kortrijk","District"
+"AreaCode","BE","35","Oostende","District"
+"AreaCode","BE","36","Roeselare","District"
+"AreaCode","BE","37","Tielt","District"
+"AreaCode","BE","38","Veurne","District"
+"AreaCode","BE","41","Aalst","District"
+"AreaCode","BE","42","Dendermonde","District"
+"AreaCode","BE","43","Eeklo","District"
+"AreaCode","BE","44","Gent","District"
+"AreaCode","BE","45","Oudenaarde","District"
+"AreaCode","BE","46","Sint-Niklaas","District"
+"AreaCode","BE","51","Aat","District"
+"AreaCode","BE","52","Charleroi","District"
+"AreaCode","BE","53","Bergen","District"
+"AreaCode","BE","54","Moeskroen","District"
+"AreaCode","BE","55","Zinnik","District"
+"AreaCode","BE","56","Thuin","District"
+"AreaCode","BE","57","Doornik","District"
+"AreaCode","BE","61","Hoei","District"
+"AreaCode","BE","62","Luik","District"
+"AreaCode","BE","63","Verviers","District"
+"AreaCode","BE","64","Borgworm","District"
+"AreaCode","BE","71","Hasselt","District"
+"AreaCode","BE","72","Maaseik","District"
+"AreaCode","BE","73","Tongeren","District"
+"AreaCode","BE","81","Aarlen","District"
+"AreaCode","BE","82","Bastenaken","District"
+"AreaCode","BE","83","Marche-en-Famenne","District"
+"AreaCode","BE","84","Neufchâteau","District"
+"AreaCode","BE","85","Virton","District"
+"AreaCode","BE","91","Dinant","District"
+"AreaCode","BE","92","Namen","District"
+"AreaCode","BE","93","Philippeville","District"
+"AreaCode","BH","1","New Providence","District"
+"AreaCode","BH","10","Eleuthra","District"
+"AreaCode","BH","11","Exuma and Cays","District"
+"AreaCode","BH","12","Long Island","District"
+"AreaCode","BH","13","Harbour Island","District"
+"AreaCode","BH","14","Inagua","District"
+"AreaCode","BH","15","Mayaguana","District"
+"AreaCode","BH","16","Ragged Island","District"
+"AreaCode","BH","17","Rum Cay","District"
+"AreaCode","BH","18","San Salvador","District"
+"AreaCode","BH","19","Spanish Wells","District"
+"AreaCode","BH","2","Grand Bahama","District"
+"AreaCode","BH","3","Abaco","District"
+"AreaCode","BH","4","Acklins","District"
+"AreaCode","BH","5","Andros","District"
+"AreaCode","BH","6","Berry Islands","District"
+"AreaCode","BH","7","Biminis","District"
+"AreaCode","BH","8","Cat Island","District"
+"AreaCode","BH","9","Crooked Island","District"
+"AreaCode","BM","1","Sandys","Parish"
+"AreaCode","BM","2","Southampton","Parish"
+"AreaCode","BM","3","Warwick","Parish"
+"AreaCode","BM","4","Paget","Parish"
+"AreaCode","BM","5","Pembroke","Parish"
+"AreaCode","BM","6","Devonshire","Parish"
+"AreaCode","BM","7","Smith's","Parish"
+"AreaCode","BM","8","Hamilton","Parish"
+"AreaCode","BM","9","St.George's","Parish"
+"AreaCode","CA","NL","Newfoundland","Province"
+"AreaCode","CA","PE","Prince Edward Island","Province"
+"AreaCode","CA","NS","Nova Scotia","Province"
+"AreaCode","CA","NB","New Brunswick","Province"
+"AreaCode","CA","QC","Quebec","Province"
+"AreaCode","CA","ON","Ontario","Province"
+"AreaCode","CA","MB","Manitoba","Province"
+"AreaCode","CA","SK","Saskatchewan","Province"
+"AreaCode","CA","AB","Alberta","Province"
+"AreaCode","CA","BC","British Columbia","Province"
+"AreaCode","CA","YT","Yukon","Province"
+"AreaCode","CA","NT","North West Territories","Province"
+"AreaCode","CA","NU","Nunavut","Province"
+"AreaCode","CH","01","Zürich","Region"
+"AreaCode","CH","02","Bern","Region"
+"AreaCode","CH","03","Luzern","Region"
+"AreaCode","CH","04","Uri","Region"
+"AreaCode","CH","05","Schwyz","Region"
+"AreaCode","CH","06","Obwalden","Region"
+"AreaCode","CH","07","Nidwalden","Region"
+"AreaCode","CH","08","Glarus","Region"
+"AreaCode","CH","09","Zug","Region"
+"AreaCode","CH","10","Fribourg","Region"
+"AreaCode","CH","11","Solothurn","Region"
+"AreaCode","CH","12","Basel-Stadt","Region"
+"AreaCode","CH","13","Basel-Land","Region"
+"AreaCode","CH","14","Schaffhausen","Region"
+"AreaCode","CH","15","Appenzell A.Rh.","Region"
+"AreaCode","CH","16","Appenzell I.Rh.","Region"
+"AreaCode","CH","17","St. Gallen","Region"
+"AreaCode","CH","18","Graubünden","Region"
+"AreaCode","CH","19","Aargau","Region"
+"AreaCode","CH","20","Thurgau","Region"
+"AreaCode","CH","21","Ticino","Region"
+"AreaCode","CH","22","Vaud","Region"
+"AreaCode","CH","23","Valais","Region"
+"AreaCode","CH","24","Neuchâtel","Region"
+"AreaCode","CH","25","Genève","Region"
+"AreaCode","CH","26","Jura","Region"
+"AreaCode","CL","01","Tarapacá","State"
+"AreaCode","CL","02","Antofagasta","State"
+"AreaCode","CL","03","Atacama","State"
+"AreaCode","CL","04","Coquimbo","State"
+"AreaCode","CL","05","Valparaíso","State"
+"AreaCode","CL","06","O'Higgins","State"
+"AreaCode","CL","07","Maule","State"
+"AreaCode","CL","08","Biobío","State"
+"AreaCode","CL","09","Araucanía","State"
+"AreaCode","CL","10","Los Lagos","State"
+"AreaCode","CL","11","Aisén","State"
+"AreaCode","CL","12","Magallanes y la Antártica","State"
+"AreaCode","CL","13","Metropolitana","State"
+"AreaCode","CN","11","Beijing","Province"
+"AreaCode","CN","12","Tianjin","Province"
+"AreaCode","CN","13","Hebei","Province"
+"AreaCode","CN","14","Shanxi","Province"
+"AreaCode","CN","15","Inner Mongolia","Province"
+"AreaCode","CN","21","Liaoning","Province"
+"AreaCode","CN","22","Jilin","Province"
+"AreaCode","CN","23","Heilongjiang","Province"
+"AreaCode","CN","31","Shanghai","Province"
+"AreaCode","CN","32","Jiangsu","Province"
+"AreaCode","CN","33","Zhejiang","Province"
+"AreaCode","CN","34","Anhui","Province"
+"AreaCode","CN","35","Fujian","Province"
+"AreaCode","CN","36","Jiangxi","Province"
+"AreaCode","CN","37","Shandong","Province"
+"AreaCode","CN","41","Henan","Province"
+"AreaCode","CN","42","Hubei","Province"
+"AreaCode","CN","43","Hunan","Province"
+"AreaCode","CN","44","Guangdong","Province"
+"AreaCode","CN","45","Guangxi","Province"
+"AreaCode","CN","46","Hainan","Province"
+"AreaCode","CN","50","Chongqing","Province"
+"AreaCode","CN","51","Sichuan","Province"
+"AreaCode","CN","52","Guizhou","Province"
+"AreaCode","CN","53","Yunnan","Province"
+"AreaCode","CN","54","Xizang","Province"
+"AreaCode","CN","61","Shaanxi","Province"
+"AreaCode","CN","62","Gansu","Province"
+"AreaCode","CN","63","Qinghai","Province"
+"AreaCode","CN","64","Ningxia","Province"
+"AreaCode","CN","65","Xinjiang","Province"
+"AreaCode","CO","05","Antioquia","Region"
+"AreaCode","CO","08","Atlántico","Region"
+"AreaCode","CO","11","Bogotá","Region"
+"AreaCode","CO","13","Bolívar","Region"
+"AreaCode","CO","15","Boyacá","Region"
+"AreaCode","CO","17","Caldas","Region"
+"AreaCode","CO","18","Caquetá","Region"
+"AreaCode","CO","19","Cauca","Region"
+"AreaCode","CO","20","Cesar","Region"
+"AreaCode","CO","23","Córdoba","Region"
+"AreaCode","CO","25","Cundinamarca","Region"
+"AreaCode","CO","27","Chocó","Region"
+"AreaCode","CO","41","Huila","Region"
+"AreaCode","CO","44","Guajira","Region"
+"AreaCode","CO","47","Magdalena","Region"
+"AreaCode","CO","50","Meta","Region"
+"AreaCode","CO","52","Nariño","Region"
+"AreaCode","CO","54","Norte de Santander","Region"
+"AreaCode","CO","63","Quindío","Region"
+"AreaCode","CO","66","Risaralda","Region"
+"AreaCode","CO","68","Santander","Region"
+"AreaCode","CO","70","Sucre","Region"
+"AreaCode","CO","73","Tolima","Region"
+"AreaCode","CO","76","Valle del Cauca","Region"
+"AreaCode","CO","81","Arauca","Region"
+"AreaCode","CO","85","Casanare","Region"
+"AreaCode","CO","86","Putumayo","Region"
+"AreaCode","CO","88","San Andrés and Providenci","Region"
+"AreaCode","CO","91","Amazonas","Region"
+"AreaCode","CO","94","Guainía","Region"
+"AreaCode","CO","95","Guaviare","Region"
+"AreaCode","CO","97","Vaupés","Region"
+"AreaCode","CO","99","Vichada","Region"
+"AreaCode","CU","1","Camagüey","Province"
+"AreaCode","CU","10","Matanzas","Province"
+"AreaCode","CU","11","Pinar del Rio","Province"
+"AreaCode","CU","12","Sancti Spíritus","Province"
+"AreaCode","CU","13","Santiago de Cuba","Province"
+"AreaCode","CU","14","Villa Clara","Province"
+"AreaCode","CU","2","Ciego de Avila","Province"
+"AreaCode","CU","3","Cienfuegos","Province"
+"AreaCode","CU","4","Granma","Province"
+"AreaCode","CU","5","Guantánamo","Province"
+"AreaCode","CU","6","Holguin","Province"
+"AreaCode","CU","7","Isla de la Juventud","Province"
+"AreaCode","CU","8","La Habana","Province"
+"AreaCode","CU","9","Las Tunas","Province"
+"AreaCode","DE","01","Schleswig-Holstein","Region"
+"AreaCode","DE","02","Hamburg","Region"
+"AreaCode","DE","03","Niedersachsen","Region"
+"AreaCode","DE","04","Bremen","Region"
+"AreaCode","DE","05","Nordrhein-Westfalen","Region"
+"AreaCode","DE","06","Hessen","Region"
+"AreaCode","DE","07","Rheinland-Pfalz","Region"
+"AreaCode","DE","08","Baden-Württemberg","Region"
+"AreaCode","DE","09","Bayern","Region"
+"AreaCode","DE","10","Saarland","Region"
+"AreaCode","DE","11","Berlin","Region"
+"AreaCode","DE","12","Brandenburg","Region"
+"AreaCode","DE","13","Mecklenburg-Vorpommern","Region"
+"AreaCode","DE","14","Sachsen","Region"
+"AreaCode","DE","15","Sachsen-Anhalt","Region"
+"AreaCode","DE","16","Thueringen","Region"
+"AreaCode","DK","101","København","District"
+"AreaCode","DK","102","Frederiksberg","District"
+"AreaCode","DK","150","Københavns Amt","District"
+"AreaCode","DK","200","Frederiksborg Amt","District"
+"AreaCode","DK","250","Roskilde Amt","District"
+"AreaCode","DK","300","Vestsjællands Amt","District"
+"AreaCode","DK","350","Storstrøms Amt","District"
+"AreaCode","DK","400","Bornholms Amt","District"
+"AreaCode","DK","420","Fyns Amt","District"
+"AreaCode","DK","500","Sønderjyllands Amt","District"
+"AreaCode","DK","550","Ribe Amt","District"
+"AreaCode","DK","600","Vejle Amt","District"
+"AreaCode","DK","650","Ringkøbing Amt","District"
+"AreaCode","DK","700","Århus Amt","District"
+"AreaCode","DK","760","Viborg Amt","District"
+"AreaCode","DK","800","Nordjyllands Amt","District"
+"AreaCode","DO","1","Azua","Province"
+"AreaCode","DO","10","Hato Mayor","Province"
+"AreaCode","DO","11","Independencia","Province"
+"AreaCode","DO","12","La Altagracia","Province"
+"AreaCode","DO","13","La Romana","Province"
+"AreaCode","DO","14","La Vega","Province"
+"AreaCode","DO","15","Maria Trinidad Sánchez","Province"
+"AreaCode","DO","16","Monsenor Nouel","Province"
+"AreaCode","DO","17","Monte Cristi","Province"
+"AreaCode","DO","18","Monte Plata","Province"
+"AreaCode","DO","19","Pedernales","Province"
+"AreaCode","DO","2","Bahoruco","Province"
+"AreaCode","DO","20","Peravia","Province"
+"AreaCode","DO","21","Puerto Plata","Province"
+"AreaCode","DO","22","Salcedo","Province"
+"AreaCode","DO","23","Samana","Province"
+"AreaCode","DO","24","Sánchez Ramirez","Province"
+"AreaCode","DO","25","San Cristobal","Province"
+"AreaCode","DO","26","San Juan","Province"
+"AreaCode","DO","27","San Pedro de Macoris","Province"
+"AreaCode","DO","28","Santiago","Province"
+"AreaCode","DO","29","Santiago Rodriguez","Province"
+"AreaCode","DO","3","Barahona","Province"
+"AreaCode","DO","30","Valverde","Province"
+"AreaCode","DO","4","Dajabon","Province"
+"AreaCode","DO","5","Distrito National","Province"
+"AreaCode","DO","6","Duarte","Province"
+"AreaCode","DO","7","Elias Pina","Province"
+"AreaCode","DO","8","El Seibo","Province"
+"AreaCode","DO","9","Espaillat","Province"
+"AreaCode","EC","01","Azuay","Province"
+"AreaCode","EC","02","Bolivar","Province"
+"AreaCode","EC","03","Canar","Province"
+"AreaCode","EC","04","Carchi","Province"
+"AreaCode","EC","05","Cotopaxi","Province"
+"AreaCode","EC","06","Chimborazo","Province"
+"AreaCode","EC","07","El Oro","Province"
+"AreaCode","EC","08","Esmeraldas","Province"
+"AreaCode","EC","09","Guayas","Province"
+"AreaCode","EC","10","Imbabura","Province"
+"AreaCode","EC","11","Loja","Province"
+"AreaCode","EC","12","Los Rios","Province"
+"AreaCode","EC","13","Manabi","Province"
+"AreaCode","EC","14","Morona Santiago","Province"
+"AreaCode","EC","15","Napo","Province"
+"AreaCode","EC","16","Pastaza","Province"
+"AreaCode","EC","17","Pichincha","Province"
+"AreaCode","EC","18","Tungurahua","Province"
+"AreaCode","EC","19","Zamora Chinchipe","Province"
+"AreaCode","EC","20","Galapagos","Province"
+"AreaCode","EC","21","Sucumbios","Province"
+"AreaCode","EC","22","Orellana","Province"
+"AreaCode","EC","23","Santo Domingo de los Tsachilas","Province"
+"AreaCode","EC","24","Santa Elena","Province"
+"AreaCode","EC","90","Zonas No Delimitadas","Province"
+"AreaCode","FR","01","Ain","County"
+"AreaCode","FR","02","Aisne","County"
+"AreaCode","FR","03","Allier","County"
+"AreaCode","FR","04","Alpes-de-Haute-Provence","County"
+"AreaCode","FR","05","Hautes-Alpes","County"
+"AreaCode","FR","06","Alpes-Maritimes","County"
+"AreaCode","FR","07","Ardèche","County"
+"AreaCode","FR","08","Ardennes","County"
+"AreaCode","FR","09","Ariège","County"
+"AreaCode","FR","10","Aube","County"
+"AreaCode","FR","11","Aude","County"
+"AreaCode","FR","12","Aveyron","County"
+"AreaCode","FR","13","Bouches-du-Rhône","County"
+"AreaCode","FR","14","Calvados","County"
+"AreaCode","FR","15","Cantal","County"
+"AreaCode","FR","16","Charente","County"
+"AreaCode","FR","17","Charente-Maritime","County"
+"AreaCode","FR","18","Cher","County"
+"AreaCode","FR","19","Corrèze","County"
+"AreaCode","FR","21","Côte-d'Or","County"
+"AreaCode","FR","22","Côtes-du-Nord","County"
+"AreaCode","FR","23","Creuse","County"
+"AreaCode","FR","24","Dordogne","County"
+"AreaCode","FR","25","Doubs","County"
+"AreaCode","FR","26","Drôme","County"
+"AreaCode","FR","27","Eure","County"
+"AreaCode","FR","28","Eure-et-Loir","County"
+"AreaCode","FR","29","Finistère","County"
+"AreaCode","FR","2A","Corse-du-Sud","County"
+"AreaCode","FR","2B","Haute-Corse","County"
+"AreaCode","FR","30","Gard","County"
+"AreaCode","FR","31","Haute-Garonne","County"
+"AreaCode","FR","32","Gers","County"
+"AreaCode","FR","33","Gironde","County"
+"AreaCode","FR","34","Hérault","County"
+"AreaCode","FR","35","Ille-et-Vilaine","County"
+"AreaCode","FR","36","Indre","County"
+"AreaCode","FR","37","Indre-et-Loire","County"
+"AreaCode","FR","38","Isère","County"
+"AreaCode","FR","39","Jura","County"
+"AreaCode","FR","40","Landes","County"
+"AreaCode","FR","41","Loir-et-Cher","County"
+"AreaCode","FR","42","Loire","County"
+"AreaCode","FR","43","Haute-Loire","County"
+"AreaCode","FR","44","Loire-Atlantique","County"
+"AreaCode","FR","45","Loiret","County"
+"AreaCode","FR","46","Lot","County"
+"AreaCode","FR","47","Lot-et-Garonne","County"
+"AreaCode","FR","48","Lozère","County"
+"AreaCode","FR","49","Maine-et-Loire","County"
+"AreaCode","FR","50","Manche","County"
+"AreaCode","FR","51","Marne","County"
+"AreaCode","FR","52","Haute-Marne","County"
+"AreaCode","FR","53","Mayenne","County"
+"AreaCode","FR","54","Meurthe-et-Moselle","County"
+"AreaCode","FR","55","Meuse","County"
+"AreaCode","FR","56","Morbihan","County"
+"AreaCode","FR","57","Moselle","County"
+"AreaCode","FR","58","Nièvre","County"
+"AreaCode","FR","59","Nord","County"
+"AreaCode","FR","60","Oise","County"
+"AreaCode","FR","61","Orne","County"
+"AreaCode","FR","62","Pas-de-Calais","County"
+"AreaCode","FR","63","Puy-de-Dôme","County"
+"AreaCode","FR","64","Pyrénées-Atlantiques","County"
+"AreaCode","FR","65","Hautes-Pyrénées","County"
+"AreaCode","FR","66","Pyrénées-Orientales","County"
+"AreaCode","FR","67","Bas-Rhin","County"
+"AreaCode","FR","68","Haut-Rhin","County"
+"AreaCode","FR","69","Rhône","County"
+"AreaCode","FR","70","Haute-Saône","County"
+"AreaCode","FR","71","Saône-et-Loire","County"
+"AreaCode","FR","72","Sarthe","County"
+"AreaCode","FR","73","Savoie","County"
+"AreaCode","FR","74","Haute-Savoie","County"
+"AreaCode","FR","75","Ville-de-Paris","County"
+"AreaCode","FR","76","Seine-Maritime","County"
+"AreaCode","FR","77","Seine-et-Marne","County"
+"AreaCode","FR","78","Yvelines","County"
+"AreaCode","FR","79","Deux-Sèvres","County"
+"AreaCode","FR","80","Somme","County"
+"AreaCode","FR","81","Tarn","County"
+"AreaCode","FR","82","Tarn-et-Garonne","County"
+"AreaCode","FR","83","Var","County"
+"AreaCode","FR","84","Vaucluse","County"
+"AreaCode","FR","85","Vendée","County"
+"AreaCode","FR","86","Vienne","County"
+"AreaCode","FR","87","Haute-Vienne","County"
+"AreaCode","FR","88","Vosges","County"
+"AreaCode","FR","89","Yonne","County"
+"AreaCode","FR","90","Territoire-de-Belfort","County"
+"AreaCode","FR","91","Essonne","County"
+"AreaCode","FR","92","Hauts-de-Seine","County"
+"AreaCode","FR","93","Seine-Saint-Denis","County"
+"AreaCode","FR","94","Val-de-Marne","County"
+"AreaCode","FR","95","Val-d'Oise","County"
+"AreaCode","FR","99","Monaco","County"
+"AreaCode","G2","01","Alabama","Administrative Region"
+"AreaCode","G2","12","Florida","Administrative Region"
+"AreaCode","G2","22","Louisiana","Administrative Region"
+"AreaCode","G2","28","Mississippi","Administrative Region"
+"AreaCode","G2","48","Texas","Administrative Region"
+"AreaCode","G2","OCS","Outer Continental Shelf","Administrative Region"
+"AreaCode","GB","AB","Aberdeen","Postcode Area"
+"AreaCode","GB","AL","St Albans","Postcode Area"
+"AreaCode","GB","B","Birmingham","Postcode Area"
+"AreaCode","GB","BA","Bath","Postcode Area"
+"AreaCode","GB","BB","Blackburn","Postcode Area"
+"AreaCode","GB","BD","Bradford","Postcode Area"
+"AreaCode","GB","BH","Bournemouth","Postcode Area"
+"AreaCode","GB","BL","Bolton","Postcode Area"
+"AreaCode","GB","BN","Brighton","Postcode Area"
+"AreaCode","GB","BR","Bromley","Postcode Area"
+"AreaCode","GB","BS","Bristol","Postcode Area"
+"AreaCode","GB","BT","Northern Ireland","Postcode Area"
+"AreaCode","GB","CA","Carlisle","Postcode Area"
+"AreaCode","GB","CB","Cambridge","Postcode Area"
+"AreaCode","GB","CF","Cardiff","Postcode Area"
+"AreaCode","GB","CH","Chester","Postcode Area"
+"AreaCode","GB","CM","Chelmsford","Postcode Area"
+"AreaCode","GB","CO","Colchester","Postcode Area"
+"AreaCode","GB","CR","Croydon","Postcode Area"
+"AreaCode","GB","CT","Canterbury","Postcode Area"
+"AreaCode","GB","CV","Coventry","Postcode Area"
+"AreaCode","GB","CW","Crewe","Postcode Area"
+"AreaCode","GB","DA","Dartford","Postcode Area"
+"AreaCode","GB","DD","Dundee","Postcode Area"
+"AreaCode","GB","DE","Derby","Postcode Area"
+"AreaCode","GB","DG","Dumfries","Postcode Area"
+"AreaCode","GB","DH","Durham","Postcode Area"
+"AreaCode","GB","DL","Darlington","Postcode Area"
+"AreaCode","GB","DN","Doncaster","Postcode Area"
+"AreaCode","GB","DT","Dorchester","Postcode Area"
+"AreaCode","GB","DY","Dudley","Postcode Area"
+"AreaCode","GB","E","London E","Postcode Area"
+"AreaCode","GB","EC","London EC","Postcode Area"
+"AreaCode","GB","EH","Edinburgh","Postcode Area"
+"AreaCode","GB","EN","Enfield","Postcode Area"
+"AreaCode","GB","EX","Exeter","Postcode Area"
+"AreaCode","GB","FK","Falkirk","Postcode Area"
+"AreaCode","GB","FY","Blackpool","Postcode Area"
+"AreaCode","GB","G","Glasgow","Postcode Area"
+"AreaCode","GB","GL","Gloucester","Postcode Area"
+"AreaCode","GB","GU","Guildford","Postcode Area"
+"AreaCode","GB","GY","Guernsey","Postcode Area"
+"AreaCode","GB","HA","Harrow","Postcode Area"
+"AreaCode","GB","HD","Huddersfield","Postcode Area"
+"AreaCode","GB","HG","Harrogate","Postcode Area"
+"AreaCode","GB","HP","Hemel Hempstead","Postcode Area"
+"AreaCode","GB","HR","Hereford","Postcode Area"
+"AreaCode","GB","HS","Outer Hebrides","Postcode Area"
+"AreaCode","GB","HU","Hull","Postcode Area"
+"AreaCode","GB","HX","Halifax","Postcode Area"
+"AreaCode","GB","IC","Channel Islands","Postcode Area"
+"AreaCode","GB","IG","Ilford","Postcode Area"
+"AreaCode","GB","IM","Isle of Man","Postcode Area"
+"AreaCode","GB","IP","Ipswich","Postcode Area"
+"AreaCode","GB","IV","Inverness","Postcode Area"
+"AreaCode","GB","JE","Jersey","Postcode Area"
+"AreaCode","GB","KA","Kilmarnock","Postcode Area"
+"AreaCode","GB","KT","Kingston upon Thames","Postcode Area"
+"AreaCode","GB","KW","Kirkwall","Postcode Area"
+"AreaCode","GB","KY","Kirkcaldy","Postcode Area"
+"AreaCode","GB","L","Liverpool","Postcode Area"
+"AreaCode","GB","LA","Lancaster","Postcode Area"
+"AreaCode","GB","LD","Llandrindod Wells","Postcode Area"
+"AreaCode","GB","LE","Leicester","Postcode Area"
+"AreaCode","GB","LL","Llandudno","Postcode Area"
+"AreaCode","GB","LN","Lincoln","Postcode Area"
+"AreaCode","GB","LS","Leeds","Postcode Area"
+"AreaCode","GB","LU","Luton","Postcode Area"
+"AreaCode","GB","M","Manchester","Postcode Area"
+"AreaCode","GB","ME","Medway","Postcode Area"
+"AreaCode","GB","MK","Milton Keynes","Postcode Area"
+"AreaCode","GB","ML","Motherwell","Postcode Area"
+"AreaCode","GB","N","London N","Postcode Area"
+"AreaCode","GB","NE","Newcastle upon Tyne","Postcode Area"
+"AreaCode","GB","NG","Nottingham","Postcode Area"
+"AreaCode","GB","NN","Northampton","Postcode Area"
+"AreaCode","GB","NP","Newport","Postcode Area"
+"AreaCode","GB","NR","Norwich","Postcode Area"
+"AreaCode","GB","NW","London NW","Postcode Area"
+"AreaCode","GB","OL","Oldham","Postcode Area"
+"AreaCode","GB","OX","Oxford","Postcode Area"
+"AreaCode","GB","PA","Paisley","Postcode Area"
+"AreaCode","GB","PE","Peterborough","Postcode Area"
+"AreaCode","GB","PH","Perth","Postcode Area"
+"AreaCode","GB","PL","Plymouth","Postcode Area"
+"AreaCode","GB","PO","Portsmouth","Postcode Area"
+"AreaCode","GB","PR","Preston","Postcode Area"
+"AreaCode","GB","RG","Reading","Postcode Area"
+"AreaCode","GB","RH","Redhill","Postcode Area"
+"AreaCode","GB","RM","Romford","Postcode Area"
+"AreaCode","GB","S","Sheffield","Postcode Area"
+"AreaCode","GB","SA","Swansea","Postcode Area"
+"AreaCode","GB","SE","London SE","Postcode Area"
+"AreaCode","GB","SG","Stevenage","Postcode Area"
+"AreaCode","GB","SK","Stockport","Postcode Area"
+"AreaCode","GB","SL","Slough","Postcode Area"
+"AreaCode","GB","SM","Sutton","Postcode Area"
+"AreaCode","GB","SN","Swindon","Postcode Area"
+"AreaCode","GB","SO","Southampton","Postcode Area"
+"AreaCode","GB","SP","Salisbury","Postcode Area"
+"AreaCode","GB","SR","Sunderland","Postcode Area"
+"AreaCode","GB","SS","Southend-on-Sea","Postcode Area"
+"AreaCode","GB","ST","Stoke-on-Trent","Postcode Area"
+"AreaCode","GB","SW","London SW","Postcode Area"
+"AreaCode","GB","SY","Shrewsbury","Postcode Area"
+"AreaCode","GB","TA","Taunton","Postcode Area"
+"AreaCode","GB","TD","Galashiels","Postcode Area"
+"AreaCode","GB","TF","Telford","Postcode Area"
+"AreaCode","GB","TN","Tonbridge","Postcode Area"
+"AreaCode","GB","TQ","Torquay","Postcode Area"
+"AreaCode","GB","TR","Truro","Postcode Area"
+"AreaCode","GB","TS","Cleveland","Postcode Area"
+"AreaCode","GB","TW","Twickenham","Postcode Area"
+"AreaCode","GB","UB","Southall","Postcode Area"
+"AreaCode","GB","W","London W","Postcode Area"
+"AreaCode","GB","WA","Warrington","Postcode Area"
+"AreaCode","GB","WC","London WC","Postcode Area"
+"AreaCode","GB","WD","Watford","Postcode Area"
+"AreaCode","GB","WF","Wakefield","Postcode Area"
+"AreaCode","GB","WN","Wigan","Postcode Area"
+"AreaCode","GB","WR","Worcester","Postcode Area"
+"AreaCode","GB","WS","Walsall","Postcode Area"
+"AreaCode","GB","WV","Wolverhampton","Postcode Area"
+"AreaCode","GB","YO","York","Postcode Area"
+"AreaCode","GB","ZE","Lerwick","Postcode Area"
+"AreaCode","GR","01","Aitolias Kai Akarnanias","Province"
+"AreaCode","GR","03","Voiotia","Province"
+"AreaCode","GR","04","Eivoias","Province"
+"AreaCode","GR","05","Evritania","Province"
+"AreaCode","GR","06","Fthiotida","Province"
+"AreaCode","GR","07","Fokida","Province"
+"AreaCode","GR","11","Argolidos","Province"
+"AreaCode","GR","12","Arkadias","Province"
+"AreaCode","GR","13","Ahaia","Province"
+"AreaCode","GR","14","Ilia","Province"
+"AreaCode","GR","15","Korinthos","Province"
+"AreaCode","GR","16","Lakonia","Province"
+"AreaCode","GR","17","Messinia","Province"
+"AreaCode","GR","21","Zakinthos","Province"
+"AreaCode","GR","22","Kerkira (Corfu)","Province"
+"AreaCode","GR","23","Kefallonia","Province"
+"AreaCode","GR","24","Lefkada","Province"
+"AreaCode","GR","31","Arta","Province"
+"AreaCode","GR","32","Thesprotia","Province"
+"AreaCode","GR","33","Ioannina","Province"
+"AreaCode","GR","34","Preveza","Province"
+"AreaCode","GR","41","Karditsa","Province"
+"AreaCode","GR","42","Larissa","Province"
+"AreaCode","GR","43","Magnisias","Province"
+"AreaCode","GR","44","Trikala","Province"
+"AreaCode","GR","51","Grevena","Province"
+"AreaCode","GR","52","Drama","Province"
+"AreaCode","GR","53","Imathia","Province"
+"AreaCode","GR","54","Thessaloniki","Province"
+"AreaCode","GR","55","Kavala","Province"
+"AreaCode","GR","56","Kastoria","Province"
+"AreaCode","GR","57","Kilkis","Province"
+"AreaCode","GR","58","Kozani","Province"
+"AreaCode","GR","59","Pela","Province"
+"AreaCode","GR","61","Pieria","Province"
+"AreaCode","GR","62","Seres","Province"
+"AreaCode","GR","63","Florina","Province"
+"AreaCode","GR","64","Halkida","Province"
+"AreaCode","GR","65","Agion Opos","Province"
+"AreaCode","GR","71","Evros","Province"
+"AreaCode","GR","72","Xanthi","Province"
+"AreaCode","GR","73","Rodopi","Province"
+"AreaCode","GR","81","Dodekanissa (Dodecanese)","Province"
+"AreaCode","GR","82","Kiklades (Cyclades)","Province"
+"AreaCode","GR","83","Lesvos","Province"
+"AreaCode","GR","84","Samos","Province"
+"AreaCode","GR","85","Hios","Province"
+"AreaCode","GR","91","Iraklio","Province"
+"AreaCode","GR","92","Lasithioi","Province"
+"AreaCode","GR","93","Rethimno","Province"
+"AreaCode","GR","94","Hania","Province"
+"AreaCode","GR","A1","Athina (Athens)","Province"
+"AreaCode","GR","A2","Anatoliki Attiki","Province"
+"AreaCode","GR","A3","Ditiki Attiki","Province"
+"AreaCode","GR","A4","Peiria","Province"
+"AreaCode","HT","1","Artibonite","Province"
+"AreaCode","HT","2","Centre","Province"
+"AreaCode","HT","3","Grand' Anse","Province"
+"AreaCode","HT","4","Nord","Province"
+"AreaCode","HT","5","Nord-Est","Province"
+"AreaCode","HT","6","Nord-Ouest","Province"
+"AreaCode","HT","7","Ouest","Province"
+"AreaCode","HT","8","Sud","Province"
+"AreaCode","HT","9","Sud-Est","Province"
+"AreaCode","ID","11","Nanggroe Aceh Darussalam","Province"
+"AreaCode","ID","12","Sumatera Utara","Province"
+"AreaCode","ID","13","Sumatera Barat","Province"
+"AreaCode","ID","14","Riau","Province"
+"AreaCode","ID","15","Jambi","Province"
+"AreaCode","ID","16","Sumatera Selatan","Province"
+"AreaCode","ID","17","Bengkulu","Province"
+"AreaCode","ID","18","Lampung","Province"
+"AreaCode","ID","19","Kepulauan Bangka Belitung","Province"
+"AreaCode","ID","21","Kepulauan Riau","Province"
+"AreaCode","ID","31","DKI Jakarta","Province"
+"AreaCode","ID","32","Jawa Barat","Province"
+"AreaCode","ID","33","Jawa Tengah","Province"
+"AreaCode","ID","34","DI Yogyakarta","Province"
+"AreaCode","ID","35","Jawa Timur","Province"
+"AreaCode","ID","36","Banten","Province"
+"AreaCode","ID","51","Bali","Province"
+"AreaCode","ID","52","Nusa Tenggara Barat","Province"
+"AreaCode","ID","53","Nusa Tenggara Timur","Province"
+"AreaCode","ID","61","Kalimantan Barat","Province"
+"AreaCode","ID","62","Kalimantan Tengah","Province"
+"AreaCode","ID","63","Kalimantan Selatan","Province"
+"AreaCode","ID","64","Kalimantan Timur","Province"
+"AreaCode","ID","71","Sulawesi Utara","Province"
+"AreaCode","ID","72","Sulawesi Tengah","Province"
+"AreaCode","ID","73","Sulawesi Selatan","Province"
+"AreaCode","ID","74","Sulawesi Tenggara","Province"
+"AreaCode","ID","75","Gorontalo","Province"
+"AreaCode","ID","76","Sulawesi Barat","Province"
+"AreaCode","ID","81","Maluku","Province"
+"AreaCode","ID","82","Maluku Utara","Province"
+"AreaCode","ID","91","Papua Barat","Province"
+"AreaCode","ID","94","Papua","Province"
+"AreaCode","IE","01","Carlow","County/Sector"
+"AreaCode","IE","02","Dublin County Borough","County/Sector"
+"AreaCode","IE","03","South Dublin","County/Sector"
+"AreaCode","IE","04","Fingal","County/Sector"
+"AreaCode","IE","05","Dun Laoghaire-Rathdown","County/Sector"
+"AreaCode","IE","06","Kildare","County/Sector"
+"AreaCode","IE","07","Kilkenny","County/Sector"
+"AreaCode","IE","08","Laoighis","County/Sector"
+"AreaCode","IE","09","Longford","County/Sector"
+"AreaCode","IE","10","Louth","County/Sector"
+"AreaCode","IE","11","Meath","County/Sector"
+"AreaCode","IE","12","Offaly","County/Sector"
+"AreaCode","IE","13","Westmeath","County/Sector"
+"AreaCode","IE","14","Wexford","County/Sector"
+"AreaCode","IE","15","Wicklow","County/Sector"
+"AreaCode","IE","16","Clare","County/Sector"
+"AreaCode","IE","18","Cork County Borough","County/Sector"
+"AreaCode","IE","19","Cork","County/Sector"
+"AreaCode","IE","20","Kerry","County/Sector"
+"AreaCode","IE","22","Limerick County Borough","County/Sector"
+"AreaCode","IE","23","Limerick","County/Sector"
+"AreaCode","IE","24","Tipperary North Riding","County/Sector"
+"AreaCode","IE","25","Tipperay South Riding","County/Sector"
+"AreaCode","IE","27","Waterford County Borough","County/Sector"
+"AreaCode","IE","28","Waterford","County/Sector"
+"AreaCode","IE","29","Galway","County/Sector"
+"AreaCode","IE","30","Leitrim","County/Sector"
+"AreaCode","IE","31","Mayo","County/Sector"
+"AreaCode","IE","32","Roscommon","County/Sector"
+"AreaCode","IE","33","Sligo","County/Sector"
+"AreaCode","IE","34","Cavan","County/Sector"
+"AreaCode","IE","35","Donegal","County/Sector"
+"AreaCode","IE","36","Monaghan","County/Sector"
+"AreaCode","IE","37","Galway County Borough","County/Sector"
+"AreaCode","IL","01","Akko","District"
+"AreaCode","IL","02","Ashqelon","District"
+"AreaCode","IL","03","Beer Sheva","District"
+"AreaCode","IL","04","Gaza Area","District"
+"AreaCode","IL","05","Golan","District"
+"AreaCode","IL","06","Hadera","District"
+"AreaCode","IL","07","Haifa","District"
+"AreaCode","IL","08","Jericho","District"
+"AreaCode","IL","09","Jerusalem","District"
+"AreaCode","IL","10","Kinneret","District"
+"AreaCode","IL","11","Petah Tiqwa","District"
+"AreaCode","IL","12","Ramla","District"
+"AreaCode","IL","13","Rehovot","District"
+"AreaCode","IL","14","Sharon","District"
+"AreaCode","IL","15","Tel Aviv","District"
+"AreaCode","IL","16","Yizreel","District"
+"AreaCode","IL","17","Zefat","District"
+"AreaCode","IT","001","Torino","Province"
+"AreaCode","IT","002","Vercelli","Province"
+"AreaCode","IT","003","Novara","Province"
+"AreaCode","IT","004","Cuneo","Province"
+"AreaCode","IT","005","Asti","Province"
+"AreaCode","IT","006","Alessandria","Province"
+"AreaCode","IT","007","Valle dAosta","Province"
+"AreaCode","IT","008","Imperia","Province"
+"AreaCode","IT","009","Savona","Province"
+"AreaCode","IT","010","Genova","Province"
+"AreaCode","IT","011","La Spezia","Province"
+"AreaCode","IT","012","Varese","Province"
+"AreaCode","IT","013","Como","Province"
+"AreaCode","IT","014","Sondrio","Province"
+"AreaCode","IT","015","Milano","Province"
+"AreaCode","IT","016","Bergamo","Province"
+"AreaCode","IT","017","Brescia","Province"
+"AreaCode","IT","018","Pavia","Province"
+"AreaCode","IT","019","Cremona","Province"
+"AreaCode","IT","020","Mantova","Province"
+"AreaCode","IT","021","Bolzano","Province"
+"AreaCode","IT","022","Trento","Province"
+"AreaCode","IT","023","Verona","Province"
+"AreaCode","IT","024","Vicenza","Province"
+"AreaCode","IT","025","Belluno","Province"
+"AreaCode","IT","026","Treviso","Province"
+"AreaCode","IT","027","Venezia","Province"
+"AreaCode","IT","028","Padova","Province"
+"AreaCode","IT","029","Rovigo","Province"
+"AreaCode","IT","030","Udine","Province"
+"AreaCode","IT","031","Gorizia","Province"
+"AreaCode","IT","032","Trieste","Province"
+"AreaCode","IT","033","Piacenza","Province"
+"AreaCode","IT","034","Parma","Province"
+"AreaCode","IT","035","Reggio Emilia","Province"
+"AreaCode","IT","036","Modena","Province"
+"AreaCode","IT","037","Bologna","Province"
+"AreaCode","IT","038","Ferrara","Province"
+"AreaCode","IT","039","Ravenna","Province"
+"AreaCode","IT","040","Forli-Cesena","Province"
+"AreaCode","IT","041","Pesaro E Urbino","Province"
+"AreaCode","IT","042","Ancona","Province"
+"AreaCode","IT","043","Macerata","Province"
+"AreaCode","IT","044","Ascoli Piceno","Province"
+"AreaCode","IT","045","Massa Carrara","Province"
+"AreaCode","IT","046","Lucca","Province"
+"AreaCode","IT","047","Pistoia","Province"
+"AreaCode","IT","048","Firenze","Province"
+"AreaCode","IT","049","Livorno","Province"
+"AreaCode","IT","050","Pisa","Province"
+"AreaCode","IT","051","Arezzo","Province"
+"AreaCode","IT","052","Siena","Province"
+"AreaCode","IT","053","Grosseto","Province"
+"AreaCode","IT","054","Perugia","Province"
+"AreaCode","IT","055","Terni","Province"
+"AreaCode","IT","056","Viterbo","Province"
+"AreaCode","IT","057","Rieti","Province"
+"AreaCode","IT","058","Roma","Province"
+"AreaCode","IT","059","Latina","Province"
+"AreaCode","IT","060","Frosinone","Province"
+"AreaCode","IT","061","Caserta","Province"
+"AreaCode","IT","062","Benevento","Province"
+"AreaCode","IT","063","Napoli","Province"
+"AreaCode","IT","064","Avellino","Province"
+"AreaCode","IT","065","Salerno","Province"
+"AreaCode","IT","066","L'Aquila","Province"
+"AreaCode","IT","067","Teramo","Province"
+"AreaCode","IT","068","Pescara","Province"
+"AreaCode","IT","069","Chieti","Province"
+"AreaCode","IT","070","Campobasso","Province"
+"AreaCode","IT","071","Foggia","Province"
+"AreaCode","IT","072","Bari","Province"
+"AreaCode","IT","073","Taranto","Province"
+"AreaCode","IT","074","Brindisi","Province"
+"AreaCode","IT","075","Lecce","Province"
+"AreaCode","IT","076","Potenza","Province"
+"AreaCode","IT","077","Matera","Province"
+"AreaCode","IT","078","Cosenza","Province"
+"AreaCode","IT","079","Catanzaro","Province"
+"AreaCode","IT","080","Reggio Calabria","Province"
+"AreaCode","IT","081","Trapani","Province"
+"AreaCode","IT","082","Palermo","Province"
+"AreaCode","IT","083","Messina","Province"
+"AreaCode","IT","084","Agrigento","Province"
+"AreaCode","IT","085","Caltanissetta","Province"
+"AreaCode","IT","086","Enna","Province"
+"AreaCode","IT","087","Catania","Province"
+"AreaCode","IT","088","Ragusa","Province"
+"AreaCode","IT","089","Siracusa","Province"
+"AreaCode","IT","090","Sassari","Province"
+"AreaCode","IT","091","Nuoro","Province"
+"AreaCode","IT","092","Cagliari","Province"
+"AreaCode","IT","093","Pordenone","Province"
+"AreaCode","IT","094","Isernia","Province"
+"AreaCode","IT","095","Oristano","Province"
+"AreaCode","IT","096","Biella","Province"
+"AreaCode","IT","097","Lecco","Province"
+"AreaCode","IT","098","Lodi","Province"
+"AreaCode","IT","099","Rimini","Province"
+"AreaCode","IT","100","Prato","Province"
+"AreaCode","IT","101","Crotone","Province"
+"AreaCode","IT","102","Vibo Valentia","Province"
+"AreaCode","IT","103","Verbano-Cusio-Ossola","Province"
+"AreaCode","IT","104","Olbia-Tempio","Province"
+"AreaCode","IT","105","Ogliastra","Province"
+"AreaCode","IT","106","Medio Campidano","Province"
+"AreaCode","IT","107","Carbonia-Iglesias","Province"
+"AreaCode","IT","888","Citta del Vaticano","Province"
+"AreaCode","IT","999","San Marino","Province"
+"AreaCode","JM","1","Clarendon","Parish"
+"AreaCode","JM","10","St. James","Parish"
+"AreaCode","JM","11","St. Mary","Parish"
+"AreaCode","JM","12","St. Thomas","Parish"
+"AreaCode","JM","13","Trelawny","Parish"
+"AreaCode","JM","14","Westmoreland","Parish"
+"AreaCode","JM","2","Hanover","Parish"
+"AreaCode","JM","3","Kingston","Parish"
+"AreaCode","JM","4","Manchester","Parish"
+"AreaCode","JM","5","Portland","Parish"
+"AreaCode","JM","6","St. Andrew","Parish"
+"AreaCode","JM","7","St. Ann","Parish"
+"AreaCode","JM","8","St. Catherine","Parish"
+"AreaCode","JM","9","St. Elizabeth","Parish"
+"AreaCode","JP","100","Hokkaido","Prefecture"
+"AreaCode","JP","1010","Kagawa","Prefecture"
+"AreaCode","JP","1020","Tokushima","Prefecture"
+"AreaCode","JP","1030","Ehime","Prefecture"
+"AreaCode","JP","1040","Kochi","Prefecture"
+"AreaCode","JP","1110","Fukuoka","Prefecture"
+"AreaCode","JP","1120","Saga","Prefecture"
+"AreaCode","JP","1130","Nagasaki","Prefecture"
+"AreaCode","JP","1140","Kumamoto","Prefecture"
+"AreaCode","JP","1150","Oita","Prefecture"
+"AreaCode","JP","1160","Miyazaki","Prefecture"
+"AreaCode","JP","1170","Kagoshima","Prefecture"
+"AreaCode","JP","1200","Okinawa","Prefecture"
+"AreaCode","JP","210","Aomori","Prefecture"
+"AreaCode","JP","220","Akita","Prefecture"
+"AreaCode","JP","230","Yamagata","Prefecture"
+"AreaCode","JP","240","Niigata","Prefecture"
+"AreaCode","JP","310","Iwate","Prefecture"
+"AreaCode","JP","320","Miyagi","Prefecture"
+"AreaCode","JP","330","Fukushima","Prefecture"
+"AreaCode","JP","410","Gumma","Prefecture"
+"AreaCode","JP","420","Tochigi","Prefecture"
+"AreaCode","JP","430","Saitama","Prefecture"
+"AreaCode","JP","440","Ibaraki","Prefecture"
+"AreaCode","JP","510","Chiba","Prefecture"
+"AreaCode","JP","520","Tokyo","Prefecture"
+"AreaCode","JP","530","Kanagawa","Prefecture"
+"AreaCode","JP","610","Gifu","Prefecture"
+"AreaCode","JP","620","Nagano","Prefecture"
+"AreaCode","JP","630","Yamanashi","Prefecture"
+"AreaCode","JP","640","Shizuoka","Prefecture"
+"AreaCode","JP","650","Aichi","Prefecture"
+"AreaCode","JP","660","Mie","Prefecture"
+"AreaCode","JP","710","Toyama","Prefecture"
+"AreaCode","JP","720","Ishikawa","Prefecture"
+"AreaCode","JP","730","Fukui","Prefecture"
+"AreaCode","JP","810","Hyogo","Prefecture"
+"AreaCode","JP","820","Kyoto","Prefecture"
+"AreaCode","JP","830","Shiga","Prefecture"
+"AreaCode","JP","840","Osaka","Prefecture"
+"AreaCode","JP","850","Nara","Prefecture"
+"AreaCode","JP","860","Wakayama","Prefecture"
+"AreaCode","JP","910","Tottori","Prefecture"
+"AreaCode","JP","920","Okayama","Prefecture"
+"AreaCode","JP","930","Hiroshima","Prefecture"
+"AreaCode","JP","940","Shimane","Prefecture"
+"AreaCode","JP","950","Yamaguchi","Prefecture"
+"AreaCode","KR","11","Seoul","Province"
+"AreaCode","KR","21","Busan","Province"
+"AreaCode","KR","22","Daegu","Province"
+"AreaCode","KR","23","Incheon","Province"
+"AreaCode","KR","24","Gwangju","Province"
+"AreaCode","KR","25","Daejeon","Province"
+"AreaCode","KR","26","Ulsan","Province"
+"AreaCode","KR","31","Gyeonggi-do","Province"
+"AreaCode","KR","32","Gangwon-do","Province"
+"AreaCode","KR","33","Chungcheongbuk-do","Province"
+"AreaCode","KR","34","Chungcheongnam-do","Province"
+"AreaCode","KR","35","Jeollabuk-do","Province"
+"AreaCode","KR","36","Jeollanam-do","Province"
+"AreaCode","KR","37","Gyeongsangbuk-do","Province"
+"AreaCode","KR","38","Gyeongsangnam-do","Province"
+"AreaCode","KR","39","Jeju-do","Province"
+"AreaCode","KY","1","Bodden Town","District"
+"AreaCode","KY","2","East End","District"
+"AreaCode","KY","3","George Town","District"
+"AreaCode","KY","4","North Side","District"
+"AreaCode","KY","5","West Bay","District"
+"AreaCode","KY","6","Little Cayman","District"
+"AreaCode","KY","7","Cayman Brac","District"
+"AreaCode","LU","01","Luxembourg-ville","District"
+"AreaCode","LU","02","Capellen","District"
+"AreaCode","LU","03","Esch-Alzette","District"
+"AreaCode","LU","05","Mersch","District"
+"AreaCode","LU","06","Clervaux","District"
+"AreaCode","LU","07","Diekirch","District"
+"AreaCode","LU","08","Redange","District"
+"AreaCode","LU","09","Wiltz","District"
+"AreaCode","LU","10","Vianden","District"
+"AreaCode","LU","11","Echternach","District"
+"AreaCode","LU","12","Grevenmacher","District"
+"AreaCode","LU","13","Remich","District"
+"AreaCode","LU","40","Luxembourg-Campagne","District"
+"AreaCode","MX","01","Aguascalientes","State"
+"AreaCode","MX","02","Baja California","State"
+"AreaCode","MX","03","Baja California Sur","State"
+"AreaCode","MX","04","Campeche","State"
+"AreaCode","MX","05","Coahuila","State"
+"AreaCode","MX","06","Colima","State"
+"AreaCode","MX","07","Chiapas","State"
+"AreaCode","MX","08","Chihuahua","State"
+"AreaCode","MX","09","Mexico City / Distrito Federal","State"
+"AreaCode","MX","10","Durango","State"
+"AreaCode","MX","11","Guanajuato","State"
+"AreaCode","MX","12","Guerrero","State"
+"AreaCode","MX","13","Hidalgo","State"
+"AreaCode","MX","14","Jalisco","State"
+"AreaCode","MX","15","Mexico","State"
+"AreaCode","MX","16","Michoacan","State"
+"AreaCode","MX","17","Morelos","State"
+"AreaCode","MX","18","Nayarit","State"
+"AreaCode","MX","19","Nuevo Leon","State"
+"AreaCode","MX","20","Oaxaca","State"
+"AreaCode","MX","21","Puebla","State"
+"AreaCode","MX","22","Queretaro","State"
+"AreaCode","MX","23","Quintana Roo","State"
+"AreaCode","MX","24","San Luis Potosi","State"
+"AreaCode","MX","25","Sinaloa","State"
+"AreaCode","MX","26","Sonora","State"
+"AreaCode","MX","27","Tabasco","State"
+"AreaCode","MX","28","Tamaulipas","State"
+"AreaCode","MX","29","Tlaxcala","State"
+"AreaCode","MX","30","Veracruz","State"
+"AreaCode","MX","31","Yucatan","State"
+"AreaCode","MX","32","Zacatecas","State"
+"AreaCode","NL","20","Groningen","Province"
+"AreaCode","NL","21","Friesland","Province"
+"AreaCode","NL","22","Drenthe","Province"
+"AreaCode","NL","23","Overijssel","Province"
+"AreaCode","NL","24","Flevoland","Province"
+"AreaCode","NL","25","Gelderland","Province"
+"AreaCode","NL","26","Utrecht","Province"
+"AreaCode","NL","27","Noord-Holland","Province"
+"AreaCode","NL","28","Zuid-Holland","Province"
+"AreaCode","NL","29","Zeeland","Province"
+"AreaCode","NL","30","Noord-Brabant","Province"
+"AreaCode","NL","31","Limburg","Province"
+"AreaCode","NO","01","Østfold","District"
+"AreaCode","NO","02","Akershus","District"
+"AreaCode","NO","03","Oslo","District"
+"AreaCode","NO","04","Hedmark","District"
+"AreaCode","NO","05","Oppland","District"
+"AreaCode","NO","06","Buskerud","District"
+"AreaCode","NO","07","Vestfold","District"
+"AreaCode","NO","08","Telemark","District"
+"AreaCode","NO","09","Aust-Agder","District"
+"AreaCode","NO","10","Vest-Agder","District"
+"AreaCode","NO","11","Rogaland","District"
+"AreaCode","NO","12","Hordaland","District"
+"AreaCode","NO","14","Sogn og Fjordane","District"
+"AreaCode","NO","15","Møre og Romsdal","District"
+"AreaCode","NO","16","Sør-Trøndelag","District"
+"AreaCode","NO","17","Nord-Trøndelag","District"
+"AreaCode","NO","18","Nordland","District"
+"AreaCode","NO","19","Troms","District"
+"AreaCode","NO","20","Finnmark","District"
+"AreaCode","NO","SJ","Svalbard and Jan Mayen Islands","District"
+"AreaCode","PE","01","Amazonas","State"
+"AreaCode","PE","02","Ancash","State"
+"AreaCode","PE","03","Apurímac","State"
+"AreaCode","PE","04","Arequipa","State"
+"AreaCode","PE","05","Ayacucho","State"
+"AreaCode","PE","06","Cajamarca","State"
+"AreaCode","PE","07","Callao","State"
+"AreaCode","PE","08","Cusco","State"
+"AreaCode","PE","09","Huancavelica","State"
+"AreaCode","PE","10","Huánuco","State"
+"AreaCode","PE","11","Ica","State"
+"AreaCode","PE","12","Junín","State"
+"AreaCode","PE","13","La Libertad","State"
+"AreaCode","PE","14","Lambayeque","State"
+"AreaCode","PE","15","Lima","State"
+"AreaCode","PE","16","Loreto","State"
+"AreaCode","PE","17","Madre de Dios","State"
+"AreaCode","PE","18","Moquegua","State"
+"AreaCode","PE","19","Pasco","State"
+"AreaCode","PE","20","Piura","State"
+"AreaCode","PE","21","Puno","State"
+"AreaCode","PE","22","San Martín","State"
+"AreaCode","PE","23","Tacna","State"
+"AreaCode","PE","24","Tumbes","State"
+"AreaCode","PE","25","Ucayali","State"
+"AreaCode","PH","01","Ilocos Region","Region/State"
+"AreaCode","PH","02","Cagayan Valley","Region/State"
+"AreaCode","PH","03","Central Luzon","Region/State"
+"AreaCode","PH","04","Calabarzon","Region/State"
+"AreaCode","PH","05","Bicol Region","Region/State"
+"AreaCode","PH","06","Western Visayas","Region/State"
+"AreaCode","PH","07","Central Visayas","Region/State"
+"AreaCode","PH","08","Eastern Visayas","Region/State"
+"AreaCode","PH","09","Zamboanga Peninsula","Region/State"
+"AreaCode","PH","10","Northern Mindanao","Region/State"
+"AreaCode","PH","11","Davao Region","Region/State"
+"AreaCode","PH","12","Soccsksargen","Region/State"
+"AreaCode","PH","13","National Capital Region (NCR)","Region/State"
+"AreaCode","PH","14","Cordillera Administrative Region (CAR)","Region/State"
+"AreaCode","PH","15","Autonomous Region In Muslim Mindanao (ARMM)","Region/State"
+"AreaCode","PH","16","Caraga","Region/State"
+"AreaCode","PH","17","Mimaropa","Region/State"
+"AreaCode","PR","1","Adjuntas","Municipality"
+"AreaCode","PR","101","Morovis","Municipality"
+"AreaCode","PR","103","Naguabo","Municipality"
+"AreaCode","PR","105","Naranjito","Municipality"
+"AreaCode","PR","107","Orocovis","Municipality"
+"AreaCode","PR","109","Patillas","Municipality"
+"AreaCode","PR","11","Anasco","Municipality"
+"AreaCode","PR","111","Penuelas","Municipality"
+"AreaCode","PR","113","Ponce","Municipality"
+"AreaCode","PR","115","Quebradillas","Municipality"
+"AreaCode","PR","117","Rincon","Municipality"
+"AreaCode","PR","119","Rio Grande","Municipality"
+"AreaCode","PR","121","Sabana Grande","Municipality"
+"AreaCode","PR","123","Salinas","Municipality"
+"AreaCode","PR","125","San German","Municipality"
+"AreaCode","PR","127","San Juan","Municipality"
+"AreaCode","PR","129","San Lorenzo","Municipality"
+"AreaCode","PR","13","Arecibo","Municipality"
+"AreaCode","PR","131","San Sebastian","Municipality"
+"AreaCode","PR","133","Santa Isabel","Municipality"
+"AreaCode","PR","135","Toa Alta","Municipality"
+"AreaCode","PR","137","Toa Baja","Municipality"
+"AreaCode","PR","139","Trujillo Alto","Municipality"
+"AreaCode","PR","141","Utuado","Municipality"
+"AreaCode","PR","143","Vega Alta","Municipality"
+"AreaCode","PR","145","Vega Baja","Municipality"
+"AreaCode","PR","147","Vieques","Municipality"
+"AreaCode","PR","149","Villalba","Municipality"
+"AreaCode","PR","15","Arroyo","Municipality"
+"AreaCode","PR","151","Yabucoa","Municipality"
+"AreaCode","PR","153","Yauco","Municipality"
+"AreaCode","PR","17","Barceloneta","Municipality"
+"AreaCode","PR","19","Barranquitas","Municipality"
+"AreaCode","PR","21","Bayamon","Municipality"
+"AreaCode","PR","23","Cabo Rojo","Municipality"
+"AreaCode","PR","25","Caguas","Municipality"
+"AreaCode","PR","27","Camuy","Municipality"
+"AreaCode","PR","29","Canovanas","Municipality"
+"AreaCode","PR","3","Aguada","Municipality"
+"AreaCode","PR","31","Carolina","Municipality"
+"AreaCode","PR","33","Catano","Municipality"
+"AreaCode","PR","35","Cayey","Municipality"
+"AreaCode","PR","37","Ceiba","Municipality"
+"AreaCode","PR","39","Ciales","Municipality"
+"AreaCode","PR","41","Cidra","Municipality"
+"AreaCode","PR","43","Coamo","Municipality"
+"AreaCode","PR","45","Comerio","Municipality"
+"AreaCode","PR","47","Corozal","Municipality"
+"AreaCode","PR","49","Culebra","Municipality"
+"AreaCode","PR","5","Aguadilla","Municipality"
+"AreaCode","PR","51","Dorado","Municipality"
+"AreaCode","PR","53","Fajardo","Municipality"
+"AreaCode","PR","54","Florida","Municipality"
+"AreaCode","PR","55","Guanica","Municipality"
+"AreaCode","PR","57","Guayama","Municipality"
+"AreaCode","PR","59","Guayanilla","Municipality"
+"AreaCode","PR","61","Guaynabo","Municipality"
+"AreaCode","PR","63","Gurabo","Municipality"
+"AreaCode","PR","65","Hatillo","Municipality"
+"AreaCode","PR","67","Hormigueros","Municipality"
+"AreaCode","PR","69","Humacao","Municipality"
+"AreaCode","PR","7","Aguas Buenas","Municipality"
+"AreaCode","PR","71","Isabela","Municipality"
+"AreaCode","PR","73","Jayuya","Municipality"
+"AreaCode","PR","75","Juana Diaz","Municipality"
+"AreaCode","PR","77","Juncos","Municipality"
+"AreaCode","PR","79","Lajas","Municipality"
+"AreaCode","PR","81","Lares","Municipality"
+"AreaCode","PR","83","Las Marias","Municipality"
+"AreaCode","PR","85","Las Piedras","Municipality"
+"AreaCode","PR","87","Loiza","Municipality"
+"AreaCode","PR","89","Luquillo","Municipality"
+"AreaCode","PR","9","Aibonito","Municipality"
+"AreaCode","PR","91","Manati","Municipality"
+"AreaCode","PR","93","Maricao","Municipality"
+"AreaCode","PR","95","Maunabo","Municipality"
+"AreaCode","PR","97","Mayaguez","Municipality"
+"AreaCode","PR","99","Moca","Municipality"
+"AreaCode","PT","01","Aveiro","District"
+"AreaCode","PT","02","Beja","District"
+"AreaCode","PT","03","Braga","District"
+"AreaCode","PT","04","Braganta","District"
+"AreaCode","PT","05","Castelo Branco","District"
+"AreaCode","PT","06","Coimbra","District"
+"AreaCode","PT","07","Évora","District"
+"AreaCode","PT","08","Faro","District"
+"AreaCode","PT","09","Guarda","District"
+"AreaCode","PT","10","Leiria","District"
+"AreaCode","PT","11","Lisboa","District"
+"AreaCode","PT","12","Portalegre","District"
+"AreaCode","PT","13","Porto","District"
+"AreaCode","PT","14","SantarTm","District"
+"AreaCode","PT","15","Setúbal","District"
+"AreaCode","PT","16","Viana do Castelo","District"
+"AreaCode","PT","17","Vila Real","District"
+"AreaCode","PT","18","Viseu","District"
+"AreaCode","PT","31","Ilha da Madeira","District"
+"AreaCode","PT","32","Ilha de Porto Santo","District"
+"AreaCode","PT","41","Ilha de Santa Maria","District"
+"AreaCode","PT","42","Ilha de Spo Miguel","District"
+"AreaCode","PT","43","Ilha Terceira","District"
+"AreaCode","PT","44","Ilha da Graciosa","District"
+"AreaCode","PT","45","Ilha de Spo Jorge","District"
+"AreaCode","PT","46","Ilha do Pico","District"
+"AreaCode","PT","47","Ilha do Faial","District"
+"AreaCode","PT","48","Ilha das Flores","District"
+"AreaCode","PT","49","Ilha do Corvo","District"
+"AreaCode","SE","01","Stockholms län","Province"
+"AreaCode","SE","02","Uppsala län","Province"
+"AreaCode","SE","04","Södermanlands län","Province"
+"AreaCode","SE","05","Östergötlands län","Province"
+"AreaCode","SE","06","Jönköpings län","Province"
+"AreaCode","SE","07","Kronobergs län","Province"
+"AreaCode","SE","08","Kalmar län","Province"
+"AreaCode","SE","09","Gotlands län","Province"
+"AreaCode","SE","10","Blekinge län","Province"
+"AreaCode","SE","12","Skåne län","Province"
+"AreaCode","SE","13","Hallands län","Province"
+"AreaCode","SE","14","Västra Götalands län","Province"
+"AreaCode","SE","17","Värmlands län","Province"
+"AreaCode","SE","18","Örebro län","Province"
+"AreaCode","SE","19","Västmanlands län","Province"
+"AreaCode","SE","20","Dalarnas län","Province"
+"AreaCode","SE","21","Gävleborgs län","Province"
+"AreaCode","SE","22","Västernorrlands län","Province"
+"AreaCode","SE","23","Jämtlands län","Province"
+"AreaCode","SE","24","Västerbottens län","Province"
+"AreaCode","SE","25","Norrbottens län","Province"
+"AreaCode","TC","1","Caicos","District"
+"AreaCode","TC","2","Grand Turk Island","District"
+"AreaCode","TC","3","Salt Cay","District"
+"AreaCode","TR","01","Adana","Province"
+"AreaCode","TR","02","Adýyaman","Province"
+"AreaCode","TR","03","Afyonkarahisar","Province"
+"AreaCode","TR","04","Aðrý","Province"
+"AreaCode","TR","05","Amasya","Province"
+"AreaCode","TR","06","Ankara","Province"
+"AreaCode","TR","07","Antalya","Province"
+"AreaCode","TR","08","Artvin","Province"
+"AreaCode","TR","09","Aydýn","Province"
+"AreaCode","TR","10","Balýkesir","Province"
+"AreaCode","TR","11","Bilecik","Province"
+"AreaCode","TR","12","Bingöl","Province"
+"AreaCode","TR","13","Bitlis","Province"
+"AreaCode","TR","14","Bolu","Province"
+"AreaCode","TR","15","Burdur","Province"
+"AreaCode","TR","16","Bursa","Province"
+"AreaCode","TR","17","Çanakkale","Province"
+"AreaCode","TR","18","Çankýrý","Province"
+"AreaCode","TR","19","Çorum","Province"
+"AreaCode","TR","20","Denizli","Province"
+"AreaCode","TR","21","Diyarbakýr","Province"
+"AreaCode","TR","22","Edirne","Province"
+"AreaCode","TR","23","Elazýð","Province"
+"AreaCode","TR","24","Erzincan","Province"
+"AreaCode","TR","25","Erzurum","Province"
+"AreaCode","TR","26","Eskiþehir","Province"
+"AreaCode","TR","27","Gaziantep","Province"
+"AreaCode","TR","28","Giresun","Province"
+"AreaCode","TR","29","Gümüþhane","Province"
+"AreaCode","TR","30","Hakkari","Province"
+"AreaCode","TR","31","Hatay","Province"
+"AreaCode","TR","32","Isparta","Province"
+"AreaCode","TR","33","Mersin","Province"
+"AreaCode","TR","34","Ýstanbul","Province"
+"AreaCode","TR","35","Ýzmir","Province"
+"AreaCode","TR","36","Kars","Province"
+"AreaCode","TR","37","Kastamonu","Province"
+"AreaCode","TR","38","Kayseri","Province"
+"AreaCode","TR","39","Kýrklareli","Province"
+"AreaCode","TR","40","Kýrþehir","Province"
+"AreaCode","TR","41","Kocaeli","Province"
+"AreaCode","TR","42","Konya","Province"
+"AreaCode","TR","43","Kütahya","Province"
+"AreaCode","TR","44","Malatya","Province"
+"AreaCode","TR","45","Manisa","Province"
+"AreaCode","TR","46","Kahramanmaraþ","Province"
+"AreaCode","TR","47","Mardin","Province"
+"AreaCode","TR","48","Muðla","Province"
+"AreaCode","TR","49","Muþ","Province"
+"AreaCode","TR","50","Nevþehir","Province"
+"AreaCode","TR","51","Niðde","Province"
+"AreaCode","TR","52","Ordu","Province"
+"AreaCode","TR","53","Rize","Province"
+"AreaCode","TR","54","Sakarya","Province"
+"AreaCode","TR","55","Samsun","Province"
+"AreaCode","TR","56","Siirt","Province"
+"AreaCode","TR","57","Sinop","Province"
+"AreaCode","TR","58","Sivas","Province"
+"AreaCode","TR","59","Tekirdað","Province"
+"AreaCode","TR","60","Tokat","Province"
+"AreaCode","TR","61","Trabzon","Province"
+"AreaCode","TR","62","Tunceli","Province"
+"AreaCode","TR","63","Þanlýurfa","Province"
+"AreaCode","TR","64","Uþak","Province"
+"AreaCode","TR","65","Van","Province"
+"AreaCode","TR","66","Yozgat","Province"
+"AreaCode","TR","67","Zonguldak","Province"
+"AreaCode","TR","68","Aksaray","Province"
+"AreaCode","TR","69","Bayburt","Province"
+"AreaCode","TR","70","Karaman","Province"
+"AreaCode","TR","71","Kýrýkkale","Province"
+"AreaCode","TR","72","Batman","Province"
+"AreaCode","TR","73","Þýrnak","Province"
+"AreaCode","TR","74","Bartýn","Province"
+"AreaCode","TR","75","Ardahan","Province"
+"AreaCode","TR","76","Iðdýr","Province"
+"AreaCode","TR","77","Yalova","Province"
+"AreaCode","TR","78","Karabük","Province"
+"AreaCode","TR","79","Kilis","Province"
+"AreaCode","TR","80","Osmaniye","Province"
+"AreaCode","TR","81","Düzce","Province"
+"AreaCode","TT","1","Caroni","County/Sector"
+"AreaCode","TT","2","Mayaro","County/Sector"
+"AreaCode","TT","3","Nariva","County/Sector"
+"AreaCode","TT","4","St. Andrew","County/Sector"
+"AreaCode","TT","5","St. David","County/Sector"
+"AreaCode","TT","6","St. George","County/Sector"
+"AreaCode","TT","7","St. Patrick","County/Sector"
+"AreaCode","TT","8","Victoria","County/Sector"
+"AreaCode","TT","9","Tobago","County/Sector"
+"AreaCode","TW","01","Taipei County","County/Sector"
+"AreaCode","TW","02","Yilan County","County/Sector"
+"AreaCode","TW","03","Taoyuan County","County/Sector"
+"AreaCode","TW","04","Hsinchu County","County/Sector"
+"AreaCode","TW","05","Miaoli County","County/Sector"
+"AreaCode","TW","06","Taichung County","County/Sector"
+"AreaCode","TW","07","Changhua County","County/Sector"
+"AreaCode","TW","08","Nantou County","County/Sector"
+"AreaCode","TW","09","Yunlin County","County/Sector"
+"AreaCode","TW","10","Chiayi County","County/Sector"
+"AreaCode","TW","11","Tainan County","County/Sector"
+"AreaCode","TW","12","Kaohsiung County","County/Sector"
+"AreaCode","TW","13","Pingtung County","County/Sector"
+"AreaCode","TW","14","Taitung County","County/Sector"
+"AreaCode","TW","15","Hualien County","County/Sector"
+"AreaCode","TW","16","Penghu County","County/Sector"
+"AreaCode","TW","17","Keelung City","County/Sector"
+"AreaCode","TW","18","Hsinchu City","County/Sector"
+"AreaCode","TW","19","Taichung City","County/Sector"
+"AreaCode","TW","20","Chiayi City","County/Sector"
+"AreaCode","TW","21","Tainan City","County/Sector"
+"AreaCode","TW","63","Taipei City","County/Sector"
+"AreaCode","TW","64","Kaohsiung City","County/Sector"
+"AreaCode","TW","71","Lienchiang County","County/Sector"
+"AreaCode","TW","72","Kinmen County","County/Sector"
+"AreaCode","US","AK","Alaska","State"
+"AreaCode","US","AL","Alabama","State"
+"AreaCode","US","AR","Arkansas","State"
+"AreaCode","US","AZ","Arizona","State"
+"AreaCode","US","CA","California","State"
+"AreaCode","US","CO","Colorado","State"
+"AreaCode","US","CT","Connecticut","State"
+"AreaCode","US","DC","Dist of Columbia","State"
+"AreaCode","US","DE","Delaware","State"
+"AreaCode","US","FL","Florida","State"
+"AreaCode","US","GA","Georgia","State"
+"AreaCode","US","HI","Hawaii","State"
+"AreaCode","US","IA","Iowa","State"
+"AreaCode","US","ID","Idaho","State"
+"AreaCode","US","IL","Illinois","State"
+"AreaCode","US","IN","Indiana","State"
+"AreaCode","US","KS","Kansas","State"
+"AreaCode","US","KY","Kentucky","State"
+"AreaCode","US","LA","Louisiana","State"
+"AreaCode","US","MA","Massachusetts","State"
+"AreaCode","US","MD","Maryland","State"
+"AreaCode","US","ME","Maine","State"
+"AreaCode","US","MI","Michigan","State"
+"AreaCode","US","MN","Minnesota","State"
+"AreaCode","US","MO","Missouri","State"
+"AreaCode","US","MS","Mississippi","State"
+"AreaCode","US","MT","Montana","State"
+"AreaCode","US","NC","North Carolina","State"
+"AreaCode","US","ND","North Dakota","State"
+"AreaCode","US","NE","Nebraska","State"
+"AreaCode","US","NH","New Hampshire","State"
+"AreaCode","US","NJ","New Jersey","State"
+"AreaCode","US","NM","New Mexico","State"
+"AreaCode","US","NV","Nevada","State"
+"AreaCode","US","NY","New York","State"
+"AreaCode","US","OH","Ohio","State"
+"AreaCode","US","OK","Oklahoma","State"
+"AreaCode","US","OR","Oregon","State"
+"AreaCode","US","PA","Pennsylvania","State"
+"AreaCode","US","RI","Rhode Island","State"
+"AreaCode","US","SC","South Carolina","State"
+"AreaCode","US","SD","South Dakota","State"
+"AreaCode","US","TN","Tennessee","State"
+"AreaCode","US","TX","Texas","State"
+"AreaCode","US","UT","Utah","State"
+"AreaCode","US","VA","Virginia","State"
+"AreaCode","US","VT","Vermont","State"
+"AreaCode","US","WA","Washington","State"
+"AreaCode","US","WI","Wisconsin","State"
+"AreaCode","US","WV","West Virginia","State"
+"AreaCode","US","WY","Wyoming","State"
+"AreaCode","VC","1","Saint Vincent","District"
+"AreaCode","VC","2","The Grenadines","District"
+"AreaCode","VE","01","Distrito Capital","State"
+"AreaCode","VE","02","Amazonas","State"
+"AreaCode","VE","03","Anzoátegui","State"
+"AreaCode","VE","04","Apure","State"
+"AreaCode","VE","05","Aragua","State"
+"AreaCode","VE","06","Barinas","State"
+"AreaCode","VE","07","Bolívar","State"
+"AreaCode","VE","08","Carabobo","State"
+"AreaCode","VE","09","Cojedes","State"
+"AreaCode","VE","10","Delta Amacuro","State"
+"AreaCode","VE","11","Falcón","State"
+"AreaCode","VE","12","Guárico","State"
+"AreaCode","VE","13","Lara","State"
+"AreaCode","VE","14","Mérida","State"
+"AreaCode","VE","15","Miranda","State"
+"AreaCode","VE","16","Monagas","State"
+"AreaCode","VE","17","Nueva Esparta","State"
+"AreaCode","VE","18","Portuguesa","State"
+"AreaCode","VE","19","Sucre","State"
+"AreaCode","VE","20","Táchira","State"
+"AreaCode","VE","21","Trujillo","State"
+"AreaCode","VE","22","Yaracuy","State"
+"AreaCode","VE","23","Zulia","State"
+"AreaCode","VE","24","Vargas","State"
+"AreaCode","VG","1","Anegada","District"
+"AreaCode","VG","2","Cooper Island","District"
+"AreaCode","VG","3","Great Camanoe","District"
+"AreaCode","VG","4","Jost van Dyke","District"
+"AreaCode","VG","5","Peter Island","District"
+"AreaCode","VG","6","Tortola","District"
+"AreaCode","VG","7","Virgin Gorda","District"
+"AreaCode","VI","10","St. Croix","District"
+"AreaCode","VI","20","St. John","District"
+"AreaCode","VI","30","St. Thomas","District"

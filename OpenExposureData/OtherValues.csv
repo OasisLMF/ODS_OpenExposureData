@@ -1,609 +1,609 @@
-Category,Code,CodeDescription,Notes
-Anchorage,0,Unknown,N/A
-Anchorage,1,Anchored,N/A
-Anchorage,2,Unanchored,N/A
-AddressMatch,0,Ungeocoded,N/A
-AddressMatch,1,User Coordinate,N/A
-AddressMatch,10,CRESTA (low res),N/A
-AddressMatch,2,Exact Address - Building,N/A
-AddressMatch,20,Country,N/A
-AddressMatch,3,Parcel,N/A
-AddressMatch,4,Interpolated Street,N/A
-AddressMatch,5,High Resolution Postcode,N/A
-AddressMatch,6,Block Group / Streetname,N/A
-AddressMatch,7,Postal Code,N/A
-AddressMatch,8,City Centroid,N/A
-AddressMatch,9,Area,N/A
-AppurtenantStructure,0,Unknown / Default,N/A
-AppurtenantStructure,1,Detached garage,N/A
-AppurtenantStructure,10,Pole mount Solar Panels,N/A
-AppurtenantStructure,11,Car Port,N/A
-AppurtenantStructure,12,Car Port with Storage,N/A
-AppurtenantStructure,2,Pool enclosures,N/A
-AppurtenantStructure,3,Shed,N/A
-AppurtenantStructure,4,Masonry boundary wall,N/A
-AppurtenantStructure,5,Other fences,N/A
-AppurtenantStructure,6,No appurtenant structures,N/A
-AppurtenantStructure,7,No pool enclosures,N/A
-AppurtenantStructure,8,Detached screen enclosure / Lanai,N/A
-AppurtenantStructure,9,Standard ground mount Solar Panels,N/A
-AttachmentBasis,LO,Losses Occurring During,N/A
-AttachmentBasis,RA,Risk Attaching,N/A
-BackUpFreq,0,Cadence of back-up of the main servers  is Unknown,Main server back-up frequency (technographic data for cyber exposures)
-BackUpFreq,1,Cadence of back-up of the main servers  is Never,Main server back-up frequency (technographic data for cyber exposures)
-BackUpFreq,2,Cadence of back-up of the main servers  is Daily,Main server back-up frequency (technographic data for cyber exposures)
-BackUpFreq,3,Cadence of back-up of the main servers  is Weekly,Main server back-up frequency (technographic data for cyber exposures)
-BackUpFreq,4,Cadence of back-up of the main servers  is Monthly,Main server back-up frequency (technographic data for cyber exposures)
-BackUpFreq,5,Cadence of back-up of the main servers  is Annually,Main server back-up frequency (technographic data for cyber exposures)
-BackUpFreq,6,Cadence of back-up of the main servers  is Ad-hoc,Main server back-up frequency (technographic data for cyber exposures)
-Basement,0,Unknown / default,N/A
-Basement,1,Unfinished basement,N/A
-Basement,2,Finished basement (100%),N/A
-Basement,3,Mostly finished basement (> 50%),N/A
-Basement,4,Partially finished basement (<= 50%),N/A
-Basement,5,Basement of unknown finish percent,N/A
-Basement,6,No basement,N/A
-BIFloodVuln,0,Unknown,N/A
-BIFloodVuln,1,No Susceptibility,N/A
-BIFloodVuln,2,Very Low,N/A
-BIFloodVuln,3,Low,N/A
-BIFloodVuln,4,Moderate,N/A
-BIFloodVuln,5,High,N/A
-BIFloodVuln,6,Very High,N/A
-BIFloodVuln,7,Total Susceptibility,N/A
-BIPreparedness,0,Unknown,N/A
-BIPreparedness,1,Vulnerable,N/A
-BIPreparedness,2,Average,N/A
-BIPreparedness,3,Resilient,N/A
-BIRedundancy,0,Unknown,N/A
-BIRedundancy,1,Vulnerable,N/A
-BIRedundancy,2,Average,N/A
-BIRedundancy,3,Resilient,N/A
-BrickVeneer,0,Unknown / default (50-90%),N/A
-BrickVeneer,1,More than 90%,N/A
-BrickVeneer,2,25-50%,N/A
-BrickVeneer,3,0-25%,N/A
-BuildingCondition,0,Unknown / default,N/A
-BuildingCondition,1,Average,N/A
-BuildingCondition,2,Good,N/A
-BuildingCondition,3,Poor,N/A
-BuildingExteriorOpening,0,Unknown / default,N/A
-BuildingExteriorOpening,1,Less than 50% of wall open,N/A
-BuildingExteriorOpening,2,More than 50% of wall open,N/A
-BuildingFloodVuln,0,Unknown,Level of vulnerability is unknown
-BuildingFloodVuln,1,No Susceptibility,All of the building is water-resistant or protected
-BuildingFloodVuln,2,Very Low,Most of the building is water-resistant or protected
-BuildingFloodVuln,3,Low,An unusually large percentage of the building is water-resistant or protected
-BuildingFloodVuln,4,Moderate,A typical percentage of the building is water-resistance or protected
-BuildingFloodVuln,5,High,A low percentage of the building is water-resistant or protected
-BuildingFloodVuln,6,Very High,Almost none of the building is water-resistant or protected
-BuildingFloodVuln,7,Total Susceptibility,None of the building is water-resistant or protected
-BuildingShape,0,Unknown / default,N/A
-BuildingShape,1,Square,N/A
-BuildingShape,2,Rectangle,N/A
-BuildingShape,3,Circular,N/A
-BuildingShape,4,L-shaped,N/A
-BuildingShape,5,T-shaped,N/A
-BuildingShape,6,U-shaped,N/A
-BuildingShape,7,H-shaped,N/A
-BuildingShape,8,Complex,N/A
-BuildingShape,9,Triangular,N/A
-BuildingType,0,Unknown / default,N/A
-BuildingType,1,Manufactured,N/A
-BuildingType,2,Cottage,N/A
-BuildingType,3,Ranch,N/A
-BuildingType,4,Cape Cod Style,N/A
-BuildingType,5,Earth house,N/A
-BuildingType,6,Dome,N/A
-Chimney,0,Unknown / default,N/A
-Chimney,1,No,N/A
-Chimney,2,"Yes, height <= 2 ft",N/A
-Chimney,3,"Yes, 2ft <= height <= 5 ft",N/A
-Chimney,4,"Yes, height > 5 ft",N/A
-Cladding,0,Unknown / default,N/A
-Cladding,1,Veneer brick / masonry,N/A
-Cladding,10,Stone Veneer,N/A
-Cladding,11,Steel,N/A
-Cladding,12,Light metal,N/A
-Cladding,13,Tile,N/A
-Cladding,14,Concrete,N/A
-Cladding,15,Fiber cement (Board),N/A
-Cladding,16,Wood siding,N/A
-Cladding,17,Gypsum Board,N/A
-Cladding,2,Wood shingles / shakes,N/A
-Cladding,3,Clapboards,N/A
-Cladding,4,Aluminium / vinyl siding,N/A
-Cladding,5,Stone panels (real stone),N/A
-Cladding,6,Exterior insulation finishing system (EIFS),N/A
-Cladding,7,Stucco,N/A
-Cladding,8,Asbestos,N/A
-Cladding,9,Log,N/A
-CloudVendor,0,Unknown,Cloud Vendor (technographic data for cyber exposures)
-CloudVendor,1,AWS,Cloud Vendor (technographic data for cyber exposures)
-CloudVendor,2,MS Azure,Cloud Vendor (technographic data for cyber exposures)
-CloudVendor,3,Google Cloud,Cloud Vendor (technographic data for cyber exposures)
-CloudVendor,4,IBM Cloud,Cloud Vendor (technographic data for cyber exposures)
-CloudVendor,5,Oracle Cloud,Cloud Vendor (technographic data for cyber exposures)
-CloudVendor,6,Alibaba Cloud,Cloud Vendor (technographic data for cyber exposures)
-CodeProvision,1,No code/non-engineered,N/A
-CodeProvision,2,Low Code,N/A
-CodeProvision,3,Moderate Code,N/A
-CodeProvision,4,High Code,N/A
-CommodityScheme,HS22,HS Nomenclature 2022 Edition,"The Harmonized Commodity Description and Coding System generally referred to as ""Harmonized System"" or simply ""HS"" is a multipurpose international product nomenclature developed by the World Customs Organization (WCO)"
-CompanyIDScheme,LEI,Legal Entity Identifier scheme,"The Legal Entity Identifier (LEI) is an alphanumeric code, consisting of 20 characters, based on the international standard ISO 17442"
-CompanyIDScheme,DUNS,Duns & Bradstreet scheme,The Dun & Bradstreet D‑U‑N‑S Number is a unique nine-digit identifier for businesses.
-CompanyIDScheme,BIN,Bank Identification Number scheme,The Bank Identification Number (BIN) system is a globally recognized standard for identifying banks and financial institutions in payment card transactions.
-ConstructionQuality,0,Unknown / default,
-ConstructionQuality,1,Fortified Home (IBHS) Bronze Option 1,
-ConstructionQuality,10,Low,No structural survey information available but visual inspection shows obvious signs of damage
-ConstructionQuality,2,Fortified Home (IBHS) Bronze Option 2,
-ConstructionQuality,3,Fortified Home (IBHS) Silver Option 1,
-ConstructionQuality,4,Fortified Home (IBHS) Silver Option 2,
-ConstructionQuality,5,Fortified Home (IBHS) Gold Option 1,
-ConstructionQuality,6,Fortified Home (IBHS) Gold Option 2,
-ConstructionQuality,7,Fortified for Safer Living (IBHS),
-ConstructionQuality,8,High,"Code level design and best construction practice, structural survey information available indicating good condition without  signs of damage"
-ConstructionQuality,9,Medium,No structural survey information available but visual inspection shows no signs of damage
-ContentsFloodVuln,0,Unknown,Level of vulnerability is unknown
-ContentsFloodVuln,1,No Susceptibility,All of the contents are water-resistant or protected
-ContentsFloodVuln,2,Very Low,Most of the contents are water-resistant or protected
-ContentsFloodVuln,3,Low,An unusually large percentage of the contents is water-resistant or protected
-ContentsFloodVuln,4,Moderate,A typical percentage of the contents is water-resistance or protected
-ContentsFloodVuln,5,High,A low percentage of the contents is water-resistant or protected
-ContentsFloodVuln,6,Very High,Almost none of the contents are water-resistant or protected
-ContentsFloodVuln,7,Total Susceptibility,None of the contents are water-resistant or protected
-ContentsQuakeVuln,0,Unknown / default,Level of vulnerability is unknown
-ContentsQuakeVuln,1,Low,An unusually large percentage of the contents is quake-resistant or protected
-ContentsQuakeVuln,2,Moderate,A typical percentage or the contents is quake-resistance or protected
-ContentsQuakeVuln,3,High,A low percentage of the contents is quake-resistant or protected
-ContentsQuakeVuln,4,Very High,Almost none of the contents are quake-resistant or protected
-ContentsWindVuln,0,Unknown / default,Level of vulnerability is unknown
-ContentsWindVuln,1,Low,An unusually large percentage of the contents is wind-resistant or protected
-ContentsWindVuln,2,Moderate,A typical percentage or the contents is wind-resistance or protected
-ContentsWindVuln,3,High,A low percentage of the contents is wind-resistant or protected
-ContentsWindVuln,4,Very High,Almost none of the contents are wind-resistant or protected
-CoverageTrigger,0,Claims Made (default),The coverage trigger basis
-CoverageTrigger,1,Losses Occurring,The coverage trigger basis
-CoverageTrigger,2,Occurrence Reported,The coverage trigger basis
-CrippleWall,0,Unknown / default,N/A
-CrippleWall,1,No,N/A
-CrippleWall,2,Yes,N/A
-CRMVendor,0,Unknown,Client Relationship Management Vendor (technographic data for cyber exposures)
-CRMVendor,1,Salesforce,Client Relationship Management Vendor (technographic data for cyber exposures)
-CRMVendor,2,Pipedrive,Client Relationship Management Vendor (technographic data for cyber exposures)
-CRMVendor,3,Bitrix24,Client Relationship Management Vendor (technographic data for cyber exposures)
-CRMVendor,4,Pipedrive,Client Relationship Management Vendor (technographic data for cyber exposures)
-CRMVendor,5,Ontraport,Client Relationship Management Vendor (technographic data for cyber exposures)
-CRMVendor,6,Nimble,Client Relationship Management Vendor (technographic data for cyber exposures)
-CRMVendor,7,Nutshell,Client Relationship Management Vendor (technographic data for cyber exposures)
-CRMVendor,8,Apptivo,Client Relationship Management Vendor (technographic data for cyber exposures)
-DiameterOfPipeline,0,Unknown,N/A
-DiameterOfPipeline,1,Small (<40 cm),N/A
-DiameterOfPipeline,2,Large (≥ 40 cm),N/A
-DefenseCost,0,Outside the limit (default),Defense costs are covered outside of the policy limit (liability)
-DefenseCost,1,Inside the limit,Defense costs are covered inside of the policy limit (liability)
-DefenseCost,2,Not Covered,Defense costs are not covered by the policy (liability)
-EmailVendor,0,Unknown,Email Vendor (technographic data for cyber exposures)
-EmailVendor,1,Gmail,Email Vendor (technographic data for cyber exposures)
-EmailVendor,2,Outlook,Email Vendor (technographic data for cyber exposures)
-EmailVendor,3,AOL,Email Vendor (technographic data for cyber exposures)
-EmailVendor,4,Yahoo,Email Vendor (technographic data for cyber exposures)
-EmailVendor,5,iCloud,Email Vendor (technographic data for cyber exposures)
-EmailVendor,6,Proton,Email Vendor (technographic data for cyber exposures)
-EmailVendor,7,Zoho,Email Vendor (technographic data for cyber exposures)
-EmailVendor,8,Yandex,Email Vendor (technographic data for cyber exposures)
-EmailVendor,9,GMX,Email Vendor (technographic data for cyber exposures)
-EmailVendor,10,HubSpot,Email Vendor (technographic data for cyber exposures)
-EmailVendor,11,Mail.com,Email Vendor (technographic data for cyber exposures)
-EmailVendor,12,Tutanota,Email Vendor (technographic data for cyber exposures)
-EmailVendor,13,10 Minute Mail,Email Vendor (technographic data for cyber exposures)
-EquipmentBracing,0,Unknown / default,N/A
-EquipmentBracing,1,Well-Braced,N/A
-EquipmentBracing,2,Average Bracing,N/A
-EquipmentBracing,3,Unbraced,N/A
-ExternalDoors,0,Unknown / default,N/A
-ExternalDoors,1,Single width Doors,N/A
-ExternalDoors,2,Double width Doors,N/A
-ExternalDoors,3,Reinforced single width doors,N/A
-ExternalDoors,4,Reinforced double width doors,N/A
-ExternalDoors,5,Sliding doors,N/A
-ExternalDoors,6,Reinforced sliding doors,N/A
-Fatigue,0,Unknown,N/A
-Fatigue,1,Vulnerable,N/A
-Fatigue,2,Average,N/A
-Fatigue,3,Resilient,N/A
-FEMACompliance,0,Unknown / default,N/A
-FEMACompliance,1,Yes,N/A
-FEMACompliance,2,No,N/A
-Flashing,0,Unknown,N/A
-Flashing,1,Vulnerable,N/A
-Flashing,2,Average,N/A
-Flashing,3,Resilient,N/A
-FloodDebrisResilience,0,Unknown,N/A
-FloodDebrisResilience,1,Vulnerable,N/A
-FloodDebrisResilience,2,Average,N/A
-FloodDebrisResilience,3,Resilient,N/A
-FoundationConnection,0,Unknown / default,N/A
-FoundationConnection,1,Hurricane ties,N/A
-FoundationConnection,2,Nails / Screws,N/A
-FoundationConnection,3,Anchor Bolts,N/A
-FoundationConnection,4,Gravity / Friction,N/A
-FoundationConnection,5,Adhesive / Epoxy,N/A
-FoundationConnection,6,Structurally Connected,N/A
-FoundationType,0,Unknown / default,N/A
-FoundationType,1,Masonry basement,N/A
-FoundationType,2,Concrete basement,N/A
-FoundationType,3,Masonry wall,N/A
-FoundationType,4,Crawl space cripple wall,N/A
-FoundationType,5,Crawl space masonry,N/A
-FoundationType,6,Post & pier,N/A
-FoundationType,7,Footing,N/A
-FoundationType,8,Mat / slab,N/A
-FoundationType,9,Pile,N/A
-FoundationType,10,No basement,N/A
-FoundationType,11,Engineering foundation,N/A
-FoundationType,12,Crawlspace - raised (wood),N/A
-FoundationType,13,Monopile (offshore),Large diameter steel tube inserted deep into the ground.
-FoundationType,14,Jacket on Caisson (SBJ) (Offshore),3 or 4 legged jacket supported on suction-bucket (SBJ).
-FoundationType,15,Jacket (offshore),Generic code for seabed frame / jacket foundations.
-FoundationType,16,Jacket on Pin Piles (JPP),3 or 4 legged jacket on pin piles (small diameter piles).
-FoundationType,17,Gravity-based (offshore),Large diameter concrete foundation shallowly embedded.
-FoundationType,18,Floating: spar (offshore),A single hollow long ballasted steel cylinder moored to the seabed.
-FoundationType,19,Floating: Semisubmersible (offshore),A floater consisting of number of columns and pontoons anchored to the seabed.
-FoundationType,20,Floating: Tension-Leg Platform (offshore),A floating system stabilised with tensioned mooring and anchored to the seabed for buoyancy and stability.
-GeogScheme,CNTY,County,Example: Miami-Dade (US)
-GeogScheme,CRH,High Resolution CRESTA,Example: GBR_SO31 8 (Southampton)
-GeogScheme,CRL,Low Resolution CRESTA,Example: GBR_SO (Southampton)
-GeogScheme,CRO,Old CRESTA,Example: 25 (Mexico City (earthquake))
-GeogScheme,CRSL2,Province in CatRisk Solutions models,used in CatRisk Solutions models only
-GeogScheme,CRSL3,CRESTA / Province in CatRisk Solutions models,used in CatRisk Solutions models only
-GeogScheme,CRSL4,Municipality / Province in CatRisk Solutions models,used in CatRisk Solutions models only
-GeogScheme,CRSL5,City in CatRisk Solutions models (bespoke list),used in CatRisk Solutions models only
-GeogScheme,CRSVG,Variable Resolution Grid (VRG) in CatRisk Solutions models,used in CatRisk Solutions models only
-GeogScheme,GADM1,GADM level 1,Example: Badakhshan (https://gadm.org/index.html; e.g. province in Afghanistan)
-GeogScheme,GADM2,GADM level 2,Example: Berzirk (https://gadm.org/index.html; e.g. district in Austria)
-GeogScheme,GADM3,GADM level 3,Example: Zala (https://gadm.org/index.html; e.g. commune in Angola)
-GeogScheme,GADM4,GADM level 4,Example: Merksplas (https://gadm.org/index.html; e.g. commune in Belgium)
-GeogScheme,GADM5,GADM level 5,Example: Vitray (https://gadm.org/index.html; e.g. commune in France)
-GeogScheme,GNAF,Australia's Geocoded National Address File,Example: Australia
-GeogScheme,GPLUS,Google Plus,"Example: 9C3XGW72+GG (https://plus.codes/howitworks; e.g. center of the dome of St.Pauls cathedral in London, UK)"
-GeogScheme,ICA,Insurance Council of Australia Zones,Example: Australia
-GeogScheme,PC2,Postcode (2 characters),"Example: 80 (Europe, Germany)"
-GeogScheme,PC3,Postcode (3 characters),Example: A2X (Canada)
-GeogScheme,PC4,Postcode (4 characters),"Example: 2050 (Europe, Australia)"
-GeogScheme,PC5,Postcode (5 characters),Example: 80801 (Germany)
-GeogScheme,PC6,Postcode (6 characters),Example: A2X A33 (Canada)
-GeogScheme,PC7,Postcode (7 characters),"Example: Turkey, Japan"
-GeogScheme,PC8,Postcode (8 characters),
-GeogScheme,PC9,Postcode (9 characters),Example: 80210-1121 (US zip + 4)
-GeogScheme,PCD,Postcode District,Example: EC3A (UK)
-GeogScheme,PCS,Postcode Sector,Example: EC3A 5 (UK)
-GeogScheme,PCU,Postcode Unit,Example: EC3A 5NR (UK)
-GeogScheme,JBA1,Admin level 1 - highest resolution for admin boundaries,used in JBA models only
-GeogScheme,W3W,What 3 Words,3 random words on a 3m x 3m grid (data needs to be licensed)
-GeogScheme,UPRN,UK property Reference Number (created by Ordnance Survey),
-GeogScheme,EIRCODE,Used in the Republic of Ireland,
-GeogScheme,INSEE,Used in France but not supported by GADM.,French National Institute for Statistics and Economic Studies
-GeogScheme,FTM1,Fathom admin boundaries,Used in Fathom model only
-GlassType,0,Unknown,N/A
-GlassType,1,Annealed,N/A
-GlassType,2,Tempered,N/A
-GlassType,3,Heat strengthened,N/A
-GlassType,4,Laminated,N/A
-GlassType,5,Insulating glass units,N/A
-GroundEquipment,0,Unknown,N/A
-GroundEquipment,1,No equipment,N/A
-GroundEquipment,2,Vulnerable,N/A
-GroundEquipment,3,Average,N/A
-GroundEquipment,4,Resilient,N/A
-IndustryScheme,NAICS,North American Industry Classification System,N/A
-IndustryScheme,USSIC,Standard Industrial Classification (SIC) System,N/A
-IndustryScheme,UKSIC,UK Standard Industrial Classification of Economic Activities,N/A
-InternalPartition,0,Unknown / default,N/A
-InternalPartition,1,Wood,N/A
-InternalPartition,2,Gypsum boards,N/A
-InternalPartition,3,Plastered Masonry,N/A
-InternalPartition,4,Brick,N/A
-InternalPartition,5,Other,N/A
-IsAggregate,1,Is aggregated data using NumberOfBuildings field,"NumberOfBuildings > 1 means aggregated data where number of locations is known; NumberOfBuildings = 0 or blank, means aggregated data where number of locations is unknown"
-IsAggregate,0,Is not aggregated using on NumberOfBuildings field,NumberOfBuildings >1 is a campus
-IsGroupCover,0,No (default),Is the policy coverage extended to subsidiaries of the insured party
-IsGroupCover,1,Yes,Is the policy coverage extended to subsidiaries of the insured party
-IsPackage,0,Standalone (default),Policy type
-IsPackage,1,Package,Policy type
-LatticeType,0,Unknown / default,N/A
-LatticeType,1,Full web,N/A
-LatticeType,2,Grid,N/A
-LatticeType,3,Lattice,N/A
-MechanicalEquipmentSide,0,Unknown,N/A
-MechanicalEquipmentSide,1,Vulnerable,N/A
-MechanicalEquipmentSide,2,Average,N/A
-MechanicalEquipmentSide,3,Resilient,N/A
-MultiStoryHall,0,Unknown / default,N/A
-MultiStoryHall,1,No,N/A
-MultiStoryHall,2,Yes,N/A
-OccupantPeriod,0,Unknown/Default,Period of occupancy not specified. Defaults to period specified in model
-OccupantPeriod,1,Night,"Describes number of occupants during a typical night (e.g., night-time residents)"
-OccupantPeriod,2,Day,"Describes number of occupants during a typical day (e.g., employees, school staff and children)"
-OccupantPeriod,3,Peak Season,Describes number of occupants during peak or high season for use or visitors - for example tourists
-OccupantPeriod,4,Off-peak Season,Describes number of occupants during the off-peak or low season for use or visitors - for example tourists
-OccupantPeriod,5,Night - peak season,Describes number of occupants during night-time peak season occupancy
-OccupantPeriod,6,Day - peak season,Describes number of occupants during daytime peak season occupancy
-OccupantPeriod,7,Night - Off-peak season,Describes number of occupants during night-time off-peak season occupancy
-OccupantPeriod,8,Day - Off-peak season,Describes number of occupants during daytime off-peak season occupancy
-Ornamentation,0,Unknown / default,N/A
-Ornamentation,1,None,N/A
-Ornamentation,2,Average,N/A
-Ornamentation,3,Extensive,N/A
-OSVendor,0,Unknown,Operating System Vendor (technographic data for cyber exposures)
-OSVendor,1,Windows,Operating System Vendor (technographic data for cyber exposures)
-OSVendor,2,Linux,Operating System Vendor (technographic data for cyber exposures)
-OSVendor,3,Apple Mac,Operating System Vendor (technographic data for cyber exposures)
-OSVendor,4,Ubuntu,Operating System Vendor (technographic data for cyber exposures)
-OSVendor,5,Fedora,Operating System Vendor (technographic data for cyber exposures)
-OSVendor,6,Solaris,Operating System Vendor (technographic data for cyber exposures)
-OSVendor,7,Chrome,Operating System Vendor (technographic data for cyber exposures)
-OSVendor,8,CentOS,Operating System Vendor (technographic data for cyber exposures)
-OSVendor,9,Debian,Operating System Vendor (technographic data for cyber exposures)
-OSVendor,10,Deepin,Operating System Vendor (technographic data for cyber exposures)
-Packaging,0,Unknown,N/A
-Packaging,1,Vulnerable,N/A
-Packaging,2,Average,N/A
-Packaging,3,Resilient,N/A
-PatchPolicy,0,Cadence of patches to the main system is Unknown,Main system patch policy (technographic data for cyber exposures)
-PatchPolicy,1,Cadence of patches to the main system is Never,Main system patch policy (technographic data for cyber exposures)
-PatchPolicy,2,Cadence of patches to the main system is Daily,Main system patch policy (technographic data for cyber exposures)
-PatchPolicy,3,Cadence of patches to the main system is Weekly,Main system patch policy (technographic data for cyber exposures)
-PatchPolicy,4,Cadence of patches to the main system is Monthly,Main system patch policy (technographic data for cyber exposures)
-PatchPolicy,5,Cadence of patches to the main system is Annually,Main system patch policy (technographic data for cyber exposures)
-PatchPolicy,6,Cadence of patches to the main system is Ad-hoc,Main system patch policy (technographic data for cyber exposures)
-PayoutBasis,0,UNK,Unknown / default
-PayoutBasis,1,ACV,Actual Cost Values
-PayoutBasis,2,RCV,Replacement Cost Value
-Pounding,0,Unknown / default,N/A
-Pounding,1,0-0.25 m,N/A
-Pounding,2,0.25-0.5 m,N/A
-Pounding,3,0.5-1.0 m,N/A
-Pounding,4,1.0-2.0 m,N/A
-Pounding,5,>2.0 m,N/A
-Protection,0,Unknown,N/A
-Protection,1,Vulnerable,N/A
-Protection,2,Average,N/A
-Protection,3,Resilient,N/A
-PumpingCapacity,0,Unknown,N/A
-PumpingCapacity,1,Small pumping capacity (<10 millions gallons per day (MGD),N/A
-PumpingCapacity,2,Medium pumping capacity (10-50 MGD),N/A
-PumpingCapacity,3,Large pumping capacity (>50 MGD),N/A
-PumpingCapacity,4,Small Water Treatment Capacity (<50 MGD),N/A
-PumpingCapacity,5,Medium Water Treatment Capacity (50-200 MGD),N/A
-PumpingCapacity,6,Large Water Treatment Capacity (>200 MGD),N/A
-Redundancy,0,Unknown / default,N/A
-Redundancy,1,No,N/A
-Redundancy,2,Yes,N/A
-ReinsType,AXL,Aggregate Excess of Loss,N/A
-ReinsType,CXL,Catastrophe Excess of Loss,N/A
-ReinsType,FAC,Facultative reinsurance,N/A
-ReinsType,PR,Per risk treaty,N/A
-ReinsType,QS,Quota Share,N/A
-ReinsType,SS,Surplus Share,N/A
-Retrofit,0,Unknown / default,N/A
-Retrofit,1,Bracing of cripple walls,N/A
-Retrofit,2,Bracing of parapets,N/A
-Retrofit,3,Bracing of soft-story,N/A
-Retrofit,4,Foundation anchorage (bolting),N/A
-Retrofit,5,Glass/window strengthening,N/A
-Retrofit,6,Tilt Up,N/A
-Retrofit,7,General,N/A
-RiskLevel,,No risk terms,N/A
-RiskLevel,ACC,Account,N/A
-RiskLevel,LGR,Location Group,N/A
-RiskLevel,LOC,Location,N/A
-RiskLevel,POL,Policy,N/A
-RoofAnchorage,0,Unknown / default,N/A
-RoofAnchorage,1,Hurricane Ties,N/A
-RoofAnchorage,2,Nails / Screws,N/A
-RoofAnchorage,3,Anchor bolts,N/A
-RoofAnchorage,4,Gravity / friction,N/A
-RoofAnchorage,5,Adhesive epoxy,N/A
-RoofAnchorage,6,Structurally Connected,N/A
-RoofAnchorage,7,Clips,N/A
-RoofAnchorage,8,Double wraps,N/A
-RoofAnchorage,9,Single wraps,N/A
-RoofAttachedStructures,0,Unknown / default,N/A
-RoofAttachedStructures,1,Chimneys,N/A
-RoofAttachedStructures,10,Overhang/Rake (> 36 in),N/A
-RoofAttachedStructures,11,Waterproof membrane/fabric,N/A
-RoofAttachedStructures,12,Secondary water resistance - Yes,N/A
-RoofAttachedStructures,13,Secondary water resistance - No,N/A
-RoofAttachedStructures,14,Solar Panels with ballast,N/A
-RoofAttachedStructures,15,Solar panels mechanically attached,N/A
-RoofAttachedStructures,2,A/C Units,N/A
-RoofAttachedStructures,3,Skylights,N/A
-RoofAttachedStructures,4,Parapet Walls,N/A
-RoofAttachedStructures,5,Overhang/Rake (8-36 in),N/A
-RoofAttachedStructures,6,Dormers,N/A
-RoofAttachedStructures,7,Other,N/A
-RoofAttachedStructures,8,No Attached Structures,N/A
-RoofAttachedStructures,9,Overhang/Rake (< 8 in),N/A
-RoofCover,0,Unknown / default,N/A
-RoofCover,1,Asphalt shingles,N/A
-RoofCover,10,Single ply membrane ballasted,N/A
-RoofCover,11,Hurricane Wind-Rated Roof Coverings,N/A
-RoofCover,12,"Composition (Fiberglass, Asphalt, etc)",N/A
-RoofCover,13,Asbestos shakes,N/A
-RoofCover,14,Copper,N/A
-RoofCover,15,Concrete (not tile),N/A
-RoofCover,16,Reinforced concrete,N/A
-RoofCover,18,Plastic,N/A
-RoofCover,19,Fiberglass,N/A
-RoofCover,2,Wooden shingles,N/A
-RoofCover,20,Steel,N/A
-RoofCover,21,Plywood,N/A
-RoofCover,22,Rubber,N/A
-RoofCover,23,Tin,N/A
-RoofCover,24,Aluminium,N/A
-RoofCover,25,Foam,N/A
-RoofCover,26,Thatch,N/A
-RoofCover,27,Felt,N/A
-RoofCover,28,Zinc,N/A
-RoofCover,3,Clay/concrete tiles,N/A
-RoofCover,4,Light metal panels,N/A
-RoofCover,5,Slate,N/A
-RoofCover,6,Built-up roof with gravel,N/A
-RoofCover,7,Single ply membrane,N/A
-RoofCover,8,Standing seam metal roofs,N/A
-RoofCover,9,Built-up roof without gravel,N/A
-RoofCoverAttachment,0,Unknown / default,N/A
-RoofCoverAttachment,1,Screws,N/A
-RoofCoverAttachment,2,Nails/staples,N/A
-RoofCoverAttachment,3,Adhesive/epoxy,N/A
-RoofCoverAttachment,4,Mortar,N/A
-RoofDeck,0,Unknown / default,N/A
-RoofDeck,1,Plywood,N/A
-RoofDeck,2,Wood planks,N/A
-RoofDeck,3,Particle board / OSB,N/A
-RoofDeck,4,Metal deck with insulation board,N/A
-RoofDeck,5,Metal deck with concrete,N/A
-RoofDeck,6,Pre-cast concrete slabs,N/A
-RoofDeck,7,Reinforced concrete slabs,N/A
-RoofDeck,8,Light metal,N/A
-RoofDeckAttachment,0,Unknown / default,N/A
-RoofDeckAttachment,1,Screws / bolts,N/A
-RoofDeckAttachment,2,Nails,N/A
-RoofDeckAttachment,3,Adhesive / epoxy,N/A
-RoofDeckAttachment,4,Structurally connected,N/A
-RoofDeckAttachment,5,"6d nails @ 6 spacing, 12 on center",N/A
-RoofDeckAttachment,6,"8d nails @ 6 spacing, 12 on center",N/A
-RoofDeckAttachment,7,"8d nails @ 6 spacing, 6 on center",N/A
-RoofEquipment,0,Unknown,N/A
-RoofEquipment,1,No equipment,N/A
-RoofEquipment,2,Vulnerable,N/A
-RoofEquipment,3,Average,N/A
-RoofEquipment,4,Resilient,N/A
-RoofFrame,0,Unknown,N/A
-RoofFrame,1,Reinforced Concrete,N/A
-RoofFrame,2,Steel,N/A
-RoofFrame,3,Light Metal,N/A
-RoofFrame,4,Wood,N/A
-RoofGeometry,0,Unknown / default,N/A
-RoofGeometry,1,Flat,N/A
-RoofGeometry,10,Gambrel,N/A
-RoofGeometry,11,Butterfly,N/A
-RoofGeometry,12,Saltbox,N/A
-RoofGeometry,2,Gable end without bracing,N/A
-RoofGeometry,3,Hip,N/A
-RoofGeometry,4,Complex,N/A
-RoofGeometry,5,Stepped,N/A
-RoofGeometry,6,Shed,N/A
-RoofGeometry,7,Mansard,N/A
-RoofGeometry,8,Gable end with bracing,N/A
-RoofGeometry,9,Pyramid,N/A
-RoofMaintenance,0,Unknown,N/A
-RoofMaintenance,1,Vulnerable,N/A
-RoofMaintenance,2,Average,N/A
-RoofMaintenance,3,Resilient,N/A
-RoofPitch,0,Unknown / default,N/A
-RoofPitch,1,Low (<10°),N/A
-RoofPitch,2,Medium (10° to 30°),N/A
-RoofPitch,3,High (>30°),N/A
-SalvageProtection,0,Unknown,N/A
-SalvageProtection,1,Vulnerable,N/A
-SalvageProtection,2,Average,N/A
-SalvageProtection,3,Resilient,N/A
-ServiceEquipmentProtection,0,Unknown / default,N/A
-ServiceEquipmentProtection,1,Protected for flood (i.e. protected for flood by being elevated and/or flood proofing),N/A
-ServiceEquipmentProtection,2,Unprotected for flood (i.e. not elevated and not flood protected),N/A
-ShapeIrregularity,0,Unknown / default,
-ShapeIrregularity,2,Vertical Offset,
-ShapeIrregularity,3,Non-uniform Floor Area,"E.g., a sudden change in floor area along the height"
-ShapeIrregularity,4,Discontinuous Shear Wall,"I.e., the main load-resisting components are not provided in a regular, symmetric pattern"
-ShapeIrregularity,5,Heavy floor,"E.g., placement of heavy equipment on higher floors"
-ShortColumn,0,Unknown / default,N/A
-ShortColumn,1,No,N/A
-ShortColumn,2,Yes,N/A
-SmallDebris,0,Unknown / default,N/A
-SmallDebris,1,No,N/A
-SmallDebris,2,Yes,N/A
-SoftStory,0,Unknown / default,N/A
-SoftStory,1,No,N/A
-SoftStory,2,Yes,N/A
-SoilLiquefiable,0,Unknown / not applicable,Soil susceptibility to liquefaction unknown or not applicable.
-SoilLiquefiable,1,Soil not susceptible to liquefaction (clay-like soils),"Liquefaction susceptibility not identified in the predominant soil layers at this location, to a depth relevant for the asset foundations. Soils are to be designated as non-liquefiable if they are clay-like. Numerically, this can be determined by the Plasticity Index (PI), where it is recommended that non-liquefiable (clay-like) soils are identified where PI > 7, as per recommendations of Boulanger and Idriss (2006)."
-SoilLiquefiable,2,Soil susceptible to liquefaction (sand-like soils),"Liquefaction susceptibility not identified in the predominant soil layers at this location, to a depth relevant for the asset foundations. Soils are to be designated as liquefiable if they are sand-like. Numerically, this can be determined by the Plasticity Index (PI), where it is recommended that liquefiable (sand-like) soils are identified where PI < 7, as per recommendations of Boulanger and Idriss (2006)."
-SoilType,0,No soil information (default),N/A
-SoilType,1,Time averaged shear-wave velocity to 30m depth (vs30 (m/s)),N/A
-SpecialEQConstruction,0,Unknown / default,N/A
-SpecialEQConstruction,1,Base isolation,N/A
-SpecialEQConstruction,2,Visco-elastic dampers,N/A
-SpecialEQConstruction,3,Other energy dissipaters,N/A
-SprinklerType,0,Unknown / default,N/A
-SprinklerType,1,No sprinkler,N/A
-SprinklerType,2,CO2 / Halon sprinkler,N/A
-SprinklerType,3,Dry sprinkler,N/A
-SprinklerType,4,Standpipe sprinkler,N/A
-SprinklerType,5,Wet sprinkler,N/A
-StaticMotorVehicle,0,Dynamic motor vehicle that moves from location to location,N/A
-StaticMotorVehicle,1,Static motor vehicle,N/A
-Statuses,B,Bound,N/A
-Statuses,C,Cancelled,N/A
-Statuses,Q,Quoted,N/A
-Statuses,R,Rejected,N/A
-Statuses,S,Submitted,N/A
-StepTriggerType,1,Building,N/A
-StepTriggerType,2,Contents,N/A
-StepTriggerType,3,Building and Contents,N/A
-StepTriggerType,4,"Building, then Contents",N/A
-StepTriggerType,5,"Building, Contents separately",N/A
-TallOneStory,0,Unknown / default,N/A
-TallOneStory,1,<= 20 ft,N/A
-TallOneStory,2,> 20ft and < 40ft,N/A
-TallOneStory,3,>= 40ft,N/A
-Tank,0,Unknown / default,N/A
-Tank,1,No,N/A
-Tank,2,Yes,N/A
-TerrainRoughness,0,Unknown / default,
-TerrainRoughness,1,Large city centers,"Large city centers with at least 50% of the buildings having a height in excess of 70 feet (21.3 m). You should limit the use of this exposure category to areas for which terrain representative of this category prevails in the upward direction for a distance of at least 0.5 mi. (0.8 km) or 10 times the height of the building or other structure, whichever is greater. Possible channelling effect on building will be taken into account."
-TerrainRoughness,2,"Urban and suburban areas, wooded areas","Urban and suburban areas, wooded areas, or other terrain with numerous closely spaced obstructions having the size of single-family dwellings or larger. You should limit the use of this exposure category to areas for which terrain representative of this category prevails in the upwind direction for a distance of at least 1,500 feet (460 m) or 10 times the height of the building or other structure, whichever is greater."
-TerrainRoughness,3,Open terrain with scattered obstruct,"Open terrain with scattered obstructions having heights generally less than 30 feet (9.1 m). This category includes flat, open country and grasslands."
-TerrainRoughness,4,"Flat, unobstructed areas","Flat, unobstructed areas exposed to winds flowing over open water for a distance of at least 1 mile (1.61 km). This exposure category applies only to buildings and other structures exposed to the winds coming off the water. This exposure category extends inland from the shoreline a distance of 1,500 feet (460 m) or 10 times the height of the building or structure, whichever is greater."
-Torsion,0,Unknown / default,N/A
-Torsion,1,Symmetric,N/A
-Torsion,2,Asymmetric,N/A
-Torsion,3,Corner building,N/A
-TreeExposure,0,Unknown / default,N/A
-TreeExposure,1,No,N/A
-TreeExposure,2,Yes,N/A
-Units,1,Feet (Distance),N/A
-Units,11,Square feet (Area),N/A
-Units,12,Square meters (Area),N/A
-Units,13,Acre (Area),N/A
-Units,14,Hectare (Area),N/A
-Units,2,Meters (Distance),N/A
-Units,3,Kilometers (Distance),N/A
-Units,4,Miles (Distance),N/A
-ValuablesStorage,0,Unknown / default,N/A
-ValuablesStorage,1,Vault,N/A
-ValuablesStorage,2,Safe,N/A
-ValuablesStorage,3,Strongbox,N/A
-ValuablesStorage,4,Unprotected exhibition,N/A
-ValuablesStorage,5,Protected exhibition (protection around specific art pieces),N/A
-ValuablesStorage,6,Archive,N/A
-ValuablesStorage,7,Special facility,N/A
-VoltageOfEnergy,0,Unknown,N/A
-VoltageOfEnergy,1,Low Voltage (<115 KV) Substation,N/A
-VoltageOfEnergy,2,Medium Voltage (115-500 KV) Substation,N/A
-VoltageOfEnergy,3,High Voltage (>500 KV) Substation,N/A
-WallAttachedStructure,0,Unknown / default,N/A
-WallAttachedStructure,1,Carports / Canopies / Porches,N/A
-WallAttachedStructure,2,Single Door Garages,N/A
-WallAttachedStructure,3,Double Door Garages,N/A
-WallAttachedStructure,4,Reinforced Single Door Garages,N/A
-WallAttachedStructure,5,Reinforced Double Door Garages,N/A
-WallAttachedStructure,6,Screened Porches/Glass Patio Doors,N/A
-WallAttachedStructure,7,Balcony,N/A
-WallAttachedStructure,8,No attached wall structures,N/A
-WallAttachedStructure,9,Attached screen enclosure / Lanai,N/A
-WindowProtection,0,Unknown / default,N/A
-WindowProtection,1,No protection,N/A
-WindowProtection,2,Non-engineered shutters,N/A
-WindowProtection,3,Engineered shutters,N/A
+"Category","Code","CodeDescription","Notes"
+"Anchorage","0","Unknown","N/A"
+"Anchorage","1","Anchored","N/A"
+"Anchorage","2","Unanchored","N/A"
+"AddressMatch","0","Ungeocoded","N/A"
+"AddressMatch","1","User Coordinate","N/A"
+"AddressMatch","10","CRESTA (low res)","N/A"
+"AddressMatch","2","Exact Address - Building","N/A"
+"AddressMatch","20","Country","N/A"
+"AddressMatch","3","Parcel","N/A"
+"AddressMatch","4","Interpolated Street","N/A"
+"AddressMatch","5","High Resolution Postcode","N/A"
+"AddressMatch","6","Block Group / Streetname","N/A"
+"AddressMatch","7","Postal Code","N/A"
+"AddressMatch","8","City Centroid","N/A"
+"AddressMatch","9","Area","N/A"
+"AppurtenantStructure","0","Unknown / Default","N/A"
+"AppurtenantStructure","1","Detached garage","N/A"
+"AppurtenantStructure","10","Pole mount Solar Panels","N/A"
+"AppurtenantStructure","11","Car Port","N/A"
+"AppurtenantStructure","12","Car Port with Storage","N/A"
+"AppurtenantStructure","2","Pool enclosures","N/A"
+"AppurtenantStructure","3","Shed","N/A"
+"AppurtenantStructure","4","Masonry boundary wall","N/A"
+"AppurtenantStructure","5","Other fences","N/A"
+"AppurtenantStructure","6","No appurtenant structures","N/A"
+"AppurtenantStructure","7","No pool enclosures","N/A"
+"AppurtenantStructure","8","Detached screen enclosure / Lanai","N/A"
+"AppurtenantStructure","9","Standard ground mount Solar Panels","N/A"
+"AttachmentBasis","LO","Losses Occurring During","N/A"
+"AttachmentBasis","RA","Risk Attaching","N/A"
+"BackUpFreq","0","Cadence of back-up of the main servers  is Unknown","Main server back-up frequency (technographic data for cyber exposures)"
+"BackUpFreq","1","Cadence of back-up of the main servers  is Never","Main server back-up frequency (technographic data for cyber exposures)"
+"BackUpFreq","2","Cadence of back-up of the main servers  is Daily","Main server back-up frequency (technographic data for cyber exposures)"
+"BackUpFreq","3","Cadence of back-up of the main servers  is Weekly","Main server back-up frequency (technographic data for cyber exposures)"
+"BackUpFreq","4","Cadence of back-up of the main servers  is Monthly","Main server back-up frequency (technographic data for cyber exposures)"
+"BackUpFreq","5","Cadence of back-up of the main servers  is Annually","Main server back-up frequency (technographic data for cyber exposures)"
+"BackUpFreq","6","Cadence of back-up of the main servers  is Ad-hoc","Main server back-up frequency (technographic data for cyber exposures)"
+"Basement","0","Unknown / default","N/A"
+"Basement","1","Unfinished basement","N/A"
+"Basement","2","Finished basement (100%)","N/A"
+"Basement","3","Mostly finished basement (> 50%)","N/A"
+"Basement","4","Partially finished basement (<= 50%)","N/A"
+"Basement","5","Basement of unknown finish percent","N/A"
+"Basement","6","No basement","N/A"
+"BIFloodVuln","0","Unknown","N/A"
+"BIFloodVuln","1","No Susceptibility","N/A"
+"BIFloodVuln","2","Very Low","N/A"
+"BIFloodVuln","3","Low","N/A"
+"BIFloodVuln","4","Moderate","N/A"
+"BIFloodVuln","5","High","N/A"
+"BIFloodVuln","6","Very High","N/A"
+"BIFloodVuln","7","Total Susceptibility","N/A"
+"BIPreparedness","0","Unknown","N/A"
+"BIPreparedness","1","Vulnerable","N/A"
+"BIPreparedness","2","Average","N/A"
+"BIPreparedness","3","Resilient","N/A"
+"BIRedundancy","0","Unknown","N/A"
+"BIRedundancy","1","Vulnerable","N/A"
+"BIRedundancy","2","Average","N/A"
+"BIRedundancy","3","Resilient","N/A"
+"BrickVeneer","0","Unknown / default (50-90%)","N/A"
+"BrickVeneer","1","More than 90%","N/A"
+"BrickVeneer","2","25-50%","N/A"
+"BrickVeneer","3","0-25%","N/A"
+"BuildingCondition","0","Unknown / default","N/A"
+"BuildingCondition","1","Average","N/A"
+"BuildingCondition","2","Good","N/A"
+"BuildingCondition","3","Poor","N/A"
+"BuildingExteriorOpening","0","Unknown / default","N/A"
+"BuildingExteriorOpening","1","Less than 50% of wall open","N/A"
+"BuildingExteriorOpening","2","More than 50% of wall open","N/A"
+"BuildingFloodVuln","0","Unknown","Level of vulnerability is unknown"
+"BuildingFloodVuln","1","No Susceptibility","All of the building is water-resistant or protected"
+"BuildingFloodVuln","2","Very Low","Most of the building is water-resistant or protected"
+"BuildingFloodVuln","3","Low","An unusually large percentage of the building is water-resistant or protected"
+"BuildingFloodVuln","4","Moderate","A typical percentage of the building is water-resistance or protected"
+"BuildingFloodVuln","5","High","A low percentage of the building is water-resistant or protected"
+"BuildingFloodVuln","6","Very High","Almost none of the building is water-resistant or protected"
+"BuildingFloodVuln","7","Total Susceptibility","None of the building is water-resistant or protected"
+"BuildingShape","0","Unknown / default","N/A"
+"BuildingShape","1","Square","N/A"
+"BuildingShape","2","Rectangle","N/A"
+"BuildingShape","3","Circular","N/A"
+"BuildingShape","4","L-shaped","N/A"
+"BuildingShape","5","T-shaped","N/A"
+"BuildingShape","6","U-shaped","N/A"
+"BuildingShape","7","H-shaped","N/A"
+"BuildingShape","8","Complex","N/A"
+"BuildingShape","9","Triangular","N/A"
+"BuildingType","0","Unknown / default","N/A"
+"BuildingType","1","Manufactured","N/A"
+"BuildingType","2","Cottage","N/A"
+"BuildingType","3","Ranch","N/A"
+"BuildingType","4","Cape Cod Style","N/A"
+"BuildingType","5","Earth house","N/A"
+"BuildingType","6","Dome","N/A"
+"Chimney","0","Unknown / default","N/A"
+"Chimney","1","No","N/A"
+"Chimney","2","Yes, height <= 2 ft","N/A"
+"Chimney","3","Yes, 2ft <= height <= 5 ft","N/A"
+"Chimney","4","Yes, height > 5 ft","N/A"
+"Cladding","0","Unknown / default","N/A"
+"Cladding","1","Veneer brick / masonry","N/A"
+"Cladding","10","Stone Veneer","N/A"
+"Cladding","11","Steel","N/A"
+"Cladding","12","Light metal","N/A"
+"Cladding","13","Tile","N/A"
+"Cladding","14","Concrete","N/A"
+"Cladding","15","Fiber cement (Board)","N/A"
+"Cladding","16","Wood siding","N/A"
+"Cladding","17","Gypsum Board","N/A"
+"Cladding","2","Wood shingles / shakes","N/A"
+"Cladding","3","Clapboards","N/A"
+"Cladding","4","Aluminium / vinyl siding","N/A"
+"Cladding","5","Stone panels (real stone)","N/A"
+"Cladding","6","Exterior insulation finishing system (EIFS)","N/A"
+"Cladding","7","Stucco","N/A"
+"Cladding","8","Asbestos","N/A"
+"Cladding","9","Log","N/A"
+"CloudVendor","0","Unknown","Cloud Vendor (technographic data for cyber exposures)"
+"CloudVendor","1","AWS","Cloud Vendor (technographic data for cyber exposures)"
+"CloudVendor","2","MS Azure","Cloud Vendor (technographic data for cyber exposures)"
+"CloudVendor","3","Google Cloud","Cloud Vendor (technographic data for cyber exposures)"
+"CloudVendor","4","IBM Cloud","Cloud Vendor (technographic data for cyber exposures)"
+"CloudVendor","5","Oracle Cloud","Cloud Vendor (technographic data for cyber exposures)"
+"CloudVendor","6","Alibaba Cloud","Cloud Vendor (technographic data for cyber exposures)"
+"CodeProvision","1","No code/non-engineered","N/A"
+"CodeProvision","2","Low Code","N/A"
+"CodeProvision","3","Moderate Code","N/A"
+"CodeProvision","4","High Code","N/A"
+"CommodityScheme","HS22","HS Nomenclature 2022 Edition","The Harmonized Commodity Description and Coding System generally referred to as ""Harmonized System"" or simply ""HS"" is a multipurpose international product nomenclature developed by the World Customs Organization (WCO)"
+"CompanyIDScheme","LEI","Legal Entity Identifier scheme","The Legal Entity Identifier (LEI) is an alphanumeric code, consisting of 20 characters, based on the international standard ISO 17442"
+"CompanyIDScheme","DUNS","Duns & Bradstreet scheme","The Dun & Bradstreet D‑U‑N‑S Number is a unique nine-digit identifier for businesses."
+"CompanyIDScheme","BIN","Bank Identification Number scheme","The Bank Identification Number (BIN) system is a globally recognized standard for identifying banks and financial institutions in payment card transactions."
+"ConstructionQuality","0","Unknown / default",""
+"ConstructionQuality","1","Fortified Home (IBHS) Bronze Option 1",""
+"ConstructionQuality","10","Low","No structural survey information available but visual inspection shows obvious signs of damage"
+"ConstructionQuality","2","Fortified Home (IBHS) Bronze Option 2",""
+"ConstructionQuality","3","Fortified Home (IBHS) Silver Option 1",""
+"ConstructionQuality","4","Fortified Home (IBHS) Silver Option 2",""
+"ConstructionQuality","5","Fortified Home (IBHS) Gold Option 1",""
+"ConstructionQuality","6","Fortified Home (IBHS) Gold Option 2",""
+"ConstructionQuality","7","Fortified for Safer Living (IBHS)",""
+"ConstructionQuality","8","High","Code level design and best construction practice, structural survey information available indicating good condition without  signs of damage"
+"ConstructionQuality","9","Medium","No structural survey information available but visual inspection shows no signs of damage"
+"ContentsFloodVuln","0","Unknown","Level of vulnerability is unknown"
+"ContentsFloodVuln","1","No Susceptibility","All of the contents are water-resistant or protected"
+"ContentsFloodVuln","2","Very Low","Most of the contents are water-resistant or protected"
+"ContentsFloodVuln","3","Low","An unusually large percentage of the contents is water-resistant or protected"
+"ContentsFloodVuln","4","Moderate","A typical percentage of the contents is water-resistance or protected"
+"ContentsFloodVuln","5","High","A low percentage of the contents is water-resistant or protected"
+"ContentsFloodVuln","6","Very High","Almost none of the contents are water-resistant or protected"
+"ContentsFloodVuln","7","Total Susceptibility","None of the contents are water-resistant or protected"
+"ContentsQuakeVuln","0","Unknown / default","Level of vulnerability is unknown"
+"ContentsQuakeVuln","1","Low","An unusually large percentage of the contents is quake-resistant or protected"
+"ContentsQuakeVuln","2","Moderate","A typical percentage or the contents is quake-resistance or protected"
+"ContentsQuakeVuln","3","High","A low percentage of the contents is quake-resistant or protected"
+"ContentsQuakeVuln","4","Very High","Almost none of the contents are quake-resistant or protected"
+"ContentsWindVuln","0","Unknown / default","Level of vulnerability is unknown"
+"ContentsWindVuln","1","Low","An unusually large percentage of the contents is wind-resistant or protected"
+"ContentsWindVuln","2","Moderate","A typical percentage or the contents is wind-resistance or protected"
+"ContentsWindVuln","3","High","A low percentage of the contents is wind-resistant or protected"
+"ContentsWindVuln","4","Very High","Almost none of the contents are wind-resistant or protected"
+"CoverageTrigger","0","Claims Made (default)","The coverage trigger basis"
+"CoverageTrigger","1","Losses Occurring","The coverage trigger basis"
+"CoverageTrigger","2","Occurrence Reported","The coverage trigger basis"
+"CrippleWall","0","Unknown / default","N/A"
+"CrippleWall","1","No","N/A"
+"CrippleWall","2","Yes","N/A"
+"CRMVendor","0","Unknown","Client Relationship Management Vendor (technographic data for cyber exposures)"
+"CRMVendor","1","Salesforce","Client Relationship Management Vendor (technographic data for cyber exposures)"
+"CRMVendor","2","Pipedrive","Client Relationship Management Vendor (technographic data for cyber exposures)"
+"CRMVendor","3","Bitrix24","Client Relationship Management Vendor (technographic data for cyber exposures)"
+"CRMVendor","4","Pipedrive","Client Relationship Management Vendor (technographic data for cyber exposures)"
+"CRMVendor","5","Ontraport","Client Relationship Management Vendor (technographic data for cyber exposures)"
+"CRMVendor","6","Nimble","Client Relationship Management Vendor (technographic data for cyber exposures)"
+"CRMVendor","7","Nutshell","Client Relationship Management Vendor (technographic data for cyber exposures)"
+"CRMVendor","8","Apptivo","Client Relationship Management Vendor (technographic data for cyber exposures)"
+"DiameterOfPipeline","0","Unknown","N/A"
+"DiameterOfPipeline","1","Small (<40 cm)","N/A"
+"DiameterOfPipeline","2","Large (≥ 40 cm)","N/A"
+"DefenseCost","0","Outside the limit (default)","Defense costs are covered outside of the policy limit (liability)"
+"DefenseCost","1","Inside the limit","Defense costs are covered inside of the policy limit (liability)"
+"DefenseCost","2","Not Covered","Defense costs are not covered by the policy (liability)"
+"EmailVendor","0","Unknown","Email Vendor (technographic data for cyber exposures)"
+"EmailVendor","1","Gmail","Email Vendor (technographic data for cyber exposures)"
+"EmailVendor","2","Outlook","Email Vendor (technographic data for cyber exposures)"
+"EmailVendor","3","AOL","Email Vendor (technographic data for cyber exposures)"
+"EmailVendor","4","Yahoo","Email Vendor (technographic data for cyber exposures)"
+"EmailVendor","5","iCloud","Email Vendor (technographic data for cyber exposures)"
+"EmailVendor","6","Proton","Email Vendor (technographic data for cyber exposures)"
+"EmailVendor","7","Zoho","Email Vendor (technographic data for cyber exposures)"
+"EmailVendor","8","Yandex","Email Vendor (technographic data for cyber exposures)"
+"EmailVendor","9","GMX","Email Vendor (technographic data for cyber exposures)"
+"EmailVendor","10","HubSpot","Email Vendor (technographic data for cyber exposures)"
+"EmailVendor","11","Mail.com","Email Vendor (technographic data for cyber exposures)"
+"EmailVendor","12","Tutanota","Email Vendor (technographic data for cyber exposures)"
+"EmailVendor","13","10 Minute Mail","Email Vendor (technographic data for cyber exposures)"
+"EquipmentBracing","0","Unknown / default","N/A"
+"EquipmentBracing","1","Well-Braced","N/A"
+"EquipmentBracing","2","Average Bracing","N/A"
+"EquipmentBracing","3","Unbraced","N/A"
+"ExternalDoors","0","Unknown / default","N/A"
+"ExternalDoors","1","Single width Doors","N/A"
+"ExternalDoors","2","Double width Doors","N/A"
+"ExternalDoors","3","Reinforced single width doors","N/A"
+"ExternalDoors","4","Reinforced double width doors","N/A"
+"ExternalDoors","5","Sliding doors","N/A"
+"ExternalDoors","6","Reinforced sliding doors","N/A"
+"Fatigue","0","Unknown","N/A"
+"Fatigue","1","Vulnerable","N/A"
+"Fatigue","2","Average","N/A"
+"Fatigue","3","Resilient","N/A"
+"FEMACompliance","0","Unknown / default","N/A"
+"FEMACompliance","1","Yes","N/A"
+"FEMACompliance","2","No","N/A"
+"Flashing","0","Unknown","N/A"
+"Flashing","1","Vulnerable","N/A"
+"Flashing","2","Average","N/A"
+"Flashing","3","Resilient","N/A"
+"FloodDebrisResilience","0","Unknown","N/A"
+"FloodDebrisResilience","1","Vulnerable","N/A"
+"FloodDebrisResilience","2","Average","N/A"
+"FloodDebrisResilience","3","Resilient","N/A"
+"FoundationConnection","0","Unknown / default","N/A"
+"FoundationConnection","1","Hurricane ties","N/A"
+"FoundationConnection","2","Nails / Screws","N/A"
+"FoundationConnection","3","Anchor Bolts","N/A"
+"FoundationConnection","4","Gravity / Friction","N/A"
+"FoundationConnection","5","Adhesive / Epoxy","N/A"
+"FoundationConnection","6","Structurally Connected","N/A"
+"FoundationType","0","Unknown / default","N/A"
+"FoundationType","1","Masonry basement","N/A"
+"FoundationType","2","Concrete basement","N/A"
+"FoundationType","3","Masonry wall","N/A"
+"FoundationType","4","Crawl space cripple wall","N/A"
+"FoundationType","5","Crawl space masonry","N/A"
+"FoundationType","6","Post & pier","N/A"
+"FoundationType","7","Footing","N/A"
+"FoundationType","8","Mat / slab","N/A"
+"FoundationType","9","Pile","N/A"
+"FoundationType","10","No basement","N/A"
+"FoundationType","11","Engineering foundation","N/A"
+"FoundationType","12","Crawlspace - raised (wood)","N/A"
+"FoundationType","13","Monopile (offshore)","Large diameter steel tube inserted deep into the ground."
+"FoundationType","14","Jacket on Caisson (SBJ) (Offshore)","3 or 4 legged jacket supported on suction-bucket (SBJ)."
+"FoundationType","15","Jacket (offshore)","Generic code for seabed frame / jacket foundations."
+"FoundationType","16","Jacket on Pin Piles (JPP)","3 or 4 legged jacket on pin piles (small diameter piles)."
+"FoundationType","17","Gravity-based (offshore)","Large diameter concrete foundation shallowly embedded."
+"FoundationType","18","Floating: spar (offshore)","A single hollow long ballasted steel cylinder moored to the seabed."
+"FoundationType","19","Floating: Semisubmersible (offshore)","A floater consisting of number of columns and pontoons anchored to the seabed."
+"FoundationType","20","Floating: Tension-Leg Platform (offshore)","A floating system stabilised with tensioned mooring and anchored to the seabed for buoyancy and stability."
+"GeogScheme","CNTY","County","Example: Miami-Dade (US)"
+"GeogScheme","CRH","High Resolution CRESTA","Example: GBR_SO31 8 (Southampton)"
+"GeogScheme","CRL","Low Resolution CRESTA","Example: GBR_SO (Southampton)"
+"GeogScheme","CRO","Old CRESTA","Example: 25 (Mexico City (earthquake))"
+"GeogScheme","CRSL2","Province in CatRisk Solutions models","used in CatRisk Solutions models only"
+"GeogScheme","CRSL3","CRESTA / Province in CatRisk Solutions models","used in CatRisk Solutions models only"
+"GeogScheme","CRSL4","Municipality / Province in CatRisk Solutions models","used in CatRisk Solutions models only"
+"GeogScheme","CRSL5","City in CatRisk Solutions models (bespoke list)","used in CatRisk Solutions models only"
+"GeogScheme","CRSVG","Variable Resolution Grid (VRG) in CatRisk Solutions models","used in CatRisk Solutions models only"
+"GeogScheme","GADM1","GADM level 1","Example: Badakhshan (https://gadm.org/index.html; e.g. province in Afghanistan)"
+"GeogScheme","GADM2","GADM level 2","Example: Berzirk (https://gadm.org/index.html; e.g. district in Austria)"
+"GeogScheme","GADM3","GADM level 3","Example: Zala (https://gadm.org/index.html; e.g. commune in Angola)"
+"GeogScheme","GADM4","GADM level 4","Example: Merksplas (https://gadm.org/index.html; e.g. commune in Belgium)"
+"GeogScheme","GADM5","GADM level 5","Example: Vitray (https://gadm.org/index.html; e.g. commune in France)"
+"GeogScheme","GNAF","Australia's Geocoded National Address File","Example: Australia"
+"GeogScheme","GPLUS","Google Plus","Example: 9C3XGW72+GG (https://plus.codes/howitworks; e.g. center of the dome of St.Pauls cathedral in London, UK)"
+"GeogScheme","ICA","Insurance Council of Australia Zones","Example: Australia"
+"GeogScheme","PC2","Postcode (2 characters)","Example: 80 (Europe, Germany)"
+"GeogScheme","PC3","Postcode (3 characters)","Example: A2X (Canada)"
+"GeogScheme","PC4","Postcode (4 characters)","Example: 2050 (Europe, Australia)"
+"GeogScheme","PC5","Postcode (5 characters)","Example: 80801 (Germany)"
+"GeogScheme","PC6","Postcode (6 characters)","Example: A2X A33 (Canada)"
+"GeogScheme","PC7","Postcode (7 characters)","Example: Turkey, Japan"
+"GeogScheme","PC8","Postcode (8 characters)",""
+"GeogScheme","PC9","Postcode (9 characters)","Example: 80210-1121 (US zip + 4)"
+"GeogScheme","PCD","Postcode District","Example: EC3A (UK)"
+"GeogScheme","PCS","Postcode Sector","Example: EC3A 5 (UK)"
+"GeogScheme","PCU","Postcode Unit","Example: EC3A 5NR (UK)"
+"GeogScheme","JBA1","Admin level 1 - highest resolution for admin boundaries","used in JBA models only"
+"GeogScheme","W3W","What 3 Words","3 random words on a 3m x 3m grid (data needs to be licensed)"
+"GeogScheme","UPRN","UK property Reference Number (created by Ordnance Survey)",""
+"GeogScheme","EIRCODE","Used in the Republic of Ireland",""
+"GeogScheme","INSEE","Used in France but not supported by GADM.","French National Institute for Statistics and Economic Studies"
+"GeogScheme","FTM1","Fathom admin boundaries","Used in Fathom model only"
+"GlassType","0","Unknown","N/A"
+"GlassType","1","Annealed","N/A"
+"GlassType","2","Tempered","N/A"
+"GlassType","3","Heat strengthened","N/A"
+"GlassType","4","Laminated","N/A"
+"GlassType","5","Insulating glass units","N/A"
+"GroundEquipment","0","Unknown","N/A"
+"GroundEquipment","1","No equipment","N/A"
+"GroundEquipment","2","Vulnerable","N/A"
+"GroundEquipment","3","Average","N/A"
+"GroundEquipment","4","Resilient","N/A"
+"IndustryScheme","NAICS","North American Industry Classification System","N/A"
+"IndustryScheme","USSIC","Standard Industrial Classification (SIC) System","N/A"
+"IndustryScheme","UKSIC","UK Standard Industrial Classification of Economic Activities","N/A"
+"InternalPartition","0","Unknown / default","N/A"
+"InternalPartition","1","Wood","N/A"
+"InternalPartition","2","Gypsum boards","N/A"
+"InternalPartition","3","Plastered Masonry","N/A"
+"InternalPartition","4","Brick","N/A"
+"InternalPartition","5","Other","N/A"
+"IsAggregate","1","Is aggregated data using NumberOfBuildings field","NumberOfBuildings > 1 means aggregated data where number of locations is known; NumberOfBuildings = 0 or blank, means aggregated data where number of locations is unknown"
+"IsAggregate","0","Is not aggregated using on NumberOfBuildings field","NumberOfBuildings >1 is a campus"
+"IsGroupCover","0","No (default)","Is the policy coverage extended to subsidiaries of the insured party"
+"IsGroupCover","1","Yes","Is the policy coverage extended to subsidiaries of the insured party"
+"IsPackage","0","Standalone (default)","Policy type"
+"IsPackage","1","Package","Policy type"
+"LatticeType","0","Unknown / default","N/A"
+"LatticeType","1","Full web","N/A"
+"LatticeType","2","Grid","N/A"
+"LatticeType","3","Lattice","N/A"
+"MechanicalEquipmentSide","0","Unknown","N/A"
+"MechanicalEquipmentSide","1","Vulnerable","N/A"
+"MechanicalEquipmentSide","2","Average","N/A"
+"MechanicalEquipmentSide","3","Resilient","N/A"
+"MultiStoryHall","0","Unknown / default","N/A"
+"MultiStoryHall","1","No","N/A"
+"MultiStoryHall","2","Yes","N/A"
+"OccupantPeriod","0","Unknown/Default","Period of occupancy not specified. Defaults to period specified in model"
+"OccupantPeriod","1","Night","Describes number of occupants during a typical night (e.g., night-time residents)"
+"OccupantPeriod","2","Day","Describes number of occupants during a typical day (e.g., employees, school staff and children)"
+"OccupantPeriod","3","Peak Season","Describes number of occupants during peak or high season for use or visitors - for example tourists"
+"OccupantPeriod","4","Off-peak Season","Describes number of occupants during the off-peak or low season for use or visitors - for example tourists"
+"OccupantPeriod","5","Night - peak season","Describes number of occupants during night-time peak season occupancy"
+"OccupantPeriod","6","Day - peak season","Describes number of occupants during daytime peak season occupancy"
+"OccupantPeriod","7","Night - Off-peak season","Describes number of occupants during night-time off-peak season occupancy"
+"OccupantPeriod","8","Day - Off-peak season","Describes number of occupants during daytime off-peak season occupancy"
+"Ornamentation","0","Unknown / default","N/A"
+"Ornamentation","1","None","N/A"
+"Ornamentation","2","Average","N/A"
+"Ornamentation","3","Extensive","N/A"
+"OSVendor","0","Unknown","Operating System Vendor (technographic data for cyber exposures)"
+"OSVendor","1","Windows","Operating System Vendor (technographic data for cyber exposures)"
+"OSVendor","2","Linux","Operating System Vendor (technographic data for cyber exposures)"
+"OSVendor","3","Apple Mac","Operating System Vendor (technographic data for cyber exposures)"
+"OSVendor","4","Ubuntu","Operating System Vendor (technographic data for cyber exposures)"
+"OSVendor","5","Fedora","Operating System Vendor (technographic data for cyber exposures)"
+"OSVendor","6","Solaris","Operating System Vendor (technographic data for cyber exposures)"
+"OSVendor","7","Chrome","Operating System Vendor (technographic data for cyber exposures)"
+"OSVendor","8","CentOS","Operating System Vendor (technographic data for cyber exposures)"
+"OSVendor","9","Debian","Operating System Vendor (technographic data for cyber exposures)"
+"OSVendor","10","Deepin","Operating System Vendor (technographic data for cyber exposures)"
+"Packaging","0","Unknown","N/A"
+"Packaging","1","Vulnerable","N/A"
+"Packaging","2","Average","N/A"
+"Packaging","3","Resilient","N/A"
+"PatchPolicy","0","Cadence of patches to the main system is Unknown","Main system patch policy (technographic data for cyber exposures)"
+"PatchPolicy","1","Cadence of patches to the main system is Never","Main system patch policy (technographic data for cyber exposures)"
+"PatchPolicy","2","Cadence of patches to the main system is Daily","Main system patch policy (technographic data for cyber exposures)"
+"PatchPolicy","3","Cadence of patches to the main system is Weekly","Main system patch policy (technographic data for cyber exposures)"
+"PatchPolicy","4","Cadence of patches to the main system is Monthly","Main system patch policy (technographic data for cyber exposures)"
+"PatchPolicy","5","Cadence of patches to the main system is Annually","Main system patch policy (technographic data for cyber exposures)"
+"PatchPolicy","6","Cadence of patches to the main system is Ad-hoc","Main system patch policy (technographic data for cyber exposures)"
+"PayoutBasis","0","UNK","Unknown / default"
+"PayoutBasis","1","ACV","Actual Cost Values"
+"PayoutBasis","2","RCV","Replacement Cost Value"
+"Pounding","0","Unknown / default","N/A"
+"Pounding","1","0-0.25 m","N/A"
+"Pounding","2","0.25-0.5 m","N/A"
+"Pounding","3","0.5-1.0 m","N/A"
+"Pounding","4","1.0-2.0 m","N/A"
+"Pounding","5",">2.0 m","N/A"
+"Protection","0","Unknown","N/A"
+"Protection","1","Vulnerable","N/A"
+"Protection","2","Average","N/A"
+"Protection","3","Resilient","N/A"
+"PumpingCapacity","0","Unknown","N/A"
+"PumpingCapacity","1","Small pumping capacity (<10 millions gallons per day (MGD)","N/A"
+"PumpingCapacity","2","Medium pumping capacity (10-50 MGD)","N/A"
+"PumpingCapacity","3","Large pumping capacity (>50 MGD)","N/A"
+"PumpingCapacity","4","Small Water Treatment Capacity (<50 MGD)","N/A"
+"PumpingCapacity","5","Medium Water Treatment Capacity (50-200 MGD)","N/A"
+"PumpingCapacity","6","Large Water Treatment Capacity (>200 MGD)","N/A"
+"Redundancy","0","Unknown / default","N/A"
+"Redundancy","1","No","N/A"
+"Redundancy","2","Yes","N/A"
+"ReinsType","AXL","Aggregate Excess of Loss","N/A"
+"ReinsType","CXL","Catastrophe Excess of Loss","N/A"
+"ReinsType","FAC","Facultative reinsurance","N/A"
+"ReinsType","PR","Per risk treaty","N/A"
+"ReinsType","QS","Quota Share","N/A"
+"ReinsType","SS","Surplus Share","N/A"
+"Retrofit","0","Unknown / default","N/A"
+"Retrofit","1","Bracing of cripple walls","N/A"
+"Retrofit","2","Bracing of parapets","N/A"
+"Retrofit","3","Bracing of soft-story","N/A"
+"Retrofit","4","Foundation anchorage (bolting)","N/A"
+"Retrofit","5","Glass/window strengthening","N/A"
+"Retrofit","6","Tilt Up","N/A"
+"Retrofit","7","General","N/A"
+"RiskLevel","","No risk terms","N/A"
+"RiskLevel","ACC","Account","N/A"
+"RiskLevel","LGR","Location Group","N/A"
+"RiskLevel","LOC","Location","N/A"
+"RiskLevel","POL","Policy","N/A"
+"RoofAnchorage","0","Unknown / default","N/A"
+"RoofAnchorage","1","Hurricane Ties","N/A"
+"RoofAnchorage","2","Nails / Screws","N/A"
+"RoofAnchorage","3","Anchor bolts","N/A"
+"RoofAnchorage","4","Gravity / friction","N/A"
+"RoofAnchorage","5","Adhesive epoxy","N/A"
+"RoofAnchorage","6","Structurally Connected","N/A"
+"RoofAnchorage","7","Clips","N/A"
+"RoofAnchorage","8","Double wraps","N/A"
+"RoofAnchorage","9","Single wraps","N/A"
+"RoofAttachedStructures","0","Unknown / default","N/A"
+"RoofAttachedStructures","1","Chimneys","N/A"
+"RoofAttachedStructures","10","Overhang/Rake (> 36 in)","N/A"
+"RoofAttachedStructures","11","Waterproof membrane/fabric","N/A"
+"RoofAttachedStructures","12","Secondary water resistance - Yes","N/A"
+"RoofAttachedStructures","13","Secondary water resistance - No","N/A"
+"RoofAttachedStructures","14","Solar Panels with ballast","N/A"
+"RoofAttachedStructures","15","Solar panels mechanically attached","N/A"
+"RoofAttachedStructures","2","A/C Units","N/A"
+"RoofAttachedStructures","3","Skylights","N/A"
+"RoofAttachedStructures","4","Parapet Walls","N/A"
+"RoofAttachedStructures","5","Overhang/Rake (8-36 in)","N/A"
+"RoofAttachedStructures","6","Dormers","N/A"
+"RoofAttachedStructures","7","Other","N/A"
+"RoofAttachedStructures","8","No Attached Structures","N/A"
+"RoofAttachedStructures","9","Overhang/Rake (< 8 in)","N/A"
+"RoofCover","0","Unknown / default","N/A"
+"RoofCover","1","Asphalt shingles","N/A"
+"RoofCover","10","Single ply membrane ballasted","N/A"
+"RoofCover","11","Hurricane Wind-Rated Roof Coverings","N/A"
+"RoofCover","12","Composition (Fiberglass, Asphalt, etc)","N/A"
+"RoofCover","13","Asbestos shakes","N/A"
+"RoofCover","14","Copper","N/A"
+"RoofCover","15","Concrete (not tile)","N/A"
+"RoofCover","16","Reinforced concrete","N/A"
+"RoofCover","18","Plastic","N/A"
+"RoofCover","19","Fiberglass","N/A"
+"RoofCover","2","Wooden shingles","N/A"
+"RoofCover","20","Steel","N/A"
+"RoofCover","21","Plywood","N/A"
+"RoofCover","22","Rubber","N/A"
+"RoofCover","23","Tin","N/A"
+"RoofCover","24","Aluminium","N/A"
+"RoofCover","25","Foam","N/A"
+"RoofCover","26","Thatch","N/A"
+"RoofCover","27","Felt","N/A"
+"RoofCover","28","Zinc","N/A"
+"RoofCover","3","Clay/concrete tiles","N/A"
+"RoofCover","4","Light metal panels","N/A"
+"RoofCover","5","Slate","N/A"
+"RoofCover","6","Built-up roof with gravel","N/A"
+"RoofCover","7","Single ply membrane","N/A"
+"RoofCover","8","Standing seam metal roofs","N/A"
+"RoofCover","9","Built-up roof without gravel","N/A"
+"RoofCoverAttachment","0","Unknown / default","N/A"
+"RoofCoverAttachment","1","Screws","N/A"
+"RoofCoverAttachment","2","Nails/staples","N/A"
+"RoofCoverAttachment","3","Adhesive/epoxy","N/A"
+"RoofCoverAttachment","4","Mortar","N/A"
+"RoofDeck","0","Unknown / default","N/A"
+"RoofDeck","1","Plywood","N/A"
+"RoofDeck","2","Wood planks","N/A"
+"RoofDeck","3","Particle board / OSB","N/A"
+"RoofDeck","4","Metal deck with insulation board","N/A"
+"RoofDeck","5","Metal deck with concrete","N/A"
+"RoofDeck","6","Pre-cast concrete slabs","N/A"
+"RoofDeck","7","Reinforced concrete slabs","N/A"
+"RoofDeck","8","Light metal","N/A"
+"RoofDeckAttachment","0","Unknown / default","N/A"
+"RoofDeckAttachment","1","Screws / bolts","N/A"
+"RoofDeckAttachment","2","Nails","N/A"
+"RoofDeckAttachment","3","Adhesive / epoxy","N/A"
+"RoofDeckAttachment","4","Structurally connected","N/A"
+"RoofDeckAttachment","5","6d nails @ 6 spacing, 12 on center","N/A"
+"RoofDeckAttachment","6","8d nails @ 6 spacing, 12 on center","N/A"
+"RoofDeckAttachment","7","8d nails @ 6 spacing, 6 on center","N/A"
+"RoofEquipment","0","Unknown","N/A"
+"RoofEquipment","1","No equipment","N/A"
+"RoofEquipment","2","Vulnerable","N/A"
+"RoofEquipment","3","Average","N/A"
+"RoofEquipment","4","Resilient","N/A"
+"RoofFrame","0","Unknown","N/A"
+"RoofFrame","1","Reinforced Concrete","N/A"
+"RoofFrame","2","Steel","N/A"
+"RoofFrame","3","Light Metal","N/A"
+"RoofFrame","4","Wood","N/A"
+"RoofGeometry","0","Unknown / default","N/A"
+"RoofGeometry","1","Flat","N/A"
+"RoofGeometry","10","Gambrel","N/A"
+"RoofGeometry","11","Butterfly","N/A"
+"RoofGeometry","12","Saltbox","N/A"
+"RoofGeometry","2","Gable end without bracing","N/A"
+"RoofGeometry","3","Hip","N/A"
+"RoofGeometry","4","Complex","N/A"
+"RoofGeometry","5","Stepped","N/A"
+"RoofGeometry","6","Shed","N/A"
+"RoofGeometry","7","Mansard","N/A"
+"RoofGeometry","8","Gable end with bracing","N/A"
+"RoofGeometry","9","Pyramid","N/A"
+"RoofMaintenance","0","Unknown","N/A"
+"RoofMaintenance","1","Vulnerable","N/A"
+"RoofMaintenance","2","Average","N/A"
+"RoofMaintenance","3","Resilient","N/A"
+"RoofPitch","0","Unknown / default","N/A"
+"RoofPitch","1","Low (<10°)","N/A"
+"RoofPitch","2","Medium (10° to 30°)","N/A"
+"RoofPitch","3","High (>30°)","N/A"
+"SalvageProtection","0","Unknown","N/A"
+"SalvageProtection","1","Vulnerable","N/A"
+"SalvageProtection","2","Average","N/A"
+"SalvageProtection","3","Resilient","N/A"
+"ServiceEquipmentProtection","0","Unknown / default","N/A"
+"ServiceEquipmentProtection","1","Protected for flood (i.e. protected for flood by being elevated and/or flood proofing)","N/A"
+"ServiceEquipmentProtection","2","Unprotected for flood (i.e. not elevated and not flood protected)","N/A"
+"ShapeIrregularity","0","Unknown / default",""
+"ShapeIrregularity","2","Vertical Offset",""
+"ShapeIrregularity","3","Non-uniform Floor Area","E.g., a sudden change in floor area along the height"
+"ShapeIrregularity","4","Discontinuous Shear Wall","I.e., the main load-resisting components are not provided in a regular, symmetric pattern"
+"ShapeIrregularity","5","Heavy floor","E.g., placement of heavy equipment on higher floors"
+"ShortColumn","0","Unknown / default","N/A"
+"ShortColumn","1","No","N/A"
+"ShortColumn","2","Yes","N/A"
+"SmallDebris","0","Unknown / default","N/A"
+"SmallDebris","1","No","N/A"
+"SmallDebris","2","Yes","N/A"
+"SoftStory","0","Unknown / default","N/A"
+"SoftStory","1","No","N/A"
+"SoftStory","2","Yes","N/A"
+"SoilLiquefiable","0","Unknown / not applicable","Soil susceptibility to liquefaction unknown or not applicable."
+"SoilLiquefiable","1","Soil not susceptible to liquefaction (clay-like soils)","Liquefaction susceptibility not identified in the predominant soil layers at this location, to a depth relevant for the asset foundations. Soils are to be designated as non-liquefiable if they are clay-like. Numerically, this can be determined by the Plasticity Index (PI), where it is recommended that non-liquefiable (clay-like) soils are identified where PI > 7, as per recommendations of Boulanger and Idriss (2006)."
+"SoilLiquefiable","2","Soil susceptible to liquefaction (sand-like soils)","Liquefaction susceptibility not identified in the predominant soil layers at this location, to a depth relevant for the asset foundations. Soils are to be designated as liquefiable if they are sand-like. Numerically, this can be determined by the Plasticity Index (PI), where it is recommended that liquefiable (sand-like) soils are identified where PI < 7, as per recommendations of Boulanger and Idriss (2006)."
+"SoilType","0","No soil information (default)","N/A"
+"SoilType","1","Time averaged shear-wave velocity to 30m depth (vs30 (m/s))","N/A"
+"SpecialEQConstruction","0","Unknown / default","N/A"
+"SpecialEQConstruction","1","Base isolation","N/A"
+"SpecialEQConstruction","2","Visco-elastic dampers","N/A"
+"SpecialEQConstruction","3","Other energy dissipaters","N/A"
+"SprinklerType","0","Unknown / default","N/A"
+"SprinklerType","1","No sprinkler","N/A"
+"SprinklerType","2","CO2 / Halon sprinkler","N/A"
+"SprinklerType","3","Dry sprinkler","N/A"
+"SprinklerType","4","Standpipe sprinkler","N/A"
+"SprinklerType","5","Wet sprinkler","N/A"
+"StaticMotorVehicle","0","Dynamic motor vehicle that moves from location to location","N/A"
+"StaticMotorVehicle","1","Static motor vehicle","N/A"
+"Statuses","B","Bound","N/A"
+"Statuses","C","Cancelled","N/A"
+"Statuses","Q","Quoted","N/A"
+"Statuses","R","Rejected","N/A"
+"Statuses","S","Submitted","N/A"
+"StepTriggerType","1","Building","N/A"
+"StepTriggerType","2","Contents","N/A"
+"StepTriggerType","3","Building and Contents","N/A"
+"StepTriggerType","4","Building, then Contents","N/A"
+"StepTriggerType","5","Building, Contents separately","N/A"
+"TallOneStory","0","Unknown / default","N/A"
+"TallOneStory","1","<= 20 ft","N/A"
+"TallOneStory","2","> 20ft and < 40ft","N/A"
+"TallOneStory","3",">= 40ft","N/A"
+"Tank","0","Unknown / default","N/A"
+"Tank","1","No","N/A"
+"Tank","2","Yes","N/A"
+"TerrainRoughness","0","Unknown / default",""
+"TerrainRoughness","1","Large city centers","Large city centers with at least 50% of the buildings having a height in excess of 70 feet (21.3 m). You should limit the use of this exposure category to areas for which terrain representative of this category prevails in the upward direction for a distance of at least 0.5 mi. (0.8 km) or 10 times the height of the building or other structure, whichever is greater. Possible channelling effect on building will be taken into account."
+"TerrainRoughness","2","Urban and suburban areas, wooded areas","Urban and suburban areas, wooded areas, or other terrain with numerous closely spaced obstructions having the size of single-family dwellings or larger. You should limit the use of this exposure category to areas for which terrain representative of this category prevails in the upwind direction for a distance of at least 1,500 feet (460 m) or 10 times the height of the building or other structure, whichever is greater."
+"TerrainRoughness","3","Open terrain with scattered obstruct","Open terrain with scattered obstructions having heights generally less than 30 feet (9.1 m). This category includes flat, open country and grasslands."
+"TerrainRoughness","4","Flat, unobstructed areas","Flat, unobstructed areas exposed to winds flowing over open water for a distance of at least 1 mile (1.61 km). This exposure category applies only to buildings and other structures exposed to the winds coming off the water. This exposure category extends inland from the shoreline a distance of 1,500 feet (460 m) or 10 times the height of the building or structure, whichever is greater."
+"Torsion","0","Unknown / default","N/A"
+"Torsion","1","Symmetric","N/A"
+"Torsion","2","Asymmetric","N/A"
+"Torsion","3","Corner building","N/A"
+"TreeExposure","0","Unknown / default","N/A"
+"TreeExposure","1","No","N/A"
+"TreeExposure","2","Yes","N/A"
+"Units","1","Feet (Distance)","N/A"
+"Units","11","Square feet (Area)","N/A"
+"Units","12","Square meters (Area)","N/A"
+"Units","13","Acre (Area)","N/A"
+"Units","14","Hectare (Area)","N/A"
+"Units","2","Meters (Distance)","N/A"
+"Units","3","Kilometers (Distance)","N/A"
+"Units","4","Miles (Distance)","N/A"
+"ValuablesStorage","0","Unknown / default","N/A"
+"ValuablesStorage","1","Vault","N/A"
+"ValuablesStorage","2","Safe","N/A"
+"ValuablesStorage","3","Strongbox","N/A"
+"ValuablesStorage","4","Unprotected exhibition","N/A"
+"ValuablesStorage","5","Protected exhibition (protection around specific art pieces)","N/A"
+"ValuablesStorage","6","Archive","N/A"
+"ValuablesStorage","7","Special facility","N/A"
+"VoltageOfEnergy","0","Unknown","N/A"
+"VoltageOfEnergy","1","Low Voltage (<115 KV) Substation","N/A"
+"VoltageOfEnergy","2","Medium Voltage (115-500 KV) Substation","N/A"
+"VoltageOfEnergy","3","High Voltage (>500 KV) Substation","N/A"
+"WallAttachedStructure","0","Unknown / default","N/A"
+"WallAttachedStructure","1","Carports / Canopies / Porches","N/A"
+"WallAttachedStructure","2","Single Door Garages","N/A"
+"WallAttachedStructure","3","Double Door Garages","N/A"
+"WallAttachedStructure","4","Reinforced Single Door Garages","N/A"
+"WallAttachedStructure","5","Reinforced Double Door Garages","N/A"
+"WallAttachedStructure","6","Screened Porches/Glass Patio Doors","N/A"
+"WallAttachedStructure","7","Balcony","N/A"
+"WallAttachedStructure","8","No attached wall structures","N/A"
+"WallAttachedStructure","9","Attached screen enclosure / Lanai","N/A"
+"WindowProtection","0","Unknown / default","N/A"
+"WindowProtection","1","No protection","N/A"
+"WindowProtection","2","Non-engineered shutters","N/A"
+"WindowProtection","3","Engineered shutters","N/A"
