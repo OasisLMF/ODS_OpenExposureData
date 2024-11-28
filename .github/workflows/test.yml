@@ -2,6 +2,9 @@ name: OpenData Testing
 
 on:
   push:
+    branches:
+      - master
+      - develop
   pull_request:
   workflow_dispatch:
     inputs:
