@@ -38,6 +38,7 @@ The exposure classes are;
 * Property
 * Cyber
 * Liability
+* Marine Cargo
 
 The field statuses are;
 
