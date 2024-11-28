@@ -16,12 +16,20 @@ ODS Changelog
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/181) - [Property] Clarify relationship between "required field" and "blanks allowed" in OED Spec
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/187) - [Property] Original Currency field should not default to 0
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/186) - [Property, Cyber] BIWaitingPeriod change datatype from smallint to float
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/224) - [Property] Many fields incorrectly described as percentage instead of proportion
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/216) - [Property] Clarify value in BITIV as annualised in field description
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/225) - [Property] Valid values for BaseFloodElevation are incorrect
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/213) - [Property] MRI new codes
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/173) - [Cyber] Do not include implicit business logic in the schema design
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/182) - [Cyber, Liability] Integration of Cyber and Liability into Property specification
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/188) - [Cyber, Liability] Financial coverages and field name revisions
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/202) - [Marine] Integration into OED
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/210) - [Marine] Additional Occupancy codes for Marine Cargo to Accompany Current Marine Construction Codes
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/162) - [Reinsurance] OriginalCurrency and RateOfExchange fields should not be in ReinsScope
+
+`v3.4.1`_
+-----------
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/220) - Fixed group Peril codes, ZZ1 is not represented in the group peril to individual peril mappings
 
 `v3.4.0`_
 -----------
