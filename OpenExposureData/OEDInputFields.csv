@@ -390,7 +390,7 @@ Code for the appurtenant building, such as shed or detached garage","O","tinyint
 "Loc","FloodDefenseHeight","Height of any site specific flood defenses protecting the property with respect to local ground elevation (NOT to datum).","O","float","-999","[-999,)","n/a","n/a","n/a"
 "Loc","FloodDefenseHeightUnit","Code for the unit of measure used to express the FloodDefenseHeight","O","tinyint","1","","n/a","n/a","n/a"
 "Loc","FloodDebrisResilience","Shows if building is vulnerable to floating debris","O","tinyint","0","","n/a","n/a","n/a"
-"Loc","BaseFloodElevation","Water surface elevation (relative to datum - this is NOT a flood depth) corresponding to a flood having a 1% probability of being equaled or exceeded in a given year. A value of -999 for this field represents unknown/default.","O","float","-999","[-999,-999], [0,1]","n/a","n/a","n/a"
+"Loc","BaseFloodElevation","Water surface elevation (relative to datum - this is NOT a flood depth) corresponding to a flood having a 1% probability of being equaled or exceeded in a given year. A value of -999 for this field represents unknown/default.","O","float","-999","[-999,-999], [0,)","n/a","n/a","n/a"
 "Loc","BaseFloodElevationUnit","Code for the unit of measure used to express the BaseFloodElevation","O","tinyint","1","","n/a","n/a","n/a"
 "Loc","BuildingHeight","Total height of the structure","O","float","-999","[-999,)","n/a","n/a","n/a"
 "Loc","BuildingHeightUnit","Units of the BuildingHeight","O","tinyint","1","","n/a","n/a","n/a"
