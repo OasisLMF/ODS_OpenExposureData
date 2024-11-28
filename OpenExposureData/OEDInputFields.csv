@@ -452,7 +452,7 @@ Code for the appurtenant building, such as shed or detached garage","O","tinyint
 "ReinsScope","LOB","Line of business:  used for defining treaty scope in the reinsurance scope file","O","varchar(20)","n/a","","O","O","n/a"
 "ReinsScope","CountryCode","Country code: used for defining treaty scope in the reinsurance scope file","O","char(2)","n/a","","O","O","n/a"
 "ReinsScope","ReinsTag","Reinsurance tag: user defined field to for defining treaty scope in the reinsurance scope file","O","varchar(20)","n/a","","O","O","n/a"
-"ReinsScope","CededPercent","Ceded percentage (for 12%, enter 0.12). Within the reinsurance scope file, CededPercent should only be entered for surplus share treaties.","CR","float","1","[0,1]","CR","CR","CR"
+"ReinsScope","CededPercent","Reinsurance ceded percentage, entered as a proportion with values between 0 and 1 (e.g. 12% entered as 0.12). Within the reinsurance scope file, CededPercent should only be entered for surplus share treaties.","CR","float","1","[0,1]","CR","CR","CR"
 "ReinsInfo","RiskLevel","Code to indicate the definition of 'risk' for the per-risk terms in this particular treaty (or portion of the treaty)","CR","char(3)","n/a","","CR","CR","CR"
 "Loc","StaticMotorVehicle","Identifies whether a risk is static or dynamic (moves from location to location)","O","tinyint","0","[0,1]","n/a","n/a","n/a"
 "Acc","CondClass","Flags whether a condition is a policy restriction","O","tinyint","0","[0,1]","n/a","n/a","n/a"
