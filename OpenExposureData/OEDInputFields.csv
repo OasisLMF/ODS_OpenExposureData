@@ -326,7 +326,7 @@
 "Loc","BIWaitingPeriod","BI waiting period (in days)","O","float","0","[0,)","n/a","n/a","n/a"
 "Loc","LocPeril","Perils for location financial terms","CR","varchar(250)","n/a","","n/a","n/a","n/a"
 "Loc","YearUpgraded","Year the building was upgraded (4 digit year)","O","smallint","0","[0,)","n/a","n/a","n/a"
-"Loc","SurgeLeakage","Storm leakage percentage (0% to 100%) for Wind only policies","O","float","-999","[-999,-999], [0,1]","n/a","n/a","n/a"
+"Loc","SurgeLeakage","Storm leakage percentage entered as a proportion with values between 0 and 1 (0% to 100%) for Wind only policies","O","float","-999","[-999,-999], [0,1]","n/a","n/a","n/a"
 "Loc","SprinklerType","Sprinkler type","O","tinyint","0","","n/a","n/a","O"
 "Loc","PercentSprinklered","Percent sprinklered, entered as a proportion with values between 0 and 1 inclusive (0.5 = 50%); -999 is unknown","O","float","-999","[-999,-999], [0,1]","n/a","n/a","O"
 "Loc","RoofCover","Code that represents the material used to cover the roof","O","tinyint","0","","n/a","n/a","n/a"
