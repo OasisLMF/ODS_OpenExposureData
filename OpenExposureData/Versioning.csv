@@ -157,6 +157,7 @@
 "Occupancy","1305","1150","2.0","Utilities, General","Industrial, General industrial"
 "Occupancy","1057","1050","2.0","Residential, Renter","Residential, General residential"
 "Occupancy","1058","1050","2.0","Residential Apartment/Condo Asso, Common Areas","Residential, General residential"
+"Occupancy","1059","1050","4.0","Residential, Large or Multiple Unit Apartment/Condo Asso, Common Areas","Residential, General residential"
 "Occupancy","1400","1100","4.0","Marine Cargo, General / Unknown","Marine Cargo, General / Unknown"
 "Occupancy","1401","1100","4.0","Marine Cargo, Designated Facilities / Vaults","Marine Cargo, Designated Facilities / Vaults"
 "Occupancy","1402","1100","4.0","Marine Cargo, Silo","Marine Cargo, Silo"
