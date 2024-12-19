@@ -1,5 +1,5 @@
 
-The csv files in this folder are the "source of truth" of the specification of the Open Exposure Data Standard.
+The csv files in this folder are the "source of truth" of the specification of the Open Exposure Data Standard. For each release, an excel workbook is generated from the csv files with each of the tables listed below appearing in separate tabs. The excel version can be accessed from the main [README.](../README.md#releases)
 
 ## Index of files
 

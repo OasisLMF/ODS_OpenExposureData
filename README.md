@@ -106,8 +106,7 @@ and reference and background OED information can be found in the 'docs’ folder
 from 3.4.1, for ease of change tracking, the fields are now describe in csv files where each file represent a sheet in the previous xlsx version.
 those can be found directly in the OpenExposureData folder (https://github.com/OasisLMF/ODS_OpenExposureData/tree/develop/OpenExposureData).
 
-Those csv files use the minimal quoting rule
-(only quote those fields which contain special characters such as delimiter, quotechar or any of the characters in lineterminator).
+Those csv files use the full quoting rule (all data fields are encased in double quotes).
 
 Examples of how to code multiple financial structures in the input files are also covered within these documents.
 
