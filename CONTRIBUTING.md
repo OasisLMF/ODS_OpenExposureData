@@ -6,7 +6,9 @@ and adoption of the OED standard.
 We recommend that before contributing you:
 
 * Review the [OED documentation](Docs/) which provides an overview of the standard and introduces key concepts and terminology.
-* Review the [OED specification](OpenExposureData/) which contains the main data components, field lists and valid values.
+* Review the OED specification which contains the main data components, field lists and valid values.
+  * [Excel version](README.md#releases)
+  * [Csv version](OpenExposureData/)  
 * Review the [governance and release processes](Docs/ODS_Gov_Updates_Release_Processes_v1.1.pdf) documentation so that you are familiar with our processes for agreeing changes and releasing updates.
 
 ## Proposing changes
