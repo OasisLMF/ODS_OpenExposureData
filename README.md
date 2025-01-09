@@ -89,7 +89,7 @@ https://oasislmf.org/open-data-standards
 
 The diagram below highlights the proposed, long-term structure of ODS and all the key components. Interoperability is vital to ensure efficient interaction across multiple databases, systems and external exposure management and data storage facilities.
 
-<img src="https://github.com/OasisLMF/ODS_OpenExposureData/blob/MattDonovan82-patch-1/Docs/images/ODS_Structure_v2.jpg" width="800" />  
+<img src="Docs/images/ODS_Structure_v2.jpg" width="800" />  
 
 
 ## Open Exposure Data (OED)
