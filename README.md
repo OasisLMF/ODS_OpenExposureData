@@ -1,7 +1,7 @@
 ***Latest version of ODS*** </br> 
 <a href="https://github.com/OasisLMF/OpenDataStandards/releases/latest" rel="Latest Release">![ODS version](https://img.shields.io/github/v/tag/Oasislmf/OpenDataStandards.svg?label=OpenDataStandards)</a> 
 [![PyPI version](https://badge.fury.io/py/ods-tools.svg)](https://badge.fury.io/py/ods-tools)
-[![OpenData Build](https://github.com/OasisLMF/OpenDataStandards/actions/workflows/build.yml/badge.svg?branch=master&event=push)](https://github.com/OasisLMF/OpenDataStandards/actions/workflows/build.yml)
+[![OpenData Build](https://github.com/OasisLMF/OpenDataStandards/actions/workflows/build.yml/badge.svg?branch=main&event=push)](https://github.com/OasisLMF/OpenDataStandards/actions/workflows/build.yml)
 
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
@@ -187,7 +187,7 @@ All releases will follow the SemVer convention (https://semver.org/), so given a
     
 **PATCH** updates are for making backwards compatible bug fixes e.g. correcting a typo in a column label.
    
-All new work will be done in **feature** branches, following the [GitFlow model](https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master** branch and the current development work will be in **develop** or specific feature branches.
+All new work will be done in **feature** branches, following the [GitFlow model](https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **stable/{version}.x.x** branches and the current development work will be in **main** or specific feature branches.
 
 &nbsp; 
 
