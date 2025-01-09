@@ -89,7 +89,7 @@ https://oasislmf.org/open-data-standards
 
 The diagram below highlights the proposed, long-term structure of ODS and all the key components. Interoperability is vital to ensure efficient interaction across multiple databases, systems and external exposure management and data storage facilities.
 
-<img src="https://github.com/OasisLMF/ODS_OpenExposureData/blob/MattDonovan82-patch-1/Docs/images/ODS_Structure_v2.jpg" width="800" />  
+<img src="Docs/images/ODS_Structure_v2.jpg" width="800" />  
 
 
 ## Open Exposure Data (OED)
@@ -125,17 +125,13 @@ https://github.com/OasisLMF/OpenDataTransform
 
 **Liability** 
 
-The focus for OED has primarily been on property exposure data since its inception but has now expanded to support other lines of business. The v1 liability data schema was released in April 2022 and has now been incorporated into the main OED schema. See the 'liability field status' field here https://github.com/OasisLMF/ODS_OpenExposureData/blob/release/4.0.0/OpenExposureData/OEDInputFields.csv.
-
+The focus for OED has primarily been on property exposure data since its inception but has now expanded to support other lines of business. The v1 liability data schema was released in April 2022 and has now been incorporated into the main OED schema. See the 'Liability field status' field in [here](OpenExposureData/OEDInputFields.csv).
 
 &nbsp; 
 
 **Cyber** 
 
-The v1 cyber schema was released in February 2023 but has now been incorporated into the main OED schema. See the 'cyber field status' field here: 
-https://github.com/OasisLMF/ODS_OpenExposureData/blob/release/4.0.0/OpenExposureData/OEDInputFields.csv.
-
-
+The v1 cyber schema was released in February 2023 but has now been incorporated into the main OED schema. See the 'Cyber field status' field in [here](OpenExposureData/OEDInputFields.csv).
 
 &nbsp; 
 
@@ -147,9 +143,7 @@ ORD follows the same versioning format as OED (following the SemVer convention a
 
 https://github.com/OasisLMF/ODS_OpenResultsData
 
-
 &nbsp; 
-
 
 ## Governance
 
@@ -176,8 +170,7 @@ All releases will follow the SemVer convention (https://semver.org/), so given a
   * Adding ‘mandatory’ fields to the schema.
   * Moving fields between input files (i.e., from ‘ReinsScope’ to ‘ReinsInfo’ files)
   * Removing occupancy or construction codes.
-  * Changing or removing any other codes currently used in the OED schema. I.e., any codes contained in the tabs of the *OpenExposureData_Spec.xlsx* 
-(https://github.com/OasisLMF/ODS_OpenExposureData/blob/develop/OpenExposureData/Docs/OpenExposureData_Spec.xlsx)
+  * Changing or removing any other codes currently used in the OED schema. I.e., any codes contained in the *OpenExposureData_Spec.xlsx* 
   * Reducing the ‘valid value range’.
   * Changing the ‘allow blanks’ field.
   * Changing the ‘default’ values.
@@ -188,7 +181,7 @@ All releases will follow the SemVer convention (https://semver.org/), so given a
 
   * Adding new fields to the OED schema.
   * Adding new occupancy or construction codes.
-  * Adding new codes in the tabs of the *OpenExposureData_Spec.xlsx* (https://github.com/OasisLMF/ODS_OpenExposureData/blob/develop/OpenExposureData/Docs/OpenExposureData_Spec.xlsx)
+  * Adding new codes in the *OpenExposureData_Spec.xlsx* 
   * Increasing ‘valid value range’.
     
 **PATCH** updates are for making backwards compatible bug fixes e.g. correcting a typo in a column label.
@@ -199,7 +192,7 @@ All new work will be done in **feature** branches, following the [GitFlow model]
 
 ### Versioning and Back Compatibility
 
-The 'versioning' tab in the OED spec (https://github.com/OasisLMF/ODS_OpenExposureData/tree/OED_v3.1_testing/OpenExposureData/Docs) contains the mapping and back compatibility of occupancy and construction codes from previous versions of OED. For example, if a user codes exposure data using an occupancy or construction code from OED v3, but the model implementation they are running is only using the OED v2 schema, then that code will be mapped back to an appropriate code in OED v2 so any validation processes will still work.
+The 'versioning' table in the OED spec (OpenExposureData/Versioning.csv) contains the mapping and back compatibility of occupancy and construction codes from previous versions of OED. For example, if a user codes exposure data using an occupancy or construction code from OED v3, but the model implementation they are running is only using the OED v2 schema, then that code will be mapped back to an appropriate code in OED v2 so any validation processes will still work.
 
 &nbsp; 
 
