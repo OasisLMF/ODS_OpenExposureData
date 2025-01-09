@@ -82,6 +82,7 @@ https://oasislmf.org/open-data-standards
  | 3.3.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.3.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.3.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.3.0) |
  | 3.4.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.4.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.4.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.4.0) |
  | 3.4.1 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.4.1/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.4.1/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.4.1) |
+ | 4.0.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/4.0.0/OpenExposureData_Spec.xlsx ) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/4.0.0/OpenExposureData_Spec.json ) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/4.0.0) |
 <!-- NEW VERSION TAG -->
 
 
