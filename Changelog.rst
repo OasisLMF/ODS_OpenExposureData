@@ -19,7 +19,6 @@ ODS Changelog
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/224) - [Property] Many fields incorrectly described as percentage instead of proportion
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/216) - [Property] Clarify value in BITIV as annualised in field description
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/225) - [Property] Valid values for BaseFloodElevation are incorrect
-* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/213) - [Property] MRI new codes
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/173) - [Cyber] Do not include implicit business logic in the schema design
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/182) - [Cyber, Liability] Integration of Cyber and Liability into Property specification
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/188) - [Cyber, Liability] Financial coverages and field name revisions
