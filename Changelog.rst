@@ -25,6 +25,7 @@ ODS Changelog
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/202) - [Marine] Integration into OED
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/210) - [Marine] Additional Occupancy codes for Marine Cargo to Accompany Current Marine Construction Codes
 * (https://github.com/OasisLMF/ODS_OpenExposureData/issues/162) - [Reinsurance] OriginalCurrency and RateOfExchange fields should not be in ReinsScope
+* (https://github.com/OasisLMF/ODS_OpenExposureData/issues/215) - [Cyber] Refactoring of coverage_code and coverage financial terms
 
 `v3.4.1`_
 -----------
