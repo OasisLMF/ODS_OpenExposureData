@@ -1,4 +1,4 @@
-File Name,Input Field Name,Type & Description,Required Field,Data Type,Default,Valid value range,Cyber field status,Liability field status,Marine Cargo field status,version_number
+File Name,Input Field Name,Type & Description,Property field status,Data Type,Default,Valid value range,Cyber field status,Liability field status,Marine Cargo field status,version_number
 Acc; Loc,PortNumber,Portfolio number,R,,,,n/a,n/a,n/a,1.1.2
 Acc,PortName,Portfolio name,O,,,,n/a,n/a,n/a,1.1.2
 Acc,PortNotes,"Portfolio notes, longer description than allowed in portfolio name",O,,,,n/a,n/a,n/a,1.1.2
