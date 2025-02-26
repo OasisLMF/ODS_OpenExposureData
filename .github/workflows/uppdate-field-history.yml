@@ -1,9 +1,18 @@
 name: Update InputFields History
 
 on:
-  push:
-    tags:
-      - '*'  # Runs on any tag push
+  workflow_dispatch:
+    inputs:
+      version_tag:
+        description: "Version number [semvar]"
+        required: true
+
+  workflow_call:
+    inputs:
+      version_tag:
+        description: "Version number [semvar]"
+        required: true
+        type: string
 
 jobs:
   run-script:
@@ -23,10 +32,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install click pandas packaging
 
-      - name: Extract Git Tag
-        id: get_tag
-        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-
       - name: Verify Branch
         run: |
           BRANCH=$(git rev-parse --abbrev-ref HEAD)
@@ -36,4 +41,28 @@ jobs:
           fi
 
       - name: Run Script
-        run: python ./utils/gen-oed-fields-history.py --version-number $TAG_NAME
+        run: python ./utils/gen-oed-fields-history.py --version-number ${{ inputs.version_tag }}
+
+      - name: Setup github user
+        run: |
+          git config --global user.email ${{ env.GIT_EMAIL }}
+          git config --global user.name ${{ env.GIT_USERNAME }}
+          git config --global pull.ff only
+        env:
+          GIT_EMAIL: ${{ secrets.BUILD_GIT_EMAIL }}
+          GIT_USERNAME: ${{ secrets.BUILD_GIT_USERNAME }}
+
+
+      - name: Commit history
+        run: |
+          git add -A OpenExposureData/OEDInputFieldsVersionHistory.csv
+          git status
+          if [[ ! -z $(git status -s) ]]; then
+            git commit -m 'Updated InputFields History, version ${{ inputs.version_tag }}'
+            git push
+          else
+            echo 'No changes detected'
+          fi
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.BUILD_GIT_TOKEN }}
