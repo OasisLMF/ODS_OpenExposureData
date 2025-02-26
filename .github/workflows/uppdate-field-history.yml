@@ -1,0 +1,42 @@
+name: Update InputFields History
+
+on:
+  push:
+    tags:
+      - '*'  # Runs on any tag push
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    
+    if: startsWith(github.ref, 'refs/tags/') && github.ref_name == 'oed-field-from-version'
+    #if: startsWith(github.ref, 'refs/tags/') && github.ref_name == 'main'
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install click pandas packaging
+
+      - name: Extract Git Tag
+        id: get_tag
+        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Verify Branch
+        run: |
+          BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          if [ "$BRANCH" != "oed-field-from-version" ]; then
+            echo "Not on main branch, exiting."
+            exit 1
+          fi
+
+      - name: Run Script
+        run: python ./utils/gen-oed-fields-history.py --version-number $TAG_NAME
