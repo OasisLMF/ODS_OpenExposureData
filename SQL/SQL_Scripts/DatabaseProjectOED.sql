@@ -24,7 +24,7 @@ GO
 ------------------------------------------------------------------------------------------------------
 
 CREATE TABLE [dbo].[Portfolio] (
-    [PortfolioId] INT         IDENTITY (1, 1) NOT NULL,
+    [PortfolioId] INT NOT NULL,
     [PortNumber]  VARCHAR (20) NOT NULL,
     [PortName]    VARCHAR (40) NULL,
     [PortNotes]   VARCHAR (200) NULL,
@@ -295,7 +295,7 @@ CREATE TABLE [dbo].[CoverageType] (
 GO
 
 CREATE TABLE [dbo].[Coverage] (
-    [CoverageId]     INT        IDENTITY (1, 1) NOT NULL,
+    [CoverageId]     INT        NOT NULL,
     [LocationId]     INT        NOT NULL,
     [CoverageTypeId] INT        NOT NULL,
     [TIV]            FLOAT (53) DEFAULT ((0)) NOT NULL,
@@ -322,7 +322,7 @@ CREATE TABLE [dbo].[PerilGroup] (
 GO
 
 CREATE TABLE [dbo].[Item] (
-    [ItemId]     INT IDENTITY (1, 1) NOT NULL,
+    [ItemId]     INT NOT NULL,
     [CoverageId] INT NOT NULL,
     [PerilId]    INT NOT NULL
     PRIMARY KEY CLUSTERED ([ItemId] ASC),
@@ -333,9 +333,9 @@ GO
 
 
 CREATE TABLE [dbo].[Term] (
-    [TermId]           INT        IDENTITY (1, 1) NOT NULL,
-    [TermLevel]        INT        NULL,
-    [TermCoverageType] INT        NULL,
+    [TermId]           INT        NOT NULL,
+    [TermLevel]        INT        NOT NULL,
+    [TermCoverageType] INT        NOT NULL,
     [DedType]          INT        NULL,
     [DedCode]          INT        NULL,
     [Deductible]       FLOAT (53) NULL,
@@ -352,7 +352,7 @@ GO
 ------------------------------------------------------------------------------------------------------
 
 CREATE TABLE [dbo].[CoverageTerm] (
-    [CoverageTermId] INT IDENTITY (1, 1) NOT NULL,
+    [CoverageTermId] INT NOT NULL,
     [TermId]         INT NOT NULL,
     [CoverageId]     INT NOT NULL,
     PRIMARY KEY CLUSTERED ([CoverageTermId] ASC),
@@ -362,7 +362,7 @@ CREATE TABLE [dbo].[CoverageTerm] (
 GO
 
 CREATE TABLE [dbo].[ConditionTerm] (
-    [ConditionTermId] INT IDENTITY (1, 1) NOT NULL,
+    [ConditionTermId] INT NOT NULL,
     [TermId]          INT NOT NULL,
     [ConditionId]     INT NOT NULL,
     PRIMARY KEY CLUSTERED ([ConditionTermId] ASC),
@@ -372,7 +372,7 @@ CREATE TABLE [dbo].[ConditionTerm] (
 GO
 
 CREATE TABLE [dbo].[AccountTerm] (
-    [AccountTermId] INT IDENTITY (1, 1) NOT NULL,
+    [AccountTermId] INT NOT NULL,
     [TermId]        INT NOT NULL,
     [AccountId]     INT NOT NULL,
     PRIMARY KEY CLUSTERED ([AccountTermId] ASC),
@@ -382,7 +382,7 @@ CREATE TABLE [dbo].[AccountTerm] (
 GO
 
 CREATE TABLE [dbo].[PolicyTerm] (
-    [PolicyTermId] INT IDENTITY (1, 1) NOT NULL,
+    [PolicyTermId] INT NOT NULL,
     [TermId]       INT NOT NULL,
     [PolicyId]     INT NOT NULL,
     PRIMARY KEY CLUSTERED ([PolicyTermId] ASC),
@@ -392,7 +392,7 @@ CREATE TABLE [dbo].[PolicyTerm] (
 GO
 
 CREATE TABLE [dbo].[LayerTerm] (
-    [LayerTermId] INT IDENTITY (1, 1) NOT NULL,
+    [LayerTermId] INT NOT NULL,
     [TermId]      INT NOT NULL,
     [LayerId]     INT NOT NULL,
     PRIMARY KEY CLUSTERED ([LayerTermId] ASC),
@@ -402,7 +402,7 @@ CREATE TABLE [dbo].[LayerTerm] (
 GO
 
 CREATE TABLE [dbo].[LocTerm] (
-    [LocTermId]  INT IDENTITY (1, 1) NOT NULL,
+    [LocTermId]  INT NOT NULL,
     [TermId]     INT NOT NULL,
     [LocationId] INT NOT NULL,
     PRIMARY KEY CLUSTERED ([LocTermId] ASC),
@@ -412,7 +412,7 @@ CREATE TABLE [dbo].[LocTerm] (
 GO
 
 CREATE TABLE [dbo].[PDTerm] (
-    [PdTermId]   INT IDENTITY (1, 1) NOT NULL,
+    [PdTermId]   INT NOT NULL,
     [TermId]     INT NOT NULL,
     [LocationId] INT NOT NULL,
     PRIMARY KEY CLUSTERED ([PdTermId] ASC),
@@ -422,7 +422,7 @@ CREATE TABLE [dbo].[PDTerm] (
 GO
 
 CREATE TABLE [dbo].[ItemTerm] (
-    [ItemTermId] INT IDENTITY (1, 1) NOT NULL,
+    [ItemTermId] INT NOT NULL,
     [TermId]     INT NOT NULL,
     [ItemId]     INT NOT NULL,
     PRIMARY KEY CLUSTERED ([ItemTermId] ASC),
@@ -966,7 +966,7 @@ GO
 
 
 CREATE TABLE [dbo].[_businesskeys_account] (
-    [AccountId] INT         IDENTITY (1, 1) NOT NULL,
+    [AccountId] INT         NOT NULL,
     [PortNumber]  VARCHAR (20) NOT NULL,
     [AccNumber]   NVARCHAR (100) NOT NULL
     PRIMARY KEY CLUSTERED ([AccountId] ASC)
@@ -974,7 +974,7 @@ CREATE TABLE [dbo].[_businesskeys_account] (
 GO
 
 CREATE TABLE [dbo].[_businesskeys_policy] (
-    [PolicyId] INT         IDENTITY (1, 1) NOT NULL,
+    [PolicyId] INT         NOT NULL,
     [PortNumber]  VARCHAR (20) NOT NULL,
     [AccNumber]   NVARCHAR (100) NOT NULL,
     [PolNumber]   NVARCHAR (100) NOT NULL,
@@ -984,7 +984,7 @@ CREATE TABLE [dbo].[_businesskeys_policy] (
 GO
 
 CREATE TABLE [dbo].[_businesskeys_layer] (
-    [LayerId] INT         IDENTITY (1, 1) NOT NULL,
+    [LayerId] INT         NOT NULL,
     [PortNumber]  VARCHAR (20) NOT NULL,
     [AccNumber]   NVARCHAR (100) NOT NULL,
     [PolNumber]   NVARCHAR (100) NOT NULL,
@@ -994,7 +994,7 @@ CREATE TABLE [dbo].[_businesskeys_layer] (
 GO
 
 CREATE TABLE [dbo].[_businesskeys_location] (
-    [LocationId] INT         IDENTITY (1, 1) NOT NULL,
+    [LocationId] INT         NOT NULL,
     [PortNumber]  VARCHAR (20) NOT NULL,
     [AccNumber]   NVARCHAR (100) NOT NULL,
     [LocNumber]   NVARCHAR (100) NOT NULL,
@@ -1004,7 +1004,7 @@ CREATE TABLE [dbo].[_businesskeys_location] (
 GO
 
 CREATE TABLE [dbo].[_businesskeys_condition] (
-    [ConditionId] INT         IDENTITY (1, 1) NOT NULL,
+    [ConditionId] INT        NOT NULL,
     [PortNumber]  VARCHAR (20) NOT NULL,
     [AccNumber]   NVARCHAR (100) NOT NULL,
     [PolNumber]   NVARCHAR (100) NOT NULL,
@@ -1185,30 +1185,8 @@ INSERT INTO [dbo].[PerilGroup] ([PerilGroupID], [PerilId]) VALUES
 (47,15),
 (47,23);
 
-------------------------------------------------------------------------------------------------------
-
--- reset identity index values
-
-DBCC CHECKIDENT('Portfolio', RESEED, 0)
-DBCC CHECKIDENT('Item', RESEED, 0)
-DBCC CHECKIDENT('Coverage', RESEED, 0)
-DBCC CHECKIDENT('Term', RESEED, 0)
-DBCC CHECKIDENT('CoverageTerm', RESEED, 0)
-DBCC CHECKIDENT('ConditionTerm', RESEED, 0)
-DBCC CHECKIDENT('AccountTerm', RESEED, 0)
-DBCC CHECKIDENT('PolicyTerm', RESEED, 0)
-DBCC CHECKIDENT('LayerTerm', RESEED, 0)
-DBCC CHECKIDENT('LocTerm', RESEED, 0)
-DBCC CHECKIDENT('PDTerm', RESEED, 0)
-DBCC CHECKIDENT('ItemTerm', RESEED, 0)
-DBCC CHECKIDENT('_businesskeys_account', RESEED, 0)
-DBCC CHECKIDENT('_businesskeys_policy', RESEED, 0)
-DBCC CHECKIDENT('_businesskeys_layer', RESEED, 0)
-DBCC CHECKIDENT('_businesskeys_location', RESEED, 0)
-DBCC CHECKIDENT('_businesskeys_condition', RESEED, 0)
-
 GO
-
+------------------------------------------------------------------------------------------------------
 
 CREATE PROCEDURE [dbo].[usp_BusinessKeyAccount_Load]
 AS
@@ -1217,14 +1195,20 @@ BEGIN
     SET NOCOUNT ON;
 
     INSERT INTO [_businesskeys_account] (
+        AccountId,
         PortNumber,
         AccNumber
         )
 
-    SELECT DISTINCT PortNumber,
+    SELECT ROW_NUMBER() OVER (ORDER BY PortNumber, AccNumber) AS AccountId,
+        PortNumber,
         AccNumber
-    FROM 
-        _import_account
+    FROM    (
+            SELECT DISTINCT PortNumber,
+                AccNumber
+            FROM 
+                _import_account
+            ) AS tmp_account
 
 END
 
@@ -1238,18 +1222,26 @@ BEGIN
     SET NOCOUNT ON;
 
     INSERT INTO [_businesskeys_policy] (
+        PolicyId,
         PortNumber,
         AccNumber,
         PolNumber,
         PolPerilsCovered
         )
 
-    SELECT DISTINCT PortNumber,
+    SELECT ROW_NUMBER() OVER (ORDER BY PortNumber, AccNumber, PolNumber) AS PolicyId,
+        PortNumber,
         AccNumber,
         PolNumber,
         PolPerilsCovered
-    FROM 
-        _import_account
+    FROM    (
+            SELECT DISTINCT PortNumber,
+                AccNumber,
+                PolNumber,
+                PolPerilsCovered
+            FROM 
+                _import_account
+            ) AS tmp_policy
 
 END
 
@@ -1262,18 +1254,26 @@ BEGIN
     SET NOCOUNT ON;
 
     INSERT INTO [_businesskeys_layer] (
+        LayerId,
         PortNumber,
         AccNumber,
         PolNumber,
         LayerNumber
         )
 
-    SELECT DISTINCT PortNumber,
+    SELECT ROW_NUMBER() OVER (ORDER BY PortNumber, AccNumber, PolNumber, LayerNumber) AS LayerId,
+        PortNumber,
         AccNumber,
         PolNumber,
         LayerNumber
-    FROM 
-        _import_account
+    FROM (
+        SELECT DISTINCT PortNumber,
+            AccNumber,
+            PolNumber,
+            LayerNumber
+        FROM 
+            _import_account
+             ) AS tmp_layer
 
 END
 
@@ -1286,18 +1286,27 @@ BEGIN
     SET NOCOUNT ON;
 
     INSERT INTO [_businesskeys_location] (
+        LocationId,
         PortNumber,
         AccNumber,
         LocNumber,
         LocPerilsCovered
         )
 
-    SELECT DISTINCT PortNumber,
+    SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY PortNumber, AccNumber, LocNumber) AS LocationId,
+        PortNumber,
         AccNumber,
         LocNumber,
         LocPerilsCovered
-    FROM 
-        _import_location
+    FROM    (
+            SELECT DISTINCT
+                PortNumber,
+                AccNumber,
+                LocNumber,
+                LocPerilsCovered
+            FROM 
+                _import_location
+            ) AS tmp_location
 
 END
 
@@ -1311,18 +1320,26 @@ BEGIN
     SET NOCOUNT ON;
 
     INSERT INTO [_businesskeys_condition] (
+        ConditionId,
         PortNumber,
         AccNumber,
         PolNumber,
         CondNumber
         )
 
-    SELECT DISTINCT PortNumber,
+    SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY PortNumber, AccNumber, PolNumber, CondNumber) AS ConditionId,
+        PortNumber,
         AccNumber,
         PolNumber,
         CondNumber
     FROM 
-        _import_account
+        (SELECT DISTINCT
+        PortNumber,
+        AccNumber,
+        PolNumber,
+        CondNumber
+    FROM 
+        _import_account) as tmp_condition
 
 END
 
@@ -1369,13 +1386,17 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
+    -- use business keys already generated
+
     INSERT INTO Portfolio (
+        PortfolioId,
         PortNumber, 
         PortName, 
         PortNotes
         )
 
-    SELECT DISTINCT PortNumber,
+    SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY PortNumber) AS PortfolioId,
+        PortNumber,
         PortName,
         PortNotes
     FROM 
@@ -1468,12 +1489,14 @@ BEGIN
     SET NOCOUNT ON;
 
     INSERT INTO Coverage (
+        CoverageId,
         LocationId,
         CoverageTypeId, 
         TIV
         )
 
-    SELECT DISTINCT bkl.LocationId,
+    SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY LocationId) AS CoverageId,
+        bkl.LocationId,
         1 as CoverageTypeId,
         ISNULL(ia.BuildingTIV,0)
     FROM 
@@ -1486,7 +1509,8 @@ BEGIN
 
     UNION ALL
 
-        SELECT DISTINCT bkl.LocationId,
+        SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY LocationId) AS CoverageId,
+        bkl.LocationId,
         2 as CoverageTypeId,
         ISNULL(ia.OtherTIV,0)
     FROM 
@@ -1499,7 +1523,8 @@ BEGIN
 
     UNION ALL
 
-        SELECT DISTINCT bkl.LocationId,
+        SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY LocationId) AS CoverageId,
+        bkl.LocationId,
         3 as CoverageTypeId,
         ISNULL(ia.ContentsTIV,0)
     FROM 
@@ -1512,7 +1537,8 @@ BEGIN
 
     UNION ALL
 
-        SELECT DISTINCT bkl.LocationId,
+        SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY LocationId) AS CoverageId,
+        bkl.LocationId,
         4 as CoverageTypeId,
         ISNULL(ia.BITIV,0)
     FROM 
@@ -1532,8 +1558,9 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    INSERT INTO dbo.Item (CoverageId, PerilID)
+    INSERT INTO dbo.Item (ItemId, CoverageId, PerilID)
     SELECT
+        ROW_NUMBER() OVER (ORDER BY c.CoverageId, p.PerilID) AS ItemId,
         c.CoverageId,
         p.PerilID
     FROM dbo._businesskeys_location AS bkl
@@ -1562,6 +1589,7 @@ END
 GO
 
 
+
 CREATE PROCEDURE [dbo].[usp_Database_Load]
 AS
 
@@ -1586,6 +1614,8 @@ BEGIN
     EXEC usp_Location_Load
     EXEC usp_Coverage_Load
     EXEC usp_Item_Load
+
+    Select 'Done'
 
 END
 
