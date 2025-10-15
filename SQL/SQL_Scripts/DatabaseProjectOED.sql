@@ -1394,13 +1394,17 @@ BEGIN
         PortName, 
         PortNotes
         )
-
-    SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY PortNumber) AS PortfolioId,
-        PortNumber,
-        PortName,
-        PortNotes
-    FROM 
-        _import_account
+    SELECT ROW_NUMBER() OVER (ORDER BY PortNumber) AS PortfolioId,
+            PortNumber,
+            PortName,
+            PortNotes
+    FROM    (
+            SELECT DISTINCT PortNumber,
+                PortName,
+                PortNotes
+            FROM 
+                _import_account
+    ) AS tmp_pf
 
 END
 
@@ -1495,59 +1499,62 @@ BEGIN
         TIV
         )
 
-    SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY LocationId) AS CoverageId,
-        bkl.LocationId,
-        1 as CoverageTypeId,
-        ISNULL(ia.BuildingTIV,0)
-    FROM 
-        _businesskeys_location bkl
-    JOIN
-        _import_location ia
-            ON bkl.PortNumber = ia.PortNumber
-            AND bkl.AccNumber = ia.AccNumber
-            AND bkl.LocNumber = ia.LocNumber
+    SELECT ROW_NUMBER() OVER (ORDER BY LocationId, CoverageTypeId) AS CoverageId,
+        LocationId,
+        CoverageTypeId,
+        TIV
+    FROM   (
+            SELECT DISTINCT bkl.LocationId,
+                1 as CoverageTypeId,
+                ISNULL(ia.BuildingTIV,0) AS TIV
+            FROM 
+                _businesskeys_location bkl
+            JOIN
+                _import_location ia
+                    ON bkl.PortNumber = ia.PortNumber
+                    AND bkl.AccNumber = ia.AccNumber
+                    AND bkl.LocNumber = ia.LocNumber
 
-    UNION ALL
+            UNION ALL
 
-        SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY LocationId) AS CoverageId,
-        bkl.LocationId,
-        2 as CoverageTypeId,
-        ISNULL(ia.OtherTIV,0)
-    FROM 
-        _businesskeys_location bkl
-    JOIN
-        _import_location ia
-            ON bkl.PortNumber = ia.PortNumber
-            AND bkl.AccNumber = ia.AccNumber
-            AND bkl.LocNumber = ia.LocNumber
+                SELECT DISTINCT bkl.LocationId,
+                2 as CoverageTypeId,
+                ISNULL(ia.OtherTIV,0) AS TIV
+            FROM 
+                _businesskeys_location bkl
+            JOIN
+                _import_location ia
+                    ON bkl.PortNumber = ia.PortNumber
+                    AND bkl.AccNumber = ia.AccNumber
+                    AND bkl.LocNumber = ia.LocNumber
 
-    UNION ALL
+            UNION ALL
 
-        SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY LocationId) AS CoverageId,
-        bkl.LocationId,
-        3 as CoverageTypeId,
-        ISNULL(ia.ContentsTIV,0)
-    FROM 
-        _businesskeys_location bkl
-    JOIN
-        _import_location ia
-            ON bkl.PortNumber = ia.PortNumber
-            AND bkl.AccNumber = ia.AccNumber
-            AND bkl.LocNumber = ia.LocNumber
+                SELECT DISTINCT bkl.LocationId,
+                3 as CoverageTypeId,
+                ISNULL(ia.ContentsTIV,0) AS TIV
+            FROM 
+                _businesskeys_location bkl
+            JOIN
+                _import_location ia
+                    ON bkl.PortNumber = ia.PortNumber
+                    AND bkl.AccNumber = ia.AccNumber
+                    AND bkl.LocNumber = ia.LocNumber
 
-    UNION ALL
+            UNION ALL
 
-        SELECT DISTINCT ROW_NUMBER() OVER (ORDER BY LocationId) AS CoverageId,
-        bkl.LocationId,
-        4 as CoverageTypeId,
-        ISNULL(ia.BITIV,0)
-    FROM 
-        _businesskeys_location bkl
-    JOIN
-        _import_location ia
-            ON bkl.PortNumber = ia.PortNumber
-            AND bkl.AccNumber = ia.AccNumber
-            AND bkl.LocNumber = ia.LocNumber
+                SELECT DISTINCT bkl.LocationId,
+                4 as CoverageTypeId,
+                ISNULL(ia.BITIV,0) AS TIV
+            FROM 
+                _businesskeys_location bkl
+            JOIN
+                _import_location ia
+                    ON bkl.PortNumber = ia.PortNumber
+                    AND bkl.AccNumber = ia.AccNumber
+                    AND bkl.LocNumber = ia.LocNumber
+
+    ) as tmp_cov
 END
 
 GO
@@ -1589,6 +1596,420 @@ END
 GO
 
 
+CREATE PROCEDURE usp_LocationTableTerms_Load
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT  0 AS ItemId,
+            ROW_NUMBER() OVER (ORDER BY c.CoverageId, p.PerilID) AS TermId,
+            c.CoverageId,
+            p.PerilID,
+            LocPeril,
+            LocDedCode1Building,
+            LocDedType1Building,
+            LocDed1Building,
+            LocMinDed1Building,
+            LocMaxDed1Building,
+            LocDedCode2Other,
+            LocDedType2Other,
+            LocDed2Other,
+            LocMinDed2Other,
+            LocMaxDed2Other,
+            LocDedCode3Contents,
+            LocDedType3Contents,
+            LocDed3Contents,
+            LocMinDed3Contents,
+            LocMaxDed3Contents,
+            LocDedCode4Bi,
+            LocDedType4Bi,
+            LocDed4Bi,
+            LocMinDed4Bi,
+            LocMaxDed4Bi,
+            LocDedCode5Pd,
+            LocDedType5Pd,
+            LocDed5Pd,
+            LocMinDed5Pd,
+            LocMaxDed5Pd,
+            LocDedCode6All,
+            LocDedType6All,
+            LocDed6All,
+            LocMinDed6All,
+            LocMaxDed6All,
+            LocLimitCode1Building,
+            LocLimitType1Building,
+            LocLimit1Building,
+            LocLimitCode2Other,
+            LocLimitType2Other,
+            LocLimit2Other,
+            LocLimitCode3Contents,
+            LocLimitType3Contents,
+            LocLimit3Contents,
+            LocLimitCode4Bi,
+            LocLimitType4Bi,
+            LocLimit4Bi,
+            LocLimitCode5Pd,
+            LocLimitType5Pd,
+            LocLimit5Pd,
+            LocLimitCode6All,
+            LocLimitType6All,
+            LocLimit6All,
+            LocParticipation
+    INTO    #tmpTermLoc
+    FROM    dbo._businesskeys_location AS bkl
+    JOIN    (
+                SELECT DISTINCT
+                    il.PortNumber,
+                    il.AccNumber,
+                    il.LocNumber,
+                    il.LocPeril,
+                    TRIM(spl.value) AS PerilGroup,
+                    LocDedCode1Building,
+                    LocDedType1Building,
+                    LocDed1Building,
+                    LocMinDed1Building,
+                    LocMaxDed1Building,
+                    LocDedCode2Other,
+                    LocDedType2Other,
+                    LocDed2Other,
+                    LocMinDed2Other,
+                    LocMaxDed2Other,
+                    LocDedCode3Contents,
+                    LocDedType3Contents,
+                    LocDed3Contents,
+                    LocMinDed3Contents,
+                    LocMaxDed3Contents,
+                    LocDedCode4Bi,
+                    LocDedType4Bi,
+                    LocDed4Bi,
+                    LocMinDed4Bi,
+                    LocMaxDed4Bi,
+                    LocDedCode5Pd,
+                    LocDedType5Pd,
+                    LocDed5Pd,
+                    LocMinDed5Pd,
+                    LocMaxDed5Pd,
+                    LocDedCode6All,
+                    LocDedType6All,
+                    LocDed6All,
+                    LocMinDed6All,
+                    LocMaxDed6All,
+                    LocLimitCode1Building,
+                    LocLimitType1Building,
+                    LocLimit1Building,
+                    LocLimitCode2Other,
+                    LocLimitType2Other,
+                    LocLimit2Other,
+                    LocLimitCode3Contents,
+                    LocLimitType3Contents,
+                    LocLimit3Contents,
+                    LocLimitCode4Bi,
+                    LocLimitType4Bi,
+                    LocLimit4Bi,
+                    LocLimitCode5Pd,
+                    LocLimitType5Pd,
+                    LocLimit5Pd,
+                    LocLimitCode6All,
+                    LocLimitType6All,
+                    LocLimit6All,
+                    LocParticipation
+                FROM dbo._import_location AS il
+                CROSS APPLY STRING_SPLIT(il.LocPeril, ';') AS spl
+                WHERE TRIM(spl.value) <> ''
+            ) AS spd
+                ON bkl.PortNumber = spd.PortNumber
+                AND bkl.AccNumber = spd.AccNumber
+                AND bkl.LocNumber = spd.LocNumber
+    JOIN    dbo.Peril AS pg ON pg.Peril = spd.PerilGroup
+    JOIN    dbo.PerilGroup AS pg_map ON pg_map.PerilGroupID = pg.PerilId
+    JOIN    dbo.Peril AS p ON pg_map.PerilId = p.PerilId
+    JOIN    dbo.Coverage AS c ON bkl.LocationId = c.LocationId
+
+
+    UPDATE  #tmpTermLoc
+    SET     ItemId = i.ItemId
+    FROM    (
+            SELECT  i.ItemId,
+                    l.CoverageId,
+                    l.PerilID
+            FROM    #tmpTermLoc AS l
+            JOIN    Item AS i ON l.CoverageId = i.CoverageId
+                        AND l.PerilID = i.PerilID
+            ) AS i
+    WHERE   #tmpTermLoc.CoverageId = i.CoverageId
+    AND     #tmpTermLoc.PerilID = i.PerilID
+
+    DECLARE @StartTermId int
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
+
+    INSERT INTO Term (
+        TermId,
+        TermLevel,
+        TermCoverageType,
+        DedType,
+        DedCode,
+        Deductible,
+        MinDeductible,
+        MaxDeductible,
+        LimitType,
+        LimitCode,
+        [Limit],
+        Participation
+    )
+    SELECT  TermId + @StartTermId AS TermId,
+            1 AS TermLevel,
+            1 AS TermCoverage,
+            LocDedType1Building,
+            LocDedCode1Building,
+            LocDed1Building,
+            LocMinDed1Building,
+            LocMaxDed1Building,     
+            LocLimitType1Building,     
+            LocLimitCode1Building,
+            LocLimit1Building,
+            LocParticipation
+    FROM    #tmpTermLoc
+
+    DECLARE @StartItemTermId int
+    SELECT  @StartItemTermId = ISNULL(MAX(ItemTermId),0) FROM ItemTerm
+
+    INSERT INTO ItemTerm (
+            ItemTermId,
+            TermId,
+            ItemId
+        )
+    SELECT  @StartItemTermId + ROW_NUMBER() OVER (ORDER BY ItemId) AS ItemTermId,
+            TermId + @StartTermId AS TermId,
+            ItemId
+    FROM    #tmpTermLoc
+
+
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
+
+    INSERT INTO Term (
+        TermId,
+        TermLevel,
+        TermCoverageType,
+        DedType,
+        DedCode,
+        Deductible,
+        MinDeductible,
+        MaxDeductible,
+        LimitType,
+        LimitCode,
+        [Limit],
+        Participation
+    )
+    SELECT  TermId + @StartTermId AS TermId,
+            1 AS TermLevel,
+            2 AS TermCoverage,
+            LocDedType2Other,
+            LocDedCode2Other,
+            LocDed2Other,
+            LocMinDed2Other,
+            LocMaxDed2Other,     
+            LocLimitType2Other,     
+            LocLimitCode2Other,
+            LocLimit2Other,
+            LocParticipation
+    FROM    #tmpTermLoc
+
+
+    SELECT  @StartItemTermId = ISNULL(MAX(ItemTermId),0) FROM ItemTerm
+
+    INSERT INTO ItemTerm (
+            ItemTermId,
+            TermId,
+            ItemId
+        )
+    SELECT  @StartItemTermId + ROW_NUMBER() OVER (ORDER BY ItemId) AS ItemTermId,
+            TermId + @StartTermId AS TermId,
+            ItemId
+    FROM    #tmpTermLoc
+
+
+
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
+
+    INSERT INTO Term (
+        TermId,
+        TermLevel,
+        TermCoverageType,
+        DedType,
+        DedCode,
+        Deductible,
+        MinDeductible,
+        MaxDeductible,
+        LimitType,
+        LimitCode,
+        [Limit],
+        Participation
+    )
+    SELECT  TermId + @StartTermId AS TermId,
+            1 AS TermLevel,
+            3 AS TermCoverage,
+            LocDedType3Contents,
+            LocDedCode3Contents,
+            LocDed3Contents,
+            LocMinDed3Contents,
+            LocMaxDed3Contents,     
+            LocLimitType3Contents,     
+            LocLimitCode3Contents,
+            LocLimit3Contents,
+            LocParticipation
+    FROM    #tmpTermLoc
+
+
+    SELECT  @StartItemTermId = ISNULL(MAX(ItemTermId),0) FROM ItemTerm
+
+    INSERT INTO ItemTerm (
+            ItemTermId,
+            TermId,
+            ItemId
+        )
+    SELECT  @StartItemTermId + ROW_NUMBER() OVER (ORDER BY ItemId) AS ItemTermId,
+            TermId + @StartTermId AS TermId,
+            ItemId
+    FROM    #tmpTermLoc
+
+
+
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
+
+    INSERT INTO Term (
+        TermId,
+        TermLevel,
+        TermCoverageType,
+        DedType,
+        DedCode,
+        Deductible,
+        MinDeductible,
+        MaxDeductible,
+        LimitType,
+        LimitCode,
+        [Limit],
+        Participation
+    )
+    SELECT  TermId + @StartTermId AS TermId,
+            1 AS TermLevel,
+            4 AS TermCoverage,
+            LocDedType4BI,
+            LocDedCode4BI,
+            LocDed4BI,
+            LocMinDed4BI,
+            LocMaxDed4BI,     
+            LocLimitType4BI,     
+            LocLimitCode4BI,
+            LocLimit4BI,
+            LocParticipation
+    FROM    #tmpTermLoc
+
+
+    SELECT  @StartItemTermId = ISNULL(MAX(ItemTermId),0) FROM ItemTerm
+
+    INSERT INTO ItemTerm (
+            ItemTermId,
+            TermId,
+            ItemId
+        )
+    SELECT  @StartItemTermId + ROW_NUMBER() OVER (ORDER BY ItemId) AS ItemTermId,
+            TermId + @StartTermId AS TermId,
+            ItemId
+    FROM    #tmpTermLoc
+
+
+
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
+
+    INSERT INTO Term (
+        TermId,
+        TermLevel,
+        TermCoverageType,
+        DedType,
+        DedCode,
+        Deductible,
+        MinDeductible,
+        MaxDeductible,
+        LimitType,
+        LimitCode,
+        [Limit],
+        Participation
+    )
+    SELECT  TermId + @StartTermId AS TermId,
+            2 AS TermLevel,
+            5 AS TermCoverage,
+            LocDedType5PD,
+            LocDedCode5PD,
+            LocDed5PD,
+            LocMinDed5PD,
+            LocMaxDed5PD,     
+            LocLimitType5PD,     
+            LocLimitCode5PD,
+            LocLimit5PD,
+            LocParticipation
+    FROM    #tmpTermLoc
+
+
+    SELECT  @StartItemTermId = ISNULL(MAX(ItemTermId),0) FROM ItemTerm
+
+    INSERT INTO ItemTerm (
+            ItemTermId,
+            TermId,
+            ItemId
+        )
+    SELECT  @StartItemTermId + ROW_NUMBER() OVER (ORDER BY ItemId) AS ItemTermId,
+            TermId + @StartTermId AS TermId,
+            ItemId
+    FROM    #tmpTermLoc
+
+
+
+
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
+
+    INSERT INTO Term (
+        TermId,
+        TermLevel,
+        TermCoverageType,
+        DedType,
+        DedCode,
+        Deductible,
+        MinDeductible,
+        MaxDeductible,
+        LimitType,
+        LimitCode,
+        [Limit],
+        Participation
+    )
+    SELECT  TermId + @StartTermId AS TermId,
+            3 AS TermLevel,
+            6 AS TermCoverage,
+            LocDedType6All,
+            LocDedCode6All,
+            LocDed6All,
+            LocMinDed6All,
+            LocMaxDed6All,     
+            LocLimitType6All,     
+            LocLimitCode6All,
+            LocLimit6All,
+            LocParticipation
+    FROM    #tmpTermLoc
+
+    SELECT  @StartItemTermId = ISNULL(MAX(ItemTermId),0) FROM ItemTerm
+
+    INSERT INTO ItemTerm (
+            ItemTermId,
+            TermId,
+            ItemId
+        )
+    SELECT  @StartItemTermId + ROW_NUMBER() OVER (ORDER BY ItemId) AS ItemTermId,
+            TermId + @StartTermId AS TermId,
+            ItemId
+    FROM    #tmpTermLoc
+
+
+END
+GO
+
 
 CREATE PROCEDURE [dbo].[usp_Database_Load]
 AS
@@ -1614,6 +2035,9 @@ BEGIN
     EXEC usp_Location_Load
     EXEC usp_Coverage_Load
     EXEC usp_Item_Load
+
+    -- terms
+    EXEC usp_LocationTableTerms_Load
 
     Select 'Done'
 
