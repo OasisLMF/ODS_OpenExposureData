@@ -349,6 +349,13 @@ CREATE TABLE [dbo].[Term] (
 );
 GO
 
+CREATE TABLE [dbo].[TermCoverageType] (
+    [TermCoverageTypeId] INT        NOT NULL,
+    [CoverageTypeId]     INT        NOT NULL
+);
+GO
+
+
 ------------------------------------------------------------------------------------------------------
 
 CREATE TABLE [dbo].[CoverageTerm] (
@@ -1013,6 +1020,587 @@ CREATE TABLE [dbo].[_businesskeys_condition] (
 );
 GO
 
+------------------------------------------------------------------------------------------------------
+-- Views
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW vw_import_location_business_keys
+AS
+    SELECT  bka.AccountId,
+            bkl.LocationId,
+            il.*
+    FROM    _import_location AS il
+    JOIN    _businesskeys_location AS bkl
+        ON      il.PortNumber = bkl.PortNumber
+        AND     il.AccNumber = bkl.AccNumber
+        AND     il.LocNumber = bkl.LocNumber
+    JOIN    _businesskeys_account AS bka
+        ON      il.PortNumber = bka.PortNumber
+        AND     il.AccNumber = bka.AccNumber
+GO
+
+/*
+should vw_import_account_business_keys be done as 
+one big thing, or should we split out layers & 
+conditions given that they can be NULL?
+
+I'm not very keen on the "isnull" aspect of the join
+*/
+
+CREATE VIEW vw_import_account_business_keys
+AS
+    SELECT  bka.AccountId,
+            bkp.PolicyId,
+            bkl.LayerId,
+            bkc.ConditionId,
+            il.*
+    FROM    _import_account AS il
+    JOIN    _businesskeys_account AS bka
+        ON      il.PortNumber = bka.PortNumber
+        AND     il.AccNumber = bka.AccNumber
+    JOIN    _businesskeys_policy AS bkp
+        ON      il.PortNumber = bkp.PortNumber
+        AND     il.AccNumber = bkp.AccNumber
+        AND     il.PolNumber = bkp.PolNumber
+    JOIN    _businesskeys_layer AS bkl
+        ON      il.PortNumber = bkl.PortNumber
+        AND     il.AccNumber = bkl.AccNumber
+        AND     il.PolNumber = bkl.PolNumber
+        AND     isnull(il.LayerNumber,-1) = isnull(bkl.LayerNumber,-1)
+    JOIN    _businesskeys_condition AS bkc
+        ON      il.PortNumber = bkc.PortNumber
+        AND     il.AccNumber = bkc.AccNumber
+        AND     il.PolNumber = bkc.PolNumber
+        AND     isnull(il.CondNumber,'x') = isnull(bkc.CondNumber,'x')
+GO
+
+
+CREATE VIEW vw_location_terms_1Building
+AS
+    SELECT  Distinct LocationId,
+            LocPeril,
+            1 AS TermLevel,
+            1 AS TermCoverageType,
+            LocDedType1Building AS DedType,
+            LocDedCode1Building AS DedCode,
+            LocDed1Building AS Deductible,
+            LocMinDed1Building AS MinDeductible,
+            LocMaxDed1Building AS MaxDeductible,
+            LocLimitType1Building AS LimitType,
+            LocLimitCode1Building AS LimitCode,
+            LocLimit1Building AS [Limit],
+            LocParticipation AS Participation
+    FROM    vw_import_location_business_keys
+    WHERE   LocPeril IS NOT NULL
+
+GO
+
+CREATE VIEW vw_location_terms_2Other
+AS
+    SELECT  Distinct LocationId,
+            LocPeril,
+            1 AS TermLevel,
+            2 AS TermCoverageType,
+            LocDedType2Other AS DedType,
+            LocDedCode2Other AS DedCode,
+            LocDed2Other AS Deductible,
+            LocMinDed2Other AS MinDeductible,
+            LocMaxDed2Other AS MaxDeductible,
+            LocLimitType2Other AS LimitType,
+            LocLimitCode2Other AS LimitCode,
+            LocLimit2Other AS [Limit],
+            LocParticipation AS Participation
+    FROM    vw_import_location_business_keys
+    WHERE   LocPeril IS NOT NULL
+
+GO
+
+CREATE VIEW vw_location_terms_3Contents
+AS
+    SELECT  Distinct LocationId,
+            LocPeril,
+            1 AS TermLevel,
+            3 AS TermCoverageType,
+            LocDedType3Contents AS DedType,
+            LocDedCode3Contents AS DedCode,
+            LocDed3Contents AS Deductible,
+            LocMinDed3Contents AS MinDeductible,
+            LocMaxDed3Contents AS MaxDeductible,
+            LocLimitType3Contents AS LimitType,
+            LocLimitCode3Contents AS LimitCode,
+            LocLimit3Contents AS [Limit],
+            LocParticipation AS Participation
+    FROM    vw_import_location_business_keys
+    WHERE   LocPeril IS NOT NULL
+
+GO
+
+
+CREATE VIEW vw_location_terms_4BI
+AS
+    SELECT  Distinct LocationId,
+            LocPeril,
+            1 AS TermLevel,
+            4 AS TermCoverageType,
+            LocDedType4BI AS DedType,
+            LocDedCode4BI AS DedCode,
+            LocDed4BI AS Deductible,
+            LocMinDed4BI AS MinDeductible,
+            LocMaxDed4BI AS MaxDeductible,
+            LocLimitType4BI AS LimitType,
+            LocLimitCode4BI AS LimitCode,
+            LocLimit4BI AS [Limit],
+            LocParticipation AS Participation
+    FROM    vw_import_location_business_keys
+    WHERE   LocPeril IS NOT NULL
+
+GO
+
+CREATE VIEW vw_location_terms_5PD
+AS
+    SELECT  Distinct LocationId,
+            LocPeril,
+            2 AS TermLevel,
+            5 AS TermCoverageType,
+            LocDedType5PD AS DedType,
+            LocDedCode5PD AS DedCode,
+            LocDed5PD AS Deductible,
+            LocMinDed5PD AS MinDeductible,
+            LocMaxDed5PD AS MaxDeductible,
+            LocLimitType5PD AS LimitType,
+            LocLimitCode5PD AS LimitCode,
+            LocLimit5PD AS [Limit],
+            LocParticipation AS Participation
+    FROM    vw_import_location_business_keys
+    WHERE   LocPeril IS NOT NULL
+
+GO
+
+
+CREATE VIEW vw_location_terms_6All
+AS
+    SELECT  Distinct LocationId,
+            LocPeril,
+            3 AS TermLevel,
+            6 AS TermCoverageType,
+            LocDedType6All AS DedType,
+            LocDedCode6All AS DedCode,
+            LocDed6All AS Deductible,
+            LocMinDed6All AS MinDeductible,
+            LocMaxDed6All AS MaxDeductible,
+            LocLimitType6All AS LimitType,
+            LocLimitCode6All AS LimitCode,
+            LocLimit6All AS [Limit],
+            LocParticipation AS Participation
+    FROM    vw_import_location_business_keys
+    WHERE   LocPeril IS NOT NULL
+
+GO
+
+CREATE VIEW vw_condition_terms_1Building
+AS
+    SELECT  Distinct ConditionId,
+            CondPeril,
+            4 AS TermLevel,
+            1 AS TermCoverageType,
+            CondDedType1Building AS DedType,
+            CondDedCode1Building AS DedCode,
+            CondDed1Building AS Deductible,
+            CondMinDed1Building AS MinDeductible,
+            CondMaxDed1Building AS MaxDeductible,
+            CondLimitType1Building AS LimitType,
+            CondLimitCode1Building AS LimitCode,
+            CondLimit1Building AS [Limit],
+            LayerParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   CondPeril IS NOT NULL
+
+GO
+
+
+CREATE VIEW vw_condition_terms_2Other
+AS
+    SELECT  Distinct ConditionId,
+            CondPeril,
+            4 AS TermLevel,
+            2 AS TermCoverageType,
+            CondDedType2Other AS DedType,
+            CondDedCode2Other AS DedCode,
+            CondDed2Other AS Deductible,
+            CondMinDed2Other AS MinDeductible,
+            CondMaxDed2Other AS MaxDeductible,
+            CondLimitType2Other AS LimitType,
+            CondLimitCode2Other AS LimitCode,
+            CondLimit2Other AS [Limit],
+            LayerParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   CondPeril IS NOT NULL
+
+GO
+
+
+
+CREATE VIEW vw_condition_terms_3Contents
+AS
+    SELECT  Distinct ConditionId,
+            CondPeril,
+            4 AS TermLevel,
+            3 AS TermCoverageType,
+            CondDedType3Contents AS DedType,
+            CondDedCode3Contents AS DedCode,
+            CondDed3Contents AS Deductible,
+            CondMinDed3Contents AS MinDeductible,
+            CondMaxDed3Contents AS MaxDeductible,
+            CondLimitType3Contents AS LimitType,
+            CondLimitCode3Contents AS LimitCode,
+            CondLimit3Contents AS [Limit],
+            LayerParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   CondPeril IS NOT NULL
+
+GO
+
+
+
+CREATE VIEW vw_condition_terms_4BI
+AS
+    SELECT  Distinct ConditionId,
+            CondPeril,
+            4 AS TermLevel,
+            4 AS TermCoverageType,
+            CondDedType4BI AS DedType,
+            CondDedCode4BI AS DedCode,
+            CondDed4BI AS Deductible,
+            CondMinDed4BI AS MinDeductible,
+            CondMaxDed4BI AS MaxDeductible,
+            CondLimitType4BI AS LimitType,
+            CondLimitCode4BI AS LimitCode,
+            CondLimit4BI AS [Limit],
+            LayerParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   CondPeril IS NOT NULL
+
+GO
+
+
+CREATE VIEW vw_condition_terms_5PD
+AS
+    SELECT  Distinct ConditionId,
+            CondPeril,
+            5 AS TermLevel,
+            5 AS TermCoverageType,
+            CondDedType5PD AS DedType,
+            CondDedCode5PD AS DedCode,
+            CondDed5PD AS Deductible,
+            CondMinDed5PD AS MinDeductible,
+            CondMaxDed5PD AS MaxDeductible,
+            CondLimitType5PD AS LimitType,
+            CondLimitCode5PD AS LimitCode,
+            CondLimit5PD AS [Limit],
+            LayerParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   CondPeril IS NOT NULL
+
+GO
+
+
+CREATE VIEW vw_condition_terms_6All
+AS
+    SELECT  Distinct ConditionId,
+            CondPeril,
+            6 AS TermLevel,
+            6 AS TermCoverageType,
+            CondDedType6All AS DedType,
+            CondDedCode6All AS DedCode,
+            CondDed6All AS Deductible,
+            CondMinDed6All AS MinDeductible,
+            CondMaxDed6All AS MaxDeductible,
+            CondLimitType6All AS LimitType,
+            CondLimitCode6All AS LimitCode,
+            CondLimit6All AS [Limit],
+            LayerParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   CondPeril IS NOT NULL
+
+GO
+
+CREATE VIEW vw_policy_terms_1Building
+AS
+    SELECT  Distinct PolicyId,
+            PolPeril,
+            7 AS TermLevel,
+            1 AS TermCoverageType,
+            PolDedType1Building AS DedType,
+            PolDedCode1Building AS DedCode,
+            PolDed1Building AS Deductible,
+            PolMinDed1Building AS MinDeductible,
+            PolMaxDed1Building AS MaxDeductible,
+            PolLimitType1Building AS LimitType,
+            PolLimitCode1Building AS LimitCode,
+            PolLimit1Building AS [Limit],
+            LayerParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   PolPeril IS NOT NULL
+
+GO
+
+
+
+
+CREATE VIEW vw_policy_terms_2Other
+AS
+    SELECT  Distinct PolicyId,
+            PolPeril,
+            7 AS TermLevel,
+            2 AS TermCoverageType,
+            PolDedType2Other AS DedType,
+            PolDedCode2Other AS DedCode,
+            PolDed2Other AS Deductible,
+            PolMinDed2Other AS MinDeductible,
+            PolMaxDed2Other AS MaxDeductible,
+            PolLimitType2Other AS LimitType,
+            PolLimitCode2Other AS LimitCode,
+            PolLimit2Other AS [Limit],
+            LayerParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   PolPeril IS NOT NULL
+
+GO
+
+
+CREATE VIEW vw_policy_terms_3Contents
+AS
+    SELECT  Distinct PolicyId,
+            PolPeril,
+            7 AS TermLevel,
+            3 AS TermCoverageType,
+            PolDedType3Contents AS DedType,
+            PolDedCode3Contents AS DedCode,
+            PolDed3Contents AS Deductible,
+            PolMinDed3Contents AS MinDeductible,
+            PolMaxDed3Contents AS MaxDeductible,
+            PolLimitType3Contents AS LimitType,
+            PolLimitCode3Contents AS LimitCode,
+            PolLimit3Contents AS [Limit],
+            LayerParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   PolPeril IS NOT NULL
+
+GO
+
+
+
+CREATE VIEW vw_policy_terms_4BI
+AS
+    SELECT  Distinct PolicyId,
+            PolPeril,
+            7 AS TermLevel,
+            4 AS TermCoverageType,
+            PolDedType4BI AS DedType,
+            PolDedCode4BI AS DedCode,
+            PolDed4BI AS Deductible,
+            PolMinDed4BI AS MinDeductible,
+            PolMaxDed4BI AS MaxDeductible,
+            PolLimitType4BI AS LimitType,
+            PolLimitCode4BI AS LimitCode,
+            PolLimit4BI AS [Limit],
+            LayerParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   PolPeril IS NOT NULL
+
+GO
+
+
+CREATE VIEW vw_policy_terms_5PD
+AS
+    SELECT  Distinct PolicyId,
+            PolPeril,
+            8 AS TermLevel,
+            5 AS TermCoverageType,
+            PolDedType5PD AS DedType,
+            PolDedCode5PD AS DedCode,
+            PolDed5PD AS Deductible,
+            PolMinDed5PD AS MinDeductible,
+            PolMaxDed5PD AS MaxDeductible,
+            PolLimitType5PD AS LimitType,
+            PolLimitCode5PD AS LimitCode,
+            PolLimit5PD AS [Limit],
+            LayerParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   PolPeril IS NOT NULL
+
+GO
+
+
+CREATE VIEW vw_policy_terms_6All
+AS
+    SELECT  Distinct PolicyId,
+            PolPeril,
+            9 AS TermLevel,
+            6 AS TermCoverageType,
+            PolDedType6All AS DedType,
+            PolDedCode6All AS DedCode,
+            PolDed6All AS Deductible,
+            PolMinDed6All AS MinDeductible,
+            PolMaxDed6All AS MaxDeductible,
+            PolLimitType6All AS LimitType,
+            PolLimitCode6All AS LimitCode,
+            PolLimit6All AS [Limit],
+            LayerParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   PolPeril IS NOT NULL
+
+GO
+
+
+CREATE VIEW vw_layer_terms
+AS
+    SELECT  Distinct LayerId,
+            PolPeril,
+            10 AS TermLevel,
+            6 AS TermCoverageType,
+            NULL AS DedType,
+            NULL AS DedCode,
+            LayerAttachment AS Deductible,
+            NULL AS MinDeductible,
+            NULL AS MaxDeductible,
+            NULL AS LimitType,
+            NULL AS LimitCode,
+            LayerLimit AS [Limit],
+            LayerParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   PolPeril IS NOT NULL
+
+GO
+
+
+CREATE VIEW vw_level_1_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY LocationId, TermCoverageType, LocPeril) AS tmpTermId,
+            *
+    FROM    (
+        SELECT * FROM vw_location_terms_1Building
+        UNION ALL
+        SELECT * FROM vw_location_terms_2Other
+        UNION ALL
+        SELECT * FROM vw_location_terms_3Contents
+        UNION ALL
+        SELECT * FROM vw_location_terms_4BI
+    ) AS term_level_1
+
+GO
+
+CREATE VIEW vw_level_2_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY LocationId, TermCoverageType, LocPeril) AS tmpTermId,
+            *
+    FROM    vw_location_terms_5PD
+
+GO
+
+CREATE VIEW vw_level_3_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY LocationId, TermCoverageType, LocPeril) AS tmpTermId,
+            *
+    FROM    vw_location_terms_6All
+
+GO
+
+CREATE VIEW vw_level_4_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY ConditionId, TermCoverageType, CondPeril) AS tmpTermId,
+            *
+    FROM    (
+        SELECT * FROM vw_condition_terms_1Building
+        UNION ALL
+        SELECT * FROM vw_condition_terms_2Other
+        UNION ALL
+        SELECT * FROM vw_condition_terms_3Contents
+        UNION ALL
+        SELECT * FROM vw_condition_terms_4BI
+    ) AS term_level_4
+
+GO
+
+CREATE VIEW vw_level_5_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY ConditionId, TermCoverageType, CondPeril) AS tmpTermId,
+            *
+    FROM    vw_condition_terms_5PD
+
+GO
+
+CREATE VIEW vw_level_6_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY ConditionId, TermCoverageType, CondPeril) AS tmpTermId,
+            *
+    FROM    vw_condition_terms_6All
+
+GO
+
+
+CREATE VIEW vw_level_7_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY PolicyId, TermCoverageType, PolPeril) AS tmpTermId,
+            *
+    FROM    (
+        SELECT * FROM vw_policy_terms_1Building
+        UNION ALL
+        SELECT * FROM vw_policy_terms_2Other
+        UNION ALL
+        SELECT * FROM vw_policy_terms_3Contents
+        UNION ALL
+        SELECT * FROM vw_policy_terms_4BI
+    ) AS term_level_7
+
+GO
+
+CREATE VIEW vw_level_8_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY PolicyId, TermCoverageType, PolPeril) AS tmpTermId,
+            *
+    FROM    vw_policy_terms_5PD
+
+GO
+
+CREATE VIEW vw_level_9_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY PolicyId, TermCoverageType, PolPeril) AS tmpTermId,
+            *
+    FROM    vw_policy_terms_6All
+
+GO
+
+
+CREATE VIEW vw_level_10_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY LayerId, TermCoverageType, PolPeril) AS tmpTermId,
+            *
+    FROM    vw_layer_terms
+
+GO
+
+
+/*
+TO DO - Account Terms
+*/
+
+
+CREATE VIEW vw_item_detail
+AS
+    SELECT  i.ItemId,
+            l.LocationId,
+            c.CoverageTypeId,
+            P.Peril
+    FROM    Item AS i
+    JOIN    Coverage AS c on i.CoverageId = c.CoverageId
+    JOIN    Peril AS p on i.PerilId = p.PerilId
+    JOIN    Location AS l on c.LocationId = l.LocationId
+GO
+
 
 ------------------------------------------------------------------------------------------------------
 
@@ -1024,6 +1612,29 @@ INSERT INTO [dbo].[CoverageType] ([CoverageTypeId], [CoverageType]) VALUES
 (4, 'BI'),
 (5, 'PD'),
 (6, 'All');
+
+
+INSERT INTO [dbo].[TermCoverageType] ([TermCoverageTypeId], [CoverageTypeId]) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 1),
+(5, 2),
+(5, 3),
+(6, 1),
+(6, 2),
+(6, 3),
+(6, 4);
+
+/*
+-- created already?
+CREATE TABLE [dbo].[TermCoverageType] (
+    [TermCoverageType] INT        NOT NULL,
+    [CoverageType]     INT        NOT NULL
+);
+GO
+*/
 
 
 --populate Peril table
@@ -1460,6 +2071,68 @@ END
 
 GO
 
+
+CREATE PROCEDURE usp_Layer_Load
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO Layer (
+        LayerId,
+        PolicyId, 
+        LayerNumber
+        )
+
+    SELECT DISTINCT bkl.LayerId,
+        bkp.PolicyId,
+        bkl.LayerNumber
+    FROM 
+        _businesskeys_layer bkl
+    JOIN
+        _businesskeys_policy bkp 
+        ON      bkl.PortNumber = bkp.PortNumber
+        AND     bkl.AccNumber = bkp.AccNumber
+        AND     bkl.PolNumber = bkp.PolNumber
+END
+
+GO
+
+
+CREATE PROCEDURE usp_Condition_Load
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO Condition (
+        ConditionId,
+        PolicyId, 
+        CondNumber,
+        CondName,
+        CondPriority,
+        CondClass,
+        CondTag
+        )
+
+    SELECT      DISTINCT bkc.ConditionId,
+                bkp.PolicyId,
+                ia.CondNumber,
+                ia.CondName,
+                ia.CondPriority,
+                ia.CondClass,
+                ia.CondTag
+    FROM        _businesskeys_condition bkc
+    JOIN        _businesskeys_policy bkp 
+        ON      bkc.PortNumber = bkp.PortNumber
+        AND     bkc.AccNumber = bkp.AccNumber
+        AND     bkc.PolNumber = bkp.PolNumber
+    JOIN        _import_account ia
+        ON      bkc.PortNumber = ia.PortNumber
+        AND     bkc.AccNumber = ia.AccNumber
+        AND     bkc.PolNumber = ia.PolNumber
+END
+
+GO
+
 CREATE PROCEDURE usp_Location_Load
 AS
 BEGIN
@@ -1555,6 +2228,7 @@ BEGIN
                     AND bkl.LocNumber = ia.LocNumber
 
     ) as tmp_cov
+    WHERE   tmp_cov.TIV > 0
 END
 
 GO
@@ -2032,12 +2706,14 @@ BEGIN
     EXEC usp_Portfolio_Load
     EXEC usp_Account_Load
     EXEC usp_Policy_Load
+    EXEC usp_Layer_Load
+    EXEC usp_Condition_Load
     EXEC usp_Location_Load
     EXEC usp_Coverage_Load
     EXEC usp_Item_Load
 
     -- terms
-    EXEC usp_LocationTableTerms_Load
+    --EXEC usp_LocationTableTerms_Load
 
     Select 'Done'
 
