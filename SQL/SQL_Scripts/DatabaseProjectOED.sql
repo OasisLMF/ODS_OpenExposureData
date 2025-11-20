@@ -390,6 +390,28 @@ CREATE TABLE [dbo].[ConditionTerm] (
 );
 GO
 
+CREATE TABLE [dbo].[ConditionCoverageTerm] (
+    [ConditionCoverageTermId] INT NOT NULL,
+    [TermId]          INT NOT NULL,
+    [ConditionId]     INT NOT NULL,
+    [CoverageTypeId]  INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([ConditionCoverageTermId] ASC),
+    CONSTRAINT [FK_condition_TO_conditioncoverageterm] FOREIGN KEY ([ConditionId]) REFERENCES [dbo].[Condition] ([ConditionId]),
+    CONSTRAINT [FK_term_TO_conditioncoverageterm] FOREIGN KEY ([TermId]) REFERENCES [dbo].[Term] ([TermId]),
+    CONSTRAINT [FK_coveragetype_TO_conditioncoverageterm] FOREIGN KEY ([CoverageTypeId]) REFERENCES [dbo].[CoverageType] ([CoverageTypeId])
+);
+GO
+
+CREATE TABLE [dbo].[ConditionPDTerm] (
+    [ConditionPDTermId] INT NOT NULL,
+    [TermId]          INT NOT NULL,
+    [ConditionId]     INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([ConditionPDTermId] ASC),
+    CONSTRAINT [FK_condition_TO_conditionpdterm] FOREIGN KEY ([ConditionId]) REFERENCES [dbo].[Condition] ([ConditionId]),
+    CONSTRAINT [FK_term_TO_conditionpdterm] FOREIGN KEY ([TermId]) REFERENCES [dbo].[Term] ([TermId])
+);
+GO
+
 CREATE TABLE [dbo].[AccountTerm] (
     [AccountTermId] INT NOT NULL,
     [TermId]        INT NOT NULL,
@@ -407,6 +429,28 @@ CREATE TABLE [dbo].[PolicyTerm] (
     PRIMARY KEY CLUSTERED ([PolicyTermId] ASC),
     CONSTRAINT [FK_policy_TO_policyterm] FOREIGN KEY ([PolicyId]) REFERENCES [dbo].[Policy] ([PolicyId]),
     CONSTRAINT [FK_term_TO_policyterm] FOREIGN KEY ([TermId]) REFERENCES [dbo].[Term] ([TermId])
+);
+GO
+
+CREATE TABLE [dbo].[PolicyCoverageTerm] (
+    [PolicyCoverageTermId] INT NOT NULL,
+    [TermId]          INT NOT NULL,
+    [PolicyId]     INT NOT NULL,
+    [CoverageTypeId]  INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([PolicyCoverageTermId] ASC),
+    CONSTRAINT [FK_policy_TO_policycoverageterm] FOREIGN KEY ([PolicyId]) REFERENCES [dbo].[Policy] ([PolicyId]),
+    CONSTRAINT [FK_term_TO_policycoverageterm] FOREIGN KEY ([TermId]) REFERENCES [dbo].[Term] ([TermId]),
+    CONSTRAINT [FK_coveragetype_TO_policycoverageterm] FOREIGN KEY ([CoverageTypeId]) REFERENCES [dbo].[CoverageType] ([CoverageTypeId])
+);
+GO
+
+CREATE TABLE [dbo].[PolicyPDTerm] (
+    [PolicyPDTermId] INT NOT NULL,
+    [TermId]       INT NOT NULL,
+    [PolicyId]     INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([PolicyPDTermId] ASC),
+    CONSTRAINT [FK_policy_TO_policypdterm] FOREIGN KEY ([PolicyId]) REFERENCES [dbo].[Policy] ([PolicyId]),
+    CONSTRAINT [FK_term_TO_policypdterm] FOREIGN KEY ([TermId]) REFERENCES [dbo].[Term] ([TermId])
 );
 GO
 
@@ -2348,7 +2392,7 @@ BEGIN
     DECLARE @StartTermId int
 
     -- level 1
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
 
     INSERT INTO #tmpterm_denormalised
     SELECT  tmpTermId + @StartTermId AS TermId,
@@ -2371,8 +2415,39 @@ BEGIN
     CROSS APPLY STRING_SPLIT(LocPeril, ';') AS spl
     JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
 
+    INSERT INTO Term
+    SELECT DISTINCT [TermId],
+            [TermLevel],
+            [TermCoverageType],
+            --[TermPeril],
+            [DedType],
+            [DedCode],
+            [Deductible],
+            [MinDeductible],
+            [MaxDeductible],
+            [LimitType],
+            [LimitCode],
+            [Limit],
+            [Participation]
+    FROM    #tmpterm_denormalised
+    WHERE   TermLevel = 1
+
+    INSERT INTO CoverageTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY CoverageId, TermId) AS CoverageTermId,
+            TermId,
+            CoverageId
+    FROM    (
+            SELECT  CoverageId,
+                    tmpTermId + @StartTermId AS TermId
+            FROM    vw_level_1_term AS t
+            JOIN    Coverage AS c
+                        ON  t.LocationId = c.LocationId
+                        AND t.TermCoverageType = c.CoverageTypeId
+            ) AS tmpCoverageTerm
+
+
     -- level 2
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
 
     INSERT INTO #tmpterm_denormalised
     SELECT  tmpTermId + @StartTermId AS TermId,
@@ -2395,9 +2470,31 @@ BEGIN
     CROSS APPLY STRING_SPLIT(LocPeril, ';') AS spl
     JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
 
+    INSERT INTO Term
+    SELECT DISTINCT [TermId],
+            [TermLevel],
+            [TermCoverageType],
+            --[TermPeril],
+            [DedType],
+            [DedCode],
+            [Deductible],
+            [MinDeductible],
+            [MaxDeductible],
+            [LimitType],
+            [LimitCode],
+            [Limit],
+            [Participation]
+    FROM    #tmpterm_denormalised
+    WHERE   TermLevel = 2
+
+    INSERT INTO PDTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY LocationId, tmpTermId) AS PDTermId,
+            tmpTermId + @StartTermId AS TermId,
+            LocationId
+    FROM    vw_level_2_term
 
     -- level 3
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
 
     INSERT INTO #tmpterm_denormalised
     SELECT  tmpTermId + @StartTermId AS TermId,
@@ -2420,9 +2517,31 @@ BEGIN
     CROSS APPLY STRING_SPLIT(LocPeril, ';') AS spl
     JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
 
+    INSERT INTO Term
+    SELECT DISTINCT [TermId],
+            [TermLevel],
+            [TermCoverageType],
+            --[TermPeril],
+            [DedType],
+            [DedCode],
+            [Deductible],
+            [MinDeductible],
+            [MaxDeductible],
+            [LimitType],
+            [LimitCode],
+            [Limit],
+            [Participation]
+    FROM    #tmpterm_denormalised
+    WHERE   TermLevel = 3
+
+    INSERT INTO LocTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY LocationId, tmpTermId) AS LocTermId,
+            tmpTermId + @StartTermId AS TermId,
+            LocationId
+    FROM    vw_level_3_term
 
     -- level 4
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
 
     INSERT INTO #tmpterm_denormalised
     SELECT  tmpTermId + @StartTermId AS TermId,
@@ -2446,8 +2565,32 @@ BEGIN
     JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
     JOIN    ConditionLocation CL ON t.ConditionId = CL.ConditionId
 
+    INSERT INTO Term
+    SELECT DISTINCT [TermId],
+            [TermLevel],
+            [TermCoverageType],
+            --[TermPeril],
+            [DedType],
+            [DedCode],
+            [Deductible],
+            [MinDeductible],
+            [MaxDeductible],
+            [LimitType],
+            [LimitCode],
+            [Limit],
+            [Participation]
+    FROM    #tmpterm_denormalised
+    WHERE   TermLevel = 4
+
+    INSERT INTO ConditionCoverageTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY ConditionId, tmpTermId, TermCoverageType) AS ConditionCoverageTermId,
+            tmpTermId + @StartTermId AS TermId,
+            ConditionId,
+            TermCoverageType AS CoverageTypeId
+    FROM    vw_level_4_term
+
     -- level 5
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
 
     INSERT INTO #tmpterm_denormalised
     SELECT  tmpTermId + @StartTermId AS TermId,
@@ -2471,8 +2614,33 @@ BEGIN
     JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
     JOIN    ConditionLocation CL ON t.ConditionId = CL.ConditionId
 
+
+    INSERT INTO Term
+    SELECT DISTINCT [TermId],
+            [TermLevel],
+            [TermCoverageType],
+            --[TermPeril],
+            [DedType],
+            [DedCode],
+            [Deductible],
+            [MinDeductible],
+            [MaxDeductible],
+            [LimitType],
+            [LimitCode],
+            [Limit],
+            [Participation]
+    FROM    #tmpterm_denormalised
+    WHERE   TermLevel = 5
+
+    INSERT INTO ConditionPDTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY ConditionId, tmpTermId) AS ConditionPDTermId,
+            tmpTermId + @StartTermId AS TermId,
+            ConditionId
+    FROM    vw_level_5_term
+        
+
     -- level 6
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
 
     INSERT INTO #tmpterm_denormalised
     SELECT  tmpTermId + @StartTermId AS TermId,
@@ -2496,8 +2664,31 @@ BEGIN
     JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
     JOIN    ConditionLocation CL ON t.ConditionId = CL.ConditionId
 
+    INSERT INTO Term
+    SELECT DISTINCT [TermId],
+            [TermLevel],
+            [TermCoverageType],
+            --[TermPeril],
+            [DedType],
+            [DedCode],
+            [Deductible],
+            [MinDeductible],
+            [MaxDeductible],
+            [LimitType],
+            [LimitCode],
+            [Limit],
+            [Participation]
+    FROM    #tmpterm_denormalised
+    WHERE   TermLevel = 6
+
+    INSERT INTO ConditionTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY ConditionId, tmpTermId) AS ConditionTermId,
+            tmpTermId + @StartTermId AS TermId,
+            ConditionId
+    FROM    vw_level_6_term
+
     -- level 7
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
 
     INSERT INTO #tmpterm_denormalised
     SELECT  tmpTermId + @StartTermId AS TermId,
@@ -2523,8 +2714,34 @@ BEGIN
     JOIN    Account a ON p.AccountId = a.AccountId
     JOIN    [Location] l ON a.accountId = l.AccountId
 
+    
+
+    INSERT INTO Term
+    SELECT DISTINCT [TermId],
+            [TermLevel],
+            [TermCoverageType],
+            --[TermPeril],
+            [DedType],
+            [DedCode],
+            [Deductible],
+            [MinDeductible],
+            [MaxDeductible],
+            [LimitType],
+            [LimitCode],
+            [Limit],
+            [Participation]
+    FROM    #tmpterm_denormalised
+    WHERE   TermLevel = 7
+
+    INSERT INTO PolicyCoverageTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY PolicyId, tmpTermId, TermCoverageType) AS PolicyCoverageTermId,
+            tmpTermId + @StartTermId AS TermId,
+            PolicyId,
+            TermCoverageType AS CoverageTypeId
+    FROM    vw_level_7_term
+
     -- level 8
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
 
     INSERT INTO #tmpterm_denormalised
     SELECT  tmpTermId + @StartTermId AS TermId,
@@ -2550,8 +2767,33 @@ BEGIN
     JOIN    Account a ON p.AccountId = a.AccountId
     JOIN    [Location] l ON a.accountId = l.AccountId
 
+    
+
+    INSERT INTO Term
+    SELECT DISTINCT [TermId],
+            [TermLevel],
+            [TermCoverageType],
+            --[TermPeril],
+            [DedType],
+            [DedCode],
+            [Deductible],
+            [MinDeductible],
+            [MaxDeductible],
+            [LimitType],
+            [LimitCode],
+            [Limit],
+            [Participation]
+    FROM    #tmpterm_denormalised
+    WHERE   TermLevel = 8
+
+    INSERT INTO PolicyPDTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY PolicyId, tmpTermId) AS PolicyPDTermId,
+            tmpTermId + @StartTermId AS TermId,
+            PolicyId
+    FROM    vw_level_8_term
+
     -- level 9
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
 
     INSERT INTO #tmpterm_denormalised
     SELECT  tmpTermId + @StartTermId AS TermId,
@@ -2577,8 +2819,33 @@ BEGIN
     JOIN    Account a ON p.AccountId = a.AccountId
     JOIN    [Location] l ON a.accountId = l.AccountId
 
+    
+
+    INSERT INTO Term
+    SELECT DISTINCT [TermId],
+            [TermLevel],
+            [TermCoverageType],
+            --[TermPeril],
+            [DedType],
+            [DedCode],
+            [Deductible],
+            [MinDeductible],
+            [MaxDeductible],
+            [LimitType],
+            [LimitCode],
+            [Limit],
+            [Participation]
+    FROM    #tmpterm_denormalised
+    WHERE   TermLevel = 9
+
+    INSERT INTO PolicyTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY PolicyId, tmpTermId) AS PolicyTermId,
+            tmpTermId + @StartTermId AS TermId,
+            PolicyId
+    FROM    vw_level_9_term
+
     -- level 10
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
 
     INSERT INTO #tmpterm_denormalised
     SELECT  tmpTermId + @StartTermId AS TermId,
@@ -2605,6 +2872,7 @@ BEGIN
     JOIN    Account a ON p.AccountId = a.AccountId
     JOIN    [Location] l ON a.accountId = l.AccountId
 
+    
 
     INSERT INTO Term
     SELECT DISTINCT [TermId],
@@ -2621,6 +2889,13 @@ BEGIN
             [Limit],
             [Participation]
     FROM    #tmpterm_denormalised
+    WHERE   TermLevel = 10
+
+    INSERT INTO LayerTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY LayerId, tmpTermId) AS LayerTermId,
+            tmpTermId + @StartTermId AS TermId,
+            LayerId
+    FROM    vw_level_10_term
 
 
     INSERT INTO ItemTerm
