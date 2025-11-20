@@ -124,6 +124,18 @@ CREATE TABLE [dbo].[Location] (
     PRIMARY KEY CLUSTERED ([LocationId] ASC),
     CONSTRAINT [FK_account_TO_location] FOREIGN KEY ([AccountId]) REFERENCES [dbo].[account] ([AccountId])
 );
+GO
+
+CREATE TABLE [dbo].[ConditionLocation] (
+    [ConditionLocationId]        INT         NOT NULL,
+    [LocationId]                 INT         NOT NULL,
+    [ConditionId]                INT         NOT NULL,
+    [CondTag]                    VARCHAR (250) NOT NULL
+    PRIMARY KEY CLUSTERED ([ConditionLocationId] ASC),
+    CONSTRAINT [FK_conditionlocation_TO_location] FOREIGN KEY ([LocationId]) REFERENCES [dbo].[Location] ([LocationId]),
+    CONSTRAINT [FK_conditionlocation_TO_condition] FOREIGN KEY ([ConditionId]) REFERENCES [dbo].[Condition] ([ConditionId])
+);
+GO
 
 CREATE TABLE [dbo].[LocationDetail] (
     [LocationId]                 INT         NOT NULL,
@@ -2160,6 +2172,46 @@ END
 GO
 
 
+CREATE PROCEDURE usp_ConditionLocation_Load
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO ConditionLocation (
+        ConditionLocationId,
+        LocationId, 
+        ConditionId,
+        CondTag
+        )
+
+    SELECT  ROW_NUMBER() OVER (ORDER BY LocationId, ConditionId) AS ConditionLocationId,
+            LocationId,
+            ConditionId,
+            CondTag
+    FROM    (
+            SELECT  DISTINCT bkl.LocationId,
+                    bkc.ConditionId,
+                    il.CondTag
+            FROM    _import_account AS ia
+            JOIN    _import_location AS il
+                        ON  il.PortNumber = ia.PortNumber
+                        AND il.AccNumber = ia.AccNumber
+                        AND il.CondTag = ia.CondTag
+            JOIN    _businesskeys_location bkl
+                        ON  il.PortNumber = bkl.PortNumber
+                        AND il.AccNumber = bkl.AccNumber
+                        AND il.LocNumber = bkl.LocNumber
+            JOIN    _businesskeys_condition bkc
+                        ON  ia.PortNumber = bkc.PortNumber
+                        AND ia.AccNumber = bkc.AccNumber
+                        AND ia.PolNumber = bkc.PolNumber
+                        AND ia.CondNumber = bkc.CondNumber
+            ) AS tmpConditionLocation
+END
+
+GO
+
+
 CREATE PROCEDURE usp_Coverage_Load
 AS
 BEGIN
@@ -2270,415 +2322,319 @@ END
 GO
 
 
-CREATE PROCEDURE usp_LocationTableTerms_Load
+CREATE PROCEDURE usp_Terms_Load
 AS
 BEGIN
     SET NOCOUNT ON;
-    SELECT  0 AS ItemId,
-            ROW_NUMBER() OVER (ORDER BY c.CoverageId, p.PerilID) AS TermId,
-            c.CoverageId,
-            p.PerilID,
-            LocPeril,
-            LocDedCode1Building,
-            LocDedType1Building,
-            LocDed1Building,
-            LocMinDed1Building,
-            LocMaxDed1Building,
-            LocDedCode2Other,
-            LocDedType2Other,
-            LocDed2Other,
-            LocMinDed2Other,
-            LocMaxDed2Other,
-            LocDedCode3Contents,
-            LocDedType3Contents,
-            LocDed3Contents,
-            LocMinDed3Contents,
-            LocMaxDed3Contents,
-            LocDedCode4Bi,
-            LocDedType4Bi,
-            LocDed4Bi,
-            LocMinDed4Bi,
-            LocMaxDed4Bi,
-            LocDedCode5Pd,
-            LocDedType5Pd,
-            LocDed5Pd,
-            LocMinDed5Pd,
-            LocMaxDed5Pd,
-            LocDedCode6All,
-            LocDedType6All,
-            LocDed6All,
-            LocMinDed6All,
-            LocMaxDed6All,
-            LocLimitCode1Building,
-            LocLimitType1Building,
-            LocLimit1Building,
-            LocLimitCode2Other,
-            LocLimitType2Other,
-            LocLimit2Other,
-            LocLimitCode3Contents,
-            LocLimitType3Contents,
-            LocLimit3Contents,
-            LocLimitCode4Bi,
-            LocLimitType4Bi,
-            LocLimit4Bi,
-            LocLimitCode5Pd,
-            LocLimitType5Pd,
-            LocLimit5Pd,
-            LocLimitCode6All,
-            LocLimitType6All,
-            LocLimit6All,
-            LocParticipation
-    INTO    #tmpTermLoc
-    FROM    dbo._businesskeys_location AS bkl
-    JOIN    (
-                SELECT DISTINCT
-                    il.PortNumber,
-                    il.AccNumber,
-                    il.LocNumber,
-                    il.LocPeril,
-                    TRIM(spl.value) AS PerilGroup,
-                    LocDedCode1Building,
-                    LocDedType1Building,
-                    LocDed1Building,
-                    LocMinDed1Building,
-                    LocMaxDed1Building,
-                    LocDedCode2Other,
-                    LocDedType2Other,
-                    LocDed2Other,
-                    LocMinDed2Other,
-                    LocMaxDed2Other,
-                    LocDedCode3Contents,
-                    LocDedType3Contents,
-                    LocDed3Contents,
-                    LocMinDed3Contents,
-                    LocMaxDed3Contents,
-                    LocDedCode4Bi,
-                    LocDedType4Bi,
-                    LocDed4Bi,
-                    LocMinDed4Bi,
-                    LocMaxDed4Bi,
-                    LocDedCode5Pd,
-                    LocDedType5Pd,
-                    LocDed5Pd,
-                    LocMinDed5Pd,
-                    LocMaxDed5Pd,
-                    LocDedCode6All,
-                    LocDedType6All,
-                    LocDed6All,
-                    LocMinDed6All,
-                    LocMaxDed6All,
-                    LocLimitCode1Building,
-                    LocLimitType1Building,
-                    LocLimit1Building,
-                    LocLimitCode2Other,
-                    LocLimitType2Other,
-                    LocLimit2Other,
-                    LocLimitCode3Contents,
-                    LocLimitType3Contents,
-                    LocLimit3Contents,
-                    LocLimitCode4Bi,
-                    LocLimitType4Bi,
-                    LocLimit4Bi,
-                    LocLimitCode5Pd,
-                    LocLimitType5Pd,
-                    LocLimit5Pd,
-                    LocLimitCode6All,
-                    LocLimitType6All,
-                    LocLimit6All,
-                    LocParticipation
-                FROM dbo._import_location AS il
-                CROSS APPLY STRING_SPLIT(il.LocPeril, ';') AS spl
-                WHERE TRIM(spl.value) <> ''
-            ) AS spd
-                ON bkl.PortNumber = spd.PortNumber
-                AND bkl.AccNumber = spd.AccNumber
-                AND bkl.LocNumber = spd.LocNumber
-    JOIN    dbo.Peril AS pg ON pg.Peril = spd.PerilGroup
-    JOIN    dbo.PerilGroup AS pg_map ON pg_map.PerilGroupID = pg.PerilId
-    JOIN    dbo.Peril AS p ON pg_map.PerilId = p.PerilId
-    JOIN    dbo.Coverage AS c ON bkl.LocationId = c.LocationId
-
-
-    UPDATE  #tmpTermLoc
-    SET     ItemId = i.ItemId
-    FROM    (
-            SELECT  i.ItemId,
-                    l.CoverageId,
-                    l.PerilID
-            FROM    #tmpTermLoc AS l
-            JOIN    Item AS i ON l.CoverageId = i.CoverageId
-                        AND l.PerilID = i.PerilID
-            ) AS i
-    WHERE   #tmpTermLoc.CoverageId = i.CoverageId
-    AND     #tmpTermLoc.PerilID = i.PerilID
+    CREATE TABLE #tmpterm_denormalised (
+        [TermId]           INT,
+        [LocationId]       INT, 
+        [CoverageTypeId]   INT,
+        [Peril]            VARCHAR(3),
+        [TermLevel]        INT,
+        [TermCoverageType] INT,
+        [TermPeril]        VARCHAR(50),
+        [DedType]          INT,
+        [DedCode]          INT,
+        [Deductible]       FLOAT (53),
+        [MinDeductible]    FLOAT (53),
+        [MaxDeductible]    FLOAT (53),
+        [LimitType]        INT,
+        [LimitCode]        INT,
+        [Limit]            FLOAT (53),
+        [Participation]    FLOAT (53)
+    )
 
     DECLARE @StartTermId int
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
 
-    INSERT INTO Term (
-        TermId,
-        TermLevel,
-        TermCoverageType,
-        DedType,
-        DedCode,
-        Deductible,
-        MinDeductible,
-        MaxDeductible,
-        LimitType,
-        LimitCode,
-        [Limit],
-        Participation
-    )
-    SELECT  TermId + @StartTermId AS TermId,
-            1 AS TermLevel,
-            1 AS TermCoverage,
-            LocDedType1Building,
-            LocDedCode1Building,
-            LocDed1Building,
-            LocMinDed1Building,
-            LocMaxDed1Building,     
-            LocLimitType1Building,     
-            LocLimitCode1Building,
-            LocLimit1Building,
-            LocParticipation
-    FROM    #tmpTermLoc
+    -- level 1
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
 
-    DECLARE @StartItemTermId int
-    SELECT  @StartItemTermId = ISNULL(MAX(ItemTermId),0) FROM ItemTerm
+    INSERT INTO #tmpterm_denormalised
+    SELECT  tmpTermId + @StartTermId AS TermId,
+            LocationId,
+            tct.CoverageTypeId,
+            spl.value AS Peril,
+            TermLevel,
+            TermCoverageType,
+            LocPeril AS TermPeril,
+            DedType,
+            DedCode,
+            Deductible,
+            MinDeductible,
+            MaxDeductible,
+            LimitType,
+            LimitCode,
+            Limit,
+            Participation
+    FROM    vw_level_1_term AS t
+    CROSS APPLY STRING_SPLIT(LocPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
 
-    INSERT INTO ItemTerm (
-            ItemTermId,
+    -- level 2
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+
+    INSERT INTO #tmpterm_denormalised
+    SELECT  tmpTermId + @StartTermId AS TermId,
+            LocationId,
+            tct.CoverageTypeId,
+            spl.value AS Peril,
+            TermLevel,
+            TermCoverageType,
+            LocPeril AS TermPeril,
+            DedType,
+            DedCode,
+            Deductible,
+            MinDeductible,
+            MaxDeductible,
+            LimitType,
+            LimitCode,
+            Limit,
+            Participation
+    FROM    vw_level_2_term AS t
+    CROSS APPLY STRING_SPLIT(LocPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
+
+
+    -- level 3
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+
+    INSERT INTO #tmpterm_denormalised
+    SELECT  tmpTermId + @StartTermId AS TermId,
+            LocationId,
+            tct.CoverageTypeId,
+            spl.value AS Peril,
+            TermLevel,
+            TermCoverageType,
+            LocPeril AS TermPeril,
+            DedType,
+            DedCode,
+            Deductible,
+            MinDeductible,
+            MaxDeductible,
+            LimitType,
+            LimitCode,
+            Limit,
+            Participation
+    FROM    vw_level_3_term AS t
+    CROSS APPLY STRING_SPLIT(LocPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
+
+
+    -- level 4
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+
+    INSERT INTO #tmpterm_denormalised
+    SELECT  tmpTermId + @StartTermId AS TermId,
+            LocationId,
+            tct.CoverageTypeId,
+            spl.value AS Peril,
+            TermLevel,
+            TermCoverageType,
+            CondPeril AS TermPeril,
+            DedType,
+            DedCode,
+            Deductible,
+            MinDeductible,
+            MaxDeductible,
+            LimitType,
+            LimitCode,
+            Limit,
+            Participation
+    FROM    vw_level_4_term AS t
+    CROSS APPLY STRING_SPLIT(CondPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
+    JOIN    ConditionLocation CL ON t.ConditionId = CL.ConditionId
+
+    -- level 5
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+
+    INSERT INTO #tmpterm_denormalised
+    SELECT  tmpTermId + @StartTermId AS TermId,
+            LocationId,
+            tct.CoverageTypeId,
+            spl.value AS Peril,
+            TermLevel,
+            TermCoverageType,
+            CondPeril AS TermPeril,
+            DedType,
+            DedCode,
+            Deductible,
+            MinDeductible,
+            MaxDeductible,
+            LimitType,
+            LimitCode,
+            Limit,
+            Participation
+    FROM    vw_level_5_term AS t
+    CROSS APPLY STRING_SPLIT(CondPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
+    JOIN    ConditionLocation CL ON t.ConditionId = CL.ConditionId
+
+    -- level 6
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+
+    INSERT INTO #tmpterm_denormalised
+    SELECT  tmpTermId + @StartTermId AS TermId,
+            LocationId,
+            tct.CoverageTypeId,
+            spl.value AS Peril,
+            TermLevel,
+            TermCoverageType,
+            CondPeril AS TermPeril,
+            DedType,
+            DedCode,
+            Deductible,
+            MinDeductible,
+            MaxDeductible,
+            LimitType,
+            LimitCode,
+            Limit,
+            Participation
+    FROM    vw_level_6_term AS t
+    CROSS APPLY STRING_SPLIT(CondPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
+    JOIN    ConditionLocation CL ON t.ConditionId = CL.ConditionId
+
+    -- level 7
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+
+    INSERT INTO #tmpterm_denormalised
+    SELECT  tmpTermId + @StartTermId AS TermId,
+            LocationId,
+            tct.CoverageTypeId,
+            spl.value AS Peril,
+            TermLevel,
+            TermCoverageType,
+            PolPeril AS TermPeril,
+            DedType,
+            DedCode,
+            Deductible,
+            MinDeductible,
+            MaxDeductible,
+            LimitType,
+            LimitCode,
+            Limit,
+            Participation
+    FROM    vw_level_7_term AS t
+    CROSS APPLY STRING_SPLIT(PolPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
+    JOIN    [Policy] p ON t.PolicyId = p.PolicyId
+    JOIN    Account a ON p.AccountId = a.AccountId
+    JOIN    [Location] l ON a.accountId = l.AccountId
+
+    -- level 8
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+
+    INSERT INTO #tmpterm_denormalised
+    SELECT  tmpTermId + @StartTermId AS TermId,
+            LocationId,
+            tct.CoverageTypeId,
+            spl.value AS Peril,
+            TermLevel,
+            TermCoverageType,
+            PolPeril AS TermPeril,
+            DedType,
+            DedCode,
+            Deductible,
+            MinDeductible,
+            MaxDeductible,
+            LimitType,
+            LimitCode,
+            Limit,
+            Participation
+    FROM    vw_level_8_term AS t
+    CROSS APPLY STRING_SPLIT(PolPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
+    JOIN    [Policy] p ON t.PolicyId = p.PolicyId
+    JOIN    Account a ON p.AccountId = a.AccountId
+    JOIN    [Location] l ON a.accountId = l.AccountId
+
+    -- level 9
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+
+    INSERT INTO #tmpterm_denormalised
+    SELECT  tmpTermId + @StartTermId AS TermId,
+            LocationId,
+            tct.CoverageTypeId,
+            spl.value AS Peril,
+            TermLevel,
+            TermCoverageType,
+            PolPeril AS TermPeril,
+            DedType,
+            DedCode,
+            Deductible,
+            MinDeductible,
+            MaxDeductible,
+            LimitType,
+            LimitCode,
+            Limit,
+            Participation
+    FROM    vw_level_9_term AS t
+    CROSS APPLY STRING_SPLIT(PolPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
+    JOIN    [Policy] p ON t.PolicyId = p.PolicyId
+    JOIN    Account a ON p.AccountId = a.AccountId
+    JOIN    [Location] l ON a.accountId = l.AccountId
+
+    -- level 10
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM #tmpterm_denormalised
+
+    INSERT INTO #tmpterm_denormalised
+    SELECT  tmpTermId + @StartTermId AS TermId,
+            LocationId,
+            tct.CoverageTypeId,
+            spl.value AS Peril,
+            TermLevel,
+            TermCoverageType,
+            PolPeril AS TermPeril,
+            DedType,
+            DedCode,
+            Deductible,
+            MinDeductible,
+            MaxDeductible,
+            LimitType,
+            LimitCode,
+            Limit,
+            Participation
+    FROM    vw_level_10_term AS t
+    CROSS APPLY STRING_SPLIT(PolPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct on t.TermCoverageType = tct.TermCoverageTypeId
+    JOIN    Layer ly ON t.LayerId = ly.LayerId
+    JOIN    [Policy] p ON ly.PolicyId = p.PolicyId
+    JOIN    Account a ON p.AccountId = a.AccountId
+    JOIN    [Location] l ON a.accountId = l.AccountId
+
+
+    INSERT INTO Term
+    SELECT DISTINCT [TermId],
+            [TermLevel],
+            [TermCoverageType],
+            --[TermPeril],
+            [DedType],
+            [DedCode],
+            [Deductible],
+            [MinDeductible],
+            [MaxDeductible],
+            [LimitType],
+            [LimitCode],
+            [Limit],
+            [Participation]
+    FROM    #tmpterm_denormalised
+
+
+    INSERT INTO ItemTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY TermId, ItemId) AS ItemTermId,
             TermId,
             ItemId
-        )
-    SELECT  @StartItemTermId + ROW_NUMBER() OVER (ORDER BY ItemId) AS ItemTermId,
-            TermId + @StartTermId AS TermId,
-            ItemId
-    FROM    #tmpTermLoc
+    FROM    #tmpterm_denormalised ttd
+    JOIN    vw_item_detail id 
+                ON  ttd.LocationId = id.LocationId
+                AND ttd.CoverageTypeId = id.CoverageTypeId
+                AND ttd.Peril = id.Peril
 
 
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
-
-    INSERT INTO Term (
-        TermId,
-        TermLevel,
-        TermCoverageType,
-        DedType,
-        DedCode,
-        Deductible,
-        MinDeductible,
-        MaxDeductible,
-        LimitType,
-        LimitCode,
-        [Limit],
-        Participation
-    )
-    SELECT  TermId + @StartTermId AS TermId,
-            1 AS TermLevel,
-            2 AS TermCoverage,
-            LocDedType2Other,
-            LocDedCode2Other,
-            LocDed2Other,
-            LocMinDed2Other,
-            LocMaxDed2Other,     
-            LocLimitType2Other,     
-            LocLimitCode2Other,
-            LocLimit2Other,
-            LocParticipation
-    FROM    #tmpTermLoc
-
-
-    SELECT  @StartItemTermId = ISNULL(MAX(ItemTermId),0) FROM ItemTerm
-
-    INSERT INTO ItemTerm (
-            ItemTermId,
-            TermId,
-            ItemId
-        )
-    SELECT  @StartItemTermId + ROW_NUMBER() OVER (ORDER BY ItemId) AS ItemTermId,
-            TermId + @StartTermId AS TermId,
-            ItemId
-    FROM    #tmpTermLoc
-
-
-
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
-
-    INSERT INTO Term (
-        TermId,
-        TermLevel,
-        TermCoverageType,
-        DedType,
-        DedCode,
-        Deductible,
-        MinDeductible,
-        MaxDeductible,
-        LimitType,
-        LimitCode,
-        [Limit],
-        Participation
-    )
-    SELECT  TermId + @StartTermId AS TermId,
-            1 AS TermLevel,
-            3 AS TermCoverage,
-            LocDedType3Contents,
-            LocDedCode3Contents,
-            LocDed3Contents,
-            LocMinDed3Contents,
-            LocMaxDed3Contents,     
-            LocLimitType3Contents,     
-            LocLimitCode3Contents,
-            LocLimit3Contents,
-            LocParticipation
-    FROM    #tmpTermLoc
-
-
-    SELECT  @StartItemTermId = ISNULL(MAX(ItemTermId),0) FROM ItemTerm
-
-    INSERT INTO ItemTerm (
-            ItemTermId,
-            TermId,
-            ItemId
-        )
-    SELECT  @StartItemTermId + ROW_NUMBER() OVER (ORDER BY ItemId) AS ItemTermId,
-            TermId + @StartTermId AS TermId,
-            ItemId
-    FROM    #tmpTermLoc
-
-
-
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
-
-    INSERT INTO Term (
-        TermId,
-        TermLevel,
-        TermCoverageType,
-        DedType,
-        DedCode,
-        Deductible,
-        MinDeductible,
-        MaxDeductible,
-        LimitType,
-        LimitCode,
-        [Limit],
-        Participation
-    )
-    SELECT  TermId + @StartTermId AS TermId,
-            1 AS TermLevel,
-            4 AS TermCoverage,
-            LocDedType4BI,
-            LocDedCode4BI,
-            LocDed4BI,
-            LocMinDed4BI,
-            LocMaxDed4BI,     
-            LocLimitType4BI,     
-            LocLimitCode4BI,
-            LocLimit4BI,
-            LocParticipation
-    FROM    #tmpTermLoc
-
-
-    SELECT  @StartItemTermId = ISNULL(MAX(ItemTermId),0) FROM ItemTerm
-
-    INSERT INTO ItemTerm (
-            ItemTermId,
-            TermId,
-            ItemId
-        )
-    SELECT  @StartItemTermId + ROW_NUMBER() OVER (ORDER BY ItemId) AS ItemTermId,
-            TermId + @StartTermId AS TermId,
-            ItemId
-    FROM    #tmpTermLoc
-
-
-
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
-
-    INSERT INTO Term (
-        TermId,
-        TermLevel,
-        TermCoverageType,
-        DedType,
-        DedCode,
-        Deductible,
-        MinDeductible,
-        MaxDeductible,
-        LimitType,
-        LimitCode,
-        [Limit],
-        Participation
-    )
-    SELECT  TermId + @StartTermId AS TermId,
-            2 AS TermLevel,
-            5 AS TermCoverage,
-            LocDedType5PD,
-            LocDedCode5PD,
-            LocDed5PD,
-            LocMinDed5PD,
-            LocMaxDed5PD,     
-            LocLimitType5PD,     
-            LocLimitCode5PD,
-            LocLimit5PD,
-            LocParticipation
-    FROM    #tmpTermLoc
-
-
-    SELECT  @StartItemTermId = ISNULL(MAX(ItemTermId),0) FROM ItemTerm
-
-    INSERT INTO ItemTerm (
-            ItemTermId,
-            TermId,
-            ItemId
-        )
-    SELECT  @StartItemTermId + ROW_NUMBER() OVER (ORDER BY ItemId) AS ItemTermId,
-            TermId + @StartTermId AS TermId,
-            ItemId
-    FROM    #tmpTermLoc
-
-
-
-
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
-
-    INSERT INTO Term (
-        TermId,
-        TermLevel,
-        TermCoverageType,
-        DedType,
-        DedCode,
-        Deductible,
-        MinDeductible,
-        MaxDeductible,
-        LimitType,
-        LimitCode,
-        [Limit],
-        Participation
-    )
-    SELECT  TermId + @StartTermId AS TermId,
-            3 AS TermLevel,
-            6 AS TermCoverage,
-            LocDedType6All,
-            LocDedCode6All,
-            LocDed6All,
-            LocMinDed6All,
-            LocMaxDed6All,     
-            LocLimitType6All,     
-            LocLimitCode6All,
-            LocLimit6All,
-            LocParticipation
-    FROM    #tmpTermLoc
-
-    SELECT  @StartItemTermId = ISNULL(MAX(ItemTermId),0) FROM ItemTerm
-
-    INSERT INTO ItemTerm (
-            ItemTermId,
-            TermId,
-            ItemId
-        )
-    SELECT  @StartItemTermId + ROW_NUMBER() OVER (ORDER BY ItemId) AS ItemTermId,
-            TermId + @StartTermId AS TermId,
-            ItemId
-    FROM    #tmpTermLoc
+    Drop Table #tmpterm_denormalised
 
 
 END
@@ -2711,12 +2667,826 @@ BEGIN
     EXEC usp_Location_Load
     EXEC usp_Coverage_Load
     EXEC usp_Item_Load
+    EXEC usp_ConditionLocation_Load
 
     -- terms
-    --EXEC usp_LocationTableTerms_Load
+    EXEC usp_Terms_Load
 
     Select 'Done'
 
 END
 
 GO
+
+
+-----
+--Reference Tables
+-----
+
+-- Create tables (INT for numeric codes, VARCHAR for text codes)
+CREATE TABLE dbo.Anchorage (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.AddressMatch (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.AppurtenantStructure (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.AttachmentBasis (Code VARCHAR(50) PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.BackUpFreq (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Basement (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.BIFloodVuln (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.BIPreparedness (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.BIRedundancy (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.BrickVeneer (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.BuildingCondition (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.BuildingExteriorOpening (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.BuildingFloodVuln (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.BuildingShape (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.BuildingType (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Chimney (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Cladding (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.CloudVendor (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.CodeProvision (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.CommodityScheme (Code VARCHAR(50) PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.CompanyIDScheme (Code VARCHAR(50) PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.ConstructionQuality (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.ContentsFloodVuln (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.ContentsQuakeVuln (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.ContentsWindVuln (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.CoverageTrigger (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.CrippleWall (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.CRMVendor (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.DiameterOfPipeline (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.DefenseCost (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.EmailVendor (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.EquipmentBracing (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.ExternalDoors (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Fatigue (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.FEMACompliance (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Flashing (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.FloodDebrisResilience (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.FoundationConnection (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.FoundationType (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.GeogScheme (Code VARCHAR(50) PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.GlassType (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.GroundEquipment (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.IndustryScheme (Code VARCHAR(50) PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.InternalPartition (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.IsAggregate (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.IsGroupCover (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.IsPackage (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.LatticeType (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.MechanicalEquipmentSide (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.MultiStoryHall (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.OccupantPeriod (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Ornamentation (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.OSVendor (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Packaging (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.PatchPolicy (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.PayoutBasis (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Pounding (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Protection (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.PumpingCapacity (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Redundancy (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.ReinsType (Code VARCHAR(50) PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Retrofit (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.RiskLevel (Code VARCHAR(50) PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.RoofAnchorage (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.RoofAttachedStructures (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.RoofCover (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.RoofCoverAttachment (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.RoofDeck (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.RoofDeckAttachment (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.RoofEquipment (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.RoofFrame (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.RoofGeometry (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.RoofMaintenance (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.RoofPitch (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.SalvageProtection (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.ServiceEquipmentProtection (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.ShapeIrregularity (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.ShortColumn (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.SmallDebris (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.SoftStory (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.SoilLiquefiable (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.SoilType (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.SpecialEQConstruction (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.SprinklerType (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.StaticMotorVehicle (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Statuses (Code VARCHAR(50) PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.StepTriggerType (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.TallOneStory (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Tank (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.TerrainRoughness (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Torsion (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.TreeExposure (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.Units (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.ValuablesStorage (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.VoltageOfEnergy (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.WallAttachedStructure (Code INT PRIMARY KEY, Description VARCHAR(500));
+CREATE TABLE dbo.WindowProtection (Code INT PRIMARY KEY, Description VARCHAR(500));
+GO
+
+-- Insert data
+INSERT INTO dbo.Anchorage (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.Anchorage (Code, Description) VALUES (1, 'Anchored');
+INSERT INTO dbo.Anchorage (Code, Description) VALUES (2, 'Unanchored');
+
+INSERT INTO dbo.AddressMatch (Code, Description) VALUES (0, 'Ungeocoded');
+INSERT INTO dbo.AddressMatch (Code, Description) VALUES (1, 'User Coordinate');
+INSERT INTO dbo.AddressMatch (Code, Description) VALUES (10, 'CRESTA (low res)');
+INSERT INTO dbo.AddressMatch (Code, Description) VALUES (2, 'Exact Address - Building');
+INSERT INTO dbo.AddressMatch (Code, Description) VALUES (20, 'Country');
+INSERT INTO dbo.AddressMatch (Code, Description) VALUES (3, 'Parcel');
+INSERT INTO dbo.AddressMatch (Code, Description) VALUES (4, 'Interpolated Street');
+INSERT INTO dbo.AddressMatch (Code, Description) VALUES (5, 'High Resolution Postcode');
+INSERT INTO dbo.AddressMatch (Code, Description) VALUES (6, 'Block Group / Streetname');
+INSERT INTO dbo.AddressMatch (Code, Description) VALUES (7, 'Postal Code');
+INSERT INTO dbo.AddressMatch (Code, Description) VALUES (8, 'City Centroid');
+INSERT INTO dbo.AddressMatch (Code, Description) VALUES (9, 'Area');
+
+INSERT INTO dbo.AppurtenantStructure (Code, Description) VALUES (0, 'Unknown / Default');
+INSERT INTO dbo.AppurtenantStructure (Code, Description) VALUES (1, 'Detached garage');
+INSERT INTO dbo.AppurtenantStructure (Code, Description) VALUES (10, 'Pole mount Solar Panels');
+INSERT INTO dbo.AppurtenantStructure (Code, Description) VALUES (11, 'Car Port');
+INSERT INTO dbo.AppurtenantStructure (Code, Description) VALUES (12, 'Car Port with Storage');
+INSERT INTO dbo.AppurtenantStructure (Code, Description) VALUES (2, 'Pool enclosures');
+INSERT INTO dbo.AppurtenantStructure (Code, Description) VALUES (3, 'Shed');
+INSERT INTO dbo.AppurtenantStructure (Code, Description) VALUES (4, 'Masonry boundary wall');
+INSERT INTO dbo.AppurtenantStructure (Code, Description) VALUES (5, 'Other fences');
+INSERT INTO dbo.AppurtenantStructure (Code, Description) VALUES (6, 'No appurtenant structures');
+INSERT INTO dbo.AppurtenantStructure (Code, Description) VALUES (7, 'No pool enclosures');
+INSERT INTO dbo.AppurtenantStructure (Code, Description) VALUES (8, 'Detached screen enclosure / Lanai');
+INSERT INTO dbo.AppurtenantStructure (Code, Description) VALUES (9, 'Standard ground mount Solar Panels');
+
+INSERT INTO dbo.AttachmentBasis (Code, Description) VALUES ('LO', 'Losses Occurring During');
+INSERT INTO dbo.AttachmentBasis (Code, Description) VALUES ('RA', 'Risk Attaching');
+
+INSERT INTO dbo.BackUpFreq (Code, Description) VALUES (0, 'Cadence of back-up of the main servers  is Unknown');
+INSERT INTO dbo.BackUpFreq (Code, Description) VALUES (1, 'Cadence of back-up of the main servers  is Never');
+INSERT INTO dbo.BackUpFreq (Code, Description) VALUES (2, 'Cadence of back-up of the main servers  is Daily');
+INSERT INTO dbo.BackUpFreq (Code, Description) VALUES (3, 'Cadence of back-up of the main servers  is Weekly');
+INSERT INTO dbo.BackUpFreq (Code, Description) VALUES (4, 'Cadence of back-up of the main servers  is Monthly');
+INSERT INTO dbo.BackUpFreq (Code, Description) VALUES (5, 'Cadence of back-up of the main servers  is Annually');
+INSERT INTO dbo.BackUpFreq (Code, Description) VALUES (6, 'Cadence of back-up of the main servers  is Ad-hoc');
+
+INSERT INTO dbo.Basement (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.Basement (Code, Description) VALUES (1, 'Unfinished basement');
+INSERT INTO dbo.Basement (Code, Description) VALUES (2, 'Finished basement (100%)');
+INSERT INTO dbo.Basement (Code, Description) VALUES (3, 'Mostly finished basement (> 50%)');
+INSERT INTO dbo.Basement (Code, Description) VALUES (4, 'Partially finished basement (<= 50%)');
+INSERT INTO dbo.Basement (Code, Description) VALUES (5, 'Basement of unknown finish percent');
+INSERT INTO dbo.Basement (Code, Description) VALUES (6, 'No basement');
+
+INSERT INTO dbo.BIFloodVuln (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.BIFloodVuln (Code, Description) VALUES (1, 'No Susceptibility');
+INSERT INTO dbo.BIFloodVuln (Code, Description) VALUES (2, 'Very Low');
+INSERT INTO dbo.BIFloodVuln (Code, Description) VALUES (3, 'Low');
+INSERT INTO dbo.BIFloodVuln (Code, Description) VALUES (4, 'Moderate');
+INSERT INTO dbo.BIFloodVuln (Code, Description) VALUES (5, 'High');
+INSERT INTO dbo.BIFloodVuln (Code, Description) VALUES (6, 'Very High');
+INSERT INTO dbo.BIFloodVuln (Code, Description) VALUES (7, 'Total Susceptibility');
+
+INSERT INTO dbo.BIPreparedness (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.BIPreparedness (Code, Description) VALUES (1, 'Vulnerable');
+INSERT INTO dbo.BIPreparedness (Code, Description) VALUES (2, 'Average');
+INSERT INTO dbo.BIPreparedness (Code, Description) VALUES (3, 'Resilient');
+
+INSERT INTO dbo.BIRedundancy (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.BIRedundancy (Code, Description) VALUES (1, 'Vulnerable');
+INSERT INTO dbo.BIRedundancy (Code, Description) VALUES (2, 'Average');
+INSERT INTO dbo.BIRedundancy (Code, Description) VALUES (3, 'Resilient');
+
+INSERT INTO dbo.BrickVeneer (Code, Description) VALUES (0, 'Unknown / default (50-90%)');
+INSERT INTO dbo.BrickVeneer (Code, Description) VALUES (1, 'More than 90%');
+INSERT INTO dbo.BrickVeneer (Code, Description) VALUES (2, '25-50%');
+INSERT INTO dbo.BrickVeneer (Code, Description) VALUES (3, '0-25%');
+
+INSERT INTO dbo.BuildingCondition (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.BuildingCondition (Code, Description) VALUES (1, 'Average');
+INSERT INTO dbo.BuildingCondition (Code, Description) VALUES (2, 'Good');
+INSERT INTO dbo.BuildingCondition (Code, Description) VALUES (3, 'Poor');
+
+INSERT INTO dbo.BuildingExteriorOpening (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.BuildingExteriorOpening (Code, Description) VALUES (1, 'Less than 50% of wall open');
+INSERT INTO dbo.BuildingExteriorOpening (Code, Description) VALUES (2, 'More than 50% of wall open');
+
+INSERT INTO dbo.BuildingFloodVuln (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.BuildingFloodVuln (Code, Description) VALUES (1, 'No Susceptibility');
+INSERT INTO dbo.BuildingFloodVuln (Code, Description) VALUES (2, 'Very Low');
+INSERT INTO dbo.BuildingFloodVuln (Code, Description) VALUES (3, 'Low');
+INSERT INTO dbo.BuildingFloodVuln (Code, Description) VALUES (4, 'Moderate');
+INSERT INTO dbo.BuildingFloodVuln (Code, Description) VALUES (5, 'High');
+INSERT INTO dbo.BuildingFloodVuln (Code, Description) VALUES (6, 'Very High');
+INSERT INTO dbo.BuildingFloodVuln (Code, Description) VALUES (7, 'Total Susceptibility');
+
+INSERT INTO dbo.BuildingShape (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.BuildingShape (Code, Description) VALUES (1, 'Square');
+INSERT INTO dbo.BuildingShape (Code, Description) VALUES (2, 'Rectangle');
+INSERT INTO dbo.BuildingShape (Code, Description) VALUES (3, 'Circular');
+INSERT INTO dbo.BuildingShape (Code, Description) VALUES (4, 'L-shaped');
+INSERT INTO dbo.BuildingShape (Code, Description) VALUES (5, 'T-shaped');
+INSERT INTO dbo.BuildingShape (Code, Description) VALUES (6, 'U-shaped');
+INSERT INTO dbo.BuildingShape (Code, Description) VALUES (7, 'H-shaped');
+INSERT INTO dbo.BuildingShape (Code, Description) VALUES (8, 'Complex');
+INSERT INTO dbo.BuildingShape (Code, Description) VALUES (9, 'Triangular');
+
+INSERT INTO dbo.BuildingType (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.BuildingType (Code, Description) VALUES (1, 'Manufactured');
+INSERT INTO dbo.BuildingType (Code, Description) VALUES (2, 'Cottage');
+INSERT INTO dbo.BuildingType (Code, Description) VALUES (3, 'Ranch');
+INSERT INTO dbo.BuildingType (Code, Description) VALUES (4, 'Cape Cod Style');
+INSERT INTO dbo.BuildingType (Code, Description) VALUES (5, 'Earth house');
+INSERT INTO dbo.BuildingType (Code, Description) VALUES (6, 'Dome');
+
+INSERT INTO dbo.Chimney (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.Chimney (Code, Description) VALUES (1, 'No');
+INSERT INTO dbo.Chimney (Code, Description) VALUES (2, 'Yes, height <= 2 ft');
+INSERT INTO dbo.Chimney (Code, Description) VALUES (3, 'Yes, 2ft <= height <= 5 ft');
+INSERT INTO dbo.Chimney (Code, Description) VALUES (4, 'Yes, height > 5 ft');
+
+INSERT INTO dbo.Cladding (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (1, 'Veneer brick / masonry');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (10, 'Stone Veneer');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (11, 'Steel');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (12, 'Light metal');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (13, 'Tile');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (14, 'Concrete');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (15, 'Fiber cement (Board)');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (16, 'Wood siding');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (17, 'Gypsum Board');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (2, 'Wood shingles / shakes');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (3, 'Clapboards');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (4, 'Aluminium / vinyl siding');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (5, 'Stone panels (real stone)');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (6, 'Exterior insulation finishing system (EIFS)');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (7, 'Stucco');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (8, 'Asbestos');
+INSERT INTO dbo.Cladding (Code, Description) VALUES (9, 'Log');
+
+INSERT INTO dbo.CloudVendor (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.CloudVendor (Code, Description) VALUES (1, 'AWS');
+INSERT INTO dbo.CloudVendor (Code, Description) VALUES (2, 'MS Azure');
+INSERT INTO dbo.CloudVendor (Code, Description) VALUES (3, 'Google Cloud');
+INSERT INTO dbo.CloudVendor (Code, Description) VALUES (4, 'IBM Cloud');
+INSERT INTO dbo.CloudVendor (Code, Description) VALUES (5, 'Oracle Cloud');
+INSERT INTO dbo.CloudVendor (Code, Description) VALUES (6, 'Alibaba Cloud');
+
+INSERT INTO dbo.CodeProvision (Code, Description) VALUES (1, 'No code/non-engineered');
+INSERT INTO dbo.CodeProvision (Code, Description) VALUES (2, 'Low Code');
+INSERT INTO dbo.CodeProvision (Code, Description) VALUES (3, 'Moderate Code');
+INSERT INTO dbo.CodeProvision (Code, Description) VALUES (4, 'High Code');
+
+INSERT INTO dbo.CommodityScheme (Code, Description) VALUES ('HS22', 'HS Nomenclature 2022 Edition');
+
+INSERT INTO dbo.CompanyIDScheme (Code, Description) VALUES ('LEI', 'Legal Entity Identifier scheme');
+INSERT INTO dbo.CompanyIDScheme (Code, Description) VALUES ('DUNS', 'Duns & Bradstreet scheme');
+INSERT INTO dbo.CompanyIDScheme (Code, Description) VALUES ('BIN', 'Bank Identification Number scheme');
+
+INSERT INTO dbo.ConstructionQuality (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.ConstructionQuality (Code, Description) VALUES (1, 'Fortified Home (IBHS) Bronze Option 1');
+INSERT INTO dbo.ConstructionQuality (Code, Description) VALUES (10, 'Low');
+INSERT INTO dbo.ConstructionQuality (Code, Description) VALUES (2, 'Fortified Home (IBHS) Bronze Option 2');
+INSERT INTO dbo.ConstructionQuality (Code, Description) VALUES (3, 'Fortified Home (IBHS) Silver Option 1');
+INSERT INTO dbo.ConstructionQuality (Code, Description) VALUES (4, 'Fortified Home (IBHS) Silver Option 2');
+INSERT INTO dbo.ConstructionQuality (Code, Description) VALUES (5, 'Fortified Home (IBHS) Gold Option 1');
+INSERT INTO dbo.ConstructionQuality (Code, Description) VALUES (6, 'Fortified Home (IBHS) Gold Option 2');
+INSERT INTO dbo.ConstructionQuality (Code, Description) VALUES (7, 'Fortified for Safer Living (IBHS)');
+INSERT INTO dbo.ConstructionQuality (Code, Description) VALUES (8, 'High');
+INSERT INTO dbo.ConstructionQuality (Code, Description) VALUES (9, 'Medium');
+
+INSERT INTO dbo.ContentsFloodVuln (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.ContentsFloodVuln (Code, Description) VALUES (1, 'No Susceptibility');
+INSERT INTO dbo.ContentsFloodVuln (Code, Description) VALUES (2, 'Very Low');
+INSERT INTO dbo.ContentsFloodVuln (Code, Description) VALUES (3, 'Low');
+INSERT INTO dbo.ContentsFloodVuln (Code, Description) VALUES (4, 'Moderate');
+INSERT INTO dbo.ContentsFloodVuln (Code, Description) VALUES (5, 'High');
+INSERT INTO dbo.ContentsFloodVuln (Code, Description) VALUES (6, 'Very High');
+INSERT INTO dbo.ContentsFloodVuln (Code, Description) VALUES (7, 'Total Susceptibility');
+
+INSERT INTO dbo.ContentsQuakeVuln (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.ContentsQuakeVuln (Code, Description) VALUES (1, 'Low');
+INSERT INTO dbo.ContentsQuakeVuln (Code, Description) VALUES (2, 'Moderate');
+INSERT INTO dbo.ContentsQuakeVuln (Code, Description) VALUES (3, 'High');
+INSERT INTO dbo.ContentsQuakeVuln (Code, Description) VALUES (4, 'Very High');
+
+INSERT INTO dbo.ContentsWindVuln (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.ContentsWindVuln (Code, Description) VALUES (1, 'Low');
+INSERT INTO dbo.ContentsWindVuln (Code, Description) VALUES (2, 'Moderate');
+INSERT INTO dbo.ContentsWindVuln (Code, Description) VALUES (3, 'High');
+INSERT INTO dbo.ContentsWindVuln (Code, Description) VALUES (4, 'Very High');
+
+INSERT INTO dbo.CoverageTrigger (Code, Description) VALUES (0, 'Claims Made (default)');
+INSERT INTO dbo.CoverageTrigger (Code, Description) VALUES (1, 'Losses Occurring');
+INSERT INTO dbo.CoverageTrigger (Code, Description) VALUES (2, 'Occurrence Reported');
+
+INSERT INTO dbo.CrippleWall (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.CrippleWall (Code, Description) VALUES (1, 'No');
+INSERT INTO dbo.CrippleWall (Code, Description) VALUES (2, 'Yes');
+
+INSERT INTO dbo.CRMVendor (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.CRMVendor (Code, Description) VALUES (1, 'Salesforce');
+INSERT INTO dbo.CRMVendor (Code, Description) VALUES (2, 'Pipedrive');
+INSERT INTO dbo.CRMVendor (Code, Description) VALUES (3, 'Bitrix24');
+INSERT INTO dbo.CRMVendor (Code, Description) VALUES (4, 'Pipedrive');
+INSERT INTO dbo.CRMVendor (Code, Description) VALUES (5, 'Ontraport');
+INSERT INTO dbo.CRMVendor (Code, Description) VALUES (6, 'Nimble');
+INSERT INTO dbo.CRMVendor (Code, Description) VALUES (7, 'Nutshell');
+INSERT INTO dbo.CRMVendor (Code, Description) VALUES (8, 'Apptivo');
+
+INSERT INTO dbo.DiameterOfPipeline (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.DiameterOfPipeline (Code, Description) VALUES (1, 'Small (<40 cm)');
+INSERT INTO dbo.DiameterOfPipeline (Code, Description) VALUES (2, 'Large (≥ 40 cm)');
+
+INSERT INTO dbo.DefenseCost (Code, Description) VALUES (0, 'Outside the limit (default)');
+INSERT INTO dbo.DefenseCost (Code, Description) VALUES (1, 'Inside the limit');
+INSERT INTO dbo.DefenseCost (Code, Description) VALUES (2, 'Not Covered');
+
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (1, 'Gmail');
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (2, 'Outlook');
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (3, 'AOL');
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (4, 'Yahoo');
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (5, 'iCloud');
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (6, 'Proton');
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (7, 'Zoho');
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (8, 'Yandex');
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (9, 'GMX');
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (10, 'HubSpot');
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (11, 'Mail.com');
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (12, 'Tutanota');
+INSERT INTO dbo.EmailVendor (Code, Description) VALUES (13, '10 Minute Mail');
+
+INSERT INTO dbo.EquipmentBracing (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.EquipmentBracing (Code, Description) VALUES (1, 'Well-Braced');
+INSERT INTO dbo.EquipmentBracing (Code, Description) VALUES (2, 'Average Bracing');
+INSERT INTO dbo.EquipmentBracing (Code, Description) VALUES (3, 'Unbraced');
+
+INSERT INTO dbo.ExternalDoors (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.ExternalDoors (Code, Description) VALUES (1, 'Single width Doors');
+INSERT INTO dbo.ExternalDoors (Code, Description) VALUES (2, 'Double width Doors');
+INSERT INTO dbo.ExternalDoors (Code, Description) VALUES (3, 'Reinforced single width doors');
+INSERT INTO dbo.ExternalDoors (Code, Description) VALUES (4, 'Reinforced double width doors');
+INSERT INTO dbo.ExternalDoors (Code, Description) VALUES (5, 'Sliding doors');
+INSERT INTO dbo.ExternalDoors (Code, Description) VALUES (6, 'Reinforced sliding doors');
+
+INSERT INTO dbo.Fatigue (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.Fatigue (Code, Description) VALUES (1, 'Vulnerable');
+INSERT INTO dbo.Fatigue (Code, Description) VALUES (2, 'Average');
+INSERT INTO dbo.Fatigue (Code, Description) VALUES (3, 'Resilient');
+
+INSERT INTO dbo.FEMACompliance (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.FEMACompliance (Code, Description) VALUES (1, 'Yes');
+INSERT INTO dbo.FEMACompliance (Code, Description) VALUES (2, 'No');
+
+INSERT INTO dbo.Flashing (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.Flashing (Code, Description) VALUES (1, 'Vulnerable');
+INSERT INTO dbo.Flashing (Code, Description) VALUES (2, 'Average');
+INSERT INTO dbo.Flashing (Code, Description) VALUES (3, 'Resilient');
+
+INSERT INTO dbo.FloodDebrisResilience (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.FloodDebrisResilience (Code, Description) VALUES (1, 'Vulnerable');
+INSERT INTO dbo.FloodDebrisResilience (Code, Description) VALUES (2, 'Average');
+INSERT INTO dbo.FloodDebrisResilience (Code, Description) VALUES (3, 'Resilient');
+
+INSERT INTO dbo.FoundationConnection (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.FoundationConnection (Code, Description) VALUES (1, 'Hurricane ties');
+INSERT INTO dbo.FoundationConnection (Code, Description) VALUES (2, 'Nails / Screws');
+INSERT INTO dbo.FoundationConnection (Code, Description) VALUES (3, 'Anchor Bolts');
+INSERT INTO dbo.FoundationConnection (Code, Description) VALUES (4, 'Gravity / Friction');
+INSERT INTO dbo.FoundationConnection (Code, Description) VALUES (5, 'Adhesive / Epoxy');
+INSERT INTO dbo.FoundationConnection (Code, Description) VALUES (6, 'Structurally Connected');
+
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (1, 'Masonry basement');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (2, 'Concrete basement');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (3, 'Masonry wall');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (4, 'Crawl space cripple wall');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (5, 'Crawl space masonry');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (6, 'Post & pier');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (7, 'Footing');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (8, 'Mat / slab');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (9, 'Pile');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (10, 'No basement');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (11, 'Engineering foundation');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (12, 'Crawlspace - raised (wood)');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (13, 'Monopile (offshore)');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (14, 'Jacket on Caisson (SBJ) (Offshore)');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (15, 'Jacket (offshore)');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (16, 'Jacket on Pin Piles (JPP)');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (17, 'Gravity-based (offshore)');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (18, 'Floating: spar (offshore)');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (19, 'Floating: Semisubmersible (offshore)');
+INSERT INTO dbo.FoundationType (Code, Description) VALUES (20, 'Floating: Tension-Leg Platform (offshore)');
+
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('CNTY', 'County');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('CRH', 'High Resolution CRESTA');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('CRL', 'Low Resolution CRESTA');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('CRO', 'Old CRESTA');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('CRSL2', 'Province in CatRisk Solutions models');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('CRSL3', 'CRESTA / Province in CatRisk Solutions models');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('CRSL4', 'Municipality / Province in CatRisk Solutions models');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('CRSL5', 'City in CatRisk Solutions models (bespoke list)');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('CRSVG', 'Variable Resolution Grid (VRG) in CatRisk Solutions models');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('GADM1', 'GADM level 1');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('GADM2', 'GADM level 2');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('GADM3', 'GADM level 3');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('GADM4', 'GADM level 4');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('GADM5', 'GADM level 5');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('GNAF', 'Australia''s Geocoded National Address File');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('GPLUS', 'Google Plus');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('ICA', 'Insurance Council of Australia Zones');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('PC2', 'Postcode (2 characters)');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('PC3', 'Postcode (3 characters)');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('PC4', 'Postcode (4 characters)');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('PC5', 'Postcode (5 characters)');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('PC6', 'Postcode (6 characters)');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('PC7', 'Postcode (7 characters)');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('PC8', 'Postcode (8 characters)');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('PC9', 'Postcode (9 characters)');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('PCD', 'Postcode District');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('PCS', 'Postcode Sector');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('PCU', 'Postcode Unit');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('JBA1', 'Admin level 1 - highest resolution for admin boundaries');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('W3W', 'What 3 Words');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('UPRN', 'UK property Reference Number (created by Ordnance Survey)');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('EIRCODE', 'Used in the Republic of Ireland');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('INSEE', 'Used in France but not supported by GADM.');
+INSERT INTO dbo.GeogScheme (Code, Description) VALUES ('FTM1', 'Fathom admin boundaries');
+
+INSERT INTO dbo.GlassType (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.GlassType (Code, Description) VALUES (1, 'Annealed');
+INSERT INTO dbo.GlassType (Code, Description) VALUES (2, 'Tempered');
+INSERT INTO dbo.GlassType (Code, Description) VALUES (3, 'Heat strengthened');
+INSERT INTO dbo.GlassType (Code, Description) VALUES (4, 'Laminated');
+INSERT INTO dbo.GlassType (Code, Description) VALUES (5, 'Insulating glass units');
+
+INSERT INTO dbo.GroundEquipment (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.GroundEquipment (Code, Description) VALUES (1, 'No equipment');
+INSERT INTO dbo.GroundEquipment (Code, Description) VALUES (2, 'Vulnerable');
+INSERT INTO dbo.GroundEquipment (Code, Description) VALUES (3, 'Average');
+INSERT INTO dbo.GroundEquipment (Code, Description) VALUES (4, 'Resilient');
+
+INSERT INTO dbo.IndustryScheme (Code, Description) VALUES ('NAICS', 'North American Industry Classification System');
+INSERT INTO dbo.IndustryScheme (Code, Description) VALUES ('USSIC', 'Standard Industrial Classification (SIC) System');
+INSERT INTO dbo.IndustryScheme (Code, Description) VALUES ('UKSIC', 'UK Standard Industrial Classification of Economic Activities');
+
+INSERT INTO dbo.InternalPartition (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.InternalPartition (Code, Description) VALUES (1, 'Wood');
+INSERT INTO dbo.InternalPartition (Code, Description) VALUES (2, 'Gypsum boards');
+INSERT INTO dbo.InternalPartition (Code, Description) VALUES (3, 'Plastered Masonry');
+INSERT INTO dbo.InternalPartition (Code, Description) VALUES (4, 'Brick');
+INSERT INTO dbo.InternalPartition (Code, Description) VALUES (5, 'Other');
+
+INSERT INTO dbo.IsAggregate (Code, Description) VALUES (1, 'Is aggregated data using NumberOfBuildings field');
+INSERT INTO dbo.IsAggregate (Code, Description) VALUES (0, 'Is not aggregated using on NumberOfBuildings field');
+
+INSERT INTO dbo.IsGroupCover (Code, Description) VALUES (0, 'No (default)');
+INSERT INTO dbo.IsGroupCover (Code, Description) VALUES (1, 'Yes');
+
+INSERT INTO dbo.IsPackage (Code, Description) VALUES (0, 'Standalone (default)');
+INSERT INTO dbo.IsPackage (Code, Description) VALUES (1, 'Package');
+
+INSERT INTO dbo.LatticeType (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.LatticeType (Code, Description) VALUES (1, 'Full web');
+INSERT INTO dbo.LatticeType (Code, Description) VALUES (2, 'Grid');
+INSERT INTO dbo.LatticeType (Code, Description) VALUES (3, 'Lattice');
+
+INSERT INTO dbo.MechanicalEquipmentSide (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.MechanicalEquipmentSide (Code, Description) VALUES (1, 'Vulnerable');
+INSERT INTO dbo.MechanicalEquipmentSide (Code, Description) VALUES (2, 'Average');
+INSERT INTO dbo.MechanicalEquipmentSide (Code, Description) VALUES (3, 'Resilient');
+
+INSERT INTO dbo.MultiStoryHall (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.MultiStoryHall (Code, Description) VALUES (1, 'No');
+INSERT INTO dbo.MultiStoryHall (Code, Description) VALUES (2, 'Yes');
+
+INSERT INTO dbo.OccupantPeriod (Code, Description) VALUES (0, 'Unknown/Default');
+INSERT INTO dbo.OccupantPeriod (Code, Description) VALUES (1, 'Night');
+INSERT INTO dbo.OccupantPeriod (Code, Description) VALUES (2, 'Day');
+INSERT INTO dbo.OccupantPeriod (Code, Description) VALUES (3, 'Peak Season');
+INSERT INTO dbo.OccupantPeriod (Code, Description) VALUES (4, 'Off-peak Season');
+INSERT INTO dbo.OccupantPeriod (Code, Description) VALUES (5, 'Night - peak season');
+INSERT INTO dbo.OccupantPeriod (Code, Description) VALUES (6, 'Day - peak season');
+INSERT INTO dbo.OccupantPeriod (Code, Description) VALUES (7, 'Night - Off-peak season');
+INSERT INTO dbo.OccupantPeriod (Code, Description) VALUES (8, 'Day - Off-peak season');
+
+INSERT INTO dbo.Ornamentation (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.Ornamentation (Code, Description) VALUES (1, 'None');
+INSERT INTO dbo.Ornamentation (Code, Description) VALUES (2, 'Average');
+INSERT INTO dbo.Ornamentation (Code, Description) VALUES (3, 'Extensive');
+
+INSERT INTO dbo.OSVendor (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.OSVendor (Code, Description) VALUES (1, 'Windows');
+INSERT INTO dbo.OSVendor (Code, Description) VALUES (2, 'Linux');
+INSERT INTO dbo.OSVendor (Code, Description) VALUES (3, 'Apple Mac');
+INSERT INTO dbo.OSVendor (Code, Description) VALUES (4, 'Ubuntu');
+INSERT INTO dbo.OSVendor (Code, Description) VALUES (5, 'Fedora');
+INSERT INTO dbo.OSVendor (Code, Description) VALUES (6, 'Solaris');
+INSERT INTO dbo.OSVendor (Code, Description) VALUES (7, 'Chrome');
+INSERT INTO dbo.OSVendor (Code, Description) VALUES (8, 'CentOS');
+INSERT INTO dbo.OSVendor (Code, Description) VALUES (9, 'Debian');
+INSERT INTO dbo.OSVendor (Code, Description) VALUES (10, 'Deepin');
+
+INSERT INTO dbo.Packaging (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.Packaging (Code, Description) VALUES (1, 'Vulnerable');
+INSERT INTO dbo.Packaging (Code, Description) VALUES (2, 'Average');
+INSERT INTO dbo.Packaging (Code, Description) VALUES (3, 'Resilient');
+
+INSERT INTO dbo.PatchPolicy (Code, Description) VALUES (0, 'Cadence of patches to the main system is Unknown');
+INSERT INTO dbo.PatchPolicy (Code, Description) VALUES (1, 'Cadence of patches to the main system is Never');
+INSERT INTO dbo.PatchPolicy (Code, Description) VALUES (2, 'Cadence of patches to the main system is Daily');
+INSERT INTO dbo.PatchPolicy (Code, Description) VALUES (3, 'Cadence of patches to the main system is Weekly');
+INSERT INTO dbo.PatchPolicy (Code, Description) VALUES (4, 'Cadence of patches to the main system is Monthly');
+INSERT INTO dbo.PatchPolicy (Code, Description) VALUES (5, 'Cadence of patches to the main system is Annually');
+INSERT INTO dbo.PatchPolicy (Code, Description) VALUES (6, 'Cadence of patches to the main system is Ad-hoc');
+
+INSERT INTO dbo.PayoutBasis (Code, Description) VALUES (0, 'UNK');
+INSERT INTO dbo.PayoutBasis (Code, Description) VALUES (1, 'ACV');
+INSERT INTO dbo.PayoutBasis (Code, Description) VALUES (2, 'RCV');
+
+INSERT INTO dbo.Pounding (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.Pounding (Code, Description) VALUES (1, '0-0.25 m');
+INSERT INTO dbo.Pounding (Code, Description) VALUES (2, '0.25-0.5 m');
+INSERT INTO dbo.Pounding (Code, Description) VALUES (3, '0.5-1.0 m');
+INSERT INTO dbo.Pounding (Code, Description) VALUES (4, '1.0-2.0 m');
+INSERT INTO dbo.Pounding (Code, Description) VALUES (5, '>2.0 m');
+
+INSERT INTO dbo.Protection (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.Protection (Code, Description) VALUES (1, 'Vulnerable');
+INSERT INTO dbo.Protection (Code, Description) VALUES (2, 'Average');
+INSERT INTO dbo.Protection (Code, Description) VALUES (3, 'Resilient');
+
+INSERT INTO dbo.PumpingCapacity (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.PumpingCapacity (Code, Description) VALUES (1, 'Small pumping capacity (<10 millions gallons per day (MGD)');
+INSERT INTO dbo.PumpingCapacity (Code, Description) VALUES (2, 'Medium pumping capacity (10-50 MGD)');
+INSERT INTO dbo.PumpingCapacity (Code, Description) VALUES (3, 'Large pumping capacity (>50 MGD)');
+INSERT INTO dbo.PumpingCapacity (Code, Description) VALUES (4, 'Small Water Treatment Capacity (<50 MGD)');
+INSERT INTO dbo.PumpingCapacity (Code, Description) VALUES (5, 'Medium Water Treatment Capacity (50-200 MGD)');
+INSERT INTO dbo.PumpingCapacity (Code, Description) VALUES (6, 'Large Water Treatment Capacity (>200 MGD)');
+
+INSERT INTO dbo.Redundancy (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.Redundancy (Code, Description) VALUES (1, 'No');
+INSERT INTO dbo.Redundancy (Code, Description) VALUES (2, 'Yes');
+
+INSERT INTO dbo.ReinsType (Code, Description) VALUES ('AXL', 'Aggregate Excess of Loss');
+INSERT INTO dbo.ReinsType (Code, Description) VALUES ('CXL', 'Catastrophe Excess of Loss');
+INSERT INTO dbo.ReinsType (Code, Description) VALUES ('FAC', 'Facultative reinsurance');
+INSERT INTO dbo.ReinsType (Code, Description) VALUES ('PR', 'Per risk treaty');
+INSERT INTO dbo.ReinsType (Code, Description) VALUES ('QS', 'Quota Share');
+INSERT INTO dbo.ReinsType (Code, Description) VALUES ('SS', 'Surplus Share');
+
+INSERT INTO dbo.Retrofit (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.Retrofit (Code, Description) VALUES (1, 'Bracing of cripple walls');
+INSERT INTO dbo.Retrofit (Code, Description) VALUES (2, 'Bracing of parapets');
+INSERT INTO dbo.Retrofit (Code, Description) VALUES (3, 'Bracing of soft-story');
+INSERT INTO dbo.Retrofit (Code, Description) VALUES (4, 'Foundation anchorage (bolting)');
+INSERT INTO dbo.Retrofit (Code, Description) VALUES (5, 'Glass/window strengthening');
+INSERT INTO dbo.Retrofit (Code, Description) VALUES (6, 'Tilt Up');
+INSERT INTO dbo.Retrofit (Code, Description) VALUES (7, 'General');
+
+INSERT INTO dbo.RiskLevel (Code, Description) VALUES ('', 'No risk terms');
+INSERT INTO dbo.RiskLevel (Code, Description) VALUES ('ACC', 'Account');
+INSERT INTO dbo.RiskLevel (Code, Description) VALUES ('LGR', 'Location Group');
+INSERT INTO dbo.RiskLevel (Code, Description) VALUES ('LOC', 'Location');
+INSERT INTO dbo.RiskLevel (Code, Description) VALUES ('POL', 'Policy');
+
+INSERT INTO dbo.RoofAnchorage (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.RoofAnchorage (Code, Description) VALUES (1, 'Hurricane Ties');
+INSERT INTO dbo.RoofAnchorage (Code, Description) VALUES (2, 'Nails / Screws');
+INSERT INTO dbo.RoofAnchorage (Code, Description) VALUES (3, 'Anchor bolts');
+INSERT INTO dbo.RoofAnchorage (Code, Description) VALUES (4, 'Gravity / friction');
+INSERT INTO dbo.RoofAnchorage (Code, Description) VALUES (5, 'Adhesive epoxy');
+INSERT INTO dbo.RoofAnchorage (Code, Description) VALUES (6, 'Structurally Connected');
+INSERT INTO dbo.RoofAnchorage (Code, Description) VALUES (7, 'Clips');
+INSERT INTO dbo.RoofAnchorage (Code, Description) VALUES (8, 'Double wraps');
+INSERT INTO dbo.RoofAnchorage (Code, Description) VALUES (9, 'Single wraps');
+
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (1, 'Chimneys');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (10, 'Overhang/Rake (> 36 in)');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (11, 'Waterproof membrane/fabric');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (12, 'Secondary water resistance - Yes');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (13, 'Secondary water resistance - No');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (14, 'Solar Panels with ballast');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (15, 'Solar panels mechanically attached');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (2, 'A/C Units');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (3, 'Skylights');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (4, 'Parapet Walls');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (5, 'Overhang/Rake (8-36 in)');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (6, 'Dormers');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (7, 'Other');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (8, 'No Attached Structures');
+INSERT INTO dbo.RoofAttachedStructures (Code, Description) VALUES (9, 'Overhang/Rake (< 8 in)');
+
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (1, 'Asphalt shingles');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (10, 'Single ply membrane ballasted');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (11, 'Hurricane Wind-Rated Roof Coverings');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (12, 'Composition (Fiberglass, Asphalt, etc)');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (13, 'Asbestos shakes');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (14, 'Copper');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (15, 'Concrete (not tile)');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (16, 'Reinforced concrete');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (18, 'Plastic');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (19, 'Fiberglass');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (2, 'Wooden shingles');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (20, 'Steel');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (21, 'Plywood');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (22, 'Rubber');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (23, 'Tin');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (24, 'Aluminium');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (25, 'Foam');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (26, 'Thatch');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (27, 'Felt');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (28, 'Zinc');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (3, 'Clay/concrete tiles');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (4, 'Light metal panels');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (5, 'Slate');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (6, 'Built-up roof with gravel');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (7, 'Single ply membrane');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (8, 'Standing seam metal roofs');
+INSERT INTO dbo.RoofCover (Code, Description) VALUES (9, 'Built-up roof without gravel');
+
+INSERT INTO dbo.RoofCoverAttachment (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.RoofCoverAttachment (Code, Description) VALUES (1, 'Screws');
+INSERT INTO dbo.RoofCoverAttachment (Code, Description) VALUES (2, 'Nails/staples');
+INSERT INTO dbo.RoofCoverAttachment (Code, Description) VALUES (3, 'Adhesive/epoxy');
+INSERT INTO dbo.RoofCoverAttachment (Code, Description) VALUES (4, 'Mortar');
+
+INSERT INTO dbo.RoofDeck (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.RoofDeck (Code, Description) VALUES (1, 'Plywood');
+INSERT INTO dbo.RoofDeck (Code, Description) VALUES (2, 'Wood planks');
+INSERT INTO dbo.RoofDeck (Code, Description) VALUES (3, 'Particle board / OSB');
+INSERT INTO dbo.RoofDeck (Code, Description) VALUES (4, 'Metal deck with insulation board');
+INSERT INTO dbo.RoofDeck (Code, Description) VALUES (5, 'Metal deck with concrete');
+INSERT INTO dbo.RoofDeck (Code, Description) VALUES (6, 'Pre-cast concrete slabs');
+INSERT INTO dbo.RoofDeck (Code, Description) VALUES (7, 'Reinforced concrete slabs');
+INSERT INTO dbo.RoofDeck (Code, Description) VALUES (8, 'Light metal');
+
+INSERT INTO dbo.RoofDeckAttachment (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.RoofDeckAttachment (Code, Description) VALUES (1, 'Screws / bolts');
+INSERT INTO dbo.RoofDeckAttachment (Code, Description) VALUES (2, 'Nails');
+INSERT INTO dbo.RoofDeckAttachment (Code, Description) VALUES (3, 'Adhesive / epoxy');
+INSERT INTO dbo.RoofDeckAttachment (Code, Description) VALUES (4, 'Structurally connected');
+INSERT INTO dbo.RoofDeckAttachment (Code, Description) VALUES (5, '6d nails @ 6 spacing, 12 on center');
+INSERT INTO dbo.RoofDeckAttachment (Code, Description) VALUES (6, '8d nails @ 6 spacing, 12 on center');
+INSERT INTO dbo.RoofDeckAttachment (Code, Description) VALUES (7, '8d nails @ 6 spacing, 6 on center');
+
+INSERT INTO dbo.RoofEquipment (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.RoofEquipment (Code, Description) VALUES (1, 'No equipment');
+INSERT INTO dbo.RoofEquipment (Code, Description) VALUES (2, 'Vulnerable');
+INSERT INTO dbo.RoofEquipment (Code, Description) VALUES (3, 'Average');
+INSERT INTO dbo.RoofEquipment (Code, Description) VALUES (4, 'Resilient');
+
+INSERT INTO dbo.RoofFrame (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.RoofFrame (Code, Description) VALUES (1, 'Reinforced Concrete');
+INSERT INTO dbo.RoofFrame (Code, Description) VALUES (2, 'Steel');
+INSERT INTO dbo.RoofFrame (Code, Description) VALUES (3, 'Light Metal');
+INSERT INTO dbo.RoofFrame (Code, Description) VALUES (4, 'Wood');
+
+INSERT INTO dbo.RoofGeometry (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.RoofGeometry (Code, Description) VALUES (1, 'Flat');
+INSERT INTO dbo.RoofGeometry (Code, Description) VALUES (10, 'Gambrel');
+INSERT INTO dbo.RoofGeometry (Code, Description) VALUES (11, 'Butterfly');
+INSERT INTO dbo.RoofGeometry (Code, Description) VALUES (12, 'Saltbox');
+INSERT INTO dbo.RoofGeometry (Code, Description) VALUES (2, 'Gable end without bracing');
+INSERT INTO dbo.RoofGeometry (Code, Description) VALUES (3, 'Hip');
+INSERT INTO dbo.RoofGeometry (Code, Description) VALUES (4, 'Complex');
+INSERT INTO dbo.RoofGeometry (Code, Description) VALUES (5, 'Stepped');
+INSERT INTO dbo.RoofGeometry (Code, Description) VALUES (6, 'Shed');
+INSERT INTO dbo.RoofGeometry (Code, Description) VALUES (7, 'Mansard');
+INSERT INTO dbo.RoofGeometry (Code, Description) VALUES (8, 'Gable end with bracing');
+INSERT INTO dbo.RoofGeometry (Code, Description) VALUES (9, 'Pyramid');
+
+INSERT INTO dbo.RoofMaintenance (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.RoofMaintenance (Code, Description) VALUES (1, 'Vulnerable');
+INSERT INTO dbo.RoofMaintenance (Code, Description) VALUES (2, 'Average');
+INSERT INTO dbo.RoofMaintenance (Code, Description) VALUES (3, 'Resilient');
+
+INSERT INTO dbo.RoofPitch (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.RoofPitch (Code, Description) VALUES (1, 'Low (<10°)');
+INSERT INTO dbo.RoofPitch (Code, Description) VALUES (2, 'Medium (10° to 30°)');
+INSERT INTO dbo.RoofPitch (Code, Description) VALUES (3, 'High (>30°)');
+
+INSERT INTO dbo.SalvageProtection (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.SalvageProtection (Code, Description) VALUES (1, 'Vulnerable');
+INSERT INTO dbo.SalvageProtection (Code, Description) VALUES (2, 'Average');
+INSERT INTO dbo.SalvageProtection (Code, Description) VALUES (3, 'Resilient');
+
+INSERT INTO dbo.ServiceEquipmentProtection (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.ServiceEquipmentProtection (Code, Description) VALUES (1, 'Protected for flood (i.e. protected for flood by being elevated and/or flood proofing)');
+INSERT INTO dbo.ServiceEquipmentProtection (Code, Description) VALUES (2, 'Unprotected for flood (i.e. not elevated and not flood protected)');
+
+INSERT INTO dbo.ShapeIrregularity (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.ShapeIrregularity (Code, Description) VALUES (2, 'Vertical Offset');
+INSERT INTO dbo.ShapeIrregularity (Code, Description) VALUES (3, 'Non-uniform Floor Area');
+INSERT INTO dbo.ShapeIrregularity (Code, Description) VALUES (4, 'Discontinuous Shear Wall');
+INSERT INTO dbo.ShapeIrregularity (Code, Description) VALUES (5, 'Heavy floor');
+
+INSERT INTO dbo.ShortColumn (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.ShortColumn (Code, Description) VALUES (1, 'No');
+INSERT INTO dbo.ShortColumn (Code, Description) VALUES (2, 'Yes');
+
+INSERT INTO dbo.SmallDebris (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.SmallDebris (Code, Description) VALUES (1, 'No');
+INSERT INTO dbo.SmallDebris (Code, Description) VALUES (2, 'Yes');
+
+INSERT INTO dbo.SoftStory (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.SoftStory (Code, Description) VALUES (1, 'No');
+INSERT INTO dbo.SoftStory (Code, Description) VALUES (2, 'Yes');
+
+INSERT INTO dbo.SoilLiquefiable (Code, Description) VALUES (0, 'Unknown / not applicable');
+INSERT INTO dbo.SoilLiquefiable (Code, Description) VALUES (1, 'Soil not susceptible to liquefaction (clay-like soils)');
+INSERT INTO dbo.SoilLiquefiable (Code, Description) VALUES (2, 'Soil susceptible to liquefaction (sand-like soils)');
+
+INSERT INTO dbo.SoilType (Code, Description) VALUES (0, 'No soil information (default)');
+INSERT INTO dbo.SoilType (Code, Description) VALUES (1, 'Time averaged shear-wave velocity to 30m depth (vs30 (m/s))');
+
+INSERT INTO dbo.SpecialEQConstruction (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.SpecialEQConstruction (Code, Description) VALUES (1, 'Base isolation');
+INSERT INTO dbo.SpecialEQConstruction (Code, Description) VALUES (2, 'Visco-elastic dampers');
+INSERT INTO dbo.SpecialEQConstruction (Code, Description) VALUES (3, 'Other energy dissipaters');
+
+INSERT INTO dbo.SprinklerType (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.SprinklerType (Code, Description) VALUES (1, 'No sprinkler');
+INSERT INTO dbo.SprinklerType (Code, Description) VALUES (2, 'CO2 / Halon sprinkler');
+INSERT INTO dbo.SprinklerType (Code, Description) VALUES (3, 'Dry sprinkler');
+INSERT INTO dbo.SprinklerType (Code, Description) VALUES (4, 'Standpipe sprinkler');
+INSERT INTO dbo.SprinklerType (Code, Description) VALUES (5, 'Wet sprinkler');
+
+INSERT INTO dbo.StaticMotorVehicle (Code, Description) VALUES (0, 'Dynamic motor vehicle that moves from location to location');
+INSERT INTO dbo.StaticMotorVehicle (Code, Description) VALUES (1, 'Static motor vehicle');
+
+INSERT INTO dbo.Statuses (Code, Description) VALUES ('B', 'Bound');
+INSERT INTO dbo.Statuses (Code, Description) VALUES ('C', 'Cancelled');
+INSERT INTO dbo.Statuses (Code, Description) VALUES ('Q', 'Quoted');
+INSERT INTO dbo.Statuses (Code, Description) VALUES ('R', 'Rejected');
+INSERT INTO dbo.Statuses (Code, Description) VALUES ('S', 'Submitted');
+
+INSERT INTO dbo.StepTriggerType (Code, Description) VALUES (1, 'Building');
+INSERT INTO dbo.StepTriggerType (Code, Description) VALUES (2, 'Contents');
+INSERT INTO dbo.StepTriggerType (Code, Description) VALUES (3, 'Building and Contents');
+INSERT INTO dbo.StepTriggerType (Code, Description) VALUES (4, 'Building, then Contents');
+INSERT INTO dbo.StepTriggerType (Code, Description) VALUES (5, 'Building, Contents separately');
+
+INSERT INTO dbo.TallOneStory (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.TallOneStory (Code, Description) VALUES (1, '<= 20 ft');
+INSERT INTO dbo.TallOneStory (Code, Description) VALUES (2, '> 20ft and < 40ft');
+INSERT INTO dbo.TallOneStory (Code, Description) VALUES (3, '>= 40ft');
+
+INSERT INTO dbo.Tank (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.Tank (Code, Description) VALUES (1, 'No');
+INSERT INTO dbo.Tank (Code, Description) VALUES (2, 'Yes');
+
+INSERT INTO dbo.TerrainRoughness (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.TerrainRoughness (Code, Description) VALUES (1, 'Large city centers');
+INSERT INTO dbo.TerrainRoughness (Code, Description) VALUES (2, 'Urban and suburban areas, wooded areas');
+INSERT INTO dbo.TerrainRoughness (Code, Description) VALUES (3, 'Open terrain with scattered obstruct');
+INSERT INTO dbo.TerrainRoughness (Code, Description) VALUES (4, 'Flat, unobstructed areas');
+
+INSERT INTO dbo.Torsion (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.Torsion (Code, Description) VALUES (1, 'Symmetric');
+INSERT INTO dbo.Torsion (Code, Description) VALUES (2, 'Asymmetric');
+INSERT INTO dbo.Torsion (Code, Description) VALUES (3, 'Corner building');
+
+INSERT INTO dbo.TreeExposure (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.TreeExposure (Code, Description) VALUES (1, 'No');
+INSERT INTO dbo.TreeExposure (Code, Description) VALUES (2, 'Yes');
+
+INSERT INTO dbo.Units (Code, Description) VALUES (1, 'Feet (Distance)');
+INSERT INTO dbo.Units (Code, Description) VALUES (11, 'Square feet (Area)');
+INSERT INTO dbo.Units (Code, Description) VALUES (12, 'Square meters (Area)');
+INSERT INTO dbo.Units (Code, Description) VALUES (13, 'Acre (Area)');
+INSERT INTO dbo.Units (Code, Description) VALUES (14, 'Hectare (Area)');
+INSERT INTO dbo.Units (Code, Description) VALUES (2, 'Meters (Distance)');
+INSERT INTO dbo.Units (Code, Description) VALUES (3, 'Kilometers (Distance)');
+INSERT INTO dbo.Units (Code, Description) VALUES (4, 'Miles (Distance)');
+
+INSERT INTO dbo.ValuablesStorage (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.ValuablesStorage (Code, Description) VALUES (1, 'Vault');
+INSERT INTO dbo.ValuablesStorage (Code, Description) VALUES (2, 'Safe');
+INSERT INTO dbo.ValuablesStorage (Code, Description) VALUES (3, 'Strongbox');
+INSERT INTO dbo.ValuablesStorage (Code, Description) VALUES (4, 'Unprotected exhibition');
+INSERT INTO dbo.ValuablesStorage (Code, Description) VALUES (5, 'Protected exhibition (protection around specific art pieces)');
+INSERT INTO dbo.ValuablesStorage (Code, Description) VALUES (6, 'Archive');
+INSERT INTO dbo.ValuablesStorage (Code, Description) VALUES (7, 'Special facility');
+
+INSERT INTO dbo.VoltageOfEnergy (Code, Description) VALUES (0, 'Unknown');
+INSERT INTO dbo.VoltageOfEnergy (Code, Description) VALUES (1, 'Low Voltage (<115 KV) Substation');
+INSERT INTO dbo.VoltageOfEnergy (Code, Description) VALUES (2, 'Medium Voltage (115-500 KV) Substation');
+INSERT INTO dbo.VoltageOfEnergy (Code, Description) VALUES (3, 'High Voltage (>500 KV) Substation');
+
+INSERT INTO dbo.WallAttachedStructure (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.WallAttachedStructure (Code, Description) VALUES (1, 'Carports / Canopies / Porches');
+INSERT INTO dbo.WallAttachedStructure (Code, Description) VALUES (2, 'Single Door Garages');
+INSERT INTO dbo.WallAttachedStructure (Code, Description) VALUES (3, 'Double Door Garages');
+INSERT INTO dbo.WallAttachedStructure (Code, Description) VALUES (4, 'Reinforced Single Door Garages');
+INSERT INTO dbo.WallAttachedStructure (Code, Description) VALUES (5, 'Reinforced Double Door Garages');
+INSERT INTO dbo.WallAttachedStructure (Code, Description) VALUES (6, 'Screened Porches/Glass Patio Doors');
+INSERT INTO dbo.WallAttachedStructure (Code, Description) VALUES (7, 'Balcony');
+INSERT INTO dbo.WallAttachedStructure (Code, Description) VALUES (8, 'No attached wall structures');
+INSERT INTO dbo.WallAttachedStructure (Code, Description) VALUES (9, 'Attached screen enclosure / Lanai');
+
+INSERT INTO dbo.WindowProtection (Code, Description) VALUES (0, 'Unknown / default');
+INSERT INTO dbo.WindowProtection (Code, Description) VALUES (1, 'No protection');
+INSERT INTO dbo.WindowProtection (Code, Description) VALUES (2, 'Non-engineered shutters');
+INSERT INTO dbo.WindowProtection (Code, Description) VALUES (3, 'Engineered shutters');
+GO
+
