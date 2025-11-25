@@ -6,36 +6,33 @@ import pathlib
 import os
 import click
 
-pd_converter = {
-    "0 or 1": "Int8",
-    "bigint": "Int64",
-    "binary": "Int8",
-    "bit": "Int8",
-    "char": "category",
-    "date": "category",
-    "datetime": "category",
-    "decimal": "float64",
-    "float": "float64",
-    "int": "Int64",
-    "nchar": "category",
-    "nvarchar": "category",
-    "real": "float64",
-    "smalldatetime": "category",
-    "smallint": "Int32",
-    "tinyint": "Int32",
-    "uniqueidentifier": "category",
-    "varbinary": "bytes",
-    "varchar": "category",
-}
-
-dtype_to_python = {
-    "Int8": int,
-    "Int32": int,
-    "Int64": int,
-    "bytes": lambda x: bytes(x, "utf-8"),
-    "float64": float,
-    "category": str,
-}
+# convertion map between OED, numpy_nullable, pyarrow, python
+_converter_header = ["OED Data Type", "numpy_nullable", "pyarrow", "python"]
+_converter_list = [
+    ["0 or 1", "Int8", "int8[pyarrow]", int],
+    ["bigint", "Int64", "int64[pyarrow]", int],
+    ["binary", "Int8", "int8[pyarrow]", int],
+    ["bit",  "Int8", "int8[pyarrow]", int],
+    ["char",  "category", "string[pyarrow]", str],
+    ["date",  "category", "string[pyarrow]", str],
+    ["datetime",  "category", "string[pyarrow]", str],
+    ["decimal",  "float64", "float64[pyarrow]", float],
+    ["float",  "float64", "float64[pyarrow]", float],
+    ["int",  "Int64", "int64[pyarrow]", int],
+    ["nchar",  "category", "string[pyarrow]", str],
+    ["nvarchar",  "category", "string[pyarrow]", str],
+    ["real",  "float64", "float64[pyarrow]", float],
+    ["smalldatetime",  "category", "string[pyarrow]", str],
+    ["smallint",  "Int32", "int32[pyarrow]", int],
+    ["tinyint",  "Int32", "int32[pyarrow]", int],
+    ["uniqueidentifier",  "category", "string[pyarrow]", str],
+    ["varbinary",  "bytes", "string[pyarrow]", lambda x: bytes(x, "utf-8")],
+    ["varchar",  "category", "string[pyarrow]", str],
+]
+converter_df = pd.DataFrame(_converter_list, columns=_converter_header)
+pd_converter = converter_df[["OED Data Type", "numpy_nullable"]].set_index("OED Data Type")["numpy_nullable"].to_dict()
+pa_converter = converter_df[["OED Data Type", "pyarrow"]].set_index("OED Data Type")["pyarrow"].to_dict()
+dtype_to_python = converter_df[["OED Data Type", "python"]].set_index("OED Data Type")["python"].to_dict()
 
 # Directory containing the CSV files
 source_csv_default = pathlib.Path(os.path.dirname(os.path.realpath(__file__))).parent.joinpath('OpenExposureData')
@@ -83,7 +80,6 @@ def oed_spec_to_json(output_path, source_csv_dir):
     with open(output_path, "w") as fp:
         json.dump(ods_schema, fp, indent="    ")
 
-
     print(f"JSON OED specification has been created from dir '{source_csv_dir}'. Output saved to '{output_path}'")
 
 
@@ -102,20 +98,22 @@ def get_ods_input_fields(ods_fields_df):
     ods_fields_df = ods_fields_df.assign(
         pd_dtype=ods_fields_df["Data Type"]
         .str.split("(", n=1, expand=True)[0]
-        .map(pd_converter)
+        .map(pd_converter),
+        pa_dtype=ods_fields_df["Data Type"]
+        .str.split("(", n=1, expand=True)[0]
+        .map(pa_converter)
     ).rename(columns={"File Name": "File Names"})
     ods_fields_df["Case Insensitive Field Name"] = ods_fields_df[
         "Input Field Name"
     ].str.lower()
 
     # check that to Data Type is missing from our converter
-    if ods_fields_df["pd_dtype"].isna().any():
+    if ods_fields_df["pd_dtype"].isna().any() or ods_fields_df["pa_dtype"].isna().any():
         raise ValueError(
-            f"missing pd_dtype for:\n"
-            f"""{ods_fields_df.loc[ods_fields_df['pd_dtype'].isna(),
+            f"missing dtype for:\n"
+            f"""{ods_fields_df.loc[(ods_fields_df['pd_dtype'].isna()) | (ods_fields_df["pa_dtype"].isna()),
                                            ['File Name', 'Input Field Name', 'Type & Description', 'Data Type']]}"""
         )
-
     # split ods_fields per File Name
     split_df = ods_fields_df["File Names"].str.split(";").apply(pd.Series).stack()
     split_df = (
@@ -125,7 +123,7 @@ def get_ods_input_fields(ods_fields_df):
 
     ods_fields_df["Valid value range"] = ods_fields_df.apply(
         lambda row: extract_valid_value_range(
-            row["Valid value range"], dtype_to_python[row["pd_dtype"]]
+            row["Valid value range"], dtype_to_python[row["Data Type"].split("(", 1)[0]]
         ),
         axis=1,
     )
@@ -271,7 +269,10 @@ def get_cr_field(cr_field_df):
     cr_field_df = cr_field_df.assign(
         pd_dtype=cr_field_df["Data Type"]
         .str.split("(", n=1, expand=True)[0]
-        .map(pd_converter)
+        .map(pd_converter),
+        pa_dtype=cr_field_df["Data Type"]
+        .str.split("(", n=1, expand=True)[0]
+        .map(pa_converter)
     ).rename(columns={"File Name": "File Names"})
 
     # split ods_fields per File Name
