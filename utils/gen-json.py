@@ -60,6 +60,7 @@ def oed_spec_to_json(output_path, source_csv_dir):
 
 
     ods_schema = {}
+    ods_schema["backend_dtype"] = ['pd_dtype', 'pa_dtype']
     ods_schema["input_fields"] = get_ods_input_fields(_read_oed_data("OEDInputFields"))
     ods_schema["perils"] = get_ods_perils(_read_oed_data("PerilValues"), _read_oed_data("PerilsCovered"))
     ods_schema["occupancy"] = get_occupancy(_read_oed_data("OccupancyValues"))
