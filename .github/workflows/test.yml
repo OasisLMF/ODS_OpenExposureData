@@ -125,3 +125,5 @@ jobs:
 
     - name: Run tests
       run: pytest -v
+      env:
+        ENV_ODS_SCHEMA_PATH: ${{ needs.build_spec.outputs.json_filename }}
