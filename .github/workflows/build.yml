@@ -27,7 +27,7 @@ jobs:
       SPEC_PATH_IN: './OpenExposureData'
       JSON_PATH_OUT: './ods_tools/data/OpenExposureData_Spec.json'
       EXCEL_PATH_OUT: './ods_tools/data/OpenExposureData_Spec.xlsx'
-      ENV_ODS_SCHEMA_PATH: ${{ env.JSON_PATH_OUT }}
+      ENV_ODS_SCHEMA_PATH: './ods_tools/data/OpenExposureData_Spec.json'
 
     steps:
     - name: Github context
