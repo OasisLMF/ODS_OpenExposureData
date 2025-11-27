@@ -124,9 +124,4 @@ jobs:
       run: pip install -r tests/requirements.in
 
     - name: Run tests
-      env:
-        ODS_SCHEMA_PATH: ${{ needs.build_spec.outputs.json_filename }}
-      run: |
-        echo "ODS_SCHEMA_PATH: $ODS_SCHEMA_PATH"
-        pytest -v
-
+      run: pytest -v
