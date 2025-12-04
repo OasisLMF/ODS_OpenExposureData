@@ -481,7 +481,7 @@ Acc; Loc; ReinsInfo,OriginalCurrency,Original currency in which the business has
 Acc; Loc; ReinsInfo,RateOfExchange,Rate of exchange used to convert the terms from OriginalCurrency,O,float,0,"[0,)",O,O,O
 Loc,OffshoreWaterDepth,Depth of water for offshore structures (in metres),O,float,n/a,"(,0]",n/a,n/a,n/a
 Loc,SectionLength,"Length of line element associated with point location. Intended for line-assets, such as roads, railways and cables. Such an asset can be defined as a series of points along its length, and the 'Length' field describes the length associated with each point. E.g. if a road is coded as points at 2km intervals, then the 'Length' value is 2, and the TIV represents the value for that 2km stretch of road.",O,float,n/a,"[0,)",n/a,n/a,n/a
-Loc,PowerCapacity,"The electrical capacity (e.g. in MW) associated with an infrastructure asset. Intended for power generation and power transmission assets. E.g. power stations, turbines, cables, etc.
+Loc,PowerCapacity,"The electrical capacity (in MW) associated with an infrastructure asset. Intended for power generation and power transmission assets. E.g. power stations, turbines, cables, etc.
 Provide the generating capacity of each asset (e.g. for a turbine, this is the capacity of the turbine, not the windfarm).",O,float,n/a,"[0,)",n/a,n/a,n/a
 Loc,VulnerabilitySetID,ID allowing custom location level vulnerability to be captured,O,int,n/a,"[0,)",n/a,n/a,n/a
 Loc,BuildingFloodVuln,Building relative vulnerability to flood,O,tinyint,n/a,"[0,)",n/a,n/a,n/a

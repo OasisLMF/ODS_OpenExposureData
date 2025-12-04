@@ -548,12 +548,12 @@ SoilLiquefiable,2,Soil susceptible to liquefaction (sand-like soils),"Liquefacti
 SoilType,0,No soil information (default),N/A
 SoilType,1,Time averaged shear-wave velocity to 30m depth (vs30 (m/s)),N/A
 SolarFarmType,0,Unknown,All  assets associated with unknown scale solar farms
-SolarFarmType,1,Residential,"All  assets associated with small scale solar farms, sometime called Community Solar. This provides energy to homes. Use construction codes to differentiate between roof and ground mounted installations. Use construction codes. "
-SolarFarmType,2,Commercial,"All  assets associated with small scale solar farms, provides energy to businesses. Use construction codes to differentiate between roof and ground mounted installations. Use construction codes. "
-SolarFarmType,3,Utility Unknown Size,Solar utility - All assets associated with a solar installation with a capacity larger than 1 MW is considered an utility. Utility solar unknown is used when the Capacity (MW) value is not known but larger than 1 MW. Use construction codes. 
-SolarFarmType,4,Utility Small,"Solar utility with Capacity lower than 5 MW, ground mounted. Use constructions codes to differentiate between different fixed tilt and various tilt axis. "
-SolarFarmType,5,Utility Medium,"Solar utility with Capacity between 5 MW to 25 MW, ground mounted. Use constructions codes to differentiate between fixed tilt and various tilt axis."
-SolarFarmType,6,Utility Large,"Solar utility with Capacity larger than 25 MW, ground mounted. Use constructions codes to differentiate between fixed tilt and various tilt axis. "
+SolarFarmType,1,Residential,"All  assets associated with small scale solar farms, sometime called Community Solar. This provides energy to homes."
+SolarFarmType,2,Commercial,"All  assets associated with small scale solar farms, provides energy to businesses."
+SolarFarmType,3,Utility Unknown Size,Solar utility - All assets associated with a solar installation with a capacity larger than 1 MW is considered an utility. Utility solar unknown is used when the Capacity (MW) value is not known but larger than 1 MW.
+SolarFarmType,4,Utility Small,"Solar utility with Capacity lower than 5 MW, ground mounted."
+SolarFarmType,5,Utility Medium,"Solar utility with Capacity between 5 MW to 25 MW, ground mounted."
+SolarFarmType,6,Utility Large,"Solar utility with Capacity larger than 25 MW, ground mounted."
 SpecialEQConstruction,0,Unknown / default,N/A
 SpecialEQConstruction,1,Base isolation,N/A
 SpecialEQConstruction,2,Visco-elastic dampers,N/A
