@@ -1,2 +1,2 @@
 PortNumber,AccNumber,AccCurrency,AccPeril,AccDed1Building,AccDed2Other,AccDed3Contents,AccDed4BI,AccDed5PD,AccDed6All,AccLimit1Building,AccLimit2Other,AccLimit3Contents,AccLimit4BI,AccLimit5PD,AccLimit6All,PolNumber,PolInceptionDate,PolExpiryDate,PolPerilsCovered,LayerNumber,LayerParticipation,LayerLimit,LayerAttachment,PolPeril,PolDed1Building,PolDed2Other,PolDed3Contents,PolDed4BI,PolDed5PD,PolDed6All,PolLimit1Building,PolLimit2Other,PolLimit3Contents,PolLimit4BI,PolLimit5PD,PolLimit6All,OEDVersion,OriginalCurrency,RateOfExchange
-Marine Cargo,MC1,AUD,,,,,,,,,,,,,,Pol1,01/01/2024,31/12/2024,AA1,,1,10000000,,AA1,,,,,,500000,,,,,,,4.0.0,,
+Marine Cargo,MC1,AUD,,,,,,,,,,,,,,Pol1,2024-01-01,2024-12-31,AA1,,1,10000000,,AA1,,,,,,500000,,,,,,,4.0.0,,
