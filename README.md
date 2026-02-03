@@ -1,7 +1,7 @@
 ***Latest version of ODS*** </br> 
 <a href="https://github.com/OasisLMF/OpenDataStandards/releases/latest" rel="Latest Release">![ODS version](https://img.shields.io/github/v/tag/Oasislmf/OpenDataStandards.svg?label=OpenDataStandards)</a> 
 [![PyPI version](https://badge.fury.io/py/ods-tools.svg)](https://badge.fury.io/py/ods-tools)
-[![OpenData Build](https://github.com/OasisLMF/OpenDataStandards/actions/workflows/build.yml/badge.svg?branch=master&event=push)](https://github.com/OasisLMF/OpenDataStandards/actions/workflows/build.yml)
+[![OpenData Build](https://github.com/OasisLMF/OpenDataStandards/actions/workflows/build.yml/badge.svg?branch=main&event=push)](https://github.com/OasisLMF/OpenDataStandards/actions/workflows/build.yml)
 
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
@@ -19,12 +19,12 @@ Steering Committee Members:
     <tbody>
         <tr>
             <td align="middle" valign="middle"><img src="Docs/images/Oasis_LOGO.png" width="250"/></td>
-            <td align="middle" valign="middle"><img src="Docs/images/NASDAQ_logo.png" width ="170"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/Verisk_logo.png" width ="150"/></td>
             <td align="middle" valign="middle"><img src="Docs/images/CoreLogic_logo_update.png" width ="130"/></td>
-            <td align="middle" valign="middle"><img src="Docs/images/AIR_Worldwide's_logo.jpeg" width ="70"/></td>
             <td align="middle" valign="middle"><img src="Docs/images/JBA_logo.jpeg" width ="60"/></td>
             <td align="middle" valign="middle"><img src="Docs/images/IF_Logo.png" width ="130"/></td>
             <td align="middle" valign="middle"><img src="Docs/images/fathom-logo.jpeg" width="220"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/idf_logo.jpg" width="150"/></td>
         </tr>
         <tr></tr>  <!--  empty line to avoid table zebra striping  -->
         <tr>
@@ -44,7 +44,6 @@ Steering Committee Members:
             <td align="middle" valign="middle"><img src="Docs/images/Gallagher_logo.jpg" width ="180"/></td>
             <td align="middle" valign="middle"><img src="Docs/images/bms_logo.jpeg" width ="90"/></td>
             <td align="middle" valign="middle"><img src="Docs/images/Lloyds_logo.png" width ="100"/></td>
-            <td align="middle" valign="middle"><img src="Docs/images/idf_logo.jpg" height= "130" width="120"/></td>
         </tr>
     </tbody>
 </table>
@@ -83,6 +82,7 @@ https://oasislmf.org/open-data-standards
  | 3.4.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.4.0/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.4.0/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.4.0) |
  | 3.4.1 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/raw/3.4.1/OpenExposureData/Docs/OpenExposureData_Spec.xlsx) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/3.4.1/OpenExposureData_Spec.json) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/3.4.1) |
  | 4.0.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/4.0.0/OpenExposureData_Spec.xlsx ) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/4.0.0/OpenExposureData_Spec.json ) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/4.0.0) |
+ | 5.0.0 | [OpenExposureData_Spec.xlsx](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/5.0.0/OpenExposureData_Spec.xlsx ) | [OpenExposureData_Spec.json](https://github.com/OasisLMF/ODS_OpenExposureData/releases/download/5.0.0/OpenExposureData_Spec.json ) | [Release Page](https://github.com/OasisLMF/ODS_OpenExposureData/releases/tag/5.0.0) |
 <!-- NEW VERSION TAG -->
 
 
@@ -155,7 +155,7 @@ https://github.com/OasisLMF/ODS_OpenExposureData/tree/develop/Docs
 
 <img src="Docs/images/ODS_Gov_Process_Structure_v0.3.png" width="1050"/> &nbsp;
  
-A **Technical Working Group (TWG)** will maintain and update the assets that define the data standards. Although the TWG has a few core members from Oasis LMF and Nasdaq, its dynamic and will involve the users from the community who have proposed the updates or changes.
+A **Technical Working Group (TWG)** will maintain and update the assets that define the data standards. Although the TWG has a few core members from Oasis LMF and Verisk, its dynamic and will involve the users from the community who have proposed the updates or changes.
 
 &nbsp; 
 
@@ -187,7 +187,7 @@ All releases will follow the SemVer convention (https://semver.org/), so given a
     
 **PATCH** updates are for making backwards compatible bug fixes e.g. correcting a typo in a column label.
    
-All new work will be done in **feature** branches, following the [GitFlow model](https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **master** branch and the current development work will be in **develop** or specific feature branches.
+All new work will be done in **feature** branches, following the [GitFlow model](https://nvie.com/posts/a-successful-git-branching-model/). The latest released version will be held in the **stable/{version}.x.x** branches and the current development work will be in **main** or specific feature branches.
 
 &nbsp; 
 

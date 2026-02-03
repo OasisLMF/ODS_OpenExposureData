@@ -11,7 +11,7 @@
 "10","EXT","Extortion  (ransom amounts, negotiation fees, reward payments)","Cyber","1st",""
 "11","FIN","Financial Fraud - Theft of electronic funds, goods, services","Cyber","1st",""
 "12","INRE","Incident Response (IT Forensics, response obligations assessment, public relations, notifications and customer relations, monitoring services)","Cyber","1st",""
-"13","LIAB","Liability - 3rd party cyber liability (e.g. Network security, privacy, media) and directly associated costs (e.g legal defence costs)","Cyber","3rd",""
+"13","LIA","Liability - 3rd party cyber liability (e.g. Network security, privacy, media) and directly associated costs (e.g legal defence costs)","Cyber","3rd",""
 "14","REG","Regulatory and payment card industry (PCI) fines and proceedings","Cyber","3rd",""
 "15","ENO","Errors & Omissions/Professional indemnity liability","Cyber","E&O",""
 "16","CYB","All Cyber coverages","Cyber","n/a","7;8;9;10;11;12;13;14;15"
