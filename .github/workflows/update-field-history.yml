@@ -32,14 +32,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install click pandas packaging
 
-      - name: Verify Branch
-        run: |
-          BRANCH=$(git rev-parse --abbrev-ref HEAD)
-          if [ "$BRANCH" != "oed-field-from-version" ]; then
-            echo "Not on main branch, exiting."
-            exit 1
-          fi
-
       - name: Run Script
         run: python ./utils/gen-oed-fields-history.py --version-number ${{ inputs.version_tag }}
 
