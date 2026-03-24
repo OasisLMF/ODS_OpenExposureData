@@ -19,8 +19,10 @@ Usage:
 import argparse
 import json
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 ODS_REPO = "OasisLMF/ODS_OpenExposureData"
@@ -86,18 +88,21 @@ def execute_plan(plan):
     for action, tag, path in plan:
         print(f"  [{action:9}] {tag} ...", end=" ", flush=True)
         try:
-            if action == OVERWRITE:
-                run(["gh", "release", "upload", tag, str(path),
-                     "--repo", ODS_REPO, "--clobber"])
-            elif action == ADD:
-                run(["gh", "release", "upload", tag, str(path),
-                     "--repo", ODS_REPO])
-            elif action == CREATE:
-                run(["gh", "release", "create", tag, str(path),
-                     "--repo", ODS_REPO,
-                     "--title", tag,
-                     "--notes", f"OED spec for version {tag}.",
-                     "--latest=false"])
+            with tempfile.TemporaryDirectory() as tmpdir:
+                tmp_path = str(Path(tmpdir) / ASSET_NAME)
+                shutil.copy2(path, tmp_path)
+                if action == OVERWRITE:
+                    run(["gh", "release", "upload", tag, tmp_path,
+                         "--repo", ODS_REPO, "--clobber"])
+                elif action == ADD:
+                    run(["gh", "release", "upload", tag, tmp_path,
+                         "--repo", ODS_REPO])
+                elif action == CREATE:
+                    run(["gh", "release", "create", tag, tmp_path,
+                         "--repo", ODS_REPO,
+                         "--title", tag,
+                         "--notes", f"OED spec for version {tag}.",
+                         "--latest=false"])
             print("OK")
             ok.append(tag)
         except subprocess.CalledProcessError as e:
