@@ -149,7 +149,7 @@ def get_ods_input_fields(ods_fields_df):
         )
 
     # split ods_fields per File Name
-    split_df = ods_fields_df["File Names"].str.split(";").apply(pd.Series, 1).stack()
+    split_df = ods_fields_df["File Names"].str.split(";").apply(pd.Series).stack()
     split_df = (
         split_df.set_axis(split_df.index.droplevel(-1)).rename("File Name").str.strip()
     )
@@ -165,6 +165,8 @@ def get_ods_input_fields(ods_fields_df):
     # create a field dict for each File Name available and None
     __ods_fields = {}
     for file_name in ods_fields_df["File Name"].unique():
+        if file_name != file_name or file_name == "NaN":  # skip NaN from blank File Names cells
+            continue
         __ods_fields[file_name] = (
             ods_fields_df[ods_fields_df["File Name"] == file_name]
             .set_index(["Case Insensitive Field Name"])
@@ -225,12 +227,13 @@ def get_occupancy(occupancy_df):
     Returns:
         dict of information on occupancies
     """
+    code_col = "CEDE code" if "CEDE code" in occupancy_df.columns else "AIR code"
     return (
         occupancy_df[
             [
                 "Category",
                 "OED Code",
-                "CEDE code",
+                code_col,
                 "Name",
                 "Description",
                 "Code Range",
@@ -251,12 +254,13 @@ def get_construction(construction_df):
     Returns:
         dict of information on construction codes
     """
+    code_col = "CEDE code" if "CEDE code" in construction_df.columns else "AIR code"
     return (
         construction_df[
             [
                 "Category",
                 "OED Code",
-                "CEDE code",
+                code_col,
                 "Name",
                 "Description",
                 "Code Range",
@@ -309,7 +313,7 @@ def get_cr_field(cr_field_df):
     ).rename(columns={"File Name": "File Names"})
 
     # split ods_fields per File Name
-    split_df = cr_field_df["File Names"].str.split(";").apply(pd.Series, 1).stack()
+    split_df = cr_field_df["File Names"].str.split(";").apply(pd.Series).stack()
     split_df = (
         split_df.set_axis(split_df.index.droplevel(-1)).rename("File Name").str.strip()
     )
@@ -317,6 +321,8 @@ def get_cr_field(cr_field_df):
 
     cr_fields_by_file = {}
     for file_name in cr_field_df["File Name"].unique():
+        if file_name != file_name or file_name == "NaN":  # skip NaN from blank File Names cells
+            continue
         cr_to_field = (
             cr_field_df[cr_field_df["File Name"] == file_name]
             .groupby("Required Field")["Input Field Name"]
