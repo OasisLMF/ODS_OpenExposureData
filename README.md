@@ -44,6 +44,7 @@ Steering Committee Members:
             <td align="middle" valign="middle"><img src="Docs/images/Gallagher_logo.jpg" width ="180"/></td>
             <td align="middle" valign="middle"><img src="Docs/images/bms_logo.jpeg" width ="90"/></td>
             <td align="middle" valign="middle"><img src="Docs/images/Lloyds_logo.png" width ="100"/></td>
+            <td align="middle" valign="middle"><img src="Docs/images/cestida-logo.png" width ="200"/></td>
         </tr>
     </tbody>
 </table>
