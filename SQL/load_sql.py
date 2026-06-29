@@ -9,7 +9,7 @@ connection_string = (
 engine = create_engine(connection_string)
 
 # location
-df_loc = pd.read_csv('SQL_Scripts/SourceFiles/location.csv').head(10)
+df_loc = pd.read_csv('SQL_Scripts/SourceFiles/location.csv')
 df_loc.to_sql(
     name='_staging_location',      # Table name
     con=engine,
@@ -48,7 +48,7 @@ df_riscope.to_sql(
     method='multi'            # Faster bulk insert
 )
 
-#with engine.connect() as conn:
-#    result = conn.execute(text("EXEC usp_Database_Load"))
-#    for row in result:
-#        print(row)
+with engine.connect() as conn:
+    result = conn.execute(text("EXEC usp_Database_Load"))
+    for row in result:
+        print(row)
