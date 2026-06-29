@@ -116,13 +116,23 @@ CREATE TABLE [dbo].[Condition] (
 );
 GO
 
+CREATE TABLE [dbo].[LocationGroup] (
+    [LocationGroupId] INT           NOT NULL,
+    [LocGroup]        NVARCHAR (20) NOT NULL,
+    PRIMARY KEY CLUSTERED ([LocationGroupId] ASC),
+    CONSTRAINT [UQ_locationgroup_locgroup] UNIQUE ([LocGroup])
+);
+GO
+
 CREATE TABLE [dbo].[Location] (
     [LocationId]                 INT         NOT NULL,
     [AccountId]                  INT         NOT NULL,
     [LocNumber]                  NVARCHAR (20) NOT NULL,
-    [LocPerilsCovered]           VARCHAR (250) NOT NULL
+    [LocPerilsCovered]           VARCHAR (250) NOT NULL,
+    [LocationGroupId]            INT           NULL,
     PRIMARY KEY CLUSTERED ([LocationId] ASC),
-    CONSTRAINT [FK_account_TO_location] FOREIGN KEY ([AccountId]) REFERENCES [dbo].[account] ([AccountId])
+    CONSTRAINT [FK_account_TO_location] FOREIGN KEY ([AccountId]) REFERENCES [dbo].[account] ([AccountId]),
+    CONSTRAINT [FK_locationgroup_TO_location] FOREIGN KEY ([LocationGroupId]) REFERENCES [dbo].[LocationGroup] ([LocationGroupId])
 );
 GO
 
@@ -140,7 +150,6 @@ GO
 CREATE TABLE [dbo].[LocationDetail] (
     [LocationId]                 INT         NOT NULL,
     [LocName]                    NVARCHAR (20) NULL,
-    [LocGroup]                   NVARCHAR (20) NULL,
     [CorrelationGroup]           INT NULL,
     [IsPrimary]                  TINYINT NULL,
     [IsTenant]                   TINYINT NULL,
@@ -1239,21 +1248,22 @@ GO
 
 CREATE TABLE [dbo].[ReinsScopeLink] (
     -- Pre-computed resolution of scope filter criteria to normalised entity PKs.
-    -- Exactly one of the four nullable FKs is populated per row, determined by
+    -- Exactly one of the five nullable FKs is populated per row, determined by
     -- the treaty ReinsInfo.RiskLevel (SEL/ACC/POL/LOC/LGR).
-    -- LGR scope produces one row per Location whose LocGroup matches.
-    [ReinsScopeLinkId] INT NOT NULL,
-    [ReinsScopeId]     INT NOT NULL,
-    [PortfolioId]      INT NULL,    -- populated for RiskLevel = SEL
-    [AccountId]        INT NULL,    -- populated for RiskLevel = ACC
-    [PolicyId]         INT NULL,    -- populated for RiskLevel = POL
-    [LocationId]       INT NULL,    -- populated for RiskLevel = LOC or LGR
+    [ReinsScopeLinkId]  INT NOT NULL,
+    [ReinsScopeId]      INT NOT NULL,
+    [PortfolioId]       INT NULL,    -- populated for RiskLevel = SEL
+    [AccountId]         INT NULL,    -- populated for RiskLevel = ACC
+    [PolicyId]          INT NULL,    -- populated for RiskLevel = POL
+    [LocationId]        INT NULL,    -- populated for RiskLevel = LOC
+    [LocationGroupId]   INT NULL,    -- populated for RiskLevel = LGR
     PRIMARY KEY CLUSTERED ([ReinsScopeLinkId] ASC),
     CONSTRAINT [FK_reinsscope_TO_reinsscoperlink] FOREIGN KEY ([ReinsScopeId]) REFERENCES [dbo].[ReinsScope] ([ReinsScopeId]),
     CONSTRAINT [FK_portfolio_TO_reinsscopelink] FOREIGN KEY ([PortfolioId]) REFERENCES [dbo].[Portfolio] ([PortfolioId]),
     CONSTRAINT [FK_account_TO_reinsscopelink] FOREIGN KEY ([AccountId]) REFERENCES [dbo].[Account] ([AccountId]),
     CONSTRAINT [FK_policy_TO_reinsscopelink] FOREIGN KEY ([PolicyId]) REFERENCES [dbo].[Policy] ([PolicyId]),
-    CONSTRAINT [FK_location_TO_reinsscopelink] FOREIGN KEY ([LocationId]) REFERENCES [dbo].[Location] ([LocationId])
+    CONSTRAINT [FK_location_TO_reinsscopelink] FOREIGN KEY ([LocationId]) REFERENCES [dbo].[Location] ([LocationId]),
+    CONSTRAINT [FK_locationgroup_TO_reinsscopelink] FOREIGN KEY ([LocationGroupId]) REFERENCES [dbo].[LocationGroup] ([LocationGroupId])
 );
 GO
 
@@ -2647,6 +2657,24 @@ END
 
 GO
 
+CREATE PROCEDURE [dbo].[usp_LocationGroup_Load]
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO LocationGroup (LocationGroupId, LocGroup)
+    SELECT  ROW_NUMBER() OVER (ORDER BY LocGroup) AS LocationGroupId,
+            LocGroup
+    FROM    (
+            SELECT DISTINCT LocGroup
+            FROM   _import_location
+            WHERE  LocGroup IS NOT NULL
+              AND  LocGroup <> ''
+            ) AS tmp
+END
+GO
+
+
 CREATE PROCEDURE usp_Location_Load
 AS
 BEGIN
@@ -2654,21 +2682,29 @@ BEGIN
 
     INSERT INTO Location (
         LocationId,
-        AccountId, 
+        AccountId,
         LocNumber,
-        LocPerilsCovered
+        LocPerilsCovered,
+        LocationGroupId
         )
 
-    SELECT DISTINCT bkl.LocationId,
+    SELECT DISTINCT
+        bkl.LocationId,
         bka.AccountId,
         bkl.LocNumber,
-        bkl.LocPerilsCovered
-    FROM 
+        bkl.LocPerilsCovered,
+        lg.LocationGroupId
+    FROM
         _businesskeys_location bkl
     JOIN
         _businesskeys_account bka
-            ON bkl.PortNumber = bka.PortNumber
-            AND bkl.AccNumber = bka.AccNumber
+            ON  bkl.PortNumber = bka.PortNumber
+            AND bkl.AccNumber  = bka.AccNumber
+    LEFT JOIN _import_location il
+            ON  il.PortNumber = bkl.PortNumber
+            AND il.AccNumber  = bkl.AccNumber
+            AND il.LocNumber  = bkl.LocNumber
+    LEFT JOIN LocationGroup lg ON lg.LocGroup = il.LocGroup
 END
 
 GO
@@ -3650,22 +3686,22 @@ BEGIN
     -- Pass 2: resolve scope to entity links (one INSERT per RiskLevel)
 
     -- SEL: links to Portfolio (all portfolios if PortNumber blank)
-    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId)
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId, LocationGroupId)
     SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, p.PortfolioId)
                 + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
             sc.ReinsScopeId,
-            p.PortfolioId, NULL, NULL, NULL
+            p.PortfolioId, NULL, NULL, NULL, NULL
     FROM    ReinsScope sc
     JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
     JOIN    Portfolio p  ON (sc.PortNumber IS NULL OR sc.PortNumber = '' OR p.PortNumber = sc.PortNumber)
     WHERE   ri.RiskLevel = 'SEL'
 
     -- ACC: links to Account
-    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId)
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId, LocationGroupId)
     SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, bka.AccountId)
                 + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
             sc.ReinsScopeId,
-            NULL, bka.AccountId, NULL, NULL
+            NULL, bka.AccountId, NULL, NULL, NULL
     FROM    ReinsScope sc
     JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
     JOIN    _businesskeys_account bka
@@ -3674,11 +3710,11 @@ BEGIN
     WHERE   ri.RiskLevel = 'ACC'
 
     -- POL: links to Policy
-    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId)
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId, LocationGroupId)
     SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, bkp.PolicyId)
                 + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
             sc.ReinsScopeId,
-            NULL, NULL, bkp.PolicyId, NULL
+            NULL, NULL, bkp.PolicyId, NULL, NULL
     FROM    ReinsScope sc
     JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
     JOIN    _businesskeys_policy bkp
@@ -3688,11 +3724,11 @@ BEGIN
     WHERE   ri.RiskLevel = 'POL'
 
     -- LOC: links to Location via natural keys
-    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId)
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId, LocationGroupId)
     SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, bkl.LocationId)
                 + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
             sc.ReinsScopeId,
-            NULL, NULL, NULL, bkl.LocationId
+            NULL, NULL, NULL, bkl.LocationId, NULL
     FROM    ReinsScope sc
     JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
     JOIN    _businesskeys_location bkl
@@ -3701,16 +3737,15 @@ BEGIN
                 AND bkl.LocNumber  = sc.LocNumber
     WHERE   ri.RiskLevel = 'LOC'
 
-    -- LGR: links to all Locations whose LocGroup matches (may be cross-account)
-    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId)
-    SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, l.LocationId)
+    -- LGR: one link per LocationGroup; Location.LocationGroupId resolves members at query time
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId, LocationGroupId)
+    SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, lg.LocationGroupId)
                 + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
             sc.ReinsScopeId,
-            NULL, NULL, NULL, l.LocationId
+            NULL, NULL, NULL, NULL, lg.LocationGroupId
     FROM    ReinsScope sc
     JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
-    JOIN    LocationDetail ld ON ld.LocGroup = sc.LocGroup
-    JOIN    Location l ON l.LocationId = ld.LocationId
+    JOIN    LocationGroup lg ON lg.LocGroup = sc.LocGroup
     WHERE   ri.RiskLevel = 'LGR'
         AND sc.LocGroup IS NOT NULL
         AND sc.LocGroup <> ''
@@ -3752,6 +3787,7 @@ BEGIN
     DELETE FROM [dbo].[Layer]
     DELETE FROM [dbo].[LocationDetail]
     DELETE FROM [dbo].[Location]
+    DELETE FROM [dbo].[LocationGroup]
     DELETE FROM [dbo].[PolicyDetails]
     DELETE FROM [dbo].[Policy]
     DELETE FROM [dbo].[AccountDetails]
@@ -3782,6 +3818,7 @@ BEGIN
     EXEC usp_Policy_Load
     EXEC usp_Layer_Load
     EXEC usp_Condition_Load
+    EXEC usp_LocationGroup_Load
     EXEC usp_Location_Load
     EXEC usp_Coverage_Load
     EXEC usp_Item_Load
