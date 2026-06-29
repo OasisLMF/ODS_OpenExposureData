@@ -25,6 +25,7 @@
   --c-peril:   #f87171;   /* peril */
   --c-term:    #c084fc;   /* term + junctions */
   --c-stage:   #6b7280;   /* staging tables */
+  --c-ri:      #06b6d4;   /* reinsurance entities */
 
   --pk:        #fbbf24;
   --fk:        #7b97f5;
@@ -290,7 +291,7 @@ table.gap-table tr:last-child td { border-bottom: none; }
 <div class="section">
   <h2>Relational Schema</h2>
   <div class="diagram-scroll">
-    <svg id="diagram" width="1600" height="920" aria-label="OED database entity-relationship diagram"></svg>
+    <svg id="diagram" width="1600" height="1180" aria-label="OED database entity-relationship diagram"></svg>
   </div>
   <div class="conn-key">
     <div class="conn-key-item"><div class="conn-line solid"></div> FK relationship</div>
@@ -304,6 +305,7 @@ table.gap-table tr:last-child td { border-bottom: none; }
     <div class="legend-item"><div class="legend-swatch" style="background:var(--c-peril)"></div> Peril</div>
     <div class="legend-item"><div class="legend-swatch" style="background:var(--c-term)"></div> Terms</div>
     <div class="legend-item"><div class="legend-swatch" style="background:var(--c-stage)"></div> Staging / import</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--c-ri)"></div> Reinsurance</div>
   </div>
 </div>
 
@@ -313,11 +315,11 @@ table.gap-table tr:last-child td { border-bottom: none; }
 
   <div class="gap-status-bar">
     <div class="gap-stat">
-      <span class="gap-stat-count is-resolved">6</span>
-      <span class="gap-stat-label">resolved in #279</span>
+      <span class="gap-stat-count is-resolved">7</span>
+      <span class="gap-stat-label">resolved</span>
     </div>
     <div class="gap-stat">
-      <span class="gap-stat-count is-remaining">4</span>
+      <span class="gap-stat-count is-remaining">3</span>
       <span class="gap-stat-label">remaining</span>
     </div>
     <span class="gap-status-branch">branch: 279-update-relational-schema</span>
@@ -326,28 +328,6 @@ table.gap-table tr:last-child td { border-bottom: none; }
   <!-- ── REMAINING ─────────────────────────────── -->
   <div class="gap-subhead">Remaining</div>
   <div class="gap-grid">
-
-    <div class="gap-card">
-      <div class="gap-card-header">
-        <span class="sev-badge sev-warn">Warning</span>
-        <span class="gap-card-title">Reinsurance normalised model not yet designed</span>
-      </div>
-      <div class="gap-card-body">
-        <p>Staging tables <code>_staging_riinfo</code> / <code>_staging_riscope</code> and import tables <code>_import_riinfo</code> / <code>_import_riscope</code> now exist with schema-enforced columns. However there is no normalised entity model for reinsurance — no <code>ReinsInfo</code> entity, no <code>ReinsScope</code> junction, no load procedures. Data enters staging and stops there.</p>
-        <p>Full RI normalised model to be designed collaboratively — treaty hierarchy, cedant/reinsurer entities, scope linkage to the location/policy hierarchy.</p>
-        <div class="field-list">
-          <span class="field-tag extra">ReinsNumber</span>
-          <span class="field-tag extra">ReinsType</span>
-          <span class="field-tag extra">InuringPriority</span>
-          <span class="field-tag extra">OccAttachment / OccLimit</span>
-          <span class="field-tag extra">AggAttachment / AggLimit</span>
-          <span class="field-tag extra">RiskLevel</span>
-          <span class="field-tag extra">+ 26 more ReinsInfo fields</span>
-          <span class="field-tag extra">LocGroup / ReinsTag</span>
-          <span class="field-tag extra">+ 11 more ReinsScope fields</span>
-        </div>
-      </div>
-    </div>
 
     <div class="gap-card">
       <div class="gap-card-header">
@@ -499,6 +479,16 @@ table.gap-table tr:last-child td { border-bottom: none; }
       </div>
     </div>
 
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">Reinsurance normalised model not yet designed</span>
+      </div>
+      <div class="gap-card-body">
+        <p>Three new entities added: <code>ReinsInfo</code> (treaty master, 32 fields including risk/programme-level terms, inuring priority, attachment basis), <code>ReinsScope</code> (scope filter rows — hierarchical fields + FILTER_LEVEL_EXTRA_FIELDS + SS CededPercent override), and <code>ReinsScopeLink</code> (pre-computed entity resolution into Portfolio/Account/Policy/Location via nullable FKs). New procedures <code>usp_ReinsInfo_Load</code> and <code>usp_ReinsScope_Load</code> handle the ETL including LGR multi-location fan-out and SEL portfolio broadcast.</p>
+      </div>
+    </div>
+
   </div><!-- /gap-grid resolved -->
 </div>
 
@@ -515,6 +505,7 @@ const COLORS = {
   peril:  '#f87171',
   term:   '#c084fc',
   stage:  '#6b7280',
+  ri:     '#06b6d4',
 };
 const BG_CARD   = '#1c2337';
 const BG_HEADER = '#212840';
@@ -656,6 +647,43 @@ const tables = [
   { id:'OEDVersion',       g:'stage', x:600, y:840, fields:[{n:'OEDVersion',r:'data'}]},
   { id:'_staging_riinfo',  g:'stage', x:800, y:840, fields:[{n:'31 ReinsInfo fields',r:'data'},{n:'(schema-enforced)',r:'data'}]},
   { id:'_staging_riscope', g:'stage', x:1000,y:840, fields:[{n:'13 ReinsScope fields',r:'data'},{n:'(schema-enforced)',r:'data'}]},
+  // ── Reinsurance normalised entities ──────────────────────────────────────
+  { id:'ReinsInfo', g:'ri', x:15, y:975, fields:[
+    {n:'ReinsInfoId',      r:'pk'},
+    {n:'ReinsNumber',      r:'key'},
+    {n:'ReinsType',        r:'data'},  // FAC/QS/SS/PR/CXL/AXL
+    {n:'RiskLevel',        r:'data'},  // LOC/LGR/POL/ACC/SEL
+    {n:'InuringPriority',  r:'data'},
+    {n:'ReinsPeril',       r:'data'},
+    {n:'RiskAttachment/Limit', r:'data'},
+    {n:'OccAttachment/Limit',  r:'data'},
+    {n:'CededPercent',     r:'data'},
+    {n:'PlacedPercent',    r:'data'},
+    {n:'AggLimit/Attachment',  r:'data'},
+    {n:'AttachmentBasis',  r:'data'},  // LO / RA
+    {n:'+ dates & currency', r:'data'},
+  ]},
+  { id:'ReinsScope', g:'ri', x:210, y:975, fields:[
+    {n:'ReinsScopeId',  r:'pk'},
+    {n:'ReinsInfoId',   r:'fk'},
+    {n:'PortNumber',    r:'data'},
+    {n:'AccNumber',     r:'data'},
+    {n:'PolNumber',     r:'data'},
+    {n:'LocNumber',     r:'data'},
+    {n:'LocGroup',      r:'data'},
+    {n:'CedantName',    r:'data'},
+    {n:'ProducerName',  r:'data'},
+    {n:'LOB / CountryCode / ReinsTag', r:'data'},
+    {n:'CededPercent',  r:'data'},  // SS scope override
+  ]},
+  { id:'ReinsScopeLink', g:'ri', x:405, y:975, fields:[
+    {n:'ReinsScopeLinkId', r:'pk'},
+    {n:'ReinsScopeId',     r:'fk'},
+    {n:'PortfolioId',      r:'fk'},  // SEL → Portfolio
+    {n:'AccountId',        r:'fk'},  // ACC → Account
+    {n:'PolicyId',         r:'fk'},  // POL → Policy
+    {n:'LocationId',       r:'fk'},  // LOC/LGR → Location
+  ]},
   // New tables from PR #279
   { id:'StepPolicy',       g:'hier',  x:210, y:320, fields:[
     {n:'StepPolicyId',     r:'pk'},
@@ -722,6 +750,16 @@ const conns = [
   // Staging dashed feeds
   {f:'_import_account',  t:'Account',  fS:'t', tS:'b', dashed:true, curve:true},
   {f:'_import_location', t:'Location', fS:'t', tS:'b', dashed:true, curve:true},
+  {f:'_staging_riinfo',  t:'ReinsInfo',  fS:'b', tS:'t', dashed:true},
+  {f:'_staging_riscope', t:'ReinsScope', fS:'b', tS:'t', dashed:true, curve:true},
+  // RI entity chain
+  {f:'ReinsInfo',      t:'ReinsScope',     fS:'r', tS:'l'},
+  {f:'ReinsScope',     t:'ReinsScopeLink', fS:'r', tS:'l'},
+  // ReinsScopeLink → hierarchy (nullable FKs, dashed)
+  {f:'ReinsScopeLink', t:'Portfolio', fS:'t', tS:'b', dashed:true, curve:true},
+  {f:'ReinsScopeLink', t:'Account',   fS:'t', tS:'b', dashed:true, curve:true},
+  {f:'ReinsScopeLink', t:'Policy',    fS:'t', tS:'b', dashed:true, curve:true},
+  {f:'ReinsScopeLink', t:'Location',  fS:'t', tS:'b', dashed:true, curve:true},
   // New: StepPolicy
   {f:'Policy', t:'StepPolicy', fS:'l', tS:'r', curve:true},
   // New: Account term junctions
@@ -866,7 +904,8 @@ el('line', {x1:'785', y1:'5', x2:'785', y2:'830',
 [
   {label:'INSURANCE HIERARCHY', x:195, y:8},
   {label:'LOCATION & COVERAGE', x:245, y:433},
-  {label:'STAGING / ETL  (RI: staging only, no normalised model)', x:530, y:833},
+  {label:'STAGING / ETL', x:230, y:833},
+  {label:'REINSURANCE ENTITIES', x:310, y:968},
 ].forEach(({label, x, y}) => {
   text(label, x, y, {fill:'#2d3454', 'font-size':'9', 'font-weight':'700',
     'letter-spacing':'.12em', 'font-family':'ui-sans-serif,system-ui,sans-serif',

@@ -1169,6 +1169,96 @@ GO
 
 
 ------------------------------------------------------------------------------------------------------
+-- Reinsurance normalised entities
+
+CREATE TABLE [dbo].[ReinsInfo] (
+    [ReinsInfoId]          INT           NOT NULL,
+    [ReinsNumber]          INT           NOT NULL,
+    [ReinsName]            VARCHAR (30)  NULL,
+    [ReinsLayerNumber]     INT           NULL,
+    [ReinsType]            VARCHAR (3)   NULL,    -- FAC/QS/SS/PR/CXL/AXL
+    [ReinsPeril]           VARCHAR (250) NULL,
+    [RiskLevel]            CHAR (3)      NULL,    -- LOC/LGR/POL/ACC/SEL
+    [InuringPriority]      TINYINT       NULL,
+    -- Treaty-level financial terms
+    [CededPercent]         FLOAT (53)    NULL,    -- treaty level; NOT used for SS (see ReinsScope)
+    [PlacedPercent]        FLOAT (53)    NULL,
+    [TreatyShare]          FLOAT (53)    NULL,
+    [DeemedPercentPlaced]  FLOAT (53)    NULL,
+    -- Currency
+    [ReinsCurrency]        CHAR (3)      NULL,
+    [OriginalCurrency]     CHAR (3)      NULL,
+    [ReinsFXrate]          FLOAT (53)    NULL,
+    [RateOfExchange]       FLOAT (53)    NULL,
+    [ReinsPremium]         FLOAT (53)    NULL,
+    -- Date / attachment basis
+    [AttachmentBasis]      CHAR (2)      NULL,    -- LO / RA
+    [UseReinsDates]        CHAR (1)      NULL,
+    [ReinsInceptionDate]   SMALLDATETIME NULL,
+    [ReinsExpiryDate]      SMALLDATETIME NULL,
+    -- Risk-level terms (FAC, SS, PR, QS)
+    [RiskAttachment]       FLOAT (53)    NULL,
+    [RiskLimit]            FLOAT (53)    NULL,
+    -- Programme-level terms (QS, SS, PR, CXL)
+    [OccLimit]             FLOAT (53)    NULL,
+    [OccAttachment]        FLOAT (53)    NULL,
+    [OccFranchiseDed]      FLOAT (53)    NULL,
+    [OccReverseFranchise]  FLOAT (53)    NULL,
+    [AggLimit]             FLOAT (53)    NULL,
+    [AggAttachment]        FLOAT (53)    NULL,
+    [AggPeriod]            FLOAT (53)    NULL,
+    -- Reinstatement
+    [Reinstatement]        TINYINT       NULL,
+    [ReinstatementCharge]  VARCHAR (50)  NULL,
+    PRIMARY KEY CLUSTERED ([ReinsInfoId] ASC),
+    CONSTRAINT [UQ_reinsinfo_reinsnumber] UNIQUE ([ReinsNumber])
+);
+GO
+
+CREATE TABLE [dbo].[ReinsScope] (
+    [ReinsScopeId]   INT            NOT NULL,
+    [ReinsInfoId]    INT            NOT NULL,
+    -- Hierarchical match fields (RISK_LEVEL_FIELD_MAP in OasisLMF)
+    [PortNumber]     VARCHAR (20)   NULL,
+    [AccNumber]      NVARCHAR (40)  NULL,
+    [PolNumber]      VARCHAR (20)   NULL,
+    [LocNumber]      NVARCHAR (20)  NULL,
+    [LocGroup]       NVARCHAR (20)  NULL,
+    -- Extra filter fields (FILTER_LEVEL_EXTRA_FIELDS; not resolved to entity IDs)
+    [CedantName]     VARCHAR (40)   NULL,
+    [ProducerName]   VARCHAR (40)   NULL,
+    [LOB]            VARCHAR (20)   NULL,
+    [CountryCode]    CHAR (2)       NULL,
+    [ReinsTag]       VARCHAR (20)   NULL,
+    -- Scope-level cession override: used by SS only (CededPercent_scope in OasisLMF)
+    [CededPercent]   FLOAT (53)     NULL,
+    PRIMARY KEY CLUSTERED ([ReinsScopeId] ASC),
+    CONSTRAINT [FK_reinsinfo_TO_reinsscope] FOREIGN KEY ([ReinsInfoId]) REFERENCES [dbo].[ReinsInfo] ([ReinsInfoId])
+);
+GO
+
+CREATE TABLE [dbo].[ReinsScopeLink] (
+    -- Pre-computed resolution of scope filter criteria to normalised entity PKs.
+    -- Exactly one of the four nullable FKs is populated per row, determined by
+    -- the treaty ReinsInfo.RiskLevel (SEL/ACC/POL/LOC/LGR).
+    -- LGR scope produces one row per Location whose LocGroup matches.
+    [ReinsScopeLinkId] INT NOT NULL,
+    [ReinsScopeId]     INT NOT NULL,
+    [PortfolioId]      INT NULL,    -- populated for RiskLevel = SEL
+    [AccountId]        INT NULL,    -- populated for RiskLevel = ACC
+    [PolicyId]         INT NULL,    -- populated for RiskLevel = POL
+    [LocationId]       INT NULL,    -- populated for RiskLevel = LOC or LGR
+    PRIMARY KEY CLUSTERED ([ReinsScopeLinkId] ASC),
+    CONSTRAINT [FK_reinsscope_TO_reinsscoperlink] FOREIGN KEY ([ReinsScopeId]) REFERENCES [dbo].[ReinsScope] ([ReinsScopeId]),
+    CONSTRAINT [FK_portfolio_TO_reinsscopelink] FOREIGN KEY ([PortfolioId]) REFERENCES [dbo].[Portfolio] ([PortfolioId]),
+    CONSTRAINT [FK_account_TO_reinsscopelink] FOREIGN KEY ([AccountId]) REFERENCES [dbo].[Account] ([AccountId]),
+    CONSTRAINT [FK_policy_TO_reinsscopelink] FOREIGN KEY ([PolicyId]) REFERENCES [dbo].[Policy] ([PolicyId]),
+    CONSTRAINT [FK_location_TO_reinsscopelink] FOREIGN KEY ([LocationId]) REFERENCES [dbo].[Location] ([LocationId])
+);
+GO
+
+
+------------------------------------------------------------------------------------------------------
 
 CREATE TABLE [dbo].[_staging_riinfo] (
     [ReinsNumber]          INT            NULL,
@@ -3511,6 +3601,128 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE [dbo].[usp_ReinsInfo_Load]
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO ReinsInfo (
+        ReinsInfoId, ReinsNumber, ReinsName, ReinsLayerNumber,
+        ReinsType, ReinsPeril, RiskLevel, InuringPriority,
+        CededPercent, PlacedPercent, TreatyShare, DeemedPercentPlaced,
+        ReinsCurrency, OriginalCurrency, ReinsFXrate, RateOfExchange, ReinsPremium,
+        AttachmentBasis, UseReinsDates, ReinsInceptionDate, ReinsExpiryDate,
+        RiskAttachment, RiskLimit,
+        OccLimit, OccAttachment, OccFranchiseDed, OccReverseFranchise,
+        AggLimit, AggAttachment, AggPeriod,
+        Reinstatement, ReinstatementCharge
+    )
+    SELECT  ROW_NUMBER() OVER (ORDER BY ReinsNumber) AS ReinsInfoId,
+            ReinsNumber, ReinsName, ReinsLayerNumber,
+            ReinsType, ReinsPeril, RiskLevel, InuringPriority,
+            CededPercent, PlacedPercent, TreatyShare, DeemedPercentPlaced,
+            ReinsCurrency, OriginalCurrency, ReinsFXrate, RateOfExchange, ReinsPremium,
+            AttachmentBasis, UseReinsDates, ReinsInceptionDate, ReinsExpiryDate,
+            RiskAttachment, RiskLimit,
+            OccLimit, OccAttachment, OccFranchiseDed, OccReverseFranchise,
+            AggLimit, AggAttachment, AggPeriod,
+            Reinstatement, ReinstatementCharge
+    FROM    _import_riinfo
+    WHERE   ReinsNumber IS NOT NULL
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[usp_ReinsScope_Load]
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Pass 1: load raw scope rows
+    INSERT INTO ReinsScope (
+        ReinsScopeId, ReinsInfoId,
+        PortNumber, AccNumber, PolNumber, LocNumber, LocGroup,
+        CedantName, ProducerName, LOB, CountryCode, ReinsTag,
+        CededPercent
+    )
+    SELECT  ROW_NUMBER() OVER (ORDER BY ri.ReinsInfoId, rs.PortNumber, rs.AccNumber, rs.PolNumber, rs.LocNumber) AS ReinsScopeId,
+            ri.ReinsInfoId,
+            rs.PortNumber, rs.AccNumber, rs.PolNumber, rs.LocNumber, rs.LocGroup,
+            rs.CedantName, rs.ProducerName, rs.LOB, rs.CountryCode, rs.ReinsTag,
+            rs.CededPercent
+    FROM    _import_riscope rs
+    JOIN    ReinsInfo ri ON rs.ReinsNumber = ri.ReinsNumber
+
+    -- Pass 2: resolve scope to entity links (one INSERT per RiskLevel)
+
+    -- SEL: links to Portfolio (all portfolios if PortNumber blank)
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId)
+    SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, p.PortfolioId)
+                + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
+            sc.ReinsScopeId,
+            p.PortfolioId, NULL, NULL, NULL
+    FROM    ReinsScope sc
+    JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
+    JOIN    Portfolio p  ON (sc.PortNumber IS NULL OR sc.PortNumber = '' OR p.PortNumber = sc.PortNumber)
+    WHERE   ri.RiskLevel = 'SEL'
+
+    -- ACC: links to Account
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId)
+    SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, bka.AccountId)
+                + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
+            sc.ReinsScopeId,
+            NULL, bka.AccountId, NULL, NULL
+    FROM    ReinsScope sc
+    JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
+    JOIN    _businesskeys_account bka
+                ON  bka.PortNumber = sc.PortNumber
+                AND bka.AccNumber  = sc.AccNumber
+    WHERE   ri.RiskLevel = 'ACC'
+
+    -- POL: links to Policy
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId)
+    SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, bkp.PolicyId)
+                + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
+            sc.ReinsScopeId,
+            NULL, NULL, bkp.PolicyId, NULL
+    FROM    ReinsScope sc
+    JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
+    JOIN    _businesskeys_policy bkp
+                ON  bkp.PortNumber = sc.PortNumber
+                AND bkp.AccNumber  = sc.AccNumber
+                AND bkp.PolNumber  = sc.PolNumber
+    WHERE   ri.RiskLevel = 'POL'
+
+    -- LOC: links to Location via natural keys
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId)
+    SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, bkl.LocationId)
+                + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
+            sc.ReinsScopeId,
+            NULL, NULL, NULL, bkl.LocationId
+    FROM    ReinsScope sc
+    JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
+    JOIN    _businesskeys_location bkl
+                ON  bkl.PortNumber = sc.PortNumber
+                AND bkl.AccNumber  = sc.AccNumber
+                AND bkl.LocNumber  = sc.LocNumber
+    WHERE   ri.RiskLevel = 'LOC'
+
+    -- LGR: links to all Locations whose LocGroup matches (may be cross-account)
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId)
+    SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, l.LocationId)
+                + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
+            sc.ReinsScopeId,
+            NULL, NULL, NULL, l.LocationId
+    FROM    ReinsScope sc
+    JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
+    JOIN    Location l ON l.LocGroup = sc.LocGroup
+    WHERE   ri.RiskLevel = 'LGR'
+        AND sc.LocGroup IS NOT NULL
+        AND sc.LocGroup <> ''
+
+END
+GO
+
 CREATE PROCEDURE [dbo].[usp_Database_Load]
 AS
 
@@ -3542,6 +3754,8 @@ BEGIN
     EXEC usp_ConditionLocation_Load
     EXEC usp_StepPolicy_Load
     EXEC usp_StepPolicyTerm_Load
+    EXEC usp_ReinsInfo_Load
+    EXEC usp_ReinsScope_Load
 
     -- terms
     EXEC usp_Terms_Load
