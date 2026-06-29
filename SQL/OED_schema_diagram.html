@@ -114,6 +114,57 @@ header .meta {
   flex-shrink: 0;
 }
 
+/* ── Status bar ──────────────────────────────────────────── */
+.gap-status-bar {
+  display: flex;
+  align-items: baseline;
+  gap: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+.gap-stat { display: flex; align-items: baseline; gap: 8px; }
+.gap-stat-count {
+  font-size: 26px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -.5px;
+}
+.gap-stat-count.is-resolved { color: #22c55e; }
+.gap-stat-count.is-remaining { color: var(--gap-warn); }
+.gap-stat-label { font-size: 12px; color: var(--muted); }
+.gap-status-branch {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: .04em;
+}
+
+.gap-subhead {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin: 20px 0 12px;
+}
+
+/* ── Resolved card variant ───────────────────────────────── */
+.sev-fixed { background: rgba(34,197,94,.12); color: #22c55e; }
+.gap-card.resolved {
+  border-color: rgba(34,197,94,.18);
+  opacity: .65;
+}
+.gap-card.resolved .gap-card-title {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(90,100,144,.45);
+  text-decoration-thickness: 1px;
+}
+.gap-card.resolved .gap-card-body p { color: var(--dim); }
+.gap-card.resolved .field-tag { opacity: .45; }
+
 /* ── Gap Analysis ────────────────────────────────────────── */
 .gap-grid {
   display: grid;
@@ -232,14 +283,14 @@ table.gap-table tr:last-child td { border-bottom: none; }
 
 <header>
   <h1>OED Database Schema</h1>
-  <span class="meta">Open Exposure Data &nbsp;·&nbsp; SQL Server &nbsp;·&nbsp; v5.0.0</span>
+  <span class="meta">Open Exposure Data &nbsp;·&nbsp; SQL Server &nbsp;·&nbsp; v5.0.0 &nbsp;·&nbsp; 279-update-relational-schema</span>
 </header>
 
 <!-- ── DIAGRAM ─────────────────────────────────────────── -->
 <div class="section">
   <h2>Relational Schema</h2>
   <div class="diagram-scroll">
-    <svg id="diagram" width="1240" height="880" aria-label="OED database entity-relationship diagram"></svg>
+    <svg id="diagram" width="1600" height="920" aria-label="OED database entity-relationship diagram"></svg>
   </div>
   <div class="conn-key">
     <div class="conn-key-item"><div class="conn-line solid"></div> FK relationship</div>
@@ -259,187 +310,52 @@ table.gap-table tr:last-child td { border-bottom: none; }
 <!-- ── GAP ANALYSIS ───────────────────────────────────── -->
 <div class="section">
   <h2>Specification Gap Analysis</h2>
+
+  <div class="gap-status-bar">
+    <div class="gap-stat">
+      <span class="gap-stat-count is-resolved">6</span>
+      <span class="gap-stat-label">resolved in #279</span>
+    </div>
+    <div class="gap-stat">
+      <span class="gap-stat-count is-remaining">4</span>
+      <span class="gap-stat-label">remaining</span>
+    </div>
+    <span class="gap-status-branch">branch: 279-update-relational-schema</span>
+  </div>
+
+  <!-- ── REMAINING ─────────────────────────────── -->
+  <div class="gap-subhead">Remaining</div>
   <div class="gap-grid">
 
-    <!-- Card 1 -->
-    <div class="gap-card">
-      <div class="gap-card-header">
-        <span class="sev-badge sev-crit">Critical</span>
-        <span class="gap-card-title">Reinsurance tables entirely absent</span>
-      </div>
-      <div class="gap-card-body">
-        <p><code>OEDInputFields.csv</code> specifies 32 <strong>ReinsInfo</strong> fields and 13 <strong>ReinsScope</strong> fields. Neither has a staging table, import table, normalised table, or load procedure in the SQL schema.</p>
-        <p><code>load_sql.py</code> does load <code>ri_info.csv</code> and <code>ri_scope.csv</code> into <code>_staging_riinfo</code> / <code>_staging_riscope</code>, but these tables are not defined in <code>DatabaseProjectOED.sql</code> — they would only be created dynamically by pandas and have no schema enforced.</p>
-        <div class="field-list">
-          <span class="field-tag missing">ReinsNumber</span>
-          <span class="field-tag missing">ReinsType</span>
-          <span class="field-tag missing">ReinsPeril</span>
-          <span class="field-tag missing">InuringPriority</span>
-          <span class="field-tag missing">OccAttachment</span>
-          <span class="field-tag missing">OccLimit</span>
-          <span class="field-tag missing">AggAttachment</span>
-          <span class="field-tag missing">AggLimit</span>
-          <span class="field-tag missing">PlacedPercent</span>
-          <span class="field-tag missing">CededPercent</span>
-          <span class="field-tag missing">RiskLevel</span>
-          <span class="field-tag missing">+ 34 more</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="gap-card">
-      <div class="gap-card-header">
-        <span class="sev-badge sev-crit">Critical</span>
-        <span class="gap-card-title">9 PV fields missing from _import_location</span>
-      </div>
-      <div class="gap-card-body">
-        <p>The spec defines nine optional <strong>Photovoltaic panel</strong> fields for the Location file. None are present in <code>_import_location</code> or <code>LocationDetail</code>.</p>
-        <div class="field-list">
-          <span class="field-tag missing">PVControlType</span>
-          <span class="field-tag missing">PVGlassThickness</span>
-          <span class="field-tag missing">PVMaterial</span>
-          <span class="field-tag missing">PVMounting</span>
-          <span class="field-tag missing">PVPanelArea</span>
-          <span class="field-tag missing">PVPanelAreaUnit</span>
-          <span class="field-tag missing">PVPanelYear</span>
-          <span class="field-tag missing">PVStowing</span>
-          <span class="field-tag missing">PVTiltAngle</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 3 -->
     <div class="gap-card">
       <div class="gap-card-header">
         <span class="sev-badge sev-warn">Warning</span>
-        <span class="gap-card-title">load_sql.py issues</span>
+        <span class="gap-card-title">Reinsurance normalised model not yet designed</span>
       </div>
       <div class="gap-card-body">
-        <p>Three issues in the Python load script that prevent a complete database load:</p>
-        <div class="table-wrap">
-          <table class="gap-table">
-            <thead><tr><th>Issue</th><th>Detail</th></tr></thead>
-            <tbody>
-              <tr>
-                <td>head(10) on location</td>
-                <td>Only 10 of 12,599 location rows are loaded into staging</td>
-              </tr>
-              <tr>
-                <td>usp_Database_Load commented out</td>
-                <td>The staging→normalised ETL procedure is never called; the DB stays empty after staging load</td>
-              </tr>
-              <tr>
-                <td>_staging_riinfo / _staging_riscope</td>
-                <td>Created dynamically by pandas with no schema; no downstream SQL uses them</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="gap-card">
-      <div class="gap-card-header">
-        <span class="sev-badge sev-warn">Warning</span>
-        <span class="gap-card-title">Account-level terms: TODO in schema</span>
-      </div>
-      <div class="gap-card-body">
-        <p>The SQL schema defines an <code>AccountTerm</code> junction table and includes all <code>AccDed*</code> / <code>AccLimit*</code> fields in <code>_import_account</code>, but <code>usp_Terms_Load</code> contains a <code>/* TO DO - Account Terms */</code> comment with no implementation. Account-level financial terms are never loaded.</p>
-        <p class="count-label">Affected: 36 Acc-level financial term columns in _import_account</p>
-      </div>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="gap-card">
-      <div class="gap-card-header">
-        <span class="sev-badge sev-warn">Warning</span>
-        <span class="gap-card-title">Systematic case mismatches (122 fields)</span>
-      </div>
-      <div class="gap-card-body">
-        <p>All spec fields are present in the import tables but use inconsistent capitalisation. SQL Server column names are case-insensitive at runtime, but tool or downstream code doing exact-match comparisons will fail. Patterns:</p>
-        <div class="table-wrap">
-          <table class="gap-table">
-            <thead><tr><th>Pattern</th><th>Spec</th><th>SQL</th><th>Count</th></tr></thead>
-            <tbody>
-              <tr><td>BI suffix</td><td>…4BI, BIPOI</td><td>…4Bi, Bipoi</td><td>32</td></tr>
-              <tr><td>PD suffix</td><td>…5PD</td><td>…5Pd</td><td>24</td></tr>
-              <tr><td>XX suffix</td><td>GeogSchemeXX</td><td>GeogSchemeXx</td><td>18</td></tr>
-              <tr><td>TIV / ID</td><td>BuildingTIV, BuildingID</td><td>BuildingTiv, BuildingId</td><td>14</td></tr>
-              <tr><td>Acronyms</td><td>LOB, URL, OEDVersion, CRMVendor, OSVendor, PolSIR</td><td>Lob, Url, OedVersion…</td><td>8</td></tr>
-              <tr><td>FEMA / EQ</td><td>FEMACompliance, SpecialEQConstruction</td><td>FemaCompliance…</td><td>4</td></tr>
-              <tr><td>Occupant</td><td>OccupantUnderfive</td><td>OccupantUnderFive</td><td>2</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 6 -->
-    <div class="gap-card">
-      <div class="gap-card-header">
-        <span class="sev-badge sev-info">Info</span>
-        <span class="gap-card-title">Occupant demographics not in normalised model</span>
-      </div>
-      <div class="gap-card-body">
-        <p>14 occupant demographic fields are present in <code>_import_location</code> (and in the spec) but are not mapped to <code>LocationDetail</code> or any other normalised table. They are silently dropped during the ETL.</p>
+        <p>Staging tables <code>_staging_riinfo</code> / <code>_staging_riscope</code> and import tables <code>_import_riinfo</code> / <code>_import_riscope</code> now exist with schema-enforced columns. However there is no normalised entity model for reinsurance — no <code>ReinsInfo</code> entity, no <code>ReinsScope</code> junction, no load procedures. Data enters staging and stops there.</p>
+        <p>Full RI normalised model to be designed collaboratively — treaty hierarchy, cedant/reinsurer entities, scope linkage to the location/policy hierarchy.</p>
         <div class="field-list">
-          <span class="field-tag extra">OccupantFemale</span>
-          <span class="field-tag extra">OccupantMale</span>
-          <span class="field-tag extra">OccupantOver65</span>
-          <span class="field-tag extra">OccupantUnderFive</span>
-          <span class="field-tag extra">OccupantAge5To65</span>
-          <span class="field-tag extra">OccupantUrban</span>
-          <span class="field-tag extra">OccupantRural</span>
-          <span class="field-tag extra">OccupantPoverty</span>
-          <span class="field-tag extra">OccupantRefugee</span>
-          <span class="field-tag extra">OccupantUnemployed</span>
-          <span class="field-tag extra">OccupantDisability</span>
-          <span class="field-tag extra">OccupantEthnicMinority</span>
-          <span class="field-tag extra">OccupantTemporary</span>
-          <span class="field-tag extra">OccupantOther</span>
-        </div>
-        <p style="margin-top:10px">Also dropped: <code>SoilLiquefiable</code>, <code>StaticMotorVehicle</code>, and the three Commodity fields.</p>
-      </div>
-    </div>
-
-    <!-- Card 7 -->
-    <div class="gap-card">
-      <div class="gap-card-header">
-        <span class="sev-badge sev-info">Info</span>
-        <span class="gap-card-title">Cyber &amp; step-function fields have no normalised home</span>
-      </div>
-      <div class="gap-card-body">
-        <p>Cyber and parametric step-function fields from the account file have no destination tables in the normalised schema. They pass through <code>_import_account</code> but are never inserted anywhere.</p>
-        <div class="field-list">
-          <span class="field-tag extra">CloudVendor</span>
-          <span class="field-tag extra">OsVendor</span>
-          <span class="field-tag extra">EmailVendor</span>
-          <span class="field-tag extra">CrmVendor</span>
-          <span class="field-tag extra">PatchPolicy</span>
-          <span class="field-tag extra">BackUpFreq</span>
-          <span class="field-tag extra">StepFunctionName</span>
-          <span class="field-tag extra">StepTriggerType</span>
-          <span class="field-tag extra">StepNumber</span>
-          <span class="field-tag extra">TriggerType</span>
-          <span class="field-tag extra">PayOutType</span>
-          <span class="field-tag extra">TriggerBuildingStart</span>
-          <span class="field-tag extra">TriggerBuildingEnd</span>
-          <span class="field-tag extra">PayOutBuildingStart</span>
-          <span class="field-tag extra">+ 8 more step fields</span>
+          <span class="field-tag extra">ReinsNumber</span>
+          <span class="field-tag extra">ReinsType</span>
+          <span class="field-tag extra">InuringPriority</span>
+          <span class="field-tag extra">OccAttachment / OccLimit</span>
+          <span class="field-tag extra">AggAttachment / AggLimit</span>
+          <span class="field-tag extra">RiskLevel</span>
+          <span class="field-tag extra">+ 26 more ReinsInfo fields</span>
+          <span class="field-tag extra">LocGroup / ReinsTag</span>
+          <span class="field-tag extra">+ 11 more ReinsScope fields</span>
         </div>
       </div>
     </div>
 
-    <!-- Card 8 -->
     <div class="gap-card">
       <div class="gap-card-header">
         <span class="sev-badge sev-info">Info</span>
         <span class="gap-card-title">Specialty coverage terms not mapped to Term system</span>
       </div>
       <div class="gap-card-body">
-        <p>The spec defines coverage-specific Pol limits/deductibles beyond the standard six coverage types (Building, Other, Contents, BI, PD, All). These are in <code>_import_account</code> but have no term-level mapping in <code>usp_Terms_Load</code> because they don't correspond to <code>CoverageTypeId</code> 1–6.</p>
+        <p>The spec defines Pol-level limits/deductibles beyond the six standard coverage types. These columns are in <code>_import_account</code> but cannot be loaded by <code>usp_Terms_Load</code> because they have no corresponding <code>CoverageTypeId</code> (1–6) in the term hierarchy.</p>
         <div class="field-list">
           <span class="field-tag extra">PolLimitNPBI / PolDedNPBI</span>
           <span class="field-tag extra">PolLimitCBI / PolDedCBI</span>
@@ -455,7 +371,135 @@ table.gap-table tr:last-child td { border-bottom: none; }
       </div>
     </div>
 
-  </div><!-- /gap-grid -->
+    <div class="gap-card">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-info">Info · deferred</span>
+        <span class="gap-card-title">Occupant demographics dropped from normalised model</span>
+      </div>
+      <div class="gap-card-body">
+        <p>14 occupant demographic fields pass through <code>_import_location</code> but are not mapped to <code>LocationDetail</code> or any normalised table — silently dropped at ETL time. Also dropped: <code>SoilLiquefiable</code>, <code>StaticMotorVehicle</code>, and three Commodity fields.</p>
+        <div class="field-list">
+          <span class="field-tag extra">OccupantFemale</span>
+          <span class="field-tag extra">OccupantMale</span>
+          <span class="field-tag extra">OccupantOver65</span>
+          <span class="field-tag extra">OccupantUnderfive</span>
+          <span class="field-tag extra">OccupantAge5to65</span>
+          <span class="field-tag extra">OccupantUrban</span>
+          <span class="field-tag extra">OccupantRural</span>
+          <span class="field-tag extra">OccupantPoverty</span>
+          <span class="field-tag extra">OccupantRefugee</span>
+          <span class="field-tag extra">OccupantUnemployed</span>
+          <span class="field-tag extra">OccupantDisability</span>
+          <span class="field-tag extra">OccupantEthnicMinority</span>
+          <span class="field-tag extra">OccupantTemporary</span>
+          <span class="field-tag extra">OccupantOther</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-info">Info · deferred</span>
+        <span class="gap-card-title">Cyber fields have no normalised destination</span>
+      </div>
+      <div class="gap-card-body">
+        <p>Six cyber-risk fields from the account file pass through <code>_import_account</code> but are never inserted into any normalised table. No cyber entity or extension table has been designed.</p>
+        <div class="field-list">
+          <span class="field-tag extra">CloudVendor</span>
+          <span class="field-tag extra">OSVendor</span>
+          <span class="field-tag extra">EmailVendor</span>
+          <span class="field-tag extra">CRMVendor</span>
+          <span class="field-tag extra">PatchPolicy</span>
+          <span class="field-tag extra">BackUpFreq</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /gap-grid remaining -->
+
+  <!-- ── RESOLVED IN #279 ───────────────────────── -->
+  <div class="gap-subhead" style="margin-top:32px">Resolved in PR #279</div>
+  <div class="gap-grid">
+
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">Reinsurance tables entirely absent</span>
+      </div>
+      <div class="gap-card-body">
+        <p><code>_staging_riinfo</code> (31 cols), <code>_staging_riscope</code> (13 cols), <code>_import_riinfo</code>, and <code>_import_riscope</code> added with schema-enforced column definitions matching the spec. Both wired into <code>usp_Database_Load</code> via <code>usp_SourceTable_Load</code>.</p>
+      </div>
+    </div>
+
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">9 PV fields missing from _import_location</span>
+      </div>
+      <div class="gap-card-body">
+        <p>All nine photovoltaic panel fields added to both <code>_import_location</code> and <code>LocationDetail</code> with correct SQL Server types.</p>
+        <div class="field-list">
+          <span class="field-tag">PVControlType</span>
+          <span class="field-tag">PVGlassThickness</span>
+          <span class="field-tag">PVMaterial</span>
+          <span class="field-tag">PVMounting</span>
+          <span class="field-tag">PVPanelArea</span>
+          <span class="field-tag">PVPanelAreaUnit</span>
+          <span class="field-tag">PVPanelYear</span>
+          <span class="field-tag">PVStowing</span>
+          <span class="field-tag">PVTiltAngle</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">Systematic case mismatches (134 columns)</span>
+      </div>
+      <div class="gap-card-body">
+        <p>134 column names renamed to match spec casing exactly across <code>_import_account</code> (82), <code>_import_location</code> (39), <code>PolicyDetails</code> (1), <code>LocationDetail</code> (12). Patterns fixed: <code>4Bi→4BI</code>, <code>5Pd→5PD</code>, <code>Xx→XX</code>, <code>Tiv→TIV</code>, <code>Lob→LOB</code>, <code>OedVersion→OEDVersion</code>, and others.</p>
+      </div>
+    </div>
+
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">Account-level terms: TODO in schema</span>
+      </div>
+      <div class="gap-card-body">
+        <p>Added <code>AccountCoverageTerm</code> and <code>AccountPDTerm</code> junction tables. Added 6 <code>vw_account_terms_*</code> views (Building through All) plus <code>vw_level_11/12/13_term</code>. Replaced the TODO comment in <code>usp_Terms_Load</code> with full account-term loading logic that populates all three junction tables and fans down to <code>ItemTerm</code> via Account→Location→Coverage.</p>
+      </div>
+    </div>
+
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">load_sql.py issues</span>
+      </div>
+      <div class="gap-card-body">
+        <p><code>.head(10)</code> removed from the location CSV read — all rows now loaded. <code>usp_Database_Load</code> call uncommented so the staging→normalised ETL runs. RI staging table names already matched the new schema definitions.</p>
+      </div>
+    </div>
+
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">Step-function fields have no normalised home</span>
+      </div>
+      <div class="gap-card-body">
+        <p>New <code>StepPolicy</code> table (FK to <code>Policy</code>, 32 columns) stores all parametric step-function fields per policy step. New <code>usp_StepPolicy_Load</code> procedure loads from <code>_import_account</code> rows where <code>StepFunctionName IS NOT NULL</code> and is called from <code>usp_Database_Load</code>.</p>
+        <div class="field-list">
+          <span class="field-tag">StepFunctionName</span>
+          <span class="field-tag">StepNumber</span>
+          <span class="field-tag">TriggerBuildingStart/End</span>
+          <span class="field-tag">PayOutBuildingStart/End/Limit</span>
+          <span class="field-tag">+ 26 more</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /gap-grid resolved -->
 </div>
 
 <script>
@@ -606,10 +650,36 @@ const tables = [
   { id:'PDTerm',                g:'term', x:800,  y:715, fields:[{n:'PdTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'LocationId',r:'fk'}]},
   { id:'ItemTerm',              g:'term', x:995,  y:715, fields:[{n:'ItemTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'ItemId',r:'fk'}]},
   // ── Staging ───────────────────────────────────────────────────────
-  { id:'_import_account',  g:'stage', x:15,  y:800, fields:[{n:'286 OED Acc file fields',r:'data'},{n:'(flat, no PK)',r:'data'}]},
-  { id:'_import_location', g:'stage', x:210, y:800, fields:[{n:'234 OED Loc file fields',r:'data'},{n:'(flat, no PK)',r:'data'}]},
-  { id:'_businesskeys_*',  g:'stage', x:405, y:800, fields:[{n:'account / policy / layer',r:'data'},{n:'location / condition',r:'data'}]},
-  { id:'OEDVersion',       g:'stage', x:600, y:800, fields:[{n:'OedVersion',r:'data'}]},
+  { id:'_import_account',  g:'stage', x:15,  y:840, fields:[{n:'286 OED Acc file fields',r:'data'},{n:'(flat, no PK)',r:'data'}]},
+  { id:'_import_location', g:'stage', x:210, y:840, fields:[{n:'243 OED Loc file fields',r:'data'},{n:'(+9 PV, flat, no PK)',r:'data'}]},
+  { id:'_businesskeys_*',  g:'stage', x:405, y:840, fields:[{n:'account / policy / layer',r:'data'},{n:'location / condition',r:'data'}]},
+  { id:'OEDVersion',       g:'stage', x:600, y:840, fields:[{n:'OEDVersion',r:'data'}]},
+  { id:'_staging_riinfo',  g:'stage', x:800, y:840, fields:[{n:'31 ReinsInfo fields',r:'data'},{n:'(schema-enforced)',r:'data'}]},
+  { id:'_staging_riscope', g:'stage', x:1000,y:840, fields:[{n:'13 ReinsScope fields',r:'data'},{n:'(schema-enforced)',r:'data'}]},
+  // New tables from PR #279
+  { id:'StepPolicy',       g:'hier',  x:210, y:320, fields:[
+    {n:'StepPolicyId',     r:'pk'},
+    {n:'PolicyId',         r:'fk'},
+    {n:'StepFunctionName', r:'key'},
+    {n:'StepNumber',       r:'data'},
+    {n:'30 step-fn fields',r:'data'},
+  ]},
+  { id:'AccountCoverageTerm', g:'term', x:1190, y:215, fields:[
+    {n:'AccountCoverageTermId', r:'pk'},
+    {n:'TermId',    r:'fk'},
+    {n:'AccountId', r:'fk'},
+    {n:'CoverageTypeId', r:'fk'},
+  ]},
+  { id:'AccountPDTerm', g:'term', x:1190, y:340, fields:[
+    {n:'AccountPDTermId', r:'pk'},
+    {n:'TermId',    r:'fk'},
+    {n:'AccountId', r:'fk'},
+  ]},
+  { id:'StepPolicyTerm', g:'term', x:1190, y:460, fields:[
+    {n:'StepPolicyTermId', r:'pk'},
+    {n:'TermId',           r:'fk'},
+    {n:'StepPolicyId',     r:'fk'},
+  ]},
 ];
 
 // ── Connections ───────────────────────────────────────────────────────────────
@@ -652,6 +722,14 @@ const conns = [
   // Staging dashed feeds
   {f:'_import_account',  t:'Account',  fS:'t', tS:'b', dashed:true, curve:true},
   {f:'_import_location', t:'Location', fS:'t', tS:'b', dashed:true, curve:true},
+  // New: StepPolicy
+  {f:'Policy', t:'StepPolicy', fS:'l', tS:'r', curve:true},
+  // New: Account term junctions
+  {f:'Term', t:'AccountCoverageTerm', fS:'r', tS:'t', curve:true},
+  {f:'Term', t:'AccountPDTerm',       fS:'r', tS:'t', curve:true},
+  // New: StepPolicyTerm
+  {f:'Term',       t:'StepPolicyTerm', fS:'r', tS:'t', curve:true},
+  {f:'StepPolicy', t:'StepPolicyTerm', fS:'r', tS:'l', curve:true},
 ];
 
 // ── Compute card heights ──────────────────────────────────────────────────────
@@ -776,19 +854,19 @@ tables.forEach(t => {
 });
 
 // ── Term column label ─────────────────────────────────────────────────────────
-text('TERM JUNCTIONS  (10 levels)', 800, 208,
+text('TERM JUNCTIONS  (14 levels)', 800, 208,
   {fill:'#3d4870', 'font-size':'9', 'font-weight':'700', 'letter-spacing':'.1em',
    'text-transform':'uppercase', 'font-family':'ui-sans-serif,system-ui,sans-serif'}, svg);
 
 // ── Vertical separator ────────────────────────────────────────────────────────
-el('line', {x1:'785', y1:'5', x2:'785', y2:'810',
+el('line', {x1:'785', y1:'5', x2:'785', y2:'830',
   stroke:'#2a3050', 'stroke-width':'1', 'stroke-dasharray':'4,4'}, svg);
 
 // ── Zone labels ───────────────────────────────────────────────────────────────
 [
   {label:'INSURANCE HIERARCHY', x:195, y:8},
   {label:'LOCATION & COVERAGE', x:245, y:433},
-  {label:'STAGING / ETL', x:230, y:793},
+  {label:'STAGING / ETL  (RI: staging only, no normalised model)', x:530, y:833},
 ].forEach(({label, x, y}) => {
   text(label, x, y, {fill:'#2d3454', 'font-size':'9', 'font-weight':'700',
     'letter-spacing':'.12em', 'font-family':'ui-sans-serif,system-ui,sans-serif',

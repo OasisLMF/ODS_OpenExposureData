@@ -381,6 +381,17 @@ CREATE TABLE [dbo].[StepPolicy] (
 );
 GO
 
+
+CREATE TABLE [dbo].[StepPolicyTerm] (
+    [StepPolicyTermId] INT NOT NULL,
+    [TermId]           INT NOT NULL,
+    [StepPolicyId]     INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([StepPolicyTermId] ASC),
+    CONSTRAINT [FK_term_TO_steppolicyterm] FOREIGN KEY ([TermId]) REFERENCES [dbo].[Term] ([TermId]),
+    CONSTRAINT [FK_steppolicy_TO_steppolicyterm] FOREIGN KEY ([StepPolicyId]) REFERENCES [dbo].[StepPolicy] ([StepPolicyId])
+);
+GO
+
 CREATE TABLE [dbo].[Item] (
     [ItemId]     INT NOT NULL,
     [CoverageId] INT NOT NULL,
@@ -2102,6 +2113,38 @@ AS
     FROM    vw_account_terms_6All
 GO
 
+CREATE VIEW vw_step_policy_terms
+AS
+    SELECT  sp.StepPolicyId,
+            sp.PolicyId,
+            14 AS TermLevel,
+            1  AS TermCoverageType,
+            sp.DeductibleBuilding    AS Deductible,
+            sp.PayOutLimitBuilding   AS [Limit]
+    FROM    StepPolicy sp
+    WHERE   sp.DeductibleBuilding IS NOT NULL
+         OR sp.PayOutLimitBuilding IS NOT NULL
+    UNION ALL
+    SELECT  sp.StepPolicyId, sp.PolicyId, 14, 3,
+            sp.DeductibleContents, sp.PayOutLimitContents
+    FROM    StepPolicy sp
+    WHERE   sp.DeductibleContents IS NOT NULL
+         OR sp.PayOutLimitContents IS NOT NULL
+    UNION ALL
+    SELECT  sp.StepPolicyId, sp.PolicyId, 14, 6,
+            sp.DeductibleBuildingContents, sp.PayOutLimitBuildingContents
+    FROM    StepPolicy sp
+    WHERE   sp.DeductibleBuildingContents IS NOT NULL
+         OR sp.PayOutLimitBuildingContents IS NOT NULL
+GO
+
+CREATE VIEW vw_level_14_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY StepPolicyId, TermCoverageType) AS tmpTermId,
+            *
+    FROM    vw_step_policy_terms
+GO
+
 CREATE VIEW vw_item_detail
 AS
     SELECT  i.ItemId,
@@ -3412,6 +3455,62 @@ END
 
 GO
 
+CREATE PROCEDURE [dbo].[usp_StepPolicyTerm_Load]
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @StartTermId INT = ISNULL((SELECT MAX(TermId) FROM Term), 0)
+
+    CREATE TABLE #tmpstep_term (
+        [TermId]           INT,
+        [StepPolicyId]     INT,
+        [PolicyId]         INT,
+        [TermLevel]        INT,
+        [TermCoverageType] INT,
+        [Deductible]       FLOAT (53),
+        [Limit]            FLOAT (53)
+    )
+
+    INSERT INTO #tmpstep_term
+    SELECT  tmpTermId + @StartTermId AS TermId,
+            StepPolicyId, PolicyId, TermLevel, TermCoverageType,
+            Deductible, [Limit]
+    FROM    vw_level_14_term
+
+    INSERT INTO Term (TermId, TermLevel, TermCoverageType,
+            DedType, DedCode, Deductible, MinDeductible, MaxDeductible,
+            LimitType, LimitCode, [Limit], Participation)
+    SELECT DISTINCT
+            TermId, TermLevel, TermCoverageType,
+            NULL, NULL, Deductible, NULL, NULL,
+            NULL, NULL, [Limit], NULL
+    FROM    #tmpstep_term
+
+    INSERT INTO StepPolicyTerm (StepPolicyTermId, TermId, StepPolicyId)
+    SELECT  ROW_NUMBER() OVER (ORDER BY StepPolicyId, TermId) AS StepPolicyTermId,
+            TermId, StepPolicyId
+    FROM    #tmpstep_term
+
+    -- Fan down to ItemTerm via Policy → Account → Location → Coverage → Item
+    INSERT INTO ItemTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY st.TermId, i.ItemId)
+                + ISNULL((SELECT MAX(ItemTermId) FROM ItemTerm), 0) AS ItemTermId,
+            st.TermId,
+            i.ItemId
+    FROM    #tmpstep_term st
+    JOIN    Policy p  ON st.PolicyId = p.PolicyId
+    JOIN    Account a ON p.AccountId = a.AccountId
+    JOIN    Location l ON a.AccountId = l.AccountId
+    JOIN    Coverage c ON l.LocationId = c.LocationId
+                       AND c.CoverageTypeId = st.TermCoverageType
+    JOIN    Item i ON c.CoverageId = i.CoverageId
+
+    DROP TABLE #tmpstep_term
+
+END
+GO
+
 CREATE PROCEDURE [dbo].[usp_Database_Load]
 AS
 
@@ -3442,6 +3541,7 @@ BEGIN
     EXEC usp_Item_Load
     EXEC usp_ConditionLocation_Load
     EXEC usp_StepPolicy_Load
+    EXEC usp_StepPolicyTerm_Load
 
     -- terms
     EXEC usp_Terms_Load
