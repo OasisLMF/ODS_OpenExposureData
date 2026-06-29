@@ -331,11 +331,21 @@ table.gap-table tr:last-child td { border-bottom: none; }
 
     <div class="gap-card">
       <div class="gap-card-header">
-        <span class="sev-badge sev-info">Info</span>
-        <span class="gap-card-title">Specialty coverage terms not mapped to Term system</span>
+        <span class="sev-badge sev-info">Info · deferred</span>
+        <span class="gap-card-title">Cyber fields have no normalised destination</span>
       </div>
       <div class="gap-card-body">
-        <p>The spec defines Pol-level limits/deductibles beyond the six standard coverage types. These columns are in <code>_import_account</code> but cannot be loaded by <code>usp_Terms_Load</code> because they have no corresponding <code>CoverageTypeId</code> (1–6) in the term hierarchy.</p>
+        <p>Cyber-specific fields in the account file pass through <code>_import_account</code> but are never inserted into any normalised table. No cyber entity or extension table has been designed. This covers both the vendor/config attributes and the cyber-specific policy coverage terms — the latter have no corresponding <code>CoverageTypeId</code> (1–6) in the term hierarchy and so cannot be loaded by <code>usp_Terms_Load</code>.</p>
+        <p><strong>Vendor / config attributes</strong></p>
+        <div class="field-list">
+          <span class="field-tag extra">CloudVendor</span>
+          <span class="field-tag extra">OSVendor</span>
+          <span class="field-tag extra">EmailVendor</span>
+          <span class="field-tag extra">CRMVendor</span>
+          <span class="field-tag extra">PatchPolicy</span>
+          <span class="field-tag extra">BackUpFreq</span>
+        </div>
+        <p><strong>Cyber coverage terms (Pol-level limit / deductible pairs)</strong></p>
         <div class="field-list">
           <span class="field-tag extra">PolLimitNPBI / PolDedNPBI</span>
           <span class="field-tag extra">PolLimitCBI / PolDedCBI</span>
@@ -347,50 +357,6 @@ table.gap-table tr:last-child td { border-bottom: none; }
           <span class="field-tag extra">PolLimitREG / PolDedREG</span>
           <span class="field-tag extra">PolLimitENO / PolDedENO</span>
           <span class="field-tag extra">PolSIR</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="gap-card">
-      <div class="gap-card-header">
-        <span class="sev-badge sev-info">Info · deferred</span>
-        <span class="gap-card-title">Occupant demographics dropped from normalised model</span>
-      </div>
-      <div class="gap-card-body">
-        <p>14 occupant demographic fields pass through <code>_import_location</code> but are not mapped to <code>LocationDetail</code> or any normalised table — silently dropped at ETL time. Also dropped: <code>SoilLiquefiable</code>, <code>StaticMotorVehicle</code>, and three Commodity fields.</p>
-        <div class="field-list">
-          <span class="field-tag extra">OccupantFemale</span>
-          <span class="field-tag extra">OccupantMale</span>
-          <span class="field-tag extra">OccupantOver65</span>
-          <span class="field-tag extra">OccupantUnderfive</span>
-          <span class="field-tag extra">OccupantAge5to65</span>
-          <span class="field-tag extra">OccupantUrban</span>
-          <span class="field-tag extra">OccupantRural</span>
-          <span class="field-tag extra">OccupantPoverty</span>
-          <span class="field-tag extra">OccupantRefugee</span>
-          <span class="field-tag extra">OccupantUnemployed</span>
-          <span class="field-tag extra">OccupantDisability</span>
-          <span class="field-tag extra">OccupantEthnicMinority</span>
-          <span class="field-tag extra">OccupantTemporary</span>
-          <span class="field-tag extra">OccupantOther</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="gap-card">
-      <div class="gap-card-header">
-        <span class="sev-badge sev-info">Info · deferred</span>
-        <span class="gap-card-title">Cyber fields have no normalised destination</span>
-      </div>
-      <div class="gap-card-body">
-        <p>Six cyber-risk fields from the account file pass through <code>_import_account</code> but are never inserted into any normalised table. No cyber entity or extension table has been designed.</p>
-        <div class="field-list">
-          <span class="field-tag extra">CloudVendor</span>
-          <span class="field-tag extra">OSVendor</span>
-          <span class="field-tag extra">EmailVendor</span>
-          <span class="field-tag extra">CRMVendor</span>
-          <span class="field-tag extra">PatchPolicy</span>
-          <span class="field-tag extra">BackUpFreq</span>
         </div>
       </div>
     </div>

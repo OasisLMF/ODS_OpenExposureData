@@ -106,11 +106,11 @@ GO
 CREATE TABLE [dbo].[Condition] (
     [ConditionId]  INT         NOT NULL,
     [PolicyId]     INT         NOT NULL,
-    [CondNumber]   VARCHAR (1) NULL,
-    [CondName]     VARCHAR (1) NULL,
+    [CondNumber]   VARCHAR (20) NULL,
+    [CondName]     VARCHAR (100) NULL,
     [CondPriority] INT         NULL,
     [CondClass]    INT         NULL,
-    [CondTag]      VARCHAR (1) NULL,
+    [CondTag]      VARCHAR (20) NULL,
     PRIMARY KEY CLUSTERED ([ConditionId] ASC),
     CONSTRAINT [FK_policy_TO_condition] FOREIGN KEY ([PolicyId]) REFERENCES [dbo].[Policy] ([PolicyId])
 );
@@ -149,7 +149,7 @@ GO
 
 CREATE TABLE [dbo].[LocationDetail] (
     [LocationId]                 INT         NOT NULL,
-    [LocName]                    NVARCHAR (20) NULL,
+    [LocName]                    NVARCHAR (200) NULL,
     [CorrelationGroup]           INT NULL,
     [IsPrimary]                  TINYINT NULL,
     [IsTenant]                   TINYINT NULL,
@@ -810,7 +810,7 @@ CREATE TABLE [dbo].[_import_account] (
     [CondLimit6All]                FLOAT (53)     NULL,
     [CondClass]                    TINYINT        NULL,
     [CondTag]                      VARCHAR (20)   NULL,
-    [OEDVersion]                   VARCHAR (10)   NULL,
+    [OEDVersion]                   VARCHAR (20)   NULL,
     [OriginalCurrency]             CHAR (3)       NULL,
     [RateOfExchange]               FLOAT (53)     NULL,
     [AccParticipation]             FLOAT (53)     NULL,
@@ -881,7 +881,7 @@ CREATE TABLE [dbo].[_import_location] (
     [PortNumber]                 VARCHAR (20)   NULL,
     [AccNumber]                  NVARCHAR (40)  NULL,
     [LocNumber]                  NVARCHAR (20)  NULL,
-    [LocName]                    NVARCHAR (20)  NULL,
+    [LocName]                    NVARCHAR (200) NULL,
     [LocGroup]                   NVARCHAR (20)  NULL,
     [CorrelationGroup]           INT            NULL,
     [IsPrimary]                  TINYINT        NULL,
@@ -1074,7 +1074,7 @@ CREATE TABLE [dbo].[_import_location] (
     [Payroll]                    INT            NULL,
     [StaticMotorVehicle]         TINYINT        NULL,
     [CondTag]                    VARCHAR (20)   NULL,
-    [OEDVersion]                 VARCHAR (10)   NULL,
+    [OEDVersion]                 VARCHAR (20)   NULL,
     [IsAggregate]                TINYINT        NULL,
     [OccupantPeriod]             TINYINT        NULL,
     [SoilType]                   TINYINT        NULL,
@@ -1183,7 +1183,7 @@ GO
 CREATE TABLE [dbo].[ReinsInfo] (
     [ReinsInfoId]          INT           NOT NULL,
     [ReinsNumber]          INT           NOT NULL,
-    [ReinsName]            VARCHAR (30)  NULL,
+    [ReinsName]            VARCHAR (200) NULL,
     [ReinsLayerNumber]     INT           NULL,
     [ReinsType]            VARCHAR (3)   NULL,    -- FAC/QS/SS/PR/CXL/AXL
     [ReinsPeril]           VARCHAR (250) NULL,
@@ -1272,7 +1272,7 @@ GO
 
 CREATE TABLE [dbo].[_staging_riinfo] (
     [ReinsNumber]          INT            NULL,
-    [ReinsName]            VARCHAR (30)   NULL,
+    [ReinsName]            VARCHAR (200)  NULL,
     [ReinsLayerNumber]     INT            NULL,
     [ReinsPeril]           VARCHAR (250)  NULL,
     [ReinsInceptionDate]   SMALLDATETIME  NULL,
@@ -1302,7 +1302,7 @@ CREATE TABLE [dbo].[_staging_riinfo] (
     [RiskLevel]            CHAR (3)       NULL,
     [OriginalCurrency]     CHAR (3)       NULL,
     [RateOfExchange]       FLOAT (53)     NULL,
-    [OEDVersion]           VARCHAR (10)   NULL
+    [OEDVersion]           VARCHAR (20)   NULL
 );
 GO
 
@@ -1319,13 +1319,13 @@ CREATE TABLE [dbo].[_staging_riscope] (
     [CountryCode]   CHAR (2)       NULL,
     [ReinsTag]      VARCHAR (20)   NULL,
     [CededPercent]  FLOAT (53)     NULL,
-    [OEDVersion]    VARCHAR (10)   NULL
+    [OEDVersion]    VARCHAR (20)   NULL
 );
 GO
 
 CREATE TABLE [dbo].[_import_riinfo] (
     [ReinsNumber]          INT            NULL,
-    [ReinsName]            VARCHAR (30)   NULL,
+    [ReinsName]            VARCHAR (200)  NULL,
     [ReinsLayerNumber]     INT            NULL,
     [ReinsPeril]           VARCHAR (250)  NULL,
     [ReinsInceptionDate]   SMALLDATETIME  NULL,
@@ -1355,7 +1355,7 @@ CREATE TABLE [dbo].[_import_riinfo] (
     [RiskLevel]            CHAR (3)       NULL,
     [OriginalCurrency]     CHAR (3)       NULL,
     [RateOfExchange]       FLOAT (53)     NULL,
-    [OEDVersion]           VARCHAR (10)   NULL
+    [OEDVersion]           VARCHAR (20)   NULL
 );
 GO
 
@@ -1372,7 +1372,7 @@ CREATE TABLE [dbo].[_import_riscope] (
     [CountryCode]   CHAR (2)       NULL,
     [ReinsTag]      VARCHAR (20)   NULL,
     [CededPercent]  FLOAT (53)     NULL,
-    [OEDVersion]    VARCHAR (10)   NULL
+    [OEDVersion]    VARCHAR (20)   NULL
 );
 GO
 
@@ -2637,22 +2637,26 @@ BEGIN
         CondTag
         )
 
-    SELECT      DISTINCT bkc.ConditionId,
+    SELECT      bkc.ConditionId,
                 bkp.PolicyId,
-                ia.CondNumber,
+                bkc.CondNumber,
                 ia.CondName,
                 ia.CondPriority,
                 ia.CondClass,
                 ia.CondTag
     FROM        _businesskeys_condition bkc
-    JOIN        _businesskeys_policy bkp 
+    JOIN        _businesskeys_policy bkp
         ON      bkc.PortNumber = bkp.PortNumber
         AND     bkc.AccNumber = bkp.AccNumber
         AND     bkc.PolNumber = bkp.PolNumber
-    JOIN        _import_account ia
-        ON      bkc.PortNumber = ia.PortNumber
-        AND     bkc.AccNumber = ia.AccNumber
-        AND     bkc.PolNumber = ia.PolNumber
+    CROSS APPLY (
+                SELECT TOP 1 CondName, CondPriority, CondClass, CondTag
+                FROM _import_account ia2
+                WHERE ia2.PortNumber = bkc.PortNumber
+                  AND ia2.AccNumber  = bkc.AccNumber
+                  AND ia2.PolNumber  = bkc.PolNumber
+                  AND isnull(ia2.CondNumber, '') = isnull(bkc.CondNumber, '')
+                ) ia
 END
 
 GO
@@ -2871,7 +2875,7 @@ BEGIN
         [Peril]            VARCHAR(3),
         [TermLevel]        INT,
         [TermCoverageType] INT,
-        [TermPeril]        VARCHAR(50),
+        [TermPeril]        VARCHAR(250),
         [DedType]          INT,
         [DedCode]          INT,
         [Deductible]       FLOAT (53),
@@ -3081,7 +3085,8 @@ BEGIN
             tmpTermId + @StartTermId AS TermId,
             ConditionId,
             TermCoverageType AS CoverageTypeId
-    FROM    vw_level_4_term
+    FROM    vw_level_4_term t
+    WHERE   EXISTS (SELECT 1 FROM ConditionLocation CL WHERE CL.ConditionId = t.ConditionId)
 
     -- level 5
     SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
@@ -3130,7 +3135,8 @@ BEGIN
     SELECT  ROW_NUMBER() OVER (ORDER BY ConditionId, tmpTermId) AS ConditionPDTermId,
             tmpTermId + @StartTermId AS TermId,
             ConditionId
-    FROM    vw_level_5_term
+    FROM    vw_level_5_term t
+    WHERE   EXISTS (SELECT 1 FROM ConditionLocation CL WHERE CL.ConditionId = t.ConditionId)
         
 
     -- level 6
@@ -3179,7 +3185,8 @@ BEGIN
     SELECT  ROW_NUMBER() OVER (ORDER BY ConditionId, tmpTermId) AS ConditionTermId,
             tmpTermId + @StartTermId AS TermId,
             ConditionId
-    FROM    vw_level_6_term
+    FROM    vw_level_6_term t
+    WHERE   EXISTS (SELECT 1 FROM ConditionLocation CL WHERE CL.ConditionId = t.ConditionId)
 
     -- level 7
     SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
@@ -3393,11 +3400,12 @@ BEGIN
 
 
     INSERT INTO ItemTerm
-    SELECT  ROW_NUMBER() OVER (ORDER BY TermId, ItemId) AS ItemTermId,
-            TermId,
-            ItemId
+    SELECT  ROW_NUMBER() OVER (ORDER BY ttd.TermId, id.ItemId)
+                + ISNULL((SELECT MAX(ItemTermId) FROM ItemTerm), 0) AS ItemTermId,
+            ttd.TermId,
+            id.ItemId
     FROM    #tmpterm_denormalised ttd
-    JOIN    vw_item_detail id 
+    JOIN    vw_item_detail id
                 ON  ttd.LocationId = id.LocationId
                 AND ttd.CoverageTypeId = id.CoverageTypeId
                 AND ttd.Peril = id.Peril
@@ -3760,6 +3768,12 @@ BEGIN
     SET NOCOUNT ON
 
     -- clear normalised tables in child-first FK order so re-runs are idempotent
+    -- clear import tables so re-runs don't accumulate rows from prior executions
+    TRUNCATE TABLE [dbo].[_import_location]
+    TRUNCATE TABLE [dbo].[_import_account]
+    TRUNCATE TABLE [dbo].[_import_riinfo]
+    TRUNCATE TABLE [dbo].[_import_riscope]
+
     DELETE FROM [dbo].[ItemTerm]
     DELETE FROM [dbo].[StepPolicyTerm]
     DELETE FROM [dbo].[AccountCoverageTerm]
