@@ -382,16 +382,6 @@ CREATE TABLE [dbo].[StepPolicy] (
 GO
 
 
-CREATE TABLE [dbo].[StepPolicyTerm] (
-    [StepPolicyTermId] INT NOT NULL,
-    [TermId]           INT NOT NULL,
-    [StepPolicyId]     INT NOT NULL,
-    PRIMARY KEY CLUSTERED ([StepPolicyTermId] ASC),
-    CONSTRAINT [FK_term_TO_steppolicyterm] FOREIGN KEY ([TermId]) REFERENCES [dbo].[Term] ([TermId]),
-    CONSTRAINT [FK_steppolicy_TO_steppolicyterm] FOREIGN KEY ([StepPolicyId]) REFERENCES [dbo].[StepPolicy] ([StepPolicyId])
-);
-GO
-
 CREATE TABLE [dbo].[Item] (
     [ItemId]     INT NOT NULL,
     [CoverageId] INT NOT NULL,
@@ -423,6 +413,16 @@ GO
 CREATE TABLE [dbo].[TermCoverageType] (
     [TermCoverageTypeId] INT        NOT NULL,
     [CoverageTypeId]     INT        NOT NULL
+);
+GO
+
+CREATE TABLE [dbo].[StepPolicyTerm] (
+    [StepPolicyTermId] INT NOT NULL,
+    [TermId]           INT NOT NULL,
+    [StepPolicyId]     INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([StepPolicyTermId] ASC),
+    CONSTRAINT [FK_term_TO_steppolicyterm] FOREIGN KEY ([TermId]) REFERENCES [dbo].[Term] ([TermId]),
+    CONSTRAINT [FK_steppolicy_TO_steppolicyterm] FOREIGN KEY ([StepPolicyId]) REFERENCES [dbo].[StepPolicy] ([StepPolicyId])
 );
 GO
 
@@ -1928,138 +1928,6 @@ AS
     FROM    vw_layer_terms
 
 GO
-
-
-
-    -- level 11 (Account Coverage: Building, Other, Contents, BI)
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
-
-    CREATE TABLE #tmpacc_term (
-        [TermId]           INT,
-        [AccountId]        INT,
-        [CoverageTypeId]   INT,
-        [Peril]            VARCHAR(3),
-        [TermLevel]        INT,
-        [TermCoverageType] INT,
-        [TermPeril]        VARCHAR(250),
-        [DedType]          INT,
-        [DedCode]          INT,
-        [Deductible]       FLOAT (53),
-        [MinDeductible]    FLOAT (53),
-        [MaxDeductible]    FLOAT (53),
-        [LimitType]        INT,
-        [LimitCode]        INT,
-        [Limit]            FLOAT (53),
-        [Participation]    FLOAT (53)
-    )
-
-    INSERT INTO #tmpacc_term
-    SELECT  t.tmpTermId + @StartTermId AS TermId,
-            t.AccountId,
-            tct.CoverageTypeId,
-            TRIM(spl.value) AS Peril,
-            t.TermLevel,
-            t.TermCoverageType,
-            t.AccPeril AS TermPeril,
-            t.DedType, t.DedCode, t.Deductible, t.MinDeductible, t.MaxDeductible,
-            t.LimitType, t.LimitCode, t.[Limit], t.Participation
-    FROM    vw_level_11_term AS t
-    CROSS APPLY STRING_SPLIT(t.AccPeril, ';') AS spl
-    JOIN    TermCoverageType AS tct ON t.TermCoverageType = tct.TermCoverageTypeId
-
-    INSERT INTO Term
-    SELECT DISTINCT [TermId], [TermLevel], [TermCoverageType],
-            [DedType], [DedCode], [Deductible], [MinDeductible], [MaxDeductible],
-            [LimitType], [LimitCode], [Limit], [Participation]
-    FROM    #tmpacc_term
-    WHERE   TermLevel = 11
-
-    INSERT INTO AccountCoverageTerm
-    SELECT  ROW_NUMBER() OVER (ORDER BY AccountId, tmpTermId, TermCoverageType) AS AccountCoverageTermId,
-            tmpTermId + @StartTermId AS TermId,
-            AccountId,
-            TermCoverageType AS CoverageTypeId
-    FROM    vw_level_11_term
-
-    -- level 12 (Account PD)
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
-
-    INSERT INTO #tmpacc_term
-    SELECT  t.tmpTermId + @StartTermId AS TermId,
-            t.AccountId,
-            tct.CoverageTypeId,
-            TRIM(spl.value) AS Peril,
-            t.TermLevel,
-            t.TermCoverageType,
-            t.AccPeril AS TermPeril,
-            t.DedType, t.DedCode, t.Deductible, t.MinDeductible, t.MaxDeductible,
-            t.LimitType, t.LimitCode, t.[Limit], t.Participation
-    FROM    vw_level_12_term AS t
-    CROSS APPLY STRING_SPLIT(t.AccPeril, ';') AS spl
-    JOIN    TermCoverageType AS tct ON t.TermCoverageType = tct.TermCoverageTypeId
-
-    INSERT INTO Term
-    SELECT DISTINCT [TermId], [TermLevel], [TermCoverageType],
-            [DedType], [DedCode], [Deductible], [MinDeductible], [MaxDeductible],
-            [LimitType], [LimitCode], [Limit], [Participation]
-    FROM    #tmpacc_term
-    WHERE   TermLevel = 12
-
-    INSERT INTO AccountPDTerm
-    SELECT  ROW_NUMBER() OVER (ORDER BY AccountId, tmpTermId) AS AccountPDTermId,
-            tmpTermId + @StartTermId AS TermId,
-            AccountId
-    FROM    vw_level_12_term
-
-    -- level 13 (Account All)
-    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
-
-    INSERT INTO #tmpacc_term
-    SELECT  t.tmpTermId + @StartTermId AS TermId,
-            t.AccountId,
-            tct.CoverageTypeId,
-            TRIM(spl.value) AS Peril,
-            t.TermLevel,
-            t.TermCoverageType,
-            t.AccPeril AS TermPeril,
-            t.DedType, t.DedCode, t.Deductible, t.MinDeductible, t.MaxDeductible,
-            t.LimitType, t.LimitCode, t.[Limit], t.Participation
-    FROM    vw_level_13_term AS t
-    CROSS APPLY STRING_SPLIT(t.AccPeril, ';') AS spl
-    JOIN    TermCoverageType AS tct ON t.TermCoverageType = tct.TermCoverageTypeId
-
-    INSERT INTO Term
-    SELECT DISTINCT [TermId], [TermLevel], [TermCoverageType],
-            [DedType], [DedCode], [Deductible], [MinDeductible], [MaxDeductible],
-            [LimitType], [LimitCode], [Limit], [Participation]
-    FROM    #tmpacc_term
-    WHERE   TermLevel = 13
-
-    INSERT INTO AccountTerm
-    SELECT  ROW_NUMBER() OVER (ORDER BY AccountId, tmpTermId) AS AccountTermId,
-            tmpTermId + @StartTermId AS TermId,
-            AccountId
-    FROM    vw_level_13_term
-
-    -- Link account-level terms to items via Account → Location → Coverage chain
-    INSERT INTO ItemTerm
-    SELECT  ROW_NUMBER() OVER (ORDER BY at2.TermId, id.ItemId)
-                + ISNULL((SELECT MAX(ItemTermId) FROM ItemTerm), 0) AS ItemTermId,
-            at2.TermId,
-            id.ItemId
-    FROM    #tmpacc_term AS at2
-    JOIN    Account a ON at2.AccountId = a.AccountId
-    JOIN    Location l ON a.AccountId = l.AccountId
-    JOIN    vw_item_detail id
-                ON  id.LocationId = l.LocationId
-                AND id.CoverageTypeId = at2.CoverageTypeId
-                AND id.Peril = at2.Peril
-
-    DROP TABLE #tmpacc_term
-
-
-
-
 CREATE VIEW vw_account_terms_1Building
 AS
     SELECT  DISTINCT AccountId,
@@ -3499,6 +3367,132 @@ BEGIN
                 AND ttd.Peril = id.Peril
 
 
+    -- level 11 (Account Coverage: Building, Other, Contents, BI)
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
+
+    CREATE TABLE #tmpacc_term (
+        [TermId]           INT,
+        [AccountId]        INT,
+        [CoverageTypeId]   INT,
+        [Peril]            VARCHAR(3),
+        [TermLevel]        INT,
+        [TermCoverageType] INT,
+        [TermPeril]        VARCHAR(250),
+        [DedType]          INT,
+        [DedCode]          INT,
+        [Deductible]       FLOAT (53),
+        [MinDeductible]    FLOAT (53),
+        [MaxDeductible]    FLOAT (53),
+        [LimitType]        INT,
+        [LimitCode]        INT,
+        [Limit]            FLOAT (53),
+        [Participation]    FLOAT (53)
+    )
+
+    INSERT INTO #tmpacc_term
+    SELECT  t.tmpTermId + @StartTermId AS TermId,
+            t.AccountId,
+            tct.CoverageTypeId,
+            TRIM(spl.value) AS Peril,
+            t.TermLevel,
+            t.TermCoverageType,
+            t.AccPeril AS TermPeril,
+            t.DedType, t.DedCode, t.Deductible, t.MinDeductible, t.MaxDeductible,
+            t.LimitType, t.LimitCode, t.[Limit], t.Participation
+    FROM    vw_level_11_term AS t
+    CROSS APPLY STRING_SPLIT(t.AccPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct ON t.TermCoverageType = tct.TermCoverageTypeId
+
+    INSERT INTO Term
+    SELECT DISTINCT [TermId], [TermLevel], [TermCoverageType],
+            [DedType], [DedCode], [Deductible], [MinDeductible], [MaxDeductible],
+            [LimitType], [LimitCode], [Limit], [Participation]
+    FROM    #tmpacc_term
+    WHERE   TermLevel = 11
+
+    INSERT INTO AccountCoverageTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY AccountId, tmpTermId, TermCoverageType) AS AccountCoverageTermId,
+            tmpTermId + @StartTermId AS TermId,
+            AccountId,
+            TermCoverageType AS CoverageTypeId
+    FROM    vw_level_11_term
+
+    -- level 12 (Account PD)
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
+
+    INSERT INTO #tmpacc_term
+    SELECT  t.tmpTermId + @StartTermId AS TermId,
+            t.AccountId,
+            tct.CoverageTypeId,
+            TRIM(spl.value) AS Peril,
+            t.TermLevel,
+            t.TermCoverageType,
+            t.AccPeril AS TermPeril,
+            t.DedType, t.DedCode, t.Deductible, t.MinDeductible, t.MaxDeductible,
+            t.LimitType, t.LimitCode, t.[Limit], t.Participation
+    FROM    vw_level_12_term AS t
+    CROSS APPLY STRING_SPLIT(t.AccPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct ON t.TermCoverageType = tct.TermCoverageTypeId
+
+    INSERT INTO Term
+    SELECT DISTINCT [TermId], [TermLevel], [TermCoverageType],
+            [DedType], [DedCode], [Deductible], [MinDeductible], [MaxDeductible],
+            [LimitType], [LimitCode], [Limit], [Participation]
+    FROM    #tmpacc_term
+    WHERE   TermLevel = 12
+
+    INSERT INTO AccountPDTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY AccountId, tmpTermId) AS AccountPDTermId,
+            tmpTermId + @StartTermId AS TermId,
+            AccountId
+    FROM    vw_level_12_term
+
+    -- level 13 (Account All)
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
+
+    INSERT INTO #tmpacc_term
+    SELECT  t.tmpTermId + @StartTermId AS TermId,
+            t.AccountId,
+            tct.CoverageTypeId,
+            TRIM(spl.value) AS Peril,
+            t.TermLevel,
+            t.TermCoverageType,
+            t.AccPeril AS TermPeril,
+            t.DedType, t.DedCode, t.Deductible, t.MinDeductible, t.MaxDeductible,
+            t.LimitType, t.LimitCode, t.[Limit], t.Participation
+    FROM    vw_level_13_term AS t
+    CROSS APPLY STRING_SPLIT(t.AccPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct ON t.TermCoverageType = tct.TermCoverageTypeId
+
+    INSERT INTO Term
+    SELECT DISTINCT [TermId], [TermLevel], [TermCoverageType],
+            [DedType], [DedCode], [Deductible], [MinDeductible], [MaxDeductible],
+            [LimitType], [LimitCode], [Limit], [Participation]
+    FROM    #tmpacc_term
+    WHERE   TermLevel = 13
+
+    INSERT INTO AccountTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY AccountId, tmpTermId) AS AccountTermId,
+            tmpTermId + @StartTermId AS TermId,
+            AccountId
+    FROM    vw_level_13_term
+
+    -- Link account-level terms to items via Account → Location → Coverage chain
+    INSERT INTO ItemTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY at2.TermId, id.ItemId)
+                + ISNULL((SELECT MAX(ItemTermId) FROM ItemTerm), 0) AS ItemTermId,
+            at2.TermId,
+            id.ItemId
+    FROM    #tmpacc_term AS at2
+    JOIN    Account a ON at2.AccountId = a.AccountId
+    JOIN    Location l ON a.AccountId = l.AccountId
+    JOIN    vw_item_detail id
+                ON  id.LocationId = l.LocationId
+                AND id.CoverageTypeId = at2.CoverageTypeId
+                AND id.Peril = at2.Peril
+
+    DROP TABLE #tmpacc_term
+
     Drop Table #tmpterm_denormalised
 
 
@@ -3715,7 +3709,8 @@ BEGIN
             NULL, NULL, NULL, l.LocationId
     FROM    ReinsScope sc
     JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
-    JOIN    Location l ON l.LocGroup = sc.LocGroup
+    JOIN    LocationDetail ld ON ld.LocGroup = sc.LocGroup
+    JOIN    Location l ON l.LocationId = ld.LocationId
     WHERE   ri.RiskLevel = 'LGR'
         AND sc.LocGroup IS NOT NULL
         AND sc.LocGroup <> ''
@@ -3728,6 +3723,45 @@ AS
 
 BEGIN
     SET NOCOUNT ON
+
+    -- clear normalised tables in child-first FK order so re-runs are idempotent
+    DELETE FROM [dbo].[ItemTerm]
+    DELETE FROM [dbo].[StepPolicyTerm]
+    DELETE FROM [dbo].[AccountCoverageTerm]
+    DELETE FROM [dbo].[AccountPDTerm]
+    DELETE FROM [dbo].[AccountTerm]
+    DELETE FROM [dbo].[PolicyCoverageTerm]
+    DELETE FROM [dbo].[PolicyPDTerm]
+    DELETE FROM [dbo].[PolicyTerm]
+    DELETE FROM [dbo].[LayerTerm]
+    DELETE FROM [dbo].[LocTerm]
+    DELETE FROM [dbo].[PDTerm]
+    DELETE FROM [dbo].[CoverageTerm]
+    DELETE FROM [dbo].[ConditionCoverageTerm]
+    DELETE FROM [dbo].[ConditionPDTerm]
+    DELETE FROM [dbo].[ConditionTerm]
+    DELETE FROM [dbo].[Term]
+    DELETE FROM [dbo].[ReinsScopeLink]
+    DELETE FROM [dbo].[ReinsScope]
+    DELETE FROM [dbo].[ReinsInfo]
+    DELETE FROM [dbo].[Item]
+    DELETE FROM [dbo].[StepPolicy]
+    DELETE FROM [dbo].[ConditionLocation]
+    DELETE FROM [dbo].[Coverage]
+    DELETE FROM [dbo].[Condition]
+    DELETE FROM [dbo].[Layer]
+    DELETE FROM [dbo].[LocationDetail]
+    DELETE FROM [dbo].[Location]
+    DELETE FROM [dbo].[PolicyDetails]
+    DELETE FROM [dbo].[Policy]
+    DELETE FROM [dbo].[AccountDetails]
+    DELETE FROM [dbo].[Account]
+    DELETE FROM [dbo].[Portfolio]
+    DELETE FROM [dbo].[_businesskeys_condition]
+    DELETE FROM [dbo].[_businesskeys_location]
+    DELETE FROM [dbo].[_businesskeys_layer]
+    DELETE FROM [dbo].[_businesskeys_policy]
+    DELETE FROM [dbo].[_businesskeys_account]
 
     -- load import tables from staging tables
     EXEC usp_SourceTable_Load _staging_location, _import_location
