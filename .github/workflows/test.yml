@@ -127,7 +127,7 @@ jobs:
         path: ${{ github.workspace }}/
 
     - name: Set Dev spec
-      run: echo "ODS_SCHEMA_OVERRIDE=${{ github.workspace }}/${{ needs.build_spec.outputs.oed_json_spec }}" >> $GITHUB_ENV
+      run: echo "ODS_SCHEMA_OVERRIDE=${{ github.workspace }}/${{ needs.build_spec.outputs.json_filename }}" >> $GITHUB_ENV
 
     - name: Install test deps
       run: pip install -r tests/requirements.in
