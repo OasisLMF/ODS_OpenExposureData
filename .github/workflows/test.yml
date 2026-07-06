@@ -120,6 +120,15 @@ jobs:
     - name: install package
       run: pip install ${{ needs.build_package.outputs.whl_filename }}
 
+    - name: Download OED spec
+      uses: actions/download-artifact@v4
+      with:
+        name: extracted_spec
+        path: ${{ github.workspace }}/
+
+    - name: Activate dev OED spec
+      run: echo "ODS_SCHEMA_OVERRIDE=${{ github.workspace }}/OpenExposureData_Spec.json" >> $GITHUB_ENV
+
     - name: Install test deps
       run: pip install -r tests/requirements.in
 
