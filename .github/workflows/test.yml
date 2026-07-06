@@ -120,6 +120,15 @@ jobs:
     - name: install package
       run: pip install ${{ needs.build_package.outputs.whl_filename }}
 
+    - name: Download spec
+      uses: actions/download-artifact@v4
+      with:
+        name: extracted_spec
+        path: ${{ github.workspace }}/
+
+    - name: Set Dev spec
+      run: echo "ODS_SCHEMA_OVERRIDE=${{ github.workspace }}/${{ needs.build_package.outputs.whl_filename }}" >> $GITHUB_ENV
+
     - name: Install test deps
       run: pip install -r tests/requirements.in
 
