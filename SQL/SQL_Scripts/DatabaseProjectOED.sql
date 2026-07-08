@@ -78,7 +78,7 @@ CREATE TABLE [dbo].[PolicyDetails] (
     [ProducerName]      VARCHAR (40) NULL,
     [Underwriter]       VARCHAR (40) NULL,
     [BranchName]        VARCHAR (20) NULL,
-    [Lob]               VARCHAR (20) NULL,
+    [LOB]               VARCHAR (20) NULL,
     [ExpiringPolNumber] VARCHAR (20) NULL,
     [PolGrossPremium]   FLOAT (53)  NULL,
     [PolTax]            FLOAT (53)  NULL,
@@ -106,13 +106,21 @@ GO
 CREATE TABLE [dbo].[Condition] (
     [ConditionId]  INT         NOT NULL,
     [PolicyId]     INT         NOT NULL,
-    [CondNumber]   VARCHAR (1) NULL,
-    [CondName]     VARCHAR (1) NULL,
+    [CondNumber]   VARCHAR (20) NULL,
+    [CondName]     VARCHAR (100) NULL,
     [CondPriority] INT         NULL,
     [CondClass]    INT         NULL,
-    [CondTag]      VARCHAR (1) NULL,
+    [CondTag]      VARCHAR (20) NULL,
     PRIMARY KEY CLUSTERED ([ConditionId] ASC),
     CONSTRAINT [FK_policy_TO_condition] FOREIGN KEY ([PolicyId]) REFERENCES [dbo].[Policy] ([PolicyId])
+);
+GO
+
+CREATE TABLE [dbo].[LocationGroup] (
+    [LocationGroupId] INT           NOT NULL,
+    [LocGroup]        NVARCHAR (20) NOT NULL,
+    PRIMARY KEY CLUSTERED ([LocationGroupId] ASC),
+    CONSTRAINT [UQ_locationgroup_locgroup] UNIQUE ([LocGroup])
 );
 GO
 
@@ -120,9 +128,11 @@ CREATE TABLE [dbo].[Location] (
     [LocationId]                 INT         NOT NULL,
     [AccountId]                  INT         NOT NULL,
     [LocNumber]                  NVARCHAR (20) NOT NULL,
-    [LocPerilsCovered]           VARCHAR (250) NOT NULL
+    [LocPerilsCovered]           VARCHAR (250) NOT NULL,
+    [LocationGroupId]            INT           NULL,
     PRIMARY KEY CLUSTERED ([LocationId] ASC),
-    CONSTRAINT [FK_account_TO_location] FOREIGN KEY ([AccountId]) REFERENCES [dbo].[account] ([AccountId])
+    CONSTRAINT [FK_account_TO_location] FOREIGN KEY ([AccountId]) REFERENCES [dbo].[account] ([AccountId]),
+    CONSTRAINT [FK_locationgroup_TO_location] FOREIGN KEY ([LocationGroupId]) REFERENCES [dbo].[LocationGroup] ([LocationGroupId])
 );
 GO
 
@@ -139,12 +149,11 @@ GO
 
 CREATE TABLE [dbo].[LocationDetail] (
     [LocationId]                 INT         NOT NULL,
-    [LocName]                    NVARCHAR (20) NULL,
-    [LocGroup]                   NVARCHAR (20) NULL,
+    [LocName]                    NVARCHAR (200) NULL,
     [CorrelationGroup]           INT NULL,
     [IsPrimary]                  TINYINT NULL,
     [IsTenant]                   TINYINT NULL,
-    [BuildingId]                 VARCHAR (20) NULL,
+    [BuildingID]                 VARCHAR (20) NULL,
     [LocInceptionDate]           SMALLDATETIME NULL,
     [LocExpiryDate]              SMALLDATETIME NULL,
     [PercentComplete]            DECIMAL (18, 4) NULL,
@@ -157,8 +166,8 @@ CREATE TABLE [dbo].[LocationDetail] (
     [City]                       NVARCHAR (50) NULL,
     [AreaCode]                   NVARCHAR (20) NULL,
     [AreaName]                   NVARCHAR (50) NULL,
-    [GeogSchemeXx]               VARCHAR (5) NULL,
-    [GeogNameXx]                 NVARCHAR (50) NULL,
+    [GeogSchemeXX]               VARCHAR (5) NULL,
+    [GeogNameXX]                 NVARCHAR (50) NULL,
     [AddressMatch]               TINYINT NULL,
     [GeocodeQuality]             FLOAT (53) NULL,
     [Geocoder]                   VARCHAR (20) NULL,
@@ -178,7 +187,7 @@ CREATE TABLE [dbo].[LocationDetail] (
     [LocUserDef3]                VARCHAR (100) NULL,
     [LocUserDef4]                VARCHAR (100) NULL,
     [LocUserDef5]                VARCHAR (100) NULL,
-    [Bipoi]                      FLOAT (53)  NULL,
+    [BIPOI]                      FLOAT (53)  NULL,
     [LocCurrency]                CHAR (3)    NULL,
     [LocGrossPremium]            FLOAT (53)  NULL,
     [LocTax]                     FLOAT (53)  NULL,
@@ -188,7 +197,7 @@ CREATE TABLE [dbo].[LocationDetail] (
     [LocParticipation]           FLOAT (53)  NULL,
     [PayoutBasis]                TINYINT     NULL,
     [ReinsTag]                   VARCHAR (20) NULL,
-    [BiWaitingPeriod]            FLOAT (53)  NULL,
+    [BIWaitingPeriod]            FLOAT (53)  NULL,
     [YearUpgraded]               SMALLINT    NULL,
     [SurgeLeakage]               FLOAT (53)  NULL,
     [SprinklerType]              TINYINT     NULL,
@@ -224,15 +233,15 @@ CREATE TABLE [dbo].[LocationDetail] (
     [ShapeIrregularity]          TINYINT     NULL,
     [Pounding]                   TINYINT     NULL,
     [Ornamentation]              TINYINT     NULL,
-    [SpecialEqConstruction]      TINYINT     NULL,
+    [SpecialEQConstruction]      TINYINT     NULL,
     [Retrofit]                   TINYINT     NULL,
     [CrippleWall]                TINYINT     NULL,
     [FoundationConnection]       TINYINT     NULL,
     [ShortColumn]                TINYINT     NULL,
     [Fatigue]                    TINYINT     NULL,
     [Cladding]                   TINYINT     NULL,
-    [BiPreparedness]             TINYINT     NULL,
-    [BiRedundancy]               TINYINT     NULL,
+    [BIPreparedness]             TINYINT     NULL,
+    [BIRedundancy]               TINYINT     NULL,
     [FirstFloorHeight]           FLOAT (53)  NULL,
     [FirstFloorHeightUnit]       TINYINT     NULL,
     [Datum]                      VARCHAR (20) NULL,
@@ -266,8 +275,8 @@ CREATE TABLE [dbo].[LocationDetail] (
     [ValuablesStorage]           TINYINT     NULL,
     [DaysHeld]                   SMALLINT    NULL,
     [BrickVeneer]                TINYINT     NULL,
-    [FemaCompliance]             TINYINT     NULL,
-    [CustomFloodSop]             TINYINT     NULL,
+    [FEMACompliance]             TINYINT     NULL,
+    [CustomFloodSOP]             TINYINT     NULL,
     [CustomFloodZone]            VARCHAR (20) NULL,
     [MultiStoryHall]             TINYINT     NULL,
     [BuildingExteriorOpening]    TINYINT     NULL,
@@ -286,15 +295,24 @@ CREATE TABLE [dbo].[LocationDetail] (
     [OffshoreWaterDepth]         FLOAT (53)  NULL,
     [SectionLength]              FLOAT (53)  NULL,
     [PowerCapacity]              FLOAT (53)  NULL,
-    [VulnerabilitySetId]         INT         NULL,
+    [VulnerabilitySetID]         INT         NULL,
     [BuildingFloodVuln]          TINYINT     NULL,
-    [BiFloodVuln]                TINYINT     NULL,
+    [BIFloodVuln]                TINYINT     NULL,
     [Geom]                       VARCHAR (250) NULL,
     [CodeProvision]              TINYINT     NULL,
     [Anchorage]                  TINYINT     NULL,
     [DiameterOfPipeline]         TINYINT     NULL,
     [VoltageOfEnergy]            TINYINT     NULL,
     [PumpingCapacity]            TINYINT     NULL,
+    [PVControlType]              TINYINT     NULL,
+    [PVGlassThickness]           TINYINT     NULL,
+    [PVMaterial]                 TINYINT     NULL,
+    [PVMounting]                 TINYINT     NULL,
+    [PVPanelArea]                FLOAT (53)  NULL,
+    [PVPanelAreaUnit]            TINYINT     NULL,
+    [PVPanelYear]                SMALLINT    NULL,
+    [PVStowing]                  TINYINT     NULL,
+    [PVTiltAngle]                FLOAT (53)  NULL,
     PRIMARY KEY CLUSTERED ([LocationId] ASC)
 );
 GO
@@ -333,6 +351,46 @@ CREATE TABLE [dbo].[PerilGroup] (
 );
 GO
 
+
+CREATE TABLE [dbo].[StepPolicy] (
+    [StepPolicyId]                  INT          NOT NULL,
+    [PolicyId]                      INT          NOT NULL,
+    [StepFunctionName]              VARCHAR (30) NULL,
+    [StepTriggerType]               TINYINT      NULL,
+    [StepNumber]                    TINYINT      NULL,
+    [PayOutType]                    TINYINT      NULL,
+    [TriggerType]                   TINYINT      NULL,
+    [TriggerBuildingStart]          FLOAT (53)   NULL,
+    [TriggerBuildingEnd]            FLOAT (53)   NULL,
+    [DeductibleBuilding]            FLOAT (53)   NULL,
+    [PayOutBuildingStart]           FLOAT (53)   NULL,
+    [PayOutBuildingEnd]             FLOAT (53)   NULL,
+    [PayOutLimitBuilding]           FLOAT (53)   NULL,
+    [TriggerContentsStart]          FLOAT (53)   NULL,
+    [TriggerContentsEnd]            FLOAT (53)   NULL,
+    [DeductibleContents]            FLOAT (53)   NULL,
+    [PayOutContentsStart]           FLOAT (53)   NULL,
+    [PayOutContentsEnd]             FLOAT (53)   NULL,
+    [PayOutLimitContents]           FLOAT (53)   NULL,
+    [TriggerBuildingContentsStart]  FLOAT (53)   NULL,
+    [TriggerBuildingContentsEnd]    FLOAT (53)   NULL,
+    [DeductibleBuildingContents]    FLOAT (53)   NULL,
+    [PayOutBuildingContentsStart]   FLOAT (53)   NULL,
+    [PayOutBuildingContentsEnd]     FLOAT (53)   NULL,
+    [PayOutLimitBuildingContents]   FLOAT (53)   NULL,
+    [ExtraExpenseFactor]            FLOAT (53)   NULL,
+    [ExtraExpenseLimit]             FLOAT (53)   NULL,
+    [DebrisRemovalFactor]           FLOAT (53)   NULL,
+    [MinimumTIV]                    FLOAT (53)   NULL,
+    [ScaleFactor]                   FLOAT (53)   NULL,
+    [IsLimitAtDamage]               TINYINT      NULL,
+    [StackedPolNumber]              VARCHAR (20) NULL,
+    PRIMARY KEY CLUSTERED ([StepPolicyId] ASC),
+    CONSTRAINT [FK_policy_TO_steppolicy] FOREIGN KEY ([PolicyId]) REFERENCES [dbo].[Policy] ([PolicyId])
+);
+GO
+
+
 CREATE TABLE [dbo].[Item] (
     [ItemId]     INT NOT NULL,
     [CoverageId] INT NOT NULL,
@@ -364,6 +422,16 @@ GO
 CREATE TABLE [dbo].[TermCoverageType] (
     [TermCoverageTypeId] INT        NOT NULL,
     [CoverageTypeId]     INT        NOT NULL
+);
+GO
+
+CREATE TABLE [dbo].[StepPolicyTerm] (
+    [StepPolicyTermId] INT NOT NULL,
+    [TermId]           INT NOT NULL,
+    [StepPolicyId]     INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([StepPolicyTermId] ASC),
+    CONSTRAINT [FK_term_TO_steppolicyterm] FOREIGN KEY ([TermId]) REFERENCES [dbo].[Term] ([TermId]),
+    CONSTRAINT [FK_steppolicy_TO_steppolicyterm] FOREIGN KEY ([StepPolicyId]) REFERENCES [dbo].[StepPolicy] ([StepPolicyId])
 );
 GO
 
@@ -409,6 +477,29 @@ CREATE TABLE [dbo].[ConditionPDTerm] (
     PRIMARY KEY CLUSTERED ([ConditionPDTermId] ASC),
     CONSTRAINT [FK_condition_TO_conditionpdterm] FOREIGN KEY ([ConditionId]) REFERENCES [dbo].[Condition] ([ConditionId]),
     CONSTRAINT [FK_term_TO_conditionpdterm] FOREIGN KEY ([TermId]) REFERENCES [dbo].[Term] ([TermId])
+);
+GO
+
+
+CREATE TABLE [dbo].[AccountCoverageTerm] (
+    [AccountCoverageTermId] INT NOT NULL,
+    [TermId]          INT NOT NULL,
+    [AccountId]       INT NOT NULL,
+    [CoverageTypeId]  INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([AccountCoverageTermId] ASC),
+    CONSTRAINT [FK_account_TO_accountcoverageterm] FOREIGN KEY ([AccountId]) REFERENCES [dbo].[Account] ([AccountId]),
+    CONSTRAINT [FK_term_TO_accountcoverageterm] FOREIGN KEY ([TermId]) REFERENCES [dbo].[Term] ([TermId]),
+    CONSTRAINT [FK_coveragetype_TO_accountcoverageterm] FOREIGN KEY ([CoverageTypeId]) REFERENCES [dbo].[CoverageType] ([CoverageTypeId])
+);
+GO
+
+CREATE TABLE [dbo].[AccountPDTerm] (
+    [AccountPDTermId] INT NOT NULL,
+    [TermId]          INT NOT NULL,
+    [AccountId]       INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([AccountPDTermId] ASC),
+    CONSTRAINT [FK_account_TO_accountpdterm] FOREIGN KEY ([AccountId]) REFERENCES [dbo].[Account] ([AccountId]),
+    CONSTRAINT [FK_term_TO_accountpdterm] FOREIGN KEY ([TermId]) REFERENCES [dbo].[Term] ([TermId])
 );
 GO
 
@@ -512,7 +603,7 @@ CREATE TABLE [dbo].[_import_account] (
     [AccUserDef3]                  VARCHAR (100)  NULL,
     [AccUserDef4]                  VARCHAR (100)  NULL,
     [AccUserDef5]                  VARCHAR (100)  NULL,
-    [FlexiAccZzz]                  VARCHAR (40)   NULL,
+    [FlexiAccZZZ]                  VARCHAR (40)   NULL,
     [AccPeril]                     VARCHAR (250)  NULL,
     [AccDedCode1Building]          TINYINT        NULL,
     [AccDedType1Building]          TINYINT        NULL,
@@ -529,16 +620,16 @@ CREATE TABLE [dbo].[_import_account] (
     [AccDed3Contents]              FLOAT (53)     NULL,
     [AccMinDed3Contents]           FLOAT (53)     NULL,
     [AccMaxDed3Contents]           FLOAT (53)     NULL,
-    [AccDedCode4Bi]                TINYINT        NULL,
-    [AccDedType4Bi]                TINYINT        NULL,
-    [AccDed4Bi]                    FLOAT (53)     NULL,
-    [AccMinDed4Bi]                 FLOAT (53)     NULL,
-    [AccMaxDed4Bi]                 FLOAT (53)     NULL,
-    [AccDedCode5Pd]                TINYINT        NULL,
-    [AccDedType5Pd]                TINYINT        NULL,
-    [AccDed5Pd]                    FLOAT (53)     NULL,
-    [AccMinDed5Pd]                 FLOAT (53)     NULL,
-    [AccMaxDed5Pd]                 FLOAT (53)     NULL,
+    [AccDedCode4BI]                TINYINT        NULL,
+    [AccDedType4BI]                TINYINT        NULL,
+    [AccDed4BI]                    FLOAT (53)     NULL,
+    [AccMinDed4BI]                 FLOAT (53)     NULL,
+    [AccMaxDed4BI]                 FLOAT (53)     NULL,
+    [AccDedCode5PD]                TINYINT        NULL,
+    [AccDedType5PD]                TINYINT        NULL,
+    [AccDed5PD]                    FLOAT (53)     NULL,
+    [AccMinDed5PD]                 FLOAT (53)     NULL,
+    [AccMaxDed5PD]                 FLOAT (53)     NULL,
     [AccDedCode6All]               TINYINT        NULL,
     [AccDedType6All]               TINYINT        NULL,
     [AccDed6All]                   FLOAT (53)     NULL,
@@ -553,12 +644,12 @@ CREATE TABLE [dbo].[_import_account] (
     [AccLimitCode3Contents]        TINYINT        NULL,
     [AccLimitType3Contents]        TINYINT        NULL,
     [AccLimit3Contents]            FLOAT (53)     NULL,
-    [AccLimitCode4Bi]              TINYINT        NULL,
-    [AccLimitType4Bi]              TINYINT        NULL,
-    [AccLimit4Bi]                  FLOAT (53)     NULL,
-    [AccLimitCode5Pd]              TINYINT        NULL,
-    [AccLimitType5Pd]              TINYINT        NULL,
-    [AccLimit5Pd]                  FLOAT (53)     NULL,
+    [AccLimitCode4BI]              TINYINT        NULL,
+    [AccLimitType4BI]              TINYINT        NULL,
+    [AccLimit4BI]                  FLOAT (53)     NULL,
+    [AccLimitCode5PD]              TINYINT        NULL,
+    [AccLimitType5PD]              TINYINT        NULL,
+    [AccLimit5PD]                  FLOAT (53)     NULL,
     [AccLimitCode6All]             TINYINT        NULL,
     [AccLimitType6All]             TINYINT        NULL,
     [AccLimit6All]                 FLOAT (53)     NULL,
@@ -569,7 +660,7 @@ CREATE TABLE [dbo].[_import_account] (
     [ProducerName]                 VARCHAR (40)   NULL,
     [Underwriter]                  VARCHAR (40)   NULL,
     [BranchName]                   VARCHAR (20)   NULL,
-    [Lob]                          VARCHAR (20)   NULL,
+    [LOB]                          VARCHAR (20)   NULL,
     [ExpiringPolNumber]            VARCHAR (20)   NULL,
     [PolPerilsCovered]             VARCHAR (250)  NULL,
     [PolGrossPremium]              FLOAT (53)     NULL,
@@ -597,16 +688,16 @@ CREATE TABLE [dbo].[_import_account] (
     [PolDed3Contents]              FLOAT (53)     NULL,
     [PolMinDed3Contents]           FLOAT (53)     NULL,
     [PolMaxDed3Contents]           FLOAT (53)     NULL,
-    [PolDedCode4Bi]                TINYINT        NULL,
-    [PolDedType4Bi]                TINYINT        NULL,
-    [PolDed4Bi]                    FLOAT (53)     NULL,
-    [PolMinDed4Bi]                 FLOAT (53)     NULL,
-    [PolMaxDed4Bi]                 FLOAT (53)     NULL,
-    [PolDedCode5Pd]                TINYINT        NULL,
-    [PolDedType5Pd]                TINYINT        NULL,
-    [PolDed5Pd]                    FLOAT (53)     NULL,
-    [PolMinDed5Pd]                 FLOAT (53)     NULL,
-    [PolMaxDed5Pd]                 FLOAT (53)     NULL,
+    [PolDedCode4BI]                TINYINT        NULL,
+    [PolDedType4BI]                TINYINT        NULL,
+    [PolDed4BI]                    FLOAT (53)     NULL,
+    [PolMinDed4BI]                 FLOAT (53)     NULL,
+    [PolMaxDed4BI]                 FLOAT (53)     NULL,
+    [PolDedCode5PD]                TINYINT        NULL,
+    [PolDedType5PD]                TINYINT        NULL,
+    [PolDed5PD]                    FLOAT (53)     NULL,
+    [PolMinDed5PD]                 FLOAT (53)     NULL,
+    [PolMaxDed5PD]                 FLOAT (53)     NULL,
     [PolDedCode6All]               TINYINT        NULL,
     [PolDedType6All]               TINYINT        NULL,
     [PolDed6All]                   FLOAT (53)     NULL,
@@ -621,12 +712,12 @@ CREATE TABLE [dbo].[_import_account] (
     [PolLimitCode3Contents]        TINYINT        NULL,
     [PolLimitType3Contents]        TINYINT        NULL,
     [PolLimit3Contents]            FLOAT (53)     NULL,
-    [PolLimitCode4Bi]              TINYINT        NULL,
-    [PolLimitType4Bi]              TINYINT        NULL,
-    [PolLimit4Bi]                  FLOAT (53)     NULL,
-    [PolLimitCode5Pd]              TINYINT        NULL,
-    [PolLimitType5Pd]              TINYINT        NULL,
-    [PolLimit5Pd]                  FLOAT (53)     NULL,
+    [PolLimitCode4BI]              TINYINT        NULL,
+    [PolLimitType4BI]              TINYINT        NULL,
+    [PolLimit4BI]                  FLOAT (53)     NULL,
+    [PolLimitCode5PD]              TINYINT        NULL,
+    [PolLimitType5PD]              TINYINT        NULL,
+    [PolLimit5PD]                  FLOAT (53)     NULL,
     [PolLimitCode6All]             TINYINT        NULL,
     [PolLimitType6All]             TINYINT        NULL,
     [PolLimit6All]                 FLOAT (53)     NULL,
@@ -656,7 +747,7 @@ CREATE TABLE [dbo].[_import_account] (
     [ExtraExpenseFactor]           FLOAT (53)     NULL,
     [ExtraExpenseLimit]            FLOAT (53)     NULL,
     [DebrisRemovalFactor]          FLOAT (53)     NULL,
-    [MinimumTiv]                   FLOAT (53)     NULL,
+    [MinimumTIV]                   FLOAT (53)     NULL,
     [ScaleFactor]                  FLOAT (53)     NULL,
     [IsLimitAtDamage]              TINYINT        NULL,
     [PolUserDef1]                  VARCHAR (100)  NULL,
@@ -664,7 +755,7 @@ CREATE TABLE [dbo].[_import_account] (
     [PolUserDef3]                  VARCHAR (100)  NULL,
     [PolUserDef4]                  VARCHAR (100)  NULL,
     [PolUserDef5]                  VARCHAR (100)  NULL,
-    [FlexiPolZzz]                  VARCHAR (40)   NULL,
+    [FlexiPolZZZ]                  VARCHAR (40)   NULL,
     [CondNumber]                   VARCHAR (20)   NULL,
     [CondName]                     VARCHAR (40)   NULL,
     [CondPriority]                 INT            NULL,
@@ -684,16 +775,16 @@ CREATE TABLE [dbo].[_import_account] (
     [CondDed3Contents]             FLOAT (53)     NULL,
     [CondMinDed3Contents]          FLOAT (53)     NULL,
     [CondMaxDed3Contents]          FLOAT (53)     NULL,
-    [CondDedCode4Bi]               TINYINT        NULL,
-    [CondDedType4Bi]               TINYINT        NULL,
-    [CondDed4Bi]                   FLOAT (53)     NULL,
-    [CondMinDed4Bi]                FLOAT (53)     NULL,
-    [CondMaxDed4Bi]                FLOAT (53)     NULL,
-    [CondDedCode5Pd]               TINYINT        NULL,
-    [CondDedType5Pd]               TINYINT        NULL,
-    [CondDed5Pd]                   FLOAT (53)     NULL,
-    [CondMinDed5Pd]                FLOAT (53)     NULL,
-    [CondMaxDed5Pd]                FLOAT (53)     NULL,
+    [CondDedCode4BI]               TINYINT        NULL,
+    [CondDedType4BI]               TINYINT        NULL,
+    [CondDed4BI]                   FLOAT (53)     NULL,
+    [CondMinDed4BI]                FLOAT (53)     NULL,
+    [CondMaxDed4BI]                FLOAT (53)     NULL,
+    [CondDedCode5PD]               TINYINT        NULL,
+    [CondDedType5PD]               TINYINT        NULL,
+    [CondDed5PD]                   FLOAT (53)     NULL,
+    [CondMinDed5PD]                FLOAT (53)     NULL,
+    [CondMaxDed5PD]                FLOAT (53)     NULL,
     [CondDedCode6All]              TINYINT        NULL,
     [CondDedType6All]              TINYINT        NULL,
     [CondDed6All]                  FLOAT (53)     NULL,
@@ -708,70 +799,70 @@ CREATE TABLE [dbo].[_import_account] (
     [CondLimitCode3Contents]       TINYINT        NULL,
     [CondLimitType3Contents]       TINYINT        NULL,
     [CondLimit3Contents]           FLOAT (53)     NULL,
-    [CondLimitCode4Bi]             TINYINT        NULL,
-    [CondLimitType4Bi]             TINYINT        NULL,
-    [CondLimit4Bi]                 FLOAT (53)     NULL,
-    [CondLimitCode5Pd]             TINYINT        NULL,
-    [CondLimitType5Pd]             TINYINT        NULL,
-    [CondLimit5Pd]                 FLOAT (53)     NULL,
+    [CondLimitCode4BI]             TINYINT        NULL,
+    [CondLimitType4BI]             TINYINT        NULL,
+    [CondLimit4BI]                 FLOAT (53)     NULL,
+    [CondLimitCode5PD]             TINYINT        NULL,
+    [CondLimitType5PD]             TINYINT        NULL,
+    [CondLimit5PD]                 FLOAT (53)     NULL,
     [CondLimitCode6All]            TINYINT        NULL,
     [CondLimitType6All]            TINYINT        NULL,
     [CondLimit6All]                FLOAT (53)     NULL,
     [CondClass]                    TINYINT        NULL,
     [CondTag]                      VARCHAR (20)   NULL,
-    [OedVersion]                   VARCHAR (10)   NULL,
+    [OEDVersion]                   VARCHAR (20)   NULL,
     [OriginalCurrency]             CHAR (3)       NULL,
     [RateOfExchange]               FLOAT (53)     NULL,
     [AccParticipation]             FLOAT (53)     NULL,
-    [CompanyIdSchemeXx]            VARCHAR (5)    NULL,
-    [CompanyIdCodeXx]              INT            NULL,
+    [CompanyIDSchemeXX]            VARCHAR (5)    NULL,
+    [CompanyIDCodeXX]              INT            NULL,
     [YearFounded]                  SMALLINT       NULL,
     [StreetAddress]                NVARCHAR (100) NULL,
     [PostalCode]                   NVARCHAR (20)  NULL,
     [City]                         NVARCHAR (50)  NULL,
     [CountryCode]                  CHAR (2)       NULL,
     [AreaCode]                     CHAR (3)       NULL,
-    [IndustrySchemeXx]             VARCHAR (5)    NULL,
-    [IndustryCodeXx]               INT            NULL,
-    [IndustryVintageXx]            SMALLINT       NULL,
+    [IndustrySchemeXX]             VARCHAR (5)    NULL,
+    [IndustryCodeXX]               INT            NULL,
+    [IndustryVintageXX]            SMALLINT       NULL,
     [IndustryDescription]          NVARCHAR (250) NULL,
     [NumberOfEmployees]            INT            NULL,
     [AnnualRevenue]                FLOAT (53)     NULL,
     [AnnualRevenueCurrency]        CHAR (3)       NULL,
     [GrossProfitMargin]            FLOAT (53)     NULL,
     [NumberOfRecords]              INT            NULL,
-    [Url]                          VARCHAR (250)  NULL,
+    [URL]                          VARCHAR (250)  NULL,
     [IsPackage]                    SMALLINT       NULL,
     [PolDed]                       FLOAT (53)     NULL,
     [StackedPolNumber]             VARCHAR (20)   NULL,
     [LayerAggAttachment]           FLOAT (53)     NULL,
     [LayerAggLimit]                FLOAT (53)     NULL,
-    [PolLimitNpbi]                 FLOAT (53)     NULL,
-    [PolDedNpbi]                   FLOAT (53)     NULL,
-    [PolLimitCbi]                  FLOAT (53)     NULL,
-    [PolDedCbi]                    FLOAT (53)     NULL,
-    [PolLimitDias]                 FLOAT (53)     NULL,
-    [PolDedDias]                   FLOAT (53)     NULL,
-    [PolLimitExt]                  FLOAT (53)     NULL,
-    [PolDedExt]                    FLOAT (53)     NULL,
-    [PolLimitFin]                  FLOAT (53)     NULL,
-    [PolDedFin]                    FLOAT (53)     NULL,
-    [PolLimitInre]                 FLOAT (53)     NULL,
-    [PolDedInre]                   FLOAT (53)     NULL,
-    [PolLimitLia]                  FLOAT (53)     NULL,
-    [PolDedLia]                    FLOAT (53)     NULL,
-    [PolLimitReg]                  FLOAT (53)     NULL,
-    [PolDedReg]                    FLOAT (53)     NULL,
-    [PolLimitEno]                  FLOAT (53)     NULL,
-    [PolDedEno]                    FLOAT (53)     NULL,
+    [PolLimitNPBI]                 FLOAT (53)     NULL,
+    [PolDedNPBI]                   FLOAT (53)     NULL,
+    [PolLimitCBI]                  FLOAT (53)     NULL,
+    [PolDedCBI]                    FLOAT (53)     NULL,
+    [PolLimitDIAS]                 FLOAT (53)     NULL,
+    [PolDedDIAS]                   FLOAT (53)     NULL,
+    [PolLimitEXT]                  FLOAT (53)     NULL,
+    [PolDedEXT]                    FLOAT (53)     NULL,
+    [PolLimitFIN]                  FLOAT (53)     NULL,
+    [PolDedFIN]                    FLOAT (53)     NULL,
+    [PolLimitINRE]                 FLOAT (53)     NULL,
+    [PolDedINRE]                   FLOAT (53)     NULL,
+    [PolLimitLIA]                  FLOAT (53)     NULL,
+    [PolDedLIA]                    FLOAT (53)     NULL,
+    [PolLimitREG]                  FLOAT (53)     NULL,
+    [PolDedREG]                    FLOAT (53)     NULL,
+    [PolLimitENO]                  FLOAT (53)     NULL,
+    [PolDedENO]                    FLOAT (53)     NULL,
     [LimitCurrency]                CHAR (3)       NULL,
     [DedCurrency]                  CHAR (3)       NULL,
-    [PolSir]                       FLOAT (53)     NULL,
+    [PolSIR]                       FLOAT (53)     NULL,
     [PolCoverage]                  VARCHAR (250)  NULL,
-    [OsVendor]                     INT            NULL,
+    [OSVendor]                     INT            NULL,
     [CloudVendor]                  INT            NULL,
     [EmailVendor]                  INT            NULL,
-    [CrmVendor]                    INT            NULL,
+    [CRMVendor]                    INT            NULL,
     [PatchPolicy]                  TINYINT        NULL,
     [BackUpFreq]                   TINYINT        NULL,
     [AreaName]                     NVARCHAR (50)  NULL,
@@ -780,8 +871,8 @@ CREATE TABLE [dbo].[_import_account] (
     [CoverageTrigger]              TINYINT        NULL,
     [IsGroupCover]                 SMALLINT       NULL,
     [DefenceCost]                  TINYINT        NULL,
-    [BiWaitingPeriod]              FLOAT (53)     NULL,
-    [Bipoi]                        FLOAT (53)     NULL,
+    [BIWaitingPeriod]              FLOAT (53)     NULL,
+    [BIPOI]                        FLOAT (53)     NULL,
     [InsuredName]                  NVARCHAR (100) NULL
 );
 GO
@@ -790,12 +881,12 @@ CREATE TABLE [dbo].[_import_location] (
     [PortNumber]                 VARCHAR (20)   NULL,
     [AccNumber]                  NVARCHAR (40)  NULL,
     [LocNumber]                  NVARCHAR (20)  NULL,
-    [LocName]                    NVARCHAR (20)  NULL,
+    [LocName]                    NVARCHAR (200) NULL,
     [LocGroup]                   NVARCHAR (20)  NULL,
     [CorrelationGroup]           INT            NULL,
     [IsPrimary]                  TINYINT        NULL,
     [IsTenant]                   TINYINT        NULL,
-    [BuildingId]                 VARCHAR (20)   NULL,
+    [BuildingID]                 VARCHAR (20)   NULL,
     [LocInceptionDate]           SMALLDATETIME  NULL,
     [LocExpiryDate]              SMALLDATETIME  NULL,
     [PercentComplete]            DECIMAL (18)   NULL,
@@ -808,8 +899,8 @@ CREATE TABLE [dbo].[_import_location] (
     [City]                       NVARCHAR (50)  NULL,
     [AreaCode]                   NVARCHAR (20)  NULL,
     [AreaName]                   NVARCHAR (50)  NULL,
-    [GeogSchemeXx]               VARCHAR (5)    NULL,
-    [GeogNameXx]                 NVARCHAR (50)  NULL,
+    [GeogSchemeXX]               VARCHAR (5)    NULL,
+    [GeogNameXX]                 NVARCHAR (50)  NULL,
     [AddressMatch]               TINYINT        NULL,
     [GeocodeQuality]             FLOAT (53)     NULL,
     [Geocoder]                   VARCHAR (20)   NULL,
@@ -829,13 +920,13 @@ CREATE TABLE [dbo].[_import_location] (
     [LocUserDef3]                VARCHAR (100)  NULL,
     [LocUserDef4]                VARCHAR (100)  NULL,
     [LocUserDef5]                VARCHAR (100)  NULL,
-    [FlexiLocZzz]                VARCHAR (40)   NULL,
+    [FlexiLocZZZ]                VARCHAR (40)   NULL,
     [LocPerilsCovered]           VARCHAR (250)  NULL,
-    [BuildingTiv]                FLOAT (53)     NULL,
-    [OtherTiv]                   FLOAT (53)     NULL,
-    [ContentsTiv]                FLOAT (53)     NULL,
-    [BiTiv]                      FLOAT (53)     NULL,
-    [Bipoi]                      FLOAT (53)     NULL,
+    [BuildingTIV]                FLOAT (53)     NULL,
+    [OtherTIV]                   FLOAT (53)     NULL,
+    [ContentsTIV]                FLOAT (53)     NULL,
+    [BITIV]                      FLOAT (53)     NULL,
+    [BIPOI]                      FLOAT (53)     NULL,
     [LocCurrency]                CHAR (3)       NULL,
     [LocGrossPremium]            FLOAT (53)     NULL,
     [LocTax]                     FLOAT (53)     NULL,
@@ -860,16 +951,16 @@ CREATE TABLE [dbo].[_import_location] (
     [LocDed3Contents]            FLOAT (53)     NULL,
     [LocMinDed3Contents]         FLOAT (53)     NULL,
     [LocMaxDed3Contents]         FLOAT (53)     NULL,
-    [LocDedCode4Bi]              TINYINT        NULL,
-    [LocDedType4Bi]              TINYINT        NULL,
-    [LocDed4Bi]                  FLOAT (53)     NULL,
-    [LocMinDed4Bi]               FLOAT (53)     NULL,
-    [LocMaxDed4Bi]               FLOAT (53)     NULL,
-    [LocDedCode5Pd]              TINYINT        NULL,
-    [LocDedType5Pd]              TINYINT        NULL,
-    [LocDed5Pd]                  FLOAT (53)     NULL,
-    [LocMinDed5Pd]               FLOAT (53)     NULL,
-    [LocMaxDed5Pd]               FLOAT (53)     NULL,
+    [LocDedCode4BI]              TINYINT        NULL,
+    [LocDedType4BI]              TINYINT        NULL,
+    [LocDed4BI]                  FLOAT (53)     NULL,
+    [LocMinDed4BI]               FLOAT (53)     NULL,
+    [LocMaxDed4BI]               FLOAT (53)     NULL,
+    [LocDedCode5PD]              TINYINT        NULL,
+    [LocDedType5PD]              TINYINT        NULL,
+    [LocDed5PD]                  FLOAT (53)     NULL,
+    [LocMinDed5PD]               FLOAT (53)     NULL,
+    [LocMaxDed5PD]               FLOAT (53)     NULL,
     [LocDedCode6All]             TINYINT        NULL,
     [LocDedType6All]             TINYINT        NULL,
     [LocDed6All]                 FLOAT (53)     NULL,
@@ -884,16 +975,16 @@ CREATE TABLE [dbo].[_import_location] (
     [LocLimitCode3Contents]      TINYINT        NULL,
     [LocLimitType3Contents]      TINYINT        NULL,
     [LocLimit3Contents]          FLOAT (53)     NULL,
-    [LocLimitCode4Bi]            TINYINT        NULL,
-    [LocLimitType4Bi]            TINYINT        NULL,
-    [LocLimit4Bi]                FLOAT (53)     NULL,
-    [LocLimitCode5Pd]            TINYINT        NULL,
-    [LocLimitType5Pd]            TINYINT        NULL,
-    [LocLimit5Pd]                FLOAT (53)     NULL,
+    [LocLimitCode4BI]            TINYINT        NULL,
+    [LocLimitType4BI]            TINYINT        NULL,
+    [LocLimit4BI]                FLOAT (53)     NULL,
+    [LocLimitCode5PD]            TINYINT        NULL,
+    [LocLimitType5PD]            TINYINT        NULL,
+    [LocLimit5PD]                FLOAT (53)     NULL,
     [LocLimitCode6All]           TINYINT        NULL,
     [LocLimitType6All]           TINYINT        NULL,
     [LocLimit6All]               FLOAT (53)     NULL,
-    [BiWaitingPeriod]            FLOAT (53)     NULL,
+    [BIWaitingPeriod]            FLOAT (53)     NULL,
     [LocPeril]                   VARCHAR (250)  NULL,
     [YearUpgraded]               SMALLINT       NULL,
     [SurgeLeakage]               FLOAT (53)     NULL,
@@ -930,15 +1021,15 @@ CREATE TABLE [dbo].[_import_location] (
     [ShapeIrregularity]          TINYINT        NULL,
     [Pounding]                   TINYINT        NULL,
     [Ornamentation]              TINYINT        NULL,
-    [SpecialEqConstruction]      TINYINT        NULL,
+    [SpecialEQConstruction]      TINYINT        NULL,
     [Retrofit]                   TINYINT        NULL,
     [CrippleWall]                TINYINT        NULL,
     [FoundationConnection]       TINYINT        NULL,
     [ShortColumn]                TINYINT        NULL,
     [Fatigue]                    TINYINT        NULL,
     [Cladding]                   TINYINT        NULL,
-    [BiPreparedness]             TINYINT        NULL,
-    [BiRedundancy]               TINYINT        NULL,
+    [BIPreparedness]             TINYINT        NULL,
+    [BIRedundancy]               TINYINT        NULL,
     [FirstFloorHeight]           FLOAT (53)     NULL,
     [FirstFloorHeightUnit]       TINYINT        NULL,
     [Datum]                      VARCHAR (20)   NULL,
@@ -972,8 +1063,8 @@ CREATE TABLE [dbo].[_import_location] (
     [ValuablesStorage]           TINYINT        NULL,
     [DaysHeld]                   SMALLINT       NULL,
     [BrickVeneer]                TINYINT        NULL,
-    [FemaCompliance]             TINYINT        NULL,
-    [CustomFloodSop]             TINYINT        NULL,
+    [FEMACompliance]             TINYINT        NULL,
+    [CustomFloodSOP]             TINYINT        NULL,
     [CustomFloodZone]            VARCHAR (20)   NULL,
     [MultiStoryHall]             TINYINT        NULL,
     [BuildingExteriorOpening]    TINYINT        NULL,
@@ -983,15 +1074,15 @@ CREATE TABLE [dbo].[_import_location] (
     [Payroll]                    INT            NULL,
     [StaticMotorVehicle]         TINYINT        NULL,
     [CondTag]                    VARCHAR (20)   NULL,
-    [OedVersion]                 VARCHAR (10)   NULL,
+    [OEDVersion]                 VARCHAR (20)   NULL,
     [IsAggregate]                TINYINT        NULL,
     [OccupantPeriod]             TINYINT        NULL,
     [SoilType]                   TINYINT        NULL,
     [SoilValue]                  FLOAT (53)     NULL,
     [NumberOfOccupants]          INT            NULL,
-    [OccupantUnderFive]          INT            NULL,
+    [OccupantUnderfive]          INT            NULL,
     [OccupantOver65]             INT            NULL,
-    [OccupantAge5To65]           INT            NULL,
+    [OccupantAge5to65]           INT            NULL,
     [OccupantFemale]             INT            NULL,
     [OccupantMale]               INT            NULL,
     [OccupantOther]              INT            NULL,
@@ -1008,9 +1099,9 @@ CREATE TABLE [dbo].[_import_location] (
     [OffshoreWaterDepth]         FLOAT (53)     NULL,
     [SectionLength]              FLOAT (53)     NULL,
     [PowerCapacity]              FLOAT (53)     NULL,
-    [VulnerabilitySetId]         INT            NULL,
+    [VulnerabilitySetID]         INT            NULL,
     [BuildingFloodVuln]          TINYINT        NULL,
-    [BiFloodVuln]                TINYINT        NULL,
+    [BIFloodVuln]                TINYINT        NULL,
     [Geom]                       VARCHAR (250)  NULL,
     [CodeProvision]              TINYINT        NULL,
     [Anchorage]                  TINYINT        NULL,
@@ -1018,9 +1109,18 @@ CREATE TABLE [dbo].[_import_location] (
     [VoltageOfEnergy]            TINYINT        NULL,
     [PumpingCapacity]            TINYINT        NULL,
     [SoilLiquefiable]            INT            NULL,
-    [CommoditySchemeXx]          VARCHAR (5)    NULL,
-    [CommodityCodeXx]            VARCHAR (10)   NULL,
-    [CommodityVintageXx]         SMALLINT       NULL
+    [CommoditySchemeXX]          VARCHAR (5)    NULL,
+    [CommodityCodeXX]            VARCHAR (10)   NULL,
+    [CommodityVintageXX]         SMALLINT       NULL,
+    [PVControlType]              TINYINT        NULL,
+    [PVGlassThickness]           TINYINT        NULL,
+    [PVMaterial]                 TINYINT        NULL,
+    [PVMounting]                 TINYINT        NULL,
+    [PVPanelArea]                FLOAT (53)     NULL,
+    [PVPanelAreaUnit]            TINYINT        NULL,
+    [PVPanelYear]                SMALLINT       NULL,
+    [PVStowing]                  TINYINT        NULL,
+    [PVTiltAngle]                FLOAT (53)     NULL
 );
 GO
 
@@ -1073,6 +1173,206 @@ CREATE TABLE [dbo].[_businesskeys_condition] (
     [PolNumber]   NVARCHAR (100) NOT NULL,
     [CondNumber]   NVARCHAR (100) NULL
     PRIMARY KEY CLUSTERED ([ConditionId] ASC)
+);
+GO
+
+
+------------------------------------------------------------------------------------------------------
+-- Reinsurance normalised entities
+
+CREATE TABLE [dbo].[ReinsInfo] (
+    [ReinsInfoId]          INT           NOT NULL,
+    [ReinsNumber]          INT           NOT NULL,
+    [ReinsName]            VARCHAR (200) NULL,
+    [ReinsLayerNumber]     INT           NULL,
+    [ReinsType]            VARCHAR (3)   NULL,    -- FAC/QS/SS/PR/CXL/AXL
+    [ReinsPeril]           VARCHAR (250) NULL,
+    [RiskLevel]            CHAR (3)      NULL,    -- LOC/LGR/POL/ACC/SEL
+    [InuringPriority]      TINYINT       NULL,
+    -- Treaty-level financial terms
+    [CededPercent]         FLOAT (53)    NULL,    -- treaty level; NOT used for SS (see ReinsScope)
+    [PlacedPercent]        FLOAT (53)    NULL,
+    [TreatyShare]          FLOAT (53)    NULL,
+    [DeemedPercentPlaced]  FLOAT (53)    NULL,
+    -- Currency
+    [ReinsCurrency]        CHAR (3)      NULL,
+    [OriginalCurrency]     CHAR (3)      NULL,
+    [ReinsFXrate]          FLOAT (53)    NULL,
+    [RateOfExchange]       FLOAT (53)    NULL,
+    [ReinsPremium]         FLOAT (53)    NULL,
+    -- Date / attachment basis
+    [AttachmentBasis]      CHAR (2)      NULL,    -- LO / RA
+    [UseReinsDates]        CHAR (1)      NULL,
+    [ReinsInceptionDate]   SMALLDATETIME NULL,
+    [ReinsExpiryDate]      SMALLDATETIME NULL,
+    -- Risk-level terms (FAC, SS, PR, QS)
+    [RiskAttachment]       FLOAT (53)    NULL,
+    [RiskLimit]            FLOAT (53)    NULL,
+    -- Programme-level terms (QS, SS, PR, CXL)
+    [OccLimit]             FLOAT (53)    NULL,
+    [OccAttachment]        FLOAT (53)    NULL,
+    [OccFranchiseDed]      FLOAT (53)    NULL,
+    [OccReverseFranchise]  FLOAT (53)    NULL,
+    [AggLimit]             FLOAT (53)    NULL,
+    [AggAttachment]        FLOAT (53)    NULL,
+    [AggPeriod]            FLOAT (53)    NULL,
+    -- Reinstatement
+    [Reinstatement]        TINYINT       NULL,
+    [ReinstatementCharge]  VARCHAR (50)  NULL,
+    PRIMARY KEY CLUSTERED ([ReinsInfoId] ASC),
+    CONSTRAINT [UQ_reinsinfo_reinsnumber] UNIQUE ([ReinsNumber])
+);
+GO
+
+CREATE TABLE [dbo].[ReinsScope] (
+    [ReinsScopeId]   INT            NOT NULL,
+    [ReinsInfoId]    INT            NOT NULL,
+    -- Hierarchical match fields (RISK_LEVEL_FIELD_MAP in OasisLMF)
+    [PortNumber]     VARCHAR (20)   NULL,
+    [AccNumber]      NVARCHAR (40)  NULL,
+    [PolNumber]      VARCHAR (20)   NULL,
+    [LocNumber]      NVARCHAR (20)  NULL,
+    [LocGroup]       NVARCHAR (20)  NULL,
+    -- Extra filter fields (FILTER_LEVEL_EXTRA_FIELDS; not resolved to entity IDs)
+    [CedantName]     VARCHAR (40)   NULL,
+    [ProducerName]   VARCHAR (40)   NULL,
+    [LOB]            VARCHAR (20)   NULL,
+    [CountryCode]    CHAR (2)       NULL,
+    [ReinsTag]       VARCHAR (20)   NULL,
+    -- Scope-level cession override: used by SS only (CededPercent_scope in OasisLMF)
+    [CededPercent]   FLOAT (53)     NULL,
+    PRIMARY KEY CLUSTERED ([ReinsScopeId] ASC),
+    CONSTRAINT [FK_reinsinfo_TO_reinsscope] FOREIGN KEY ([ReinsInfoId]) REFERENCES [dbo].[ReinsInfo] ([ReinsInfoId])
+);
+GO
+
+CREATE TABLE [dbo].[ReinsScopeLink] (
+    -- Pre-computed resolution of scope filter criteria to normalised entity PKs.
+    -- Exactly one of the five nullable FKs is populated per row, determined by
+    -- the treaty ReinsInfo.RiskLevel (SEL/ACC/POL/LOC/LGR).
+    [ReinsScopeLinkId]  INT NOT NULL,
+    [ReinsScopeId]      INT NOT NULL,
+    [PortfolioId]       INT NULL,    -- populated for RiskLevel = SEL
+    [AccountId]         INT NULL,    -- populated for RiskLevel = ACC
+    [PolicyId]          INT NULL,    -- populated for RiskLevel = POL
+    [LocationId]        INT NULL,    -- populated for RiskLevel = LOC
+    [LocationGroupId]   INT NULL,    -- populated for RiskLevel = LGR
+    PRIMARY KEY CLUSTERED ([ReinsScopeLinkId] ASC),
+    CONSTRAINT [FK_reinsscope_TO_reinsscoperlink] FOREIGN KEY ([ReinsScopeId]) REFERENCES [dbo].[ReinsScope] ([ReinsScopeId]),
+    CONSTRAINT [FK_portfolio_TO_reinsscopelink] FOREIGN KEY ([PortfolioId]) REFERENCES [dbo].[Portfolio] ([PortfolioId]),
+    CONSTRAINT [FK_account_TO_reinsscopelink] FOREIGN KEY ([AccountId]) REFERENCES [dbo].[Account] ([AccountId]),
+    CONSTRAINT [FK_policy_TO_reinsscopelink] FOREIGN KEY ([PolicyId]) REFERENCES [dbo].[Policy] ([PolicyId]),
+    CONSTRAINT [FK_location_TO_reinsscopelink] FOREIGN KEY ([LocationId]) REFERENCES [dbo].[Location] ([LocationId]),
+    CONSTRAINT [FK_locationgroup_TO_reinsscopelink] FOREIGN KEY ([LocationGroupId]) REFERENCES [dbo].[LocationGroup] ([LocationGroupId])
+);
+GO
+
+
+------------------------------------------------------------------------------------------------------
+
+CREATE TABLE [dbo].[_staging_riinfo] (
+    [ReinsNumber]          INT            NULL,
+    [ReinsName]            VARCHAR (200)  NULL,
+    [ReinsLayerNumber]     INT            NULL,
+    [ReinsPeril]           VARCHAR (250)  NULL,
+    [ReinsInceptionDate]   SMALLDATETIME  NULL,
+    [ReinsExpiryDate]      SMALLDATETIME  NULL,
+    [CededPercent]         FLOAT (53)     NULL,
+    [RiskLimit]            FLOAT (53)     NULL,
+    [RiskAttachment]       FLOAT (53)     NULL,
+    [OccLimit]             FLOAT (53)     NULL,
+    [OccAttachment]        FLOAT (53)     NULL,
+    [OccFranchiseDed]      FLOAT (53)     NULL,
+    [OccReverseFranchise]  FLOAT (53)     NULL,
+    [AggLimit]             FLOAT (53)     NULL,
+    [AggAttachment]        FLOAT (53)     NULL,
+    [AggPeriod]            FLOAT (53)     NULL,
+    [PlacedPercent]        FLOAT (53)     NULL,
+    [ReinsCurrency]        CHAR (3)       NULL,
+    [InuringPriority]      TINYINT        NULL,
+    [ReinsType]            VARCHAR (3)    NULL,
+    [AttachmentBasis]      CHAR (2)       NULL,
+    [Reinstatement]        TINYINT        NULL,
+    [ReinstatementCharge]  VARCHAR (50)   NULL,
+    [ReinsPremium]         FLOAT (53)     NULL,
+    [DeemedPercentPlaced]  FLOAT (53)     NULL,
+    [ReinsFXrate]          FLOAT (53)     NULL,
+    [TreatyShare]          FLOAT (53)     NULL,
+    [UseReinsDates]        CHAR (1)       NULL,
+    [RiskLevel]            CHAR (3)       NULL,
+    [OriginalCurrency]     CHAR (3)       NULL,
+    [RateOfExchange]       FLOAT (53)     NULL,
+    [OEDVersion]           VARCHAR (20)   NULL
+);
+GO
+
+CREATE TABLE [dbo].[_staging_riscope] (
+    [ReinsNumber]   INT            NULL,
+    [PortNumber]    VARCHAR (20)   NULL,
+    [AccNumber]     NVARCHAR (40)  NULL,
+    [PolNumber]     VARCHAR (20)   NULL,
+    [LocGroup]      NVARCHAR (20)  NULL,
+    [LocNumber]     NVARCHAR (20)  NULL,
+    [CedantName]    VARCHAR (40)   NULL,
+    [ProducerName]  VARCHAR (40)   NULL,
+    [LOB]           VARCHAR (20)   NULL,
+    [CountryCode]   CHAR (2)       NULL,
+    [ReinsTag]      VARCHAR (20)   NULL,
+    [CededPercent]  FLOAT (53)     NULL,
+    [OEDVersion]    VARCHAR (20)   NULL
+);
+GO
+
+CREATE TABLE [dbo].[_import_riinfo] (
+    [ReinsNumber]          INT            NULL,
+    [ReinsName]            VARCHAR (200)  NULL,
+    [ReinsLayerNumber]     INT            NULL,
+    [ReinsPeril]           VARCHAR (250)  NULL,
+    [ReinsInceptionDate]   SMALLDATETIME  NULL,
+    [ReinsExpiryDate]      SMALLDATETIME  NULL,
+    [CededPercent]         FLOAT (53)     NULL,
+    [RiskLimit]            FLOAT (53)     NULL,
+    [RiskAttachment]       FLOAT (53)     NULL,
+    [OccLimit]             FLOAT (53)     NULL,
+    [OccAttachment]        FLOAT (53)     NULL,
+    [OccFranchiseDed]      FLOAT (53)     NULL,
+    [OccReverseFranchise]  FLOAT (53)     NULL,
+    [AggLimit]             FLOAT (53)     NULL,
+    [AggAttachment]        FLOAT (53)     NULL,
+    [AggPeriod]            FLOAT (53)     NULL,
+    [PlacedPercent]        FLOAT (53)     NULL,
+    [ReinsCurrency]        CHAR (3)       NULL,
+    [InuringPriority]      TINYINT        NULL,
+    [ReinsType]            VARCHAR (3)    NULL,
+    [AttachmentBasis]      CHAR (2)       NULL,
+    [Reinstatement]        TINYINT        NULL,
+    [ReinstatementCharge]  VARCHAR (50)   NULL,
+    [ReinsPremium]         FLOAT (53)     NULL,
+    [DeemedPercentPlaced]  FLOAT (53)     NULL,
+    [ReinsFXrate]          FLOAT (53)     NULL,
+    [TreatyShare]          FLOAT (53)     NULL,
+    [UseReinsDates]        CHAR (1)       NULL,
+    [RiskLevel]            CHAR (3)       NULL,
+    [OriginalCurrency]     CHAR (3)       NULL,
+    [RateOfExchange]       FLOAT (53)     NULL,
+    [OEDVersion]           VARCHAR (20)   NULL
+);
+GO
+
+CREATE TABLE [dbo].[_import_riscope] (
+    [ReinsNumber]   INT            NULL,
+    [PortNumber]    VARCHAR (20)   NULL,
+    [AccNumber]     NVARCHAR (40)  NULL,
+    [PolNumber]     VARCHAR (20)   NULL,
+    [LocGroup]      NVARCHAR (20)  NULL,
+    [LocNumber]     NVARCHAR (20)  NULL,
+    [CedantName]    VARCHAR (40)   NULL,
+    [ProducerName]  VARCHAR (40)   NULL,
+    [LOB]           VARCHAR (20)   NULL,
+    [CountryCode]   CHAR (2)       NULL,
+    [ReinsTag]      VARCHAR (20)   NULL,
+    [CededPercent]  FLOAT (53)     NULL,
+    [OEDVersion]    VARCHAR (20)   NULL
 );
 GO
 
@@ -1638,12 +1938,180 @@ AS
     FROM    vw_layer_terms
 
 GO
+CREATE VIEW vw_account_terms_1Building
+AS
+    SELECT  DISTINCT AccountId,
+            AccPeril,
+            11 AS TermLevel,
+            1 AS TermCoverageType,
+            AccDedType1Building AS DedType,
+            AccDedCode1Building AS DedCode,
+            AccDed1Building AS Deductible,
+            AccMinDed1Building AS MinDeductible,
+            AccMaxDed1Building AS MaxDeductible,
+            AccLimitType1Building AS LimitType,
+            AccLimitCode1Building AS LimitCode,
+            AccLimit1Building AS [Limit],
+            AccParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   AccPeril IS NOT NULL
+GO
 
+CREATE VIEW vw_account_terms_2Other
+AS
+    SELECT  DISTINCT AccountId,
+            AccPeril,
+            11 AS TermLevel,
+            2 AS TermCoverageType,
+            AccDedType2Other AS DedType,
+            AccDedCode2Other AS DedCode,
+            AccDed2Other AS Deductible,
+            AccMinDed2Other AS MinDeductible,
+            AccMaxDed2Other AS MaxDeductible,
+            AccLimitType2Other AS LimitType,
+            AccLimitCode2Other AS LimitCode,
+            AccLimit2Other AS [Limit],
+            AccParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   AccPeril IS NOT NULL
+GO
 
-/*
-TO DO - Account Terms
-*/
+CREATE VIEW vw_account_terms_3Contents
+AS
+    SELECT  DISTINCT AccountId,
+            AccPeril,
+            11 AS TermLevel,
+            3 AS TermCoverageType,
+            AccDedType3Contents AS DedType,
+            AccDedCode3Contents AS DedCode,
+            AccDed3Contents AS Deductible,
+            AccMinDed3Contents AS MinDeductible,
+            AccMaxDed3Contents AS MaxDeductible,
+            AccLimitType3Contents AS LimitType,
+            AccLimitCode3Contents AS LimitCode,
+            AccLimit3Contents AS [Limit],
+            AccParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   AccPeril IS NOT NULL
+GO
 
+CREATE VIEW vw_account_terms_4BI
+AS
+    SELECT  DISTINCT AccountId,
+            AccPeril,
+            11 AS TermLevel,
+            4 AS TermCoverageType,
+            AccDedType4BI AS DedType,
+            AccDedCode4BI AS DedCode,
+            AccDed4BI AS Deductible,
+            AccMinDed4BI AS MinDeductible,
+            AccMaxDed4BI AS MaxDeductible,
+            AccLimitType4BI AS LimitType,
+            AccLimitCode4BI AS LimitCode,
+            AccLimit4BI AS [Limit],
+            AccParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   AccPeril IS NOT NULL
+GO
+
+CREATE VIEW vw_account_terms_5PD
+AS
+    SELECT  DISTINCT AccountId,
+            AccPeril,
+            12 AS TermLevel,
+            5 AS TermCoverageType,
+            AccDedType5PD AS DedType,
+            AccDedCode5PD AS DedCode,
+            AccDed5PD AS Deductible,
+            AccMinDed5PD AS MinDeductible,
+            AccMaxDed5PD AS MaxDeductible,
+            AccLimitType5PD AS LimitType,
+            AccLimitCode5PD AS LimitCode,
+            AccLimit5PD AS [Limit],
+            AccParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   AccPeril IS NOT NULL
+GO
+
+CREATE VIEW vw_account_terms_6All
+AS
+    SELECT  DISTINCT AccountId,
+            AccPeril,
+            13 AS TermLevel,
+            6 AS TermCoverageType,
+            AccDedType6All AS DedType,
+            AccDedCode6All AS DedCode,
+            AccDed6All AS Deductible,
+            AccMinDed6All AS MinDeductible,
+            AccMaxDed6All AS MaxDeductible,
+            AccLimitType6All AS LimitType,
+            AccLimitCode6All AS LimitCode,
+            AccLimit6All AS [Limit],
+            AccParticipation AS Participation
+    FROM    vw_import_account_business_keys
+    WHERE   AccPeril IS NOT NULL
+GO
+
+CREATE VIEW vw_level_11_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY AccountId, TermCoverageType, AccPeril) AS tmpTermId,
+            *
+    FROM    (
+        SELECT * FROM vw_account_terms_1Building
+        UNION ALL
+        SELECT * FROM vw_account_terms_2Other
+        UNION ALL
+        SELECT * FROM vw_account_terms_3Contents
+        UNION ALL
+        SELECT * FROM vw_account_terms_4BI
+    ) AS term_level_11
+GO
+
+CREATE VIEW vw_level_12_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY AccountId, TermCoverageType, AccPeril) AS tmpTermId,
+            *
+    FROM    vw_account_terms_5PD
+GO
+
+CREATE VIEW vw_level_13_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY AccountId, TermCoverageType, AccPeril) AS tmpTermId,
+            *
+    FROM    vw_account_terms_6All
+GO
+
+CREATE VIEW vw_step_policy_terms
+AS
+    SELECT  sp.StepPolicyId,
+            sp.PolicyId,
+            14 AS TermLevel,
+            1  AS TermCoverageType,
+            sp.DeductibleBuilding    AS Deductible,
+            sp.PayOutLimitBuilding   AS [Limit]
+    FROM    StepPolicy sp
+    WHERE   sp.DeductibleBuilding IS NOT NULL
+         OR sp.PayOutLimitBuilding IS NOT NULL
+    UNION ALL
+    SELECT  sp.StepPolicyId, sp.PolicyId, 14, 3,
+            sp.DeductibleContents, sp.PayOutLimitContents
+    FROM    StepPolicy sp
+    WHERE   sp.DeductibleContents IS NOT NULL
+         OR sp.PayOutLimitContents IS NOT NULL
+    UNION ALL
+    SELECT  sp.StepPolicyId, sp.PolicyId, 14, 6,
+            sp.DeductibleBuildingContents, sp.PayOutLimitBuildingContents
+    FROM    StepPolicy sp
+    WHERE   sp.DeductibleBuildingContents IS NOT NULL
+         OR sp.PayOutLimitBuildingContents IS NOT NULL
+GO
+
+CREATE VIEW vw_level_14_term
+AS
+    SELECT  ROW_NUMBER() OVER (ORDER BY StepPolicyId, TermCoverageType) AS tmpTermId,
+            *
+    FROM    vw_step_policy_terms
+GO
 
 CREATE VIEW vw_item_detail
 AS
@@ -2169,25 +2637,47 @@ BEGIN
         CondTag
         )
 
-    SELECT      DISTINCT bkc.ConditionId,
+    SELECT      bkc.ConditionId,
                 bkp.PolicyId,
-                ia.CondNumber,
+                bkc.CondNumber,
                 ia.CondName,
                 ia.CondPriority,
                 ia.CondClass,
                 ia.CondTag
     FROM        _businesskeys_condition bkc
-    JOIN        _businesskeys_policy bkp 
+    JOIN        _businesskeys_policy bkp
         ON      bkc.PortNumber = bkp.PortNumber
         AND     bkc.AccNumber = bkp.AccNumber
         AND     bkc.PolNumber = bkp.PolNumber
-    JOIN        _import_account ia
-        ON      bkc.PortNumber = ia.PortNumber
-        AND     bkc.AccNumber = ia.AccNumber
-        AND     bkc.PolNumber = ia.PolNumber
+    CROSS APPLY (
+                SELECT TOP 1 CondName, CondPriority, CondClass, CondTag
+                FROM _import_account ia2
+                WHERE ia2.PortNumber = bkc.PortNumber
+                  AND ia2.AccNumber  = bkc.AccNumber
+                  AND ia2.PolNumber  = bkc.PolNumber
+                  AND isnull(ia2.CondNumber, '') = isnull(bkc.CondNumber, '')
+                ) ia
 END
 
 GO
+
+CREATE PROCEDURE [dbo].[usp_LocationGroup_Load]
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO LocationGroup (LocationGroupId, LocGroup)
+    SELECT  ROW_NUMBER() OVER (ORDER BY LocGroup) AS LocationGroupId,
+            LocGroup
+    FROM    (
+            SELECT DISTINCT LocGroup
+            FROM   _import_location
+            WHERE  LocGroup IS NOT NULL
+              AND  LocGroup <> ''
+            ) AS tmp
+END
+GO
+
 
 CREATE PROCEDURE usp_Location_Load
 AS
@@ -2196,21 +2686,29 @@ BEGIN
 
     INSERT INTO Location (
         LocationId,
-        AccountId, 
+        AccountId,
         LocNumber,
-        LocPerilsCovered
+        LocPerilsCovered,
+        LocationGroupId
         )
 
-    SELECT DISTINCT bkl.LocationId,
+    SELECT DISTINCT
+        bkl.LocationId,
         bka.AccountId,
         bkl.LocNumber,
-        bkl.LocPerilsCovered
-    FROM 
+        bkl.LocPerilsCovered,
+        lg.LocationGroupId
+    FROM
         _businesskeys_location bkl
     JOIN
         _businesskeys_account bka
-            ON bkl.PortNumber = bka.PortNumber
-            AND bkl.AccNumber = bka.AccNumber
+            ON  bkl.PortNumber = bka.PortNumber
+            AND bkl.AccNumber  = bka.AccNumber
+    LEFT JOIN _import_location il
+            ON  il.PortNumber = bkl.PortNumber
+            AND il.AccNumber  = bkl.AccNumber
+            AND il.LocNumber  = bkl.LocNumber
+    LEFT JOIN LocationGroup lg ON lg.LocGroup = il.LocGroup
 END
 
 GO
@@ -2377,7 +2875,7 @@ BEGIN
         [Peril]            VARCHAR(3),
         [TermLevel]        INT,
         [TermCoverageType] INT,
-        [TermPeril]        VARCHAR(50),
+        [TermPeril]        VARCHAR(250),
         [DedType]          INT,
         [DedCode]          INT,
         [Deductible]       FLOAT (53),
@@ -2587,7 +3085,8 @@ BEGIN
             tmpTermId + @StartTermId AS TermId,
             ConditionId,
             TermCoverageType AS CoverageTypeId
-    FROM    vw_level_4_term
+    FROM    vw_level_4_term t
+    WHERE   EXISTS (SELECT 1 FROM ConditionLocation CL WHERE CL.ConditionId = t.ConditionId)
 
     -- level 5
     SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
@@ -2636,7 +3135,8 @@ BEGIN
     SELECT  ROW_NUMBER() OVER (ORDER BY ConditionId, tmpTermId) AS ConditionPDTermId,
             tmpTermId + @StartTermId AS TermId,
             ConditionId
-    FROM    vw_level_5_term
+    FROM    vw_level_5_term t
+    WHERE   EXISTS (SELECT 1 FROM ConditionLocation CL WHERE CL.ConditionId = t.ConditionId)
         
 
     -- level 6
@@ -2685,7 +3185,8 @@ BEGIN
     SELECT  ROW_NUMBER() OVER (ORDER BY ConditionId, tmpTermId) AS ConditionTermId,
             tmpTermId + @StartTermId AS TermId,
             ConditionId
-    FROM    vw_level_6_term
+    FROM    vw_level_6_term t
+    WHERE   EXISTS (SELECT 1 FROM ConditionLocation CL WHERE CL.ConditionId = t.ConditionId)
 
     -- level 7
     SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
@@ -2899,15 +3400,142 @@ BEGIN
 
 
     INSERT INTO ItemTerm
-    SELECT  ROW_NUMBER() OVER (ORDER BY TermId, ItemId) AS ItemTermId,
-            TermId,
-            ItemId
+    SELECT  ROW_NUMBER() OVER (ORDER BY ttd.TermId, id.ItemId)
+                + ISNULL((SELECT MAX(ItemTermId) FROM ItemTerm), 0) AS ItemTermId,
+            ttd.TermId,
+            id.ItemId
     FROM    #tmpterm_denormalised ttd
-    JOIN    vw_item_detail id 
+    JOIN    vw_item_detail id
                 ON  ttd.LocationId = id.LocationId
                 AND ttd.CoverageTypeId = id.CoverageTypeId
                 AND ttd.Peril = id.Peril
 
+
+    -- level 11 (Account Coverage: Building, Other, Contents, BI)
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
+
+    CREATE TABLE #tmpacc_term (
+        [TermId]           INT,
+        [AccountId]        INT,
+        [CoverageTypeId]   INT,
+        [Peril]            VARCHAR(3),
+        [TermLevel]        INT,
+        [TermCoverageType] INT,
+        [TermPeril]        VARCHAR(250),
+        [DedType]          INT,
+        [DedCode]          INT,
+        [Deductible]       FLOAT (53),
+        [MinDeductible]    FLOAT (53),
+        [MaxDeductible]    FLOAT (53),
+        [LimitType]        INT,
+        [LimitCode]        INT,
+        [Limit]            FLOAT (53),
+        [Participation]    FLOAT (53)
+    )
+
+    INSERT INTO #tmpacc_term
+    SELECT  t.tmpTermId + @StartTermId AS TermId,
+            t.AccountId,
+            tct.CoverageTypeId,
+            TRIM(spl.value) AS Peril,
+            t.TermLevel,
+            t.TermCoverageType,
+            t.AccPeril AS TermPeril,
+            t.DedType, t.DedCode, t.Deductible, t.MinDeductible, t.MaxDeductible,
+            t.LimitType, t.LimitCode, t.[Limit], t.Participation
+    FROM    vw_level_11_term AS t
+    CROSS APPLY STRING_SPLIT(t.AccPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct ON t.TermCoverageType = tct.TermCoverageTypeId
+
+    INSERT INTO Term
+    SELECT DISTINCT [TermId], [TermLevel], [TermCoverageType],
+            [DedType], [DedCode], [Deductible], [MinDeductible], [MaxDeductible],
+            [LimitType], [LimitCode], [Limit], [Participation]
+    FROM    #tmpacc_term
+    WHERE   TermLevel = 11
+
+    INSERT INTO AccountCoverageTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY AccountId, tmpTermId, TermCoverageType) AS AccountCoverageTermId,
+            tmpTermId + @StartTermId AS TermId,
+            AccountId,
+            TermCoverageType AS CoverageTypeId
+    FROM    vw_level_11_term
+
+    -- level 12 (Account PD)
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
+
+    INSERT INTO #tmpacc_term
+    SELECT  t.tmpTermId + @StartTermId AS TermId,
+            t.AccountId,
+            tct.CoverageTypeId,
+            TRIM(spl.value) AS Peril,
+            t.TermLevel,
+            t.TermCoverageType,
+            t.AccPeril AS TermPeril,
+            t.DedType, t.DedCode, t.Deductible, t.MinDeductible, t.MaxDeductible,
+            t.LimitType, t.LimitCode, t.[Limit], t.Participation
+    FROM    vw_level_12_term AS t
+    CROSS APPLY STRING_SPLIT(t.AccPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct ON t.TermCoverageType = tct.TermCoverageTypeId
+
+    INSERT INTO Term
+    SELECT DISTINCT [TermId], [TermLevel], [TermCoverageType],
+            [DedType], [DedCode], [Deductible], [MinDeductible], [MaxDeductible],
+            [LimitType], [LimitCode], [Limit], [Participation]
+    FROM    #tmpacc_term
+    WHERE   TermLevel = 12
+
+    INSERT INTO AccountPDTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY AccountId, tmpTermId) AS AccountPDTermId,
+            tmpTermId + @StartTermId AS TermId,
+            AccountId
+    FROM    vw_level_12_term
+
+    -- level 13 (Account All)
+    SELECT  @StartTermId = ISNULL(MAX(TermId),0) FROM Term
+
+    INSERT INTO #tmpacc_term
+    SELECT  t.tmpTermId + @StartTermId AS TermId,
+            t.AccountId,
+            tct.CoverageTypeId,
+            TRIM(spl.value) AS Peril,
+            t.TermLevel,
+            t.TermCoverageType,
+            t.AccPeril AS TermPeril,
+            t.DedType, t.DedCode, t.Deductible, t.MinDeductible, t.MaxDeductible,
+            t.LimitType, t.LimitCode, t.[Limit], t.Participation
+    FROM    vw_level_13_term AS t
+    CROSS APPLY STRING_SPLIT(t.AccPeril, ';') AS spl
+    JOIN    TermCoverageType AS tct ON t.TermCoverageType = tct.TermCoverageTypeId
+
+    INSERT INTO Term
+    SELECT DISTINCT [TermId], [TermLevel], [TermCoverageType],
+            [DedType], [DedCode], [Deductible], [MinDeductible], [MaxDeductible],
+            [LimitType], [LimitCode], [Limit], [Participation]
+    FROM    #tmpacc_term
+    WHERE   TermLevel = 13
+
+    INSERT INTO AccountTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY AccountId, tmpTermId) AS AccountTermId,
+            tmpTermId + @StartTermId AS TermId,
+            AccountId
+    FROM    vw_level_13_term
+
+    -- Link account-level terms to items via Account → Location → Coverage chain
+    INSERT INTO ItemTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY at2.TermId, id.ItemId)
+                + ISNULL((SELECT MAX(ItemTermId) FROM ItemTerm), 0) AS ItemTermId,
+            at2.TermId,
+            id.ItemId
+    FROM    #tmpacc_term AS at2
+    JOIN    Account a ON at2.AccountId = a.AccountId
+    JOIN    Location l ON a.AccountId = l.AccountId
+    JOIN    vw_item_detail id
+                ON  id.LocationId = l.LocationId
+                AND id.CoverageTypeId = at2.CoverageTypeId
+                AND id.Peril = at2.Peril
+
+    DROP TABLE #tmpacc_term
 
     Drop Table #tmpterm_denormalised
 
@@ -2916,15 +3544,280 @@ END
 GO
 
 
+CREATE PROCEDURE [dbo].[usp_StepPolicy_Load]
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO StepPolicy (
+        StepPolicyId, PolicyId,
+        StepFunctionName, StepTriggerType, StepNumber, PayOutType, TriggerType,
+        TriggerBuildingStart, TriggerBuildingEnd, DeductibleBuilding,
+        PayOutBuildingStart, PayOutBuildingEnd, PayOutLimitBuilding,
+        TriggerContentsStart, TriggerContentsEnd, DeductibleContents,
+        PayOutContentsStart, PayOutContentsEnd, PayOutLimitContents,
+        TriggerBuildingContentsStart, TriggerBuildingContentsEnd, DeductibleBuildingContents,
+        PayOutBuildingContentsStart, PayOutBuildingContentsEnd, PayOutLimitBuildingContents,
+        ExtraExpenseFactor, ExtraExpenseLimit, DebrisRemovalFactor,
+        MinimumTIV, ScaleFactor, IsLimitAtDamage, StackedPolNumber
+    )
+    SELECT  ROW_NUMBER() OVER (ORDER BY bkp.PolicyId, ia.StepNumber) AS StepPolicyId,
+            bkp.PolicyId,
+            ia.StepFunctionName, ia.StepTriggerType, ia.StepNumber, ia.PayOutType, ia.TriggerType,
+            ia.TriggerBuildingStart, ia.TriggerBuildingEnd, ia.DeductibleBuilding,
+            ia.PayOutBuildingStart, ia.PayOutBuildingEnd, ia.PayOutLimitBuilding,
+            ia.TriggerContentsStart, ia.TriggerContentsEnd, ia.DeductibleContents,
+            ia.PayOutContentsStart, ia.PayOutContentsEnd, ia.PayOutLimitContents,
+            ia.TriggerBuildingContentsStart, ia.TriggerBuildingContentsEnd, ia.DeductibleBuildingContents,
+            ia.PayOutBuildingContentsStart, ia.PayOutBuildingContentsEnd, ia.PayOutLimitBuildingContents,
+            ia.ExtraExpenseFactor, ia.ExtraExpenseLimit, ia.DebrisRemovalFactor,
+            ia.MinimumTIV, ia.ScaleFactor, ia.IsLimitAtDamage, ia.StackedPolNumber
+    FROM    _businesskeys_policy bkp
+    JOIN    _import_account ia
+                ON  bkp.PortNumber = ia.PortNumber
+                AND bkp.AccNumber = ia.AccNumber
+                AND bkp.PolNumber = ia.PolNumber
+    WHERE   ia.StepFunctionName IS NOT NULL
+
+END
+
+GO
+
+CREATE PROCEDURE [dbo].[usp_StepPolicyTerm_Load]
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @StartTermId INT = ISNULL((SELECT MAX(TermId) FROM Term), 0)
+
+    CREATE TABLE #tmpstep_term (
+        [TermId]           INT,
+        [StepPolicyId]     INT,
+        [PolicyId]         INT,
+        [TermLevel]        INT,
+        [TermCoverageType] INT,
+        [Deductible]       FLOAT (53),
+        [Limit]            FLOAT (53)
+    )
+
+    INSERT INTO #tmpstep_term
+    SELECT  tmpTermId + @StartTermId AS TermId,
+            StepPolicyId, PolicyId, TermLevel, TermCoverageType,
+            Deductible, [Limit]
+    FROM    vw_level_14_term
+
+    INSERT INTO Term (TermId, TermLevel, TermCoverageType,
+            DedType, DedCode, Deductible, MinDeductible, MaxDeductible,
+            LimitType, LimitCode, [Limit], Participation)
+    SELECT DISTINCT
+            TermId, TermLevel, TermCoverageType,
+            NULL, NULL, Deductible, NULL, NULL,
+            NULL, NULL, [Limit], NULL
+    FROM    #tmpstep_term
+
+    INSERT INTO StepPolicyTerm (StepPolicyTermId, TermId, StepPolicyId)
+    SELECT  ROW_NUMBER() OVER (ORDER BY StepPolicyId, TermId) AS StepPolicyTermId,
+            TermId, StepPolicyId
+    FROM    #tmpstep_term
+
+    -- Fan down to ItemTerm via Policy → Account → Location → Coverage → Item
+    INSERT INTO ItemTerm
+    SELECT  ROW_NUMBER() OVER (ORDER BY st.TermId, i.ItemId)
+                + ISNULL((SELECT MAX(ItemTermId) FROM ItemTerm), 0) AS ItemTermId,
+            st.TermId,
+            i.ItemId
+    FROM    #tmpstep_term st
+    JOIN    Policy p  ON st.PolicyId = p.PolicyId
+    JOIN    Account a ON p.AccountId = a.AccountId
+    JOIN    Location l ON a.AccountId = l.AccountId
+    JOIN    Coverage c ON l.LocationId = c.LocationId
+                       AND c.CoverageTypeId = st.TermCoverageType
+    JOIN    Item i ON c.CoverageId = i.CoverageId
+
+    DROP TABLE #tmpstep_term
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[usp_ReinsInfo_Load]
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO ReinsInfo (
+        ReinsInfoId, ReinsNumber, ReinsName, ReinsLayerNumber,
+        ReinsType, ReinsPeril, RiskLevel, InuringPriority,
+        CededPercent, PlacedPercent, TreatyShare, DeemedPercentPlaced,
+        ReinsCurrency, OriginalCurrency, ReinsFXrate, RateOfExchange, ReinsPremium,
+        AttachmentBasis, UseReinsDates, ReinsInceptionDate, ReinsExpiryDate,
+        RiskAttachment, RiskLimit,
+        OccLimit, OccAttachment, OccFranchiseDed, OccReverseFranchise,
+        AggLimit, AggAttachment, AggPeriod,
+        Reinstatement, ReinstatementCharge
+    )
+    SELECT  ROW_NUMBER() OVER (ORDER BY ReinsNumber) AS ReinsInfoId,
+            ReinsNumber, ReinsName, ReinsLayerNumber,
+            ReinsType, ReinsPeril, RiskLevel, InuringPriority,
+            CededPercent, PlacedPercent, TreatyShare, DeemedPercentPlaced,
+            ReinsCurrency, OriginalCurrency, ReinsFXrate, RateOfExchange, ReinsPremium,
+            AttachmentBasis, UseReinsDates, ReinsInceptionDate, ReinsExpiryDate,
+            RiskAttachment, RiskLimit,
+            OccLimit, OccAttachment, OccFranchiseDed, OccReverseFranchise,
+            AggLimit, AggAttachment, AggPeriod,
+            Reinstatement, ReinstatementCharge
+    FROM    _import_riinfo
+    WHERE   ReinsNumber IS NOT NULL
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[usp_ReinsScope_Load]
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Pass 1: load raw scope rows
+    INSERT INTO ReinsScope (
+        ReinsScopeId, ReinsInfoId,
+        PortNumber, AccNumber, PolNumber, LocNumber, LocGroup,
+        CedantName, ProducerName, LOB, CountryCode, ReinsTag,
+        CededPercent
+    )
+    SELECT  ROW_NUMBER() OVER (ORDER BY ri.ReinsInfoId, rs.PortNumber, rs.AccNumber, rs.PolNumber, rs.LocNumber) AS ReinsScopeId,
+            ri.ReinsInfoId,
+            rs.PortNumber, rs.AccNumber, rs.PolNumber, rs.LocNumber, rs.LocGroup,
+            rs.CedantName, rs.ProducerName, rs.LOB, rs.CountryCode, rs.ReinsTag,
+            rs.CededPercent
+    FROM    _import_riscope rs
+    JOIN    ReinsInfo ri ON rs.ReinsNumber = ri.ReinsNumber
+
+    -- Pass 2: resolve scope to entity links (one INSERT per RiskLevel)
+
+    -- SEL: links to Portfolio (all portfolios if PortNumber blank)
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId, LocationGroupId)
+    SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, p.PortfolioId)
+                + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
+            sc.ReinsScopeId,
+            p.PortfolioId, NULL, NULL, NULL, NULL
+    FROM    ReinsScope sc
+    JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
+    JOIN    Portfolio p  ON (sc.PortNumber IS NULL OR sc.PortNumber = '' OR p.PortNumber = sc.PortNumber)
+    WHERE   ri.RiskLevel = 'SEL'
+
+    -- ACC: links to Account
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId, LocationGroupId)
+    SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, bka.AccountId)
+                + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
+            sc.ReinsScopeId,
+            NULL, bka.AccountId, NULL, NULL, NULL
+    FROM    ReinsScope sc
+    JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
+    JOIN    _businesskeys_account bka
+                ON  bka.PortNumber = sc.PortNumber
+                AND bka.AccNumber  = sc.AccNumber
+    WHERE   ri.RiskLevel = 'ACC'
+
+    -- POL: links to Policy
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId, LocationGroupId)
+    SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, bkp.PolicyId)
+                + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
+            sc.ReinsScopeId,
+            NULL, NULL, bkp.PolicyId, NULL, NULL
+    FROM    ReinsScope sc
+    JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
+    JOIN    _businesskeys_policy bkp
+                ON  bkp.PortNumber = sc.PortNumber
+                AND bkp.AccNumber  = sc.AccNumber
+                AND bkp.PolNumber  = sc.PolNumber
+    WHERE   ri.RiskLevel = 'POL'
+
+    -- LOC: links to Location via natural keys
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId, LocationGroupId)
+    SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, bkl.LocationId)
+                + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
+            sc.ReinsScopeId,
+            NULL, NULL, NULL, bkl.LocationId, NULL
+    FROM    ReinsScope sc
+    JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
+    JOIN    _businesskeys_location bkl
+                ON  bkl.PortNumber = sc.PortNumber
+                AND bkl.AccNumber  = sc.AccNumber
+                AND bkl.LocNumber  = sc.LocNumber
+    WHERE   ri.RiskLevel = 'LOC'
+
+    -- LGR: one link per LocationGroup; Location.LocationGroupId resolves members at query time
+    INSERT INTO ReinsScopeLink (ReinsScopeLinkId, ReinsScopeId, PortfolioId, AccountId, PolicyId, LocationId, LocationGroupId)
+    SELECT  ROW_NUMBER() OVER (ORDER BY sc.ReinsScopeId, lg.LocationGroupId)
+                + ISNULL((SELECT MAX(ReinsScopeLinkId) FROM ReinsScopeLink), 0),
+            sc.ReinsScopeId,
+            NULL, NULL, NULL, NULL, lg.LocationGroupId
+    FROM    ReinsScope sc
+    JOIN    ReinsInfo ri ON sc.ReinsInfoId = ri.ReinsInfoId
+    JOIN    LocationGroup lg ON lg.LocGroup = sc.LocGroup
+    WHERE   ri.RiskLevel = 'LGR'
+        AND sc.LocGroup IS NOT NULL
+        AND sc.LocGroup <> ''
+
+END
+GO
+
 CREATE PROCEDURE [dbo].[usp_Database_Load]
 AS
 
 BEGIN
     SET NOCOUNT ON
 
+    -- clear normalised tables in child-first FK order so re-runs are idempotent
+    -- clear import tables so re-runs don't accumulate rows from prior executions
+    TRUNCATE TABLE [dbo].[_import_location]
+    TRUNCATE TABLE [dbo].[_import_account]
+    TRUNCATE TABLE [dbo].[_import_riinfo]
+    TRUNCATE TABLE [dbo].[_import_riscope]
+
+    DELETE FROM [dbo].[ItemTerm]
+    DELETE FROM [dbo].[StepPolicyTerm]
+    DELETE FROM [dbo].[AccountCoverageTerm]
+    DELETE FROM [dbo].[AccountPDTerm]
+    DELETE FROM [dbo].[AccountTerm]
+    DELETE FROM [dbo].[PolicyCoverageTerm]
+    DELETE FROM [dbo].[PolicyPDTerm]
+    DELETE FROM [dbo].[PolicyTerm]
+    DELETE FROM [dbo].[LayerTerm]
+    DELETE FROM [dbo].[LocTerm]
+    DELETE FROM [dbo].[PDTerm]
+    DELETE FROM [dbo].[CoverageTerm]
+    DELETE FROM [dbo].[ConditionCoverageTerm]
+    DELETE FROM [dbo].[ConditionPDTerm]
+    DELETE FROM [dbo].[ConditionTerm]
+    DELETE FROM [dbo].[Term]
+    DELETE FROM [dbo].[ReinsScopeLink]
+    DELETE FROM [dbo].[ReinsScope]
+    DELETE FROM [dbo].[ReinsInfo]
+    DELETE FROM [dbo].[Item]
+    DELETE FROM [dbo].[StepPolicy]
+    DELETE FROM [dbo].[ConditionLocation]
+    DELETE FROM [dbo].[Coverage]
+    DELETE FROM [dbo].[Condition]
+    DELETE FROM [dbo].[Layer]
+    DELETE FROM [dbo].[LocationDetail]
+    DELETE FROM [dbo].[Location]
+    DELETE FROM [dbo].[LocationGroup]
+    DELETE FROM [dbo].[PolicyDetails]
+    DELETE FROM [dbo].[Policy]
+    DELETE FROM [dbo].[AccountDetails]
+    DELETE FROM [dbo].[Account]
+    DELETE FROM [dbo].[Portfolio]
+    DELETE FROM [dbo].[_businesskeys_condition]
+    DELETE FROM [dbo].[_businesskeys_location]
+    DELETE FROM [dbo].[_businesskeys_layer]
+    DELETE FROM [dbo].[_businesskeys_policy]
+    DELETE FROM [dbo].[_businesskeys_account]
+
     -- load import tables from staging tables
     EXEC usp_SourceTable_Load _staging_location, _import_location
     EXEC usp_SourceTable_Load _staging_account, _import_account
+    EXEC usp_SourceTable_Load _staging_riinfo, _import_riinfo
+    EXEC usp_SourceTable_Load _staging_riscope, _import_riscope
 
     -- load business keys from import tables
     EXEC usp_BusinessKeyAccount_Load
@@ -2939,10 +3832,15 @@ BEGIN
     EXEC usp_Policy_Load
     EXEC usp_Layer_Load
     EXEC usp_Condition_Load
+    EXEC usp_LocationGroup_Load
     EXEC usp_Location_Load
     EXEC usp_Coverage_Load
     EXEC usp_Item_Load
     EXEC usp_ConditionLocation_Load
+    EXEC usp_StepPolicy_Load
+    EXEC usp_StepPolicyTerm_Load
+    EXEC usp_ReinsInfo_Load
+    EXEC usp_ReinsScope_Load
 
     -- terms
     EXEC usp_Terms_Load

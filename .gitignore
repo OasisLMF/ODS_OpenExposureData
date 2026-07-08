@@ -46,3 +46,7 @@ coverage.xml
 # generated and downloaded spec files (use utils/ scripts to regenerate)
 spec-downloaded/
 spec-generated/
+
+# local secrets — never commit credentials
+.env
+*.env
