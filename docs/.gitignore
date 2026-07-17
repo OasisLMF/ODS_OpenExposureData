@@ -1,0 +1,6 @@
+build/
+source/reference/_generated/
+**/__pycache__/
+.jupyter_cache/
+jupyter_execute/
+.DS_Store
