@@ -42,3 +42,7 @@ coverage.xml
 
 # excel
 *.xlsx#
+
+# generated and downloaded spec files (use utils/ scripts to regenerate)
+spec-downloaded/
+spec-generated/

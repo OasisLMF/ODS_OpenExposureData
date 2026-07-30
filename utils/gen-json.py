@@ -302,7 +302,7 @@ def get_cr_field(cr_field_df):
                 if (
                     len(cur_cr_field) > 1
                 ):  # we remove field that provide no extra requirement
-                    cr_field[field] = list(cur_cr_field)
+                    cr_field[field] = sorted(cur_cr_field)
         cr_fields_by_file[file_name] = cr_field
 
     return cr_fields_by_file
