@@ -92,12 +92,23 @@ def extract_from_csv(tag, output):
         gen_json_py.write_bytes(script_result.stdout)
 
         for csv_name in CSV_NAMES:
+            # Versioning.csv is a cumulative historical ledger maintained on main,
+            # not a point-in-time snapshot — always use the working tree version.
+            if csv_name == "Versioning.csv":
+                local_versioning = REPO_ROOT / CSV_DIR / csv_name
+                if local_versioning.exists():
+                    (tmp_dir / csv_name).write_bytes(local_versioning.read_bytes())
+                else:
+                    print(f"[WARN]  Versioning.csv not found at {local_versioning}, skipping")
+                continue
             result = subprocess.run(
                 ["git", "show", f"{tag}:{CSV_DIR}/{csv_name}"],
                 capture_output=True,
             )
             if result.returncode == 0:
                 (tmp_dir / csv_name).write_bytes(result.stdout)
+            else:
+                print(f"[WARN]  {csv_name} not found at tag {tag}, skipping")
 
         result = subprocess.run(
             [sys.executable, str(gen_json_py),
