@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OED Database Schema &amp; Gap Analysis</title>
+<meta name="description" content="Visual schema diagram of the OED SQL Server database with specification gap analysis against OEDInputFields.csv.">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0c0f1a;
+  --surface:   #141828;
+  --card:      #1c2337;
+  --border:    #2d3454;
+  --text:      #dde3f5;
+  --muted:     #5a6490;
+  --dim:       #3a4168;
+
+  /* group accent colours */
+  --c-hier:    #4f8eff;   /* portfolio / account / policy / layer */
+  --c-detail:  #7ab3ff;   /* details & condition */
+  --c-loc:     #34d399;   /* location */
+  --c-cov:     #fbbf24;   /* coverage / item */
+  --c-peril:   #f87171;   /* peril */
+  --c-term:    #c084fc;   /* term + junctions */
+  --c-stage:   #6b7280;   /* staging tables */
+  --c-ri:      #06b6d4;   /* reinsurance entities */
+
+  --pk:        #fbbf24;
+  --fk:        #7b97f5;
+
+  --gap-crit:  #ef4444;
+  --gap-warn:  #f59e0b;
+  --gap-info:  #60a5fa;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+header {
+  padding: 36px 40px 28px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+header h1 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -.3px;
+  color: var(--text);
+}
+header .meta {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* ── Section wrapper ─────────────────────────────────────── */
+.section {
+  padding: 32px 40px;
+  border-bottom: 1px solid var(--border);
+}
+.section h2 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+/* ── Diagram ─────────────────────────────────────────────── */
+.diagram-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 12px;
+}
+#diagram {
+  display: block;
+  min-width: 1240px;
+}
+
+/* SVG table card styles (applied via JS attributes) */
+.tbl-header { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.tbl-col    { font-size: 10.5px; font-family: 'Cascadia Code','Fira Code',Consolas,monospace; }
+.tbl-pk     { fill: var(--pk) !important; }
+.tbl-fk     { fill: var(--fk) !important; }
+
+/* ── Legend ──────────────────────────────────────────────── */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.legend-swatch {
+  width: 12px; height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Status bar ──────────────────────────────────────────── */
+.gap-status-bar {
+  display: flex;
+  align-items: baseline;
+  gap: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+.gap-stat { display: flex; align-items: baseline; gap: 8px; }
+.gap-stat-count {
+  font-size: 26px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -.5px;
+}
+.gap-stat-count.is-resolved { color: #22c55e; }
+.gap-stat-count.is-remaining { color: var(--gap-warn); }
+.gap-stat-label { font-size: 12px; color: var(--muted); }
+.gap-status-branch {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: .04em;
+}
+
+.gap-subhead {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin: 20px 0 12px;
+}
+
+/* ── Resolved card variant ───────────────────────────────── */
+.sev-fixed { background: rgba(34,197,94,.12); color: #22c55e; }
+.gap-card.resolved {
+  border-color: rgba(34,197,94,.18);
+  opacity: .65;
+}
+.gap-card.resolved .gap-card-title {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(90,100,144,.45);
+  text-decoration-thickness: 1px;
+}
+.gap-card.resolved .gap-card-body p { color: var(--dim); }
+.gap-card.resolved .field-tag { opacity: .45; }
+
+/* ── Gap Analysis ────────────────────────────────────────── */
+.gap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+  margin-top: 8px;
+}
+.gap-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.gap-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.sev-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+.sev-crit  { background: rgba(239,68,68,.15);  color: var(--gap-crit); }
+.sev-warn  { background: rgba(245,158,11,.15); color: var(--gap-warn); }
+.sev-info  { background: rgba(96,165,250,.15); color: var(--gap-info); }
+
+.gap-card-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+.gap-card-body { padding: 14px 16px; }
+.gap-card-body p { color: var(--muted); font-size: 12.5px; margin-bottom: 10px; line-height: 1.6; }
+.gap-card-body p:last-child { margin-bottom: 0; }
+
+.field-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+.field-tag {
+  font-family: 'Cascadia Code','Fira Code',Consolas,monospace;
+  font-size: 11px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 2px 7px;
+  color: var(--text);
+}
+.field-tag.missing { border-color: rgba(239,68,68,.5); color: var(--gap-crit); }
+.field-tag.case    { border-color: rgba(245,158,11,.4); color: var(--gap-warn); }
+.field-tag.extra   { border-color: rgba(96,165,250,.4); color: var(--gap-info); }
+
+.table-wrap { overflow-x: auto; margin-top: 10px; }
+table.gap-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+table.gap-table th {
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+table.gap-table td {
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(45,52,84,.5);
+  vertical-align: top;
+}
+table.gap-table td:first-child {
+  font-family: 'Cascadia Code','Fira Code',Consolas,monospace;
+  font-size: 11px;
+}
+table.gap-table tr:last-child td { border-bottom: none; }
+
+.count-label {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.conn-key {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.conn-key-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.conn-line {
+  width: 28px;
+  height: 2px;
+  border-radius: 1px;
+}
+.conn-line.solid { background: var(--muted); }
+.conn-line.dashed { background: repeating-linear-gradient(90deg, var(--muted) 0 4px, transparent 4px 8px); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>OED Database Schema</h1>
+  <span class="meta">Open Exposure Data &nbsp;·&nbsp; SQL Server &nbsp;·&nbsp; v5.0.0 &nbsp;·&nbsp; 279-update-relational-schema</span>
+</header>
+
+<!-- ── DIAGRAM ─────────────────────────────────────────── -->
+<div class="section">
+  <h2>Relational Schema</h2>
+  <div class="diagram-scroll">
+    <svg id="diagram" width="1600" height="1180" aria-label="OED database entity-relationship diagram"></svg>
+  </div>
+  <div class="conn-key">
+    <div class="conn-key-item"><div class="conn-line solid"></div> FK relationship</div>
+    <div class="conn-key-item"><div class="conn-line dashed"></div> Staging feed (ETL)</div>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--c-hier)"></div> Insurance hierarchy</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--c-detail)"></div> Detail &amp; condition</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--c-loc)"></div> Location</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--c-cov)"></div> Coverage &amp; item</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--c-peril)"></div> Peril</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--c-term)"></div> Terms</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--c-stage)"></div> Staging / import</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--c-ri)"></div> Reinsurance</div>
+  </div>
+</div>
+
+<!-- ── GAP ANALYSIS ───────────────────────────────────── -->
+<div class="section">
+  <h2>Specification Gap Analysis</h2>
+
+  <div class="gap-status-bar">
+    <div class="gap-stat">
+      <span class="gap-stat-count is-resolved">7</span>
+      <span class="gap-stat-label">resolved</span>
+    </div>
+    <div class="gap-stat">
+      <span class="gap-stat-count is-remaining">3</span>
+      <span class="gap-stat-label">remaining</span>
+    </div>
+    <span class="gap-status-branch">branch: 279-update-relational-schema</span>
+  </div>
+
+  <!-- ── REMAINING ─────────────────────────────── -->
+  <div class="gap-subhead">Remaining</div>
+  <div class="gap-grid">
+
+    <div class="gap-card">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-info">Info · deferred</span>
+        <span class="gap-card-title">Cyber fields have no normalised destination</span>
+      </div>
+      <div class="gap-card-body">
+        <p>Cyber-specific fields in the account file pass through <code>_import_account</code> but are never inserted into any normalised table. No cyber entity or extension table has been designed. This covers both the vendor/config attributes and the cyber-specific policy coverage terms — the latter have no corresponding <code>CoverageTypeId</code> (1–6) in the term hierarchy and so cannot be loaded by <code>usp_Terms_Load</code>.</p>
+        <p><strong>Vendor / config attributes</strong></p>
+        <div class="field-list">
+          <span class="field-tag extra">CloudVendor</span>
+          <span class="field-tag extra">OSVendor</span>
+          <span class="field-tag extra">EmailVendor</span>
+          <span class="field-tag extra">CRMVendor</span>
+          <span class="field-tag extra">PatchPolicy</span>
+          <span class="field-tag extra">BackUpFreq</span>
+        </div>
+        <p><strong>Cyber coverage terms (Pol-level limit / deductible pairs)</strong></p>
+        <div class="field-list">
+          <span class="field-tag extra">PolLimitNPBI / PolDedNPBI</span>
+          <span class="field-tag extra">PolLimitCBI / PolDedCBI</span>
+          <span class="field-tag extra">PolLimitDIAS / PolDedDIAS</span>
+          <span class="field-tag extra">PolLimitEXT / PolDedEXT</span>
+          <span class="field-tag extra">PolLimitFIN / PolDedFIN</span>
+          <span class="field-tag extra">PolLimitINRE / PolDedINRE</span>
+          <span class="field-tag extra">PolLimitLIA / PolDedLIA</span>
+          <span class="field-tag extra">PolLimitREG / PolDedREG</span>
+          <span class="field-tag extra">PolLimitENO / PolDedENO</span>
+          <span class="field-tag extra">PolSIR</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /gap-grid remaining -->
+
+  <!-- ── RESOLVED IN #279 ───────────────────────── -->
+  <div class="gap-subhead" style="margin-top:32px">Resolved in PR #279</div>
+  <div class="gap-grid">
+
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">Reinsurance tables entirely absent</span>
+      </div>
+      <div class="gap-card-body">
+        <p><code>_staging_riinfo</code> (31 cols), <code>_staging_riscope</code> (13 cols), <code>_import_riinfo</code>, and <code>_import_riscope</code> added with schema-enforced column definitions matching the spec. Both wired into <code>usp_Database_Load</code> via <code>usp_SourceTable_Load</code>.</p>
+      </div>
+    </div>
+
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">9 PV fields missing from _import_location</span>
+      </div>
+      <div class="gap-card-body">
+        <p>All nine photovoltaic panel fields added to both <code>_import_location</code> and <code>LocationDetail</code> with correct SQL Server types.</p>
+        <div class="field-list">
+          <span class="field-tag">PVControlType</span>
+          <span class="field-tag">PVGlassThickness</span>
+          <span class="field-tag">PVMaterial</span>
+          <span class="field-tag">PVMounting</span>
+          <span class="field-tag">PVPanelArea</span>
+          <span class="field-tag">PVPanelAreaUnit</span>
+          <span class="field-tag">PVPanelYear</span>
+          <span class="field-tag">PVStowing</span>
+          <span class="field-tag">PVTiltAngle</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">Systematic case mismatches (134 columns)</span>
+      </div>
+      <div class="gap-card-body">
+        <p>134 column names renamed to match spec casing exactly across <code>_import_account</code> (82), <code>_import_location</code> (39), <code>PolicyDetails</code> (1), <code>LocationDetail</code> (12). Patterns fixed: <code>4Bi→4BI</code>, <code>5Pd→5PD</code>, <code>Xx→XX</code>, <code>Tiv→TIV</code>, <code>Lob→LOB</code>, <code>OedVersion→OEDVersion</code>, and others.</p>
+      </div>
+    </div>
+
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">Account-level terms: TODO in schema</span>
+      </div>
+      <div class="gap-card-body">
+        <p>Added <code>AccountCoverageTerm</code> and <code>AccountPDTerm</code> junction tables. Added 6 <code>vw_account_terms_*</code> views (Building through All) plus <code>vw_level_11/12/13_term</code>. Replaced the TODO comment in <code>usp_Terms_Load</code> with full account-term loading logic that populates all three junction tables and fans down to <code>ItemTerm</code> via Account→Location→Coverage.</p>
+      </div>
+    </div>
+
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">load_sql.py issues</span>
+      </div>
+      <div class="gap-card-body">
+        <p><code>.head(10)</code> removed from the location CSV read — all rows now loaded. <code>usp_Database_Load</code> call uncommented so the staging→normalised ETL runs. RI staging table names already matched the new schema definitions.</p>
+      </div>
+    </div>
+
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">Step-function fields have no normalised home</span>
+      </div>
+      <div class="gap-card-body">
+        <p>New <code>StepPolicy</code> table (FK to <code>Policy</code>, 32 columns) stores all parametric step-function fields per policy step. New <code>usp_StepPolicy_Load</code> procedure loads from <code>_import_account</code> rows where <code>StepFunctionName IS NOT NULL</code> and is called from <code>usp_Database_Load</code>.</p>
+        <div class="field-list">
+          <span class="field-tag">StepFunctionName</span>
+          <span class="field-tag">StepNumber</span>
+          <span class="field-tag">TriggerBuildingStart/End</span>
+          <span class="field-tag">PayOutBuildingStart/End/Limit</span>
+          <span class="field-tag">+ 26 more</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gap-card resolved">
+      <div class="gap-card-header">
+        <span class="sev-badge sev-fixed">Fixed</span>
+        <span class="gap-card-title">Reinsurance normalised model not yet designed</span>
+      </div>
+      <div class="gap-card-body">
+        <p>Three new entities added: <code>ReinsInfo</code> (treaty master, 32 fields including risk/programme-level terms, inuring priority, attachment basis), <code>ReinsScope</code> (scope filter rows — hierarchical fields + FILTER_LEVEL_EXTRA_FIELDS + SS CededPercent override), and <code>ReinsScopeLink</code> (pre-computed entity resolution into Portfolio/Account/Policy/Location via nullable FKs). New procedures <code>usp_ReinsInfo_Load</code> and <code>usp_ReinsScope_Load</code> handle the ETL including LGR multi-location fan-out and SEL portfolio broadcast.</p>
+      </div>
+    </div>
+
+  </div><!-- /gap-grid resolved -->
+</div>
+
+<script>
+// ── Diagram rendering ─────────────────────────────────────────────────────────
+const NS = 'http://www.w3.org/2000/svg';
+const svg = document.getElementById('diagram');
+
+const COLORS = {
+  hier:   '#4f8eff',
+  detail: '#7ab3ff',
+  loc:    '#34d399',
+  cov:    '#fbbf24',
+  peril:  '#f87171',
+  term:   '#c084fc',
+  stage:  '#6b7280',
+  ri:     '#06b6d4',
+};
+const BG_CARD   = '#1c2337';
+const BG_HEADER = '#212840';
+const C_BORDER  = '#2d3454';
+const C_TEXT    = '#dde3f5';
+const C_MUTED   = '#5a6490';
+const C_PK      = '#fbbf24';
+const C_FK      = '#7b97f5';
+const C_DATA    = '#a8b4d8';
+
+const W = 175;  // card width
+const ROW_H = 18; // row height in card body
+
+// ── Table definitions ─────────────────────────────────────────────────────────
+// group: colour key; x,y: top-left; fields: [{n: name, r: role}]
+// roles: pk, fk, key, data
+const tables = [
+  // ── Insurance hierarchy ───────────────────────────────────────────
+  { id:'Portfolio', g:'hier', x:15, y:15, fields:[
+    {n:'PortfolioId', r:'pk'},
+    {n:'PortNumber',  r:'key'},
+    {n:'PortName',    r:'data'},
+  ]},
+  { id:'Account', g:'hier', x:210, y:15, fields:[
+    {n:'AccountId',   r:'pk'},
+    {n:'PortfolioId', r:'fk'},
+    {n:'AccNumber',   r:'key'},
+  ]},
+  { id:'Policy', g:'hier', x:405, y:15, fields:[
+    {n:'PolicyId',        r:'pk'},
+    {n:'AccountId',       r:'fk'},
+    {n:'PolNumber',       r:'key'},
+    {n:'PolPerilsCovered',r:'data'},
+  ]},
+  { id:'Layer', g:'hier', x:600, y:15, fields:[
+    {n:'LayerId',     r:'pk'},
+    {n:'PolicyId',    r:'fk'},
+    {n:'LayerNumber', r:'key'},
+  ]},
+  // ── Details ───────────────────────────────────────────────────────
+  { id:'AccountDetails', g:'detail', x:210, y:170, fields:[
+    {n:'AccountId',  r:'pk'},
+    {n:'AccName',    r:'data'},
+    {n:'AccCurrency',r:'data'},
+    {n:'AccGroup',   r:'data'},
+    {n:'AccUserDef1–5',r:'data'},
+  ]},
+  { id:'PolicyDetails', g:'detail', x:405, y:170, fields:[
+    {n:'PolicyId',      r:'pk'},
+    {n:'PolStatus',     r:'data'},
+    {n:'PolInceptionDate',r:'data'},
+    {n:'PolExpiryDate', r:'data'},
+    {n:'Lob / HoursClause',r:'data'},
+    {n:'PolUserDef1–5', r:'data'},
+  ]},
+  { id:'Condition', g:'detail', x:600, y:170, fields:[
+    {n:'ConditionId', r:'pk'},
+    {n:'PolicyId',    r:'fk'},
+    {n:'CondNumber',  r:'key'},
+    {n:'CondPriority',r:'data'},
+    {n:'CondClass',   r:'data'},
+    {n:'CondTag',     r:'data'},
+  ]},
+  { id:'ConditionLocation', g:'detail', x:600, y:360, fields:[
+    {n:'ConditionLocationId',r:'pk'},
+    {n:'LocationId',         r:'fk'},
+    {n:'ConditionId',        r:'fk'},
+    {n:'CondTag',            r:'key'},
+  ]},
+  // ── Location ──────────────────────────────────────────────────────
+  { id:'Location', g:'loc', x:15, y:440, fields:[
+    {n:'LocationId',       r:'pk'},
+    {n:'AccountId',        r:'fk'},
+    {n:'LocNumber',        r:'key'},
+    {n:'LocPerilsCovered', r:'data'},
+  ]},
+  { id:'LocationDetail', g:'loc', x:15, y:590, fields:[
+    {n:'LocationId',      r:'pk'},
+    {n:'CountryCode / LatLon',r:'data'},
+    {n:'OccupancyCode',   r:'data'},
+    {n:'ConstructionCode',r:'data'},
+    {n:'~140 phys. attrs',r:'data'},
+  ]},
+  // ── Coverage & item ───────────────────────────────────────────────
+  { id:'Coverage', g:'cov', x:210, y:440, fields:[
+    {n:'CoverageId',    r:'pk'},
+    {n:'LocationId',    r:'fk'},
+    {n:'CoverageTypeId',r:'fk'},
+    {n:'TIV',           r:'key'},
+  ]},
+  { id:'CoverageType', g:'cov', x:405, y:590, fields:[
+    {n:'CoverageTypeId',r:'pk'},
+    {n:'CoverageType',  r:'key'},
+  ]},
+  { id:'Item', g:'cov', x:405, y:440, fields:[
+    {n:'ItemId',    r:'pk'},
+    {n:'CoverageId',r:'fk'},
+    {n:'PerilId',   r:'fk'},
+  ]},
+  // ── Peril ─────────────────────────────────────────────────────────
+  { id:'Peril', g:'peril', x:600, y:440, fields:[
+    {n:'PerilId',     r:'pk'},
+    {n:'Peril',       r:'key'},
+    {n:'IsGroupPeril',r:'data'},
+  ]},
+  { id:'PerilGroup', g:'peril', x:600, y:570, fields:[
+    {n:'PerilGroupID',r:'fk'},
+    {n:'PerilId',     r:'fk'},
+  ]},
+  // ── Term ──────────────────────────────────────────────────────────
+  { id:'Term', g:'term', x:800, y:15, fields:[
+    {n:'TermId',       r:'pk'},
+    {n:'TermLevel',    r:'key'},
+    {n:'TermCoverageType',r:'data'},
+    {n:'DedType / DedCode',r:'data'},
+    {n:'Deductible',   r:'data'},
+    {n:'Min / MaxDeductible',r:'data'},
+    {n:'LimitType / LimitCode',r:'data'},
+    {n:'Limit',        r:'data'},
+    {n:'Participation',r:'data'},
+  ]},
+  // Term junctions (col 4 = x:800, col 5 = x:995)
+  { id:'AccountTerm',           g:'term', x:800,  y:215, fields:[{n:'AccountTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'AccountId',r:'fk'}]},
+  { id:'PolicyTerm',            g:'term', x:995,  y:215, fields:[{n:'PolicyTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'PolicyId',r:'fk'}]},
+  { id:'PolicyCoverageTerm',    g:'term', x:800,  y:315, fields:[{n:'PolicyCoverageTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'PolicyId',r:'fk'},{n:'CoverageTypeId',r:'fk'}]},
+  { id:'PolicyPDTerm',          g:'term', x:995,  y:315, fields:[{n:'PolicyPDTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'PolicyId',r:'fk'}]},
+  { id:'LayerTerm',             g:'term', x:800,  y:415, fields:[{n:'LayerTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'LayerId',r:'fk'}]},
+  { id:'ConditionTerm',         g:'term', x:995,  y:415, fields:[{n:'ConditionTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'ConditionId',r:'fk'}]},
+  { id:'ConditionCoverageTerm', g:'term', x:800,  y:515, fields:[{n:'ConditionCoverageTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'ConditionId',r:'fk'},{n:'CoverageTypeId',r:'fk'}]},
+  { id:'ConditionPDTerm',       g:'term', x:995,  y:515, fields:[{n:'ConditionPDTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'ConditionId',r:'fk'}]},
+  { id:'CoverageTerm',          g:'term', x:800,  y:615, fields:[{n:'CoverageTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'CoverageId',r:'fk'}]},
+  { id:'LocTerm',               g:'term', x:995,  y:615, fields:[{n:'LocTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'LocationId',r:'fk'}]},
+  { id:'PDTerm',                g:'term', x:800,  y:715, fields:[{n:'PdTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'LocationId',r:'fk'}]},
+  { id:'ItemTerm',              g:'term', x:995,  y:715, fields:[{n:'ItemTermId',r:'pk'},{n:'TermId',r:'fk'},{n:'ItemId',r:'fk'}]},
+  // ── Staging ───────────────────────────────────────────────────────
+  { id:'_import_account',  g:'stage', x:15,  y:840, fields:[{n:'286 OED Acc file fields',r:'data'},{n:'(flat, no PK)',r:'data'}]},
+  { id:'_import_location', g:'stage', x:210, y:840, fields:[{n:'243 OED Loc file fields',r:'data'},{n:'(+9 PV, flat, no PK)',r:'data'}]},
+  { id:'_businesskeys_*',  g:'stage', x:405, y:840, fields:[{n:'account / policy / layer',r:'data'},{n:'location / condition',r:'data'}]},
+  { id:'OEDVersion',       g:'stage', x:600, y:840, fields:[{n:'OEDVersion',r:'data'}]},
+  { id:'_staging_riinfo',  g:'stage', x:800, y:840, fields:[{n:'31 ReinsInfo fields',r:'data'},{n:'(schema-enforced)',r:'data'}]},
+  { id:'_staging_riscope', g:'stage', x:1000,y:840, fields:[{n:'13 ReinsScope fields',r:'data'},{n:'(schema-enforced)',r:'data'}]},
+  // ── Reinsurance normalised entities ──────────────────────────────────────
+  { id:'ReinsInfo', g:'ri', x:15, y:975, fields:[
+    {n:'ReinsInfoId',      r:'pk'},
+    {n:'ReinsNumber',      r:'key'},
+    {n:'ReinsType',        r:'data'},  // FAC/QS/SS/PR/CXL/AXL
+    {n:'RiskLevel',        r:'data'},  // LOC/LGR/POL/ACC/SEL
+    {n:'InuringPriority',  r:'data'},
+    {n:'ReinsPeril',       r:'data'},
+    {n:'RiskAttachment/Limit', r:'data'},
+    {n:'OccAttachment/Limit',  r:'data'},
+    {n:'CededPercent',     r:'data'},
+    {n:'PlacedPercent',    r:'data'},
+    {n:'AggLimit/Attachment',  r:'data'},
+    {n:'AttachmentBasis',  r:'data'},  // LO / RA
+    {n:'+ dates & currency', r:'data'},
+  ]},
+  { id:'ReinsScope', g:'ri', x:210, y:975, fields:[
+    {n:'ReinsScopeId',  r:'pk'},
+    {n:'ReinsInfoId',   r:'fk'},
+    {n:'PortNumber',    r:'data'},
+    {n:'AccNumber',     r:'data'},
+    {n:'PolNumber',     r:'data'},
+    {n:'LocNumber',     r:'data'},
+    {n:'LocGroup',      r:'data'},
+    {n:'CedantName',    r:'data'},
+    {n:'ProducerName',  r:'data'},
+    {n:'LOB / CountryCode / ReinsTag', r:'data'},
+    {n:'CededPercent',  r:'data'},  // SS scope override
+  ]},
+  { id:'ReinsScopeLink', g:'ri', x:405, y:975, fields:[
+    {n:'ReinsScopeLinkId', r:'pk'},
+    {n:'ReinsScopeId',     r:'fk'},
+    {n:'PortfolioId',      r:'fk'},  // SEL → Portfolio
+    {n:'AccountId',        r:'fk'},  // ACC → Account
+    {n:'PolicyId',         r:'fk'},  // POL → Policy
+    {n:'LocationId',       r:'fk'},  // LOC/LGR → Location
+  ]},
+  // New tables from PR #279
+  { id:'StepPolicy',       g:'hier',  x:210, y:320, fields:[
+    {n:'StepPolicyId',     r:'pk'},
+    {n:'PolicyId',         r:'fk'},
+    {n:'StepFunctionName', r:'key'},
+    {n:'StepNumber',       r:'data'},
+    {n:'30 step-fn fields',r:'data'},
+  ]},
+  { id:'AccountCoverageTerm', g:'term', x:1190, y:215, fields:[
+    {n:'AccountCoverageTermId', r:'pk'},
+    {n:'TermId',    r:'fk'},
+    {n:'AccountId', r:'fk'},
+    {n:'CoverageTypeId', r:'fk'},
+  ]},
+  { id:'AccountPDTerm', g:'term', x:1190, y:340, fields:[
+    {n:'AccountPDTermId', r:'pk'},
+    {n:'TermId',    r:'fk'},
+    {n:'AccountId', r:'fk'},
+  ]},
+  { id:'StepPolicyTerm', g:'term', x:1190, y:460, fields:[
+    {n:'StepPolicyTermId', r:'pk'},
+    {n:'TermId',           r:'fk'},
+    {n:'StepPolicyId',     r:'fk'},
+  ]},
+];
+
+// ── Connections ───────────────────────────────────────────────────────────────
+// type: H=horiz, V=vert, B=bezier
+// from/to: table id; fSide: side of source; tSide: side of target
+const conns = [
+  // Insurance hierarchy horizontal chain
+  {f:'Portfolio',      t:'Account',     fS:'r', tS:'l'},
+  {f:'Account',        t:'Policy',      fS:'r', tS:'l'},
+  {f:'Policy',         t:'Layer',       fS:'r', tS:'l'},
+  // Details (1:1 vertical drops)
+  {f:'Account',        t:'AccountDetails',  fS:'b', tS:'t'},
+  {f:'Policy',         t:'PolicyDetails',   fS:'b', tS:'t'},
+  {f:'Layer',          t:'Condition',       fS:'b', tS:'t'},
+  {f:'Condition',      t:'ConditionLocation',fS:'b', tS:'t'},
+  // Account → Location (big bezier, left and down)
+  {f:'Account',        t:'Location',        fS:'b', tS:'t', curve:true},
+  // Location chain
+  {f:'Location',       t:'LocationDetail',  fS:'b', tS:'t'},
+  {f:'Location',       t:'Coverage',        fS:'r', tS:'l'},
+  {f:'Coverage',       t:'Item',            fS:'r', tS:'l'},
+  {f:'Item',           t:'Peril',           fS:'r', tS:'l'},
+  {f:'Coverage',       t:'CoverageType',    fS:'b', tS:'t', curve:true},
+  {f:'Peril',          t:'PerilGroup',      fS:'b', tS:'t'},
+  // ConditionLocation references Location
+  {f:'Location',       t:'ConditionLocation', fS:'t', tS:'l', curve:true},
+  // Term junctions (all to Term via V or B)
+  {f:'Term', t:'AccountTerm',           fS:'b', tS:'t'},
+  {f:'Term', t:'PolicyTerm',            fS:'r', tS:'t', curve:true},
+  {f:'Term', t:'PolicyCoverageTerm',    fS:'b', tS:'t', curve:true},
+  {f:'Term', t:'PolicyPDTerm',          fS:'r', tS:'t', curve:true},
+  {f:'Term', t:'LayerTerm',             fS:'b', tS:'t', curve:true},
+  {f:'Term', t:'ConditionTerm',         fS:'r', tS:'t', curve:true},
+  {f:'Term', t:'ConditionCoverageTerm', fS:'b', tS:'t', curve:true},
+  {f:'Term', t:'ConditionPDTerm',       fS:'r', tS:'t', curve:true},
+  {f:'Term', t:'CoverageTerm',          fS:'b', tS:'t', curve:true},
+  {f:'Term', t:'LocTerm',               fS:'r', tS:'t', curve:true},
+  {f:'Term', t:'PDTerm',               fS:'b', tS:'t', curve:true},
+  {f:'Term', t:'ItemTerm',             fS:'r', tS:'t', curve:true},
+  // Staging dashed feeds
+  {f:'_import_account',  t:'Account',  fS:'t', tS:'b', dashed:true, curve:true},
+  {f:'_import_location', t:'Location', fS:'t', tS:'b', dashed:true, curve:true},
+  {f:'_staging_riinfo',  t:'ReinsInfo',  fS:'b', tS:'t', dashed:true},
+  {f:'_staging_riscope', t:'ReinsScope', fS:'b', tS:'t', dashed:true, curve:true},
+  // RI entity chain
+  {f:'ReinsInfo',      t:'ReinsScope',     fS:'r', tS:'l'},
+  {f:'ReinsScope',     t:'ReinsScopeLink', fS:'r', tS:'l'},
+  // ReinsScopeLink → hierarchy (nullable FKs, dashed)
+  {f:'ReinsScopeLink', t:'Portfolio', fS:'t', tS:'b', dashed:true, curve:true},
+  {f:'ReinsScopeLink', t:'Account',   fS:'t', tS:'b', dashed:true, curve:true},
+  {f:'ReinsScopeLink', t:'Policy',    fS:'t', tS:'b', dashed:true, curve:true},
+  {f:'ReinsScopeLink', t:'Location',  fS:'t', tS:'b', dashed:true, curve:true},
+  // New: StepPolicy
+  {f:'Policy', t:'StepPolicy', fS:'l', tS:'r', curve:true},
+  // New: Account term junctions
+  {f:'Term', t:'AccountCoverageTerm', fS:'r', tS:'t', curve:true},
+  {f:'Term', t:'AccountPDTerm',       fS:'r', tS:'t', curve:true},
+  // New: StepPolicyTerm
+  {f:'Term',       t:'StepPolicyTerm', fS:'r', tS:'t', curve:true},
+  {f:'StepPolicy', t:'StepPolicyTerm', fS:'r', tS:'l', curve:true},
+];
+
+// ── Compute card heights ──────────────────────────────────────────────────────
+const HEADER_H = 28;
+const PAD = 8;
+function cardHeight(t) {
+  return HEADER_H + PAD + t.fields.length * ROW_H + PAD;
+}
+
+// Build lookup: id → {x, y, w, h}
+const tbl = {};
+tables.forEach(t => {
+  const h = cardHeight(t);
+  tbl[t.id] = {x: t.x, y: t.y, w: W, h, g: t.g};
+});
+
+// ── Connector point calculator ────────────────────────────────────────────────
+function pt(id, side) {
+  const t = tbl[id];
+  switch(side) {
+    case 'l': return [t.x,           t.y + t.h/2];
+    case 'r': return [t.x + t.w,     t.y + t.h/2];
+    case 't': return [t.x + t.w/2,   t.y];
+    case 'b': return [t.x + t.w/2,   t.y + t.h];
+  }
+}
+
+// ── SVG helpers ───────────────────────────────────────────────────────────────
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k,v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function text(str, x, y, attrs, parent) {
+  const e = el('text', {x, y, ...attrs}, parent);
+  e.textContent = str;
+  return e;
+}
+
+// ── Arrow marker defs ─────────────────────────────────────────────────────────
+const defs = el('defs', {}, svg);
+['solid','dashed'].forEach(type => {
+  const color = type === 'dashed' ? '#6b7280' : '#3d4870';
+  const m = el('marker', {id:`arr-${type}`, markerWidth:'8', markerHeight:'6',
+    refX:'7', refY:'3', orient:'auto', markerUnits:'strokeWidth'}, defs);
+  el('path', {d:'M0,0 L8,3 L0,6 Z', fill: color}, m);
+});
+
+// ── Draw connections ──────────────────────────────────────────────────────────
+const connGroup = el('g', {id:'connections'}, svg);
+
+conns.forEach(c => {
+  const [x1,y1] = pt(c.f, c.fS);
+  const [x2,y2] = pt(c.t, c.tS);
+  const isDash = c.dashed;
+  const stroke = isDash ? '#4a5070' : '#3a4268';
+  const marker = isDash ? 'url(#arr-dashed)' : 'url(#arr-solid)';
+  const dash = isDash ? '5,4' : null;
+
+  let d;
+  if (c.curve) {
+    const cx1 = c.fS === 'r' ? x1 + 60 : c.fS === 'l' ? x1 - 60 : x1;
+    const cy1 = c.fS === 'b' ? y1 + 50 : c.fS === 't' ? y1 - 50 : y1;
+    const cx2 = c.tS === 'l' ? x2 - 60 : c.tS === 'r' ? x2 + 60 : x2;
+    const cy2 = c.tS === 't' ? y2 - 50 : c.tS === 'b' ? y2 + 50 : y2;
+    d = `M${x1},${y1} C${cx1},${cy1} ${cx2},${cy2} ${x2},${y2}`;
+  } else {
+    // Straight line (possibly elbowed)
+    if (x1 === x2 || y1 === y2) {
+      d = `M${x1},${y1} L${x2},${y2}`;
+    } else {
+      const mx = (x1+x2)/2;
+      d = `M${x1},${y1} L${mx},${y1} L${mx},${y2} L${x2},${y2}`;
+    }
+  }
+
+  const pathAttrs = {d, fill:'none', stroke, 'stroke-width':'1.5',
+    'marker-end': marker};
+  if (dash) pathAttrs['stroke-dasharray'] = dash;
+  el('path', pathAttrs, connGroup);
+});
+
+// ── Draw table cards ──────────────────────────────────────────────────────────
+const cardGroup = el('g', {id:'cards'}, svg);
+
+tables.forEach(t => {
+  const {x, y, w, h, g} = tbl[t.id];
+  const accent = COLORS[g];
+  const g_ = el('g', {'data-table': t.id}, cardGroup);
+
+  // Shadow / outer rect
+  el('rect', {x, y, width:w, height:h, rx:'5', ry:'5',
+    fill:'#101420', opacity:'0.5'}, g_);
+  // Card body
+  el('rect', {x, y, width:w, height:h, rx:'5', ry:'5',
+    fill:BG_CARD, stroke:C_BORDER, 'stroke-width':'1'}, g_);
+  // Accent left bar
+  el('rect', {x, y, width:'4', height:h, rx:'2', ry:'2',
+    fill:accent}, g_);
+  // Header bg
+  el('rect', {x, y, width:w, height:HEADER_H, rx:'4', ry:'4',
+    fill:BG_HEADER}, g_);
+  el('rect', {x, y:y+HEADER_H-4, width:w, height:'4',
+    fill:BG_HEADER}, g_);
+
+  // Table name
+  const shortName = t.id.replace(/^_/, '');
+  text(shortName, x + 12, y + HEADER_H - 8,
+    {fill: accent, 'font-family':'ui-sans-serif,system-ui,sans-serif',
+     'font-size':'10.5', 'font-weight':'700', 'letter-spacing':'.04em'}, g_);
+
+  // Fields
+  t.fields.forEach((f, i) => {
+    const fy = y + HEADER_H + PAD + i * ROW_H + ROW_H * 0.72;
+    const fill = f.r === 'pk' ? C_PK : f.r === 'fk' ? C_FK : C_DATA;
+    const prefix = f.r === 'pk' ? '🔑 ' : f.r === 'fk' ? '→ ' : '  ';
+    text(prefix + f.n, x + 10, fy,
+      {fill, 'font-family':"'Cascadia Code','Fira Code',Consolas,monospace",
+       'font-size':'9.5'}, g_);
+  });
+});
+
+// ── Term column label ─────────────────────────────────────────────────────────
+text('TERM JUNCTIONS  (14 levels)', 800, 208,
+  {fill:'#3d4870', 'font-size':'9', 'font-weight':'700', 'letter-spacing':'.1em',
+   'text-transform':'uppercase', 'font-family':'ui-sans-serif,system-ui,sans-serif'}, svg);
+
+// ── Vertical separator ────────────────────────────────────────────────────────
+el('line', {x1:'785', y1:'5', x2:'785', y2:'830',
+  stroke:'#2a3050', 'stroke-width':'1', 'stroke-dasharray':'4,4'}, svg);
+
+// ── Zone labels ───────────────────────────────────────────────────────────────
+[
+  {label:'INSURANCE HIERARCHY', x:195, y:8},
+  {label:'LOCATION & COVERAGE', x:245, y:433},
+  {label:'STAGING / ETL', x:230, y:833},
+  {label:'REINSURANCE ENTITIES', x:310, y:968},
+].forEach(({label, x, y}) => {
+  text(label, x, y, {fill:'#2d3454', 'font-size':'9', 'font-weight':'700',
+    'letter-spacing':'.12em', 'font-family':'ui-sans-serif,system-ui,sans-serif',
+    'text-anchor':'middle'}, svg);
+});
+
+</script>
+</body>
+</html>
