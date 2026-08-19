@@ -55,7 +55,7 @@ The OED format caters for a wide variety of models from different model develope
 For example, a model developer may want to split each country up into four equal areas ‘A’, ‘B’, ‘C’, ‘D’. In this case they would define a new GeogScheme code e.g. ‘QUAD’. They would communicate to users of their model that they must specify GeogName values ‘A’, ‘B’, ‘C’ or ‘D’ for their new ‘QUAD’ GeogScheme. The model user would then populate one of the GeogScheme / GeogName pairs with ‘QUAD’ and ‘A’, ‘B’, ‘C’ or ‘D’ respectively.
 
 This provides a large amount of flexibility to cope with different user and model developer requirements.
-GeogScheme codes are up to five characters (no special characters). The latest codes can be found in the Open Exposure Data Spec spreadsheet on the OED GitHub repository in https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs
+GeogScheme codes are up to five characters (no special characters). The latest codes can be found in the Open Exposure Data Spec spreadsheet on the OED GitHub repository in https://github.com/OasisLMF/ODS_OpenExposureData/tree/main/Docs
 
 Users can also specify their own schemes (e.g. for reporting purposes). The only requirement here is that any user defined scheme codes **must start with ‘X’** in order to avoid a potential code clash with future model developer schemes.
 

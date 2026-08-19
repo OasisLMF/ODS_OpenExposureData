@@ -10,7 +10,7 @@ The import format for OED is defined by four .csv files:
 
 The fields in each file and their corresponding data type are described in the ‘OED Input Fields’ tab in the OED Data Spec spreadsheet found here: 
 
-https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs
+https://github.com/OasisLMF/ODS_OpenExposureData/tree/main/Docs
 
 
 Location ('loc') Import File
