@@ -1,7 +1,8 @@
 # OED fields
 
-The input fields for each OED file, grouped by file. **Status** is the field's requirement
-level for property business:
+The input fields for each OED file, grouped by file. A field's requirement level depends on the
+line of business, so there is one status column per line — **Property**, **Cyber**,
+**Liability** and **Marine Cargo** — each taking one of:
 
 ```{list-table}
 :header-rows: 0
@@ -16,9 +17,6 @@ level for property business:
 * - `n/a`
   - Not applicable to this file / line of business
 ```
-
-Line-of-business status for Cyber, Liability and Marine Cargo is carried in `oed.json`
-(`Cyber/Liability/Marine Cargo field status`); the table below shows the property status.
 
 ```{include} _generated/oed_fields.md
 ```

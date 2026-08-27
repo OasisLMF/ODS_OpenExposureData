@@ -79,6 +79,7 @@ The full specification narrative, migrated from the OED standard documents:
 ```{toctree}
 :maxdepth: 1
 
+classes-of-business
 rationale
 import-format
 asset-details
