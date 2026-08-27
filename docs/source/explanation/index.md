@@ -41,8 +41,31 @@ Policy
   Reinsurance can attach at policy level.
 
 Account
-: The top organisational level, grouping policies. A **portfolio** (`PortNumber`) groups
-  accounts.
+: Groups policies and locations — you cannot have a policy without a location, or a location
+  without a policy. Primary and reinsurance terms can attach here.
+
+Account group
+: A grouping of accounts for reporting purposes, defined through `AccGroup` (for example, a
+  binder). No financial structures attach at this level.
+
+Portfolio
+: A number of accounts, defined through `PortNumber`. Primary terms cannot attach at portfolio
+  level, but reinsurance structures can.
+
+Which levels financial terms attach to:
+
+| Hierarchy level | Defined by | Primary terms? | Reinsurance terms? |
+| --- | --- | --- | --- |
+| Location coverage | Buildings, contents, business interruption, other | Yes | No |
+| Location | `LocNumber`; field names start with `Loc` | Yes | Yes |
+| Location group | `LocGroup` | No | Yes |
+| Policy | `PolNumber`; within it, special conditions (`Cond`) apply first, then standard policy conditions (`Pol`), then layers (`Layer`) | Yes | Yes |
+| Account | `AccNumber`; field names start with `Acc` | Yes | Yes |
+| Account group | `AccGroup` | No | No |
+| Portfolio | `PortNumber` | No | Yes |
+
+Because multiple policies can apply to the same locations, take care when summing exposure or
+ground-up loss at policy level, to avoid overcounting.
 
 ## Coded values
 
