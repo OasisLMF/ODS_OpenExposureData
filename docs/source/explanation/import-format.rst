@@ -8,9 +8,9 @@ The import format for OED is defined by four .csv files:
 •	Reinsurance info (RIinfo)
 •	Reinsurance scope (RIscope)
 
-The fields in each file and their corresponding data type are described in the ‘OED Input Fields’ tab in the OED Data Spec spreadsheet found here: 
-
-https://github.com/OasisLMF/OpenDataStandards/tree/master/OpenExposureData/Docs
+The fields in each file, their data types, defaults and requirement level per line of business
+are listed in the :doc:`field reference <../reference/fields>`, generated from the specification
+itself.
 
 
 Location ('loc') Import File
