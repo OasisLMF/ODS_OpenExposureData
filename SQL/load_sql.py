@@ -14,7 +14,7 @@ engine = create_engine(connection_string, fast_executemany=True)
 CHUNKSIZE = 10000
 
 # location
-df_loc = pd.read_csv('SQL_Scripts/SourceFiles/location.csv').head(10)
+df_loc = pd.read_csv('SQL_Scripts/SourceFiles/location.csv')
 df_loc.to_sql(
     name='_staging_location',      # Table name
     con=engine,
