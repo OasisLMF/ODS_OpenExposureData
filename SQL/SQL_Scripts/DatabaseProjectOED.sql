@@ -2585,12 +2585,71 @@ BEGIN
         bka.AccountId,
         bkp.PolNumber,
         bkp.PolPerilsCovered
-    FROM 
+    FROM
         _businesskeys_policy bkp
     JOIN
         _businesskeys_account bka
             ON bkp.PortNumber = bka.PortNumber
             AND bkp.AccNumber = bka.AccNumber
+END
+
+GO
+
+
+CREATE PROCEDURE usp_PolicyDetails_Load
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO PolicyDetails (
+        PolicyId,
+        PolStatus,
+        PolInceptionDate,
+        PolExpiryDate,
+        ProducerName,
+        Underwriter,
+        BranchName,
+        LOB,
+        ExpiringPolNumber,
+        PolGrossPremium,
+        PolTax,
+        PolBrokerage,
+        PolNetPremium,
+        HoursClause,
+        PolUserDef1,
+        PolUserDef2,
+        PolUserDef3,
+        PolUserDef4,
+        PolUserDef5
+        )
+
+    SELECT DISTINCT
+        bkp.PolicyId,
+        ia.PolStatus,
+        ia.PolInceptionDate,
+        ia.PolExpiryDate,
+        ia.ProducerName,
+        ia.Underwriter,
+        ia.BranchName,
+        ia.LOB,
+        ia.ExpiringPolNumber,
+        ia.PolGrossPremium,
+        ia.PolTax,
+        ia.PolBrokerage,
+        ia.PolNetPremium,
+        ia.HoursClause,
+        ia.PolUserDef1,
+        ia.PolUserDef2,
+        ia.PolUserDef3,
+        ia.PolUserDef4,
+        ia.PolUserDef5
+    FROM
+        _businesskeys_policy bkp
+    JOIN
+        _import_account ia
+            ON  ia.PortNumber = bkp.PortNumber
+            AND ia.AccNumber  = bkp.AccNumber
+            AND ia.PolNumber  = bkp.PolNumber
 END
 
 GO
@@ -4181,6 +4240,7 @@ BEGIN
     EXEC usp_Portfolio_Load
     EXEC usp_Account_Load
     EXEC usp_Policy_Load
+    EXEC usp_PolicyDetails_Load
     EXEC usp_Layer_Load
     EXEC usp_Condition_Load
     EXEC usp_LocationGroup_Load
